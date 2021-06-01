@@ -1,0 +1,6 @@
+recursive-include publix/assets *
+include LICENSE.md
+include Makefile
+include pylama.ini
+include pytest.ini
+include README.md
