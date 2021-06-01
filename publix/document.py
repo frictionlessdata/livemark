@@ -21,6 +21,7 @@ class Document:
         # Parse document
         prepare = []
         cleanup = []
+        frontmatter = None
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = yaml.safe_load(frontmatter)
@@ -34,7 +35,8 @@ class Document:
 
         # Convert document
         target = markdown.convert(target)
-        target = frontmatter.join(["---"] * 2) + "\n" + target
+        if frontmatter:
+            target = frontmatter.join(["---"] * 2) + "\n" + target
 
         # Cleanup document
         for code in cleanup:

@@ -1,5 +1,5 @@
+import os
 import typer
-import difflib
 from typing import Optional
 from .document import Document
 from . import helpers
@@ -23,26 +23,24 @@ def version(value: bool):
 # Command
 
 
-@program.command()
+@program.callback()
 def program_main(
-    path: str = typer.Argument(..., help="Path to markdown"),
-    diff: bool = typer.Option(default=False, help="Return the diff"),
-    print: bool = typer.Option(default=False, help="Return the document"),
-    version: Optional[bool] = typer.Option(None, "--version", callback=version),
+    version: Optional[bool] = typer.Option(None, "--version", callback=version)
 ):
     """Publish articles written in extended Markdown at ease."""
+    pass
+
+
+@program.command(name="build")
+def program_build(
+    path: str = typer.Argument(..., help="Path to markdown"),
+    print: bool = typer.Option(default=False, help="Return the document"),
+):
+    """Build and article."""
 
     # Process document
     document = Document(path)
     source, target = document.process()
-
-    # Diff document
-    if diff:
-        l1 = source.splitlines(keepends=True)
-        l2 = target.splitlines(keepends=True)
-        ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
-        typer.secho("".join(ld), nl=False)
-        raise typer.Exit()
 
     # Print document
     if print:
@@ -50,4 +48,5 @@ def program_main(
         raise typer.Exit()
 
     # Write document
-    helpers.write_file(path, target)
+    html_path = f"{os.path.splitext(path)[0]}.html"
+    helpers.write_file(html_path, target)
