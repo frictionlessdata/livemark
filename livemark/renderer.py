@@ -1,10 +1,5 @@
-#  import io
-#  import sys
-#  import subprocess
-#  import contextlib
-#  from copy import copy
-#  from marko.inline import RawText
-#  from marko.block import FencedCode
+import bs4
+import marko
 from marko.html_renderer import HTMLRenderer
 
 
@@ -12,4 +7,14 @@ class LivemarkRenderer(HTMLRenderer):
 
     # Render
 
-    pass
+    def render_html_block(self, element):
+        markdown = marko.Markdown(renderer=LivemarkRenderer)
+        html = bs4.BeautifulSoup(element.children, features="html.parser")
+        for node in html.select("*"):
+            if len(node.contents) == 1:
+                text = node.contents[0]
+                if isinstance(text, bs4.element.NavigableString):
+                    text = markdown.convert(text)
+                    inner = bs4.BeautifulSoup(text, features="html.parser")
+                    node.string.replace_with(inner)
+        return str(html)

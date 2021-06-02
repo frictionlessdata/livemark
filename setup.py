@@ -37,6 +37,7 @@ INSTALL_REQUIRES = [
     "pyyaml>=5.3",
     "jinja2>=3.0",
     "typer[all]>=0.3",
+    "beautifulsoup4>=4.9",
 ]
 README = read("README.md")
 VERSION = read(PACKAGE, "assets", "VERSION")
