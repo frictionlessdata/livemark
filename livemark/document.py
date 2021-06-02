@@ -2,7 +2,8 @@ import yaml
 import marko
 import subprocess
 from jinja2 import Template
-from .renderer import LivemarkRenderer
+from marko.ext.gfm import GFM
+from .renderer import LivemarkExtension
 from . import config
 
 
@@ -13,7 +14,9 @@ class Document:
     # Process
 
     def process(self):
-        markdown = marko.Markdown(renderer=LivemarkRenderer)
+        markdown = marko.Markdown()
+        markdown.use(GFM)
+        markdown.use(LivemarkExtension)
 
         # Source document
         with open(self.__path) as file:
