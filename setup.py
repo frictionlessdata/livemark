@@ -17,7 +17,7 @@ def read(*paths):
 # Prepare
 
 
-PACKAGE = "publix"
+PACKAGE = "livemark"
 NAME = PACKAGE.replace("_", "-")
 TESTS_REQUIRE = [
     "mypy",
@@ -40,7 +40,7 @@ INSTALL_REQUIRES = [
 README = read("README.md")
 VERSION = read(PACKAGE, "assets", "VERSION")
 PACKAGES = find_packages(exclude=["tests"])
-ENTRY_POINTS = {"console_scripts": ["publix = publix.__main__:program"]}
+ENTRY_POINTS = {"console_scripts": ["livemark = livemark.__main__:program"]}
 
 
 # Run
@@ -61,10 +61,10 @@ setup(
     description="Publish articles written in extended Markdown at ease",
     author="Evgeny Karev",
     author_email="eskarev@gmail.com",
-    url="https://github.com/frictionlessdata/publix",
+    url="https://github.com/frictionlessdata/livemark",
     license="MIT",
     keywords=[
-        "publix",
+        "livemark",
         "markdown",
         "documentation",
     ],

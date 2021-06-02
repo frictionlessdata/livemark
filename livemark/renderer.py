@@ -8,7 +8,7 @@
 from marko.html_renderer import HTMLRenderer
 
 
-class PublixRenderer(HTMLRenderer):
+class LivemarkRenderer(HTMLRenderer):
 
     # Render
 

@@ -1,7 +1,7 @@
 import yaml
 import marko
 import subprocess
-from .renderer import PublixRenderer
+from .renderer import LivemarkRenderer
 
 
 class Document:
@@ -11,7 +11,7 @@ class Document:
     # Process
 
     def process(self):
-        markdown = marko.Markdown(renderer=PublixRenderer)
+        markdown = marko.Markdown(renderer=LivemarkRenderer)
 
         # Source document
         with open(self.__path) as file:
@@ -25,9 +25,9 @@ class Document:
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = yaml.safe_load(frontmatter)
-            if "publix" in metadata:
-                prepare.extend(metadata["publix"].get("prepare", []))
-                cleanup.extend(metadata["publix"].get("cleanup", []))
+            if "livemark" in metadata:
+                prepare.extend(metadata["livemark"].get("prepare", []))
+                cleanup.extend(metadata["livemark"].get("cleanup", []))
 
         # Prepare document
         for code in prepare:
