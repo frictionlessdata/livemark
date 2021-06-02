@@ -20,10 +20,6 @@ class Document:
             source = file.read()
             target = source
 
-        # Preprocess document
-        template = Template(target, trim_blocks=True)
-        target = template.render()
-
         # Parse document
         metadata = {}
         if target.startswith("---"):
@@ -34,12 +30,12 @@ class Document:
         for code in metadata.get("prepare", []):
             subprocess.run(code, shell=True)
 
+        # Preprocess document
+        template = Template(target, trim_blocks=True)
+        target = template.render()
+
         # Convert document
         target = markdown.convert(target).strip()
-
-        # Cleanup document
-        for code in metadata.get("cleanup", []):
-            subprocess.run(code, shell=True)
 
         # Postprocess document
         layout = config.LAYOUT
@@ -48,5 +44,9 @@ class Document:
                 layout = file.read()
         template = Template(layout)
         target = template.render(title=metadata.get("title", "Livemark"), content=target)
+
+        # Cleanup document
+        for code in metadata.get("cleanup", []):
+            subprocess.run(code, shell=True)
 
         return source, target
