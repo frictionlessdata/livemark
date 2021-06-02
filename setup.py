@@ -35,6 +35,7 @@ EXTRAS_REQUIRE = {
 INSTALL_REQUIRES = [
     "marko>=1.0",
     "pyyaml>=5.3",
+    "jinja2>=3.0",
     "typer[all]>=0.3",
 ]
 README = read("README.md")

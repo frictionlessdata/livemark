@@ -14,4 +14,4 @@ def read_asset(*paths):
 
 
 VERSION = read_asset("VERSION")
-LAYOUT = read_asset("layout.html")
+LAYOUT = read_asset("templates", "layout.html")
