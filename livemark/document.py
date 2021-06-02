@@ -23,7 +23,6 @@ class Document:
         # Preprocess document
         template = Template(target, trim_blocks=True)
         target = template.render()
-        print(target)
 
         # Parse document
         prepare = []
