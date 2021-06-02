@@ -1,7 +1,9 @@
 import yaml
 import marko
 import subprocess
+from jinja2 import Template
 from .renderer import LivemarkRenderer
+from . import config
 
 
 class Document:
@@ -34,12 +36,16 @@ class Document:
             subprocess.run(code, shell=True)
 
         # Convert document
-        target = markdown.convert(target)
+        target = markdown.convert(target).strip()
         if frontmatter:
             target = frontmatter.join(["---"] * 2) + "\n" + target
 
         # Cleanup document
         for code in cleanup:
             subprocess.run(code, shell=True)
+
+        # Postprocess document
+        template = Template(config.LAYOUT)
+        target = template.render(content=target)
 
         return source, target
