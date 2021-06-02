@@ -51,3 +51,54 @@ Example with a list:
 ## Chart
 
 ## Layout
+
+It's possible to customize the layout.
+
+You need to save it first:
+
+```bash
+livemark layout > layout.html
+```
+
+Then, for example, switch to local static files:
+
+> layout.html
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="static/bootstrap.min.css">
+<link rel="stylesheet" href="static/github-markdown.css">
+<link rel="stylesheet" href="static/prism.css">
+<title>{{ title }}</title>
+</head>
+<body>
+
+<div class="container">
+<div class="markdown-body m-5 px-lg-5">
+{{ content }}
+</div>
+</div>
+
+<script src="static/bootstrap.min.js"></script>
+<script src="static/prism-core.min.js"></script>
+<script src="static/prism-autoloader.min.js"></script>
+</body>
+</html>
+```
+
+And use your new layout in markdown documents:
+
+> article.md
+
+```md
+---
+layout: layout.html
+---
+# My Article
+
+This article uses a custom layout
+```

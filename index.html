@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/github-markdown-css@4.0.0/github-markdown.css">
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <title>Livemark</title>
 </head>
 <body>
@@ -48,9 +49,54 @@ One of three columns
 <h2>Table</h2>
 <h2>Chart</h2>
 <h2>Layout</h2>
+<p>It's possible to customize the layout.</p>
+<p>You need to save it first:</p>
+<pre><code class="language-bash">livemark layout &gt; layout.html
+</code></pre>
+<p>Then, for example, switch to local static files:</p>
+<blockquote>
+<p>layout.html</p>
+</blockquote>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;static/bootstrap.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;static/github-markdown.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;static/prism.css&quot;&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+&lt;div class=&quot;markdown-body m-5 px-lg-5&quot;&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;static/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;static/prism-core.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;static/prism-autoloader.min.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>And use your new layout in markdown documents:</p>
+<blockquote>
+<p>article.md</p>
+</blockquote>
+<pre><code class="language-md">---
+layout: layout.html
+---
+# My Article
+
+This article uses a custom layout
+</code></pre>
 </div>
 </div>
 
 <script src="https://unpkg.com/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>

@@ -50,3 +50,9 @@ def program_build(
     # Write document
     html_path = f"{os.path.splitext(path)[0]}.html"
     helpers.write_file(html_path, target)
+
+
+@program.command(name="layout")
+def program_layout():
+    """Print default layout."""
+    typer.secho(config.LAYOUT)
