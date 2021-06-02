@@ -13,7 +13,7 @@ class LivemarkRendererMixin(HTMLRenderer):
         markdown.use(GFM)
         markdown.use(LivemarkExtension)
         html = bs4.BeautifulSoup(element.children, features="html.parser")
-        for node in html.select("*"):
+        for node in html.select(".markdown"):
             if len(node.contents) == 1:
                 text = node.contents[0]
                 if isinstance(text, bs4.element.NavigableString):
