@@ -57,7 +57,7 @@ It's possible to customize the layout.
 You need to save it first:
 
 ```bash
-livemark layout > layout.html
+$ livemark layout > layout.html
 ```
 
 Then, for example, switch to local static files:
