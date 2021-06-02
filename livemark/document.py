@@ -7,8 +7,12 @@ from . import config
 
 
 class Document:
-    def __init__(self, path):
+    def __init__(self, path, *, layout_path=None):
         self.__path = path
+        self.__layout = config.LAYOUT
+        if layout_path:
+            with open(layout_path) as file:
+                self.__layout = file.read()
 
     # Process
 
@@ -49,7 +53,7 @@ class Document:
             subprocess.run(code, shell=True)
 
         # Postprocess document
-        template = Template(config.LAYOUT)
+        template = Template(self.__layout)
         target = template.render(content=target)
 
         return source, target

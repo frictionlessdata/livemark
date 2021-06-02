@@ -8,7 +8,7 @@ runner = CliRunner()
 
 
 def test_program():
-    result = runner.invoke(program, "build")
+    result = runner.invoke(program, "bad")
     assert result.exit_code == 2
     assert result.stdout.count("Usage")
 

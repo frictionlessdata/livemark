@@ -33,8 +33,9 @@ def program_main(
 
 @program.command(name="build")
 def program_build(
-    path: str = typer.Argument(..., help="Path to markdown"),
-    print: bool = typer.Option(default=False, help="Return the document"),
+    path: str = typer.Argument("index.md", help="Path to markdown"),
+    lauout: str = typer.Option(None, help="Path to a layout"),
+    print: bool = typer.Option(False, help="Return the document"),
 ):
     """Build and article."""
 
