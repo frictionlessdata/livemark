@@ -1,0 +1,8 @@
+<div id="{{ id }}"></div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  var spec = JSON.parse('{{ spec }}');
+  vegaEmbed('#{{ id }}', spec).then(function(result) {
+  }).catch(console.error);
+});
+</script>
