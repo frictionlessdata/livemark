@@ -79,6 +79,9 @@ Then, for example, switch to local static files:
 </div>
 </div>
 
+
+<script src="static/jquery.min.js"></script>
+<script src="static/popper.min.js"></script>
 <script src="static/bootstrap.min.js"></script>
 <script src="static/prism-core.min.js"></script>
 <script src="static/prism-autoloader.min.js"></script>
