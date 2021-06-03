@@ -194,7 +194,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 ```
 
-<div class="w-50">
+<div style="max-width: 600px">
 <div class="container">
 <div class="row">
 <div class="col-sm">
