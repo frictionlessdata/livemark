@@ -19,7 +19,7 @@ Publish articles written in extended Markdown at ease.
 Livemark preprosecces your document using Jinja templating language:
 
 {% raw %}
-```
+```markup
 {% for number in [1, 2, 3] %}
 - number: {{ number }}
 {% endfor %}
@@ -34,9 +34,9 @@ Livemark preprosecces your document using Jinja templating language:
 
 > https://github.com/derekeder/csv-to-html-table
 
-Livemark supports CSV tables rendering (replace single quotes to back ticks):
+Livemark supports CSV tables rendering (replace single quotes by back ticks):
 
-```
+```yaml
 '''table
 data:
   - ['', 'Ford', 'Tesla', 'Toyota', 'Honda']
@@ -68,9 +68,9 @@ height: 300
 
 > https://vega.github.io/vega-lite/
 
-Livemark supports Vega Lite visualisations rendering (replace single quotes to back ticks):
+Livemark supports Vega Lite visualisations rendering (replace single quotes by back ticks):
 
-```
+```yaml
 '''chart
 data:
   url: "data/cars.csv"
@@ -78,26 +78,7 @@ mark: circle
 selection:
   brush:
     type: interval
-encoding:
-  x:
-    type: quantitative
-    field: kmpl
-    scale:
-     domain: [12,25]
-  y:
-    type: quantitative
-    field: price
-    scale:
-     domain: [100,900]
-  color:
-    condition:
-      selection: brush
-      field: type
-      type: nominal
-    value: grey
-  size:
-    type: quantitative
-    field: bhp
+# other options are omitted
 width: 500
 height: 300
 '''
@@ -138,9 +119,9 @@ height: 300
 
 > https://prismjs.com/
 
-Syntax highlithing is proviced by PrismJS (replace single quotes to back ticks):
+Syntax highlithing is proviced by PrismJS (replace single quotes by back ticks):
 
-```
+```markup
 '''python
 # This program adds two numbers
 
@@ -172,38 +153,52 @@ print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))
 
 > https://getbootstrap.com/docs/4.6/getting-started/introduction/
 
-With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a "hero" element:
+With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a responsive grid of cards (note that if we set a `markdown` class we can use markdown inside html):
 
 ```html
-<div class="jumbotron">
-<h1 class="display-4">Hello, world!</h1>
-<p class="lead">This is a simple hero unit.</p>
-<hr class="my-4">
-<p>It uses Bootstrap 4.</p>
-<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+<div class="w-50">
+<div class="container">
+<div class="row">
+<div class="col-sm">
+  <div class="markdown">![Package](data/data-package.png)</div>
+  <div class="text-center">
+  <p><strong>Data Package</strong></p>
+  <p>A simple container format for describing a coherent collection of data in a single package.</p>
+  </div>
+</div>
+<!-- other columns are omitted -->
+</div>
+</div>
 </div>
 ```
 
-<div class="jumbotron">
-<h1 class="display-4">Hello, world!</h1>
-<p class="lead">This is a simple hero unit.</p>
-<hr class="my-4">
-<p>It uses Bootstrap 4.</p>
-<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+<div class="w-50">
+<div class="container">
+<div class="row">
+<div class="col-sm">
+  <div class="markdown">![Package](data/data-package.png)</div>
+  <div class="text-center">
+  <p><strong>Data Package</strong></p>
+  <p>A simple container format for describing a coherent collection of data in a single package.</p>
+  </div>
 </div>
-
-Note that, an HTML block can't contain blank lines and if you need to use markdown inside HTML it will only work if you set `class="markdown"`:
-
-```html
-<div class="markdown">
-**This text is highlighted**
+<div class="col-sm markdown">
+  <div class="markdown">![Resource](data/data-resource.png)</div>
+  <div class="text-center">
+  <p><strong>Data Resource</strong></p>
+  <p>A simple format to describe and package a single data resource such as a individual table or file.</p>
+  </div>
 </div>
-```
-
-<div class="markdown">
-**This text is highlighted**
+<div class="col-sm markdown">
+  <div class="markdown">![Schema](data/table-schema.png)</div>
+  <div class="text-center">
+  <p><strong>Table Schema</strong></p>
+  <p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
+  </div>
 </div>
-
+</div>
+</div>
+</div>
 
 ## Layout
 

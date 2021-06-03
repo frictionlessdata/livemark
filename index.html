@@ -37,7 +37,7 @@
 <p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
 </blockquote>
 <p>Livemark preprosecces your document using Jinja templating language:</p>
-<pre><code>{% for number in [1, 2, 3] %}
+<pre><code class="language-markup">{% for number in [1, 2, 3] %}
 - number: {{ number }}
 {% endfor %}
 </code></pre>
@@ -50,8 +50,8 @@
 <blockquote>
 <p><a href="https://github.com/derekeder/csv-to-html-table">https://github.com/derekeder/csv-to-html-table</a></p>
 </blockquote>
-<p>Livemark supports CSV tables rendering (replace single quotes to back ticks):</p>
-<pre><code>&#x27;&#x27;&#x27;table
+<p>Livemark supports CSV tables rendering (replace single quotes by back ticks):</p>
+<pre><code class="language-yaml">&#x27;&#x27;&#x27;table
 data:
   - [&#x27;&#x27;, &#x27;Ford&#x27;, &#x27;Tesla&#x27;, &#x27;Toyota&#x27;, &#x27;Honda&#x27;]
   - [&#x27;2017&#x27;, 10, 11, 12, 13]
@@ -74,34 +74,15 @@ document.addEventListener("DOMContentLoaded", function(){
 <blockquote>
 <p><a href="https://vega.github.io/vega-lite/">https://vega.github.io/vega-lite/</a></p>
 </blockquote>
-<p>Livemark supports Vega Lite visualisations rendering (replace single quotes to back ticks):</p>
-<pre><code>&#x27;&#x27;&#x27;chart
+<p>Livemark supports Vega Lite visualisations rendering (replace single quotes by back ticks):</p>
+<pre><code class="language-yaml">&#x27;&#x27;&#x27;chart
 data:
   url: &quot;data/cars.csv&quot;
 mark: circle
 selection:
   brush:
     type: interval
-encoding:
-  x:
-    type: quantitative
-    field: kmpl
-    scale:
-     domain: [12,25]
-  y:
-    type: quantitative
-    field: price
-    scale:
-     domain: [100,900]
-  color:
-    condition:
-      selection: brush
-      field: type
-      type: nominal
-    value: grey
-  size:
-    type: quantitative
-    field: bhp
+# other options are omitted
 width: 500
 height: 300
 &#x27;&#x27;&#x27;
@@ -117,8 +98,8 @@ document.addEventListener("DOMContentLoaded", function(){
 <blockquote>
 <p><a href="https://prismjs.com/">https://prismjs.com/</a></p>
 </blockquote>
-<p>Syntax highlithing is proviced by PrismJS (replace single quotes to back ticks):</p>
-<pre><code>&#x27;&#x27;&#x27;python
+<p>Syntax highlithing is proviced by PrismJS (replace single quotes by back ticks):</p>
+<pre><code class="language-markup">&#x27;&#x27;&#x27;python
 # This program adds two numbers
 
 num1 = 1.5
@@ -146,28 +127,51 @@ print(&#x27;The sum of {0} and {1} is {2}&#x27;.format(num1, num2, sum))
 <blockquote>
 <p><a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/">https://getbootstrap.com/docs/4.6/getting-started/introduction/</a></p>
 </blockquote>
-<p>With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a &quot;hero&quot; element:</p>
-<pre><code class="language-html">&lt;div class=&quot;jumbotron&quot;&gt;
-&lt;h1 class=&quot;display-4&quot;&gt;Hello, world!&lt;/h1&gt;
-&lt;p class=&quot;lead&quot;&gt;This is a simple hero unit.&lt;/p&gt;
-&lt;hr class=&quot;my-4&quot;&gt;
-&lt;p&gt;It uses Bootstrap 4.&lt;/p&gt;
-&lt;a class=&quot;btn btn-primary btn-lg&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Learn more&lt;/a&gt;
+<p>With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a responsive grid of cards (note that if we set a <code>markdown</code> class we can use markdown inside html):</p>
+<pre><code class="language-html">&lt;div class=&quot;w-50&quot;&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-sm&quot;&gt;
+  &lt;div class=&quot;markdown&quot;&gt;![Package](data/data-package.png)&lt;/div&gt;
+  &lt;div class=&quot;text-center&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Data Package&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;A simple container format for describing a coherent collection of data in a single package.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- other columns are omitted --&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<div class="jumbotron">
-<h1 class="display-4">Hello, world!</h1>
-<p class="lead">This is a simple hero unit.</p>
-<hr class="my-4"/>
-<p>It uses Bootstrap 4.</p>
-<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+<div class="w-50">
+<div class="container">
+<div class="row">
+<div class="col-sm">
+<div class="markdown"><p><img alt="Package" src="data/data-package.png"/></p>
 </div>
-<p>Note that, an HTML block can't contain blank lines and if you need to use markdown inside HTML it will only work if you set <code>class=&quot;markdown&quot;</code>:</p>
-<pre><code class="language-html">&lt;div class=&quot;markdown&quot;&gt;
-**This text is highlighted**
-&lt;/div&gt;
-</code></pre>
-<div class="markdown"><p><strong>This text is highlighted</strong></p>
+<div class="text-center">
+<p><strong>Data Package</strong></p>
+<p>A simple container format for describing a coherent collection of data in a single package.</p>
+</div>
+</div>
+<div class="col-sm markdown">
+<div class="markdown"><p><img alt="Resource" src="data/data-resource.png"/></p>
+</div>
+<div class="text-center">
+<p><strong>Data Resource</strong></p>
+<p>A simple format to describe and package a single data resource such as a individual table or file.</p>
+</div>
+</div>
+<div class="col-sm markdown">
+<div class="markdown"><p><img alt="Schema" src="data/table-schema.png"/></p>
+</div>
+<div class="text-center">
+<p><strong>Table Schema</strong></p>
+<p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <h2>Layout</h2>
 <blockquote>
