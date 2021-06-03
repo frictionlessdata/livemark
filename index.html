@@ -6,10 +6,8 @@
 
 <link rel="stylesheet" href="https://unpkg.com/github-markdown-css@4.0.0/github-markdown.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
-<script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
-<script src="https://unpkg.com/popper.js@1.16.1/dist/popper.min.js"></script>
-<script src="https://unpkg.com/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
 <script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
@@ -17,12 +15,8 @@
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
 
-<link rel="stylesheet" href="https://unpkg.com/datatables@1.10.18/media/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://unpkg.com/jquery-csv@1.0.21/src/jquery.csv.min.js"></script>
-<!-- <script src="https://unpkg.com/csv-to-html-table@1.0.2/dist/csv-to-html.min.js"></script> -->
+<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
+<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
 
 
 <title>Livemark</title>
@@ -38,11 +32,25 @@
 <a href="https://github.com/frictionlessdata/livemark"><img src="https://img.shields.io/badge/codebase-github-brightgreen" alt="Codebase" /></a>
 <a href="https://discord.com/channels/695635777199145130/695635777199145133"><img src="https://img.shields.io/badge/support-discord-brightgreen" alt="Support" /></a></p>
 <p>Publish articles written in extended Markdown at ease.</p>
+<h2>Logic</h2>
+<blockquote>
+<p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
+</blockquote>
+<p>Livemark preprosecces your document using Jinja templating language:</p>
+<pre><code>{% for number in [1, 2, 3] %}
+- number: {{ number }}
+{% endfor %}
+</code></pre>
+<ul>
+<li>number: 1</li>
+<li>number: 2</li>
+<li>number: 3</li>
+</ul>
 <h2>Table</h2>
 <blockquote>
 <p><a href="https://github.com/derekeder/csv-to-html-table">https://github.com/derekeder/csv-to-html-table</a></p>
 </blockquote>
-<p>Livemark supports CSV tables rendering (replace single quote to back tickes):</p>
+<p>Livemark supports CSV tables rendering (replace single quotes to back ticks):</p>
 <pre><code>&#x27;&#x27;&#x27;table
 data/country-codes.csv
 &#x27;&#x27;&#x27;
@@ -118,9 +126,9 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 </script><h2>Chart</h2>
 <blockquote>
-<p><a href="https://github.com/derekeder/csv-to-html-table">https://github.com/derekeder/csv-to-html-table</a></p>
+<p><a href="https://vega.github.io/vega-lite/">https://vega.github.io/vega-lite/</a></p>
 </blockquote>
-<p>Livemark supports Vega Lite visualisations rendering (replace single quote to back tickes):</p>
+<p>Livemark supports Vega Lite visualisations rendering (replace single quotes to back ticks):</p>
 <pre><code>&#x27;&#x27;&#x27;chart
 data:
   url: &quot;data/cars.csv&quot;
@@ -159,20 +167,35 @@ document.addEventListener("DOMContentLoaded", function(){
   vegaEmbed('#chart-example', spec).then(function(result) {
   }).catch(console.error);
 });
-</script><h2>Logic</h2>
+</script><h2>Code</h2>
 <blockquote>
-<p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
+<p><a href="https://prismjs.com/">https://prismjs.com/</a></p>
 </blockquote>
-<p>Livemark preprosecces your document using Jinja templating language:</p>
-<pre><code>{% for number in [1, 2, 3] %}
-- number: {{ number }}
-{% endfor %}
+<p>Syntax highlithing is proviced by PrismJS (replace single quotes to back ticks):</p>
+<pre><code>&#x27;&#x27;&#x27;python
+# This program adds two numbers
+
+num1 = 1.5
+num2 = 6.3
+
+# Add two numbers
+sum = num1 + num2
+
+# Display the sum
+print(&#x27;The sum of {0} and {1} is {2}&#x27;.format(num1, num2, sum))
+&#x27;&#x27;&#x27;
 </code></pre>
-<ul>
-<li>number: 1</li>
-<li>number: 2</li>
-<li>number: 3</li>
-</ul>
+<pre><code class="language-python"># This program adds two numbers
+
+num1 = 1.5
+num2 = 6.3
+
+# Add two numbers
+sum = num1 + num2
+
+# Display the sum
+print(&#x27;The sum of {0} and {1} is {2}&#x27;.format(num1, num2, sum))
+</code></pre>
 <h2>Style</h2>
 <blockquote>
 <p><a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/">https://getbootstrap.com/docs/4.6/getting-started/introduction/</a></p>

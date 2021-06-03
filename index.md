@@ -12,11 +12,29 @@ title: Livemark
 
 Publish articles written in extended Markdown at ease.
 
+## Logic
+
+> https://jinja.palletsprojects.com/en/3.0.x/templates/
+
+Livemark preprosecces your document using Jinja templating language:
+
+{% raw %}
+```
+{% for number in [1, 2, 3] %}
+- number: {{ number }}
+{% endfor %}
+```
+{% endraw %}
+
+{% for number in [1, 2, 3] %}
+- number: {{ number }}
+{% endfor %}
+
 ## Table
 
 > https://github.com/derekeder/csv-to-html-table
 
-Livemark supports CSV tables rendering (replace single quote to back tickes):
+Livemark supports CSV tables rendering (replace single quotes to back ticks):
 
 ```
 '''table
@@ -32,7 +50,7 @@ data/country-codes.csv
 
 > https://vega.github.io/vega-lite/
 
-Livemark supports Vega Lite visualisations rendering (replace single quote to back tickes):
+Livemark supports Vega Lite visualisations rendering (replace single quotes to back ticks):
 
 ```
 '''chart
@@ -98,23 +116,39 @@ width: 450
 height: 300
 ```
 
-## Logic
+## Code
 
-> https://jinja.palletsprojects.com/en/3.0.x/templates/
+> https://prismjs.com/
 
-Livemark preprosecces your document using Jinja templating language:
+Syntax highlithing is proviced by PrismJS (replace single quotes to back ticks):
 
-{% raw %}
 ```
-{% for number in [1, 2, 3] %}
-- number: {{ number }}
-{% endfor %}
-```
-{% endraw %}
+'''python
+# This program adds two numbers
 
-{% for number in [1, 2, 3] %}
-- number: {{ number }}
-{% endfor %}
+num1 = 1.5
+num2 = 6.3
+
+# Add two numbers
+sum = num1 + num2
+
+# Display the sum
+print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))
+'''
+```
+
+```python
+# This program adds two numbers
+
+num1 = 1.5
+num2 = 6.3
+
+# Add two numbers
+sum = num1 + num2
+
+# Display the sum
+print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))
+```
 
 ## Style
 
@@ -151,6 +185,7 @@ Note that, an HTML block can't contain blank lines and if you need to use markdo
 <div class="markdown">
 **This text is highlighted**
 </div>
+
 
 ## Layout
 
