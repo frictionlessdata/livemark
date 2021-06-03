@@ -207,37 +207,18 @@ document.addEventListener("DOMContentLoaded", function(){
 <p>It's possible to customize the layout. You need to save it first:</p>
 <pre><code class="language-bash">$ livemark layout &gt; layout.html
 </code></pre>
-<p>Then, for example, switch to local static files:</p>
+<p>Then, you can update the layout as whole or use Jinja's inheritance. For example, let's use Tailwind instead of Bootstrap and some custom styles:</p>
 <blockquote>
 <p>layout.html</p>
 </blockquote>
-<pre><code class="language-html">&lt;!doctype html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;static/bootstrap.min.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;static/github-markdown.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;static/prism.css&quot;&gt;
-&lt;title&gt;&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<pre><code class="language-html">{% extends &quot;layout.html&quot; %}.
 
-&lt;div class=&quot;container&quot;&gt;
-&lt;div class=&quot;markdown-body m-5 px-lg-5&quot;&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;script src=&quot;static/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;static/popper.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;static/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;static/prism-core.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;static/prism-autoloader.min.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+{% block style %}
+&lt;link rel=&quot;stylesheet&quot; href=&quot;static/tailwind.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;static/custom.css&quot;&gt;
+{% endblock %}
 </code></pre>
-<p>And use your new layout in markdown documents:</p>
+<p>Then link your new layout in markdown documents:</p>
 <blockquote>
 <p>article.md</p>
 </blockquote>

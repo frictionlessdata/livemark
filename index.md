@@ -30,7 +30,7 @@ data/country-codes.csv
 
 ## Chart
 
-> https://github.com/derekeder/csv-to-html-table
+> https://vega.github.io/vega-lite/
 
 Livemark supports Vega Lite visualisations rendering (replace single quote to back tickes):
 
@@ -162,39 +162,22 @@ It's possible to customize the layout. You need to save it first:
 $ livemark layout > layout.html
 ```
 
-Then, for example, switch to local static files:
+Then, you can update the layout as whole or use Jinja's inheritance. For example, let's use Tailwind instead of Bootstrap and some custom styles:
 
 > layout.html
 
+{% raw %}
 ```html
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="static/bootstrap.min.css">
-<link rel="stylesheet" href="static/github-markdown.css">
-<link rel="stylesheet" href="static/prism.css">
-<title>{{ title }}</title>
-</head>
-<body>
+{% extends "layout.html" %}.
 
-<div class="container">
-<div class="markdown-body m-5 px-lg-5">
-{{ content }}
-</div>
-</div>
-
-<script src="static/jquery.min.js"></script>
-<script src="static/popper.min.js"></script>
-<script src="static/bootstrap.min.js"></script>
-<script src="static/prism-core.min.js"></script>
-<script src="static/prism-autoloader.min.js"></script>
-</body>
-</html>
+{% block style %}
+<link rel="stylesheet" href="static/tailwind.css">
+<link rel="stylesheet" href="static/custom.css">
+{% endblock %}
 ```
+{% endraw %}
 
-And use your new layout in markdown documents:
+Then link your new layout in markdown documents:
 
 > article.md
 

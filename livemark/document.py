@@ -1,7 +1,7 @@
 import yaml
 import marko
 import subprocess
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader
 from marko.ext.gfm import GFM
 from .renderer import LivemarkExtension
 from . import config
@@ -17,6 +17,10 @@ class Document:
         markdown = marko.Markdown()
         markdown.use(GFM)
         markdown.use(LivemarkExtension)
+        templating = Environment(
+            loader=FileSystemLoader(config.TEMPLATES),
+            trim_blocks=True,
+        )
 
         # Source document
         with open(self.__path) as file:
@@ -34,7 +38,7 @@ class Document:
             subprocess.run(code, shell=True)
 
         # Preprocess document
-        template = Template(target, trim_blocks=True)
+        template = templating.from_string(target)
         target = template.render()
 
         # Convert document
@@ -45,7 +49,7 @@ class Document:
         if metadata.get("layout"):
             with open(metadata["layout"]) as file:
                 layout = file.read()
-        template = Template(layout, trim_blocks=True)
+        template = templating.from_string(layout)
         target = template.render(title=metadata.get("title", "Livemark"), mainbar=target)
 
         # Cleanup document
