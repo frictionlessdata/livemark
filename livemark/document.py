@@ -45,8 +45,8 @@ class Document:
         if metadata.get("layout"):
             with open(metadata["layout"]) as file:
                 layout = file.read()
-        template = Template(layout)
-        target = template.render(title=metadata.get("title", "Livemark"), content=target)
+        template = Template(layout, trim_blocks=True)
+        target = template.render(title=metadata.get("title", "Livemark"), mainbar=target)
 
         # Cleanup document
         for code in metadata.get("cleanup", []):
