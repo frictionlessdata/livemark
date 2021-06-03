@@ -50,7 +50,7 @@ class Document:
             with open(metadata["layout"]) as file:
                 layout = file.read()
         template = templating.from_string(layout)
-        target = template.render(title=metadata.get("title", "Livemark"), mainbar=target)
+        target = template.render(title=metadata.get("title", "Livemark"), content=target)
 
         # Cleanup document
         for code in metadata.get("cleanup", []):
