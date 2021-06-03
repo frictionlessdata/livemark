@@ -26,7 +26,7 @@ Livemark comes with a command-line interface:
 
 ```bash
 # Build a single document
-$ livemark build '<path:index.html>'
+$ livemark build '<path=index.md>'
 
 # Start a livereload server
 $ livemark start
@@ -54,7 +54,7 @@ Livemark preprosecces your document using Jinja templating language:
 
 ## Table
 
-> https://github.com/derekeder/csv-to-html-table
+> https://handsontable.com/docs/9.0.0/tutorial-introduction.html
 
 Livemark supports CSV tables rendering (replace single quotes by back ticks):
 
@@ -263,3 +263,9 @@ This article uses a custom layout
 ```
 
 ## Publish
+
+> https://pages.github.com/
+
+Livemark just generates a static HTML document so you can publish it using any static page hosting. Probably the simplest way is to use Github Pages. Just go to "Settings->Pages" in your repository and choose your main branch in the source menu:
+
+![Github](data/github.png)
