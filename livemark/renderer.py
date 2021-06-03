@@ -28,9 +28,12 @@ class LivemarkRendererMixin(HTMLRenderer):
 
     def render_fenced_code(self, element):
         if "table" in element.lang or "table" in element.extra:
-            path = str(element.children[0].children).strip()
+            spec_yaml = str(element.children[0].children).strip()
+            spec_python = yaml.safe_load(spec_yaml)
+            spec_python["licenseKey"] = "non-commercial-and-evaluation"
+            spec = json.dumps(spec_python)
             template = Template(config.TABLE)
-            text = template.render(path=path, id="table-example")
+            text = template.render(spec=spec, id="table-example")
             return text
         if "chart" in element.lang or "chart" in element.extra:
             spec_yaml = str(element.children[0].children).strip()

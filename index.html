@@ -52,77 +52,23 @@
 </blockquote>
 <p>Livemark supports CSV tables rendering (replace single quotes to back ticks):</p>
 <pre><code>&#x27;&#x27;&#x27;table
-data/country-codes.csv
+data:
+  - [&#x27;&#x27;, &#x27;Ford&#x27;, &#x27;Tesla&#x27;, &#x27;Toyota&#x27;, &#x27;Honda&#x27;]
+  - [&#x27;2017&#x27;, 10, 11, 12, 13]
+  - [&#x27;2018&#x27;, 20, 11, 14, 13]
+  - [&#x27;2019&#x27;, 30, 15, 12, 13]
+rowHeaders: true,
+colHeaders: true,
+filters: true,
+dropdownMenu: true
 &#x27;&#x27;&#x27;
 </code></pre>
 <div id="table-example"></div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  var CsvToHtmlTable = CsvToHtmlTable || {};
-
-  CsvToHtmlTable = {
-      init: function (options) {
-          options = options || {};
-          var csv_path = options.csv_path || "";
-          var el = options.element || "table-container";
-          var allow_download = options.allow_download || false;
-          var csv_options = options.csv_options || {};
-          var datatables_options = options.datatables_options || {};
-          var custom_formatting = options.custom_formatting || [];
-          var customTemplates = {};
-          $.each(custom_formatting, function (i, v) {
-              var colIdx = v[0];
-              var func = v[1];
-              customTemplates[colIdx] = func;
-          });
-
-          var $table = $("<table class='table table-striped table-condensed' id='" + el + "-table'></table>");
-          var $containerElement = $("#" + el);
-          $containerElement.empty().append($table);
-
-          $.when($.get(csv_path)).then(
-              function (data) {
-                  var csvData = $.csv.toArrays(data, csv_options);
-                  var $tableHead = $("<thead></thead>");
-                  var csvHeaderRow = csvData[0];
-                  var $tableHeadRow = $("<tr></tr>");
-                  for (var headerIdx = 0; headerIdx < csvHeaderRow.length; headerIdx++) {
-                      $tableHeadRow.append($("<th></th>").text(csvHeaderRow[headerIdx]));
-                  }
-                  $tableHead.append($tableHeadRow);
-
-                  $table.append($tableHead);
-                  var $tableBody = $("<tbody></tbody>");
-
-                  for (var rowIdx = 1; rowIdx < csvData.length; rowIdx++) {
-                      var $tableBodyRow = $("<tr></tr>");
-                      for (var colIdx = 0; colIdx < csvData[rowIdx].length; colIdx++) {
-                          var $tableBodyRowTd = $("<td></td>");
-                          var cellTemplateFunc = customTemplates[colIdx];
-                          if (cellTemplateFunc) {
-                              $tableBodyRowTd.html(cellTemplateFunc(csvData[rowIdx][colIdx]));
-                          } else {
-                              $tableBodyRowTd.text(csvData[rowIdx][colIdx]);
-                          }
-                          $tableBodyRow.append($tableBodyRowTd);
-                          $tableBody.append($tableBodyRow);
-                      }
-                  }
-                  $table.append($tableBody);
-
-                  $table.DataTable(datatables_options);
-
-                  if (allow_download) {
-                      $containerElement.append("<p><a class='btn btn-info' href='" + csv_path + "'><i class='glyphicon glyphicon-download'></i> Download as CSV</a></p>");
-                  }
-              });
-      }
-  };
-  CsvToHtmlTable.init({
-    csv_path: 'data/country-codes.csv',
-    element: 'table-example',
-    allow_download: false,
-  });
+  const spec = JSON.parse('{"data": [["", "Ford", "Tesla", "Toyota", "Honda"], ["2017", 10, 11, 12, 13], ["2018", 20, 11, 14, 13], ["2019", 30, 15, 12, 13]], "rowHeaders": "true,", "colHeaders": "true,", "filters": "true,", "dropdownMenu": true, "width": 500, "height": 300, "licenseKey": "non-commercial-and-evaluation"}')
+  const elem = document.getElementById('table-example')
+  new Handsontable(elem, spec)
 });
 </script><h2>Chart</h2>
 <blockquote>
@@ -156,17 +102,17 @@ encoding:
   size:
     type: quantitative
     field: bhp
-width: 450
+width: 500
 height: 300
 &#x27;&#x27;&#x27;
 </code></pre>
 <div id="chart-example"></div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  var spec = JSON.parse('{"data": {"url": "data/cars.csv"}, "mark": "circle", "selection": {"brush": {"type": "interval"}}, "encoding": {"x": {"type": "quantitative", "field": "kmpl", "scale": {"domain": [12, 25]}}, "y": {"type": "quantitative", "field": "price", "scale": {"domain": [100, 900]}}, "color": {"condition": {"selection": "brush", "field": "type", "type": "nominal"}, "value": "grey"}, "size": {"type": "quantitative", "field": "bhp"}}, "width": 450, "height": 300}');
-  vegaEmbed('#chart-example', spec).then(function(result) {
-  }).catch(console.error);
-});
+  const spec = JSON.parse('{"data": {"url": "data/cars.csv"}, "mark": "circle", "selection": {"brush": {"type": "interval"}}, "encoding": {"x": {"type": "quantitative", "field": "kmpl", "scale": {"domain": [12, 25]}}, "y": {"type": "quantitative", "field": "price", "scale": {"domain": [100, 900]}}, "color": {"condition": {"selection": "brush", "field": "type", "type": "nominal"}, "value": "grey"}, "size": {"type": "quantitative", "field": "bhp"}}, "width": 450, "height": 300}')
+  const elem = '#chart-example'
+  vegaEmbed(elem, spec)
+})
 </script><h2>Code</h2>
 <blockquote>
 <p><a href="https://prismjs.com/">https://prismjs.com/</a></p>
