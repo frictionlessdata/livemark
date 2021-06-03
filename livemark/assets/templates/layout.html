@@ -41,5 +41,12 @@
 </div>
 {% endblock %}
 
+{% block scroll %}
+<div id="scroll" class="ue-scroll btn-white arrow-black circle shadow"></div>
+<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
+<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
+<script>UeScroll.init({ element: '#scroll', scrollSpeed: 10 })</script>
+{% endblock %}
+
 </body>
 </html>

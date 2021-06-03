@@ -187,6 +187,12 @@ print(&#x27;The sum of {0} and {1} is {2}&#x27;.format(num1, num2, sum))
 </div>
 </div>
 <h2>Sidebar</h2>
+<h2>Scroll</h2>
+<blockquote>
+<p><a href="https://azrsix.github.io/ue-scroll-js/">https://azrsix.github.io/ue-scroll-js/</a></p>
+</blockquote>
+<p>Livemark provides a scroll-to-top button when you scroll down your document:</p>
+<p><img src="data/scroll.png" alt="Scroll" /></p>
 <h2>Layout</h2>
 <blockquote>
 <p><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html">https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html</a></p>
@@ -224,6 +230,11 @@ This article uses a custom layout
 <p><img src="data/github.png" alt="Github" /></p>
 </div>
 </div>
+
+<div id="scroll" class="ue-scroll btn-white arrow-black circle shadow"></div>
+<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
+<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
+<script>UeScroll.init({ element: '#scroll', scrollSpeed: 10 })</script>
 
 </body>
 </html>

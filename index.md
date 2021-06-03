@@ -224,6 +224,14 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 
 ## Sidebar
 
+## Scroll
+
+> https://azrsix.github.io/ue-scroll-js/
+
+Livemark provides a scroll-to-top button when you scroll down your document:
+
+![Scroll](data/scroll.png)
+
 ## Layout
 
 > https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html
