@@ -200,6 +200,8 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 </div>
 
+## Sidebar
+
 ## Layout
 
 > https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html
