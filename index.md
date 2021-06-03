@@ -12,6 +12,28 @@ title: Livemark
 
 Publish articles written in extended Markdown at ease.
 
+## Install
+
+Livemark is a Python library and it can be installed with PIP:
+
+```bash
+$ pip install livemark
+```
+
+## Usage
+
+Livemark comes with a command-line interface:
+
+```bash
+# Build a single document
+$ livemark build '<path:index.html>'
+
+# Start a livereload server
+$ livemark start
+```
+
+When you build/start Livemark it takes your `index.md` (or a provided file) and generates a corresponding HTML file. It extends markdown as it's explained in the sections below.
+
 ## Logic
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
@@ -239,3 +261,5 @@ layout: layout.html
 
 This article uses a custom layout
 ```
+
+## Publish

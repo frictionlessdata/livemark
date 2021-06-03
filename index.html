@@ -32,6 +32,19 @@
 <a href="https://github.com/frictionlessdata/livemark"><img src="https://img.shields.io/badge/codebase-github-brightgreen" alt="Codebase" /></a>
 <a href="https://discord.com/channels/695635777199145130/695635777199145133"><img src="https://img.shields.io/badge/support-discord-brightgreen" alt="Support" /></a></p>
 <p>Publish articles written in extended Markdown at ease.</p>
+<h2>Install</h2>
+<p>Livemark is a Python library and it can be installed with PIP:</p>
+<pre><code class="language-bash">$ pip install livemark
+</code></pre>
+<h2>Usage</h2>
+<p>Livemark comes with a command-line interface:</p>
+<pre><code class="language-bash"># Build a single document
+$ livemark build &#x27;&lt;path:index.html&gt;&#x27;
+
+# Start a livereload server
+$ livemark start
+</code></pre>
+<p>When you build/start Livemark it takes your <code>index.md</code> (or a provided file) and generates a corresponding HTML file. It extends markdown as it's explained in the sections below.</p>
 <h2>Logic</h2>
 <blockquote>
 <p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
@@ -203,6 +216,7 @@ layout: layout.html
 
 This article uses a custom layout
 </code></pre>
+<h2>Publish</h2>
 </div>
 </div>
 
