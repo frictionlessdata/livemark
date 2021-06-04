@@ -47,6 +47,7 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec = json.dumps(spec_python, ensure_ascii=False)
+            spec = spec.replace("'", "\\'")
             template = Template(config.CHART)
             text = template.render(spec=spec, uuid=uuid.uuid4())
             return text
