@@ -62,7 +62,7 @@ setup(
     zip_safe=False,
     long_description=README,
     long_description_content_type="text/markdown",
-    description="Write and publish Markdown documents with interactive tables, chartes, and more",
+    description="Livemark is a Markdown static page generator that brings in interactive charts, tables, and more",
     author="Evgeny Karev",
     author_email="eskarev@gmail.com",
     url="https://github.com/frictionlessdata/livemark",

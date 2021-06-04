@@ -8,7 +8,7 @@
 
 > This software is in the early stages and not well-tested
 
-Write and publish Markdown documents with interactive tables, chartes, and more.
+Livemark is a Markdown static page generator that brings in interactive charts, tables, and more.
 
 ## Purpose
 

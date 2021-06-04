@@ -10,9 +10,9 @@ title: Livemark
 [![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark)
 [![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133)
 
-> This document is [written and published](https://github.com/frictionlessdata/livemark/blob/main/index.md) in Livemark notation
+> This document is completely [written and published](https://github.com/frictionlessdata/livemark/blob/main/index.md) in Livemark notation
 
-Write and publish Markdown documents with interactive tables, chartes, and more.
+Livemark is a Markdown static page generator that brings in interactive charts, tables, and more.
 
 ## Install
 
