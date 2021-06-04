@@ -11,6 +11,31 @@
 Share data insight in Markdown with interactive tables, charts, and more.
 
 ## Purpose
+
+- **Improved writing experience**: You can write data articles the way use usually do but with support of interactive charts, tables, live development server, and many more.
+- **Static site generator**: Livemark is fully predictable as it only operates with static files. It create an HTML file from your Mardown file.
+
 ## Features
+
+- Open Source (MIT)
+- Full markdown compatibility
+- Markdown extensions such as tables and charts
+- Simple command-line interface
+- Live development server
+
 ## Example
+
+> Take a look at the [DEMO](https://frictionlessdata.github.io/livemark/) article
+
+```bash
+# Build a single document
+$ livemark build '<path=index.md>'
+
+# Start a livereload server
+$ livemark start
+```
+
 ## Documentation
+
+Please visit our documentation portal:
+- https://frictionlessdata.github.io/livemark/
