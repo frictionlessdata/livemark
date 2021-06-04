@@ -62,7 +62,7 @@ setup(
     zip_safe=False,
     long_description=README,
     long_description_content_type="text/markdown",
-    description="Share data insight in Markdown with interactive tables, charts, and more",
+    description="Write and publish Markdown documents with interactive tables, chartes, and more",
     author="Evgeny Karev",
     author_email="eskarev@gmail.com",
     url="https://github.com/frictionlessdata/livemark",

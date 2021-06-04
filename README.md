@@ -8,7 +8,7 @@
 
 > This software is in the early stages and not well-tested
 
-Share data insight in Markdown with interactive tables, charts, and more.
+Write and publish Markdown documents with interactive tables, chartes, and more.
 
 ## Purpose
 
