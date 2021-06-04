@@ -31,7 +31,7 @@ class LivemarkRendererMixin(HTMLRenderer):
         return str(html)
 
     def render_fenced_code(self, element):
-        if "table" in element.lang or "table" in element.extra:
+        if element.lang == "table":
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec_python["licenseKey"] = "non-commercial-and-evaluation"
@@ -46,7 +46,7 @@ class LivemarkRendererMixin(HTMLRenderer):
             self.__counter += 1
             text = template.render(spec=spec, elem=f"livemark-{self.__counter}")
             return text
-        if "chart" in element.lang or "chart" in element.extra:
+        if element.lang == "chart":
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec = json.dumps(spec_python, ensure_ascii=False)
