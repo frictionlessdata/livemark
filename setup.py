@@ -37,8 +37,8 @@ INSTALL_REQUIRES = [
     "pyyaml>=5.3",
     "jinja2>=3.0",
     "typer[all]>=0.3",
-    "frictionless>=4.10",
     "beautifulsoup4>=4.9",
+    "frictionless[excel,json]>=4.11",
 ]
 README = read("README.md")
 VERSION = read(PACKAGE, "assets", "VERSION")

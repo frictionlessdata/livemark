@@ -56,34 +56,32 @@ Livemark preprosecces your document using Jinja templating language:
 
 > https://handsontable.com/docs/9.0.0/tutorial-introduction.html
 
-Livemark supports CSV tables rendering (replace single quotes by back ticks):
+Livemark supports CSV tables rendering (replace single quotes by back ticks) using Handsontable. The `data` property will be read by [Frictionless Framework](https://framework.frictionlessdata.io/) so in addition to Handsontable options you can pass a file path or a resource descriptor in a Frictionless format:
 
 ```yaml
 '''table
-data:
-  - ['', 'Ford', 'Tesla', 'Toyota', 'Honda']
-  - ['2017', 10, 11, 12, 13]
-  - ['2018', 20, 11, 14, 13]
-  - ['2019', 30, 15, 12, 13]
-rowHeaders: true
-colHeaders: true
+data: data/cars.csv
+maxRows: 10
 filters: true
 dropdownMenu: true
-width: 500
+columnSorting:
+  initialConfig:
+    column: 2
+    sortOrder: desc
+width: 600
 '''
 ```
 
 ```table
-data:
-  - ['', 'Ford', 'Tesla', 'Toyota', 'Honda']
-  - ['2017', 10, 11, 12, 13]
-  - ['2018', 20, 11, 14, 13]
-  - ['2019', 30, 15, 12, 13]
-rowHeaders: true
-colHeaders: true
+data: data/cars.csv
+maxRows: 10
 filters: true
 dropdownMenu: true
-width: 500
+columnSorting:
+  initialConfig:
+    column: 2
+    sortOrder: desc
+width: 600
 ```
 
 ## Chart

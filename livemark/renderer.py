@@ -5,6 +5,7 @@ import marko
 from jinja2 import Template
 from marko.ext.gfm import GFM
 from marko.html_renderer import HTMLRenderer
+from frictionless import Resource, Detector
 from . import config
 
 
@@ -31,14 +32,20 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec_python["licenseKey"] = "non-commercial-and-evaluation"
-            spec = json.dumps(spec_python)
+            detector = Detector(field_float_numbers=True)
+            resource = Resource(spec_python.get("data", []), detector=detector)
+            header, *lists = resource.to_snap(json=True)
+            spec_python["colHeaders"] = header
+            spec_python["data"] = lists
+            spec = json.dumps(spec_python, ensure_ascii=False)
+            spec = spec.replace("'", "\\'")
             template = Template(config.TABLE)
             text = template.render(spec=spec, id="table-example")
             return text
         if "chart" in element.lang or "chart" in element.extra:
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
-            spec = json.dumps(spec_python)
+            spec = json.dumps(spec_python, ensure_ascii=False)
             template = Template(config.CHART)
             text = template.render(spec=spec, id="chart-example")
             return text
