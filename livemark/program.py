@@ -1,6 +1,8 @@
 import os
 import typer
 from typing import Optional
+from functools import partial
+from livereload import Server
 from .document import Document
 from . import helpers
 from . import config
@@ -50,6 +52,17 @@ def program_build(
     # Write document
     html_path = f"{os.path.splitext(path)[0]}.html"
     helpers.write_file(html_path, target)
+
+
+@program.command(name="start")
+def program_start(
+    path: str = typer.Argument("index.md", help="Path to markdown"),
+):
+    """Start a Livemark server."""
+    server = Server()
+    server.watcher.watch(".", delay=1)
+    server.watch(path, partial(program_build, path, False))
+    server.serve(host="localhost", port=7000, root=".", open_url_delay=1)
 
 
 @program.command(name="layout")
