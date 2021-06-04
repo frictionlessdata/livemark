@@ -12,7 +12,8 @@ from . import config
 class LivemarkRendererMixin(HTMLRenderer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.__counter = 0
+        self.__tables = 0
+        self.__charts = 0
 
     # Render
 
@@ -43,8 +44,8 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec = json.dumps(spec_python, ensure_ascii=False)
             spec = spec.replace("'", "\\'")
             template = Template(config.TABLE)
-            self.__counter += 1
-            text = template.render(spec=spec, elem=f"livemark-{self.__counter}")
+            self.__tables += 1
+            text = template.render(spec=spec, elem=f"livemark-table-{self.__tables}")
             return text
         if element.lang == "chart":
             spec_yaml = str(element.children[0].children).strip()
@@ -52,8 +53,8 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec = json.dumps(spec_python, ensure_ascii=False)
             spec = spec.replace("'", "\\'")
             template = Template(config.CHART)
-            self.__counter += 1
-            text = template.render(spec=spec, elem=f"livemark-{self.__counter}")
+            self.__charts += 1
+            text = template.render(spec=spec, elem=f"livemark-chart-{self.__charts}")
             return text
         return super().render_fenced_code(element)
 

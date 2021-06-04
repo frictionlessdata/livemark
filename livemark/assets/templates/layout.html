@@ -34,14 +34,23 @@
 <body>
 
 {% block content %}
-<div class="container"><div class="markdown-body my-5">{{ content }}</div></div>
+<div id="livemark-content" class="container">
+<div class="markdown-body my-5">{{ content }}</div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="livemark-sidebar"></div>
+<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
+<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
+<script>{% include "sidebar.js" %}</script>
 {% endblock %}
 
 {% block scroll %}
-<div id="scroll" class="ue-scroll btn-white arrow-black circle shadow"></div>
+<div id="livemark-scroll" class="ue-scroll btn-white arrow-black circle shadow"></div>
 <link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
-<script>UeScroll.init({ element: '#scroll', scrollSpeed: 10 })</script>
+<script>{% include "scroll.js" %}</script>
 {% endblock %}
 
 </body>
