@@ -210,9 +210,11 @@ This article uses a custom layout
 </blockquote>
 <p>Livemark just generates a static HTML document so you can publish it using any static page hosting. Probably the simplest way is to use Github Pages. Just go to &quot;Settings-&gt;Pages&quot; in your repository and choose your main branch in the source menu:</p>
 <p><img src="data/github.png" alt="Github" /></p></div></div>
-<style>#livemark-content {
+<style>@media only screen and (min-width: 768px) {
+  #livemark-content {
     margin-left: 250px;
     border-left: dashed 1px #ccc;
+  }
 }
 
 #livemark-content .octicon {
@@ -1209,6 +1211,11 @@ This article uses a custom layout
 <link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <style>#livemark-sidebar {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  #livemark-sidebar {
+    display: block;
     width: 200px;
     position: fixed;
     padding: 10px;
@@ -1216,6 +1223,7 @@ This article uses a custom layout
     top: 25px;
     font-size: 125%;
     opacity: 0.5;
+  }
 }</style>
 <script>document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
@@ -1258,7 +1266,13 @@ This article uses a custom layout
 <link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <style>#livemark-scroll {
-    opacity: 0.5;
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+    #livemark-scroll {
+        display: block;
+        opacity: 0.5;
+    }
 }
 .ue-scroll {
     right: auto;

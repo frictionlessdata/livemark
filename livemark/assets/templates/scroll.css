@@ -1,5 +1,11 @@
 #livemark-scroll {
-    opacity: 0.5;
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+    #livemark-scroll {
+        display: block;
+        opacity: 0.5;
+    }
 }
 .ue-scroll {
     right: auto;

@@ -1,6 +1,8 @@
-#livemark-content {
+@media only screen and (min-width: 768px) {
+  #livemark-content {
     margin-left: 250px;
     border-left: dashed 1px #ccc;
+  }
 }
 
 #livemark-content .octicon {
