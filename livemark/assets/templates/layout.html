@@ -8,13 +8,13 @@
 <body>
 
 {% block content %}
-<div id="livemark-content" class="container">
-<div class="markdown-body my-5">{{ content }}</div>
-</div>
+<div id="livemark-content"><div class="container">{{ content }}</div></div>
+<style>{% include "content.css" %}</style>
+<script>{% include "content.js" %}</script>
 {% endblock %}
 
 {% block sidebar %}
-<div id="livemark-sidebar" class="js-toc toc toc-left"></div>
+<div id="livemark-sidebar"><div class="js-toc toc"></div></div>
 <link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <style>{% include "sidebar.css" %}</style>
@@ -22,21 +22,16 @@
 {% endblock %}
 
 {% block scroll %}
-<div id="livemark-scroll" class="ue-scroll btn-white arrow-black circle shadow"></div>
+<div id="livemark-scroll"><div class="ue-scroll btn-white arrow-black circle shadow"></div></div>
 <link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
+<style>{% include "scroll.css" %}</style>
 <script>{% include "scroll.js" %}</script>
 {% endblock %}
 
-{% block style %}
-<style>{% include "style.css" %}</style>
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-{% endblock %}
-
-{% block code %}
-<link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
-<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
-<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+{% block table %}
+<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
+<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
 {% endblock %}
 
 {% block chart %}
@@ -45,9 +40,14 @@
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
 {% endblock %}
 
-{% block table %}
-<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
-<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
+{% block code %}
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
+<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 {% endblock %}
 
 {% block custom %}

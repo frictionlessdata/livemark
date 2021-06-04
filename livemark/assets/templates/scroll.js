@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", function () {
-  UeScroll.init({ element: "#livemark-scroll", scrollSpeed: 10 });
+  UeScroll.init({ element: ".ue-scroll", scrollSpeed: 10 });
 });

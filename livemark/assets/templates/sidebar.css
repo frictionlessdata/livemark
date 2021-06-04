@@ -1,5 +1,9 @@
 #livemark-sidebar {
+    width: 200px;
     position: fixed;
-    left: 10px;
-    top: 10px;
+    padding: 10px;
+    left: 25px;
+    top: 25px;
+    font-size: 125%;
+    opacity: 0.5;
 }
