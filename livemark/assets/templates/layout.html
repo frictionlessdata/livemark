@@ -3,6 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title }}</title>
+</head>
+<body>
+
+{% block content %}
+<div id="livemark-content" class="container">
+<div class="markdown-body my-5">{{ content }}</div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="livemark-sidebar" class="js-toc toc toc-left"></div>
+<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
+<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
+<style>{% include "sidebar.css" %}</style>
+<script>{% include "sidebar.js" %}</script>
+{% endblock %}
+
+{% block scroll %}
+<div id="livemark-scroll" class="ue-scroll btn-white arrow-black circle shadow"></div>
+<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
+<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
+<script>{% include "scroll.js" %}</script>
+{% endblock %}
 
 {% block style %}
 <style>{% include "style.css" %}</style>
@@ -27,30 +51,6 @@
 {% endblock %}
 
 {% block custom %}
-{% endblock %}
-
-<title>{{ title }}</title>
-</head>
-<body>
-
-{% block content %}
-<div id="livemark-content" class="container">
-<div class="markdown-body my-5">{{ content }}</div>
-</div>
-{% endblock %}
-
-{% block sidebar %}
-<div id="livemark-sidebar"></div>
-<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
-<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
-<script>{% include "sidebar.js" %}</script>
-{% endblock %}
-
-{% block scroll %}
-<div id="livemark-scroll" class="ue-scroll btn-white arrow-black circle shadow"></div>
-<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
-<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
-<script>{% include "scroll.js" %}</script>
 {% endblock %}
 
 </body>
