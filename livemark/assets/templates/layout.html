@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 {% block style %}
-<link rel="stylesheet" href="https://unpkg.com/github-markdown-css@4.0.0/github-markdown.css">
+<style>{% include "style.css" %}</style>
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 {% endblock %}
 
@@ -34,11 +34,7 @@
 <body>
 
 {% block content %}
-<div class="container">
-<div class="markdown-body my-5">
-{{ content }}
-</div>
-</div>
+<div class="container"><div class="markdown-body my-5">{{ content }}</div></div>
 {% endblock %}
 
 {% block scroll %}
