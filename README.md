@@ -8,7 +8,7 @@
 
 > This software is in the early stages and not well-tested
 
-Publish articles written in extended Markdown at ease
+Share data insight in Markdown with interactive tables, charts, and more.
 
 ## Purpose
 ## Features
