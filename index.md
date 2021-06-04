@@ -10,7 +10,7 @@ title: Livemark
 [![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark)
 [![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133)
 
-Share data insight in markdown with interactive table, charts, and more.
+Share data insight writting Markdown with interactive table, charts, and more.
 
 ## Install
 
