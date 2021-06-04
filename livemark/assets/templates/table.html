@@ -1,8 +1,8 @@
-<div id="{{ id }}" class="mt-3"></div>
+<div id="id-{{ uuid }}" class="mt-3"></div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
   const spec = JSON.parse('{{ spec }}')
-  const elem = document.getElementById('{{ id }}')
+  const elem = document.getElementById('id-{{ uuid }}')
   new Handsontable(elem, spec)
 });
 </script>

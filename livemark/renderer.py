@@ -1,4 +1,5 @@
 import bs4
+import uuid
 import json
 import yaml
 import marko
@@ -40,14 +41,14 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec = json.dumps(spec_python, ensure_ascii=False)
             spec = spec.replace("'", "\\'")
             template = Template(config.TABLE)
-            text = template.render(spec=spec, id="table-example")
+            text = template.render(spec=spec, uuid=uuid.uuid4())
             return text
         if "chart" in element.lang or "chart" in element.extra:
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec = json.dumps(spec_python, ensure_ascii=False)
             template = Template(config.CHART)
-            text = template.render(spec=spec, id="chart-example")
+            text = template.render(spec=spec, uuid=uuid.uuid4())
             return text
         return super().render_fenced_code(element)
 

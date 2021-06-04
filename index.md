@@ -93,7 +93,7 @@ Livemark supports Vega Lite visualisations rendering (replace single quotes by b
 ```yaml
 '''chart
 data:
-  url: "data/cars.csv"
+  url: data/cars.csv
 mark: circle
 selection:
   brush:
@@ -106,7 +106,7 @@ height: 300
 
 ```chart
 data:
-  url: "data/cars.csv"
+  url: data/cars.csv
 mark: circle
 selection:
   brush:
