@@ -12,7 +12,7 @@ title: Livemark
 
 > This document is completely [written and published](https://github.com/frictionlessdata/livemark/blob/main/index.md) in Livemark notation
 
-Livemark is a Markdown static page generator that brings in interactive charts, tables, and more.
+Livemark is a static page generator that extends Markdown with interactive charts, tables, and more.
 
 ## Install
 
