@@ -1,9 +1,15 @@
+import io
 import bs4
+import sys
 import json
 import yaml
 import marko
+import contextlib
+import subprocess
+from copy import copy
 from jinja2 import Template
 from marko.ext.gfm import GFM
+from marko.inline import RawText
 from marko.html_renderer import HTMLRenderer
 from frictionless import Resource, Detector
 from . import config
@@ -56,8 +62,46 @@ class LivemarkRendererMixin(HTMLRenderer):
             self.__charts += 1
             text = template.render(spec=spec, elem=f"livemark-chart-{self.__charts}")
             return text
+        if element.lang == "script":
+            code = str(element.children[0].children).strip()
+            # TODO: raise on unsupported lang
+            lang = "bash" if "bash" in element.extra else "python"
+            element.lang = lang
+            if not code.startswith("!"):
+                with capture() as stdout:
+                    # TODO: fix scope
+                    exec(code, globals())
+                output = stdout.getvalue().strip()
+            else:
+                try:
+                    output = subprocess.check_output(code, shell=True).decode().strip()
+                except Exception as exception:
+                    output = exception.output.decode().strip()
+            output = "\n".join(line.rstrip() for line in output.splitlines())
+            text = super().render_fenced_code(element)
+            if output:
+                target = copy(element)
+                target.lang = "markup"
+                target.extra = ""
+                target.children = [RawText(output)]
+                text += "\n"
+                text += super().render_fenced_code(target)
+            return text
         return super().render_fenced_code(element)
 
 
 class LivemarkExtension:
     renderer_mixins = [LivemarkRendererMixin]
+
+
+# Internal
+
+
+@contextlib.contextmanager
+def capture(stdout=None):
+    old = sys.stdout
+    if stdout is None:
+        stdout = io.StringIO()
+    sys.stdout = stdout
+    yield stdout
+    sys.stdout = old

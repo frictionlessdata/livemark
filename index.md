@@ -12,7 +12,7 @@ title: Livemark
 
 > This document is completely [written and published](https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md) in Livemark notation
 
-Livemark is a static page generator that extends Markdown with interactive charts, tables, and more.
+Livemark is a static page generator that extends Markdown with interactive charts, tables, scripts, and more.
 
 ## Install
 
@@ -22,9 +22,7 @@ Livemark is a Python library and it can be installed with PIP:
 $ pip install livemark
 ```
 
-## Usage
-
-Livemark comes with a command-line interface:
+After installation, you can use a command-line interface:
 
 ```bash
 # Build a single document
@@ -137,14 +135,12 @@ width: 500
 height: 300
 ```
 
-## Code
+## Script
 
-> https://prismjs.com/
+Livemark supports Python/Bash scripts execution inside Markdown. It might be considered as a lightweight version of Jupiter Notebooks. Sometimes, declarative Logic/Table/Chart is not enough for presenting data so it's possible to include scripts. It also is very useful for educational articles:
 
-Livemark supports code highlithing in fenced code blocks (replace single quotes by back ticks):
-
-```markup
-'''python
+```script
+from pprint import pprint
 from frictionless import Resource, transform, steps
 
 brands = transform(
@@ -153,22 +149,10 @@ brands = transform(
         steps.table_normalize(),
         steps.table_aggregate(group_name="brand", aggregation={"price": ("price", max)}),
         steps.row_sort(field_names=["price"], reverse=True),
+        steps.row_slice(head=5),
     ],
 )
-'''
-```
-
-```python
-from frictionless import Resource, transform, steps
-
-brands = transform(
-    Resource("data/cars.csv"),
-    steps=[
-        steps.table_normalize(),
-        steps.table_aggregate(group_name="brand", aggregation={"price": ("price", max)}),
-        steps.row_sort(field_names=["price"], reverse=True),
-    ],
-)
+pprint(brands.read_rows())
 ```
 
 ## Style
@@ -221,14 +205,6 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 </div>
 </div>
-
-## Content
-
-> https://guides.github.com/features/mastering-markdown/
-
-Livemark support GFM-flavoured Markdown so you can use already familiar notation:
-
-![Sidebar](data/content.png)
 
 ## Sidebar
 

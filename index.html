@@ -16,13 +16,12 @@
 <blockquote>
 <p>This document is completely <a href="https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md">written and published</a> in Livemark notation</p>
 </blockquote>
-<p>Livemark is a static page generator that extends Markdown with interactive charts, tables, and more.</p>
+<p>Livemark is a static page generator that extends Markdown with interactive charts, tables, scripts, and more.</p>
 <h2>Install</h2>
 <p>Livemark is a Python library and it can be installed with PIP:</p>
 <pre><code class="language-bash">$ pip install livemark
 </code></pre>
-<h2>Usage</h2>
-<p>Livemark comes with a command-line interface:</p>
+<p>After installation, you can use a command-line interface:</p>
 <pre><code class="language-bash"># Build a single document
 $ livemark build &#x27;&lt;path=index.md&gt;&#x27;
 
@@ -94,12 +93,9 @@ document.addEventListener("DOMContentLoaded", function(){
   const elem = '#livemark-chart-1'
   vegaEmbed(elem, spec)
 })
-</script><h2>Code</h2>
-<blockquote>
-<p><a href="https://prismjs.com/">https://prismjs.com/</a></p>
-</blockquote>
-<p>Livemark supports code highlithing in fenced code blocks (replace single quotes by back ticks):</p>
-<pre><code class="language-markup">&#x27;&#x27;&#x27;python
+</script><h2>Script</h2>
+<p>Livemark supports Python/Bash scripts execution inside Markdown. It might be considered as a lightweight version of Jupiter Notebooks. Sometimes, declarative Logic/Table/Chart is not enough for presenting data so it's possible to include scripts. It also is very useful for educational articles:</p>
+<pre><code class="language-python">from pprint import pprint
 from frictionless import Resource, transform, steps
 
 brands = transform(
@@ -108,21 +104,17 @@ brands = transform(
         steps.table_normalize(),
         steps.table_aggregate(group_name=&quot;brand&quot;, aggregation={&quot;price&quot;: (&quot;price&quot;, max)}),
         steps.row_sort(field_names=[&quot;price&quot;], reverse=True),
+        steps.row_slice(head=5),
     ],
 )
-&#x27;&#x27;&#x27;
+pprint(brands.read_rows())
 </code></pre>
-<pre><code class="language-python">from frictionless import Resource, transform, steps
 
-brands = transform(
-    Resource(&quot;data/cars.csv&quot;),
-    steps=[
-        steps.table_normalize(),
-        steps.table_aggregate(group_name=&quot;brand&quot;, aggregation={&quot;price&quot;: (&quot;price&quot;, max)}),
-        steps.row_sort(field_names=[&quot;price&quot;], reverse=True),
-    ],
-)
-</code></pre>
+<pre><code class="language-markup">[{&#x27;brand&#x27;: &#x27;Volkswagen&#x27;, &#x27;price&#x27;: 785},
+ {&#x27;brand&#x27;: &#x27;Hyundai&#x27;, &#x27;price&#x27;: 774},
+ {&#x27;brand&#x27;: &#x27;Skoda&#x27;, &#x27;price&#x27;: 756},
+ {&#x27;brand&#x27;: &#x27;Suzuki&#x27;, &#x27;price&#x27;: 725},
+ {&#x27;brand&#x27;: &#x27;Renault&#x27;, &#x27;price&#x27;: 724}]</code></pre>
 <h2>Style</h2>
 <blockquote>
 <p><a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/">https://getbootstrap.com/docs/4.6/getting-started/introduction/</a></p>
@@ -173,12 +165,6 @@ brands = transform(
 </div>
 </div>
 </div>
-<h2>Content</h2>
-<blockquote>
-<p><a href="https://guides.github.com/features/mastering-markdown/">https://guides.github.com/features/mastering-markdown/</a></p>
-</blockquote>
-<p>Livemark support GFM-flavoured Markdown so you can use already familiar notation:</p>
-<p><img src="data/content.png" alt="Sidebar" /></p>
 <h2>Sidebar</h2>
 <blockquote>
 <p><a href="https://tscanlin.github.io/tocbot/">https://tscanlin.github.io/tocbot/</a></p>

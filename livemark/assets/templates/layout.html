@@ -9,6 +9,9 @@
 
 {% block content %}
 <div id="livemark-content"><div class="container">{{ content }}</div></div>
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
+<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <style>{% include "content.css" %}</style>
 <script>{% include "content.js" %}</script>
 {% endblock %}
@@ -38,12 +41,6 @@
 <script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
-{% endblock %}
-
-{% block code %}
-<link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
-<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
-<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 {% endblock %}
 
 {% block style %}

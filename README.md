@@ -8,7 +8,7 @@
 
 > This software is in the early stages and not well-tested
 
-Livemark is a static page generator that extends Markdown with interactive charts, tables, and more.
+Livemark is a static page generator that extends Markdown with interactive charts, tables, scripts, and more.
 
 ## Purpose
 
