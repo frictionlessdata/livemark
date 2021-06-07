@@ -208,6 +208,14 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 </div>
 
+## Content
+
+> https://guides.github.com/features/mastering-markdown/
+
+Livemark supports Github Flavoured Markdown so you can use already familiar notation:
+
+![Sidebar](data/content.png)
+
 ## Sidebar
 
 > https://tscanlin.github.io/tocbot/
