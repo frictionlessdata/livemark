@@ -139,7 +139,7 @@ height: 300
 
 > https://www.python.org/
 
-Livemark supports Python/Bash scripts execution inside Markdown. It might be considered as a lightweight version of Jupiter Notebooks. Sometimes, declarative Logic/Table/Chart is not enough for presenting data so it's possible to include scripts. It also is very useful for educational articles:
+Livemark supports Python/Bash scripts execution inside Markdown. It might be considered as a lightweight version of Jupiter Notebooks. Sometimes, declarative Logic/Table/Chart is not enough for presenting data so it's possible to include scripts. It also might be useful for educational articles:
 
 ```script
 from pprint import pprint
