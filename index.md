@@ -137,6 +137,8 @@ height: 300
 
 ## Script
 
+> https://www.python.org/
+
 Livemark supports Python/Bash scripts execution inside Markdown. It might be considered as a lightweight version of Jupiter Notebooks. Sometimes, declarative Logic/Table/Chart is not enough for presenting data so it's possible to include scripts. It also is very useful for educational articles:
 
 ```script
@@ -155,7 +157,7 @@ brands = transform(
 pprint(brands.read_rows())
 ```
 
-## Style
+## Markup
 
 > https://getbootstrap.com/docs/4.6/getting-started/introduction/
 
