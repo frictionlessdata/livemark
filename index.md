@@ -40,18 +40,18 @@ When you build/start Livemark it takes your `index.md` (or a provided file) and 
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
 
-Livemark preprosecces your document using Jinja templating language:
+Livemark preprosecces your document using Jinja templating language. Inside templates, it provides [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with e.g. Table, Chart, or other syntax:
 
 {% raw %}
 ```markup
-{% for number in [1, 2, 3] %}
-- number: {{ number }}
+{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+- {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 ```
 {% endraw %}
 
-{% for number in [1, 2, 3] %}
-- number: {{ number }}
+{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+- {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 
 ## Table
@@ -141,34 +141,34 @@ height: 300
 
 > https://prismjs.com/
 
-Syntax highlithing is proviced by PrismJS (replace single quotes by back ticks):
+Livemark supports code highlithing in fenced code blocks (replace single quotes by back ticks):
 
 ```markup
 '''python
-# This program adds two numbers
+from frictionless import Resource, transform, steps
 
-num1 = 1.5
-num2 = 6.3
-
-# Add two numbers
-sum = num1 + num2
-
-# Display the sum
-print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))
+brands = transform(
+    Resource("data/cars.csv"),
+    steps=[
+        steps.table_normalize(),
+        steps.table_aggregate(group_name="brand", aggregation={"price": ("price", max)}),
+        steps.row_sort(field_names=["price"], reverse=True),
+    ],
+)
 '''
 ```
 
 ```python
-# This program adds two numbers
+from frictionless import Resource, transform, steps
 
-num1 = 1.5
-num2 = 6.3
-
-# Add two numbers
-sum = num1 + num2
-
-# Display the sum
-print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))
+brands = transform(
+    Resource("data/cars.csv"),
+    steps=[
+        steps.table_normalize(),
+        steps.table_aggregate(group_name="brand", aggregation={"price": ("price", max)}),
+        steps.row_sort(field_names=["price"], reverse=True),
+    ],
+)
 ```
 
 ## Style

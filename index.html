@@ -34,15 +34,17 @@ $ livemark start
 <blockquote>
 <p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
 </blockquote>
-<p>Livemark preprosecces your document using Jinja templating language:</p>
-<pre><code class="language-markup">{% for number in [1, 2, 3] %}
-- number: {{ number }}
+<p>Livemark preprosecces your document using Jinja templating language. Inside templates, it provides <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> as a <code>frictionless</code> variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with e.g. Table, Chart, or other syntax:</p>
+<pre><code class="language-markup">{% for car in frictionless.extract(&#x27;data/cars.csv&#x27;, layout={&quot;limitRows&quot;: 5}) %}
+- {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 </code></pre>
 <ul>
-<li>number: 1</li>
-<li>number: 2</li>
-<li>number: 3</li>
+<li>Volkswagen Vento: $785</li>
+<li>Hyundai Verna: $774</li>
+<li>Skoda Rapid: $756</li>
+<li>Suzuki Ciaz: $725</li>
+<li>Renault Scala: $724</li>
 </ul>
 <h2>Table</h2>
 <blockquote>
@@ -96,30 +98,30 @@ document.addEventListener("DOMContentLoaded", function(){
 <blockquote>
 <p><a href="https://prismjs.com/">https://prismjs.com/</a></p>
 </blockquote>
-<p>Syntax highlithing is proviced by PrismJS (replace single quotes by back ticks):</p>
+<p>Livemark supports code highlithing in fenced code blocks (replace single quotes by back ticks):</p>
 <pre><code class="language-markup">&#x27;&#x27;&#x27;python
-# This program adds two numbers
+from frictionless import Resource, transform, steps
 
-num1 = 1.5
-num2 = 6.3
-
-# Add two numbers
-sum = num1 + num2
-
-# Display the sum
-print(&#x27;The sum of {0} and {1} is {2}&#x27;.format(num1, num2, sum))
+brands = transform(
+    Resource(&quot;data/cars.csv&quot;),
+    steps=[
+        steps.table_normalize(),
+        steps.table_aggregate(group_name=&quot;brand&quot;, aggregation={&quot;price&quot;: (&quot;price&quot;, max)}),
+        steps.row_sort(field_names=[&quot;price&quot;], reverse=True),
+    ],
+)
 &#x27;&#x27;&#x27;
 </code></pre>
-<pre><code class="language-python"># This program adds two numbers
+<pre><code class="language-python">from frictionless import Resource, transform, steps
 
-num1 = 1.5
-num2 = 6.3
-
-# Add two numbers
-sum = num1 + num2
-
-# Display the sum
-print(&#x27;The sum of {0} and {1} is {2}&#x27;.format(num1, num2, sum))
+brands = transform(
+    Resource(&quot;data/cars.csv&quot;),
+    steps=[
+        steps.table_normalize(),
+        steps.table_aggregate(group_name=&quot;brand&quot;, aggregation={&quot;price&quot;: (&quot;price&quot;, max)}),
+        steps.row_sort(field_names=[&quot;price&quot;], reverse=True),
+    ],
+)
 </code></pre>
 <h2>Style</h2>
 <blockquote>

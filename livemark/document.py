@@ -1,6 +1,7 @@
 import yaml
 import marko
 import subprocess
+import frictionless
 from jinja2 import Environment, FileSystemLoader
 from marko.ext.gfm import GFM
 from .renderer import LivemarkExtension
@@ -39,7 +40,7 @@ class Document:
 
         # Preprocess document
         template = templating.from_string(target)
-        target = template.render()
+        target = template.render(frictionless=frictionless)
 
         # Convert document
         target = markdown.convert(target).strip()
