@@ -250,7 +250,7 @@ Then, you can update the layout as whole or use Jinja's inheritance. For example
 ```html
 {% extends "layout.html" %}.
 
-{% block style %}
+{% block markup %}
 <link rel="stylesheet" href="static/tailwind.css">
 <link rel="stylesheet" href="static/custom.css">
 {% endblock %}
