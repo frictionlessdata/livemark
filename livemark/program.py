@@ -59,6 +59,7 @@ def program_start(
     path: str = typer.Argument("index.md", help="Path to markdown"),
 ):
     """Start a Livemark server."""
+    program_build(path, False)
     server = Server()
     server.watcher.watch(".", delay=1)
     server.watch(path, partial(program_build, path, False))
