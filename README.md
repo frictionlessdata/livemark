@@ -13,7 +13,7 @@ Livemark is a static page generator that extends Markdown with interactive chart
 ## Purpose
 
 - **Improved writing experience**: Now your Markdown data articles can include interactive charts, tables, a live development server, and much more.
-- **Static site generator**: Livemark only operates with static files - it createa an HTML file from your Mardown file.
+- **Static site generator**: Livemark only operates with static files - it creates an HTML file from your Mardown file.
 
 ## Features
 
