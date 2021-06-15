@@ -32,13 +32,13 @@ $ livemark build '<path=index.md>'
 $ livemark start
 ```
 
-When you build/start Livemark it takes your `index.md` (or a provided file) and generates a corresponding HTML file. It extends markdown as it's explained in the sections below.
+When you build/start Livemark it takes your `index.md` (or a provided file) and generates a corresponding HTML file. It extends markdown as explained in the sections below.
 
 ## Logic
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
 
-Livemark preprosecces your document using Jinja templating language. Inside templates, it provides [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with e.g. Table, Chart, or other syntax:
+Livemark preprocesses your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. This is a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
 
 {% raw %}
 ```markup
@@ -56,7 +56,7 @@ Livemark preprosecces your document using Jinja templating language. Inside temp
 
 > https://handsontable.com/docs/9.0.0/tutorial-introduction.html
 
-Livemark supports CSV tables rendering (replace single quotes by back ticks) using Handsontable. The `data` property will be read by [Frictionless Framework](https://framework.frictionlessdata.io/) so in addition to Handsontable options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) or a resource descriptor in a Frictionless format:
+Livemark supports CSV table rendering using Handsontable, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read by [Frictionless Framework](https://framework.frictionlessdata.io/) so in addition to Handsontable options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) or a resource descriptor in a Frictionless format:
 
 ```yaml
 '''table
@@ -88,7 +88,7 @@ width: 600
 
 > https://vega.github.io/vega-lite/
 
-Livemark supports Vega Lite visualisations rendering (replace single quotes by back ticks):
+Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks):
 
 ```yaml
 '''chart
@@ -139,7 +139,7 @@ height: 300
 
 > https://www.python.org/
 
-Livemark supports Python/Bash scripts execution inside Markdown. It might be considered as a lightweight version of Jupiter Notebooks. Sometimes, declarative Logic/Table/Chart is not enough for presenting data so it's possible to include scripts. It also might be useful for educational articles:
+Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts:
 
 ```script
 from pprint import pprint
@@ -212,7 +212,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 
 > https://guides.github.com/features/mastering-markdown/
 
-Livemark supports Github Flavoured Markdown so you can use already familiar notation:
+Livemark supports Github Flavoured Markdown so you can use familiar notation:
 
 ![Sidebar](data/content.png)
 
@@ -220,7 +220,7 @@ Livemark supports Github Flavoured Markdown so you can use already familiar nota
 
 > https://tscanlin.github.io/tocbot/
 
-Livemark provides a automatically generated table of contents:
+Livemark provides an automatically generated table of contents:
 
 ![Sidebar](data/sidebar.png)
 
@@ -236,13 +236,13 @@ Livemark provides a scroll-to-top button when you scroll down your document:
 
 > https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html
 
-It's possible to customize the layout. You need to save it first:
+It's possible to customize the layout. You will need to save it first:
 
 ```bash
 $ livemark layout > layout.html
 ```
 
-Then, you can update the layout as whole or use Jinja's inheritance. For example, let's use Tailwind instead of Bootstrap and some custom styles:
+Then, you can update the layout as a whole or use Jinja's inheritance. For example, let's use Tailwind instead of Bootstrap and some custom styles:
 
 > layout.html
 
@@ -274,6 +274,6 @@ This article uses a custom layout
 
 > https://pages.github.com/
 
-Livemark just generates a static HTML document so you can publish it using any static page hosting. Probably the simplest way is to use Github Pages. Just go to "Settings->Pages" in your repository and choose your main branch in the source menu:
+Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to "Settings->Pages" in your repository and choose your main branch in the source menu:
 
 ![Github](data/github.png)

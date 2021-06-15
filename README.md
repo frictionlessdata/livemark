@@ -6,21 +6,21 @@
 [![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark)
 [![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133)
 
-> This software is in the early stages and not well-tested
+> This software is in the early stages and is not well-tested
 
 Livemark is a static page generator that extends Markdown with interactive charts, tables, scripts, and more.
 
 ## Purpose
 
-- **Improved writing experience**: You can write data articles the way use usually do but with support of interactive charts, tables, live development server, and many more.
-- **Static site generator**: Livemark is fully predictable as it only operates with static files. It create an HTML file from your Mardown file.
+- **Improved writing experience**: Now your Markdown data articles can include interactive charts, tables, a live development server, and much more.
+- **Static site generator**: Livemark only operates with static files - it creates an HTML file from your Mardown file.
 
 ## Features
 
 - Open Source (MIT)
-- Full markdown compatibility
+- Full Markdown compatibility
 - Markdown extensions such as tables and charts
-- Simple command-line interface
+- Straight-forward command-line interface
 - Live development server
 
 ## Example
