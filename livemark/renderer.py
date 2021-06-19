@@ -38,7 +38,7 @@ class LivemarkRendererMixin(HTMLRenderer):
         return str(html)
 
     def render_fenced_code(self, element):
-        if element.lang == "table":
+        if self.metadata.get("table") is not False and element.lang == "table":
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec_python["licenseKey"] = "non-commercial-and-evaluation"
@@ -53,7 +53,7 @@ class LivemarkRendererMixin(HTMLRenderer):
             self.__tables += 1
             text = template.render(spec=spec, elem=f"livemark-table-{self.__tables}")
             return text
-        if element.lang == "chart":
+        if self.metadata.get("chart") is not False and element.lang == "chart":
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec = json.dumps(spec_python, ensure_ascii=False)
@@ -62,7 +62,7 @@ class LivemarkRendererMixin(HTMLRenderer):
             self.__charts += 1
             text = template.render(spec=spec, elem=f"livemark-chart-{self.__charts}")
             return text
-        if element.lang == "script":
+        if self.metadata.get("script") is not False and element.lang == "script":
             code = str(element.children[0].children).strip()
             # TODO: raise on unsupported lang
             lang = "bash" if "bash" in element.extra else "python"

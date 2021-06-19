@@ -1,5 +1,12 @@
 ---
 title: Livemark
+sidebar:
+  social:
+    type: github
+    user: frictionlessdata
+    repo: livemark
+  content:
+    selector: h1, h2, h3
 ---
 
 # Livemark

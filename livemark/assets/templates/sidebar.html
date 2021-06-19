@@ -1,1 +1,14 @@
-<div class="js-toc toc"></div>
+{% if metadata.sidebar.social.type == 'github' %}
+  <div class="social">
+    <iframe
+      src="https://ghbtns.com/github-btn.html?user={{ metadata.sidebar.social.user }}&amp;repo={{ metadata.sidebar.social.repo }}&amp;type=star&amp;count=true&amp;size=large"
+      width="160px"
+      height="30px"
+      title="GitHub"
+    >
+    </iframe>
+  </div>
+{% endif %}
+<div class="content">
+  <div class="js-toc toc"></div>
+</div>

@@ -1,15 +1,29 @@
 #livemark-sidebar {
   display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
 }
+
 @media only screen and (min-width: 768px) {
   #livemark-sidebar {
     display: block;
-    width: 200px;
-    position: fixed;
-    padding: 10px;
-    left: 25px;
-    top: 25px;
-    font-size: 125%;
-    opacity: 0.5;
   }
+}
+
+#livemark-sidebar .social {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 2px;
+  margin-bottom: 16px;
+}
+
+#livemark-sidebar .social iframe {
+  border: none;
+}
+
+#livemark-sidebar .content {
+  opacity: 0.5;
 }
