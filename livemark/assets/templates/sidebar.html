@@ -1,0 +1,45 @@
+{% if metadata.sidebar.title %}
+  <div class="title">
+    <div class="toc">
+      <ol class="toc-list">
+        <li class="toc-item">
+          <a class="toc-link is-active-link" href="#">
+            {{ metadata.sidebar.title }}
+          </a>
+        </li>
+      </ol>
+    </div>
+  </div>
+{% endif %}
+
+{% if metadata.sidebar.status %}
+  <div class="status">
+    <iframe
+      src="https://ghbtns.com/github-btn.html?user={{ metadata.sidebar.status.user }}&amp;repo={{ metadata.sidebar.status.repo }}&amp;type={{ metadata.sidebar.status.type }}&amp;count=true&amp;size=large"
+      width="160px"
+      height="30px"
+      title="GitHub"
+    >
+    </iframe>
+  </div>
+{% endif %}
+
+{% if metadata.sidebar.reference %}
+  <div class="reference">
+    <div class="toc">
+      <ol class="toc-list">
+        {% for link in metadata.sidebar.reference.links %}
+          <li class="toc-item">
+            <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %}>
+              {{ link.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+{% endif %}
+
+<div class="navigation">
+  <div class="js-toc toc"></div>
+</div>

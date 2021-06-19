@@ -2,9 +2,9 @@ import yaml
 import marko
 import subprocess
 import frictionless
-from jinja2 import Environment, FileSystemLoader
 from marko.ext.gfm import GFM
-from .renderer import LivemarkExtension
+from jinja2 import Environment, FileSystemLoader
+from .renderer import LivemarkExtension, LivemarkRendererMixin
 from . import config
 
 
@@ -33,6 +33,8 @@ class Document:
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = yaml.safe_load(frontmatter)
+            # TODO: it's a hack as marko doesn't have context
+            LivemarkRendererMixin.metadata = metadata
 
         # Prepare document
         for code in metadata.get("prepare", []):
@@ -51,7 +53,7 @@ class Document:
             with open(metadata["layout"]) as file:
                 layout = file.read()
         template = templating.from_string(layout)
-        target = template.render(title=metadata.get("title", "Livemark"), content=target)
+        target = template.render(metadata=metadata, content=target)
 
         # Cleanup document
         for code in metadata.get("cleanup", []):
