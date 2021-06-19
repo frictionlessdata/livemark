@@ -1223,7 +1223,19 @@ This article uses a custom layout
 
 <link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
-<div id="livemark-sidebar">  <div class="social">
+<div id="livemark-sidebar">  <div class="title">
+    <div class="toc">
+      <ol class="toc-list">
+        <li class="toc-item">
+          <a class="toc-link is-active-link" href="#">
+            Livemark
+          </a>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="status">
     <iframe
       src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=livemark&amp;type=star&amp;count=true&amp;size=large"
       width="160px"
@@ -1232,7 +1244,30 @@ This article uses a custom layout
     >
     </iframe>
   </div>
-<div class="content">
+
+  <div class="reference">
+    <div class="toc">
+      <ol class="toc-list">
+                  <li class="toc-item">
+            <a class="toc-link" href="https://frictionlessdata.io/" target="_blank">
+              Website
+            </a>
+          </li>
+                  <li class="toc-item">
+            <a class="toc-link" href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
+              Discord
+            </a>
+          </li>
+                  <li class="toc-item">
+            <a class="toc-link" href="https://twitter.com/frictionlessd8a" target="_blank">
+              Twitter
+            </a>
+          </li>
+              </ol>
+    </div>
+  </div>
+
+<div class="navigation">
   <div class="js-toc toc"></div>
 </div></div>
 <style>#livemark-sidebar {
@@ -1251,17 +1286,46 @@ This article uses a custom layout
   }
 }
 
-#livemark-sidebar .social {
+#livemark-sidebar .title {
   border-bottom: 1px solid #eaecef;
-  padding-bottom: 2px;
+  padding-bottom: 10px;
   margin-bottom: 16px;
 }
 
-#livemark-sidebar .social iframe {
+#livemark-sidebar .title .toc {
+  opacity: 0.5;
+}
+
+#livemark-sidebar .status {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+#livemark-sidebar .status iframe {
+  opacity: 0.5;
   border: none;
 }
 
-#livemark-sidebar .content {
+#livemark-sidebar .reference {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+#livemark-sidebar .reference .toc {
+  opacity: 0.5;
+}
+
+#livemark-sidebar .reference a[target="_blank"]:hover {
+  color: orange;
+}
+
+#livemark-sidebar .reference a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+
+#livemark-sidebar .navigation .toc {
   opacity: 0.5;
 }</style>
 <script>document.addEventListener("DOMContentLoaded", function () {
@@ -1295,7 +1359,7 @@ This article uses a custom layout
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-content",
     // Which headings to grab inside of the contentSelector element.
-          headingSelector: "h1, h2, h3",
+          headingSelector: "h2, h3",
         // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
   });

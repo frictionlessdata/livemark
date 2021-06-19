@@ -1,12 +1,21 @@
 ---
 title: Livemark
 sidebar:
-  social:
-    type: github
+  title: Livemark
+  status:
+    type: star
     user: frictionlessdata
     repo: livemark
-  content:
-    selector: h1, h2, h3
+  reference:
+    links:
+      - name: Website
+        path: https://frictionlessdata.io/
+      - name: Discord
+        path: https://discord.com/channels/695635777199145130/695635777199145133
+      - name: Twitter
+        path: https://twitter.com/frictionlessd8a
+  navigation:
+    selector: h2, h3
 ---
 
 # Livemark

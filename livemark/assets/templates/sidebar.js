@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-content",
     // Which headings to grab inside of the contentSelector element.
-    {% if metadata.sidebar.content.selector %}
-      headingSelector: "{{ metadata.sidebar.content.selector }}",
+    {% if metadata.sidebar.navigation.selector %}
+      headingSelector: "{{ metadata.sidebar.navigation.selector }}",
     {% else %}
-      headingSelector: "{{ h1, h2, h3 }}",
+      headingSelector: "{{ h2, h2, h4 }}",
     {% endif %}
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,

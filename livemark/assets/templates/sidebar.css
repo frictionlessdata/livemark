@@ -14,16 +14,45 @@
   }
 }
 
-#livemark-sidebar .social {
+#livemark-sidebar .title {
   border-bottom: 1px solid #eaecef;
-  padding-bottom: 2px;
+  padding-bottom: 10px;
   margin-bottom: 16px;
 }
 
-#livemark-sidebar .social iframe {
+#livemark-sidebar .title .toc {
+  opacity: 0.5;
+}
+
+#livemark-sidebar .status {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+#livemark-sidebar .status iframe {
+  opacity: 0.5;
   border: none;
 }
 
-#livemark-sidebar .content {
+#livemark-sidebar .reference {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+#livemark-sidebar .reference .toc {
+  opacity: 0.5;
+}
+
+#livemark-sidebar .reference a[target="_blank"]:hover {
+  color: orange;
+}
+
+#livemark-sidebar .reference a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+
+#livemark-sidebar .navigation .toc {
   opacity: 0.5;
 }
