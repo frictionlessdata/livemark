@@ -20,10 +20,7 @@
 {% endblock %}
 
 {% block table %}
-{% if metadata.table is not false %}
-<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
-<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
-{% endif %}
+{% include "features/table.html" %}
 {% endblock %}
 
 {% block chart %}
