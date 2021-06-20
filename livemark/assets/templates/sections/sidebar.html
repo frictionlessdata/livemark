@@ -1,0 +1,39 @@
+<!-- HTML -->
+
+<div id="livemark-sidebar">
+  {% if metadata.sidebar.header %}
+    {% include 'features/header.html' %}
+  {% endif %}
+
+  {% if metadata.sidebar.status %}
+    {% include 'features/status.html' %}
+  {% endif %}
+
+  {% if metadata.sidebar.reference %}
+    {% include 'features/reference.html' %}
+  {% endif %}
+
+  {% if metadata.sidebar.reference is not none %}
+    {% include 'features/navigation.html' %}
+  {% endif %}
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-sidebar {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-sidebar {
+    display: block;
+  }
+}
+</style>

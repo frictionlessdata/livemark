@@ -8,27 +8,35 @@
 <body>
 
 {% block content %}
-{% include "content.html" %}
+{% include "sections/content.html" %}
 {% endblock %}
 
 {% block sidebar %}
-{% include "sidebar.html" %}
+{% include "sections/sidebar.html" %}
 {% endblock %}
 
 {% block scroll %}
-{% include "features/scroll.html" %}
+{% if metadata.scroll is not false %}
+  {% include "features/scroll.html" %}
+{% endif %}
 {% endblock %}
 
 {% block table %}
-{% include "features/table.html" %}
+{% if metadata.table is not false %}
+  {% include "features/table.html" %}
+{% endif %}
 {% endblock %}
 
 {% block chart %}
-{% include "features/chart.html" %}
+{% if metadata.chart is not false %}
+  {% include "features/chart.html" %}
+{% endif %}
 {% endblock %}
 
 {% block markup %}
-{% include "features/markup.html" %}
+{% if metadata.markup is not false %}
+  {% include "features/markup.html" %}
+{% endif %}
 {% endblock %}
 
 {% block user %}
