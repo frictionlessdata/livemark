@@ -1287,8 +1287,28 @@ This article uses a custom layout
 #livemark-header .toc {
   opacity: 0.5;
 }
-</style>  
-      <!-- HTML -->
+</style>  </div>
+
+<!-- CSS -->
+
+<style>
+#livemark-sidebar {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-sidebar {
+    display: block;
+  }
+}
+</style>
+<!-- HTML -->
 
 <div id="livemark-status">
   <iframe
@@ -1313,27 +1333,15 @@ This article uses a custom layout
   opacity: 0.5;
   border: none;
 }
-</style>  </div>
-
-<!-- CSS -->
-
-<style>
-#livemark-sidebar {
-  display: none;
-  width: 200px;
-  position: fixed;
-  padding: 10px;
-  left: 25px;
-  top: 25px;
-  font-size: 125%;
-}
-
-@media only screen and (min-width: 768px) {
-  #livemark-sidebar {
-    display: block;
-  }
-}
 </style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-sidebar')
+  .appendChild(document.getElementById('livemark-status'));
+</script>
 <!-- HTML -->
 
 <div id="livemark-reference">
