@@ -17,25 +17,25 @@
 
 {% block scroll %}
 {% if metadata.scroll %}
-  {% include "features/scroll.html" %}
+{% include "features/scroll.html" %}
 {% endif %}
 {% endblock %}
 
 {% block table %}
-{% if metadata.table is not false %}
-  {% include "features/table.html" %}
+{% if metadata.table %}
+{% include "features/table.html" %}
 {% endif %}
 {% endblock %}
 
 {% block chart %}
-{% if metadata.chart is not false %}
-  {% include "features/chart.html" %}
+{% if metadata.chart %}
+{% include "features/chart.html" %}
 {% endif %}
 {% endblock %}
 
 {% block markup %}
-{% if metadata.markup is not false %}
-  {% include "features/markup.html" %}
+{% if metadata.markup %}
+{% include "features/markup.html" %}
 {% endif %}
 {% endblock %}
 

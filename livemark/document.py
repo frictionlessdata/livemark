@@ -35,6 +35,10 @@ class Document:
             metadata = yaml.safe_load(frontmatter)
             # TODO: find a better place for it
             metadata.setdefault("title", "Livemark")
+            # TODO: set these in the renderer
+            metadata["table"] = True
+            metadata["chart"] = True
+            metadata["markup"] = True
             # TODO: it's a hack as marko doesn't have context
             LivemarkRendererMixin.metadata = metadata
 
