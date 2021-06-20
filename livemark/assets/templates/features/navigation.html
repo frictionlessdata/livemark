@@ -17,6 +17,8 @@
 
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
+const element = document.getElementById('livemark-navigation');
+document.getElementById('livemark-sidebar').appendChild(element);
 document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
     var content = document.querySelector("#livemark-content");

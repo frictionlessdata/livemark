@@ -1358,8 +1358,28 @@ This article uses a custom layout
 #livemark-reference a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
-</style>  
-      <!-- HTML -->
+</style>  </div>
+
+<!-- CSS -->
+
+<style>
+#livemark-sidebar {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-sidebar {
+    display: block;
+  }
+}
+</style>
+<!-- HTML -->
 
 <div id="livemark-navigation">
   <div class="js-toc toc"></div>
@@ -1378,6 +1398,8 @@ This article uses a custom layout
 
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
+const element = document.getElementById('livemark-navigation');
+document.getElementById('livemark-sidebar').appendChild(element);
 document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
     var content = document.querySelector("#livemark-content");
@@ -1414,27 +1436,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hasInnerContainers: true,
   });
 });
-</script>  </div>
-
-<!-- CSS -->
-
-<style>
-#livemark-sidebar {
-  display: none;
-  width: 200px;
-  position: fixed;
-  padding: 10px;
-  left: 25px;
-  top: 25px;
-  font-size: 125%;
-}
-
-@media only screen and (min-width: 768px) {
-  #livemark-sidebar {
-    display: block;
-  }
-}
-</style>
+</script>
 <!-- HTML -->
 
 <div id="livemark-scroll">
