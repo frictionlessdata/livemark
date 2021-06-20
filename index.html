@@ -1312,29 +1312,12 @@ This article uses a custom layout
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
 </style>
-
-<div class="navigation">
+<div id="livemark-navigation">
   <div class="js-toc toc"></div>
 </div>
 
 <style>
-#livemark-sidebar {
-  display: none;
-  width: 200px;
-  position: fixed;
-  padding: 10px;
-  left: 25px;
-  top: 25px;
-  font-size: 125%;
-}
-
-@media only screen and (min-width: 768px) {
-  #livemark-sidebar {
-    display: block;
-  }
-}
-
-#livemark-sidebar .navigation .toc {
+#livemark-navigation .toc {
   opacity: 0.5;
 }
 </style>
@@ -1371,12 +1354,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-content",
     // Which headings to grab inside of the contentSelector element.
-          headingSelector: "h2, h3",
-        // For headings inside relative or absolute positioned containers within content.
+    headingSelector: "h2, h3",
+    // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
   });
 });
-</script></div>
+</script>
+
+<style>
+#livemark-sidebar {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-sidebar {
+    display: block;
+  }
+}
+</style></div>
 
 <div id="livemark-scroll">
   <div class="ue-scroll btn-white arrow-black circle shadow">
