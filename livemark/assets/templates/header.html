@@ -1,18 +1,17 @@
 {% if metadata.sidebar.header %}
-  <div id="livemark-header">
-    {% if metadata.sidebar.header.title %}
-      <div class="toc">
-        <ol class="toc-list">
-          <li class="toc-item">
-            <a class="toc-link is-active-link" href="#">
-              {{ metadata.sidebar.header.title }}
-            </a>
-          </li>
-        </ol>
-      </div>
-   {% endif %}
-  </div>
-{% endif %}
+<div id="livemark-header">
+  {% if metadata.sidebar.header.title %}
+    <div class="toc">
+      <ol class="toc-list">
+        <li class="toc-item">
+          <a class="toc-link is-active-link" href="#">
+            {{ metadata.sidebar.header.title }}
+          </a>
+        </li>
+      </ol>
+    </div>
+ {% endif %}
+</div>
 
 <style>
 #livemark-header {
@@ -25,3 +24,4 @@
   opacity: 0.5;
 }
 </style>
+{% endif %}

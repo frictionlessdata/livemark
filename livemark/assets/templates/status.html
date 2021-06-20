@@ -1,0 +1,24 @@
+{% if metadata.sidebar.status %}
+<div id="livemark-status">
+  <iframe
+    src="https://ghbtns.com/github-btn.html?user={{ metadata.sidebar.status.user }}&amp;repo={{ metadata.sidebar.status.repo }}&amp;type={{ metadata.sidebar.status.type }}&amp;count=true&amp;size=large"
+    width="160px"
+    height="30px"
+    title="GitHub"
+  >
+  </iframe>
+</div>
+
+<style>
+#livemark-status {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+#livemark-status iframe {
+  opacity: 0.5;
+  border: none;
+}
+</style>
+{% endif %}
