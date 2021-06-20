@@ -8,6 +8,8 @@ status:
   repo: livemark
 navigation:
   selector: h2, h3
+scroll:
+  speed: 10
 reference:
   links:
     - name: Website
