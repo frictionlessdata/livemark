@@ -33,6 +33,8 @@ class Document:
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = yaml.safe_load(frontmatter)
+            # TODO: find a better place for it
+            metadata.setdefault("title", "Livemark")
             # TODO: it's a hack as marko doesn't have context
             LivemarkRendererMixin.metadata = metadata
 
