@@ -1,4 +1,7 @@
 {% if metadata.sidebar.status %}
+
+<!-- HTML -->
+
 <div id="livemark-status">
   <iframe
     src="https://ghbtns.com/github-btn.html?user={{ metadata.sidebar.status.user }}&amp;repo={{ metadata.sidebar.status.repo }}&amp;type={{ metadata.sidebar.status.type }}&amp;count=true&amp;size=large"
@@ -8,6 +11,8 @@
   >
   </iframe>
 </div>
+
+<!-- CSS -->
 
 <style>
 #livemark-status {
@@ -21,4 +26,5 @@
   border: none;
 }
 </style>
+
 {% endif %}

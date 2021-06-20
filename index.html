@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<!-- HTML -->
+
 <div id="livemark-content">
   <div class="container">
   <h1>Livemark</h1>
@@ -226,8 +228,7 @@ This article uses a custom layout
   </div>
 </div>
 
-<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
-<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<!-- CSS -->
 
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
@@ -1227,8 +1228,19 @@ This article uses a custom layout
   vertical-align: middle;
 }
 </style>
+
+<!-- JS -->
+
+<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<!-- HTML -->
+
 <div id="livemark-sidebar">
-  <div id="livemark-header">
+  
+<!-- HTML -->
+
+<div id="livemark-header">
       <div class="toc">
       <ol class="toc-list">
         <li class="toc-item">
@@ -1239,6 +1251,8 @@ This article uses a custom layout
       </ol>
     </div>
  </div>
+
+<!-- CSS -->
 
 <style>
 #livemark-header {
@@ -1251,7 +1265,11 @@ This article uses a custom layout
   opacity: 0.5;
 }
 </style>
-  <div id="livemark-status">
+
+  
+<!-- HTML -->
+
+<div id="livemark-status">
   <iframe
     src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=livemark&amp;type=star&amp;count=true&amp;size=large"
     width="160px"
@@ -1260,6 +1278,8 @@ This article uses a custom layout
   >
   </iframe>
 </div>
+
+<!-- CSS -->
 
 <style>
 #livemark-status {
@@ -1273,7 +1293,11 @@ This article uses a custom layout
   border: none;
 }
 </style>
-  <div id="livemark-reference">
+
+  
+<!-- HTML -->
+
+<div id="livemark-reference">
   <div class="toc">
     <ol class="toc-list">
               <li class="toc-item">
@@ -1295,6 +1319,8 @@ This article uses a custom layout
   </div>
 </div>
 
+<!-- CSS -->
+
 <style>
 #livemark-reference {
   border-bottom: 1px solid #eaecef;
@@ -1314,9 +1340,15 @@ This article uses a custom layout
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
 </style>
-  <div id="livemark-navigation">
+
+  
+<!-- HTML -->
+
+<div id="livemark-navigation">
   <div class="js-toc toc"></div>
 </div>
+
+<!-- CSS -->
 
 <link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <style>
@@ -1324,6 +1356,8 @@ This article uses a custom layout
   opacity: 0.5;
 }
 </style>
+
+<!-- JS -->
 
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
@@ -1364,7 +1398,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
 </div>
+
+<!-- CSS -->
 
 <style>
 #livemark-sidebar {
@@ -1384,15 +1421,26 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 </style>
 
+
+
+<!-- HTML -->
+
 <div id="livemark-scroll">
   <div class="ue-scroll btn-white arrow-black circle shadow">
   </div>
 </div>
 
+<!-- CSS -->
+
 <link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <style>
 #livemark-scroll {
   display: none;
+}
+#livemark-scroll .ue-scroll {
+    right: auto;
+    left: 25px;
+    bottom: 25px;
 }
 @media only screen and (min-width: 768px) {
     #livemark-scroll {
@@ -1400,12 +1448,9 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 0.5;
     }
 }
-.ue-scroll {
-    right: auto;
-    left: 25px;
-    bottom: 25px;
-}
 </style>
+
+<!-- JS -->
 
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
@@ -1413,6 +1458,7 @@ document.addEventListener("DOMContentLoaded", function () {
   UeScroll.init({ element: ".ue-scroll", scrollSpeed: 10 });
 });
 </script>
+
 
 <link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 <script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
