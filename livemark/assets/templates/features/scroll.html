@@ -30,7 +30,7 @@
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const scrollSpeed = parseInt('{{ metadata.scroll.speed or 10 }}');
+  const scrollSpeed = parseInt('{{ livemark.scroll.speed or 10 }}');
   UeScroll.init({ element: ".ue-scroll", scrollSpeed });
 });
 </script>

@@ -1,19 +1,19 @@
 <!-- HTML -->
 
 <div id="livemark-sidebar">
-  {% if metadata.header %}
+  {% if livemark.header %}
     {% include 'features/header.html' %}
   {% endif %}
 
-  {% if metadata.status %}
+  {% if livemark.status %}
     {% include 'features/status.html' %}
   {% endif %}
 
-  {% if metadata.reference %}
+  {% if livemark.reference %}
     {% include 'features/reference.html' %}
   {% endif %}
 
-  {% if metadata.navigation %}
+  {% if livemark.navigation %}
     {% include 'features/navigation.html' %}
   {% endif %}
 </div>

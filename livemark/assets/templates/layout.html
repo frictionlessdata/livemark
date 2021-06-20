@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ metadata.title }}</title>
+<title>{{ livemark.title }}</title>
 </head>
 <body>
 
@@ -16,25 +16,25 @@
 {% endblock %}
 
 {% block scroll %}
-{% if metadata.scroll %}
+{% if livemark.scroll %}
 {% include "features/scroll.html" %}
 {% endif %}
 {% endblock %}
 
 {% block table %}
-{% if metadata.table %}
+{% if livemark.table %}
 {% include "features/table.html" %}
 {% endif %}
 {% endblock %}
 
 {% block chart %}
-{% if metadata.chart %}
+{% if livemark.chart %}
 {% include "features/chart.html" %}
 {% endif %}
 {% endblock %}
 
 {% block markup %}
-{% if metadata.markup %}
+{% if livemark.markup %}
 {% include "features/markup.html" %}
 {% endif %}
 {% endblock %}

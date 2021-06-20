@@ -2,7 +2,7 @@
 
 <div id="livemark-content">
   <div class="container">
-  {{ content }}
+  {{ livemark.document }}
   </div>
 </div>
 
@@ -10,7 +10,7 @@
 
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
-{% if metadata.sidebar is not false %}
+{% if livemark.sidebar is not false %}
   @media only screen and (min-width: 768px) {
     #livemark-content {
       margin-left: 250px;
