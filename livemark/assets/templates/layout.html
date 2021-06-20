@@ -15,6 +15,12 @@
 {% include "sections/sidebar.html" %}
 {% endblock %}
 
+{% block header %}
+{% if livemark.header %}
+{% include 'features/header.html' %}
+{% endif %}
+{% endblock %}
+
 {% block status %}
 {% if livemark.status %}
 {% include 'features/status.html' %}
