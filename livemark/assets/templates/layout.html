@@ -27,11 +27,7 @@
 {% endblock %}
 
 {% block chart %}
-{% if metadata.chart is not false %}
-<script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
-<script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
-<script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
-{% endif %}
+{% include "features/chart.html" %}
 {% endblock %}
 
 {% block markup %}

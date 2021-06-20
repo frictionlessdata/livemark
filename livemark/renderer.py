@@ -60,7 +60,8 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec = spec.replace("'", "\\'")
             template = Template(config.CHART)
             self.__charts += 1
-            text = template.render(spec=spec, elem=f"livemark-chart-{self.__charts}")
+            chart = {"spec": spec, "elem": f"livemark-chart-{self.__charts}"}
+            text = template.render(chart=chart)
             return text
         if self.metadata.get("script") is not False and element.lang == "script":
             code = str(element.children[0].children).strip()

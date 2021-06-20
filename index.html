@@ -91,14 +91,24 @@ width: 500
 height: 300
 &#x27;&#x27;&#x27;
 </code></pre>
-<div id="livemark-chart-1"></div>
+<!-- HTML -->
+
+
+<div id="livemark-chart-1">
+</div>
+
+
+<!-- JS -->
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function(){
   const spec = JSON.parse('{"data": {"url": "data/cars.csv"}, "mark": "circle", "selection": {"brush": {"type": "interval"}}, "encoding": {"x": {"type": "quantitative", "field": "kmpl", "scale": {"domain": [12, 25]}}, "y": {"type": "quantitative", "field": "price", "scale": {"domain": [100, 900]}}, "color": {"condition": {"selection": "brush", "field": "type", "type": "nominal"}, "value": "grey"}, "size": {"type": "quantitative", "field": "bhp"}}, "width": 500, "height": 300}')
   const elem = '#livemark-chart-1'
   vegaEmbed(elem, spec)
 })
-</script><h2>Script</h2>
+</script>
+<h2>Script</h2>
 <blockquote>
 <p><a href="https://www.python.org/">https://www.python.org/</a></p>
 </blockquote>
@@ -1465,6 +1475,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 <script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
+
+<!-- HTML -->
+
+
+<!-- JS -->
 
 <script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
