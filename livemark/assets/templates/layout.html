@@ -15,6 +15,12 @@
 {% include "sections/sidebar.html" %}
 {% endblock %}
 
+{% block reference %}
+{% if livemark.reference %}
+{% include 'features/reference.html' %}
+{% endif %}
+{% endblock %}
+
 {% block navigation %}
 {% if livemark.navigation %}
 {% include 'features/navigation.html' %}

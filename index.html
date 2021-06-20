@@ -1313,8 +1313,28 @@ This article uses a custom layout
   opacity: 0.5;
   border: none;
 }
-</style>  
-      <!-- HTML -->
+</style>  </div>
+
+<!-- CSS -->
+
+<style>
+#livemark-sidebar {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-sidebar {
+    display: block;
+  }
+}
+</style>
+<!-- HTML -->
 
 <div id="livemark-reference">
   <div class="toc">
@@ -1358,27 +1378,15 @@ This article uses a custom layout
 #livemark-reference a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
-</style>  </div>
-
-<!-- CSS -->
-
-<style>
-#livemark-sidebar {
-  display: none;
-  width: 200px;
-  position: fixed;
-  padding: 10px;
-  left: 25px;
-  top: 25px;
-  font-size: 125%;
-}
-
-@media only screen and (min-width: 768px) {
-  #livemark-sidebar {
-    display: block;
-  }
-}
 </style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-sidebar')
+  .appendChild(document.getElementById('livemark-reference'));
+</script>
 <!-- HTML -->
 
 <div id="livemark-navigation">
@@ -1398,8 +1406,9 @@ This article uses a custom layout
 
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
-const element = document.getElementById('livemark-navigation');
-document.getElementById('livemark-sidebar').appendChild(element);
+document
+  .getElementById('livemark-sidebar')
+  .appendChild(document.getElementById('livemark-navigation'));
 document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
     var content = document.querySelector("#livemark-content");
