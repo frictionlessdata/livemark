@@ -1386,10 +1386,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script></div>
 
-<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
-<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
-<div id="livemark-scroll"><div class="ue-scroll btn-white arrow-black circle shadow">
+<div id="livemark-scroll">
+  <div class="ue-scroll btn-white arrow-black circle shadow">
+  </div>
 </div>
+
+<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <style>
 #livemark-scroll {
   display: none;
@@ -1406,11 +1408,13 @@ document.addEventListener("DOMContentLoaded", function () {
     bottom: 25px;
 }
 </style>
+
+<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   UeScroll.init({ element: ".ue-scroll", scrollSpeed: 10 });
 });
-</script></div>
+</script>
 
 <link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 <script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>

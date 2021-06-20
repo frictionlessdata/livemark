@@ -1,5 +1,10 @@
-<div class="ue-scroll btn-white arrow-black circle shadow">
+{% if metadata.scroll is not false %}
+<div id="livemark-scroll">
+  <div class="ue-scroll btn-white arrow-black circle shadow">
+  </div>
 </div>
+
+<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <style>
 #livemark-scroll {
   display: none;
@@ -16,8 +21,11 @@
     bottom: 25px;
 }
 </style>
+
+<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   UeScroll.init({ element: ".ue-scroll", scrollSpeed: 10 });
 });
 </script>
+{% endif %}

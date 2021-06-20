@@ -23,11 +23,7 @@
 {% endblock %}
 
 {% block scroll %}
-{% if metadata.scroll is not false %}
-<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
-<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
-<div id="livemark-scroll">{% include "scroll.html" %}</div>
-{% endif %}
+{% include "scroll.html" %}
 {% endblock %}
 
 {% block table %}
