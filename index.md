@@ -1,7 +1,8 @@
 ---
 title: Livemark
 sidebar:
-  title: Livemark
+  header:
+    title: Livemark
   status:
     type: star
     user: frictionlessdata

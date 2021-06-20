@@ -1,14 +1,16 @@
-{% if metadata.sidebar.title %}
-  <div class="title">
-    <div class="toc">
-      <ol class="toc-list">
-        <li class="toc-item">
-          <a class="toc-link is-active-link" href="#">
-            {{ metadata.sidebar.title }}
-          </a>
-        </li>
-      </ol>
-    </div>
+{% if metadata.sidebar.header %}
+  <div class="header">
+    {% if metadata.sidebar.header.title %}
+      <div class="toc">
+        <ol class="toc-list">
+          <li class="toc-item">
+            <a class="toc-link is-active-link" href="#">
+              {{ metadata.sidebar.header.title }}
+            </a>
+          </li>
+        </ol>
+      </div>
+   {% endif %}
   </div>
 {% endif %}
 
@@ -61,13 +63,13 @@
   }
 }
 
-#livemark-sidebar .title {
+#livemark-sidebar .header {
   border-bottom: 1px solid #eaecef;
   padding-bottom: 10px;
   margin-bottom: 16px;
 }
 
-#livemark-sidebar .title .toc {
+#livemark-sidebar .header .toc {
   opacity: 0.5;
 }
 
