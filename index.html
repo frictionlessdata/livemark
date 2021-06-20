@@ -1272,8 +1272,10 @@ This article uses a custom layout
 
 <div class="navigation">
   <div class="js-toc toc"></div>
-</div></div>
-<style>#livemark-sidebar {
+</div>
+
+<style>
+#livemark-sidebar {
   display: none;
   width: 200px;
   position: fixed;
@@ -1330,8 +1332,11 @@ This article uses a custom layout
 
 #livemark-sidebar .navigation .toc {
   opacity: 0.5;
-}</style>
-<script>document.addEventListener("DOMContentLoaded", function () {
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
     var content = document.querySelector("#livemark-content");
     var headings = content.querySelectorAll("h1, h2, h3, h4, h5, h6, h7");
@@ -1366,7 +1371,8 @@ This article uses a custom layout
         // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
   });
-});</script>
+});
+</script></div>
 
 <link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
