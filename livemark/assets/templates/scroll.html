@@ -1,1 +1,23 @@
-<div class="ue-scroll btn-white arrow-black circle shadow"></div>
+<div class="ue-scroll btn-white arrow-black circle shadow">
+</div>
+<style>
+#livemark-scroll {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+    #livemark-scroll {
+        display: block;
+        opacity: 0.5;
+    }
+}
+.ue-scroll {
+    right: auto;
+    left: 25px;
+    bottom: 25px;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  UeScroll.init({ element: ".ue-scroll", scrollSpeed: 10 });
+});
+</script>
