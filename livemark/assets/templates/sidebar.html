@@ -1,32 +1,6 @@
 {% include 'header.html' %}
-
-{% if metadata.sidebar.status %}
-  <div class="status">
-    <iframe
-      src="https://ghbtns.com/github-btn.html?user={{ metadata.sidebar.status.user }}&amp;repo={{ metadata.sidebar.status.repo }}&amp;type={{ metadata.sidebar.status.type }}&amp;count=true&amp;size=large"
-      width="160px"
-      height="30px"
-      title="GitHub"
-    >
-    </iframe>
-  </div>
-{% endif %}
-
-{% if metadata.sidebar.reference %}
-  <div class="reference">
-    <div class="toc">
-      <ol class="toc-list">
-        {% for link in metadata.sidebar.reference.links %}
-          <li class="toc-item">
-            <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %}>
-              {{ link.name }}
-            </a>
-          </li>
-        {% endfor %}
-      </ol>
-    </div>
-  </div>
-{% endif %}
+{% include 'status.html' %}
+{% include 'reference.html' %}
 
 <div class="navigation">
   <div class="js-toc toc"></div>
@@ -47,45 +21,6 @@
   #livemark-sidebar {
     display: block;
   }
-}
-
-#livemark-sidebar .header {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 10px;
-  margin-bottom: 16px;
-}
-
-#livemark-sidebar .header .toc {
-  opacity: 0.5;
-}
-
-#livemark-sidebar .status {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 8px;
-  margin-bottom: 16px;
-}
-
-#livemark-sidebar .status iframe {
-  opacity: 0.5;
-  border: none;
-}
-
-#livemark-sidebar .reference {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 10px;
-  margin-bottom: 16px;
-}
-
-#livemark-sidebar .reference .toc {
-  opacity: 0.5;
-}
-
-#livemark-sidebar .reference a[target="_blank"]:hover {
-  color: orange;
-}
-
-#livemark-sidebar .reference a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
 }
 
 #livemark-sidebar .navigation .toc {
