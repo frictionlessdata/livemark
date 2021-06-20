@@ -1,18 +1,4 @@
-{% if metadata.sidebar.header %}
-  <div class="header">
-    {% if metadata.sidebar.header.title %}
-      <div class="toc">
-        <ol class="toc-list">
-          <li class="toc-item">
-            <a class="toc-link is-active-link" href="#">
-              {{ metadata.sidebar.header.title }}
-            </a>
-          </li>
-        </ol>
-      </div>
-   {% endif %}
-  </div>
-{% endif %}
+{% include 'header.html' %}
 
 {% if metadata.sidebar.status %}
   <div class="status">

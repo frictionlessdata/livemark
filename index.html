@@ -1226,7 +1226,7 @@ This article uses a custom layout
 
 <link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
-<div id="livemark-sidebar">  <div class="header">
+<div id="livemark-sidebar">  <div id="livemark-header">
           <div class="toc">
         <ol class="toc-list">
           <li class="toc-item">
@@ -1238,6 +1238,17 @@ This article uses a custom layout
       </div>
      </div>
 
+<style>
+#livemark-header {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+#livemark-header .toc {
+  opacity: 0.5;
+}
+</style>
   <div class="status">
     <iframe
       src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=livemark&amp;type=star&amp;count=true&amp;size=large"
