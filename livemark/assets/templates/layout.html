@@ -8,10 +8,7 @@
 <body>
 
 {% block content %}
-<link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
-<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
-<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
-<div id="livemark-content">{% include "content.html" %}</div>
+{% include "content.html" %}
 {% endblock %}
 
 {% block sidebar %}
