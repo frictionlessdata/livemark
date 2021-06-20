@@ -28,12 +28,10 @@
 {% endblock %}
 
 {% block markup %}
-{% if metadata.markup is not false %}
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-{% endif %}
+{% include "features/markup.html" %}
 {% endblock %}
 
-{% block custom %}
+{% block user %}
 {% endblock %}
 
 </body>
