@@ -3,7 +3,7 @@
 <div id="livemark-reference">
   <div class="toc">
     <ol class="toc-list">
-      {% for link in metadata.sidebar.reference.links %}
+      {% for link in metadata.reference.links %}
         <li class="toc-item">
           <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %}>
             {{ link.name }}
