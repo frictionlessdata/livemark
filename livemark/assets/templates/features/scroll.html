@@ -1,0 +1,36 @@
+<!-- HTML -->
+
+<div id="livemark-scroll">
+  <div class="ue-scroll btn-white arrow-black circle shadow">
+  </div>
+</div>
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
+<style>
+#livemark-scroll {
+  display: none;
+}
+#livemark-scroll .ue-scroll {
+    right: auto;
+    left: 25px;
+    bottom: 25px;
+}
+@media only screen and (min-width: 768px) {
+    #livemark-scroll {
+        display: block;
+        opacity: 0.5;
+    }
+}
+</style>
+
+<!-- JS -->
+
+<script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollSpeed = parseInt('{{ livemark.scroll.speed or 10 }}');
+  UeScroll.init({ element: ".ue-scroll", scrollSpeed });
+});
+</script>

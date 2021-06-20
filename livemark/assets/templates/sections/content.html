@@ -1,4 +1,16 @@
-{% if metadata.sidebar is not false %}
+<!-- HTML -->
+
+<div id="livemark-content">
+  <div class="container">
+    {{ livemark.document }}
+  </div>
+</div>
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
+<style>
+{% if livemark.sidebar is not false %}
   @media only screen and (min-width: 768px) {
     #livemark-content {
       margin-left: 250px;
@@ -995,3 +1007,9 @@
   margin: 0 .2em .25em -1.6em;
   vertical-align: middle;
 }
+</style>
+
+<!-- JS -->
+
+<script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>

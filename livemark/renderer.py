@@ -51,7 +51,8 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec = spec.replace("'", "\\'")
             template = Template(config.TABLE)
             self.__tables += 1
-            text = template.render(spec=spec, elem=f"livemark-table-{self.__tables}")
+            table = {"spec": spec, "elem": f"livemark-table-{self.__tables}"}
+            text = template.render(table=table)
             return text
         if self.metadata.get("chart") is not False and element.lang == "chart":
             spec_yaml = str(element.children[0].children).strip()
@@ -60,7 +61,8 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec = spec.replace("'", "\\'")
             template = Template(config.CHART)
             self.__charts += 1
-            text = template.render(spec=spec, elem=f"livemark-chart-{self.__charts}")
+            chart = {"spec": spec, "elem": f"livemark-chart-{self.__charts}"}
+            text = template.render(chart=chart)
             return text
         if self.metadata.get("script") is not False and element.lang == "script":
             code = str(element.children[0].children).strip()

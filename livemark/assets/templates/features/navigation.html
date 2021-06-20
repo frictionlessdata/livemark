@@ -1,3 +1,25 @@
+<!-- HTML -->
+
+<div id="livemark-navigation">
+  <div class="js-toc toc"></div>
+</div>
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
+<style>
+#livemark-navigation .toc {
+  opacity: 0.5;
+}
+</style>
+
+<!-- JS -->
+
+<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
+<script>
+document
+  .getElementById('livemark-sidebar')
+  .appendChild(document.getElementById('livemark-navigation'));
 document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
     var content = document.querySelector("#livemark-content");
@@ -29,12 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-content",
     // Which headings to grab inside of the contentSelector element.
-    {% if metadata.sidebar.navigation.selector %}
-      headingSelector: "{{ metadata.sidebar.navigation.selector }}",
-    {% else %}
-      headingSelector: "{{ h2, h2, h4 }}",
-    {% endif %}
+    headingSelector: "{{ livemark.navigation.selector or 'h2, h3, h4' }}",
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
   });
 });
+</script>

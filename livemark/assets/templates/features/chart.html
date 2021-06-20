@@ -1,0 +1,22 @@
+<!-- HTML -->
+
+{% if chart %}
+<div id="{{ chart.elem }}">
+</div>
+{% endif %}
+
+<!-- JS -->
+
+{% if chart %}
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const spec = JSON.parse('{{ chart.spec }}')
+  const elem = '#{{ chart.elem }}'
+  vegaEmbed(elem, spec)
+})
+</script>
+{% else %}
+<script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
+<script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
+<script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
+{% endif %}

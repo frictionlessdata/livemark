@@ -33,6 +33,12 @@ class Document:
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = yaml.safe_load(frontmatter)
+            # TODO: find a better place for it
+            metadata.setdefault("title", "Livemark")
+            # TODO: set these in the renderer
+            metadata["table"] = True
+            metadata["chart"] = True
+            metadata["markup"] = True
             # TODO: it's a hack as marko doesn't have context
             LivemarkRendererMixin.metadata = metadata
 
@@ -53,7 +59,9 @@ class Document:
             with open(metadata["layout"]) as file:
                 layout = file.read()
         template = templating.from_string(layout)
-        target = template.render(metadata=metadata, content=target)
+        livemark = metadata.copy()
+        livemark["document"] = target
+        target = template.render(livemark=livemark)
 
         # Cleanup document
         for code in metadata.get("cleanup", []):

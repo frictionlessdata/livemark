@@ -1,0 +1,37 @@
+<!-- HTML -->
+
+<div id="livemark-header">
+  {% if livemark.header.title %}
+  <div class="toc">
+    <ol class="toc-list">
+      <li class="toc-item">
+        <a class="toc-link is-active-link" href="#">
+          {{ livemark.header.title }}
+        </a>
+      </li>
+    </ol>
+  </div>
+  {% endif %}
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-header {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+#livemark-header .toc {
+  opacity: 0.5;
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-sidebar')
+  .appendChild(document.getElementById('livemark-header'));
+</script>

@@ -1,0 +1,45 @@
+<!-- HTML -->
+
+<div id="livemark-reference">
+  <div class="toc">
+    <ol class="toc-list">
+      {% for link in livemark.reference.links %}
+      <li class="toc-item">
+        <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %}>
+          {{ link.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-reference {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+#livemark-reference .toc {
+  opacity: 0.5;
+}
+
+#livemark-reference a[target="_blank"]:hover {
+  color: orange;
+}
+
+#livemark-reference a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-sidebar')
+  .appendChild(document.getElementById('livemark-reference'));
+</script>

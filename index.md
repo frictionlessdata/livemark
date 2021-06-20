@@ -1,21 +1,23 @@
 ---
 title: Livemark
-sidebar:
+header:
   title: Livemark
-  status:
-    type: star
-    user: frictionlessdata
-    repo: livemark
-  reference:
-    links:
-      - name: Website
-        path: https://frictionlessdata.io/
-      - name: Discord
-        path: https://discord.com/channels/695635777199145130/695635777199145133
-      - name: Twitter
-        path: https://twitter.com/frictionlessd8a
-  navigation:
-    selector: h2, h3
+status:
+  type: star
+  user: frictionlessdata
+  repo: livemark
+navigation:
+  selector: h2, h3
+scroll:
+  speed: 10
+reference:
+  links:
+    - name: Website
+      path: https://frictionlessdata.io/
+    - name: Discord
+      path: https://discord.com/channels/695635777199145130/695635777199145133
+    - name: Twitter
+      path: https://twitter.com/frictionlessd8a
 ---
 
 # Livemark
