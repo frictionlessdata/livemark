@@ -1,7 +1,10 @@
-{% include 'header.html' %}
-{% include 'status.html' %}
-{% include 'reference.html' %}
-{% include 'navigation.html' %}
+{% if metadata.sidebar is not false %}
+<div id="livemark-sidebar">
+  {% include 'header.html' %}
+  {% include 'status.html' %}
+  {% include 'reference.html' %}
+  {% include 'navigation.html' %}
+</div>
 
 <style>
 #livemark-sidebar {
@@ -20,3 +23,4 @@
   }
 }
 </style>
+{% endif %}

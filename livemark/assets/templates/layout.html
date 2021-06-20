@@ -15,11 +15,7 @@
 {% endblock %}
 
 {% block sidebar %}
-{% if metadata.sidebar is not false %}
-<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
-<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
-<div id="livemark-sidebar">{% include "sidebar.html" %}</div>
-{% endif %}
+{% include "sidebar.html" %}
 {% endblock %}
 
 {% block scroll %}
