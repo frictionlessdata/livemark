@@ -17,8 +17,19 @@
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-sidebar {
+  #livemark-sidebar.with-sidebar {
     display: block;
   }
 }
 </style>
+
+<!-- JS -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.getElementById('livemark-sidebar').innerHTML.trim()) {
+    document.getElementById('livemark-content').classList.add('with-sidebar');
+    document.getElementById('livemark-sidebar').classList.add('with-sidebar');
+  }
+});
+</script>

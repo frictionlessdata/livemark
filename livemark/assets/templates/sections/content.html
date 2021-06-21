@@ -10,14 +10,12 @@
 
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
-{% if livemark.sidebar is not false %}
-  @media only screen and (min-width: 768px) {
-    #livemark-content {
-      margin-left: 250px;
-      border-left: dashed 1px #ccc;
-    }
+@media only screen and (min-width: 768px) {
+  #livemark-content.with-sidebar {
+    margin-left: 250px;
+    border-left: dashed 1px #ccc;
   }
-{% endif %}
+}
 
 #livemark-content .octicon {
   display: inline-block;
