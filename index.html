@@ -9,13 +9,13 @@
 
 <!-- HTML -->
 
-<div id="livemark-sidebar">
+<div id="livemark-left">
 </div>
 
 <!-- CSS -->
 
 <style>
-#livemark-sidebar {
+#livemark-left {
   display: none;
   width: 200px;
   position: fixed;
@@ -26,7 +26,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-sidebar.with-sidebar {
+  #livemark-left.with-left {
     display: block;
   }
 }
@@ -36,9 +36,9 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.getElementById('livemark-sidebar').innerHTML.trim()) {
-    document.getElementById('livemark-main').classList.add('with-sidebar');
-    document.getElementById('livemark-sidebar').classList.add('with-sidebar');
+  if (document.getElementById('livemark-left').innerHTML.trim()) {
+    document.getElementById('livemark-main').classList.add('with-left');
+    document.getElementById('livemark-left').classList.add('with-left');
   }
 });
 </script>
@@ -293,7 +293,7 @@ This article uses a custom layout
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
 @media only screen and (min-width: 768px) {
-  #livemark-main.with-sidebar {
+  #livemark-main.with-left {
     margin-left: 250px;
     border-left: dashed 1px #ccc;
   }
@@ -1364,7 +1364,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 document
-  .getElementById('livemark-sidebar')
+  .getElementById('livemark-left')
   .appendChild(document.getElementById('livemark-header'));
 </script>
 <!-- HTML -->
@@ -1398,7 +1398,7 @@ document
 
 <script>
 document
-  .getElementById('livemark-sidebar')
+  .getElementById('livemark-left')
   .appendChild(document.getElementById('livemark-status'));
 </script>
 <!-- HTML -->
@@ -1451,7 +1451,7 @@ document
 
 <script>
 document
-  .getElementById('livemark-sidebar')
+  .getElementById('livemark-left')
   .appendChild(document.getElementById('livemark-reference'));
 </script>
 <!-- HTML -->

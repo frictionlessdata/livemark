@@ -1,12 +1,12 @@
 <!-- HTML -->
 
-<div id="livemark-sidebar">
+<div id="livemark-left">
 </div>
 
 <!-- CSS -->
 
 <style>
-#livemark-sidebar {
+#livemark-left {
   display: none;
   width: 200px;
   position: fixed;
@@ -17,7 +17,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-sidebar.with-sidebar {
+  #livemark-left.with-left {
     display: block;
   }
 }
@@ -27,9 +27,9 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.getElementById('livemark-sidebar').innerHTML.trim()) {
-    document.getElementById('livemark-main').classList.add('with-sidebar');
-    document.getElementById('livemark-sidebar').classList.add('with-sidebar');
+  if (document.getElementById('livemark-left').innerHTML.trim()) {
+    document.getElementById('livemark-main').classList.add('with-left');
+    document.getElementById('livemark-left').classList.add('with-left');
   }
 });
 </script>
