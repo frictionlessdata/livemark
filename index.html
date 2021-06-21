@@ -25,6 +25,10 @@
   font-size: 125%;
 }
 
+#livemark-left > div:not(:last-child) {
+  border-bottom: 1px solid #eaecef;
+}
+
 @media only screen and (min-width: 768px) {
   #livemark-left.with-left {
     display: block;
@@ -1315,6 +1319,10 @@ This article uses a custom layout
   font-size: 125%;
 }
 
+#livemark-right > div:not(:last-child) {
+  border-bottom: 1px solid #eaecef;
+}
+
 @media only screen and (min-width: 768px) {
   #livemark-right.with-right {
     display: block;
@@ -1350,7 +1358,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <style>
 #livemark-header {
-  border-bottom: 1px solid #eaecef;
   padding-bottom: 10px;
   margin-bottom: 16px;
 }
@@ -1383,9 +1390,9 @@ document
 
 <style>
 #livemark-status {
-  height: 40px;
+  height: 45px;
+  margin-top: -5px;
   margin-bottom: 16px;
-  border-bottom: 1px solid #eaecef;
 }
 
 #livemark-status iframe {
@@ -1429,7 +1436,6 @@ document
 
 <style>
 #livemark-reference {
-  border-bottom: 1px solid #eaecef;
   padding-bottom: 10px;
   margin-bottom: 16px;
 }
@@ -1530,11 +1536,11 @@ document.addEventListener("DOMContentLoaded", function () {
 #livemark-scroll .ue-scroll {
   bottom: 25px;
 }
-#livemark-left #livemark-scroll .ue-scroll {
+#livemark-scroll.left .ue-scroll {
   left: 25px;
   right: auto;
 }
-#livemark-right #livemark-scroll .ue-scroll {
+#livemark-scroll.right .ue-scroll {
   left: auto;
   right: 25px;
 }
@@ -1551,8 +1557,8 @@ document.addEventListener("DOMContentLoaded", function () {
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
 document
-  .getElementById('livemark-left')
-  .appendChild(document.getElementById('livemark-scroll'));
+  .getElementById('livemark-scroll')
+  .classList.add('left')
 document.addEventListener("DOMContentLoaded", function () {
   const scrollSpeed = parseInt('10');
   UeScroll.init({ element: ".ue-scroll", scrollSpeed });
