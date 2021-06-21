@@ -262,6 +262,10 @@ This article uses a custom layout
     margin-left: 250px;
     border-left: dashed 1px #ccc;
   }
+  #livemark-content.with-right {
+    margin-right: 250px;
+    border-right: dashed 1px #ccc;
+  }
 }
 
 #livemark-content .octicon {
@@ -1295,6 +1299,41 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- HTML -->
 
+<div id="livemark-right">
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-right {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  right: 25px;
+  top: 25px;
+  font-size: 125%;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-right.with-right {
+    display: block;
+  }
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.getElementById('livemark-right').innerHTML.trim()) {
+    document.getElementById('livemark-content').classList.add('with-right');
+    document.getElementById('livemark-right').classList.add('with-right');
+  }
+});
+</script>
+<!-- HTML -->
+
 <div id="livemark-header">
     <div class="toc">
     <ol class="toc-list">
@@ -1435,7 +1474,7 @@ document
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
 document
-  .getElementById('livemark-sidebar')
+  .getElementById('livemark-right')
   .appendChild(document.getElementById('livemark-navigation'));
 document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
@@ -1489,8 +1528,6 @@ document.addEventListener("DOMContentLoaded", function () {
   display: none;
 }
 #livemark-scroll .ue-scroll {
-    right: auto;
-    left: 25px;
     bottom: 25px;
 }
 @media only screen and (min-width: 768px) {
