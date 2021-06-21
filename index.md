@@ -20,6 +20,8 @@ reference:
       path: https://discord.com/channels/695635777199145130/695635777199145133
     - name: Twitter
       path: https://twitter.com/frictionlessd8a
+    - name: Editor
+      path: https://github.com/frictionlessdata/livemark/edit/main/index.md
 ---
 
 # Livemark
