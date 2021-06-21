@@ -20,6 +20,7 @@ class LivemarkRendererMixin(HTMLRenderer):
         super().__init__(*args, **kwargs)
         self.__tables = 0
         self.__charts = 0
+        self.__scripts = 0
 
     # Render
 
@@ -38,7 +39,7 @@ class LivemarkRendererMixin(HTMLRenderer):
         return str(html)
 
     def render_fenced_code(self, element):
-        if self.metadata.get("table") is not False and element.lang == "table":
+        if element.lang == "table":
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec_python["licenseKey"] = "non-commercial-and-evaluation"
@@ -51,20 +52,24 @@ class LivemarkRendererMixin(HTMLRenderer):
             spec = spec.replace("'", "\\'")
             template = Template(config.TABLE)
             self.__tables += 1
+            self.metadata.setdefault("table", {})
+            self.metadata["table"]["count"] = self.__tables
             table = {"spec": spec, "elem": f"livemark-table-{self.__tables}"}
             text = template.render(table=table)
             return text
-        if self.metadata.get("chart") is not False and element.lang == "chart":
+        if element.lang == "chart":
             spec_yaml = str(element.children[0].children).strip()
             spec_python = yaml.safe_load(spec_yaml)
             spec = json.dumps(spec_python, ensure_ascii=False)
             spec = spec.replace("'", "\\'")
             template = Template(config.CHART)
             self.__charts += 1
+            self.metadata.setdefault("chart", {})
+            self.metadata["chart"]["count"] = self.__charts
             chart = {"spec": spec, "elem": f"livemark-chart-{self.__charts}"}
             text = template.render(chart=chart)
             return text
-        if self.metadata.get("script") is not False and element.lang == "script":
+        if element.lang == "script":
             code = str(element.children[0].children).strip()
             # TODO: raise on unsupported lang
             lang = "bash" if "bash" in element.extra else "python"
@@ -88,6 +93,9 @@ class LivemarkRendererMixin(HTMLRenderer):
                 target.children = [RawText(output)]
                 text += "\n"
                 text += super().render_fenced_code(target)
+            self.__scripts += 1
+            self.metadata.setdefault("script", {})
+            self.metadata["script"]["count"] = self.__scripts
             return text
         return super().render_fenced_code(element)
 
