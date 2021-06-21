@@ -18,7 +18,7 @@
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
 document
-  .getElementById('livemark-right')
+  .getElementById('livemark-{{ livemark.navigation.section or "left"}}')
   .appendChild(document.getElementById('livemark-navigation'));
 document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {

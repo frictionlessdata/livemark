@@ -13,9 +13,15 @@
   display: none;
 }
 #livemark-scroll .ue-scroll {
-    right: auto;
-    left: 25px;
-    bottom: 25px;
+  bottom: 25px;
+}
+#livemark-left #livemark-scroll .ue-scroll {
+  left: 25px;
+  right: auto;
+}
+#livemark-right #livemark-scroll .ue-scroll {
+  left: auto;
+  right: 25px;
 }
 @media only screen and (min-width: 768px) {
     #livemark-scroll {
@@ -29,6 +35,9 @@
 
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
+document
+  .getElementById('livemark-{{ livemark.scroll.section or "left"}}')
+  .appendChild(document.getElementById('livemark-scroll'));
 document.addEventListener("DOMContentLoaded", function () {
   const scrollSpeed = parseInt('{{ livemark.scroll.speed or 10 }}');
   UeScroll.init({ element: ".ue-scroll", scrollSpeed });

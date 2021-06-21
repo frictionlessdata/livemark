@@ -40,6 +40,6 @@
 
 <script>
 document
-  .getElementById('livemark-left')
+  .getElementById('livemark-{{ livemark.reference.section or "left"}}')
   .appendChild(document.getElementById('livemark-reference'));
 </script>

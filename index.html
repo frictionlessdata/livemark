@@ -1383,9 +1383,9 @@ document
 
 <style>
 #livemark-status {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 8px;
+  height: 40px;
   margin-bottom: 16px;
+  border-bottom: 1px solid #eaecef;
 }
 
 #livemark-status iframe {
@@ -1398,7 +1398,7 @@ document
 
 <script>
 document
-  .getElementById('livemark-left')
+  .getElementById('livemark-right')
   .appendChild(document.getElementById('livemark-status'));
 </script>
 <!-- HTML -->
@@ -1451,7 +1451,7 @@ document
 
 <script>
 document
-  .getElementById('livemark-left')
+  .getElementById('livemark-right')
   .appendChild(document.getElementById('livemark-reference'));
 </script>
 <!-- HTML -->
@@ -1474,7 +1474,7 @@ document
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
 document
-  .getElementById('livemark-right')
+  .getElementById('livemark-left')
   .appendChild(document.getElementById('livemark-navigation'));
 document.addEventListener("DOMContentLoaded", function () {
   function makeIds() {
@@ -1528,9 +1528,15 @@ document.addEventListener("DOMContentLoaded", function () {
   display: none;
 }
 #livemark-scroll .ue-scroll {
-    right: auto;
-    left: 25px;
-    bottom: 25px;
+  bottom: 25px;
+}
+#livemark-left #livemark-scroll .ue-scroll {
+  left: 25px;
+  right: auto;
+}
+#livemark-right #livemark-scroll .ue-scroll {
+  left: auto;
+  right: 25px;
 }
 @media only screen and (min-width: 768px) {
     #livemark-scroll {
@@ -1544,6 +1550,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
+document
+  .getElementById('livemark-left')
+  .appendChild(document.getElementById('livemark-scroll'));
 document.addEventListener("DOMContentLoaded", function () {
   const scrollSpeed = parseInt('10');
   UeScroll.init({ element: ".ue-scroll", scrollSpeed });

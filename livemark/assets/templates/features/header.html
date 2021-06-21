@@ -32,6 +32,6 @@
 
 <script>
 document
-  .getElementById('livemark-left')
+  .getElementById('livemark-{{ livemark.header.section or "left"}}')
   .appendChild(document.getElementById('livemark-header'));
 </script>

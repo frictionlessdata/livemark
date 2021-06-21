@@ -1,16 +1,21 @@
 ---
 title: Livemark
 header:
+  section: left
   title: Livemark
 status:
+  section: right
   type: star
   user: frictionlessdata
   repo: livemark
 navigation:
+  section: left
   selector: h2, h3
 scroll:
+  section: left
   speed: 10
 reference:
+  section: right
   links:
     - name: Website
       path: https://frictionlessdata.io/
