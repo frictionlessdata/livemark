@@ -14,8 +14,8 @@
 
 <style>
 #livemark-status {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 8px;
+  height: 45px;
+  margin-top: -5px;
   margin-bottom: 16px;
 }
 
@@ -29,6 +29,6 @@
 
 <script>
 document
-  .getElementById('livemark-sidebar')
+  .getElementById('livemark-{{ livemark.status.section or "left"}}')
   .appendChild(document.getElementById('livemark-status'));
 </script>

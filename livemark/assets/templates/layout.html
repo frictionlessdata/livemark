@@ -7,12 +7,16 @@
 </head>
 <body>
 
-{% block content %}
-{% include "sections/content.html" %}
+{% block left %}
+{% include "sections/left.html" %}
 {% endblock %}
 
-{% block sidebar %}
-{% include "sections/sidebar.html" %}
+{% block main %}
+{% include "sections/main.html" %}
+{% endblock %}
+
+{% block right %}
+{% include "sections/right.html" %}
 {% endblock %}
 
 {% block header %}

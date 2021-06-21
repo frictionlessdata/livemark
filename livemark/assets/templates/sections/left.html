@@ -1,0 +1,39 @@
+<!-- HTML -->
+
+<div id="livemark-left">
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-left {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+}
+
+#livemark-left > div:not(:last-child) {
+  border-bottom: 1px solid #eaecef;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-left.with-left {
+    display: block;
+  }
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.getElementById('livemark-left').innerHTML.trim()) {
+    document.getElementById('livemark-main').classList.add('with-left');
+    document.getElementById('livemark-left').classList.add('with-left');
+  }
+});
+</script>
