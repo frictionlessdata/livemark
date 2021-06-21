@@ -301,6 +301,8 @@ This article uses a custom layout
     margin-left: 250px;
     border-left: dashed 1px #ccc;
   }
+}
+@media only screen and (min-width: 992px) {
   #livemark-main.with-right {
     margin-right: 250px;
     border-right: dashed 1px #ccc;
@@ -1323,7 +1325,7 @@ This article uses a custom layout
   border-bottom: 1px solid #eaecef;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   #livemark-right.with-right {
     display: block;
   }
@@ -1373,92 +1375,6 @@ document.addEventListener("DOMContentLoaded", function () {
 document
   .getElementById('livemark-left')
   .appendChild(document.getElementById('livemark-header'));
-</script>
-<!-- HTML -->
-
-<div id="livemark-status">
-  <iframe
-    src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=livemark&amp;type=star&amp;count=true&amp;size=large"
-    width="160px"
-    height="30px"
-    title="GitHub"
-  >
-  </iframe>
-</div>
-
-<!-- CSS -->
-
-<style>
-#livemark-status {
-  height: 45px;
-  margin-top: -5px;
-  margin-bottom: 16px;
-}
-
-#livemark-status iframe {
-  opacity: 0.5;
-  border: none;
-}
-</style>
-
-<!-- JS -->
-
-<script>
-document
-  .getElementById('livemark-right')
-  .appendChild(document.getElementById('livemark-status'));
-</script>
-<!-- HTML -->
-
-<div id="livemark-reference">
-  <div class="toc">
-    <ol class="toc-list">
-            <li class="toc-item">
-        <a class="toc-link" href="https://frictionlessdata.io/" target="_blank">
-          Website
-        </a>
-      </li>
-            <li class="toc-item">
-        <a class="toc-link" href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
-          Discord
-        </a>
-      </li>
-            <li class="toc-item">
-        <a class="toc-link" href="https://twitter.com/frictionlessd8a" target="_blank">
-          Twitter
-        </a>
-      </li>
-          </ol>
-  </div>
-</div>
-
-<!-- CSS -->
-
-<style>
-#livemark-reference {
-  padding-bottom: 10px;
-  margin-bottom: 16px;
-}
-
-#livemark-reference .toc {
-  opacity: 0.5;
-}
-
-#livemark-reference a[target="_blank"]:hover {
-  color: orange;
-}
-
-#livemark-reference a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
-}
-</style>
-
-<!-- JS -->
-
-<script>
-document
-  .getElementById('livemark-right')
-  .appendChild(document.getElementById('livemark-reference'));
 </script>
 <!-- HTML -->
 
@@ -1563,6 +1479,115 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollSpeed = parseInt('10');
   UeScroll.init({ element: ".ue-scroll", scrollSpeed });
 });
+</script>
+<!-- HTML -->
+
+<div id="livemark-status">
+  <iframe
+    src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=livemark&amp;type=star&amp;count=true&amp;size=large"
+    width="160px"
+    height="30px"
+    title="GitHub"
+  >
+  </iframe>
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-status {
+  height: 45px;
+  margin-top: -5px;
+  margin-bottom: 16px;
+}
+
+#livemark-status iframe {
+  opacity: 0.5;
+  border: none;
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-right')
+  .appendChild(document.getElementById('livemark-status'));
+</script>
+<!-- HTML -->
+
+<div id="livemark-about">
+  Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-about {
+  opacity: 0.5;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-right')
+  .appendChild(document.getElementById('livemark-about'));
+</script>
+<!-- HTML -->
+
+<div id="livemark-reference">
+  <div class="toc">
+    <ol class="toc-list">
+            <li class="toc-item">
+        <a class="toc-link" href="https://frictionlessdata.io/" target="_blank">
+          Website
+        </a>
+      </li>
+            <li class="toc-item">
+        <a class="toc-link" href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
+          Discord
+        </a>
+      </li>
+            <li class="toc-item">
+        <a class="toc-link" href="https://twitter.com/frictionlessd8a" target="_blank">
+          Twitter
+        </a>
+      </li>
+          </ol>
+  </div>
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-reference {
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+#livemark-reference .toc {
+  opacity: 0.5;
+}
+
+#livemark-reference a[target="_blank"]:hover {
+  color: orange;
+}
+
+#livemark-reference a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-right')
+  .appendChild(document.getElementById('livemark-reference'));
 </script>
 <!-- HTML -->
 

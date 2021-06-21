@@ -1,0 +1,23 @@
+<!-- HTML -->
+
+<div id="livemark-about">
+  {{ livemark.about.description }}
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-about {
+  opacity: 0.5;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+</style>
+
+<!-- JS -->
+
+<script>
+document
+  .getElementById('livemark-{{ livemark.about.section or "right"}}')
+  .appendChild(document.getElementById('livemark-about'));
+</script>

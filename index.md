@@ -1,21 +1,18 @@
 ---
 title: Livemark
 header:
-  section: left
   title: Livemark
+navigation:
+  selector: h2, h3
+scroll:
+  speed: 10
 status:
-  section: right
   type: star
   user: frictionlessdata
   repo: livemark
-navigation:
-  section: left
-  selector: h2, h3
-scroll:
-  section: left
-  speed: 10
+about:
+  description: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
 reference:
-  section: right
   links:
     - name: Website
       path: https://frictionlessdata.io/

@@ -25,18 +25,6 @@
 {% endif %}
 {% endblock %}
 
-{% block status %}
-{% if livemark.status %}
-{% include 'features/status.html' %}
-{% endif %}
-{% endblock %}
-
-{% block reference %}
-{% if livemark.reference %}
-{% include 'features/reference.html' %}
-{% endif %}
-{% endblock %}
-
 {% block navigation %}
 {% if livemark.navigation %}
 {% include 'features/navigation.html' %}
@@ -46,6 +34,24 @@
 {% block scroll %}
 {% if livemark.scroll %}
 {% include "features/scroll.html" %}
+{% endif %}
+{% endblock %}
+
+{% block status %}
+{% if livemark.status %}
+{% include 'features/status.html' %}
+{% endif %}
+{% endblock %}
+
+{% block about %}
+{% if livemark.about %}
+{% include 'features/about.html' %}
+{% endif %}
+{% endblock %}
+
+{% block reference %}
+{% if livemark.reference %}
+{% include 'features/reference.html' %}
 {% endif %}
 {% endblock %}
 
