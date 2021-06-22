@@ -37,12 +37,6 @@
 {% endif %}
 {% endblock %}
 
-{% block time %}
-{% if livemark.time %}
-{% include "features/time.html" %}
-{% endif %}
-{% endblock %}
-
 {% block status %}
 {% if livemark.status %}
 {% include 'features/status.html' %}
@@ -58,6 +52,12 @@
 {% block reference %}
 {% if livemark.reference %}
 {% include 'features/reference.html' %}
+{% endif %}
+{% endblock %}
+
+{% block time %}
+{% if livemark.time %}
+{% include "features/time.html" %}
 {% endif %}
 {% endblock %}
 

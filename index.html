@@ -1532,41 +1532,6 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- HTML -->
 
-<div id="livemark-time">
-  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2020-05-01 16:50:33)
-</div>
-
-<!-- CSS -->
-
-<style>
-#livemark-time {
-  text-align: right;
-  font-size: 14px;
-  float: right;
-  margin-top: 10px;
-  color: #aaa;
-}
-#livemark-time a {
-  color: #aaa;
-}
-#livemark-time a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
-}
-</style>
-
-<!-- JS -->
-
-<script>
-
-// Mount
-document
-  .getElementById('livemark-main')
-  .prepend(document.getElementById('livemark-time'));
-
-</script>
-<!-- HTML -->
-
 <div id="livemark-status">
   <iframe
     src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=livemark&amp;type=star&amp;count=true&amp;size=large"
@@ -1584,10 +1549,10 @@ document
   height: 45px;
   margin-top: -5px;
   margin-bottom: 16px;
+  opacity: 0.5;
 }
 
 #livemark-status iframe {
-  opacity: 0.5;
   border: none;
 }
 </style>
@@ -1686,6 +1651,45 @@ document
 document
   .getElementById('livemark-right')
   .appendChild(document.getElementById('livemark-reference'));
+
+</script>
+<!-- HTML -->
+
+<div id="livemark-time">
+  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  (2021-06-22 16:49:48)
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-time a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+#livemark-main #livemark-time a {
+  color: inherit;
+}
+#livemark-main #livemark-time {
+  text-align: right;
+  font-size: 14px;
+  float: right;
+  margin-top: 10px;
+  opacity: 0.4;
+}
+#livemark-right #livemark-time {
+  opacity: 0.5;
+  font-size: 16px;
+}
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-main')
+  ['prepend'](document.getElementById('livemark-time'));
 
 </script>
 <!-- HTML -->

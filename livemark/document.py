@@ -2,6 +2,7 @@ import yaml
 import marko
 import subprocess
 import frictionless
+from datetime import datetime
 from marko.ext.gfm import GFM
 from jinja2 import Environment, FileSystemLoader
 from .renderer import LivemarkExtension, LivemarkRendererMixin
@@ -35,6 +36,8 @@ class Document:
             metadata = yaml.safe_load(frontmatter)
             # TODO: find a better place for it
             metadata.setdefault("title", "Livemark")
+            metadata.setdefault("time", {})
+            metadata["time"]["current"] = datetime.now()
             # TODO: set these in the renderer
             metadata["markup"] = True
             # TODO: it's a hack as marko doesn't have context
