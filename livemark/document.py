@@ -1,3 +1,4 @@
+import os
 import yaml
 import marko
 import subprocess
@@ -37,7 +38,9 @@ class Document:
             # TODO: find a better place for it
             metadata.setdefault("title", "Livemark")
             metadata.setdefault("time", {})
-            metadata["time"]["current"] = datetime.now()
+            metadata["time"]["current"] = datetime.fromtimestamp(
+                os.path.getmtime(self.__path)
+            )
             # TODO: set these in the renderer
             metadata["markup"] = True
             # TODO: it's a hack as marko doesn't have context

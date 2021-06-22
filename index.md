@@ -16,7 +16,7 @@ about:
   description: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
 reference:
   links:
-    - name: Website
+    - name: Mainsite
       path: https://frictionlessdata.io/
     - name: Discord
       path: https://discord.com/channels/695635777199145130/695635777199145133
