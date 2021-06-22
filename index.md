@@ -6,24 +6,14 @@ navigation:
   selector: h2, h3
 scroll:
   speed: 10
-time:
-  section: main
 status:
   type: star
   user: frictionlessdata
   repo: livemark
 about:
   description: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
-reference:
-  links:
-    - name: Mainsite
-      path: https://frictionlessdata.io/
-    - name: Discord
-      path: https://discord.com/channels/695635777199145130/695635777199145133
-    - name: Twitter
-      path: https://twitter.com/frictionlessd8a
-    - name: Editor
-      path: https://github.com/frictionlessdata/livemark/edit/main/index.md
+time:
+  section: main
 ---
 
 # Livemark
