@@ -1549,11 +1549,11 @@ document.addEventListener("DOMContentLoaded", function () {
   height: 45px;
   margin-top: -5px;
   margin-bottom: 16px;
-  opacity: 0.5;
 }
 
 #livemark-status iframe {
   border: none;
+  opacity: 0.5;
 }
 </style>
 
@@ -1570,16 +1570,20 @@ document
 <!-- HTML -->
 
 <div id="livemark-about">
-  Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+  <div>
+    Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+  </div>
 </div>
 
 <!-- CSS -->
 
 <style>
 #livemark-about {
-  opacity: 0.5;
   padding-bottom: 16px;
   margin-bottom: 16px;
+}
+#livemark-about > div {
+  opacity: 0.5;
 }
 </style>
 
@@ -1657,7 +1661,7 @@ document
 
 <div id="livemark-time">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-06-22 16:49:48)
+  (2021-06-22 16:57:38)
 </div>
 
 <!-- CSS -->
@@ -1666,7 +1670,7 @@ document
 #livemark-time a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
-#livemark-main #livemark-time a {
+#livemark-time a {
   color: inherit;
 }
 #livemark-main #livemark-time {
