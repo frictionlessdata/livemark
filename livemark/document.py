@@ -3,6 +3,7 @@ import yaml
 import marko
 import deepmerge
 import subprocess
+import jsonschema
 import frictionless
 from datetime import datetime
 from marko.ext.gfm import GFM
@@ -51,6 +52,9 @@ class Document:
             metadata["markup"] = True
             # TODO: it's a hack as marko doesn't have context
             LivemarkRendererMixin.metadata = metadata
+        # TODO: finish profile
+        # TODO: provide profiles in the features?
+        jsonschema.validate(metadata, config.CONFIG_PROFILE)
 
         # Prepare document
         for code in metadata.get("prepare", []):

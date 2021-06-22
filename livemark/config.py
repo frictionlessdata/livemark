@@ -1,4 +1,5 @@
 import os
+import json
 
 
 # Helpers
@@ -19,3 +20,4 @@ TEMPLATES = os.path.join(os.path.dirname(__file__), "assets", "templates")
 LAYOUT = read_asset("templates", "layout.html")
 TABLE = read_asset("templates", "features", "table.html")
 CHART = read_asset("templates", "features", "chart.html")
+CONFIG_PROFILE = json.loads(read_asset("profiles", "config.json"))
