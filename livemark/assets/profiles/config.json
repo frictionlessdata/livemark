@@ -1,0 +1,34 @@
+{
+  "title": "Livemark Config",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://github.com/frictionlessdata/livemark/tree/master/livemark/assets/profiles/config.json",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Title",
+      "description": "Document title"
+    },
+    "header": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "description": "Header title"
+        }
+      }
+    },
+    "navigation": {
+      "type": "object",
+      "properties": {
+        "selector": {
+          "type": "string",
+          "title": "Selector",
+          "description": "CSS headings selector"
+        }
+      }
+    }
+  }
+}

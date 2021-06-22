@@ -37,6 +37,7 @@ INSTALL_REQUIRES = [
     "pyyaml>=5.3",
     "jinja2>=3.0",
     "deepmerge>=0.3",
+    "jsonschema>=2.5",
     "typer[all]>=0.3",
     "livereload>=2.6",
     "beautifulsoup4>=4.9",
