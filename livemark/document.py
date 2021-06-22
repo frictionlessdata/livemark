@@ -1,6 +1,7 @@
 import os
 import yaml
 import marko
+import deepmerge
 import subprocess
 import frictionless
 from datetime import datetime
@@ -32,9 +33,14 @@ class Document:
 
         # Parse document
         metadata = {}
+        if os.path.isfile("livemark.yaml"):
+            with open("livemark.yaml") as file:
+                metadata = deepmerge.always_merger.merge(metadata, yaml.safe_load(file))
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
-            metadata = yaml.safe_load(frontmatter)
+            metadata = deepmerge.always_merger.merge(
+                metadata, yaml.safe_load(frontmatter)
+            )
             # TODO: find a better place for it
             metadata.setdefault("title", "Livemark")
             metadata.setdefault("time", {})
