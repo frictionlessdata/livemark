@@ -38,4 +38,4 @@ $ livemark start
 ## Documentation
 
 Please visit our documentation portal:
-- https://frictionlessdata.github.io/livemark/
+- https://livemark.frictionlessdata.io
