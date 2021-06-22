@@ -16,11 +16,14 @@
 
 {% if table %}
 <script>
+
+// Load
 document.addEventListener("DOMContentLoaded", function(){
   const spec = JSON.parse('{{ table.spec }}')
   const elem = document.getElementById('{{ table.elem }}')
   new Handsontable(elem, spec)
 });
+
 </script>
 {% else %}
 <script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
