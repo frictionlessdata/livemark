@@ -49,8 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- HTML -->
 
 <div id="livemark-main">
-  <div class="container">
-    <h1>Livemark</h1>
+  <h1>Livemark</h1>
 <p><a href="https://github.com/frictionlessdata/livemark/actions"><img src="https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main" alt="Build" /></a>
 <a href="https://codecov.io/gh/frictionlessdata/livemark"><img src="https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main" alt="Coverage" /></a>
 <a href="https://pypi.python.org/pypi/livemark"><img src="https://img.shields.io/pypi/v/livemark.svg" alt="Registry" /></a>
@@ -295,13 +294,18 @@ This article uses a custom layout
 </blockquote>
 <p>Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to &quot;Settings-&gt;Pages&quot; in your repository and choose your main branch in the source menu:</p>
 <p><img src="data/github.png" alt="Github" /></p>
-  </div>
 </div>
 
 <!-- CSS -->
 
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
+#livemark-main {
+  padding: 24px 16px;
+}
+#livemark-main h1 {
+  margin-top: 0 !important;
+}
 @media only screen and (min-width: 768px) {
   #livemark-main.with-left {
     margin-left: 250px;
@@ -1412,7 +1416,7 @@ document
 #livemark-main h5:hover a,
 #livemark-main h6:hover a {
   display: inline;
-  margin-left: 7px;
+  margin-left: 8px;
   color: #aaa;
   font-weight: normal;
   text-decoration: none;
@@ -1548,8 +1552,8 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 #livemark-status iframe {
-  opacity: 0.5;
   border: none;
+  opacity: 0.5;
 }
 </style>
 
@@ -1566,16 +1570,20 @@ document
 <!-- HTML -->
 
 <div id="livemark-about">
-  Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+  <div>
+    Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+  </div>
 </div>
 
 <!-- CSS -->
 
 <style>
 #livemark-about {
-  opacity: 0.5;
   padding-bottom: 16px;
   margin-bottom: 16px;
+}
+#livemark-about > div {
+  opacity: 0.5;
 }
 </style>
 
@@ -1647,6 +1655,45 @@ document
 document
   .getElementById('livemark-right')
   .appendChild(document.getElementById('livemark-reference'));
+
+</script>
+<!-- HTML -->
+
+<div id="livemark-time">
+  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  (2021-06-22 16:57:38)
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-time a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+#livemark-time a {
+  color: inherit;
+}
+#livemark-main #livemark-time {
+  text-align: right;
+  font-size: 14px;
+  float: right;
+  margin-top: 10px;
+  opacity: 0.4;
+}
+#livemark-right #livemark-time {
+  opacity: 0.5;
+  font-size: 16px;
+}
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-main')
+  ['prepend'](document.getElementById('livemark-time'));
 
 </script>
 <!-- HTML -->

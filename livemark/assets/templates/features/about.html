@@ -1,16 +1,20 @@
 <!-- HTML -->
 
 <div id="livemark-about">
-  {{ livemark.about.description }}
+  <div>
+    {{ livemark.about.description }}
+  </div>
 </div>
 
 <!-- CSS -->
 
 <style>
 #livemark-about {
-  opacity: 0.5;
   padding-bottom: 16px;
   margin-bottom: 16px;
+}
+#livemark-about > div {
+  opacity: 0.5;
 }
 </style>
 

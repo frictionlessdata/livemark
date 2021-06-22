@@ -1,0 +1,39 @@
+<!-- HTML -->
+
+<div id="livemark-time">
+  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  ({{ livemark.time.current.strftime('%Y-%m-%d %H:%M:%S')}})
+</div>
+
+<!-- CSS -->
+
+<style>
+#livemark-time a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+#livemark-time a {
+  color: inherit;
+}
+#livemark-main #livemark-time {
+  text-align: right;
+  font-size: 14px;
+  float: right;
+  margin-top: 10px;
+  opacity: 0.4;
+}
+#livemark-right #livemark-time {
+  opacity: 0.5;
+  font-size: 16px;
+}
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-{{ livemark.time.section or "main"}}')
+  ['{{ "prepend" if livemark.time.section == "main" else "appendChild" }}'](document.getElementById('livemark-time'));
+
+</script>

@@ -6,6 +6,8 @@ navigation:
   selector: h2, h3
 scroll:
   speed: 10
+time:
+  section: main
 status:
   type: star
   user: frictionlessdata
