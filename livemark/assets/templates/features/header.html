@@ -17,6 +17,7 @@
 <!-- CSS -->
 
 <style>
+
 #livemark-header {
   padding-bottom: 10px;
   margin-bottom: 16px;
@@ -24,7 +25,47 @@
 
 #livemark-header .toc {
   opacity: 0.5;
+	overflow-y: auto;
 }
+
+#livemark-header .toc>.toc-list {
+	overflow: hidden;
+	position: relative;
+}
+
+#livemark-header .toc>.toc-list li {
+	list-style: none;
+}
+
+#livemark-header .toc-list {
+	margin: 0;
+	padding-left: 10px;
+}
+
+#livemark-header a.toc-link {
+	color: currentColor;
+	height: 100%;
+}
+
+#livemark-header .is-active-link {
+	font-weight: 700;
+}
+
+#livemark-header .toc-link::before {
+	background-color: #EEE;
+	content: ' ';
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	margin-top: -1px;
+	position: absolute;
+	width: 2px;
+}
+
+#livemark-header .is-active-link::before {
+	background-color: #54BC4B;
+}
+
 </style>
 
 <!-- JS -->

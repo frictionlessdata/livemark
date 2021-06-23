@@ -1422,6 +1422,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- CSS -->
 
 <style>
+
 #livemark-header {
   padding-bottom: 10px;
   margin-bottom: 16px;
@@ -1429,7 +1430,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 #livemark-header .toc {
   opacity: 0.5;
+	overflow-y: auto;
 }
+
+#livemark-header .toc>.toc-list {
+	overflow: hidden;
+	position: relative;
+}
+
+#livemark-header .toc>.toc-list li {
+	list-style: none;
+}
+
+#livemark-header .toc-list {
+	margin: 0;
+	padding-left: 10px;
+}
+
+#livemark-header a.toc-link {
+	color: currentColor;
+	height: 100%;
+}
+
+#livemark-header .is-active-link {
+	font-weight: 700;
+}
+
+#livemark-header .toc-link::before {
+	background-color: #EEE;
+	content: ' ';
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	margin-top: -1px;
+	position: absolute;
+	width: 2px;
+}
+
+#livemark-header .is-active-link::before {
+	background-color: #54BC4B;
+}
+
 </style>
 
 <!-- JS -->
@@ -1452,9 +1493,11 @@ document
 
 <link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <style>
+
 #livemark-navigation .toc {
   opacity: 0.5;
 }
+
 #livemark-main h1 a,
 #livemark-main h2 a,
 #livemark-main h3 a,
@@ -1463,6 +1506,7 @@ document
 #livemark-main h6 a {
   display: none;
 }
+
 #livemark-main h2:hover a,
 #livemark-main h3:hover a,
 #livemark-main h4:hover a,
@@ -1474,6 +1518,7 @@ document
   font-weight: normal;
   text-decoration: none;
 }
+
 </style>
 
 <!-- JS -->
@@ -1544,26 +1589,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <style>
+
 #livemark-scroll {
   display: none;
 }
+
 #livemark-scroll .ue-scroll {
   bottom: 25px;
 }
+
 #livemark-scroll.left .ue-scroll {
   left: 25px;
   right: auto;
 }
+
 #livemark-scroll.right .ue-scroll {
   left: auto;
   right: 25px;
 }
+
 @media only screen and (min-width: 768px) {
     #livemark-scroll {
         display: block;
         opacity: 0.5;
     }
 }
+
 </style>
 
 <!-- JS -->
@@ -1598,6 +1649,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- CSS -->
 
 <style>
+
 #livemark-status {
   height: 45px;
   margin-top: -5px;
@@ -1608,6 +1660,7 @@ document.addEventListener("DOMContentLoaded", function () {
   border: none;
   opacity: 0.5;
 }
+
 </style>
 
 <!-- JS -->
@@ -1631,13 +1684,16 @@ document
 <!-- CSS -->
 
 <style>
+
 #livemark-about {
   padding-bottom: 16px;
   margin-bottom: 16px;
 }
+
 #livemark-about > div {
   opacity: 0.5;
 }
+
 </style>
 
 <!-- JS -->
@@ -1682,6 +1738,7 @@ document
 <!-- CSS -->
 
 <style>
+
 #livemark-reference {
   padding-bottom: 10px;
   margin-bottom: 16px;
@@ -1689,6 +1746,45 @@ document
 
 #livemark-reference .toc {
   opacity: 0.5;
+	overflow-y: auto;
+}
+
+#livemark-reference .toc>.toc-list {
+	overflow: hidden;
+	position: relative;
+}
+
+#livemark-reference .toc>.toc-list li {
+	list-style: none;
+}
+
+#livemark-reference .toc-list {
+	margin: 0;
+	padding-left: 10px;
+}
+
+#livemark-reference a.toc-link {
+	color: currentColor;
+	height: 100%;
+}
+
+#livemark-reference .is-active-link {
+	font-weight: 700;
+}
+
+#livemark-reference .toc-link::before {
+	background-color: #EEE;
+	content: ' ';
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	margin-top: -1px;
+	position: absolute;
+	width: 2px;
+}
+
+#livemark-reference .is-active-link::before {
+	background-color: #54BC4B;
 }
 
 #livemark-reference a[target="_blank"]:hover {
@@ -1698,6 +1794,7 @@ document
 #livemark-reference a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
+
 </style>
 
 <!-- JS -->
@@ -1714,18 +1811,21 @@ document
 
 <div id="livemark-time">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-06-23 11:28:03)
+  (2021-06-23 12:13:53)
 </div>
 
 <!-- CSS -->
 
 <style>
+
 #livemark-time a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
+
 #livemark-time a {
   color: inherit;
 }
+
 #livemark-main #livemark-time {
   text-align: right;
   font-size: 14px;
@@ -1734,15 +1834,18 @@ document
   opacity: 0.4;
   display: none;
 }
+
 @media only screen and (min-width: 576px) {
   #livemark-main #livemark-time {
     display: block;
   }
 }
+
 #livemark-right #livemark-time {
   opacity: 0.5;
   font-size: 16px;
 }
+
 </style>
 
 <!-- JS -->

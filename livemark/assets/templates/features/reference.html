@@ -17,6 +17,7 @@
 <!-- CSS -->
 
 <style>
+
 #livemark-reference {
   padding-bottom: 10px;
   margin-bottom: 16px;
@@ -24,6 +25,45 @@
 
 #livemark-reference .toc {
   opacity: 0.5;
+	overflow-y: auto;
+}
+
+#livemark-reference .toc>.toc-list {
+	overflow: hidden;
+	position: relative;
+}
+
+#livemark-reference .toc>.toc-list li {
+	list-style: none;
+}
+
+#livemark-reference .toc-list {
+	margin: 0;
+	padding-left: 10px;
+}
+
+#livemark-reference a.toc-link {
+	color: currentColor;
+	height: 100%;
+}
+
+#livemark-reference .is-active-link {
+	font-weight: 700;
+}
+
+#livemark-reference .toc-link::before {
+	background-color: #EEE;
+	content: ' ';
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	margin-top: -1px;
+	position: absolute;
+	width: 2px;
+}
+
+#livemark-reference .is-active-link::before {
+	background-color: #54BC4B;
 }
 
 #livemark-reference a[target="_blank"]:hover {
@@ -33,6 +73,7 @@
 #livemark-reference a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
+
 </style>
 
 <!-- JS -->
