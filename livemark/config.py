@@ -23,6 +23,7 @@ CHART = read_asset("templates", "features", "chart.html")
 CONFIG_PROFILE = json.loads(read_asset("profiles", "config.json"))
 FEATURES = [
     "header",
+    "pages",
     "navigation",
     "scroll",
     "status",

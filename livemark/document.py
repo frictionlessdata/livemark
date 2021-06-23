@@ -40,27 +40,29 @@ class Document:
             target = source
 
         # Parse document
-        common = {}
         metadata = Metadata()
         if os.path.isfile("livemark.yaml"):
             with open("livemark.yaml") as file:
-                common = yaml.safe_load(file)
-                metadata = deepmerge.always_merger.merge(metadata, common)
+                metadata = deepmerge.always_merger.merge(metadata, yaml.safe_load(file))
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = deepmerge.always_merger.merge(
                 metadata, yaml.safe_load(frontmatter)
             )
-            # TODO: find a better place for it
-            metadata.setdefault("title", "Livemark")
-            metadata.setdefault("time", {})
-            metadata["time"]["current"] = datetime.fromtimestamp(
-                os.path.getmtime(self.__path)
-            )
-            # TODO: set these in the renderer
-            metadata["markup"] = True
-            # TODO: it's a hack as marko doesn't have context
-            LivemarkRendererMixin.metadata = metadata
+
+        # TODO: find a better place for it
+        metadata["path"] = "/" + (
+            self.__path.replace(".md", ".html") if self.__path != "index.md" else ""
+        )
+        metadata.setdefault("title", "Livemark")
+        metadata.setdefault("time", {})
+        metadata["time"]["current"] = datetime.fromtimestamp(
+            os.path.getmtime(self.__path)
+        )
+        # TODO: set these in the renderer
+        metadata["markup"] = True
+        # TODO: it's a hack as marko doesn't have context
+        LivemarkRendererMixin.metadata = metadata
         # TODO: finish profile
         # TODO: provide profiles in the features?
         jsonschema.validate(metadata, config.CONFIG_PROFILE)
@@ -80,9 +82,6 @@ class Document:
         # TODO: move to the proper place / automate
         metadata["features"] = []
         for name in metadata:
-            if name in config.FEATURES and name not in common:
-                metadata["features"].append(name)
-        for name in common:
             if name in config.FEATURES:
                 metadata["features"].append(name)
 

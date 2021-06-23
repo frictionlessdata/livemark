@@ -1,3 +1,26 @@
+title: Livemark
+header:
+  title: Livemark
+pages:
+  links:
+    - name: Introduction
+      path: /
+    - name: Getting Started
+      path: /docs/getting-started.html
+    - name: Configuration
+      path: /docs/configuration.html
+navigation:
+  selector: h2, h3
+scroll:
+  speed: 10
+time:
+  format: '%Y-%m-%d %H:%M:%S'
+status:
+  type: star
+  user: frictionlessdata
+  repo: livemark
+about:
+  description: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
 reference:
   links:
     - name: Frictionless
