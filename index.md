@@ -56,7 +56,6 @@ Both commands assume that an `index.md` file is present in the same folder the c
 
 ```bash
 $ livemark build path/to/your/file.md
-
 $ livemark start path/to/your/file.md
 ```
 

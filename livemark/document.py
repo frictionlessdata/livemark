@@ -9,6 +9,7 @@ from datetime import datetime
 from marko.ext.gfm import GFM
 from jinja2 import Environment, FileSystemLoader
 from .renderer import LivemarkExtension, LivemarkRendererMixin
+from .metadata import Metadata
 from . import config
 
 
@@ -33,7 +34,7 @@ class Document:
             target = source
 
         # Parse document
-        metadata = {}
+        metadata = Metadata()
         if os.path.isfile("livemark.yaml"):
             with open("livemark.yaml") as file:
                 metadata = deepmerge.always_merger.merge(metadata, yaml.safe_load(file))
@@ -66,6 +67,7 @@ class Document:
 
         # Convert document
         target = markdown.convert(target).strip()
+        metadata["content"] = target
 
         # Postprocess document
         layout = config.LAYOUT
@@ -73,9 +75,7 @@ class Document:
             with open(metadata["layout"]) as file:
                 layout = file.read()
         template = templating.from_string(layout)
-        livemark = metadata.copy()
-        livemark["document"] = target
-        target = template.render(livemark=livemark)
+        target = template.render(livemark=metadata)
 
         # Cleanup document
         for code in metadata.get("cleanup", []):

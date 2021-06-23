@@ -65,14 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
 </code></pre>
 <p>After installation, you can start writing your document (eg an <code>index.md</code> file) using the extended Markdown syntax described in the next sections.</p>
 <p>You can then use the command-line interface to build the output HTML file:</p>
-<pre><code class="language-bash"># Build a single document (defaults to index.md in the same folder, otherwise provide a path)
-$ livemark build 
+<pre><code class="language-bash"># Build a single document
+$ livemark build
 </code></pre>
-<p>Or start a liverload server to automatically reload the output page as you modify the input Markdown document:</p>
-<pre><code># Start a livereload server
+<p>Or start a livereload server to automatically reload the output page as you modify the input Markdown document:</p>
+<pre><code class="language-bash"># Start a livereload server
 $ livemark start
 </code></pre>
-<p>When you build/start Livemark it takes your <code>index.md</code> (or a provided file) and generates a corresponding HTML file. It extends markdown as explained in the sections below.</p>
+<p>Both commands assume that an <code>index.md</code> file is present in the same folder the command is being run on. If that's not the case you can pass the path to the input Markdown file as the first parameter:</p>
+<pre><code class="language-bash">$ livemark build path/to/your/file.md
+$ livemark start path/to/your/file.md
+</code></pre>
 <h2>Logic</h2>
 <blockquote>
 <p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
@@ -1663,7 +1666,7 @@ document
 
 <div id="livemark-time">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-06-22 22:35:37)
+  (2021-06-23 11:28:03)
 </div>
 
 <!-- CSS -->

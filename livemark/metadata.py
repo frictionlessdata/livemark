@@ -1,0 +1,2 @@
+class Metadata(dict):
+    pass
