@@ -60,14 +60,16 @@ document.addEventListener("DOMContentLoaded", function () {
 </blockquote>
 <p>Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.</p>
 <h2>Install</h2>
-<p>Livemark is a Python library and it can be installed with PIP:</p>
+<p>Livemark is a Python library and it can be installed with pip (or <a href="https://pypa.github.io/pipx/">pipx</a>):</p>
 <pre><code class="language-bash">$ pip install livemark
 </code></pre>
-<p>After installation, you can use a command-line interface:</p>
-<pre><code class="language-bash"># Build a single document
-$ livemark build &#x27;&lt;path=index.md&gt;&#x27;
-
-# Start a livereload server
+<p>After installation, you can start writing your document (eg an <code>index.md</code> file) using the extended Markdown syntax described in the next sections.</p>
+<p>You can then use the command-line interface to build the output HTML file:</p>
+<pre><code class="language-bash"># Build a single document (defaults to index.md in the same folder, otherwise provide a path)
+$ livemark build 
+</code></pre>
+<p>Or start a liverload server to automatically reload the output page as you modify the input Markdown document:</p>
+<pre><code># Start a livereload server
 $ livemark start
 </code></pre>
 <p>When you build/start Livemark it takes your <code>index.md</code> (or a provided file) and generates a corresponding HTML file. It extends markdown as explained in the sections below.</p>
@@ -1661,7 +1663,7 @@ document
 
 <div id="livemark-time">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-06-22 18:34:42)
+  (2021-06-22 22:35:37)
 </div>
 
 <!-- CSS -->
