@@ -1,4 +1,5 @@
 ---
+
 title: Livemark
 header:
   title: Livemark
@@ -13,7 +14,8 @@ status:
 about:
   description: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
 time:
-  section: main
+  format: '%Y-%m-%d %H:%M:%S'
+
 ---
 
 # Livemark

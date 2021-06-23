@@ -2,7 +2,7 @@
 
 <div id="livemark-time">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  ({{ livemark.time.current.strftime('%Y-%m-%d %H:%M:%S')}})
+  ({{ livemark.time.current.strftime(livemark.time.format)}})
 </div>
 
 <!-- CSS -->
@@ -46,6 +46,6 @@
 // Mount
 document
   .getElementById('livemark-{{ livemark.time.section or "main"}}')
-  ['{{ "prepend" if livemark.time.section == "main" else "appendChild" }}'](document.getElementById('livemark-time'));
+  ['{{ "prepend" if livemark.time.section != "main" else "appendChild" }}'](document.getElementById('livemark-time'));
 
 </script>
