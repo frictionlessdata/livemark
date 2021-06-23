@@ -1,0 +1,83 @@
+<!-- HTML -->
+
+<div id="livemark-pages">
+  <div class="toc">
+    <ol class="toc-list">
+      {% for link in livemark.pages.links %}
+      <li class="toc-item">
+        <a class="toc-link {% if livemark.path == link.path %}is-active-link{% endif %}" href="{{ link.path }}">
+          {{ link.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
+
+<!-- CSS -->
+
+<style>
+
+#livemark-pages .toc {
+  opacity: 0.5;
+	overflow-y: auto;
+}
+
+#livemark-pages .toc>.toc-list {
+	overflow: hidden;
+	position: relative;
+}
+
+#livemark-pages .toc>.toc-list li {
+	list-style: none;
+}
+
+#livemark-pages .toc-list {
+	margin: 0;
+	padding-left: 10px;
+}
+
+#livemark-pages a.toc-link {
+	color: currentColor;
+	height: 100%;
+}
+
+#livemark-pages .is-active-link {
+	font-weight: 700;
+}
+
+#livemark-pages .toc-link::before {
+	background-color: #EEE;
+	content: ' ';
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	margin-top: -1px;
+	position: absolute;
+	width: 2px;
+}
+
+#livemark-pages .is-active-link::before {
+	background-color: #54BC4B;
+}
+
+#livemark-pages a[target="_blank"]:hover {
+  color: orange;
+}
+
+#livemark-pages a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-{{ livemark.pages.section or "left"}}')
+  .appendChild(document.getElementById('livemark-pages'));
+
+</script>
