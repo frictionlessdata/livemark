@@ -28,6 +28,12 @@ class Document:
             trim_blocks=True,
         )
 
+        # Create document
+        if self.__path == "index.md":
+            if not os.path.exists(self.__path):
+                with open(self.__path, "w") as file:
+                    pass
+
         # Source document
         with open(self.__path) as file:
             source = file.read()
