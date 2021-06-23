@@ -23,67 +23,14 @@
 {% include "sections/right.html" %}
 {% endblock %}
 
-{% block header %}
-{% if livemark.header %}
-{% include 'features/header.html' %}
+{% for feature in livemark.features %}
+{% if livemark[feature] %}
+{% include 'features/' + feature + '.html' %}
 {% endif %}
-{% endblock %}
-
-{% block navigation %}
-{% if livemark.navigation %}
-{% include 'features/navigation.html' %}
-{% endif %}
-{% endblock %}
-
-{% block scroll %}
-{% if livemark.scroll %}
-{% include "features/scroll.html" %}
-{% endif %}
-{% endblock %}
-
-{% block status %}
-{% if livemark.status %}
-{% include 'features/status.html' %}
-{% endif %}
-{% endblock %}
-
-{% block about %}
-{% if livemark.about %}
-{% include 'features/about.html' %}
-{% endif %}
-{% endblock %}
-
-{% block reference %}
-{% if livemark.reference %}
-{% include 'features/reference.html' %}
-{% endif %}
-{% endblock %}
-
-{% block time %}
-{% if livemark.time %}
-{% include "features/time.html" %}
-{% endif %}
-{% endblock %}
-
-{% block table %}
-{% if livemark.table %}
-{% include "features/table.html" %}
-{% endif %}
-{% endblock %}
-
-{% block chart %}
-{% if livemark.chart %}
-{% include "features/chart.html" %}
-{% endif %}
-{% endblock %}
-
-{% block markup %}
-{% if livemark.markup %}
-{% include "features/markup.html" %}
-{% endif %}
-{% endblock %}
+{% endfor %}
 
 {% block user %}
+{% include "sections/user.html" %}
 {% endblock %}
 
 </body>

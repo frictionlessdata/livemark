@@ -34,10 +34,12 @@ class Document:
             target = source
 
         # Parse document
+        common = {}
         metadata = Metadata()
         if os.path.isfile("livemark.yaml"):
             with open("livemark.yaml") as file:
-                metadata = deepmerge.always_merger.merge(metadata, yaml.safe_load(file))
+                common = yaml.safe_load(file)
+                metadata = deepmerge.always_merger.merge(metadata, common)
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = deepmerge.always_merger.merge(
@@ -68,6 +70,15 @@ class Document:
         # Convert document
         target = markdown.convert(target).strip()
         metadata["content"] = target
+
+        # TODO: move to the proper place / automate
+        metadata["features"] = []
+        for name in metadata:
+            if name in config.FEATURES and name not in common:
+                metadata["features"].append(name)
+        for name in common:
+            if name in config.FEATURES:
+                metadata["features"].append(name)
 
         # Postprocess document
         layout = config.LAYOUT

@@ -1481,8 +1481,7 @@ document
   .getElementById('livemark-left')
   .appendChild(document.getElementById('livemark-header'));
 
-</script>
-<!-- HTML -->
+</script><!-- HTML -->
 
 <div id="livemark-navigation">
   <div class="js-toc toc"></div>
@@ -1576,8 +1575,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-</script>
-<!-- HTML -->
+</script><!-- HTML -->
 
 <div id="livemark-scroll">
   <div class="ue-scroll btn-white arrow-black circle shadow">
@@ -1632,8 +1630,7 @@ document.addEventListener("DOMContentLoaded", function () {
   UeScroll.init({ element: ".ue-scroll", scrollSpeed });
 });
 
-</script>
-<!-- HTML -->
+</script><!-- HTML -->
 
 <div id="livemark-status">
   <iframe
@@ -1670,8 +1667,7 @@ document
   .getElementById('livemark-right')
   .appendChild(document.getElementById('livemark-status'));
 
-</script>
-<!-- HTML -->
+</script><!-- HTML -->
 
 <div id="livemark-about">
   <div>
@@ -1698,7 +1694,76 @@ document
   .getElementById('livemark-right')
   .appendChild(document.getElementById('livemark-about'));
 
-</script>
+</script><!-- HTML -->
+
+<div id="livemark-time">
+  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  (2021-06-23 14:12:09)
+</div>
+
+<!-- CSS -->
+
+<style>
+
+#livemark-time a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+
+#livemark-time a {
+  color: inherit;
+}
+
+#livemark-main #livemark-time {
+  text-align: right;
+  font-size: 14px;
+  float: right;
+  margin-top: 10px;
+  opacity: 0.4;
+  display: none;
+}
+
+@media only screen and (min-width: 576px) {
+  #livemark-main #livemark-time {
+    display: block;
+  }
+}
+
+#livemark-right #livemark-time {
+  opacity: 0.5;
+  font-size: 16px;
+}
+
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-main')
+  ['prepend'](document.getElementById('livemark-time'));
+
+</script><!-- CSS -->
+
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css"><!-- HTML -->
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
+
+<!-- JS -->
+
+<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
+<!-- HTML -->
+
+
+<!-- JS -->
+
+<script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
+<script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
+<script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
 <!-- HTML -->
 
 <div id="livemark-reference">
@@ -1795,80 +1860,6 @@ document
   .appendChild(document.getElementById('livemark-reference'));
 
 </script>
-<!-- HTML -->
-
-<div id="livemark-time">
-  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-06-23 13:36:48)
-</div>
-
-<!-- CSS -->
-
-<style>
-
-#livemark-time a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
-}
-
-#livemark-time a {
-  color: inherit;
-}
-
-#livemark-main #livemark-time {
-  text-align: right;
-  font-size: 14px;
-  float: right;
-  margin-top: 10px;
-  opacity: 0.4;
-  display: none;
-}
-
-@media only screen and (min-width: 576px) {
-  #livemark-main #livemark-time {
-    display: block;
-  }
-}
-
-#livemark-right #livemark-time {
-  opacity: 0.5;
-  font-size: 16px;
-}
-
-</style>
-
-<!-- JS -->
-
-<script>
-
-// Mount
-document
-  .getElementById('livemark-main')
-  ['prepend'](document.getElementById('livemark-time'));
-
-</script>
-<!-- HTML -->
-
-
-<!-- CSS -->
-
-<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
-
-<!-- JS -->
-
-<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
-
-<!-- HTML -->
-
-
-<!-- JS -->
-
-<script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
-<script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
-<script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
-
-<!-- CSS -->
-
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
 </body>
 </html>
