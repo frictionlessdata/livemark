@@ -245,11 +245,3 @@ layout: layout.html
 
 This article uses a custom layout
 ```
-
-## Publish
-
-> https://pages.github.com/
-
-Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to "Settings->Pages" in your repository and choose your main branch in the source menu:
-
-![Github](data/github.png)
