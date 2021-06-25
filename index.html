@@ -336,19 +336,52 @@ This article uses a custom layout
 
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
+
 #livemark-main {
   padding: 24px 16px;
 }
+
 #livemark-main h1 {
   margin-top: 4px !important;
   padding-bottom: 11px !important;
 }
+
+#livemark-main h1 a,
+#livemark-main h2 a,
+#livemark-main h3 a,
+#livemark-main h4 a,
+#livemark-main h5 a,
+#livemark-main h6 a {
+  display: none;
+}
+
+#livemark-main h2:hover a,
+#livemark-main h3:hover a,
+#livemark-main h4:hover a,
+#livemark-main h5:hover a,
+#livemark-main h6:hover a {
+  display: inline;
+  margin-left: 8px;
+  color: #aaa;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+#livemark-main h2 a:hover,
+#livemark-main h3 a:hover,
+#livemark-main h4 a:hover,
+#livemark-main h5 a:hover,
+#livemark-main h6 a:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (min-width: 768px) {
   #livemark-main.with-left {
     margin-left: 250px;
     border-left: dashed 1px #ccc;
   }
 }
+
 @media only screen and (min-width: 992px) {
   #livemark-main.with-right {
     margin-right: 250px;
@@ -1344,12 +1377,50 @@ This article uses a custom layout
   margin: 0 .2em .25em -1.6em;
   vertical-align: middle;
 }
+
 </style>
 
 <!-- JS -->
 
 <script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
 <script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script>
+
+// Load
+document.addEventListener("DOMContentLoaded", function () {
+  const content = document.querySelector("#livemark-main");
+  const headings = content.querySelectorAll("h1, h2, h3, h4, h5, h6, h7");
+  const headingMap = {};
+
+  // Add identifiers
+  Array.prototype.forEach.call(headings, function (heading) {
+    const id = heading.id
+      ? heading.id
+      : heading.textContent
+          .trim()
+          .toLowerCase()
+          .split(" ")
+          .join("-")
+          .replace(/[!@#$%^&*():]/gi, "")
+          .replace(/\//gi, "-");
+    headingMap[id] = !isNaN(headingMap[id]) ? ++headingMap[id] : 0;
+    if (headingMap[id]) {
+      heading.id = id + "-" + headingMap[id];
+    } else {
+      heading.id = id;
+    }
+  });
+
+  // Add links
+  Array.prototype.forEach.call(headings, function (heading) {
+    const link = document.createElement('a');
+    link.href = '#' + heading.id;
+    link.innerText = '#';
+    heading.appendChild(link);
+  });
+});
+
+</script>
 <!-- HTML -->
 
 <div id="livemark-right">
@@ -1574,35 +1645,6 @@ document
   opacity: 0.5;
 }
 
-#livemark-main h1 a,
-#livemark-main h2 a,
-#livemark-main h3 a,
-#livemark-main h4 a,
-#livemark-main h5 a,
-#livemark-main h6 a {
-  display: none;
-}
-
-#livemark-main h2:hover a,
-#livemark-main h3:hover a,
-#livemark-main h4:hover a,
-#livemark-main h5:hover a,
-#livemark-main h6:hover a {
-  display: inline;
-  margin-left: 8px;
-  color: #aaa;
-  font-weight: normal;
-  text-decoration: none;
-}
-
-#livemark-main h2 a:hover,
-#livemark-main h3 a:hover,
-#livemark-main h4 a:hover,
-#livemark-main h5 a:hover,
-#livemark-main h6 a:hover {
-  text-decoration: underline;
-}
-
 </style>
 
 <!-- JS -->
@@ -1617,30 +1659,6 @@ document
 
 // Load
 document.addEventListener("DOMContentLoaded", function () {
-  const content = document.querySelector("#livemark-main");
-  const headings = content.querySelectorAll("h1, h2, h3, h4, h5, h6, h7");
-  const headingMap = {};
-
-  // Add IDs
-  Array.prototype.forEach.call(headings, function (heading) {
-    const id = heading.id
-      ? heading.id
-      : heading.textContent
-          .trim()
-          .toLowerCase()
-          .split(" ")
-          .join("-")
-          .replace(/[!@#$%^&*():]/gi, "")
-          .replace(/\//gi, "-");
-    headingMap[id] = !isNaN(headingMap[id]) ? ++headingMap[id] : 0;
-    if (headingMap[id]) {
-      heading.id = id + "-" + headingMap[id];
-    } else {
-      heading.id = id;
-    }
-  });
-
-  // Add TOC
   tocbot.init({
     // Where to render the table of contents.
     tocSelector: ".js-toc",
@@ -1650,14 +1668,8 @@ document.addEventListener("DOMContentLoaded", function () {
     headingSelector: "h2, h3",
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
-  });
-
-  // Add links
-  Array.prototype.forEach.call(headings, function (heading) {
-    const link = document.createElement('a');
-    link.href = '#' + heading.id;
-    link.innerText = '#';
-    heading.appendChild(link);
+    // Called each time a heading is parsed. Expects a string in return.
+    headingLabelCallback: (label) => label.replace(/(^#|#$)/g, '').trim(),
   });
 });
 
