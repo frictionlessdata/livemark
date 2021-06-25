@@ -1442,6 +1442,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	height: 100%;
 }
 
+#livemark-header a.toc-link:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
 #livemark-header .is-active-link {
 	font-weight: 700;
 }
@@ -1524,6 +1529,11 @@ document
 	height: 100%;
 }
 
+#livemark-pages a.toc-link:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
 #livemark-pages .is-active-link {
 	font-weight: 700;
 }
@@ -1541,10 +1551,6 @@ document
 
 #livemark-pages .is-active-link::before {
 	background-color: #54BC4B;
-}
-
-#livemark-pages a[target="_blank"]:hover {
-  color: orange;
 }
 
 #livemark-pages a[target="_blank"]:after {
@@ -1596,6 +1602,14 @@ document
   color: #aaa;
   font-weight: normal;
   text-decoration: none;
+}
+
+#livemark-main h2 a:hover,
+#livemark-main h3 a:hover,
+#livemark-main h4 a:hover,
+#livemark-main h5 a:hover,
+#livemark-main h6 a:hover {
+  text-decoration: underline;
 }
 
 </style>
@@ -1715,7 +1729,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <div id="livemark-time">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-06-23 18:08:30)
+  (2021-06-23 18:40:01)
 </div>
 
 <!-- CSS -->
@@ -1882,6 +1896,11 @@ document
 	height: 100%;
 }
 
+#livemark-reference a.toc-link:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
 #livemark-reference .is-active-link {
 	font-weight: 700;
 }
@@ -1899,10 +1918,6 @@ document
 
 #livemark-reference .is-active-link::before {
 	background-color: #54BC4B;
-}
-
-#livemark-reference a[target="_blank"]:hover {
-  color: orange;
 }
 
 #livemark-reference a[target="_blank"]:after {
