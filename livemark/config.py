@@ -30,6 +30,7 @@ FEATURES = [
     "about",
     "reference",
     "time",
+    "pointer",
     "table",
     "chart",
     "markup",

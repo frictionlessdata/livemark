@@ -1780,6 +1780,51 @@ document
 
 </script><!-- HTML -->
 
+<div id="livemark-pointer">
+  <div>
+        <div class="next">
+      <a href="/docs/getting-started.html">Getting Started &raquo;</a>
+    </div>
+          </div>
+</div>
+
+<!-- CSS -->
+
+<style>
+
+#livemark-pointer {
+  border-top: 1px solid #eaecef;
+  margin-top: 24px;
+  padding-top: 20px;
+  height: 50px;
+}
+
+#livemark-pointer > div {
+  opacity: 0.4;
+}
+
+#livemark-pointer .next {
+  float: right;
+}
+
+#livemark-pointer a {
+  font-size: 20px;
+  color: black;
+}
+
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-main')
+  .appendChild(document.getElementById('livemark-pointer'));
+
+</script><!-- HTML -->
+
 <div id="livemark-status">
   <iframe
     src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=livemark&amp;type=star&amp;count=true&amp;size=large"

@@ -15,6 +15,7 @@ scroll:
   speed: 10
 time:
   format: '%Y-%m-%d %H:%M:%S'
+pointer: true
 status:
   type: star
   user: frictionlessdata

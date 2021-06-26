@@ -59,6 +59,16 @@ class Document:
         metadata["time"]["current"] = datetime.fromtimestamp(
             os.path.getmtime(self.__path)
         )
+        # TODO: it's a quick hack
+        if metadata.get("pages"):
+            current = None
+            for number, link in enumerate(metadata["pages"]["links"], start=1):
+                if link["path"] == metadata["path"]:
+                    current = number
+            if current > 1:
+                metadata["prev"] = metadata["pages"]["links"][current - 2]
+            if current < len(metadata["pages"]["links"]):
+                metadata["next"] = metadata["pages"]["links"][current]
         # TODO: set these in the renderer
         metadata["markup"] = True
         # TODO: it's a hack as marko doesn't have context
