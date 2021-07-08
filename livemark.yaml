@@ -1,6 +1,5 @@
 title: Livemark
-header:
-  title: Livemark
+header: true
 pages:
   links:
     - name: Introduction
@@ -9,12 +8,9 @@ pages:
       path: /docs/getting-started.html
     - name: Configuration
       path: /docs/configuration.html
-navigation:
-  selector: h2, h3
-scroll:
-  speed: 10
-time:
-  format: '%Y-%m-%d %H:%M:%S'
+navigation: true
+scroll: true
+time: true
 pointer: true
 status:
   type: star

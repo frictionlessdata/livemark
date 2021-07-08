@@ -56,6 +56,8 @@ class Document:
         )
         metadata.setdefault("title", "Livemark")
         metadata.setdefault("time", {})
+        if metadata["time"] is True:
+            metadata["time"] = {}
         metadata["time"]["current"] = datetime.fromtimestamp(
             os.path.getmtime(self.__path)
         )
