@@ -41,7 +41,7 @@ INSTALL_REQUIRES = [
     "typer[all]>=0.3",
     "livereload>=2.6",
     "beautifulsoup4>=4.9",
-    "frictionless[excel,json]>=4.11",
+    "frictionless[excel,json]==4.*",
 ]
 README = read("README.md")
 VERSION = read(PACKAGE, "assets", "VERSION")
