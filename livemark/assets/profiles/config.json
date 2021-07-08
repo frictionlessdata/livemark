@@ -11,7 +11,7 @@
       "description": "Document title"
     },
     "header": {
-      "type": "object",
+      "type": ["boolean", "object"],
       "properties": {
         "title": {
           "type": "string",
@@ -21,7 +21,7 @@
       }
     },
     "navigation": {
-      "type": "object",
+      "type": ["boolean", "object"],
       "properties": {
         "selector": {
           "type": "string",

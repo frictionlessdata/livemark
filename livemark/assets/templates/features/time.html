@@ -2,7 +2,7 @@
 
 <div id="livemark-time">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  ({{ livemark.time.current.strftime(livemark.time.format)}})
+  ({{ livemark.time.current.strftime(livemark.time.format or '%Y-%m-%d %H:%M:%S')}})
 </div>
 
 <!-- CSS -->
