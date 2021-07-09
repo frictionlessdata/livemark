@@ -135,6 +135,7 @@ title: My Title
 
 #livemark-main {
   padding: 24px 16px;
+  min-height: 100vh;
 }
 
 #livemark-main h1 {
@@ -1504,6 +1505,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 #livemark-scroll .ue-scroll {
   bottom: 25px;
+  /* Make the button alway visible */
+  display: block !important;
+  opacity: 1 !important;
 }
 
 #livemark-scroll.left .ue-scroll {
