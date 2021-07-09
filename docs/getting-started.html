@@ -71,6 +71,14 @@ p {
   left: 25px;
   top: 25px;
   font-size: 125%;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+#livemark-left::-webkit-scrollbar {
+  display: none; /* Chrome; Safari */
 }
 
 #livemark-left > div:not(:last-child) {
@@ -1231,6 +1239,14 @@ document.addEventListener("DOMContentLoaded", function () {
   right: 25px;
   top: 25px;
   font-size: 125%;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+#livemark-right::-webkit-scrollbar {
+  display: none; /* Chrome; Safari */
 }
 
 #livemark-right > div:not(:last-child) {
