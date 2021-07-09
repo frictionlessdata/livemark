@@ -15,6 +15,7 @@ navigation: true
 scroll: true
 time: true
 pointer: true
+readability: true
 status:
   type: star
   user: frictionlessdata
