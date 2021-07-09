@@ -1,5 +1,8 @@
 title: Livemark
 header: true
+analytics:
+  type: google
+  code: G-ZH2QL85N6F
 pages:
   links:
     - name: Introduction
