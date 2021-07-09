@@ -2,10 +2,10 @@
 
 <div id="livemark-readability">
   <div class="readability plus btn-white circle shadow">
-    <div title="Increase readability" class="inner">+</div>
+    <div id="livemark-readability-plus" title="Increase readability" class="inner">+</div>
   </div>
   <div class="readability minus btn-white circle shadow">
-    <div title="Decrease readability" class="inner">-</div>
+    <div id="livemark-readability-minus" title="Decrease readability" class="inner">-</div>
   </div>
 </div>
 
@@ -92,6 +92,30 @@
   margin-top: 2px;
 }
 
+.with-readability {
+  font-size: 20px;
+}
+
+.with-readability * {
+  opacity: 1 !important;
+}
+
+.with-readability #livemark-main {
+  color: black;
+}
+
+.with-readability #livemark-left,
+.with-readability #livemark-right {
+  scrollbar-width: unset;  /* Firefox */
+  -ms-overflow-style: unset;  /* Internet Explorer 10+ */
+}
+
+/* TODO: fix unsetting the default value - it doesn't work */
+.with-readability #livemark-left::-webkit-scrollbar,
+.with-readability #livemark-right::-webkit-scrollbar {
+  display: unset; /* Chrome; Safari */
+}
+
 </style>
 
 <!-- JS -->
@@ -104,7 +128,18 @@ document
   .classList.add('{{ livemark.readability.section or "right"}}')
 
 // Load
+// TODO: make it remember this setting from prev pages
 document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById('livemark-readability-plus')
+    .addEventListener("click", function () {
+      document.body.classList.add('with-readability');
+    })
+  document
+    .getElementById('livemark-readability-minus')
+    .addEventListener("click", function () {
+      document.body.classList.remove('with-readability');
+    })
 });
 
 </script>
