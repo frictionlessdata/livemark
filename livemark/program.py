@@ -34,6 +34,8 @@ def program_main(
     pass
 
 
+# TODO: add an ability to build to markdown?
+# TODO: add an ability to choose a target path?
 @program.command(name="build")
 def program_build(
     path: str = typer.Argument("index.md", help="Path to markdown"),
@@ -66,7 +68,7 @@ def program_sync(
 
     # Process document
     document = Document(path)
-    source, target = document.process()
+    source, target = document.process_markdown()
 
     # Diff document
     if diff:
