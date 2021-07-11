@@ -121,18 +121,13 @@ class Document:
             target = source
 
         # Parse document
-        prepare = []
-        cleanup = []
-        frontmatter = None
+        metadata = Metadata()
         if target.startswith("---"):
             frontmatter, target = target.split("---", maxsplit=2)[1:]
             metadata = yaml.safe_load(frontmatter)
-            if "goodread" in metadata:
-                prepare.extend(metadata["goodread"].get("prepare", []))
-                cleanup.extend(metadata["goodread"].get("cleanup", []))
 
         # Prepare document
-        for code in prepare:
+        for code in metadata.get("prepare", []):
             subprocess.run(code, shell=True)
 
         # Convert document
@@ -141,7 +136,7 @@ class Document:
             target = frontmatter.join(["---"] * 2) + "\n" + target
 
         # Cleanup document
-        for code in cleanup:
+        for code in metadata.get("cleanup", []):
             subprocess.run(code, shell=True)
 
         return source, target
