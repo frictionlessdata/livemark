@@ -9,6 +9,7 @@ from datetime import datetime
 from marko.ext.gfm import GFM
 from jinja2 import Environment, FileSystemLoader
 from .renderer import LivemarkExtension, LivemarkRendererMixin
+from .markdown import LivemarkMarkdownRenderer
 from .metadata import Metadata
 from . import config
 
@@ -19,7 +20,7 @@ class Document:
 
     # Process
 
-    def process(self):
+    def process_html(self):
         markdown = marko.Markdown()
         markdown.use(GFM)
         markdown.use(LivemarkExtension)
@@ -104,6 +105,35 @@ class Document:
                 layout = file.read()
         template = templating.from_string(layout)
         target = template.render(livemark=metadata)
+
+        # Cleanup document
+        for code in metadata.get("cleanup", []):
+            subprocess.run(code, shell=True)
+
+        return source, target
+
+    def process_markdown(self):
+        markdown = marko.Markdown(renderer=LivemarkMarkdownRenderer)
+
+        # Source document
+        with open(self.__path) as file:
+            source = file.read()
+            target = source
+
+        # Parse document
+        metadata = Metadata()
+        if target.startswith("---"):
+            frontmatter, target = target.split("---", maxsplit=2)[1:]
+            metadata = yaml.safe_load(frontmatter)
+
+        # Prepare document
+        for code in metadata.get("prepare", []):
+            subprocess.run(code, shell=True)
+
+        # Convert document
+        target = markdown.convert(target)
+        if frontmatter:
+            target = frontmatter.join(["---"] * 2) + "\n" + target
 
         # Cleanup document
         for code in metadata.get("cleanup", []):
