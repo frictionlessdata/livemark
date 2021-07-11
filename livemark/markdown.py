@@ -16,17 +16,18 @@ class LivemarkMarkdownRenderer(MarkdownRenderer):
         return super().render_quote(element).rstrip() + "\n"
 
     def render_fenced_code(self, element):
-        if "goodread" in element.extra:
+        header = [element.lang] + element.extra.split()
+        if "script" in header:
             code = self.render_children(element).strip()
             source = element
 
             # Execute code
             output = None
-            if source.lang == "python":
+            if "python" in header:
                 with capture() as stdout:
                     exec(code, globals())
                 output = stdout.getvalue().strip()
-            elif source.lang == "bash":
+            elif "bash" in header:
                 try:
                     output = subprocess.check_output(code, shell=True).decode().strip()
                 except Exception as exception:
