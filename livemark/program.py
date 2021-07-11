@@ -1,5 +1,6 @@
 import os
 import typer
+import difflib
 from typing import Optional
 from functools import partial
 from livereload import Server
@@ -38,7 +39,7 @@ def program_build(
     path: str = typer.Argument("index.md", help="Path to markdown"),
     print: bool = typer.Option(False, help="Return the document"),
 ):
-    """Build and article."""
+    """Build the article."""
 
     # Process document
     document = Document(path)
@@ -52,6 +53,36 @@ def program_build(
     # Write document
     html_path = f"{os.path.splitext(path)[0]}.html"
     helpers.write_file(html_path, target)
+
+
+@program.command(name="sync")
+def program_sync(
+    path: str = typer.Argument(..., help="Path to markdown"),
+    diff: bool = typer.Option(default=False, help="Return the diff"),
+    print: bool = typer.Option(default=False, help="Return the document"),
+    version: Optional[bool] = typer.Option(None, "--version", callback=version),
+):
+    """Sync the article"""
+
+    # Process document
+    document = Document(path)
+    source, target = document.process()
+
+    # Diff document
+    if diff:
+        l1 = source.splitlines(keepends=True)
+        l2 = target.splitlines(keepends=True)
+        ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
+        typer.secho("".join(ld), nl=False)
+        raise typer.Exit()
+
+    # Print document
+    if print:
+        typer.secho(target)
+        raise typer.Exit()
+
+    # Write document
+    helpers.write_file(path, target)
 
 
 @program.command(name="start")
