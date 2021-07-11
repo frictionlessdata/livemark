@@ -42,7 +42,7 @@ def program_build(
 
     # Process document
     document = Document(path)
-    source, target = document.process()
+    source, target = document.process_html()
 
     # Print document
     if print:
