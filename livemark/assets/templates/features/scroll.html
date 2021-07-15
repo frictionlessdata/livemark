@@ -22,13 +22,13 @@
 }
 
 #livemark-scroll.left .ue-scroll {
-  left: 25px;
+  left: 30px;
   right: auto;
 }
 
 #livemark-scroll.right .ue-scroll {
   left: auto;
-  right: 25px;
+  right: 35px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -48,7 +48,7 @@
 // Mount
 document
   .getElementById('livemark-scroll')
-  .classList.add('{{ livemark.scroll.section or "left"}}')
+  .classList.add('{{ livemark.scroll.section or "right"}}')
 
 // Load
 document.addEventListener("DOMContentLoaded", function () {
