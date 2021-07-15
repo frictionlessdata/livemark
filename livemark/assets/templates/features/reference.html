@@ -5,7 +5,7 @@
     <ol class="toc-list">
       {% for link in livemark.reference.links %}
       <li class="toc-item">
-        <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %}>
+        <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %} {% if link.hook %}onclick="{{ link.hook }}"{% endif %}>
           {{ link.name }}
         </a>
       </li>
