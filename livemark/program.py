@@ -5,8 +5,8 @@ from typing import Optional
 from functools import partial
 from livereload import Server
 from .document import Document
+from . import settings
 from . import helpers
-from . import config
 
 
 # Program
@@ -19,7 +19,7 @@ program = typer.Typer()
 
 def version(value: bool):
     if value:
-        typer.echo(config.VERSION)
+        typer.echo(settings.VERSION)
         raise typer.Exit()
 
 
@@ -102,4 +102,4 @@ def program_start(
 @program.command(name="layout")
 def program_layout():
     """Print default layout."""
-    typer.secho(config.LAYOUT)
+    typer.secho(settings.LAYOUT)
