@@ -4,7 +4,7 @@ from ..plugin import Plugin
 
 
 class MarkdownPlugin(Plugin):
-    def process_document(document):
+    def process_document(self, document):
         if document.format in ["md"]:
             markdown = marko.Markdown(renderer=MarkdownRenderer)
             # TODO: handle frontmatter
