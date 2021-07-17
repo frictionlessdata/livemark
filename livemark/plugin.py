@@ -2,7 +2,7 @@ class Plugin:
     def process_html(self, html):
         pass
 
-    def process_code(self, code, *, header):
+    def process_snippet(self, snippet):
         pass
 
     def process_config(self, config):
