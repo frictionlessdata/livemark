@@ -50,7 +50,7 @@ class System:
             object: processed pyquery document
         """
         for func in self.methods["process_html"].values():
-            html = func(html)
+            func(html)
         return html
 
     def process_snippet(self, snippet):
@@ -63,7 +63,7 @@ class System:
             object: code object
         """
         for func in self.methods["process_snippet"].values():
-            snippet = func(snippet)
+            func(snippet)
         return snippet
 
     def process_document(self, document):
@@ -76,7 +76,7 @@ class System:
             object: document object
         """
         for func in self.methods["process_document"].values():
-            document = func(document)
+            func(document)
         return document
 
     # Methods

@@ -34,7 +34,6 @@ def program_main(
     pass
 
 
-# TODO: add an ability to build to markdown?
 @program.command(name="build")
 def program_build(
     source: str = typer.Argument(settings.DEFAULT_PATH, help="Path to source"),
@@ -43,7 +42,6 @@ def program_build(
 ):
     """Build the article."""
 
-    # TODO: review
     # Create document
     if source == settings.DEFAULT_PATH:
         if not os.path.exists(source):
