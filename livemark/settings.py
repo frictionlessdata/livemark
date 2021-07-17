@@ -17,3 +17,4 @@ VERSION = read_asset("VERSION")
 CONFIG_PATH = "livemark.yaml"
 DOCUMENT_PATH = "index.md"
 LAYOUT = read_asset("templates", "layout.html")
+UNDEFINED = object()
