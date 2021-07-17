@@ -37,7 +37,6 @@ class System:
     actions = [
         "process_html",
         "process_snippet",
-        "process_config",
         "process_document",
     ]
 
@@ -66,19 +65,6 @@ class System:
         for func in self.methods["process_snippet"].values():
             snippet = func(snippet)
         return snippet
-
-    def process_config(self, config):
-        """Process config
-
-        Parameters:
-            config (object): config object
-
-        Returns:
-            object: config object
-        """
-        for func in self.methods["process_config"].values():
-            config = func(config)
-        return config
 
     def process_document(self, document):
         """Process document
