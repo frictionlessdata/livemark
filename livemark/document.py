@@ -15,21 +15,22 @@ class Document:
                 with open(path, "w") as file:
                     pass
 
-        # Read content
+        # Read source
         with open(path) as file:
-            content = file.read()
+            source = file.read()
 
         # Read config
         config = project.config.clone()
-        if content.startswith("---"):
-            frontmatter, content = content.split("---", maxsplit=2)[1:]
+        if source.startswith("---"):
+            frontmatter, source = source.split("---", maxsplit=2)[1:]
             config.merge(yaml.safe_load(frontmatter))
 
         # Save attributes
         self.__path = path
         self.__project = project
         self.__config = config
-        self.__content = content
+        self.__source = source
+        self.__target = ""
 
     @property
     def path(self):
@@ -44,8 +45,16 @@ class Document:
         return self.__config
 
     @property
-    def content(self):
-        return self.__content
+    def source(self):
+        return self.__source
+
+    @property
+    def target(self):
+        return self.__target
+
+    @target.setter
+    def target(self, value):
+        self.__target = value
 
     # Process
 

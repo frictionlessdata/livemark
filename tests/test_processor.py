@@ -7,5 +7,5 @@ from livemark import Processor, Document
 def test_project():
     document = Document()
     processor = Processor()
-    content = processor.process(document)
-    assert content
+    document = processor.process(document)
+    assert document
