@@ -20,10 +20,10 @@ class Document:
             content = file.read()
 
         # Read config
-        config = project.config
+        config = project.config.clone()
         if content.startswith("---"):
             frontmatter, content = content.split("---", maxsplit=2)[1:]
-            config = config.merge(yaml.safe_load(frontmatter))
+            config.merge(yaml.safe_load(frontmatter))
 
         # Save attributes
         self.__path = path
