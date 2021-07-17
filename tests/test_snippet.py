@@ -7,13 +7,13 @@ from livemark import Snippet
 def test_snippet():
     snippet = Snippet("input", header="python")
     assert snippet.header == "python"
-    assert snippet.source == "input"
-    assert snippet.target == ""
+    assert snippet.input == "input"
+    assert snippet.output == ""
 
 
-def test_snippet_update_target():
+def test_snippet_update_output():
     snippet = Snippet("input", header="python")
-    snippet.target = "output"
+    snippet.output = "output"
     assert snippet.header == "python"
-    assert snippet.source == "input"
-    assert snippet.target == "output"
+    assert snippet.input == "input"
+    assert snippet.output == "output"

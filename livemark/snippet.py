@@ -1,21 +1,21 @@
 class Snippet:
-    def __init__(self, source, *, header):
-        self.__source = source
+    def __init__(self, input, *, header):
+        self.__input = input
         self.__header = header
-        self.__target = ""
+        self.__output = ""
 
     @property
     def header(self):
         return self.__header
 
     @property
-    def source(self):
-        return self.__source
+    def input(self):
+        return self.__input
 
     @property
-    def target(self):
-        return self.__target
+    def output(self):
+        return self.__output
 
-    @target.setter
-    def target(self, value):
-        self.__target = value
+    @output.setter
+    def output(self, value):
+        self.__output = value

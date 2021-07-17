@@ -6,17 +6,17 @@ from livemark import Document
 
 def test_document():
     document = Document()
-    assert document.path == "index.md"
+    assert document.source == "index.md"
     assert document.project.path == ""
     assert document.config["title"] == "Livemark"
-    assert document.source
+    assert document.input
 
 
-def test_document_update_target():
+def test_document_update_output():
     document = Document()
-    document.target = "output"
-    assert document.path == "index.md"
+    document.output = "output"
+    assert document.source == "index.md"
     assert document.project.path == ""
     assert document.config["title"] == "Livemark"
-    assert document.source
-    assert document.target == "output"
+    assert document.input
+    assert document.output == "output"

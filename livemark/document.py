@@ -1,40 +1,49 @@
-import os
 import yaml
+import subprocess
+from frictionless import File
+from .system import system
 from .project import Project
+from .helpers import cached_property
 from . import settings
 
 
 class Document:
-    def __init__(self, path=None, *, project=None):
-        path = path or settings.DOCUMENT_PATH
+    def __init__(self, source=None, *, target=None, project=None):
+        # TODO: review whether it needs to default
+        source = source or settings.DEFAULT_PATH
+        target = target or settings.DEFAULT_TARGET
         project = project or Project()
 
-        # Create document
-        if path == "index.md":
-            if not os.path.exists(path):
-                with open(path, "w") as file:
-                    pass
-
-        # Read source
-        with open(path) as file:
-            source = file.read()
+        # Read input
+        with open(source) as file:
+            input = file.read()
 
         # Read config
         config = project.config.clone()
-        if source.startswith("---"):
-            frontmatter, source = source.split("---", maxsplit=2)[1:]
+        if input.startswith("---"):
+            frontmatter, input = input.split("---", maxsplit=2)[1:]
             config.merge(yaml.safe_load(frontmatter))
 
         # Save attributes
-        self.__path = path
+        self.__source = source
+        self.__target = target
         self.__project = project
         self.__config = config
-        self.__source = source
-        self.__target = ""
+        self.__input = input
+        self.__output = None
 
     @property
-    def path(self):
-        return self.__path
+    def source(self):
+        return self.__source
+
+    @property
+    def target(self):
+        return self.__target
+
+    @cached_property
+    def format(self):
+        file = File(self.target)
+        return file.format
 
     @property
     def project(self):
@@ -45,18 +54,26 @@ class Document:
         return self.__config
 
     @property
-    def source(self):
-        return self.__source
+    def input(self):
+        return self.__input
 
     @property
-    def target(self):
-        return self.__target
+    def output(self):
+        return self.__output
 
-    @target.setter
-    def target(self, value):
-        self.__target = value
+    @output.setter
+    def output(self, value):
+        self.__output = value
 
     # Process
 
+    def prepare(self):
+        for code in self.config.get("prepare", []):
+            subprocess.run(code, shell=True)
+
     def process(self):
-        pass
+        return system.process_document(self)
+
+    def cleanup(self):
+        for code in self.config.get("cleanup", []):
+            subprocess.run(code, shell=True)

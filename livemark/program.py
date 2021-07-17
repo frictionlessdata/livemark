@@ -35,26 +35,35 @@ def program_main(
 
 
 # TODO: add an ability to build to markdown?
-# TODO: add an ability to choose a target path?
 @program.command(name="build")
 def program_build(
-    path: str = typer.Argument("index.md", help="Path to markdown"),
+    source: str = typer.Argument(settings.DEFAULT_PATH, help="Path to source"),
+    target: str = typer.Option(settings.DEFAULT_TARGET, help="Path to target"),
     print: bool = typer.Option(False, help="Return the document"),
 ):
     """Build the article."""
 
+    # TODO: review
+    # Create document
+    if source == settings.DEFAULT_PATH:
+        if not os.path.exists(source):
+            with open(source, "w"):
+                pass
+
     # Process document
-    document = Document(path)
-    source, target = document.process_html()
+    document = Document(source, target=target)
+    document.prepare()
+    document.process()
+    document.cleanup()
 
     # Print document
     if print:
-        typer.secho(target)
+        typer.secho(document.target)
         raise typer.Exit()
 
     # Write document
-    html_path = f"{os.path.splitext(path)[0]}.html"
-    helpers.write_file(html_path, target)
+    if document.target:
+        helpers.write_file(document.target, document.output)
 
 
 @program.command(name="sync")
