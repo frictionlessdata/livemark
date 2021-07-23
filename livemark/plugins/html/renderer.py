@@ -20,3 +20,7 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
         if snippet.output:
             return snippet.output
         return super().render_fenced_code(element)
+
+
+class HtmlExtension:
+    renderer_mixins = [HtmlRenderer]

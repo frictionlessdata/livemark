@@ -14,7 +14,10 @@ class Plugin:
 
     # Helpers
 
-    def read_asset(self, *path):
+    def read_asset(self, *path, tag=None):
         path = os.path.join([os.path.dirname(inspect.getfile(self.__class__)), *path])
         with open(path) as file:
-            return file.read()
+            text = file.read()
+        if tag:
+            text = f"<{tag}>\n{text}\n</{tag}>"
+        return text

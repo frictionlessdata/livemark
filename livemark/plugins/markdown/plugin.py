@@ -5,7 +5,7 @@ from ...plugin import Plugin
 
 class MarkdownPlugin(Plugin):
     def process_document(self, document):
-        if document.format in ["md"]:
+        if document.format == "md":
             markdown = marko.Markdown(renderer=MarkdownRenderer)
             output = markdown.convert(document.input)
             if document.preface:
