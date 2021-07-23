@@ -1,53 +1,14 @@
-<!-- HTML -->
-
-<div id="livemark-pointer">
+<div id="livemark-flow">
   <div>
     {% if livemark.next %}
     <div class="next">
-      <a href="{{ livemark.next.path }}">{{ livemark.next.name }} &raquo;</a>
+      <a href="{{ data.next.path }}">{{ data.next.name }} &raquo;</a>
     </div>
     {% endif %}
     {% if livemark.prev %}
     <div class="prev">
-      <a href="{{ livemark.prev.path }}">&laquo; {{ livemark.prev.name }}</a>
+      <a href="{{ data.prev.path }}">&laquo; {{ data.prev.name }}</a>
     </div>
     {% endif %}
   </div>
 </div>
-
-<!-- CSS -->
-
-<style>
-
-#livemark-pointer {
-  border-top: 1px solid #eaecef;
-  margin-top: 24px;
-  padding-top: 20px;
-  height: 50px;
-}
-
-#livemark-pointer > div {
-  opacity: 0.4;
-}
-
-#livemark-pointer .next {
-  float: right;
-}
-
-#livemark-pointer a {
-  font-size: 20px;
-  color: black;
-}
-
-</style>
-
-<!-- JS -->
-
-<script>
-
-// Mount
-document
-  .getElementById('livemark-main')
-  .appendChild(document.getElementById('livemark-pointer'));
-
-</script>
