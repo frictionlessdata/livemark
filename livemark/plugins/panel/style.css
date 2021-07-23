@@ -1,0 +1,102 @@
+#livemark-panel {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-panel {
+    display: block;
+    opacity: 0.5;
+  }
+}
+
+#livemark-panel .panel{
+  display:none;
+  position:fixed;
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
+  cursor:pointer;
+  top:auto;
+  right:20px;
+  bottom:20px;
+  left:auto;
+  z-index:100;
+  width:50px;
+  height:50px;
+  background-size:40%;
+  background-repeat:no-repeat;
+  background-position:50%;
+}
+
+#livemark-panel .panel.btn-white{
+  background-color:#fff;
+}
+
+#livemark-panel .panel.shadow{
+  -webkit-box-shadow:0 0 10px rgba(0,0,0,.2);
+  box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+#livemark-panel .panel.circle{
+  border-radius:50%;
+}
+
+#livemark-panel .panel{
+  bottom:25px;
+  display:block!important;
+  opacity:1!important;
+}
+
+#livemark-panel.left .plus {
+  left: 30px;
+  right: auto;
+}
+
+#livemark-panel.left .minus {
+  left: 96px;
+  right: auto;
+}
+
+#livemark-panel.right .plus {
+  left: auto;
+  right: 165px;
+}
+
+#livemark-panel.right .minus {
+  left: auto;
+  right: 100px;
+}
+
+#livemark-panel .minus .inner {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+#livemark-panel .plus .inner {
+  font-size: 30px;
+  margin-left: 15px;
+  margin-top: 2px;
+}
+
+.with-panel {
+  font-size: 20px;
+}
+
+.with-panel * {
+  opacity: 1 !important;
+}
+
+.with-panel #livemark-main {
+  color: black;
+}
+
+.with-panel #livemark-left,
+.with-panel #livemark-right {
+  scrollbar-width: unset;  /* Firefox */
+  -ms-overflow-style: unset;  /* Internet Explorer 10+ */
+}
+
+/* TODO: fix unsetting the default value - it doesn't work */
+.with-panel #livemark-left::-webkit-scrollbar,
+.with-panel #livemark-right::-webkit-scrollbar {
+  display: unset; /* Chrome; Safari */
+}
