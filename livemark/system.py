@@ -40,9 +40,8 @@ class System:
         "process_document",
     ]
 
-    # TODO: create a corresponding class?
-    def process_html(self, html):
-        """Process html
+    def process_markup(self, markup):
+        """Process markup
 
         Parameters:
             html (object): pyquery document
@@ -51,8 +50,8 @@ class System:
             object: processed pyquery document
         """
         for func in self.methods["process_html"].values():
-            func(html)
-        return html
+            func(markup)
+        return markup
 
     def process_snippet(self, snippet):
         """Process snippet

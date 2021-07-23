@@ -1,6 +1,7 @@
 from .system import system
 
 
+# TODO: add access to document instead for format?
 class Snippet:
     def __init__(self, input, *, format, header):
         self.__input = input
