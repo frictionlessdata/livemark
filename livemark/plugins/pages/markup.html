@@ -1,7 +1,7 @@
 <div id="livemark-pages">
   <div class="toc">
     <ol class="toc-list">
-      {% for item in data.items %}
+      {% for item in items %}
       <li class="toc-item">
         <a class="toc-link {% if livemark.path == item.path %}is-active-link{% endif %}" href="{{ item.path }}">
           {{ item.name }}

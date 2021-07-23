@@ -35,7 +35,7 @@ class Plugin:
 
     # Helpers
 
-    def read_asset(self, *path, tag=None, data=None):
+    def read_asset(self, *path, tag=None, **data):
         path = os.path.join([os.path.dirname(inspect.getfile(self.__class__)), *path])
         with open(path) as file:
             text = file.read()

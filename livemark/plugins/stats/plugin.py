@@ -9,6 +9,7 @@ class StatsPlugin(Plugin):
         markup.query("#livemark-left").append(
             self.read_asset(
                 "markup.html",
-                data={"current": datetime.datetime.now(), "format": config.stats.format},
+                current=datetime.datetime.now(),
+                format=config.stats.format,
             )
         )

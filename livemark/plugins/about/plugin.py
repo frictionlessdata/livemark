@@ -6,5 +6,5 @@ class AboutPlugin(Plugin):
         config = markup.document.config
         markup.query("head").append(self.read_asset("style.css"), tag="style")
         markup.query("#livemark-right").append(
-            self.read_asset("markup.html", data={"description": config.about.description})
+            self.read_asset("markup.html", description=config.about.description)
         )
