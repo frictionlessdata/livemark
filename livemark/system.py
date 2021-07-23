@@ -35,49 +35,67 @@ class System:
     # Actions
 
     actions = [
-        "process_html",
-        "process_snippet",
+        "validate_document",
+        "prepare_document",
         "process_document",
+        "cleanup_document",
+        "process_snippet",
+        "process_markup",
     ]
 
-    def process_markup(self, markup):
-        """Process markup
+    def validate_document(self, document):
+        """Validate document
 
         Parameters:
-            html (object): pyquery document
-
-        Returns:
-            object: processed pyquery document
+            document (object): document object
         """
-        for func in self.methods["process_html"].values():
-            func(markup)
-        return markup
+        for func in self.methods["validate_document"].values():
+            func(document)
 
-    def process_snippet(self, snippet):
-        """Process snippet
+    def prepare_document(self, document):
+        """Prepare document
 
         Parameters:
-            code (object): code object
-
-        Returns:
-            object: code object
+            document (object): document object
         """
-        for func in self.methods["process_snippet"].values():
-            func(snippet)
-        return snippet
+        for func in self.methods["prepare_document"].values():
+            func(document)
 
     def process_document(self, document):
         """Process document
 
         Parameters:
             document (object): document object
-
-        Returns:
-            object: document object
         """
         for func in self.methods["process_document"].values():
             func(document)
-        return document
+
+    def cleanup_document(self, document):
+        """Cleanup document
+
+        Parameters:
+            document (object): document object
+        """
+        for func in self.methods["cleanup_document"].values():
+            func(document)
+
+    def process_snippet(self, snippet):
+        """Process snippet
+
+        Parameters:
+            code (object): code object
+        """
+        for func in self.methods["process_snippet"].values():
+            func(snippet)
+
+    def process_markup(self, markup):
+        """Process markup
+
+        Parameters:
+            html (object): pyquery document
+        """
+        for func in self.methods["process_html"].values():
+            func(markup)
 
     # Methods
 

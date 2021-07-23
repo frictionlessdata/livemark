@@ -1,5 +1,4 @@
 import yaml
-import subprocess
 from frictionless import File
 from .system import system
 from .helpers import cached_property
@@ -73,13 +72,14 @@ class Document:
 
     # Process
 
+    def validate(self):
+        return system.validate_document(self)
+
     def prepare(self):
-        for code in self.config.get("prepare", []):
-            subprocess.run(code, shell=True)
+        return system.prepare_document(self)
 
     def process(self):
         return system.process_document(self)
 
     def cleanup(self):
-        for code in self.config.get("cleanup", []):
-            subprocess.run(code, shell=True)
+        return system.cleanup_document(self)
