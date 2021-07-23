@@ -1,78 +1,11 @@
-<!-- HTML -->
-
 <div id="livemark-header">
   <div class="toc">
     <ol class="toc-list">
       <li class="toc-item">
         <a class="toc-link is-active-link" href="/">
-          {{ livemark.header.title or livemark.title }}
+          {{ data.title }}
         </a>
       </li>
     </ol>
   </div>
 </div>
-
-<!-- CSS -->
-
-<style>
-
-#livemark-header .toc {
-  opacity: 0.5;
-	overflow-y: auto;
-}
-
-#livemark-header .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
-}
-
-#livemark-header .toc>.toc-list li {
-	list-style: none;
-}
-
-#livemark-header .toc-list {
-	margin: 0;
-	padding-left: 10px;
-}
-
-#livemark-header a.toc-link {
-	color: currentColor;
-	height: 100%;
-}
-
-#livemark-header a.toc-link:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-#livemark-header .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-header .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-header .is-active-link::before {
-	background-color: #54BC4B;
-}
-
-</style>
-
-<!-- JS -->
-
-<script>
-
-// Mount
-document
-  .getElementById('livemark-{{ livemark.header.section or "left"}}')
-  .appendChild(document.getElementById('livemark-header'));
-
-</script>
