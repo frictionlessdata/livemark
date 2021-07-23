@@ -7,5 +7,7 @@ class MarkdownPlugin(Plugin):
     def process_document(self, document):
         if document.format in ["md"]:
             markdown = marko.Markdown(renderer=MarkdownRenderer)
-            # TODO: handle frontmatter
-            document.output = markdown.convert(document.input)
+            output = markdown.convert(document.input)
+            if document.preface:
+                output = document.preface.join(["---"] * 2) + "\n" + output
+            document.output = output

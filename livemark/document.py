@@ -18,16 +18,21 @@ class Document:
         with open(source) as file:
             input = file.read()
 
+        # Read preface
+        preface = ""
+        if input.startswith("---"):
+            preface, input = input.split("---", maxsplit=2)[1:]
+
         # Read config
         config = project.config.clone()
-        if input.startswith("---"):
-            frontmatter, input = input.split("---", maxsplit=2)[1:]
-            config.merge(yaml.safe_load(frontmatter))
+        if preface:
+            config.merge(yaml.safe_load(preface))
 
         # Save attributes
         self.__source = source
         self.__target = target
         self.__project = project
+        self.__preface = preface
         self.__config = config
         self.__input = input
         self.__output = None
@@ -48,6 +53,10 @@ class Document:
     @property
     def project(self):
         return self.__project
+
+    @property
+    def preface(self):
+        return self.__preface
 
     @property
     def config(self):
