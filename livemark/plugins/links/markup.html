@@ -1,84 +1,13 @@
-<!-- HTML -->
-
-<div id="livemark-reference">
+<div id="livemark-links">
   <div class="toc">
     <ol class="toc-list">
-      {% for link in livemark.reference.links %}
+      {% for item in data.items %}
       <li class="toc-item">
-        <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %} {% if link.hook %}onclick="{{ link.hook }}"{% endif %}>
-          {{ link.name }}
+        <a class="toc-link" href="{{ item.path }}" {% if item.path.startswith('http') %}target="_blank"{% endif %} {% if link.hook %}onclick="{{ item.hook }}"{% endif %}>
+          {{ item.name }}
         </a>
       </li>
       {% endfor %}
     </ol>
   </div>
 </div>
-
-<!-- CSS -->
-
-<style>
-
-#livemark-reference .toc {
-  opacity: 0.5;
-	overflow-y: auto;
-}
-
-#livemark-reference .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
-}
-
-#livemark-reference .toc>.toc-list li {
-	list-style: none;
-}
-
-#livemark-reference .toc-list {
-	margin: 0;
-	padding-left: 10px;
-}
-
-#livemark-reference a.toc-link {
-	color: currentColor;
-	height: 100%;
-}
-
-#livemark-reference a.toc-link:hover {
-	color: orange;
-	text-decoration: underline;
-}
-
-#livemark-reference .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-reference .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-reference .is-active-link::before {
-	background-color: #54BC4B;
-}
-
-#livemark-reference a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
-}
-
-</style>
-
-<!-- JS -->
-
-<script>
-
-// Mount
-document
-  .getElementById('livemark-{{ livemark.reference.section or "right"}}')
-  .appendChild(document.getElementById('livemark-reference'));
-
-</script>
