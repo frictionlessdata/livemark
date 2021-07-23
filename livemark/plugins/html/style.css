@@ -79,7 +79,7 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-left.with-left {
+  #livemark-left {
     display: block;
   }
 }
@@ -126,14 +126,14 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-main.with-left {
+  #livemark-main {
     margin-left: 250px;
     border-left: dashed 1px #ccc;
   }
 }
 
 @media only screen and (min-width: 992px) {
-  #livemark-main.with-right {
+  #livemark-main {
     margin-right: 250px;
     border-right: dashed 1px #ccc;
   }
@@ -1154,7 +1154,7 @@ p {
 }
 
 @media only screen and (min-width: 992px) {
-  #livemark-right.with-right {
+  #livemark-right {
     display: block;
   }
 }
