@@ -1,0 +1,38 @@
+<!-- HTML -->
+
+<div id="livemark-status">
+  <iframe
+    src="https://ghbtns.com/github-btn.html?user={{ livemark.status.user }}&amp;repo={{ livemark.status.repo }}&amp;type={{ livemark.status.type }}&amp;count=true&amp;size=large"
+    width="160px"
+    height="30px"
+    title="GitHub"
+  >
+  </iframe>
+</div>
+
+<!-- CSS -->
+
+<style>
+
+#livemark-status {
+  height: 46px;
+}
+
+#livemark-status iframe {
+  margin-top: -5px;
+  border: none;
+  opacity: 0.5;
+}
+
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-{{ livemark.status.section or "right"}}')
+  .appendChild(document.getElementById('livemark-status'));
+
+</script>
