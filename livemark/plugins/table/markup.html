@@ -1,0 +1,32 @@
+<!-- HTML -->
+
+{% if table %}
+<div>
+  <div id="{{ table.elem }}" class="mt-3">
+  </div>
+</div>
+{% endif %}
+
+<!-- CSS -->
+
+{% if table %}
+{% else %}
+<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
+{% endif %}
+
+<!-- JS -->
+
+{% if table %}
+<script>
+
+// Load
+document.addEventListener("DOMContentLoaded", function(){
+  const spec = JSON.parse('{{ table.spec }}')
+  const elem = document.getElementById('{{ table.elem }}')
+  new Handsontable(elem, spec)
+});
+
+</script>
+{% else %}
+<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
+{% endif %}

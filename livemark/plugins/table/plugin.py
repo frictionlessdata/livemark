@@ -1,0 +1,27 @@
+import json
+import yaml
+from jinja2 import Template
+from frictionless import Resource, Detector
+from ...plugin import Plugin
+
+
+class TablePlugin(Plugin):
+    def process_snippet(self, snippet):
+        if snippet.format == "html":
+            if "table" in snippet.header:
+                spec_yaml = str(snippet.input).strip()
+                spec_python = yaml.safe_load(spec_yaml)
+                spec_python["licenseKey"] = "non-commercial-and-evaluation"
+                detector = Detector(field_float_numbers=True)
+                resource = Resource(spec_python.get("data", []), detector=detector)
+                header, *lists = resource.to_snap(json=True)
+                spec_python["colHeaders"] = header
+                spec_python["data"] = lists
+                spec = json.dumps(spec_python, ensure_ascii=False)
+                spec = spec.replace("'", "\\'")
+                template = Template(self.read_asset("markup.html"))
+                self.__tables += 1
+                self.metadata.setdefault("table", {})
+                self.metadata["table"]["count"] = self.__tables
+                table = {"spec": spec, "elem": f"livemark-table-{self.__tables}"}
+                snippet.output = template.render(table=table)
