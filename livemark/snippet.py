@@ -1,3 +1,6 @@
+from .system import system
+
+
 class Snippet:
     def __init__(self, input, *, header):
         self.__input = input
@@ -19,3 +22,6 @@ class Snippet:
     @output.setter
     def output(self, value):
         self.__output = value
+
+    def process(self):
+        return system.process_snippet(self)

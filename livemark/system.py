@@ -40,6 +40,7 @@ class System:
         "process_document",
     ]
 
+    # TODO: create a corresponding class?
     def process_html(self, html):
         """Process html
 

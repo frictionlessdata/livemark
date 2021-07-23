@@ -1,6 +1,9 @@
+import io
 import os
+import sys
 import shutil
 import tempfile
+import contextlib
 from _thread import RLock  # type: ignore
 from . import settings
 
@@ -35,19 +38,17 @@ def write_file(path, text):
     move_file(file.name, path)
 
 
+@contextlib.contextmanager
+def capture_stdout(stdout=None):
+    old = sys.stdout
+    if stdout is None:
+        stdout = io.StringIO()
+    sys.stdout = stdout
+    yield stdout
+    sys.stdout = old
+
+
 # Backports
-
-
-def slugify(text, **options):
-    # There is a conflict between python-slugify and awesome-slugify
-    # So we import from a proper module manually
-
-    # Import
-    from slugify.slugify import slugify
-
-    # Slugify
-    slug = slugify(text, **options)
-    return slug
 
 
 class cached_property:

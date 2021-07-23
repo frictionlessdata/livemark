@@ -5,6 +5,7 @@ from typing import Optional
 from functools import partial
 from livereload import Server
 from .document import Document
+from .project import Project
 from . import settings
 from . import helpers
 
@@ -30,7 +31,7 @@ def version(value: bool):
 def program_main(
     version: Optional[bool] = typer.Option(None, "--version", callback=version)
 ):
-    """Publish articles written in extended Markdown at ease."""
+    """Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more."""
     pass
 
 
@@ -49,7 +50,7 @@ def program_build(
                 pass
 
     # Process document
-    document = Document(source, target=target)
+    document = Document(source, target=target, project=Project())
     document.prepare()
     document.process()
     document.cleanup()
@@ -66,7 +67,7 @@ def program_build(
 
 @program.command(name="sync")
 def program_sync(
-    path: str = typer.Argument(..., help="Path to markdown"),
+    source: str = typer.Argument(..., help="Path to markdown"),
     diff: bool = typer.Option(default=False, help="Return the diff"),
     print: bool = typer.Option(default=False, help="Return the document"),
     version: Optional[bool] = typer.Option(None, "--version", callback=version),
@@ -74,24 +75,27 @@ def program_sync(
     """Sync the article"""
 
     # Process document
-    document = Document(path)
-    source, target = document.process_markdown()
+    document = Document(source, target=source, project=Project())
+    document.prepare()
+    document.process()
+    document.cleanup()
 
     # Diff document
     if diff:
-        l1 = source.splitlines(keepends=True)
-        l2 = target.splitlines(keepends=True)
+        l1 = document.input.splitlines(keepends=True)
+        l2 = document.output.splitlines(keepends=True)
         ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
         typer.secho("".join(ld), nl=False)
         raise typer.Exit()
 
     # Print document
     if print:
-        typer.secho(target)
+        typer.secho(document.output)
         raise typer.Exit()
 
     # Write document
-    helpers.write_file(path, target)
+    if document.target:
+        helpers.write_file(document.target, document.output)
 
 
 @program.command(name="start")
