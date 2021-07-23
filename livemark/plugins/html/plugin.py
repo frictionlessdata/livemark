@@ -1,35 +1,24 @@
 import marko
-import pyquery
-import frictionless
 from marko.ext.gfm import GFM
-from jinja2 import Environment, FileSystemLoader
 from .renderer import HtmlExtension
+from ...markup import Markup
 from ...plugin import Plugin
-from ...system import system
 
 
 class HtmlPlugin(Plugin):
     def process_document(self, document):
         if document.format == "html":
 
-            # Preprocess document
-            # TODO: move to the "logic" plugin?
-            templating = Environment(loader=FileSystemLoader("."), trim_blocks=True)
-            template = templating.from_string(document.input)
-            output = template.render(frictionless=frictionless)
-
-            # Convert document
+            # Process content
             markdown = marko.Markdown()
             markdown.use(GFM)
             markdown.use(HtmlExtension)
-            output = markdown.convert(output).strip()
+            output = markdown.convert(document.input).strip()
 
-            # Create html
-            html = pyquery(self.read_asset("markup.html"))
-            html("head").append(self.read_asset("style.css", tag="style"))
-            html("body").append(self.read_asset("script.js", tag="script"))
-            html("#livemark-main").append(output)
-
-            # Process/save html
-            system.process_html(html)
-            document.output = html.html()
+            # Process markup
+            markup = Markup(self.read_asset("markup.html"), document=document)
+            markup.query("head").append(self.read_asset("style.css", tag="style"))
+            markup.query("body").append(self.read_asset("script.js", tag="script"))
+            markup.query("#livemark-main").append(output)
+            markup.process()
+            document.output = markup.output

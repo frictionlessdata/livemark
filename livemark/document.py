@@ -62,6 +62,10 @@ class Document:
     def input(self):
         return self.__input
 
+    @input.setter
+    def input(self, value):
+        self.__input = value
+
     @property
     def output(self):
         return self.__output
@@ -73,13 +77,13 @@ class Document:
     # Process
 
     def validate(self):
-        return system.validate_document(self)
+        system.validate_document(self)
 
     def prepare(self):
-        return system.prepare_document(self)
+        system.prepare_document(self)
 
     def process(self):
-        return system.process_document(self)
+        system.process_document(self)
 
     def cleanup(self):
-        return system.cleanup_document(self)
+        system.cleanup_document(self)

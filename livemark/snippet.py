@@ -30,4 +30,4 @@ class Snippet:
         self.__output = value
 
     def process(self):
-        return system.process_snippet(self)
+        system.process_snippet(self)
