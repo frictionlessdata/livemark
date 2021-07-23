@@ -1,0 +1,145 @@
+<!-- HTML -->
+
+<div id="livemark-readability">
+  <div class="readability plus btn-white circle shadow">
+    <div id="livemark-readability-plus" title="Increase readability" class="inner">+</div>
+  </div>
+  <div class="readability minus btn-white circle shadow">
+    <div id="livemark-readability-minus" title="Decrease readability" class="inner">-</div>
+  </div>
+</div>
+
+<!-- CSS -->
+
+<style>
+
+#livemark-readability {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-readability {
+    display: block;
+    opacity: 0.5;
+  }
+}
+
+#livemark-readability .readability{
+  display:none;
+  position:fixed;
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
+  cursor:pointer;
+  top:auto;
+  right:20px;
+  bottom:20px;
+  left:auto;
+  z-index:100;
+  width:50px;
+  height:50px;
+  background-size:40%;
+  background-repeat:no-repeat;
+  background-position:50%;
+}
+
+#livemark-readability .readability.btn-white{
+  background-color:#fff;
+}
+
+#livemark-readability .readability.shadow{
+  -webkit-box-shadow:0 0 10px rgba(0,0,0,.2);
+  box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+#livemark-readability .readability.circle{
+  border-radius:50%;
+}
+
+#livemark-readability .readability{
+  bottom:25px;
+  display:block!important;
+  opacity:1!important;
+}
+
+#livemark-readability.left .plus {
+  left: 30px;
+  right: auto;
+}
+
+#livemark-readability.left .minus {
+  left: 96px;
+  right: auto;
+}
+
+#livemark-readability.right .plus {
+  left: auto;
+  right: 165px;
+}
+
+#livemark-readability.right .minus {
+  left: auto;
+  right: 100px;
+}
+
+#livemark-readability .minus .inner {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+#livemark-readability .plus .inner {
+  font-size: 30px;
+  margin-left: 15px;
+  margin-top: 2px;
+}
+
+.with-readability {
+  font-size: 20px;
+}
+
+.with-readability * {
+  opacity: 1 !important;
+}
+
+.with-readability #livemark-main {
+  color: black;
+}
+
+.with-readability #livemark-left,
+.with-readability #livemark-right {
+  scrollbar-width: unset;  /* Firefox */
+  -ms-overflow-style: unset;  /* Internet Explorer 10+ */
+}
+
+/* TODO: fix unsetting the default value - it doesn't work */
+.with-readability #livemark-left::-webkit-scrollbar,
+.with-readability #livemark-right::-webkit-scrollbar {
+  display: unset; /* Chrome; Safari */
+}
+
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-readability')
+  .classList.add('{{ livemark.readability.section or "right"}}')
+
+// Load
+// TODO: make it remember this setting from prev pages
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById('livemark-readability-plus')
+    .addEventListener("click", function () {
+      document.body.classList.add('with-readability');
+    })
+  document
+    .getElementById('livemark-readability-minus')
+    .addEventListener("click", function () {
+      document.body.classList.remove('with-readability');
+    })
+});
+
+</script>
