@@ -1,0 +1,28 @@
+<!-- HTML -->
+
+<div id="livemark-about">
+  <div>
+    {{ livemark.about.description }}
+  </div>
+</div>
+
+<!-- CSS -->
+
+<style>
+
+#livemark-about > div {
+  opacity: 0.5;
+}
+
+</style>
+
+<!-- JS -->
+
+<script>
+
+// Mount
+document
+  .getElementById('livemark-{{ livemark.about.section or "right"}}')
+  .appendChild(document.getElementById('livemark-about'));
+
+</script>
