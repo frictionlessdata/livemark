@@ -6,11 +6,11 @@ import frictionless
 from marko.ext.gfm import GFM
 from jinja2 import Environment, FileSystemLoader
 from .renderer import HtmlRenderer, HtmlExtension
-from ..plugin import Plugin
-from .. import settings
+from ...plugin import Plugin
+from ... import settings
 
 
-class MarkdownPlugin(Plugin):
+class HtmlPlugin(Plugin):
     def process_document(self, document):
         if document.format in ["html"]:
             markdown = marko.Markdown()

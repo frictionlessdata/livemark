@@ -1,6 +1,6 @@
 import marko
 from .renderer import MarkdownRenderer
-from ..plugin import Plugin
+from ...plugin import Plugin
 
 
 class MarkdownPlugin(Plugin):

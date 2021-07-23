@@ -2,17 +2,12 @@ import yaml
 import subprocess
 from frictionless import File
 from .system import system
-from .project import Project
 from .helpers import cached_property
-from . import settings
+from .config import Config
 
 
 class Document:
-    def __init__(self, source=None, *, target=None, project=None):
-        # TODO: review whether it needs to default
-        source = source or settings.DEFAULT_PATH
-        target = target or settings.DEFAULT_TARGET
-        project = project or Project()
+    def __init__(self, source, *, target, project=None):
 
         # Read input
         with open(source) as file:
@@ -24,7 +19,9 @@ class Document:
             preface, input = input.split("---", maxsplit=2)[1:]
 
         # Read config
-        config = project.config.clone()
+        config = Config()
+        if project:
+            config = project.config.clone()
         if preface:
             config.merge(yaml.safe_load(preface))
 

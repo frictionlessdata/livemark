@@ -12,7 +12,7 @@ from marko.ext.gfm import GFM
 from marko import html_renderer
 from marko.inline import RawText
 from frictionless import Resource, Detector
-from . import config
+from ... import config
 
 
 class HtmlRenderer(html_renderer.HTMLRenderer):
