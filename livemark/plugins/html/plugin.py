@@ -5,7 +5,8 @@ import jsonschema
 import frictionless
 from marko.ext.gfm import GFM
 from jinja2 import Environment, FileSystemLoader
-from .renderer import HtmlRenderer, HtmlExtension
+from .extension import HtmlExtension
+from .renderer import HtmlRenderer
 from ...plugin import Plugin
 from ... import settings
 
