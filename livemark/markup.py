@@ -1,9 +1,7 @@
-import os
-import inspect
-from jinja2 import Template
 from pyquery import PyQuery
 from .system import system
 from .exception import LivemarkException
+from . import helpers
 
 
 class Markup:
@@ -71,24 +69,22 @@ class Markup:
     def plugin_config(self):
         return self.document.config.get(self.plugin.name, {})
 
-    def add_style(self, path, *, target="head", **context):
-        style = self.read_asset(path, tag="style", **context)
-        self.query(target).append(f"\n<style>\n\n{style}\n\n</style>\n")
+    def add_style(self, source, *, target="head", **context):
+        style = f'<link rel="stylesheet" href="{source}"></script>\n'
+        if not helpers.is_remote_path(source):
+            style = self.plugin.read_asset(source, **context)
+            style = f"<style>\n\n{style}\n\n</style>\n"
+        self.query(target).append(style)
 
-    def add_script(self, path, *, target="body", **context):
-        script = self.read_asset(path, tag="script", **context)
-        self.query(target).append(f"\n<script>\n\n{script}\n\n</script>\n")
+    def add_script(self, source, *, target="body", **context):
+        script = f'<script src="{source}"></script>\n'
+        if not helpers.is_remote_path(source):
+            script = self.plugin.read_asset(source, **context)
+            script = f"<script>\n\n{script}\n\n</script>\n"
+        self.query(target).append(script)
 
-    def add_markup(self, path, *, target="body", **context):
-        element = self.read_asset(path, **context)
-        self.query(target).append(f"\n{element}\n")
-
-    def read_asset(self, *path, **context):
-        dir = os.path.dirname(inspect.getfile(self.plugin.__class__))
-        path = os.path.join(dir, *path)
-        with open(path) as file:
-            text = file.read()
-        if context:
-            template = Template(text)
-            text = template.render(**context)
-        return text
+    def add_markup(self, source, *, target="body", **context):
+        markup = source
+        if not source.strip().startswith("<"):
+            markup = self.plugin.read_asset(source, **context)
+        self.query(target).append(f"\n{markup}\n")

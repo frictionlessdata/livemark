@@ -4,6 +4,7 @@ import sys
 import shutil
 import tempfile
 import contextlib
+from urllib.parse import urlparse
 from _thread import RLock  # type: ignore
 from . import settings
 
@@ -46,6 +47,16 @@ def capture_stdout(stdout=None):
     sys.stdout = stdout
     yield stdout
     sys.stdout = old
+
+
+def is_remote_path(path):
+    path = path[0] if path and isinstance(path, list) else path
+    scheme = urlparse(path).scheme
+    if not scheme:
+        return False
+    if path.lower().startswith(f"{scheme}:\\"):
+        return False
+    return True
 
 
 # Backports

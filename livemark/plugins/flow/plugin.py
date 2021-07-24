@@ -3,8 +3,11 @@ from ...plugin import Plugin
 
 class FlowPlugin(Plugin):
     def process_markup(self, markup):
-        markup.query("head").append(self.read_asset("style.css", tag="style"))
-        markup.query("#livemark-main").append(
+        markup.add_style("style.css")
+        markup.add_markup(
+            "markup.html",
+            target="#livemark-main",
             # TODO: implement prev/next
-            self.read_asset("markup.html", prev={}, next={}),
+            prev={},
+            next={},
         )

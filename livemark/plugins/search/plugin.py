@@ -3,4 +3,7 @@ from ...plugin import Plugin
 
 class SearchPlugin(Plugin):
     def process_markup(self, markup):
-        markup.query("#livemark-main").append(self.read_asset("markup.html"))
+        markup.add_markup(
+            "markup.html",
+            target="#livemark-main",
+        )

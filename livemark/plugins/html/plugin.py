@@ -16,9 +16,13 @@ class HtmlPlugin(Plugin):
             output = markdown.convert(document.input).strip()
 
             # Process markup
-            markup = Markup(self.read_asset("markup.html"), document=document)
-            markup.query("head").append(self.read_asset("style.css", tag="style"))
-            markup.query("body").append(self.read_asset("script.js", tag="script"))
-            markup.query("#livemark-main").append(output)
+            input = self.read_asset("markup.html")
+            markup = Markup(input, document=document)
+            with markup.bind(self):
+                markup.add_style("style.css")
+                markup.add_script("script.js")
+                markup.add_markup(output, target="#livemark-main")
             markup.process()
+
+            # Update document
             document.output = markup.output

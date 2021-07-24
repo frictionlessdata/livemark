@@ -3,7 +3,7 @@
     <ol class="toc-list">
       {% for link in config.list %}
       <li class="toc-link">
-        <a class="toc-link {% if source == link.path %}is-active-link{% endif %}" href="{{ link.path }}">
+        <a class="toc-link {% if current == link.path %}is-active-link{% endif %}" href="{{ link.path }}">
           {{ link.name }}
         </a>
       </li>

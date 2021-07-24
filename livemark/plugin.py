@@ -35,28 +35,12 @@ class Plugin:
 
     # Helpers
 
-    def get_config(self, markup):
-        return markup.document.config.get(self.name, {})
-
-    def add_style(self, markup, *, path, to="head", **data):
-        style = self.read_asset(path, tag="style", **data)
-        markup.query(to).append(style)
-
-    def add_script(self, markup, *, path, to="body", **data):
-        script = self.read_asset(path, tag="script", **data)
-        markup.query(to).append(script)
-
-    def add_element(self, markup, *, path, to="body", **data):
-        element = self.read_asset(path, **data)
-        markup.query(to).append(element)
-
-    def read_asset(self, *path, tag=None, **data):
-        path = os.path.join(os.path.dirname(inspect.getfile(self.__class__)), *path)
+    def read_asset(self, *path, **context):
+        dir = os.path.dirname(inspect.getfile(self.__class__))
+        path = os.path.join(dir, *path)
         with open(path) as file:
-            text = file.read()
-        if tag:
-            text = f"<{tag}>\n\n{text}\n</{tag}>\n"
-        if data:
+            text = file.read().strip()
+        if context:
             template = Template(text)
-            text = template.render(**data)
+            text = template.render(**context)
         return text
