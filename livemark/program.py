@@ -7,7 +7,6 @@ from livereload import Server
 from .document import Document
 from .project import Project
 from . import settings
-from . import helpers
 
 
 # Program
@@ -61,8 +60,7 @@ def program_build(
         raise typer.Exit()
 
     # Write document
-    if document.target:
-        helpers.write_file(document.target, document.output)
+    document.write()
 
 
 @program.command(name="sync")
@@ -94,8 +92,7 @@ def program_sync(
         raise typer.Exit()
 
     # Write document
-    if document.target:
-        helpers.write_file(document.target, document.output)
+    document.write()
 
 
 @program.command(name="start")

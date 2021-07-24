@@ -3,6 +3,7 @@ from frictionless import File
 from .system import system
 from .helpers import cached_property
 from .config import Config
+from . import helpers
 
 
 class Document:
@@ -87,3 +88,9 @@ class Document:
 
     def cleanup(self):
         system.cleanup_document(self)
+
+    # Write
+
+    def write(self):
+        if self.target and self.output:
+            helpers.write_file(self.target, self.output)
