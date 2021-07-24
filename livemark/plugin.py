@@ -36,12 +36,12 @@ class Plugin:
     # Helpers
 
     def read_asset(self, *path, tag=None, **data):
-        path = os.path.join([os.path.dirname(inspect.getfile(self.__class__)), *path])
+        path = os.path.join(os.path.dirname(inspect.getfile(self.__class__)), *path)
         with open(path) as file:
             text = file.read()
         if tag:
             text = f"<{tag}>\n{text}\n</{tag}>"
         if data:
             template = Template(text)
-            text = template.render(data=data)
+            text = template.render(**data)
         return text

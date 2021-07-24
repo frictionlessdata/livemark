@@ -1,11 +1,11 @@
-import pyquery
+from pyquery import PyQuery
 from .system import system
 
 
 class Markup:
     def __init__(self, input, *, document):
         self.__input = input
-        self.__query = pyquery(self.read_asset("markup.html"))
+        self.__query = PyQuery(input)
         self.__document = document
         self.__output = ""
 

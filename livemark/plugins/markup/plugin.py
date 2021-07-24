@@ -1,6 +1,7 @@
 import bs4
 import marko
 from marko.ext.gfm import GFM
+from ..html.renderer import HtmlExtension
 from ...plugin import Plugin
 
 
@@ -10,8 +11,7 @@ class MarkupPlugin(Plugin):
             if "markup" in snippet.header:
                 markdown = marko.Markdown()
                 markdown.use(GFM)
-                # TODO: activate
-                #  markdown.use(HtmlExtension)
+                markdown.use(HtmlExtension)
                 html = bs4.BeautifulSoup(snippet.input, features="html.parser")
                 for node in html.select(".markdown"):
                     if len(node.contents) == 1:

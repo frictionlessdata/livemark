@@ -74,7 +74,7 @@ class System:
         """Cleanup document
 
         Parameters:
-            document (object): document object
+            document (object): Document object
         """
         for func in self.methods["cleanup_document"].values():
             func(document)
@@ -83,7 +83,7 @@ class System:
         """Process snippet
 
         Parameters:
-            code (object): code object
+            snippet (object): Snippet object
         """
         for func in self.methods["process_snippet"].values():
             func(snippet)
@@ -92,9 +92,9 @@ class System:
         """Process markup
 
         Parameters:
-            html (object): pyquery document
+            markup (object): Markup object
         """
-        for func in self.methods["process_html"].values():
+        for func in self.methods["process_markup"].values():
             func(markup)
 
     # Methods
