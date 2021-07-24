@@ -56,7 +56,7 @@ def program_build(
 
     # Print document
     if print:
-        typer.secho(document.target)
+        document.print()
         raise typer.Exit()
 
     # Write document
@@ -88,7 +88,7 @@ def program_sync(
 
     # Print document
     if print:
-        typer.secho(document.output)
+        document.print()
         raise typer.Exit()
 
     # Write document

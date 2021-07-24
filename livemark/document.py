@@ -89,7 +89,11 @@ class Document:
     def cleanup(self):
         system.cleanup_document(self)
 
-    # Write
+    # Output
+
+    def print(self, print=print):
+        if self.output:
+            print(self.output)
 
     def write(self):
         if self.target and self.output:
