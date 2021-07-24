@@ -1,10 +1,10 @@
 <div id="livemark-links">
   <div class="toc">
     <ol class="toc-list">
-      {% for item in config.items %}
-      <li class="toc-item">
-        <a class="toc-link" href="{{ item.path }}" {% if item.path.startswith('http') %}target="_blank"{% endif %} {% if link.hook %}onclick="{{ item.hook }}"{% endif %}>
-          {{ item.name }}
+      {% for link in config.list %}
+      <li class="toc-link">
+        <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %} {% if link.hook %}onclick="{{ link.hook }}"{% endif %}>
+          {{ link.name }}
         </a>
       </li>
       {% endfor %}

@@ -1,1 +1,1 @@
-from .plugin import TablePlugin
+#  from .plugin import TablePlugin

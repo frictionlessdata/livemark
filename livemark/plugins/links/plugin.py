@@ -2,7 +2,7 @@ from ...plugin import Plugin
 
 
 class LinksPlugin(Plugin):
-    def process_html(self, markup):
+    def process_markup(self, markup):
         config = markup.document.config.get("links", {})
         markup.query("head").append(self.read_asset("style.css", tag="style"))
         markup.query("#livemark-right").append(
