@@ -1508,7 +1508,7 @@ p {
 }
 
 </style>
-<style>
+<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css"/><style>
 
 #livemark-toc .toc {
   opacity: 0.5;
@@ -1554,7 +1554,7 @@ p {
   </div>
 </div><div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br/>
-  (2021-07-24 12:00:21)
+  (2021-07-24 12:02:04)
 </div><div id="livemark-toc">
   <div class="js-toc toc"/>
 </div>
@@ -1886,7 +1886,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
-<script>
+<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"/><script>
 
 document.addEventListener("DOMContentLoaded", function () {
   tocbot.init({
@@ -1899,7 +1899,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
-    headingLabelCallback: (label) => label.replace(/(^#|#$)/g, "").trim(),
+    headingLabelCallback: (label) =&gt; label.replace(/(^#|#$)/g, "").trim(),
   });
 });
 
