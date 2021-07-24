@@ -41,6 +41,6 @@ class Plugin:
         with open(path) as file:
             text = file.read().strip()
         if context:
-            template = Template(text)
+            template = Template(text, trim_blocks=True)
             text = template.render(**context)
         return text

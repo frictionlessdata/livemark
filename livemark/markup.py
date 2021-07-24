@@ -37,7 +37,7 @@ class Markup:
         # Here we recover initial formatting for styles and scripts
         lines = []
         is_replacing = False
-        output = self.__query.html()
+        output = self.__query.outer_html()
         for line in output.splitlines(keepends=True):
             if line.strip() in ["<style>", "<script>"]:
                 is_replacing = True
@@ -46,7 +46,8 @@ class Markup:
             if is_replacing:
                 line = line.replace("&lt;", "<").replace("&gt;", ">")
             lines.append(line)
-        return "".join(lines)
+        output = "".join(lines)
+        return output
 
     def process(self):
         system.process_markup(self)

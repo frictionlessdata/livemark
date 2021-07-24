@@ -1,7 +1,7 @@
-
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 
 /* Base */
@@ -1507,7 +1507,7 @@ p {
 }
 
 </style>
-<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css"/>
+<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <style>
 
 #livemark-toc .toc {
@@ -1534,46 +1534,42 @@ p {
 <div id="livemark-pages">
   <div class="toc">
     <ol class="toc-list">
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link " href="/">
           Introduction
         </a>
       </li>
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link " href="/docs/getting-started.html">
           Getting Started
         </a>
       </li>
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link " href="/docs/configuration.html">
           Configuration
         </a>
       </li>
-      
-    </ol>
+          </ol>
   </div>
 </div>
 
 <div id="livemark-stats">
-  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br/>
-  (2021-07-24 16:55:40)
+  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  (2021-07-24 17:47:29)
 </div>
 
 <div id="livemark-toc">
-  <div class="js-toc toc"/>
+  <div class="js-toc toc">toc</div>
 </div>
 </div>
 <div id="livemark-main">
 
 <h1>Livemark</h1>
-<p><a href="https://github.com/frictionlessdata/livemark/actions"><img src="https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main" alt="Build"/></a>
-<a href="https://codecov.io/gh/frictionlessdata/livemark"><img src="https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main" alt="Coverage"/></a>
-<a href="https://pypi.python.org/pypi/livemark"><img src="https://img.shields.io/pypi/v/livemark.svg" alt="Registry"/></a>
-<a href="https://github.com/frictionlessdata/livemark"><img src="https://img.shields.io/badge/codebase-github-brightgreen" alt="Codebase"/></a>
-<a href="https://discord.com/channels/695635777199145130/695635777199145133"><img src="https://img.shields.io/badge/support-discord-brightgreen" alt="Support"/></a></p>
+<p><a href="https://github.com/frictionlessdata/livemark/actions"><img src="https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main" alt="Build"></a>
+<a href="https://codecov.io/gh/frictionlessdata/livemark"><img src="https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main" alt="Coverage"></a>
+<a href="https://pypi.python.org/pypi/livemark"><img src="https://img.shields.io/pypi/v/livemark.svg" alt="Registry"></a>
+<a href="https://github.com/frictionlessdata/livemark"><img src="https://img.shields.io/badge/codebase-github-brightgreen" alt="Codebase"></a>
+<a href="https://discord.com/channels/695635777199145130/695635777199145133"><img src="https://img.shields.io/badge/support-discord-brightgreen" alt="Support"></a></p>
 <blockquote>
 <p>This document is completely <a href="https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md">written and published</a> in Livemark notation</p>
 </blockquote>
@@ -1583,15 +1579,15 @@ p {
 <p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
 </blockquote>
 <p>Livemark preprocesses your document using the Jinja templating language. Inside templates, you can use <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> as a <code>frictionless</code> variable to work with tabular data. This is a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:</p>
-<p>{% raw %}</p>
 {% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
-<p>{% endraw %}</p>
-<p>{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}</p>
 <ul>
-<li>{{ car.brand }} {{ car.model }}: ${{ car.price }}
-{% endfor %}</li>
+<li>Volkswagen Vento: $785</li>
+<li>Hyundai Verna: $774</li>
+<li>Skoda Rapid: $756</li>
+<li>Suzuki Ciaz: $725</li>
+<li>Renault Scala: $724</li>
 </ul>
 <h2>Table</h2>
 <blockquote>
@@ -1699,7 +1695,7 @@ height: 300
 <div class="container">
 <div class="row">
 <div class="col-sm">
-<div class="markdown"><p><img alt="Package" src="data/data-package.png"/></p>
+<div class="markdown"><p><img alt="Package" src="data/data-package.png"></p>
 </div>
 <div class="text-center">
 <p><strong>Data Package</strong></p>
@@ -1707,7 +1703,7 @@ height: 300
 </div>
 </div>
 <div class="col-sm markdown">
-<div class="markdown"><p><img alt="Resource" src="data/data-resource.png"/></p>
+<div class="markdown"><p><img alt="Resource" src="data/data-resource.png"></p>
 </div>
 <div class="text-center">
 <p><strong>Data Resource</strong></p>
@@ -1715,7 +1711,7 @@ height: 300
 </div>
 </div>
 <div class="col-sm markdown">
-<div class="markdown"><p><img alt="Schema" src="data/table-schema.png"/></p>
+<div class="markdown"><p><img alt="Schema" src="data/table-schema.png"></p>
 </div>
 <div class="text-center">
 <p><strong>Table Schema</strong></p>
@@ -1730,19 +1726,19 @@ height: 300
 <p><a href="https://guides.github.com/features/mastering-markdown/">https://guides.github.com/features/mastering-markdown/</a></p>
 </blockquote>
 <p>Livemark supports Github Flavoured Markdown so you can use familiar notation:</p>
-<p><img src="data/content.png" alt="Sidebar"/></p>
+<p><img src="data/content.png" alt="Sidebar"></p>
 <h2>Sidebar</h2>
 <blockquote>
 <p><a href="https://tscanlin.github.io/tocbot/">https://tscanlin.github.io/tocbot/</a></p>
 </blockquote>
 <p>Livemark provides an automatically generated table of contents:</p>
-<p><img src="data/sidebar.png" alt="Sidebar"/></p>
+<p><img src="data/sidebar.png" alt="Sidebar"></p>
 <h2>Scroll</h2>
 <blockquote>
 <p><a href="https://azrsix.github.io/ue-scroll-js/">https://azrsix.github.io/ue-scroll-js/</a></p>
 </blockquote>
 <p>Livemark provides a scroll-to-top button when you scroll down your document:</p>
-<p><img src="data/scroll.png" alt="Scroll"/></p>
+<p><img src="data/scroll.png" alt="Scroll"></p>
 <h2>Layout</h2>
 <blockquote>
 <p><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html">https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html</a></p>
@@ -1754,7 +1750,6 @@ height: 300
 <blockquote>
 <p>layout.html</p>
 </blockquote>
-<p>{% raw %}</p>
 <pre><code class="language-html">{% extends "layout.html" %}.
 
 {% block markup %}
@@ -1762,7 +1757,6 @@ height: 300
 &lt;link rel="stylesheet" href="static/custom.css"&gt;
 {% endblock %}
 </code></pre>
-<p>{% endraw %}</p>
 <p>Then link your new layout in markdown documents:</p>
 <blockquote>
 <p>article.md</p>
@@ -1777,9 +1771,7 @@ This article uses a custom layout
 
 <div id="livemark-flow">
   <div>
-    
-    
-  </div>
+          </div>
 </div>
 
 
@@ -1795,44 +1787,37 @@ This article uses a custom layout
 <div id="livemark-links">
   <div class="toc">
     <ol class="toc-list">
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link" href="https://frictionlessdata.io/" target="_blank">
           Frictionless
         </a>
       </li>
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link" href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
           Discord
         </a>
       </li>
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link" href="https://twitter.com/frictionlessd8a" target="_blank">
           Twitter
         </a>
       </li>
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link" href="https://github.com/frictionlessdata/livemark/issues" target="_blank">
           Report
         </a>
       </li>
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link" href="https://livemark.frictionlessdata.io" target="_blank" onclick="window.print();return false;">
           Print
         </a>
       </li>
-      
-      <li class="toc-link">
+            <li class="toc-link">
         <a class="toc-link" href="https://github.com/frictionlessdata/livemark/edit/main/index.md" target="_blank">
           Edit
         </a>
       </li>
-      
-    </ol>
+          </ol>
   </div>
 </div>
 
@@ -1866,7 +1851,7 @@ document.addEventListener("DOMContentLoaded", function () {
           .toLowerCase()
           .split(" ")
           .join("-")
-          .replace(/[!@#$%^&amp;*():]/gi, "")
+          .replace(/[!@#$%^&*():]/gi, "")
           .replace(/\//gi, "-");
     headingMap[id] = !isNaN(headingMap[id]) ? ++headingMap[id] : 0;
     if (headingMap[id]) {
@@ -1906,7 +1891,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
-<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"/>
+<script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1916,7 +1901,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-main",
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: "{{ livemark.navigation.selector or 'h2, h3' }}",
+    headingSelector: "h2, h3",
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
@@ -1926,3 +1911,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 </body>
+</html>
