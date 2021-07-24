@@ -1,5 +1,9 @@
+import os
+import inspect
+from jinja2 import Template
 from pyquery import PyQuery
 from .system import system
+from .exception import LivemarkException
 
 
 class Markup:
@@ -8,6 +12,14 @@ class Markup:
         self.__query = PyQuery(input)
         self.__document = document
         self.__output = ""
+        self.__plugin = None
+
+    def __enter__(self):
+        assert self.plugin
+        return self
+
+    def __exit__(self, type, value, traceback):
+        self.bind()
 
     @property
     def input(self):
@@ -40,3 +52,43 @@ class Markup:
 
     def process(self):
         system.process_markup(self)
+
+    # Helpers
+
+    def bind(self, plugin=None):
+        if callable(plugin):
+            plugin = plugin.__self__
+        self.__plugin = plugin
+        return self
+
+    @property
+    def plugin(self):
+        if not self.__plugin:
+            raise LivemarkException("The markup is not bound to any plugin")
+        return self.__plugin
+
+    @property
+    def plugin_config(self):
+        return self.document.config.get(self.plugin.name, {})
+
+    def add_style(self, path, *, target="head", **context):
+        style = self.read_asset(path, tag="style", **context)
+        self.query(target).append(f"\n<style>\n\n{style}\n\n</style>\n")
+
+    def add_script(self, path, *, target="body", **context):
+        script = self.read_asset(path, tag="script", **context)
+        self.query(target).append(f"\n<script>\n\n{script}\n\n</script>\n")
+
+    def add_markup(self, path, *, target="body", **context):
+        element = self.read_asset(path, **context)
+        self.query(target).append(f"\n{element}\n")
+
+    def read_asset(self, *path, **context):
+        dir = os.path.dirname(inspect.getfile(self.plugin.__class__))
+        path = os.path.join(dir, *path)
+        with open(path) as file:
+            text = file.read()
+        if context:
+            template = Template(text)
+            text = template.render(**context)
+        return text

@@ -95,7 +95,8 @@ class System:
             markup (object): Markup object
         """
         for func in self.methods["process_markup"].values():
-            func(markup)
+            with markup.bind(func):
+                func(markup)
 
     # Methods
 
