@@ -40,7 +40,7 @@ class Plugin:
         with open(path) as file:
             text = file.read()
         if tag:
-            text = f"<{tag}>\n<![CDATA[\n{text}\n]]>\n</{tag}>\n"
+            text = f"<{tag}>\n\n{text}\n</{tag}>\n"
         if data:
             template = Template(text)
             text = template.render(**data)

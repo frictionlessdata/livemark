@@ -78,7 +78,7 @@ p {
   display: none; /* Chrome; Safari */
 }
 
-#livemark-left &gt; div:not(:last-child) {
+#livemark-left > div:not(:last-child) {
   border-bottom: 1px solid #eaecef;
   padding-bottom: 15px;
   margin-bottom: 15px;
@@ -762,11 +762,11 @@ p {
   clear: both;
 }
 
-#livemark-main&gt;:first-child {
+#livemark-main>:first-child {
   margin-top: 0!important;
 }
 
-#livemark-main&gt;:last-child {
+#livemark-main>:last-child {
   margin-bottom: 0!important;
 }
 
@@ -802,11 +802,11 @@ p {
   border-left: .25em solid #dfe2e5;
 }
 
-#livemark-main blockquote&gt;:first-child {
+#livemark-main blockquote>:first-child {
   margin-top: 0;
 }
 
-#livemark-main blockquote&gt;:last-child {
+#livemark-main blockquote>:last-child {
   margin-bottom: 0;
 }
 
@@ -870,7 +870,7 @@ p {
   word-wrap: break-all;
 }
 
-#livemark-main li&gt;p {
+#livemark-main li>p {
   margin-top: 16px;
 }
 
@@ -947,7 +947,7 @@ p {
   word-wrap: normal;
 }
 
-#livemark-main pre&gt;code {
+#livemark-main pre>code {
   padding: 0;
   margin: 0;
   font-size: 100%;
@@ -1153,7 +1153,7 @@ p {
   display: none; /* Chrome; Safari */
 }
 
-#livemark-right &gt; div:not(:last-child) {
+#livemark-right > div:not(:last-child) {
   border-bottom: 1px solid #eaecef;
   padding-bottom: 15px;
   margin-bottom: 15px;
@@ -1165,14 +1165,12 @@ p {
   }
 }
 
-
 </style>
 <style>
 
-#livemark-about &gt; div {
+#livemark-about > div {
   opacity: 0.5;
 }
-
 
 </style>
 <style>
@@ -1182,12 +1180,12 @@ p {
 	overflow-y: auto;
 }
 
-#livemark-header .toc&gt;.toc-list {
+#livemark-header .toc>.toc-list {
 	overflow: hidden;
 	position: relative;
 }
 
-#livemark-header .toc&gt;.toc-list li {
+#livemark-header .toc>.toc-list li {
 	list-style: none;
 }
 
@@ -1226,7 +1224,6 @@ p {
 }
 
 
-
 </style>
 <style>
 
@@ -1237,7 +1234,7 @@ p {
   height: 50px;
 }
 
-#livemark-flow &gt; div {
+#livemark-flow > div {
   opacity: 0.4;
 }
 
@@ -1250,7 +1247,6 @@ p {
   color: black;
 }
 
-
 </style>
 <style>
 
@@ -1259,12 +1255,12 @@ p {
 	overflow-y: auto;
 }
 
-#livemark-links .toc&gt;.toc-list {
+#livemark-links .toc>.toc-list {
 	overflow: hidden;
 	position: relative;
 }
 
-#livemark-links .toc&gt;.toc-list li {
+#livemark-links .toc>.toc-list li {
 	list-style: none;
 }
 
@@ -1306,7 +1302,6 @@ p {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
 
-
 </style>
 <style>
 
@@ -1315,12 +1310,12 @@ p {
 	overflow-y: auto;
 }
 
-#livemark-pages .toc&gt;.toc-list {
+#livemark-pages .toc>.toc-list {
 	overflow: hidden;
 	position: relative;
 }
 
-#livemark-pages .toc&gt;.toc-list li {
+#livemark-pages .toc>.toc-list li {
 	list-style: none;
 }
 
@@ -1361,7 +1356,6 @@ p {
 #livemark-pages a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
-
 
 </style>
 <style>
@@ -1469,7 +1463,6 @@ p {
   display: unset; /* Chrome; Safari */
 }
 
-
 </style>
 <style>
 
@@ -1501,7 +1494,6 @@ p {
   font-size: 16px;
 }
 
-
 </style>
 <style>
 
@@ -1515,14 +1507,12 @@ p {
   opacity: 0.5;
 }
 
-
 </style>
 <style>
 
 #livemark-toc .toc {
   opacity: 0.5;
 }
-
 
 </style>
 </head>
@@ -1564,7 +1554,7 @@ p {
   </div>
 </div><div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br/>
-  (2021-07-24 11:38:43)
+  (2021-07-24 12:00:21)
 </div><div id="livemark-toc">
   <div class="js-toc toc"/>
 </div>
@@ -1875,7 +1865,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 </script>
 <script>
 
@@ -1896,7 +1885,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 </script>
 <script>
 
@@ -1911,10 +1899,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
-    headingLabelCallback: (label) =&gt; label.replace(/(^#|#$)/g, "").trim(),
+    headingLabelCallback: (label) => label.replace(/(^#|#$)/g, "").trim(),
   });
 });
-
 
 </script>
 </body>

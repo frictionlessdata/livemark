@@ -23,7 +23,20 @@ class Markup:
 
     @property
     def output(self):
-        return self.__query.html()
+        # PyQuery uses lxml which esape all the <> inside the tags
+        # Here we recover initial formatting for styles and scripts
+        lines = []
+        is_replacing = False
+        output = self.__query.html()
+        for line in output.splitlines(keepends=True):
+            if line.strip() in ["<style>", "<script>"]:
+                is_replacing = True
+            elif line.strip() in ["</style>", "</script>"]:
+                is_replacing = False
+            if is_replacing:
+                line = line.replace("&lt;", "<").replace("&gt;", ">")
+            lines.append(line)
+        return "".join(lines)
 
     def process(self):
         system.process_markup(self)
