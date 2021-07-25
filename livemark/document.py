@@ -1,8 +1,9 @@
 import yaml
+import deepmerge
+from copy import deepcopy
 from frictionless import File
 from .system import system
 from .helpers import cached_property
-from .config import Config
 from . import helpers
 
 
@@ -19,11 +20,11 @@ class Document:
             preface, input = input.split("---", maxsplit=2)[1:]
 
         # Read config
-        config = Config()
+        config = {}
         if project:
-            config = project.config.clone()
+            config = deepcopy(project.config)
         if preface:
-            config.merge(yaml.safe_load(preface))
+            deepmerge.always_merger.merge(config, yaml.safe_load(preface))
 
         # Save attributes
         self.__source = source

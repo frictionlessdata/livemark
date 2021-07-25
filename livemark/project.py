@@ -1,6 +1,5 @@
 import os
 import yaml
-from .config import Config
 from . import settings
 
 
@@ -9,11 +8,11 @@ class Project:
         self.__path = path
 
         # Read config
-        self.__config = Config()
+        self.__config = {}
         config_path = os.path.join(path, settings.DEFAULT_CONFIG_PATH)
         if os.path.isfile(config_path):
             with open(config_path) as file:
-                self.__config = Config(yaml.safe_load(file))
+                self.__config = yaml.safe_load(file)
 
     @property
     def path(self):
