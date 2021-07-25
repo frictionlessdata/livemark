@@ -20,6 +20,12 @@ class HtmlPlugin(Plugin):
             markup = Markup(input, document=document)
             with markup.bind(self):
                 markup.add_style("style.css")
+                markup.add_script(
+                    "https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"
+                )
+                markup.add_script(
+                    "https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"
+                )
                 markup.add_script("script.js")
                 markup.add_markup(output, target="#livemark-main")
             markup.process()
