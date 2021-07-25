@@ -1561,7 +1561,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-25 11:48:14)
+  (2021-07-25 11:52:00)
 </div>
 
 <h1>Livemark</h1>
@@ -1633,36 +1633,17 @@ width: 500
 height: 300
 '''
 </code></pre>
-<pre><code class="language-chart">data:
-  url: data/cars.csv
-mark: circle
-selection:
-  brush:
-    type: interval
-encoding:
-  x:
-    type: quantitative
-    field: kmpl
-    scale:
-     domain: [12,25]
-  y:
-    type: quantitative
-    field: price
-    scale:
-     domain: [100,900]
-  color:
-    condition:
-      selection: brush
-      field: type
-      type: nominal
-    value: grey
-  size:
-    type: quantitative
-    field: bhp
-width: 500
-height: 300
-</code></pre>
-<h2>Script</h2>
+<div style="overflow-x: auto">
+  <div id="livemark-chart-1">
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const spec = JSON.parse('{"data": {"url": "data/cars.csv"}, "mark": "circle", "selection": {"brush": {"type": "interval"}}, "encoding": {"x": {"type": "quantitative", "field": "kmpl", "scale": {"domain": [12, 25]}}, "y": {"type": "quantitative", "field": "price", "scale": {"domain": [100, 900]}}, "color": {"condition": {"selection": "brush", "field": "type", "type": "nominal"}, "value": "grey"}, "size": {"type": "quantitative", "field": "bhp"}}, "width": 500, "height": 300}')
+  const elem = '#livemark-chart-1'
+  vegaEmbed(elem, spec)
+})
+</script><h2>Script</h2>
 <blockquote>
 <p><a href="https://www.python.org/">https://www.python.org/</a></p>
 </blockquote>
@@ -1932,6 +1913,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+<script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
+<script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
+<script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
 <script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
 </body>
 </html>

@@ -19,3 +19,8 @@ class ChartPlugin(Plugin):
                 self.__count += 1
                 chart = {"spec": spec, "elem": f"livemark-chart-{self.__count}"}
                 snippet.output = template.render(chart=chart)
+
+    def process_markup(self, markup):
+        markup.add_script("https://unpkg.com/vega@5.20.2/build/vega.min.js")
+        markup.add_script("https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js")
+        markup.add_script("https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js")
