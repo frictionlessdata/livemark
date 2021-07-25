@@ -2,6 +2,8 @@ from ...plugin import Plugin
 
 
 class PanelPlugin(Plugin):
+    priority = 10
+
     def process_markup(self, markup):
         markup.add_style("https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css")
         markup.add_style("style.css")

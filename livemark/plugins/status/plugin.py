@@ -2,6 +2,8 @@ from ...plugin import Plugin
 
 
 class StatusPlugin(Plugin):
+    priority = 40
+
     def process_markup(self, markup):
         markup.add_style("style.css")
         markup.add_markup(

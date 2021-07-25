@@ -2,6 +2,8 @@ from ...plugin import Plugin
 
 
 class TocPlugin(Plugin):
+    priority = 80
+
     def process_markup(self, markup):
         markup.add_style("https://unpkg.com/tocbot@4.12.3/dist/tocbot.css")
         markup.add_style("style.css")

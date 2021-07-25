@@ -2,6 +2,8 @@ from ...plugin import Plugin
 
 
 class BrandPlugin(Plugin):
+    priority = 100
+
     def process_markup(self, markup):
         markup.add_style("style.css")
         markup.add_markup(

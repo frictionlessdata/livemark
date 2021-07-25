@@ -130,6 +130,7 @@ class System:
             if Plugin:
                 plugin = Plugin()
                 plugins[name] = plugin
+        plugins = OrderedDict(sorted(plugins.items(), key=lambda item: -item[1].priority))
         return plugins
 
 

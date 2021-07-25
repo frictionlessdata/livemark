@@ -3,6 +3,8 @@ from ...plugin import Plugin
 
 
 class StatsPlugin(Plugin):
+    priority = 60
+
     def process_markup(self, markup):
         code = markup.plugin_config["analytics"]["code"]
         markup.add_style("style.css")
