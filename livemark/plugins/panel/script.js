@@ -13,4 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", function () {
       document.body.classList.remove("with-readability");
     });
+
+  // Scroll
+  const scrollSpeed = parseInt("{{ config.speed or 10 }}");
+  UeScroll.init({ element: ".ue-scroll", scrollSpeed });
 });

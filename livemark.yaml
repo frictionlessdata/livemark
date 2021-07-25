@@ -9,7 +9,7 @@ pages:
     - name: Configuration
       path: /docs/configuration.html
 toc: true
-scroll: true
+panel: true
 stats:
   analytics:
     type: google

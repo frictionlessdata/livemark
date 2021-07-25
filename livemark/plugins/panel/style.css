@@ -67,26 +67,38 @@
   margin-top: 2px;
 }
 
-.with-panel {
-  font-size: 20px;
-}
-
-.with-panel * {
+#livemark-panel .ue-scroll {
+  bottom: 25px;
+  /* Make the button alway visible */
+  display: block !important;
   opacity: 1 !important;
 }
 
-.with-panel #livemark-main {
+#livemark-panel .ue-scroll {
+  left: auto;
+  right: 35px;
+}
+
+.with-readability {
+  font-size: 20px;
+}
+
+.with-readability * {
+  opacity: 1 !important;
+}
+
+.with-readability #livemark-main {
   color: black;
 }
 
-.with-panel #livemark-left,
-.with-panel #livemark-right {
+.with-readability #livemark-left,
+.with-readability #livemark-right {
   scrollbar-width: unset;  /* Firefox */
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
 /* TODO: fix unsetting the default value - it doesn't work */
-.with-panel #livemark-left::-webkit-scrollbar,
-.with-panel #livemark-right::-webkit-scrollbar {
+.with-readability #livemark-left::-webkit-scrollbar,
+.with-readability #livemark-right::-webkit-scrollbar {
   display: unset; /* Chrome; Safari */
 }
