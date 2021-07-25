@@ -9,7 +9,7 @@
   }
 }
 
-#livemark-panel .panel{
+#livemark-panel .readability{
   display:none;
   position:fixed;
   -webkit-transform:translateZ(0);
@@ -27,41 +27,31 @@
   background-position:50%;
 }
 
-#livemark-panel .panel.btn-white{
+#livemark-panel .readability.btn-white {
   background-color:#fff;
 }
 
-#livemark-panel .panel.shadow{
+#livemark-panel .readability.shadow {
   -webkit-box-shadow:0 0 10px rgba(0,0,0,.2);
   box-shadow:0 0 10px rgba(0,0,0,.2);
 }
 
-#livemark-panel .panel.circle{
+#livemark-panel .readability.circle {
   border-radius:50%;
 }
 
-#livemark-panel .panel{
+#livemark-panel .readability {
   bottom:25px;
   display:block!important;
   opacity:1!important;
 }
 
-#livemark-panel.left .plus {
-  left: 30px;
-  right: auto;
-}
-
-#livemark-panel.left .minus {
-  left: 96px;
-  right: auto;
-}
-
-#livemark-panel.right .plus {
+#livemark-panel .plus {
   left: auto;
   right: 165px;
 }
 
-#livemark-panel.right .minus {
+#livemark-panel .minus {
   left: auto;
   right: 100px;
 }
