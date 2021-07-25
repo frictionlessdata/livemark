@@ -7,7 +7,8 @@ class StatsPlugin(Plugin):
         markup.add_style("style.css")
         markup.add_markup(
             "markup.html",
-            target="#livemark-left",
+            action="prepend",
+            target="#livemark-main",
             config=markup.plugin_config,
             current=datetime.datetime.now(),
         )

@@ -1468,15 +1468,7 @@ p {
 </style>
 <style>
 
-#livemark-stats a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
-}
-
-#livemark-stats a {
-  color: inherit;
-}
-
-#livemark-main #livemark-stats {
+#livemark-stats {
   text-align: right;
   font-size: 14px;
   float: right;
@@ -1486,14 +1478,17 @@ p {
 }
 
 @media only screen and (min-width: 576px) {
-  #livemark-main #livemark-stats {
+  #livemark-stats {
     display: block;
   }
 }
 
-#livemark-right #livemark-stats {
-  opacity: 0.5;
-  font-size: 16px;
+#livemark-stats a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}
+
+#livemark-stats a {
+  color: inherit;
 }
 
 </style>
@@ -1556,11 +1551,6 @@ p {
   </div>
 </div>
 
-<div id="livemark-stats">
-  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-25 09:43:19)
-</div>
-
 <div id="livemark-toc">
   <div class="js-toc toc">
     <!-- toc -->
@@ -1568,6 +1558,10 @@ p {
 </div>
 </div>
 <div id="livemark-main">
+<div id="livemark-stats">
+  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  (2021-07-25 10:16:15)
+</div>
 
 <h1>Livemark</h1>
 <p><a href="https://github.com/frictionlessdata/livemark/actions"><img src="https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main" alt="Build"></a>

@@ -70,22 +70,22 @@ class Markup:
     def plugin_config(self):
         return self.document.config.get(self.plugin.name, {})
 
-    def add_style(self, source, *, target="head", **context):
+    def add_style(self, source, *, action="append", target="head", **context):
         style = f'<link rel="stylesheet" href="{source}"></script>\n'
         if not helpers.is_remote_path(source):
             style = self.plugin.read_asset(source, **context)
             style = f"<style>\n\n{style}\n\n</style>\n"
-        self.query(target).append(style)
+        getattr(self.query(target), action)(style)
 
-    def add_script(self, source, *, target="body", **context):
+    def add_script(self, source, *, action="append", target="body", **context):
         script = f'<script src="{source}"></script>\n'
         if not helpers.is_remote_path(source):
             script = self.plugin.read_asset(source, **context)
             script = f"<script>\n\n{script}\n\n</script>\n"
-        self.query(target).append(script)
+        getattr(self.query(target), action)(script)
 
-    def add_markup(self, source, *, target="body", **context):
+    def add_markup(self, source, *, action="append", target="body", **context):
         markup = source
         if not source.strip().startswith("<"):
             markup = self.plugin.read_asset(source, **context)
-        self.query(target).append(f"\n{markup}\n")
+        getattr(self.query(target), action)(f"\n{markup}\n")
