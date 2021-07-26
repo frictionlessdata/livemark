@@ -1561,7 +1561,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-26 10:57:55)
+  (2021-07-26 11:23:00)
 </div>
 
 <h1>Livemark</h1>
@@ -1578,10 +1578,11 @@ p {
 <blockquote>
 <p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
 </blockquote>
-<p>Livemark preprocesses your document using the Jinja templating language. Inside templates, you can use <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> as a <code>frictionless</code> variable to work with tabular data. This is a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:</p>
-{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+<p>Livemark process your document using the Jinja templating language. Inside templates, you can use <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> as a <code>frictionless</code> variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:</p>
+<pre><code class="language-markup">{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
+</code></pre>
 <ul>
 <li>Volkswagen Vento: $785</li>
 <li>Hyundai Verna: $774</li>
@@ -1688,36 +1689,6 @@ pprint(brands.read_rows())
 </div>
 </div>
 </code></pre>
-<div style="max-width: 600px">
-<div class="container">
-<div class="row">
-<div class="col-sm">
-<div class="markdown"><p><img alt="Package" src="data/data-package.png"></p>
-</div>
-<div class="text-center">
-<p><strong>Data Package</strong></p>
-<p>A simple container format for describing a coherent collection of data in a single package.</p>
-</div>
-</div>
-<div class="col-sm markdown">
-<div class="markdown"><p><img alt="Resource" src="data/data-resource.png"></p>
-</div>
-<div class="text-center">
-<p><strong>Data Resource</strong></p>
-<p>A simple format to describe and package a single data resource such as a individual table or file.</p>
-</div>
-</div>
-<div class="col-sm markdown">
-<div class="markdown"><p><img alt="Schema" src="data/table-schema.png"></p>
-</div>
-<div class="text-center">
-<p><strong>Table Schema</strong></p>
-<p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 <h2>Content</h2>
 <blockquote>
 <p><a href="https://guides.github.com/features/mastering-markdown/">https://guides.github.com/features/mastering-markdown/</a></p>

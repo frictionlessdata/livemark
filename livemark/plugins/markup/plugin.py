@@ -7,6 +7,8 @@ from ...plugin import Plugin
 
 class MarkupPlugin(Plugin):
     def process_snippet(self, snippet):
+        # TODO: fix
+        return
         if snippet.format == "html":
             if "markup" in snippet.header:
                 markdown = marko.Markdown()

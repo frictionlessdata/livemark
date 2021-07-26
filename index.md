@@ -14,7 +14,7 @@ Livemark is a static site generator that extends Markdown with interactive chart
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
 
-Livemark preprocesses your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. This is a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
+Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
 
 {% raw %}
 ```markup
