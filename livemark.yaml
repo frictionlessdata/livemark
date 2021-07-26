@@ -1,5 +1,3 @@
-brand:
-  title: Livemark
 pages:
   list:
     - name: Introduction
@@ -8,9 +6,10 @@ pages:
       path: /docs/getting-started.html
     - name: Configuration
       path: /docs/configuration.html
-toc: true
+brand: true
 panel: true
 stats: true
+toc: true
 github:
   user: frictionlessdata
   repo: livemark

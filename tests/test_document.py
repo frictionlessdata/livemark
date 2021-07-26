@@ -24,5 +24,5 @@ def test_document_with_project():
     document = Document("index.md", target="index.html", project=Project())
     assert document.source == "index.md"
     assert document.project.path == ""
-    assert document.config["brand"]["title"] == "Livemark"
+    assert document.config["github"]["repo"] == "livemark"
     assert document.input

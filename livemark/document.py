@@ -76,6 +76,14 @@ class Document:
     def output(self, value):
         self.__output = value
 
+    @cached_property
+    def title(self):
+        prefix = "# "
+        for line in self.input.splitlines():
+            line = line.strip()
+            if line.startswith(prefix):
+                return line.lstrip(prefix)
+
     # Process
 
     def validate(self):

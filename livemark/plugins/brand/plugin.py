@@ -14,4 +14,5 @@ class BrandPlugin(Plugin):
             "markup.html",
             target="#livemark-left",
             config=markup.plugin_config,
+            title=markup.document.title,
         )

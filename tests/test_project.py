@@ -7,4 +7,4 @@ from livemark import Project
 def test_project():
     project = Project()
     assert project.path == ""
-    assert project.config["brand"]["title"] == "Livemark"
+    assert project.config["github"]["repo"] == "livemark"
