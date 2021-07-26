@@ -16,7 +16,12 @@ class HtmlPlugin(Plugin):
             output = markdown.convert(document.input).strip()
 
             # Process markup
-            input = self.read_asset("markup.html")
+            # TODO: rebase on bound document
+            input = self.read_asset(
+                "markup.html",
+                config=document.config.get("html", {}),
+                title=document.title,
+            )
             markup = Markup(input, document=document)
             with markup.bind(self):
                 markup.add_style("https://unpkg.com/prismjs@1.23.0/themes/prism.css")

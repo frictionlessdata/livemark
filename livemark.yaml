@@ -6,7 +6,8 @@ pages:
       path: /docs/getting-started.html
     - name: Configuration
       path: /docs/configuration.html
-brand: true
+brand:
+  title: Livemark
 panel: true
 stats: true
 toc: true
