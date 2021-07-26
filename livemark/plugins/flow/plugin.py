@@ -14,7 +14,7 @@ class FlowPlugin(Plugin):
             current_path = "/"
             current_number = None
             if markup.document.target != "index.html":
-                current_path = markup.document.target
+                current_path = f"/{markup.document.target}"
             for number, link in enumerate(pages_config["list"], start=1):
                 if link["path"] == current_path:
                     current_number = number
