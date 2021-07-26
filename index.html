@@ -1561,7 +1561,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-23 10:12:12)
+  (2021-07-26 10:57:55)
 </div>
 
 <h1>Livemark</h1>
@@ -1736,35 +1736,6 @@ pprint(brands.read_rows())
 </blockquote>
 <p>Livemark provides a scroll-to-top button when you scroll down your document:</p>
 <p><img src="data/scroll.png" alt="Scroll"></p>
-<h2>Layout</h2>
-<blockquote>
-<p><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html">https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html</a></p>
-</blockquote>
-<p>It's possible to customize the layout. You will need to save it first:</p>
-<pre><code class="language-bash">$ livemark layout > layout.html
-</code></pre>
-<p>Then, you can update the layout as a whole or use Jinja's inheritance. For example, let's use Tailwind instead of Bootstrap and some custom styles:</p>
-<blockquote>
-<p>layout.html</p>
-</blockquote>
-<pre><code class="language-html">{% extends "layout.html" %}.
-
-{% block markup %}
-<link rel="stylesheet" href="static/tailwind.css">
-<link rel="stylesheet" href="static/custom.css">
-{% endblock %}
-</code></pre>
-<p>Then link your new layout in markdown documents:</p>
-<blockquote>
-<p>article.md</p>
-</blockquote>
-<pre><code class="language-md">---
-layout: layout.html
----
-# My Article
-
-This article uses a custom layout
-</code></pre>
 
 <div id="livemark-flow">
   <div>
