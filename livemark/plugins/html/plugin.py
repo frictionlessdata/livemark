@@ -19,6 +19,7 @@ class HtmlPlugin(Plugin):
             input = self.read_asset("markup.html")
             markup = Markup(input, document=document)
             with markup.bind(self):
+                markup.add_style("https://unpkg.com/prismjs@1.23.0/themes/prism.css")
                 markup.add_style("style.css")
                 markup.add_script(
                     "https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"
