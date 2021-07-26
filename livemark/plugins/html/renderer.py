@@ -1,4 +1,6 @@
+from copy import copy
 from marko import html_renderer
+from marko.inline import RawText
 from ...snippet import Snippet
 
 
@@ -16,8 +18,16 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
         header = [element.lang] + element.extra.split()
         snippet = Snippet(input, format="html", header=header)
         snippet.process()
-        # TODO: fix this logic
         if snippet.output:
+            if "script" in snippet.header:
+                output = super().render_fenced_code(element)
+                target = copy(element)
+                target.lang = "markup"
+                target.extra = ""
+                target.children = [RawText(snippet.output)]
+                output += "\n"
+                output += super().render_fenced_code(target)
+                return output
             return snippet.output
         return super().render_fenced_code(element)
 
