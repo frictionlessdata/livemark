@@ -1622,7 +1622,7 @@ $ livemark start path/to/your/file.md
 
 <div id="livemark-about">
   <div>
-    Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+    Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)):
   </div>
 </div>
 
@@ -1650,27 +1650,16 @@ $ livemark start path/to/your/file.md
         </a>
       </li>
             <li class="toc-link">
-        <a class="toc-link" href="https://livemark.frictionlessdata.io" target="_blank" onclick="window.print();return false;">
+        <a class="toc-link" href="#" target="_blank" onclick="window.print();return false;">
           Print
         </a>
       </li>
             <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/edit/main/index.md" target="_blank">
+        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/edit/main/docs/getting-started.md" target="_blank">
           Edit
         </a>
       </li>
           </ol>
-  </div>
-</div>
-
-<div id="livemark-panel">
-  <div class="readability plus btn-white circle shadow">
-    <div id="livemark-panel-plus" title="Increase readability" class="inner">+</div>
-  </div>
-  <div class="readability minus btn-white circle shadow">
-    <div id="livemark-panel-minus" title="Decrease readability" class="inner">-</div>
-  </div>
-  <div class="ue-scroll btn-white arrow-black circle shadow">
   </div>
 </div>
 </div>
@@ -1756,6 +1745,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+
+<div id="livemark-panel">
+  <div class="readability plus btn-white circle shadow">
+    <div id="livemark-panel-plus" title="Increase readability" class="inner">+</div>
+  </div>
+  <div class="readability minus btn-white circle shadow">
+    <div id="livemark-panel-minus" title="Decrease readability" class="inner">-</div>
+  </div>
+  <div class="ue-scroll btn-white arrow-black circle shadow">
+  </div>
+</div>
 <script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>

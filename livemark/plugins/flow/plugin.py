@@ -24,6 +24,8 @@ class FlowPlugin(Plugin):
                 prev = pages_config["list"][current_number - 2]
             if current_number < len(pages_config["list"]):
                 next = pages_config["list"][current_number]
+        if not next or not prev:
+            return
 
         # Update markup
         markup.add_style("style.css")

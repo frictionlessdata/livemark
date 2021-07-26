@@ -15,5 +15,5 @@ class PanelPlugin(Plugin):
         markup.add_script("script.js", config=markup.plugin_config)
         markup.add_markup(
             "markup.html",
-            target="#livemark-right",
+            target="body",
         )

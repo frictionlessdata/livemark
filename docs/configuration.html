@@ -1312,29 +1312,6 @@ p {
 </style>
 <style>
 
-#livemark-flow {
-  border-top: 1px solid #eaecef;
-  margin-top: 24px;
-  padding-top: 20px;
-  height: 50px;
-}
-
-#livemark-flow > div {
-  opacity: 0.4;
-}
-
-#livemark-flow .next {
-  float: right;
-}
-
-#livemark-flow a {
-  font-size: 20px;
-  color: black;
-}
-
-</style>
-<style>
-
 #livemark-status {
   height: 46px;
 }
@@ -1595,14 +1572,6 @@ title: My Title
 </blockquote>
 <pre><code class="language-yaml">title: Global Title
 </code></pre>
-
-<div id="livemark-flow">
-  <div>
-            <div class="prev">
-      <a href="/docs/getting-started.html">« Getting Started</a>
-    </div>
-      </div>
-</div>
 </div>
 <div id="livemark-right">
 
@@ -1613,7 +1582,7 @@ title: My Title
 
 <div id="livemark-about">
   <div>
-    Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+    Livemark document can be configured using a frontmatter:
   </div>
 </div>
 
@@ -1641,27 +1610,16 @@ title: My Title
         </a>
       </li>
             <li class="toc-link">
-        <a class="toc-link" href="https://livemark.frictionlessdata.io" target="_blank" onclick="window.print();return false;">
+        <a class="toc-link" href="#" target="_blank" onclick="window.print();return false;">
           Print
         </a>
       </li>
             <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/edit/main/index.md" target="_blank">
+        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/edit/main/docs/configuration.md" target="_blank">
           Edit
         </a>
       </li>
           </ol>
-  </div>
-</div>
-
-<div id="livemark-panel">
-  <div class="readability plus btn-white circle shadow">
-    <div id="livemark-panel-plus" title="Increase readability" class="inner">+</div>
-  </div>
-  <div class="readability minus btn-white circle shadow">
-    <div id="livemark-panel-minus" title="Decrease readability" class="inner">-</div>
-  </div>
-  <div class="ue-scroll btn-white arrow-black circle shadow">
   </div>
 </div>
 </div>
@@ -1747,6 +1705,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+
+<div id="livemark-panel">
+  <div class="readability plus btn-white circle shadow">
+    <div id="livemark-panel-plus" title="Increase readability" class="inner">+</div>
+  </div>
+  <div class="readability minus btn-white circle shadow">
+    <div id="livemark-panel-minus" title="Decrease readability" class="inner">-</div>
+  </div>
+  <div class="ue-scroll btn-white arrow-black circle shadow">
+  </div>
+</div>
 <script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>

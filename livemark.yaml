@@ -1,3 +1,11 @@
+brand:
+  title: Livemark
+github:
+  user: frictionlessdata
+  repo: livemark
+counter:
+  type: google
+  code: G-ZH2QL85N6F
 pages:
   list:
     - name: Introduction
@@ -6,22 +14,6 @@ pages:
       path: /docs/getting-started.html
     - name: Configuration
       path: /docs/configuration.html
-brand:
-  title: Livemark
-panel: true
-stats: true
-toc: true
-github:
-  user: frictionlessdata
-  repo: livemark
-counter:
-  type: google
-  code: G-ZH2QL85N6F
-flow: true
-panel: true
-status: true
-about:
-  description: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
 links:
   list:
     - name: Frictionless
@@ -30,10 +22,3 @@ links:
       path: https://discord.com/channels/695635777199145130/695635777199145133
     - name: Twitter
       path: https://twitter.com/frictionlessd8a
-    - name: Report
-      path: https://github.com/frictionlessdata/livemark/issues
-    - name: Print
-      path: https://livemark.frictionlessdata.io
-      hook: window.print();return false;
-    - name: Edit
-      path: https://github.com/frictionlessdata/livemark/edit/main/index.md

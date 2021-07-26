@@ -1,3 +1,4 @@
+import re
 import yaml
 import deepmerge
 from copy import deepcopy
@@ -80,9 +81,20 @@ class Document:
     def title(self):
         prefix = "# "
         for line in self.input.splitlines():
-            line = line.strip()
             if line.startswith(prefix):
                 return line.lstrip(prefix)
+
+    @cached_property
+    def description(self):
+        pattern = re.compile(r"^\w")
+        for line in self.input.splitlines():
+            line = line.strip()
+            if pattern.match(line):
+                return line
+
+    @cached_property
+    def keywords(self):
+        return ",".join(self.title.split())
 
     # Process
 

@@ -1,6 +1,7 @@
 from ...plugin import Plugin
 
 
+# TODO: ability to infer via document.description
 class AboutPlugin(Plugin):
     priority = 30
 
@@ -14,4 +15,5 @@ class AboutPlugin(Plugin):
             "markup.html",
             target="#livemark-right",
             config=markup.plugin_config,
+            description=markup.document.description,
         )

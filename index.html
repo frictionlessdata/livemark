@@ -1312,29 +1312,6 @@ p {
 </style>
 <style>
 
-#livemark-flow {
-  border-top: 1px solid #eaecef;
-  margin-top: 24px;
-  padding-top: 20px;
-  height: 50px;
-}
-
-#livemark-flow > div {
-  opacity: 0.4;
-}
-
-#livemark-flow .next {
-  float: right;
-}
-
-#livemark-flow a {
-  font-size: 20px;
-  color: black;
-}
-
-</style>
-<style>
-
 #livemark-status {
   height: 46px;
 }
@@ -1573,7 +1550,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-26 12:25:44)
+  (2021-07-26 18:01:47)
 </div>
 
 <h1>Livemark</h1>
@@ -1753,14 +1730,6 @@ pprint(brands.read_rows())
 </blockquote>
 <p>Livemark provides a scroll-to-top button when you scroll down your document:</p>
 <p><img src="data/scroll.png" alt="Scroll"></p>
-
-<div id="livemark-flow">
-  <div>
-        <div class="next">
-      <a href="/docs/getting-started.html">Getting Started »</a>
-    </div>
-          </div>
-</div>
 </div>
 <div id="livemark-right">
 
@@ -1799,7 +1768,7 @@ pprint(brands.read_rows())
         </a>
       </li>
             <li class="toc-link">
-        <a class="toc-link" href="https://livemark.frictionlessdata.io" target="_blank" onclick="window.print();return false;">
+        <a class="toc-link" href="#" target="_blank" onclick="window.print();return false;">
           Print
         </a>
       </li>
@@ -1809,17 +1778,6 @@ pprint(brands.read_rows())
         </a>
       </li>
           </ol>
-  </div>
-</div>
-
-<div id="livemark-panel">
-  <div class="readability plus btn-white circle shadow">
-    <div id="livemark-panel-plus" title="Increase readability" class="inner">+</div>
-  </div>
-  <div class="readability minus btn-white circle shadow">
-    <div id="livemark-panel-minus" title="Decrease readability" class="inner">-</div>
-  </div>
-  <div class="ue-scroll btn-white arrow-black circle shadow">
   </div>
 </div>
 </div>
@@ -1905,6 +1863,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+
+<div id="livemark-panel">
+  <div class="readability plus btn-white circle shadow">
+    <div id="livemark-panel-plus" title="Increase readability" class="inner">+</div>
+  </div>
+  <div class="readability minus btn-white circle shadow">
+    <div id="livemark-panel-minus" title="Decrease readability" class="inner">-</div>
+  </div>
+  <div class="ue-scroll btn-white arrow-black circle shadow">
+  </div>
+</div>
 <script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
