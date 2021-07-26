@@ -10,10 +10,10 @@ pages:
       path: /docs/configuration.html
 toc: true
 panel: true
-stats:
-  analytics:
-    type: google
-    code: G-ZH2QL85N6F
+stats: true
+counter:
+  type: google
+  code: G-ZH2QL85N6F
 flow: true
 panel: true
 status:
