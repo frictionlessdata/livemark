@@ -38,9 +38,11 @@ INSTALL_REQUIRES = [
     "jinja2>=3.0",
     "pyquery>=1.4",
     "deepmerge>=0.3",
+    "gitpython>=3.1",
     "jsonschema>=2.5",
     "typer[all]>=0.3",
     "livereload>=2.6",
+    "giturlparse>=0.10",
     "beautifulsoup4>=4.9",
     "frictionless[excel,json]==4.*",
 ]

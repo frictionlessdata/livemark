@@ -14,4 +14,5 @@ class StatusPlugin(Plugin):
             "markup.html",
             target="#livemark-right",
             config=markup.plugin_config,
+            github=markup.document.config["github"],
         )
