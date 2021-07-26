@@ -1514,6 +1514,7 @@ p {
 }
 
 </style>
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 </head>
 <body>
@@ -1561,7 +1562,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-26 11:23:00)
+  (2021-07-26 11:56:05)
 </div>
 
 <h1>Livemark</h1>
@@ -1579,7 +1580,7 @@ p {
 <p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
 </blockquote>
 <p>Livemark process your document using the Jinja templating language. Inside templates, you can use <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> as a <code>frictionless</code> variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:</p>
-<pre><code class="language-markup">{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+<pre><code>{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 </code></pre>
@@ -1617,7 +1618,8 @@ document.addEventListener("DOMContentLoaded", function(){
   const elem = document.getElementById('livemark-table-1')
   new Handsontable(elem, spec)
 });
-</script><h2>Chart</h2>
+</script>
+<h2>Chart</h2>
 <blockquote>
 <p><a href="https://vega.github.io/vega-lite/">https://vega.github.io/vega-lite/</a></p>
 </blockquote>
@@ -1644,7 +1646,8 @@ document.addEventListener("DOMContentLoaded", function(){
   const elem = '#livemark-chart-1'
   vegaEmbed(elem, spec)
 })
-</script><h2>Script</h2>
+</script>
+<h2>Script</h2>
 <blockquote>
 <p><a href="https://www.python.org/">https://www.python.org/</a></p>
 </blockquote>
@@ -1674,21 +1677,53 @@ pprint(brands.read_rows())
 <p><a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/">https://getbootstrap.com/docs/4.6/getting-started/introduction/</a></p>
 </blockquote>
 <p>With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a responsive grid of cards (note that if we set a <code>markdown</code> class we can use markdown inside html):</p>
-<pre><code class="language-html"><div class="w-50">
+<pre><code class="language-html">'''html markup
+&lt;div class="w-50"&gt;
+&lt;div class="container"&gt;
+&lt;div class="row"&gt;
+&lt;div class="col-sm"&gt;
+  &lt;div class="markdown"&gt;![Package](data/data-package.png)&lt;/div&gt;
+  &lt;div class="text-center"&gt;
+  &lt;p&gt;&lt;strong&gt;Data Package&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;A simple container format for describing a coherent collection of data in a single package.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- other columns are omitted --&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+'''
+</code></pre>
+<div style="max-width: 600px">
 <div class="container">
 <div class="row">
 <div class="col-sm">
-  <div class="markdown">![Package](data/data-package.png)</div>
-  <div class="text-center">
-  <p><strong>Data Package</strong></p>
-  <p>A simple container format for describing a coherent collection of data in a single package.</p>
-  </div>
+<div class="markdown"><p><img alt="Package" src="data/data-package.png"></p>
 </div>
-<!-- other columns are omitted -->
+<div class="text-center">
+<p><strong>Data Package</strong></p>
+<p>A simple container format for describing a coherent collection of data in a single package.</p>
 </div>
 </div>
+<div class="col-sm markdown">
+<div class="markdown"><p><img alt="Resource" src="data/data-resource.png"></p>
 </div>
-</code></pre>
+<div class="text-center">
+<p><strong>Data Resource</strong></p>
+<p>A simple format to describe and package a single data resource such as a individual table or file.</p>
+</div>
+</div>
+<div class="col-sm markdown">
+<div class="markdown"><p><img alt="Schema" src="data/table-schema.png"></p>
+</div>
+<div class="text-center">
+<p><strong>Table Schema</strong></p>
+<p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <h2>Content</h2>
 <blockquote>
 <p><a href="https://guides.github.com/features/mastering-markdown/">https://guides.github.com/features/mastering-markdown/</a></p>

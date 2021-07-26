@@ -7,8 +7,6 @@ from ...plugin import Plugin
 
 class MarkupPlugin(Plugin):
     def process_snippet(self, snippet):
-        # TODO: fix
-        return
         if snippet.format == "html":
             if "markup" in snippet.header:
                 markdown = marko.Markdown()
@@ -23,3 +21,6 @@ class MarkupPlugin(Plugin):
                             inner = bs4.BeautifulSoup(text, features="html.parser")
                             node.string.replace_with(inner)
                 snippet.output = str(html)
+
+    def process_markup(self, markup):
+        markup.add_style("https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css")

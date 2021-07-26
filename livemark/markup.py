@@ -33,8 +33,10 @@ class Markup:
 
     @property
     def output(self):
+        # NOTE:
         # PyQuery uses lxml which esape all the <> inside the tags
         # Here we recover initial formatting for styles and scripts
+        # Take into account that this script is fragile (rewrite)
         lines = []
         is_replacing = False
         output = self.__query.outer_html()

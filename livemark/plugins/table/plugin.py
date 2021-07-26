@@ -25,7 +25,7 @@ class TablePlugin(Plugin):
                 template = Template(self.read_asset("markup.html"))
                 self.__count += 1
                 table = {"spec": spec, "elem": f"livemark-table-{self.__count}"}
-                snippet.output = template.render(table=table)
+                snippet.output = template.render(table=table) + "\n"
 
     def process_markup(self, markup):
         markup.add_style("https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css")

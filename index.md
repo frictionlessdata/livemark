@@ -17,7 +17,7 @@ Livemark is a static site generator that extends Markdown with interactive chart
 Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
 
 {% raw %}
-```markup
+```
 {% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
@@ -140,6 +140,7 @@ pprint(brands.read_rows())
 With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a responsive grid of cards (note that if we set a `markdown` class we can use markdown inside html):
 
 ```html
+'''html markup
 <div class="w-50">
 <div class="container">
 <div class="row">
@@ -154,8 +155,10 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 </div>
 </div>
+'''
 ```
 
+```html markup
 <div style="max-width: 600px">
 <div class="container">
 <div class="row">
@@ -183,6 +186,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 </div>
 </div>
+```
 
 ## Content
 
