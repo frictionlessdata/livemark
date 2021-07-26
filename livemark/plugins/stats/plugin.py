@@ -6,8 +6,9 @@ from ...plugin import Plugin
 class StatsPlugin(Plugin):
     priority = 60
 
-    # TODO: move gtag to the head and make async?
     def process_markup(self, markup):
+        if not markup.plugin_config:
+            return
 
         # Prepare code/current
         code = markup.plugin_config.get("analytics", {}).get("code")
@@ -16,6 +17,7 @@ class StatsPlugin(Plugin):
         # Update markup
         markup.add_style("style.css")
         if code:
+            # TODO: move gtag to the head and make async?
             markup.add_script(f"https://www.googletagmanager.com/gtag/js?id={code}")
             markup.add_script("script.js", config=markup.plugin_config)
         markup.add_markup(

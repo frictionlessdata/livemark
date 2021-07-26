@@ -5,11 +5,13 @@ class FlowPlugin(Plugin):
     priority = 50
 
     def process_markup(self, markup):
-        pages_config = markup.document.config.get("pages")
+        if not markup.plugin_config:
+            return
 
         # Prepare prev/next
         prev = None
         next = None
+        pages_config = markup.document.config.get("pages")
         if pages_config:
             current_path = "/"
             current_number = None

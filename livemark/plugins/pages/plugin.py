@@ -5,6 +5,8 @@ class PagesPlugin(Plugin):
     priority = 90
 
     def process_markup(self, markup):
+        if not markup.plugin_config:
+            return
 
         # Prepare current
         current = "/"
