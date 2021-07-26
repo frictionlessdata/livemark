@@ -15,7 +15,7 @@ After installation, you can start writing your document (eg an `index.md` file) 
 You can then use the command-line interface to build the output HTML file:
 
 ```bash
-# Build a single document
+# Build a single document (index.md by default)
 $ livemark build
 ```
 
@@ -26,7 +26,7 @@ Or start a livereload server to automatically reload the output page as you modi
 $ livemark start
 ```
 
-Both commands assume that an `index.md` file is present in the same folder the command is being run on. If that's not the case you can pass the path to the input Markdown file as the first parameter:
+Both commands will create an `index.md` file if it's not present in the same folder the command is being run on. If that's not the case you can pass the path to the input Markdown file as the first parameter:
 
 ```bash
 $ livemark build path/to/your/file.md

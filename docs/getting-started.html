@@ -1573,7 +1573,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-06-25 19:43:19)
+  (2021-07-26 17:27:31)
 </div>
 
 <h1>Getting Started</h1>
@@ -1584,14 +1584,14 @@ p {
 <p>After installation, you can start writing your document (eg an <code>index.md</code> file) using the extended Markdown syntax described in the next sections.</p>
 <h2>Usage</h2>
 <p>You can then use the command-line interface to build the output HTML file:</p>
-<pre><code class="language-bash"># Build a single document
+<pre><code class="language-bash"># Build a single document (index.md by default)
 $ livemark build
 </code></pre>
 <p>Or start a livereload server to automatically reload the output page as you modify the input Markdown document:</p>
 <pre><code class="language-bash"># Start a livereload server
 $ livemark start
 </code></pre>
-<p>Both commands assume that an <code>index.md</code> file is present in the same folder the command is being run on. If that's not the case you can pass the path to the input Markdown file as the first parameter:</p>
+<p>Both commands will create an <code>index.md</code> file if it's not present in the same folder the command is being run on. If that's not the case you can pass the path to the input Markdown file as the first parameter:</p>
 <pre><code class="language-bash">$ livemark build path/to/your/file.md
 $ livemark start path/to/your/file.md
 </code></pre>
