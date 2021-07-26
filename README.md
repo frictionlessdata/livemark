@@ -29,7 +29,7 @@ Livemark is a static site generator that extends Markdown with interactive chart
 
 ```bash
 # Build a single document
-$ livemark build '<path=index.md>'
+$ livemark build # by default: index.md
 
 # Start a livereload server
 $ livemark start
