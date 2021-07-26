@@ -1,0 +1,11 @@
+<div style="overflow-x: auto">
+  <div id="{{ chart.elem }}">
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const spec = JSON.parse('{{ chart.spec }}')
+  const elem = '#{{ chart.elem }}'
+  vegaEmbed(elem, spec)
+})
+</script>

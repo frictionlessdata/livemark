@@ -14,10 +14,10 @@ Livemark is a static site generator that extends Markdown with interactive chart
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
 
-Livemark preprocesses your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. This is a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
+Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
 
 {% raw %}
-```markup
+```
 {% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
@@ -117,7 +117,7 @@ height: 300
 
 Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts:
 
-```script
+```python script
 from pprint import pprint
 from frictionless import Resource, transform, steps
 
@@ -140,6 +140,7 @@ pprint(brands.read_rows())
 With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a responsive grid of cards (note that if we set a `markdown` class we can use markdown inside html):
 
 ```html
+'''html markup
 <div class="w-50">
 <div class="container">
 <div class="row">
@@ -154,8 +155,10 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 </div>
 </div>
+'''
 ```
 
+```html markup
 <div style="max-width: 600px">
 <div class="container">
 <div class="row">
@@ -183,6 +186,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
 </div>
 </div>
 </div>
+```
 
 ## Content
 
@@ -207,41 +211,3 @@ Livemark provides an automatically generated table of contents:
 Livemark provides a scroll-to-top button when you scroll down your document:
 
 ![Scroll](data/scroll.png)
-
-## Layout
-
-> https://github.com/frictionlessdata/livemark/blob/main/livemark/assets/templates/layout.html
-
-It's possible to customize the layout. You will need to save it first:
-
-```bash
-$ livemark layout > layout.html
-```
-
-Then, you can update the layout as a whole or use Jinja's inheritance. For example, let's use Tailwind instead of Bootstrap and some custom styles:
-
-> layout.html
-
-{% raw %}
-```html
-{% extends "layout.html" %}.
-
-{% block markup %}
-<link rel="stylesheet" href="static/tailwind.css">
-<link rel="stylesheet" href="static/custom.css">
-{% endblock %}
-```
-{% endraw %}
-
-Then link your new layout in markdown documents:
-
-> article.md
-
-```md
----
-layout: layout.html
----
-# My Article
-
-This article uses a custom layout
-```

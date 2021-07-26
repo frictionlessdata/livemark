@@ -1,0 +1,14 @@
+<div id="livemark-flow">
+  <div>
+    {% if next %}
+    <div class="next">
+      <a href="{{ next.path }}">{{ next.name }} &raquo;</a>
+    </div>
+    {% endif %}
+    {% if prev %}
+    <div class="prev">
+      <a href="{{ prev.path }}">&laquo; {{ prev.name }}</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

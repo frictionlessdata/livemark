@@ -1,0 +1,13 @@
+<div id="livemark-links">
+  <div class="toc">
+    <ol class="toc-list">
+      {% for link in config.list %}
+      <li class="toc-link">
+        <a class="toc-link" href="{{ link.path }}" {% if link.path.startswith('http') %}target="_blank"{% endif %} {% if link.hook %}onclick="{{ link.hook }}"{% endif %}>
+          {{ link.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>

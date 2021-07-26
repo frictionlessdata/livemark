@@ -1,0 +1,9 @@
+#livemark-status {
+  height: 46px;
+}
+
+#livemark-status iframe {
+  margin-top: -5px;
+  border: none;
+  opacity: 0.5;
+}
