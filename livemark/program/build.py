@@ -9,7 +9,7 @@ from .main import program
 @program.command(name="build")
 def program_build(
     source: str = typer.Argument(settings.DEFAULT_PATH, help="Path to source"),
-    target: str = typer.Option(settings.DEFAULT_TARGET, help="Path to target"),
+    target: str = typer.Option(None, help="Path to target"),
     print: bool = typer.Option(False, help="Return the document"),
 ):
     """Build the article."""

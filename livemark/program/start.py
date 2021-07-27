@@ -3,13 +3,12 @@ from functools import partial
 from livereload import Server
 from .build import program_build
 from .main import program
-from .. import settings
 
 
 @program.command(name="start")
 def program_start(
     source: str = typer.Argument("index.md", help="Path to markdown"),
-    target: str = typer.Option(settings.DEFAULT_TARGET, help="Path to target"),
+    target: str = typer.Option(None, help="Path to target"),
 ):
     """Start a Livemark server."""
     program_build(source, target, False)

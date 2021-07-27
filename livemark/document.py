@@ -1,15 +1,22 @@
 import re
 import yaml
 import deepmerge
+from pathlib import Path
 from copy import deepcopy
 from frictionless import File
 from .system import system
 from .helpers import cached_property
+from . import settings
 from . import helpers
 
 
 class Document:
-    def __init__(self, source, *, target, project=None):
+    def __init__(self, source, *, target=None, project=None):
+
+        # Infer target
+        if not target:
+            suffix = f".{settings.DEFAULT_FORMAT}"
+            target = str(Path(source).with_suffix(suffix))
 
         # Read input
         with open(source) as file:
