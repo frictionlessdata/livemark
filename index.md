@@ -169,14 +169,14 @@ With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is
   <p>A simple container format for describing a coherent collection of data in a single package.</p>
   </div>
 </div>
-<div class="col-sm markdown">
+<div class="col-sm">
   <div class="markdown">![Resource](data/data-resource.png)</div>
   <div class="text-center">
   <p><strong>Data Resource</strong></p>
   <p>A simple format to describe and package a single data resource such as a individual table or file.</p>
   </div>
 </div>
-<div class="col-sm markdown">
+<div class="col-sm">
   <div class="markdown">![Schema](data/table-schema.png)</div>
   <div class="text-center">
   <p><strong>Table Schema</strong></p>

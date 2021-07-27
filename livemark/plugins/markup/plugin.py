@@ -1,5 +1,5 @@
-import bs4
 import marko
+from pyquery import PyQuery
 from marko.ext.gfm import GFM
 from ..html.renderer import HtmlExtension
 from ...plugin import Plugin
@@ -13,15 +13,13 @@ class MarkupPlugin(Plugin):
                     markdown = marko.Markdown()
                     markdown.use(GFM)
                     markdown.use(HtmlExtension)
-                    html = bs4.BeautifulSoup(snippet.input, features="html.parser")
-                    for node in html.select(".markdown"):
-                        if len(node.contents) == 1:
-                            text = node.contents[0]
-                            if isinstance(text, bs4.element.NavigableString):
-                                text = markdown.convert(text)
-                                inner = bs4.BeautifulSoup(text, features="html.parser")
-                                node.string.replace_with(inner)
-                    snippet.output = str(html)
+                    query = PyQuery(snippet.input)
+                    for node in query.find(".markdown"):
+                        node = PyQuery(node)
+                        if not node.children():
+                            html = markdown.convert(node.text())
+                            node.html(html)
+                    snippet.output = query.outer_html() + "\n"
 
     def process_markup(self, markup):
         markup.add_style("https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css")
