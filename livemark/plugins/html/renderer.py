@@ -8,12 +8,6 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
 
     # Render
 
-    # TODO: review
-    def render_html_block(self, element):
-        snippet = Snippet(element.children, format="html", header=["markup"])
-        snippet.process()
-        return snippet.output
-
     def render_fenced_code(self, element):
         input = element.children[0].children
         header = [element.lang] + element.extra.split()
