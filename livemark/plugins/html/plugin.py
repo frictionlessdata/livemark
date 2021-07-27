@@ -16,11 +16,10 @@ class HtmlPlugin(Plugin):
             output = markdown.convert(document.input).strip()
 
             # Process markup
-            # TODO: rebase on bound document
             # TODO: infer description/keywords
             input = self.read_asset(
                 "markup.html",
-                config=document.config.get("html", {}),
+                config=document.plugin_config,
                 title=document.title,
                 description=document.description,
                 keywords=document.keywords,

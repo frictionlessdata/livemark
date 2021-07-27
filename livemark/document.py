@@ -6,6 +6,7 @@ from copy import deepcopy
 from frictionless import File
 from .system import system
 from .helpers import cached_property
+from .exception import LivemarkException
 from . import settings
 from . import helpers
 
@@ -42,6 +43,14 @@ class Document:
         self.__config = config
         self.__input = input
         self.__output = None
+        self.__plugin = None
+
+    def __enter__(self):
+        assert self.plugin
+        return self
+
+    def __exit__(self, type, value, traceback):
+        self.bind()
 
     @property
     def source(self):
@@ -126,3 +135,21 @@ class Document:
     def write(self):
         if self.target and self.output:
             helpers.write_file(self.target, self.output)
+
+    # Bind
+
+    def bind(self, plugin=None):
+        if callable(plugin):
+            plugin = plugin.__self__
+        self.__plugin = plugin
+        return self
+
+    @property
+    def plugin(self):
+        if not self.__plugin:
+            raise LivemarkException("The object is not bound to any plugin")
+        return self.__plugin
+
+    @property
+    def plugin_config(self):
+        return self.config.get(self.plugin.name, {})

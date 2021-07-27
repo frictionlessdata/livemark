@@ -9,7 +9,7 @@ class GithubPlugin(Plugin):
         try:
             repo = Repo(os.path.dirname(document.source))
             data = parse(repo.remote().url)
-            # TODO: rebase on bound document and merge with provided config
-            document.config.setdefault("github", {"user": data.owner, "repo": data.repo})
+            document.plugin_config.setdefault("user", data.owner)
+            document.plugin_config.setdefault("repo", data.repo)
         except Exception:
             pass

@@ -54,7 +54,7 @@ class Markup:
     def process(self):
         system.process_markup(self)
 
-    # Helpers
+    # Bind
 
     def bind(self, plugin=None):
         if callable(plugin):
@@ -65,7 +65,7 @@ class Markup:
     @property
     def plugin(self):
         if not self.__plugin:
-            raise LivemarkException("The markup is not bound to any plugin")
+            raise LivemarkException("The object is not bound to any plugin")
         return self.__plugin
 
     @property

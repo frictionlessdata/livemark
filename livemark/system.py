@@ -50,7 +50,8 @@ class System:
             document (object): document object
         """
         for func in self.methods["validate_document"].values():
-            func(document)
+            with document.bind(func):
+                func(document)
 
     def prepare_document(self, document):
         """Prepare document
@@ -59,7 +60,8 @@ class System:
             document (object): document object
         """
         for func in self.methods["prepare_document"].values():
-            func(document)
+            with document.bind(func):
+                func(document)
 
     def process_document(self, document):
         """Process document
@@ -68,7 +70,8 @@ class System:
             document (object): document object
         """
         for func in self.methods["process_document"].values():
-            func(document)
+            with document.bind(func):
+                func(document)
 
     def cleanup_document(self, document):
         """Cleanup document
@@ -77,7 +80,8 @@ class System:
             document (object): Document object
         """
         for func in self.methods["cleanup_document"].values():
-            func(document)
+            with document.bind(func):
+                func(document)
 
     def process_snippet(self, snippet):
         """Process snippet

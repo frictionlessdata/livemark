@@ -6,8 +6,7 @@ from ...exception import LivemarkException
 # TODO: support setting `preset: {name}` with no nesting
 class PresetPlugin(Plugin):
     def prepare_document(self, document):
-        # TODO: use bound document
-        name = document.config.get("preset", {}).get("name", "standard")
+        name = document.plugin_config.get("name", "standard")
         if name == "standard":
             document.config.setdefault("brand", True)
             document.config.setdefault("toc", True)
