@@ -7,6 +7,7 @@ from livemark import Document, Project
 def test_document():
     document = Document("index.md")
     assert document.source == "index.md"
+    assert document.target == "index.html"
     assert document.project is None
     assert document.input
 
@@ -18,6 +19,12 @@ def test_document_update_output():
     assert document.project is None
     assert document.input
     assert document.output == "output"
+
+
+def test_document_with_format():
+    document = Document("index.md", format="pdf")
+    assert document.source == "index.md"
+    assert document.target == "index.pdf"
 
 
 def test_document_with_project():

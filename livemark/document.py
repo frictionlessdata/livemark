@@ -12,11 +12,11 @@ from . import helpers
 
 
 class Document:
-    def __init__(self, source, *, target=None, project=None):
+    def __init__(self, source, *, target=None, format=None, project=None):
 
         # Infer target
         if not target:
-            suffix = f".{settings.DEFAULT_FORMAT}"
+            suffix = f".{format or settings.DEFAULT_FORMAT}"
             target = str(Path(source).with_suffix(suffix))
 
         # Read input
