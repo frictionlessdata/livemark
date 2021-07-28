@@ -3,6 +3,21 @@ from ...plugin import Plugin
 
 class PagesPlugin(Plugin):
     priority = 90
+    profile = {
+        "type": "object",
+        "properties": {
+            "list": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"type": "string"},
+                        "path": {"type": "string"},
+                    },
+                },
+            },
+        },
+    }
 
     def process_markup(self, markup):
         if not markup.plugin_config:

@@ -3,6 +3,12 @@ from ...plugin import Plugin
 
 class PanelPlugin(Plugin):
     priority = 10
+    profile = {
+        "type": "object",
+        "properties": {
+            "speed": {"type": "integer"},
+        },
+    }
 
     def process_markup(self, markup):
         if not markup.plugin_config:

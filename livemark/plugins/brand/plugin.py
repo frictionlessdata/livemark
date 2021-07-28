@@ -3,6 +3,12 @@ from ...plugin import Plugin
 
 class BrandPlugin(Plugin):
     priority = 100
+    profile = {
+        "type": "object",
+        "properties": {
+            "title": {"type": "string"},
+        },
+    }
 
     def process_markup(self, markup):
         if not markup.plugin_config:

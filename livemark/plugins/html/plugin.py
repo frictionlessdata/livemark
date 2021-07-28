@@ -6,6 +6,15 @@ from ...plugin import Plugin
 
 
 class HtmlPlugin(Plugin):
+    profile = {
+        "type": "object",
+        "properties": {
+            "title": {"type": "string"},
+            "description": {"type": "string"},
+            "keywords": {"type": "string"},
+        },
+    }
+
     def process_document(self, document):
         if document.format == "html":
 

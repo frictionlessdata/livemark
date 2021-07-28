@@ -6,6 +6,12 @@ from ...exception import LivemarkException
 # TODO: support setting `preset: {name}` in coinfig without requiring nesting
 class PresetPlugin(Plugin):
     priority = 30
+    profile = {
+        "type": "object",
+        "properties": {
+            "name": {"type": "string"},
+        },
+    }
 
     def process_document(self, document):
         name = document.plugin_config.get("name", "standard")

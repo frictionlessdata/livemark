@@ -6,6 +6,13 @@ from ...plugin import Plugin
 
 class GithubPlugin(Plugin):
     priority = 20
+    profile = {
+        "type": "object",
+        "properties": {
+            "user": {"type": "string"},
+            "repo": {"type": "string"},
+        },
+    }
 
     def process_document(self, document):
         try:

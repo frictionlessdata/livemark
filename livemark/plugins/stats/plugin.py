@@ -5,6 +5,12 @@ from ...plugin import Plugin
 
 class StatsPlugin(Plugin):
     priority = 60
+    profile = {
+        "type": "object",
+        "properties": {
+            "format": {"type": "string"},
+        },
+    }
 
     def process_markup(self, markup):
         if not markup.plugin_config:

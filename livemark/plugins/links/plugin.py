@@ -3,16 +3,30 @@ from ...plugin import Plugin
 
 class LinksPlugin(Plugin):
     priority = 20
+    profile = {
+        "type": "object",
+        "properties": {
+            "list": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {"type": "string"},
+                        "path": {"type": "string"},
+                        "hook": {"type": "string"},
+                    },
+                },
+            },
+        },
+    }
 
     def process_markup(self, markup):
         if not markup.plugin_config:
             return
 
         # Prepare context
-        # TODO: remove this condition when it's normalized
-        config = markup.plugin_config if isinstance(markup.plugin_config, dict) else {}
         github = markup.document.config.get("github", {})
-        list = config.get("list", []).copy()
+        list = markup.plugin_config.get("list", []).copy()
         if github:
             list.append({"name": "Report", "path": github["report_url"]})
         list.append({"name": "Print", "hook": "window.print();return false;"})

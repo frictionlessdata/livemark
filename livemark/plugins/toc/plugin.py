@@ -3,6 +3,12 @@ from ...plugin import Plugin
 
 class TocPlugin(Plugin):
     priority = 80
+    profile = {
+        "type": "object",
+        "properties": {
+            "selector": {"type": "string"},
+        },
+    }
 
     def process_markup(self, markup):
         if not markup.plugin_config:

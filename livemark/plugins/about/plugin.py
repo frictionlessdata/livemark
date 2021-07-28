@@ -3,6 +3,12 @@ from ...plugin import Plugin
 
 class AboutPlugin(Plugin):
     priority = 30
+    profile = {
+        "type": "object",
+        "properties": {
+            "description": {"type": "string"},
+        },
+    }
 
     def process_markup(self, markup):
         if not markup.plugin_config:

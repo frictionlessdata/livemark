@@ -2,6 +2,15 @@ from ...plugin import Plugin
 
 
 class CounterPlugin(Plugin):
+    profile = {
+        "type": "object",
+        "required": ["type", "code"],
+        "properties": {
+            "type": {"type": "string"},
+            "code": {"type": "string"},
+        },
+    }
+
     def process_markup(self, markup):
         if not markup.plugin_config:
             return
