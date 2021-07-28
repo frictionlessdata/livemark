@@ -35,23 +35,12 @@ class System:
     # Actions
 
     actions = [
-        "validate_document",
         "prepare_document",
         "process_document",
         "cleanup_document",
         "process_snippet",
         "process_markup",
     ]
-
-    def validate_document(self, document):
-        """Validate document
-
-        Parameters:
-            document (object): document object
-        """
-        for func in self.methods["validate_document"].values():
-            with document.bind(func):
-                func(document)
 
     def prepare_document(self, document):
         """Prepare document

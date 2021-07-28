@@ -1,1 +1,1 @@
-from .plugin import ChorePlugin
+from .plugin import HooksPlugin

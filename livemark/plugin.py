@@ -1,6 +1,5 @@
 import os
 import inspect
-import jsonschema
 from jinja2 import Template
 from .helpers import cached_property
 
@@ -14,10 +13,6 @@ class Plugin:
         return self.__class__.__name__.replace("Plugin", "").lower()
 
     # Actions
-
-    def validate_document(self, document):
-        if self.profile:
-            jsonschema.validate(document.config.get(self.name), self.profile)
 
     def prepare_document(self, document):
         pass

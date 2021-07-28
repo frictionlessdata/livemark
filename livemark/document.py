@@ -114,9 +114,6 @@ class Document:
 
     # Process
 
-    def validate(self):
-        system.validate_document(self)
-
     def prepare(self):
         system.prepare_document(self)
 
