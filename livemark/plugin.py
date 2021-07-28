@@ -20,9 +20,6 @@ class Plugin:
     def process_document(self, document):
         pass
 
-    def cleanup_document(self, document):
-        pass
-
     def process_snippet(self, snippet):
         pass
 

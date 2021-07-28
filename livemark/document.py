@@ -120,9 +120,6 @@ class Document:
     def process(self):
         system.process_document(self)
 
-    def cleanup(self):
-        system.cleanup_document(self)
-
     # Output
 
     def print(self, print=print):

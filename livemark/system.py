@@ -37,7 +37,6 @@ class System:
     actions = [
         "prepare_document",
         "process_document",
-        "cleanup_document",
         "process_snippet",
         "process_markup",
     ]
@@ -59,16 +58,6 @@ class System:
             document (object): document object
         """
         for func in self.methods["process_document"].values():
-            with document.bind(func):
-                func(document)
-
-    def cleanup_document(self, document):
-        """Cleanup document
-
-        Parameters:
-            document (object): Document object
-        """
-        for func in self.methods["cleanup_document"].values():
             with document.bind(func):
                 func(document)
 
