@@ -13,7 +13,7 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
         header = [element.lang] + element.extra.split()
         snippet = Snippet(input, header=header, document=self.document)
         snippet.process()
-        if snippet.output:
+        if snippet.output is not None:
             if "script" in snippet.header:
                 output = super().render_fenced_code(element)
                 target = copy(element)

@@ -7,7 +7,7 @@ class Snippet:
         self.__input = input
         self.__header = header
         self.__document = document
-        self.__output = ""
+        self.__output = None
 
     def __enter__(self):
         assert self.plugin

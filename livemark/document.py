@@ -129,11 +129,11 @@ class Document:
     # Output
 
     def print(self, print=print):
-        if self.output:
+        if self.output is not None:
             print(self.output)
 
     def write(self):
-        if self.target and self.output:
+        if self.output is not None:
             helpers.write_file(self.target, self.output)
 
     # Bind

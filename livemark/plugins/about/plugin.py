@@ -1,7 +1,6 @@
 from ...plugin import Plugin
 
 
-# TODO: ability to infer via document.description
 class AboutPlugin(Plugin):
     priority = 30
 

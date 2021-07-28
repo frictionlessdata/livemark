@@ -10,7 +10,7 @@ def test_snippet():
     assert snippet.document.format == "html"
     assert snippet.header == ["python"]
     assert snippet.input == "input"
-    assert snippet.output == ""
+    assert snippet.output is None
 
 
 def test_snippet_update_output():

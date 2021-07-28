@@ -9,7 +9,7 @@ class Markup:
         self.__input = input
         self.__query = PyQuery(input)
         self.__document = document
-        self.__output = ""
+        self.__output = None
         self.__plugin = None
 
     def __enter__(self):

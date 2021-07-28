@@ -10,6 +10,7 @@ def test_document():
     assert document.target == "index.html"
     assert document.project is None
     assert document.input
+    assert document.output is None
 
 
 def test_document_update_output():

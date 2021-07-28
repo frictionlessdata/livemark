@@ -17,7 +17,7 @@ class MarkdownRenderer(md_renderer.MarkdownRenderer):
         header = [element.lang] + element.extra.split()
         snippet = Snippet(input, header=header, document=self.document)
         snippet.process()
-        if snippet.output:
+        if snippet.output is not None:
 
             # Locate target
             target = None
@@ -27,15 +27,18 @@ class MarkdownRenderer(md_renderer.MarkdownRenderer):
                 if isinstance(item, FencedCode):
                     target = item
 
-            # Create target
-            if snippet.output and not target:
-                target = copy(element)
-                target.lang = ""
-                target.extra = ""
-                self.root_node.children.insert(index + 1, target)
-
             # Update target
-            if target:
+            if snippet.output:
+                if not target:
+                    target = copy(element)
+                    target.lang = ""
+                    target.extra = ""
+                    self.root_node.children.insert(index + 1, target)
                 target.children = [RawText(snippet.output)]
+
+            # Delete target
+            if not snippet.output:
+                if target:
+                    del self.root_node.children[index + 1]
 
         return super().render_fenced_code(element)
