@@ -5,8 +5,8 @@ from .helpers import cached_property
 
 
 class Plugin:
-    profile = {}
     priority = 0
+    profile = None
 
     @cached_property
     def name(self):
