@@ -8,16 +8,17 @@ class PagesPlugin(Plugin):
         if not markup.plugin_config:
             return
 
-        # Prepare current
+        # Prepare context
         current = "/"
         if markup.document.target != "index.html":
             current = f"/{markup.document.target}"
+        list = markup.plugin_config["list"]
 
         # Update markup
         markup.add_style("style.css")
         markup.add_markup(
             "markup.html",
             target="#livemark-left",
-            config=markup.plugin_config,
             current=current,
+            list=list,
         )

@@ -8,11 +8,14 @@ class PanelPlugin(Plugin):
         if not markup.plugin_config:
             return
 
+        # Prepare context
+        speed = markup.plugin_config.get("speed", 10)
+
         # Update markup
         markup.add_style("https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css")
         markup.add_style("style.css")
         markup.add_script("https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js")
-        markup.add_script("script.js", config=markup.plugin_config)
+        markup.add_script("script.js", speed=speed)
         markup.add_markup(
             "markup.html",
             target="body",

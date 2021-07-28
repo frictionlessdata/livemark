@@ -55,4 +55,8 @@ class Snippet:
 
     @property
     def plugin_config(self):
-        return self.document.config.get(self.plugin.name, {})
+        config = self.document.config.get(self.plugin.name, {})
+        # TODO: review
+        if config is True:
+            config = {"value": config}
+        return config

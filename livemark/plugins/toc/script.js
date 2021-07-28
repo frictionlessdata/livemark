@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-main",
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: "{{ config.selector or 'h2, h3' }}",
+    headingSelector: "{{ selector }}",
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.

@@ -71,7 +71,11 @@ class Markup:
 
     @property
     def plugin_config(self):
-        return self.document.config.get(self.plugin.name, {})
+        config = self.document.config.get(self.plugin.name, {})
+        # TODO: review
+        if config is True:
+            config = {"value": config}
+        return config
 
     def add_style(self, source, *, action="append", target="head", **context):
         style = f'<link rel="stylesheet" href="{source}"></script>\n'

@@ -18,14 +18,18 @@ class HtmlPlugin(Plugin):
             output = markdown.render(output)
             output = output.strip()
 
+            # Prepare context
+            title = document.plugin_config.get("title", document.title)
+            description = document.plugin_config.get("description", document.description)
+            keywords = document.plugin_config.get("keywords", document.keywords)
+
             # Process markup
             # TODO: infer description/keywords
             input = self.read_asset(
                 "markup.html",
-                config=document.plugin_config,
-                title=document.title,
-                description=document.description,
-                keywords=document.keywords,
+                title=title,
+                description=description,
+                keywords=keywords,
             )
             markup = Markup(input, document=document)
             with markup.bind(self):

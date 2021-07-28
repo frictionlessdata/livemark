@@ -7,6 +7,7 @@ counter:
   type: google
   code: G-ZH2QL85N6F
 pages:
+  # TODO: review this "list" naming
   list:
     - name: Introduction
       path: /
@@ -15,6 +16,7 @@ pages:
     - name: Configuration
       path: /docs/configuration.html
 links:
+  # TODO: review this "list" naming
   list:
     - name: Frictionless
       path: https://frictionlessdata.io/

@@ -15,6 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Scroll
-  const scrollSpeed = parseInt("{{ config.speed or 10 }}");
+  const scrollSpeed = parseInt("{{ speed }}");
   UeScroll.init({ element: ".ue-scroll", scrollSpeed });
 });

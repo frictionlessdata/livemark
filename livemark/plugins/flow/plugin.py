@@ -8,7 +8,7 @@ class FlowPlugin(Plugin):
         if not markup.plugin_config:
             return
 
-        # Prepare prev/next
+        # Prepare context
         prev = None
         next = None
         pages_config = markup.document.config.get("pages")

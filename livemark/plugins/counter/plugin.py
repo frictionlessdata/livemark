@@ -6,10 +6,14 @@ class CounterPlugin(Plugin):
         if not markup.plugin_config:
             return
 
+        # Prepare context
+        type = markup.plugin_config.get("type")
+        code = markup.plugin_config.get("code")
+
         # Update markup
-        if markup.plugin_config.get("type") == "google":
+        if type == "google":
             markup.add_markup(
                 "markup.html",
                 target="head",
-                config=markup.plugin_config,
+                code=code,
             )

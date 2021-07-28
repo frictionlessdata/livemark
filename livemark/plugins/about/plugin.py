@@ -8,11 +8,13 @@ class AboutPlugin(Plugin):
         if not markup.plugin_config:
             return
 
+        # Prepare context
+        description = markup.plugin_config.get("description", markup.document.description)
+
         # Update markup
         markup.add_style("style.css")
         markup.add_markup(
             "markup.html",
             target="#livemark-right",
-            config=markup.plugin_config,
-            description=markup.document.description,
+            description=description,
         )

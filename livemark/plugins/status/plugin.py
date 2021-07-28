@@ -8,11 +8,16 @@ class StatusPlugin(Plugin):
         if not markup.plugin_config:
             return
 
+        # Prepare context
+        github = markup.document.config.get("github")
+        type = markup.plugin_config.get("type", "star")
+
         # Update markup
-        markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            target="#livemark-right",
-            config=markup.plugin_config,
-            github=markup.document.config["github"],
-        )
+        if github:
+            markup.add_style("style.css")
+            markup.add_markup(
+                "markup.html",
+                target="#livemark-right",
+                github=github,
+                type=type,
+            )

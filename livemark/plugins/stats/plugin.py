@@ -10,7 +10,8 @@ class StatsPlugin(Plugin):
         if not markup.plugin_config:
             return
 
-        # Prepare current
+        # Prepare context
+        format = markup.plugin_config.get("format", "%Y-%m-%d %H:%M:%S")
         current = datetime.fromtimestamp(os.path.getmtime(markup.document.source))
 
         # Update markup
@@ -19,6 +20,6 @@ class StatsPlugin(Plugin):
             "markup.html",
             action="prepend",
             target="#livemark-main",
-            config=markup.plugin_config,
+            format=format,
             current=current,
         )

@@ -8,11 +8,13 @@ class BrandPlugin(Plugin):
         if not markup.plugin_config:
             return
 
+        # Prepare context
+        title = markup.plugin_config.get("title", markup.document.title)
+
         # Update markup
         markup.add_style("style.css")
         markup.add_markup(
             "markup.html",
             target="#livemark-left",
-            config=markup.plugin_config,
-            title=markup.document.title,
+            title=title,
         )
