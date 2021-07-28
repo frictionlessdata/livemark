@@ -4,7 +4,9 @@ from ...plugin import Plugin
 
 
 class LogicPlugin(Plugin):
-    def prepare_document(self, document):
+    priority = 40
+
+    def process_document(self, document):
         templating = Environment(loader=FileSystemLoader("."), trim_blocks=True)
         template = templating.from_string(document.input)
         document.input = template.render(frictionless=frictionless)

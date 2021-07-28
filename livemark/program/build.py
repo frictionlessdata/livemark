@@ -23,9 +23,7 @@ def program_build(
 
     # Process document
     document = Document(source, target=target, format=format, project=Project())
-    document.prepare()
     document.process()
-    document.cleanup()
 
     # Print document
     if print:

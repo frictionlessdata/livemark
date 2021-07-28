@@ -5,7 +5,9 @@ from ...plugin import Plugin
 
 
 class GithubPlugin(Plugin):
-    def prepare_document(self, document):
+    priority = 60
+
+    def process_document(self, document):
         try:
             repo = Repo(os.path.dirname(document.source))
             data = parse(repo.remote().url)

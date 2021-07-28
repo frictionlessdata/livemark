@@ -114,9 +114,6 @@ class Document:
 
     # Process
 
-    def prepare(self):
-        system.prepare_document(self)
-
     def process(self):
         system.process_document(self)
 

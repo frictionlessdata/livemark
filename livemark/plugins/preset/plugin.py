@@ -5,7 +5,9 @@ from ...exception import LivemarkException
 # TODO: add more presets
 # TODO: support setting `preset: {name}` in coinfig without requiring nesting
 class PresetPlugin(Plugin):
-    def prepare_document(self, document):
+    priority = 80
+
+    def process_document(self, document):
         name = document.plugin_config.get("name", "standard")
         if name == "standard":
             document.config.setdefault("brand", True)

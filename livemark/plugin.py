@@ -14,9 +14,6 @@ class Plugin:
 
     # Actions
 
-    def prepare_document(self, document):
-        pass
-
     def process_document(self, document):
         pass
 

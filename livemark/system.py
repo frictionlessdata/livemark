@@ -35,21 +35,10 @@ class System:
     # Actions
 
     actions = [
-        "prepare_document",
         "process_document",
         "process_snippet",
         "process_markup",
     ]
-
-    def prepare_document(self, document):
-        """Prepare document
-
-        Parameters:
-            document (object): document object
-        """
-        for func in self.methods["prepare_document"].values():
-            with document.bind(func):
-                func(document)
 
     def process_document(self, document):
         """Process document
