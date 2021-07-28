@@ -90,7 +90,8 @@ class System:
             snippet (object): Snippet object
         """
         for func in self.methods["process_snippet"].values():
-            func(snippet)
+            with snippet.bind(func):
+                func(snippet)
 
     def process_markup(self, markup):
         """Process markup

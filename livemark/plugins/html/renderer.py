@@ -11,7 +11,7 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
     def render_fenced_code(self, element):
         input = element.children[0].children
         header = [element.lang] + element.extra.split()
-        snippet = Snippet(input, format="html", header=header)
+        snippet = Snippet(input, header=header, document=self.document)
         snippet.process()
         if snippet.output:
             if "script" in snippet.header:

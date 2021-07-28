@@ -55,6 +55,7 @@ class Markup:
         system.process_markup(self)
 
     # Bind
+    # TODO: extract bindable mixin for document/markup/snippet?
 
     def bind(self, plugin=None):
         if callable(plugin):

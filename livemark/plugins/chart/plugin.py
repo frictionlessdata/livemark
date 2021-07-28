@@ -9,7 +9,7 @@ class ChartPlugin(Plugin):
         self.__count = 0
 
     def process_snippet(self, snippet):
-        if snippet.format == "html":
+        if snippet.document.format == "html":
             if "chart" in snippet.header:
                 spec_yaml = str(snippet.input).strip()
                 spec_python = yaml.safe_load(spec_yaml)

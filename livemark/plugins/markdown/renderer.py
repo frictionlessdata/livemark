@@ -15,7 +15,7 @@ class MarkdownRenderer(md_renderer.MarkdownRenderer):
     def render_fenced_code(self, element):
         input = self.render_children(element).strip()
         header = [element.lang] + element.extra.split()
-        snippet = Snippet(input, format="md", header=header)
+        snippet = Snippet(input, header=header, document=self.document)
         snippet.process()
         if snippet.output:
 

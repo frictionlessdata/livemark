@@ -13,7 +13,10 @@ class HtmlPlugin(Plugin):
             markdown = marko.Markdown()
             markdown.use(GFM)
             markdown.use(HtmlExtension)
-            output = markdown.convert(document.input).strip()
+            output = markdown.parse(document.input)
+            markdown.renderer.document = document
+            output = markdown.render(output)
+            output = output.strip()
 
             # Process markup
             # TODO: infer description/keywords

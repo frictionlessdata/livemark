@@ -1,21 +1,23 @@
-from livemark import Snippet
+from livemark import Snippet, Document
 
 
 # General
 
 
 def test_snippet():
-    snippet = Snippet("input", format="html", header=["python"])
-    assert snippet.format == "html"
+    document = Document("index.md")
+    snippet = Snippet("input", header=["python"], document=document)
+    assert snippet.document.format == "html"
     assert snippet.header == ["python"]
     assert snippet.input == "input"
     assert snippet.output == ""
 
 
 def test_snippet_update_output():
-    snippet = Snippet("input", format="html", header=["python"])
+    document = Document("index.md")
+    snippet = Snippet("input", header=["python"], document=document)
     snippet.output = "output"
-    assert snippet.format == "html"
+    assert snippet.document.format == "html"
     assert snippet.header == ["python"]
     assert snippet.input == "input"
     assert snippet.output == "output"
