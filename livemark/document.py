@@ -42,7 +42,6 @@ class Document:
         self.__config = config
         self.__input = input
         self.__output = None
-        self.__plugin = None
         self.__state = {}
 
     @property

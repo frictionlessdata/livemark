@@ -11,6 +11,8 @@ class Markup:
         self.__document = document
         self.__output = None
         self.__plugin = None
+        self.__styles = set()
+        self.__scripts = set()
 
     def __enter__(self):
         assert self.plugin
@@ -55,7 +57,6 @@ class Markup:
         system.process_markup(self)
 
     # Bind
-    # TODO: extract bindable mixin for document/markup/snippet?
 
     def bind(self, plugin=None):
         if callable(plugin):
@@ -78,6 +79,9 @@ class Markup:
         if not helpers.is_remote_path(source):
             style = self.plugin.read_asset(source, **context)
             style = f"<style>\n\n{style}\n\n</style>\n"
+        if style in self.__styles:
+            return
+        self.__styles.add(style)
         getattr(self.query(target), action)(style)
 
     def add_script(self, source, *, action="append", target="body", **context):
@@ -85,6 +89,9 @@ class Markup:
         if not helpers.is_remote_path(source):
             script = self.plugin.read_asset(source, **context)
             script = f"<script>\n\n{script}\n\n</script>\n"
+        if script in self.__scripts:
+            return
+        self.__scripts.add(script)
         getattr(self.query(target), action)(script)
 
     def add_markup(self, source, *, action="append", target="body", **context):
