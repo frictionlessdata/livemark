@@ -143,8 +143,4 @@ class Document:
 
     @property
     def plugin_config(self):
-        config = self.config.get(self.plugin.name, {})
-        # TODO: review
-        if config is True:
-            config = {"value": config}
-        return config
+        return self.config.get(self.plugin.name, {})
