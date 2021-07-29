@@ -43,6 +43,7 @@ class Document:
         self.__input = input
         self.__output = None
         self.__plugin = None
+        self.__state = {}
 
     @property
     def source(self):
@@ -68,6 +69,10 @@ class Document:
     @property
     def config(self):
         return self.__config
+
+    @property
+    def state(self):
+        return self.__state
 
     @property
     def input(self):
