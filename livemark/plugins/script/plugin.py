@@ -6,6 +6,8 @@ from ... import helpers
 
 class ScriptPlugin(Plugin):
     def process_snippet(self, snippet):
+
+        # Update snippet
         if "script" in snippet.header:
             output = ""
             if "bash" in snippet.header:

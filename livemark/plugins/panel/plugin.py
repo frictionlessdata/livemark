@@ -11,11 +11,12 @@ class PanelPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        if not markup.plugin_config:
+        config = markup.document.config.get(self.name, {})
+        if not config:
             return
 
         # Prepare context
-        speed = markup.plugin_config.get("speed", 10)
+        speed = config.get("speed", 10)
 
         # Update markup
         markup.add_style("https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css")

@@ -11,19 +11,22 @@ class StatusPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        if not markup.plugin_config:
+        config_markup = markup.document.config.get(self.name, {})
+        config_github = markup.document.config.get("github", {})
+        if not config_markup or not config_github:
             return
 
         # Prepare context
-        github = markup.document.config.get("github")
-        type = markup.plugin_config.get("type", "star")
+        type = config_markup.get("type", "star")
+        user = config_github["user"]
+        repo = config_github["repo"]
 
         # Update markup
-        if github:
-            markup.add_style("style.css")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-right",
-                github=github,
-                type=type,
-            )
+        markup.add_style("style.css")
+        markup.add_markup(
+            "markup.html",
+            target="#livemark-right",
+            user=user,
+            repo=repo,
+            type=type,
+        )

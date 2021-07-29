@@ -21,17 +21,18 @@ class LinksPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        if not markup.plugin_config:
+        config_links = markup.document.config.get(self.name)
+        config_github = markup.document.config.get("github")
+        if not config_links:
             return
 
         # Prepare context
-        github = markup.document.config.get("github", {})
-        list = markup.plugin_config.get("list", []).copy()
-        if github:
-            list.append({"name": "Report", "path": github["report_url"]})
+        list = config_links.get("list", []).copy()
+        if config_github:
+            list.append({"name": "Report", "path": config_github["report_url"]})
         list.append({"name": "Print", "hook": "window.print();return false;"})
-        if github:
-            list.append({"name": "Edit", "path": github["edit_url"]})
+        if config_github:
+            list.append({"name": "Edit", "path": config_github["edit_url"]})
 
         # Update markup
         markup.add_style("style.css")

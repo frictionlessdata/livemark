@@ -1,4 +1,3 @@
-from .exception import LivemarkException
 from .system import system
 
 
@@ -8,13 +7,6 @@ class Snippet:
         self.__header = header
         self.__document = document
         self.__output = None
-
-    def __enter__(self):
-        assert self.plugin
-        return self
-
-    def __exit__(self, type, value, traceback):
-        self.bind()
 
     @property
     def document(self):
@@ -38,21 +30,3 @@ class Snippet:
 
     def process(self):
         system.process_snippet(self)
-
-    # Bind
-
-    def bind(self, plugin=None):
-        if callable(plugin):
-            plugin = plugin.__self__
-        self.__plugin = plugin
-        return self
-
-    @property
-    def plugin(self):
-        if not self.__plugin:
-            raise LivemarkException("The object is not bound to any plugin")
-        return self.__plugin
-
-    @property
-    def plugin_config(self):
-        return self.document.config.get(self.plugin.name, {})

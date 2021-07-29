@@ -12,5 +12,10 @@ class PreparePlugin(Plugin):
     }
 
     def process_document(self, document):
-        for code in document.plugin_config.get("prepare", []):
+        config = document.config.get(self.name, {})
+        if not config:
+            return
+
+        # Prepare document
+        for code in config:
             subprocess.run(code, shell=True)

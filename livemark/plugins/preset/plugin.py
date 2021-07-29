@@ -3,6 +3,7 @@ from ...exception import LivemarkException
 
 
 # TODO: add more presets
+# TODO: improve compact preset
 # TODO: support setting `preset: {name}` in coinfig without requiring nesting
 class PresetPlugin(Plugin):
     priority = 30
@@ -14,8 +15,11 @@ class PresetPlugin(Plugin):
     }
 
     def process_document(self, document):
-        name = document.plugin_config.get("name", "standard")
-        if name == "standard":
+        config = document.config.get(self.name, {})
+        preset = config.get("name", "standard")
+
+        # Update document
+        if preset == "standard":
             document.config.setdefault("brand", {"value": True})
             document.config.setdefault("toc", {"value": True})
             document.config.setdefault("stats", {"value": True})
@@ -24,8 +28,7 @@ class PresetPlugin(Plugin):
             document.config.setdefault("about", {"value": True})
             document.config.setdefault("links", {"value": True})
             document.config.setdefault("panel", {"value": True})
-        # TODO: improve this preset
-        elif name == "compact":
+        elif preset == "compact":
             document.config.setdefault("toc", {"value": True})
             document.config.setdefault("stats", {"value": True})
             document.config.setdefault("flow", {"value": True})
@@ -33,4 +36,4 @@ class PresetPlugin(Plugin):
             document.config.setdefault("links", {"value": True})
             document.config.setdefault("panel", {"value": True})
         else:
-            raise LivemarkException(f"Not supported preset: {name}")
+            raise LivemarkException(f"Not supported preset: {preset}")

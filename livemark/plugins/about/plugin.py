@@ -11,11 +11,12 @@ class AboutPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        if not markup.plugin_config:
+        config = markup.document.config.get(self.name, {})
+        if not config:
             return
 
         # Prepare context
-        description = markup.plugin_config.get("description", markup.document.description)
+        description = config.get("description", markup.document.description)
 
         # Update markup
         markup.add_style("style.css")

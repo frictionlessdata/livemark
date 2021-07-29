@@ -1,31 +1,32 @@
 from ...plugin import Plugin
+from ...exception import LivemarkException
 
 
 class FlowPlugin(Plugin):
     priority = 50
 
     def process_markup(self, markup):
-        if not markup.plugin_config:
+        config_flow = markup.document.config.get(self.name)
+        config_pages = markup.document.config.get("pages")
+        if not config_flow or not config_pages:
             return
 
         # Prepare context
         prev = None
         next = None
-        pages_config = markup.document.config.get("pages")
-        if pages_config:
-            current_path = "/"
-            current_number = None
-            if markup.document.target != "index.html":
-                current_path = f"/{markup.document.target}"
-            for number, link in enumerate(pages_config["list"], start=1):
-                if link["path"] == current_path:
-                    current_number = number
-            if current_number > 1:
-                prev = pages_config["list"][current_number - 2]
-            if current_number < len(pages_config["list"]):
-                next = pages_config["list"][current_number]
+        current_path = "/"
+        current_number = None
+        if markup.document.target != "index.html":
+            current_path = f"/{markup.document.target}"
+        for number, link in enumerate(config_pages["list"], start=1):
+            if link["path"] == current_path:
+                current_number = number
+        if current_number > 1:
+            prev = config_pages["list"][current_number - 2]
+        if current_number < len(config_pages["list"]):
+            next = config_pages["list"][current_number]
         if not next and not prev:
-            return
+            raise LivemarkException("Invalid pages configuration")
 
         # Update markup
         markup.add_style("style.css")

@@ -47,8 +47,7 @@ class System:
             document (object): document object
         """
         for func in self.methods["process_document"].values():
-            with document.bind(func):
-                func(document)
+            func(document)
 
     def process_snippet(self, snippet):
         """Process snippet
@@ -57,8 +56,7 @@ class System:
             snippet (object): Snippet object
         """
         for func in self.methods["process_snippet"].values():
-            with snippet.bind(func):
-                func(snippet)
+            func(snippet)
 
     def process_markup(self, markup):
         """Process markup

@@ -15,6 +15,6 @@ class ConfigPlugin(Plugin):
 
         # Validate config
         for name, plugin in system.plugins.items():
-            plugin_config = document.config.get(name)
-            if plugin_config is not None and plugin.profile is not None:
-                jsonschema.validate(plugin_config, plugin.profile)
+            config = document.config.get(name)
+            if config is not None and plugin.profile is not None:
+                jsonschema.validate(config, plugin.profile)

@@ -12,5 +12,10 @@ class CleanupPlugin(Plugin):
     }
 
     def process_document(self, document):
-        for code in document.plugin_config.get("cleanup", []):
+        config = document.config.get(self.name)
+        if not config:
+            return
+
+        # Cleaup document
+        for code in config:
             subprocess.run(code, shell=True)

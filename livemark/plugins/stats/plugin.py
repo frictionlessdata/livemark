@@ -13,11 +13,12 @@ class StatsPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        if not markup.plugin_config:
+        config = markup.document.config.get(self.name, {})
+        if not config:
             return
 
         # Prepare context
-        format = markup.plugin_config.get("format", "%Y-%m-%d %H:%M:%S")
+        format = config.get("format", "%Y-%m-%d %H:%M:%S")
         current = datetime.fromtimestamp(os.path.getmtime(markup.document.source))
 
         # Update markup
