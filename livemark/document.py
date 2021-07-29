@@ -43,8 +43,10 @@ class Document:
         self.__input = input
         self.__output = None
 
-        # Create plugins (document needs to be ready)
-        self.__plugins = system.create_plugins(self)
+        # Create plugins
+        self.__plugins = []
+        for Plugin in system.Plugins:
+            self.__plugins.append(Plugin(self))
 
     @property
     def plugins(self):
