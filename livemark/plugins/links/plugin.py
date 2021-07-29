@@ -21,8 +21,8 @@ class LinksPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        config_links = markup.document.config.get(self.name)
-        config_github = markup.document.config.get("github")
+        config_links = self.get_config(markup)
+        config_github = self.get_config(markup, plugin="github")
         if not config_links:
             return
 

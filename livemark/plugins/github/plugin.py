@@ -16,7 +16,7 @@ class GithubPlugin(Plugin):
     }
 
     def process_document(self, document):
-        config = document.config.setdefault(self.name, {})
+        config = self.get_config(document)
 
         # Update config
         try:

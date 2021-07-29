@@ -11,8 +11,8 @@ class StatusPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        config_markup = markup.document.config.get(self.name, {})
-        config_github = markup.document.config.get("github", {})
+        config_markup = self.get_config(markup)
+        config_github = self.get_config(markup, plugin="github")
         if not config_markup or not config_github:
             return
 

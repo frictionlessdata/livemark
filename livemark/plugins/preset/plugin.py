@@ -15,7 +15,9 @@ class PresetPlugin(Plugin):
     }
 
     def process_document(self, document):
-        config = document.config.get(self.name, {})
+        config = self.get_config(document)
+
+        # Prepare context
         preset = config.get("name", "standard")
 
         # Update document

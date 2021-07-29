@@ -12,7 +12,7 @@ class CleanupPlugin(Plugin):
     }
 
     def process_document(self, document):
-        config = document.config.get(self.name)
+        config = self.get_config(document)
         if not config:
             return
 

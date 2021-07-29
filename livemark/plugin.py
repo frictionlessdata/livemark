@@ -27,7 +27,7 @@ class Plugin:
 
     def get_config(self, object, *, plugin=None):
         document = getattr(object, "document", object)
-        return document.config.get(plugin or self.name)
+        return document.config.get(plugin or self.name, {})
 
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))

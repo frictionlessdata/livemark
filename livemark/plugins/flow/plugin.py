@@ -6,8 +6,8 @@ class FlowPlugin(Plugin):
     priority = 50
 
     def process_markup(self, markup):
-        config_flow = markup.document.config.get(self.name)
-        config_pages = markup.document.config.get("pages")
+        config_flow = self.get_config(markup)
+        config_pages = self.get_config(markup, plugin="pages")
         if not config_flow or not config_pages:
             return
 

@@ -3,7 +3,7 @@ from ...plugin import Plugin
 
 class SearchPlugin(Plugin):
     def process_markup(self, markup):
-        config = markup.document.config.get(self.name, {})
+        config = self.get_config(markup)
         if not config:
             return
 
