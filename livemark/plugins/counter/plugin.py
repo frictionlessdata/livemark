@@ -12,13 +12,12 @@ class CounterPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        config = self.get_config(markup)
-        if not config:
+        if not self.config:
             return
 
         # Prepare context
-        type = config.get("type")
-        code = config.get("code")
+        type = self.config.get("type")
+        code = self.config.get("code")
 
         # Update markup
         if type == "google":

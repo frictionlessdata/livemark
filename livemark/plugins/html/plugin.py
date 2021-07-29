@@ -16,7 +16,6 @@ class HtmlPlugin(Plugin):
     }
 
     def process_document(self, document):
-        config = self.get_config(document)
         if document.format != "html":
             return
 
@@ -30,19 +29,18 @@ class HtmlPlugin(Plugin):
         output = output.strip()
 
         # Prepare context
-        title = config.get("title", document.title)
-        description = config.get("description", document.description)
-        keywords = config.get("keywords", document.keywords)
+        title = self.config.get("title", document.title)
+        description = self.config.get("description", document.description)
+        keywords = self.config.get("keywords", document.keywords)
 
         # Process markup
-        # TODO: infer description/keywords
         input = self.read_asset(
             "markup.html",
             title=title,
             description=description,
             keywords=keywords,
         )
-        markup = Markup(input, document=document)
+        markup = Markup(input)
         with markup.bind(self):
             markup.add_style("https://unpkg.com/prismjs@1.23.0/themes/prism.css")
             markup.add_style("style.css")
@@ -54,7 +52,7 @@ class HtmlPlugin(Plugin):
             )
             markup.add_script("script.js")
             markup.add_markup(output, target="#livemark-main")
-        markup.process()
+        markup.process(document)
 
         # Update document
         document.output = markup.output

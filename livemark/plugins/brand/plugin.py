@@ -11,12 +11,11 @@ class BrandPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        config = self.get_config(markup)
-        if not config:
+        if not self.config:
             return
 
         # Prepare context
-        title = config.get("title", markup.document.title)
+        title = self.config.get("title", self.document.title)
 
         # Update markup
         markup.add_style("style.css")

@@ -2,7 +2,6 @@ import os
 import pkgutil
 from collections import OrderedDict
 from importlib import import_module
-from .helpers import cached_property
 
 
 class System:
@@ -12,96 +11,56 @@ class System:
     -------- | --------
     Public   | `from livemark import system`
 
-    This class provides an ability to make system Livemark calls.
+    This class provides asses to Livemark plugins.
     It's available as `livemark.system` singletone.
 
     """
 
     def __init__(self):
-        self.__dynamic_plugins = OrderedDict()
 
-    def register(self, name, plugin):
-        """Register a plugin
-
-        Parameters:
-            name (str): plugin name
-            plugin (Plugin): plugin to register
-        """
-        self.__dynamic_plugins[name] = plugin
-        if "methods" in self.__dict__:
-            del self.__dict__["plugins"]
-            del self.__dict__["methods"]
-
-    # Actions
-
-    actions = [
-        "process_document",
-        "process_snippet",
-        "process_markup",
-    ]
-
-    def process_document(self, document):
-        """Process document
-
-        Parameters:
-            document (object): document object
-        """
-        for func in self.methods["process_document"].values():
-            func(document)
-
-    def process_snippet(self, snippet):
-        """Process snippet
-
-        Parameters:
-            snippet (object): Snippet object
-        """
-        for func in self.methods["process_snippet"].values():
-            func(snippet)
-
-    def process_markup(self, markup):
-        """Process markup
-
-        Parameters:
-            markup (object): Markup object
-        """
-        for func in self.methods["process_markup"].values():
-            with markup.bind(func):
-                func(markup)
-
-    # Methods
-
-    @cached_property
-    def methods(self):
-        methods = {}
-        for action in self.actions:
-            methods[action] = OrderedDict()
-            for name, plugin in self.plugins.items():
-                if action in vars(type(plugin)):
-                    func = getattr(plugin, action, None)
-                    methods[action][name] = func
-        return methods
-
-    # Plugins
-
-    @cached_property
-    def plugins(self):
+        # Collect modules
         modules = OrderedDict()
         for item in pkgutil.iter_modules():
-            if item.name.startswith("livemark_"):
+            if item.name == "plugin" or item.name.startswith("livemark_"):
                 module = import_module(item.name)
                 modules[item.name.replace("livemark_", "")] = module
         module = import_module("livemark.plugins")
         for _, name, _ in pkgutil.iter_modules([os.path.dirname(module.__file__)]):
             module = import_module(f"livemark.plugins.{name}")
             modules[name] = module
-        plugins = OrderedDict(self.__dynamic_plugins)
+
+        # Collect plugins
+        Plugins = []
         for name, module in modules.items():
             Plugin = getattr(module, f"{name.capitalize()}Plugin", None)
             if Plugin:
-                plugin = Plugin()
-                plugins[name] = plugin
-        plugins = OrderedDict(sorted(plugins.items(), key=lambda item: -item[1].priority))
-        return plugins
+                Plugins.append(Plugin)
+        Plugins = list(sorted(Plugins, key=lambda Plugin: -Plugin.priority))
+
+        # Set attributes
+        self.__modules = modules
+        self.__Plugins = Plugins
+
+    def register_plugin(self, Plugin):
+        """Register a plugin
+
+        Parameters:
+            Plugin (class): a plugin class to register
+        """
+        for index, Class in list(enumerate(self.__Plugins)):
+            if Plugin.priority >= Class.priority:
+                self.Plugins.insert(index, Plugin)
+
+    def create_plugins(self, document):
+        """Create plugin instances
+
+        Parameters:
+            document (Document): a document object
+
+        Returns:
+            Plugin[]: a list of plugin instances
+        """
+        return list(map(lambda Plugin: Plugin(document), self.__Plugins))
 
 
 system = System()

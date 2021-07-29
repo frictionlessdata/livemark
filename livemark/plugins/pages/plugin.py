@@ -20,15 +20,14 @@ class PagesPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        config = self.get_config(markup)
-        if not config:
+        if not self.config:
             return
 
         # Prepare context
         current = "/"
-        if markup.document.target != "index.html":
+        if self.document.target != "index.html":
             current = f"/{markup.document.target}"
-        list = config["list"]
+        list = self.config["list"]
 
         # Update markup
         markup.add_style("style.css")

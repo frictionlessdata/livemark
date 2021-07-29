@@ -1,14 +1,12 @@
 from pyquery import PyQuery
-from .system import system
 from .exception import LivemarkException
 from . import helpers
 
 
 class Markup:
-    def __init__(self, input, *, document):
+    def __init__(self, input):
         self.__input = input
         self.__query = PyQuery(input)
-        self.__document = document
         self.__output = None
         self.__plugin = None
         self.__styles = set()
@@ -30,10 +28,6 @@ class Markup:
         return self.__query
 
     @property
-    def document(self):
-        return self.__document
-
-    @property
     def output(self):
         # NOTE:
         # PyQuery uses lxml which esape all the <> inside the tags
@@ -53,8 +47,10 @@ class Markup:
         output = "".join(lines)
         return output
 
-    def process(self):
-        system.process_markup(self)
+    def process(self, document):
+        for plugin in document.plugins:
+            with self.bind(plugin):
+                plugin.process_markup(self)
 
     # Bind
 
@@ -70,9 +66,7 @@ class Markup:
             raise LivemarkException("The object is not bound to any plugin")
         return self.__plugin
 
-    @property
-    def plugin_config(self):
-        return self.document.config.get(self.plugin.name, {})
+    # Helpers
 
     def add_style(self, source, *, action="append", target="head", **context):
         style = f'<link rel="stylesheet" href="{source}"></script>\n'

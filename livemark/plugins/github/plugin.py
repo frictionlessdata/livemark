@@ -16,16 +16,15 @@ class GithubPlugin(Plugin):
     }
 
     def process_document(self, document):
-        config = self.get_config(document)
 
         # Update config
         try:
             repo = Repo(os.path.dirname(document.source))
             data = parse(repo.remote().url)
-            user = config.setdefault("user", data.owner)
-            repo = config.setdefault("repo", data.repo)
+            user = self.config.setdefault("user", data.owner)
+            repo = self.config.setdefault("repo", data.repo)
             url = f"https://github.com/{user}/{repo}"
-            config["report_url"] = f"{url}/issues"
-            config["edit_url"] = f"{url}/edit/main/{document.source}"
+            self.config["report_url"] = f"{url}/issues"
+            self.config["edit_url"] = f"{url}/edit/main/{document.source}"
         except Exception:
             pass

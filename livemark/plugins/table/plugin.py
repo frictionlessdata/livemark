@@ -2,14 +2,17 @@ import json
 import yaml
 from jinja2 import Template
 from frictionless import Resource, Detector
+from ...helpers import cached_property
 from ...plugin import Plugin
 
 
 class TablePlugin(Plugin):
+    @cached_property
+    def count(self):
+        return 0
+
     def process_snippet(self, snippet):
-        state = self.get_state(snippet)
-        state.setdefault("count", 0)
-        if snippet.document.format != "html":
+        if self.document.format != "html":
             return
 
         # Update snippet
@@ -25,8 +28,8 @@ class TablePlugin(Plugin):
             spec = json.dumps(spec_python, ensure_ascii=False)
             spec = spec.replace("'", "\\'")
             template = Template(self.read_asset("markup.html"))
-            state["count"] += 1
-            table = {"spec": spec, "elem": f"livemark-table-{state['count']}"}
+            self.count += 1
+            table = {"spec": spec, "elem": f"livemark-table-{self.count}"}
             snippet.output = template.render(table=table) + "\n"
 
     def process_markup(self, markup):

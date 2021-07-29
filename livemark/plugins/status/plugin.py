@@ -11,15 +11,14 @@ class StatusPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        config_markup = self.get_config(markup)
-        config_github = self.get_config(markup, plugin="github")
-        if not config_markup or not config_github:
+        github = self.get_plugin("github")
+        if not self.config or not github.config:
             return
 
         # Prepare context
-        type = config_markup.get("type", "star")
-        user = config_github["user"]
-        repo = config_github["repo"]
+        type = self.config.get("type", "star")
+        user = github.config["user"]
+        repo = github.config["repo"]
 
         # Update markup
         markup.add_style("style.css")

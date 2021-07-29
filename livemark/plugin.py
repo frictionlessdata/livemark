@@ -1,16 +1,36 @@
 import os
 import inspect
+import jsonschema
 from jinja2 import Template
-from .helpers import cached_property
+from .exception import LivemarkException
 
 
+# TODO: implement process_config hook?
 class Plugin:
     priority = 0
-    profile = None
+    profile = {}
 
-    @cached_property
+    def __init__(self, document):
+        self.__document = document
+
+        # Normalize/validate config
+        config = document.config.setdefault(self.name, {})
+        if config is True:
+            document.config[self.name] = {"value": config}
+        if config and self.profile:
+            jsonschema.validate(config, self.profile)
+
+    @property
     def name(self):
         return self.__class__.__name__.replace("Plugin", "").lower()
+
+    @property
+    def document(self):
+        return self.__document
+
+    @property
+    def config(self):
+        return self.__document.config[self.name]
 
     # Actions
 
@@ -25,13 +45,11 @@ class Plugin:
 
     # Helpers
 
-    def get_config(self, object, *, plugin=None):
-        document = getattr(object, "document", object)
-        return document.config.get(plugin or self.name, {})
-
-    def get_state(self, object, *, plugin=None):
-        document = getattr(object, "document", object)
-        return document.state.setdefault(plugin or self.name, {})
+    def get_plugin(self, name):
+        for plugin in self.document.plugins:
+            if plugin.name == name:
+                return plugin
+        raise LivemarkException(f"Pluin is not registered: {name}")
 
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))

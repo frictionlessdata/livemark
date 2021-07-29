@@ -2,13 +2,16 @@ import json
 import yaml
 from jinja2 import Template
 from ...plugin import Plugin
+from ...helpers import cached_property
 
 
 class ChartPlugin(Plugin):
+    @cached_property
+    def count(self):
+        return 0
+
     def process_snippet(self, snippet):
-        state = self.get_state(snippet)
-        state.setdefault("count", 0)
-        if snippet.document.format != "html":
+        if self.document.format != "html":
             return
 
         # Update snippet
@@ -18,8 +21,8 @@ class ChartPlugin(Plugin):
             spec = json.dumps(spec_python, ensure_ascii=False)
             spec = spec.replace("'", "\\'")
             template = Template(self.read_asset("markup.html"))
-            state["count"] += 1
-            chart = {"spec": spec, "elem": f"livemark-chart-{state['count']}"}
+            self.count += 1
+            chart = {"spec": spec, "elem": f"livemark-chart-{self.count}"}
             snippet.output = template.render(chart=chart) + "\n"
 
     def process_markup(self, markup):

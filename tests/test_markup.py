@@ -1,6 +1,11 @@
+from livemark import Markup
+
+
 # General
 
 
-# TODO: implement
 def test_markup():
-    assert True
+    input = "<html></html>"
+    markup = Markup(input)
+    assert markup.input == input
+    assert markup.output == input

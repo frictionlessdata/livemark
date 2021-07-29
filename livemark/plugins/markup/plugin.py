@@ -7,7 +7,7 @@ from ...plugin import Plugin
 
 class MarkupPlugin(Plugin):
     def process_snippet(self, snippet):
-        if snippet.document.format != "html":
+        if self.document.format != "html":
             return
 
         # Update snippet

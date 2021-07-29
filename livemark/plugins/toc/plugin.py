@@ -11,12 +11,11 @@ class TocPlugin(Plugin):
     }
 
     def process_markup(self, markup):
-        config = self.get_config(markup)
-        if not config:
+        if not self.config:
             return
 
         # Prepare context
-        selector = config.get("selector", "h2, h3")
+        selector = self.config.get("selector", "h2, h3")
 
         # Update markup
         markup.add_style("https://unpkg.com/tocbot@4.12.3/dist/tocbot.css")

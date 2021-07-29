@@ -42,7 +42,13 @@ class Document:
         self.__config = config
         self.__input = input
         self.__output = None
-        self.__state = {}
+
+        # Create plugins (document needs to be ready)
+        self.__plugins = system.create_plugins(self)
+
+    @property
+    def plugins(self):
+        return self.__plugins
 
     @property
     def source(self):
@@ -68,10 +74,6 @@ class Document:
     @property
     def config(self):
         return self.__config
-
-    @property
-    def state(self):
-        return self.__state
 
     @property
     def input(self):
@@ -111,7 +113,8 @@ class Document:
     # Process
 
     def process(self):
-        system.process_document(self)
+        for plugin in self.plugins:
+            plugin.process_document(self)
 
     # Output
 
