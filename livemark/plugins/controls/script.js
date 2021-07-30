@@ -1,4 +1,3 @@
-// TODO: make it remember this setting from prev pages
 document.addEventListener("DOMContentLoaded", function () {
   // Plus
   document

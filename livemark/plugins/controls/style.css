@@ -97,7 +97,7 @@
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
-/* TODO: fix unsetting the default value - it doesn't work */
+/* NOTE: review unsetting the default value as it doesn't seem to work */
 .with-readability #livemark-left::-webkit-scrollbar,
 .with-readability #livemark-right::-webkit-scrollbar {
   display: unset; /* Chrome; Safari */
