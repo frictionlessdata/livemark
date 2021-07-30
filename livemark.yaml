@@ -1,5 +1,7 @@
 brand:
-  title: Livemark
+  text: Livemark
+about:
+  text: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
 github:
   user: frictionlessdata
   repo: livemark

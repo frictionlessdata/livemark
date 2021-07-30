@@ -6,7 +6,7 @@ class AboutPlugin(Plugin):
     profile = {
         "type": "object",
         "properties": {
-            "description": {"type": "string"},
+            "text": {"type": "string"},
         },
     }
 
@@ -15,12 +15,12 @@ class AboutPlugin(Plugin):
             return
 
         # Prepare context
-        description = self.config.get("description", self.document.description)
+        text = self.config.get("text", self.document.description)
 
         # Update markup
         markup.add_style("style.css")
         markup.add_markup(
             "markup.html",
             target="#livemark-right",
-            description=description,
+            text=text,
         )

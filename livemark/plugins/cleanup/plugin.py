@@ -13,7 +13,7 @@ class CleanupPlugin(Plugin):
     }
 
     def process_config(self, config):
-        self.config.setdefault("commands", self.config.get("self", []))
+        self.config.setdefault("commands", self.config.pop("self", []))
 
     def process_document(self, document):
         if not self.config:

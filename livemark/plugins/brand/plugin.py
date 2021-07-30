@@ -6,7 +6,7 @@ class BrandPlugin(Plugin):
     profile = {
         "type": "object",
         "properties": {
-            "title": {"type": "string"},
+            "text": {"type": "string"},
         },
     }
 
@@ -15,12 +15,12 @@ class BrandPlugin(Plugin):
             return
 
         # Prepare context
-        title = self.config.get("title", self.document.title)
+        text = self.config.get("text", self.document.title)
 
         # Update markup
         markup.add_style("style.css")
         markup.add_markup(
             "markup.html",
             target="#livemark-left",
-            title=title,
+            text=text,
         )

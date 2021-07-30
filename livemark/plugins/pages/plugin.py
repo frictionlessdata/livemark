@@ -29,7 +29,7 @@ class PagesPlugin(Plugin):
         # Prepare context
         current = "/"
         if self.document.target != "index.html":
-            current = f"/{markup.document.target}"
+            current = f"/{self.document.target}"
         items = self.config["items"]
 
         # Update markup
