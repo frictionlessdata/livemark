@@ -1,8 +1,8 @@
-#livemark-status {
+#livemark-rating {
   height: 46px;
 }
 
-#livemark-status iframe {
+#livemark-rating iframe {
   margin-top: -5px;
   border: none;
   opacity: 0.5;

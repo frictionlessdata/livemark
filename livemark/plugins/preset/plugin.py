@@ -23,7 +23,7 @@ class PresetPlugin(Plugin):
             config["toc"]["self"] = True
             config["stats"]["self"] = True
             config["flow"]["self"] = True
-            config["status"]["self"] = True
+            config["rating"]["self"] = True
             config["about"]["self"] = True
             config["links"]["self"] = True
             config["panel"]["self"] = True
@@ -31,7 +31,7 @@ class PresetPlugin(Plugin):
             config["toc"]["self"] = True
             config["stats"]["self"] = True
             config["flow"]["self"] = True
-            config["status"]["self"] = True
+            config["rating"]["self"] = True
             config["links"]["self"] = True
             config["panel"]["self"] = True
         else:

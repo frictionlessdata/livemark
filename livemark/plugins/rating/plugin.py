@@ -1,7 +1,7 @@
 from ...plugin import Plugin
 
 
-class StatusPlugin(Plugin):
+class RatingPlugin(Plugin):
     priority = 40
     profile = {
         "type": "object",
