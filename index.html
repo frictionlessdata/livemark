@@ -1573,7 +1573,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-27 12:55:22)
+  (2021-07-30 11:54:07)
 </div>
 
 <h1>Livemark</h1>
@@ -1607,7 +1607,7 @@ p {
 <p><a href="https://handsontable.com/docs/9.0.0/tutorial-introduction.html">https://handsontable.com/docs/9.0.0/tutorial-introduction.html</a></p>
 </blockquote>
 <p>Livemark supports CSV table rendering using Handsontable, which you can see in the example below (replace the single quotes with back ticks). The <code>data</code> property will be read by <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> so in addition to Handsontable options you can pass a <a href="https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv">file path</a> or a resource descriptor in a Frictionless format:</p>
-<pre><code class="language-yaml">'''table
+<pre><code class="language-yaml">'''yaml table
 data: data/cars.csv
 maxRows: 10
 filters: true
@@ -1635,7 +1635,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <p><a href="https://vega.github.io/vega-lite/">https://vega.github.io/vega-lite/</a></p>
 </blockquote>
 <p>Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks):</p>
-<pre><code class="language-yaml">'''chart
+<pre><code class="language-yaml">'''yaml chart
 data:
   url: data/cars.csv
 mark: circle

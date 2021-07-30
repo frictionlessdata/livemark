@@ -35,7 +35,7 @@ Livemark process your document using the Jinja templating language. Inside templ
 Livemark supports CSV table rendering using Handsontable, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read by [Frictionless Framework](https://framework.frictionlessdata.io/) so in addition to Handsontable options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) or a resource descriptor in a Frictionless format:
 
 ```yaml
-'''table
+'''yaml table
 data: data/cars.csv
 maxRows: 10
 filters: true
@@ -48,7 +48,7 @@ width: 600
 '''
 ```
 
-```table
+```yaml table
 data: data/cars.csv
 maxRows: 10
 filters: true
@@ -67,7 +67,7 @@ width: 600
 Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks):
 
 ```yaml
-'''chart
+'''yaml chart
 data:
   url: data/cars.csv
 mark: circle
@@ -80,7 +80,7 @@ height: 300
 '''
 ```
 
-```chart
+```yaml chart
 data:
   url: data/cars.csv
 mark: circle

@@ -5,10 +5,6 @@ class Snippet:
         self.__output = None
 
     @property
-    def header(self):
-        return self.__header
-
-    @property
     def input(self):
         return self.__input
 
@@ -19,6 +15,26 @@ class Snippet:
     @output.setter
     def output(self, value):
         self.__output = value
+
+    @property
+    def header(self):
+        return self.__header
+
+    @property
+    def language(self):
+        language = None
+        if len(self.__header) >= 1:
+            language = self.__header[0]
+        return language
+
+    @property
+    def modifier(self):
+        modifier = None
+        if len(self.__header) >= 2:
+            modifier = self.__header[1]
+        return modifier
+
+    # Process
 
     def process(self, document):
         for plugin in document.plugins:

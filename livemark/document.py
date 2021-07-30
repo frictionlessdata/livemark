@@ -25,6 +25,11 @@ class Document:
             suffix = f".{format or settings.DEFAULT_FORMAT}"
             target = str(Path(source).with_suffix(suffix))
 
+        # Infer format
+        if not format:
+            file = File(target)
+            format = file.format
+
         # Read input
         with open(source) as file:
             input = file.read()
@@ -44,16 +49,13 @@ class Document:
         # Save attributes
         self.__source = source
         self.__target = target
+        self.__format = format
         self.__project = project
         self.__preface = preface
         self.__config = config
-        self.__plugins = plugins
         self.__input = input
         self.__output = None
-
-    @property
-    def plugins(self):
-        return self.__plugins
+        self.__plugins = plugins
 
     @property
     def source(self):
@@ -73,14 +75,6 @@ class Document:
         return self.__project
 
     @property
-    def preface(self):
-        return self.__preface
-
-    @property
-    def config(self):
-        return self.__config
-
-    @property
     def input(self):
         return self.__input
 
@@ -95,6 +89,18 @@ class Document:
     @output.setter
     def output(self, value):
         self.__output = value
+
+    @property
+    def preface(self):
+        return self.__preface
+
+    @property
+    def config(self):
+        return self.__config
+
+    @property
+    def plugins(self):
+        return self.__plugins
 
     @cached_property
     def title(self):
