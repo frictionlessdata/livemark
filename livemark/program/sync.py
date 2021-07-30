@@ -3,21 +3,22 @@ import difflib
 from ..project import Project
 from ..document import Document
 from .main import program
+from . import common
 
 
 @program.command(name="sync")
 def program_sync(
-    source: str = typer.Argument(..., help="Path to markdown"),
-    diff: bool = typer.Option(default=False, help="Return the diff"),
-    print: bool = typer.Option(default=False, help="Return the document"),
+    source: str = common.source,
+    print: bool = common.print,
+    diff: bool = common.diff,
 ):
     """Sync the article"""
 
-    # Process document
+    # Create document
     document = Document(source, target=source, project=Project())
-    document.prepare()
+
+    # Process document
     document.process()
-    document.cleanup()
 
     # Diff document
     if diff:

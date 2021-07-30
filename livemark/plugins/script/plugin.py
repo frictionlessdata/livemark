@@ -17,7 +17,7 @@ class ScriptPlugin(Plugin):
                     output = exception.output.decode().strip()
             elif snippet.language == "python":
                 with helpers.capture_stdout() as stdout:
-                    # TODO: review globals usage
+                    # NOTE: review globals usage
                     exec(snippet.input, globals())
                 output = stdout.getvalue().strip()
             else:

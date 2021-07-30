@@ -1,3 +1,4 @@
+import os
 import re
 import yaml
 import deepmerge
@@ -13,12 +14,18 @@ from . import helpers
 
 
 class Document:
-    def __init__(self, source, *, target=None, format=None, project=None):
+    def __init__(self, source, *, target=None, format=None, project=None, create=False):
 
         # Create plugins
         plugins = []
         for Plugin in system.Plugins:
             plugins.append(Plugin(self))
+
+        # Create source
+        if create and source == settings.DEFAULT_SOURCE:
+            if not os.path.exists(source):
+                with open(source, "w"):
+                    pass
 
         # Infer target
         if not target:

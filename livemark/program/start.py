@@ -1,20 +1,39 @@
-import typer
-from functools import partial
 from livereload import Server
-from .build import program_build
+from ..document import Document
+from ..project import Project
 from .main import program
+from . import common
 
 
 @program.command(name="start")
 def program_start(
-    source: str = typer.Argument("index.md", help="Path to markdown"),
-    target: str = typer.Option(None, help="Path to target"),
-    format: str = typer.Option(None, help="Format of the target file"),
+    source: str = common.source,
+    target: str = common.target,
+    format: str = common.format,
 ):
     """Start a Livemark server."""
-    # TODO: rebase on using Document instead of the program call
-    program_build(source, target, format, False)
+
+    # Create process
+    def process():
+
+        # Create document
+        document = Document(
+            source,
+            target=target,
+            format=format,
+            project=Project(),
+            create=True,
+        )
+
+        # Process document
+        document.process()
+
+        # Write document
+        document.write()
+
+    # Run server
+    process()
     server = Server()
     server.watcher.watch(".", delay=1)
-    server.watch(source, partial(program_build, source, target, format, False))
+    server.watch(source, process)
     server.serve(host="localhost", port=7000, root=".", open_url_delay=1)
