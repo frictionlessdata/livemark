@@ -1,19 +1,19 @@
-#livemark-flow {
+#livemark-signs {
   border-top: 1px solid #eaecef;
   margin-top: 24px;
   padding-top: 20px;
   height: 50px;
 }
 
-#livemark-flow > div {
+#livemark-signs > div {
   opacity: 0.4;
 }
 
-#livemark-flow .next {
+#livemark-signs .next {
   float: right;
 }
 
-#livemark-flow a {
+#livemark-signs a {
   font-size: 20px;
   color: black;
 }

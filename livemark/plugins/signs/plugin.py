@@ -2,7 +2,7 @@ from ...plugin import Plugin
 from ...exception import LivemarkException
 
 
-class FlowPlugin(Plugin):
+class SignsPlugin(Plugin):
     priority = 50
 
     def process_markup(self, markup):
