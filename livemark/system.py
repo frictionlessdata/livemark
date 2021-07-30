@@ -1,9 +1,9 @@
 import os
 import pkgutil
-from collections import OrderedDict
 from importlib import import_module
 from .helpers import cached_property
 from .exception import LivemarkException
+from .plugin import Plugin
 
 
 class System:
@@ -26,19 +26,19 @@ class System:
             type[]: a list of registered plugin classes
         """
         Plugins = []
-        modules = OrderedDict()
+        modules = []
         for item in pkgutil.iter_modules():
             if item.name == "plugin" or item.name.startswith("livemark_"):
                 module = import_module(item.name)
-                modules[item.name.replace("livemark_", "")] = module
+                modules.append(module)
         module = import_module("livemark.plugins")
         for _, name, _ in pkgutil.iter_modules([os.path.dirname(module.__file__)]):
             module = import_module(f"livemark.plugins.{name}")
-            modules[name] = module
-        for name, module in modules.items():
-            Plugin = getattr(module, f"{name.capitalize()}Plugin", None)
-            if Plugin:
-                Plugins.append(Plugin)
+            modules.append(module)
+        for module in modules:
+            for item in vars(module).values():
+                if isinstance(item, type) and issubclass(item, Plugin):
+                    Plugins.append(item)
         return list(sorted(Plugins, key=lambda Plugin: -Plugin.priority))
 
     def register(self, Plugin):
