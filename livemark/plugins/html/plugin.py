@@ -33,26 +33,26 @@ class HtmlPlugin(Plugin):
         description = self.config.get("description", document.description)
         keywords = self.config.get("keywords", document.keywords)
 
-        # Process markup
-        input = self.read_asset(
-            "markup.html",
-            title=title,
-            description=description,
-            keywords=keywords,
+        # Create markup
+        markup = Markup(
+            self.read_asset(
+                "markup.html",
+                title=title,
+                description=description,
+                keywords=keywords,
+            )
         )
-        markup = Markup(input)
+
+        # Process markup
         with markup.bind(self):
-            markup.add_style("https://unpkg.com/prismjs@1.23.0/themes/prism.css")
+            prism_url = "https://unpkg.com/prismjs@1.23.0"
+            markup.add_style(f"{prism_url}/themes/prism.css")
             markup.add_style("style.css")
-            markup.add_script(
-                "https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"
-            )
-            markup.add_script(
-                "https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"
-            )
+            markup.add_script(f"{prism_url}/components/prism-core.min.js")
+            markup.add_script(f"{prism_url}/plugins/autoloader/prism-autoloader.min.js")
             markup.add_script("script.js")
             markup.add_markup(output, target="#livemark-main")
         markup.process(document)
 
         # Update document
-        document.output = markup.output
+        document.output = "<!doctype html>\n" + markup.output
