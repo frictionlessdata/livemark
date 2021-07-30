@@ -1,4 +1,5 @@
 import marko
+import textwrap
 from pyquery import PyQuery
 from marko.ext.gfm import GFM
 from ..html.renderer import HtmlExtension
@@ -20,8 +21,10 @@ class MarkupPlugin(Plugin):
                 for node in query.find(".markdown"):
                     node = PyQuery(node)
                     if not node.children():
-                        html = markdown.convert(node.text())
-                        node.html(html)
+                        input = node.text(squash_space=False)
+                        input = textwrap.dedent(input).strip("\n")
+                        output = markdown.convert(input)
+                        node.html(output)
                 snippet.output = query.outer_html() + "\n"
 
     def process_markup(self, markup):
