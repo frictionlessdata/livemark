@@ -1,24 +1,15 @@
 import os
 import inspect
-import jsonschema
 from jinja2 import Template
 from .exception import LivemarkException
 
 
-# TODO: implement process_config hook?
 class Plugin:
     priority = 0
     profile = {}
 
     def __init__(self, document):
         self.__document = document
-
-        # Normalize/validate config
-        config = document.config.setdefault(self.name, {})
-        if config is True:
-            document.config[self.name] = {"value": config}
-        if config and self.profile:
-            jsonschema.validate(config, self.profile)
 
     @property
     def name(self):
@@ -33,6 +24,9 @@ class Plugin:
         return self.__document.config[self.name]
 
     # Actions
+
+    def process_config(self, config):
+        pass
 
     def process_document(self, document):
         pass

@@ -2,7 +2,7 @@ from ...plugin import Plugin
 
 
 class TocPlugin(Plugin):
-    priority = 80
+    priority = 70
     profile = {
         "type": "object",
         "properties": {

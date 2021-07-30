@@ -4,7 +4,7 @@ from ...plugin import Plugin
 
 
 class LogicPlugin(Plugin):
-    priority = 10
+    priority = 100
 
     def process_document(self, document):
         templating = Environment(loader=FileSystemLoader("."), trim_blocks=True)

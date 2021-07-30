@@ -1,10 +1,12 @@
 import re
 import yaml
 import deepmerge
+import jsonschema
 from pathlib import Path
 from copy import deepcopy
 from frictionless import File
 from .system import system
+from .exception import LivemarkException
 from .helpers import cached_property
 from . import settings
 from . import helpers
@@ -12,6 +14,11 @@ from . import helpers
 
 class Document:
     def __init__(self, source, *, target=None, format=None, project=None):
+
+        # Create plugins
+        plugins = []
+        for Plugin in system.Plugins:
+            plugins.append(Plugin(self))
 
         # Infer target
         if not target:
@@ -40,13 +47,9 @@ class Document:
         self.__project = project
         self.__preface = preface
         self.__config = config
+        self.__plugins = plugins
         self.__input = input
         self.__output = None
-
-        # Create plugins
-        self.__plugins = []
-        for Plugin in system.Plugins:
-            self.__plugins.append(Plugin(self))
 
     @property
     def plugins(self):
@@ -115,6 +118,19 @@ class Document:
     # Process
 
     def process(self):
+
+        # Process config
+        for plugin in self.plugins:
+            plugin_config = self.config.setdefault(plugin.name, {})
+            if not isinstance(plugin_config, dict):
+                self.config[plugin.name] = {"self": plugin_config}
+            plugin.process_config(self.config)
+            if plugin_config and plugin.profile:
+                validator = jsonschema.Draft7Validator(plugin.profile)
+                for error in validator.iter_errors(plugin_config):
+                    raise LivemarkException(f'Plugin "{plugin.name}" error: {error}')
+
+        # Process document
         for plugin in self.plugins:
             plugin.process_document(self)
 

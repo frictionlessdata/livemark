@@ -2,7 +2,7 @@ from ...plugin import Plugin
 
 
 class PagesPlugin(Plugin):
-    priority = 90
+    priority = 80
     profile = {
         "type": "object",
         "properties": {

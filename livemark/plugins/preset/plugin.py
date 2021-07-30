@@ -2,37 +2,37 @@ from ...plugin import Plugin
 from ...exception import LivemarkException
 
 
-# TODO: add more presets
-# TODO: improve compact preset
-# TODO: support setting `preset: {name}` in config without requiring nesting
+# NOTE:
+# We need to add more presets and improve existent ones
+# For example, we can make "compact" preset more minimalistic
 class PresetPlugin(Plugin):
-    priority = 30
     profile = {
         "type": "object",
+        "requried": ["name"],
         "properties": {
             "name": {"type": "string"},
         },
     }
 
-    def process_document(self, document):
-        preset = self.config.get("name", "standard")
+    def process_config(self, config):
+        self.config.setdefault("name", self.config.get("self", "standard"))
 
         # Update document
-        if preset == "standard":
-            document.config["brand"]["value"] = True
-            document.config["toc"]["value"] = True
-            document.config["stats"]["value"] = True
-            document.config["flow"]["value"] = True
-            document.config["status"]["value"] = True
-            document.config["about"]["value"] = True
-            document.config["links"]["value"] = True
-            document.config["panel"]["value"] = True
-        elif preset == "compact":
-            document.config["toc"]["value"] = True
-            document.config["stats"]["value"] = True
-            document.config["flow"]["value"] = True
-            document.config["status"]["value"] = True
-            document.config["links"]["value"] = True
-            document.config["panel"]["value"] = True
+        if self.config["name"] == "standard":
+            config["brand"]["self"] = True
+            config["toc"]["self"] = True
+            config["stats"]["self"] = True
+            config["flow"]["self"] = True
+            config["status"]["self"] = True
+            config["about"]["self"] = True
+            config["links"]["self"] = True
+            config["panel"]["self"] = True
+        elif self.config["name"] == "compact":
+            config["toc"]["self"] = True
+            config["stats"]["self"] = True
+            config["flow"]["self"] = True
+            config["status"]["self"] = True
+            config["links"]["self"] = True
+            config["panel"]["self"] = True
         else:
-            raise LivemarkException(f"Not supported preset: {preset}")
+            raise LivemarkException(f"Not supported preset: {self.config['name']}")
