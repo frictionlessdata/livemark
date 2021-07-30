@@ -34,6 +34,7 @@ class LinksPlugin(Plugin):
             items.append({"name": "Report", "path": github.config["report_url"]})
         items.append({"name": "Print", "hook": "window.print();return false;"})
         if github.config:
+            items.append({"name": "Fork", "path": github.config["fork_url"]})
             items.append({"name": "Edit", "path": github.config["edit_url"]})
 
         # Update markup

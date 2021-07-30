@@ -31,4 +31,5 @@ class GithubPlugin(Plugin):
         if self.config:
             url = f"https://github.com/{self.config['user']}/{self.config['repo']}"
             self.config["edit_url"] = f"{url}/edit/main/{self.document.source}"
+            self.config["fork_url"] = f"{url}/fork"
             self.config["report_url"] = f"{url}/issues"
