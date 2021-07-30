@@ -17,13 +17,13 @@ class FlowPlugin(Plugin):
         current_number = None
         if self.document.target != "index.html":
             current_path = f"/{markup.document.target}"
-        for number, link in enumerate(pages.config["list"], start=1):
+        for number, link in enumerate(pages.config["items"], start=1):
             if link["path"] == current_path:
                 current_number = number
         if current_number > 1:
-            prev = pages.config["list"][current_number - 2]
-        if current_number < len(pages.config["list"]):
-            next = pages.config["list"][current_number]
+            prev = pages.config["items"][current_number - 2]
+        if current_number < len(pages.config["items"]):
+            next = pages.config["items"][current_number]
         if not next and not prev:
             raise LivemarkException("Invalid pages configuration")
 

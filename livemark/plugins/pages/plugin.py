@@ -6,7 +6,7 @@ class PagesPlugin(Plugin):
     profile = {
         "type": "object",
         "properties": {
-            "list": {
+            "items": {
                 "type": "array",
                 "items": {
                     "type": "object",
@@ -19,6 +19,9 @@ class PagesPlugin(Plugin):
         },
     }
 
+    def process_config(self, config):
+        self.config.setdefault("items", self.config.pop("self", []))
+
     def process_markup(self, markup):
         if not self.config:
             return
@@ -27,7 +30,7 @@ class PagesPlugin(Plugin):
         current = "/"
         if self.document.target != "index.html":
             current = f"/{markup.document.target}"
-        list = self.config["list"]
+        items = self.config["items"]
 
         # Update markup
         markup.add_style("style.css")
@@ -35,5 +38,5 @@ class PagesPlugin(Plugin):
             "markup.html",
             target="#livemark-left",
             current=current,
-            list=list,
+            items=items,
         )

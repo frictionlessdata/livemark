@@ -121,13 +121,13 @@ class Document:
 
         # Process config
         for plugin in self.plugins:
-            plugin_config = self.config.setdefault(plugin.name, {})
-            if not isinstance(plugin_config, dict):
-                self.config[plugin.name] = {"self": plugin_config}
+            self.config.setdefault(plugin.name, {})
+            if not isinstance(self.config[plugin.name], dict):
+                self.config[plugin.name] = {"self": self.config[plugin.name]}
             plugin.process_config(self.config)
-            if plugin_config and plugin.profile:
+            if self.config[plugin.name] and plugin.profile:
                 validator = jsonschema.Draft7Validator(plugin.profile)
-                for error in validator.iter_errors(plugin_config):
+                for error in validator.iter_errors(self.config[plugin.name]):
                     raise LivemarkException(f'Plugin "{plugin.name}" error: {error}')
 
         # Process document

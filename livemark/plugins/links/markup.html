@@ -1,10 +1,10 @@
 <div id="livemark-links">
   <div class="toc">
     <ol class="toc-list">
-      {% for link in list %}
+      {% for item in items %}
       <li class="toc-link">
-        <a class="toc-link" href="{{ link.path }}" target="_blank" {% if link.hook %}onclick="{{ link.hook }}"{% endif %}>
-          {{ link.name }}
+        <a class="toc-link" href="{{ item.path }}" target="_blank" {% if item.hook %}onclick="{{ item.hook }}"{% endif %}>
+          {{ item.name }}
         </a>
       </li>
       {% endfor %}

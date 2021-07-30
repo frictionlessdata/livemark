@@ -1,10 +1,10 @@
 <div id="livemark-pages">
   <div class="toc">
     <ol class="toc-list">
-      {% for link in list %}
+      {% for item in items %}
       <li class="toc-link">
-        <a class="toc-link {% if current == link.path %}is-active-link{% endif %}" href="{{ link.path }}">
-          {{ link.name }}
+        <a class="toc-link {% if current == item.path %}is-active-link{% endif %}" href="{{ item.path }}">
+          {{ item.name }}
         </a>
       </li>
       {% endfor %}
