@@ -135,9 +135,9 @@ pprint(brands.read_rows())
 
 ## Markup
 
-> https://getbootstrap.com/docs/4.6/getting-started/introduction/
+> https://getbootstrap.com/docs/5.0/getting-started/introduction/
 
-With Livemark you can use HTML inside Markdown with Bootstrap 4 support. Here is an example of creating a responsive grid of cards (note that if we set a `markdown` class we can use markdown inside html):
+With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `markdown` class we can use markdown inside html):
 
 ```html
 '''html markup
