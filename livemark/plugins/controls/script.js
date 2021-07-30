@@ -2,14 +2,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Plus
   document
-    .getElementById("livemark-panel-plus")
+    .getElementById("livemark-controls-plus")
     .addEventListener("click", function () {
       document.body.classList.add("with-readability");
     });
 
   // Minus
   document
-    .getElementById("livemark-panel-minus")
+    .getElementById("livemark-controls-minus")
     .addEventListener("click", function () {
       document.body.classList.remove("with-readability");
     });

@@ -15,10 +15,10 @@ class PresetPlugin(Plugin):
     }
 
     def process_config(self, config):
-        self.config.setdefault("name", self.config.get("self", "standard"))
+        preset = self.config.setdefault("name", self.config.get("self", "standard"))
 
         # Update document
-        if self.config["name"] == "standard":
+        if preset == "standard":
             config["brand"]["self"] = True
             config["toc"]["self"] = True
             config["stats"]["self"] = True
@@ -26,13 +26,13 @@ class PresetPlugin(Plugin):
             config["rating"]["self"] = True
             config["about"]["self"] = True
             config["links"]["self"] = True
-            config["panel"]["self"] = True
-        elif self.config["name"] == "compact":
+            config["controls"]["self"] = True
+        elif preset == "compact":
             config["toc"]["self"] = True
             config["stats"]["self"] = True
             config["flow"]["self"] = True
             config["rating"]["self"] = True
             config["links"]["self"] = True
-            config["panel"]["self"] = True
+            config["controls"]["self"] = True
         else:
-            raise LivemarkException(f"Not supported preset: {self.config['name']}")
+            raise LivemarkException(f"Not supported preset: {preset}")

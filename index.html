@@ -1411,18 +1411,18 @@ p {
 <link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <style>
 
-#livemark-panel {
+#livemark-controls {
   display: none;
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-panel {
+  #livemark-controls {
     display: block;
     opacity: 0.5;
   }
 }
 
-#livemark-panel .readability{
+#livemark-controls .readability{
   display:none;
   position:fixed;
   -webkit-transform:translateZ(0);
@@ -1440,54 +1440,54 @@ p {
   background-position:50%;
 }
 
-#livemark-panel .readability.btn-white {
+#livemark-controls .readability.btn-white {
   background-color:#fff;
 }
 
-#livemark-panel .readability.shadow {
+#livemark-controls .readability.shadow {
   -webkit-box-shadow:0 0 10px rgba(0,0,0,.2);
   box-shadow:0 0 10px rgba(0,0,0,.2);
 }
 
-#livemark-panel .readability.circle {
+#livemark-controls .readability.circle {
   border-radius:50%;
 }
 
-#livemark-panel .readability {
+#livemark-controls .readability {
   bottom:25px;
   display:block!important;
   opacity:1!important;
 }
 
-#livemark-panel .plus {
+#livemark-controls .plus {
   left: auto;
   right: 165px;
 }
 
-#livemark-panel .minus {
+#livemark-controls .minus {
   left: auto;
   right: 100px;
 }
 
-#livemark-panel .minus .inner {
+#livemark-controls .minus .inner {
   font-size: 30px;
   margin-left: 20px;
 }
 
-#livemark-panel .plus .inner {
+#livemark-controls .plus .inner {
   font-size: 30px;
   margin-left: 15px;
   margin-top: 2px;
 }
 
-#livemark-panel .ue-scroll {
+#livemark-controls .ue-scroll {
   bottom: 25px;
   /* Make the button alway visible */
   display: block !important;
   opacity: 1 !important;
 }
 
-#livemark-panel .ue-scroll {
+#livemark-controls .ue-scroll {
   left: auto;
   right: 35px;
 }
@@ -1876,14 +1876,14 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   // Plus
   document
-    .getElementById("livemark-panel-plus")
+    .getElementById("livemark-controls-plus")
     .addEventListener("click", function () {
       document.body.classList.add("with-readability");
     });
 
   // Minus
   document
-    .getElementById("livemark-panel-minus")
+    .getElementById("livemark-controls-minus")
     .addEventListener("click", function () {
       document.body.classList.remove("with-readability");
     });
@@ -1895,12 +1895,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 
-<div id="livemark-panel">
+<div id="livemark-controls">
   <div class="readability plus btn-white circle shadow">
-    <div id="livemark-panel-plus" title="Increase readability" class="inner">+</div>
+    <div id="livemark-controls-plus" title="Increase readability" class="inner">+</div>
   </div>
   <div class="readability minus btn-white circle shadow">
-    <div id="livemark-panel-minus" title="Decrease readability" class="inner">-</div>
+    <div id="livemark-controls-minus" title="Decrease readability" class="inner">-</div>
   </div>
   <div class="ue-scroll btn-white arrow-black circle shadow">
   </div>
