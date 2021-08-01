@@ -17,8 +17,7 @@ class ScriptPlugin(Plugin):
                     output = exception.output.decode().strip()
             elif snippet.language == "python":
                 with helpers.capture_stdout() as stdout:
-                    # NOTE: review globals usage
-                    exec(snippet.input, globals())
+                    exec(snippet.input, {})
                 output = stdout.getvalue().strip()
             else:
                 message = "Provide a supported script language: bash/python"
