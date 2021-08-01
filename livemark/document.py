@@ -14,6 +14,21 @@ from . import helpers
 
 
 class Document:
+    """Livemark document
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Document`
+
+    Parameters:
+        source (str): path to the document source
+        target? (str): path to the document target
+        format? (str): format of the document target
+        project? (Project): a project to which the document belongs
+        create? (bool): whether to create a source if index.md doesn't exist
+
+    """
+
     def __init__(self, source, *, target=None, format=None, project=None, create=False):
 
         # Create plugins

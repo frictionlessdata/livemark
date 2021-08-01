@@ -1,5 +1,5 @@
 class LivemarkException(Exception):
-    """Main Livemark exception
+    """Livemark exception
 
     API      | Usage
     -------- | --------

@@ -12,7 +12,7 @@ def program_sync(
     print: bool = common.print,
     diff: bool = common.diff,
 ):
-    """Sync the article"""
+    """Sync the article."""
 
     try:
 

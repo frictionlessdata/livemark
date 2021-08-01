@@ -3,7 +3,24 @@ from .exception import LivemarkException
 from . import helpers
 
 
+# NOTE:
+# PyQuery uses lxml which esape all the <> inside the tags
+# In markup.output we recover initial formatting for styles and scripts
+# Take into account that this method is fragile and might need to be rewrited
+
+
 class Markup:
+    """Livemark markup
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Markup`
+
+    Parameters:
+        input (str): html input for the markup
+
+    """
+
     def __init__(self, input):
         self.__input = input
         self.__query = PyQuery(input)
@@ -29,10 +46,6 @@ class Markup:
 
     @property
     def output(self):
-        # NOTE:
-        # PyQuery uses lxml which esape all the <> inside the tags
-        # Here we recover initial formatting for styles and scripts
-        # Take into account that this script is fragile (needs rewriting)
         lines = []
         is_replacing = False
         output = self.__query.outer_html()

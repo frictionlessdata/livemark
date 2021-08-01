@@ -1,4 +1,16 @@
 class Snippet:
+    """Livemark snippet
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Snippet`
+
+    Parameters:
+        input (str): textual snippet for the snippet
+        header (str[]): an array of the snippet's header
+
+    """
+
     def __init__(self, input, *, header):
         self.__input = input
         self.__header = header

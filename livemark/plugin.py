@@ -5,6 +5,17 @@ from .exception import LivemarkException
 
 
 class Plugin:
+    """Livemark plugin
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Plugin`
+
+    Parameters:
+        document (Document): a document to which the plulgin belongs
+
+    """
+
     priority = 0
     profile = {}
 

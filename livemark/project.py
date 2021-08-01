@@ -4,6 +4,17 @@ from . import settings
 
 
 class Project:
+    """Livemark project
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Project`
+
+    Parameters:
+        path? (str): a project path
+
+    """
+
     def __init__(self, path=""):
         self.__path = path
 
