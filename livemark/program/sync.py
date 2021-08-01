@@ -14,24 +14,30 @@ def program_sync(
 ):
     """Sync the article"""
 
-    # Create document
-    document = Document(source, target=source, project=Project())
+    try:
 
-    # Process document
-    document.process()
+        # Create document
+        document = Document(source, target=source, project=Project())
 
-    # Diff document
-    if diff:
-        l1 = document.input.splitlines(keepends=True)
-        l2 = document.output.splitlines(keepends=True)
-        ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
-        typer.secho("".join(ld), nl=False)
-        raise typer.Exit()
+        # Process document
+        document.process()
 
-    # Print document
-    if print:
-        document.print()
-        raise typer.Exit()
+        # Diff document
+        if diff:
+            l1 = document.input.splitlines(keepends=True)
+            l2 = document.output.splitlines(keepends=True)
+            ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
+            typer.secho("".join(ld), nl=False)
+            raise typer.Exit()
 
-    # Write document
-    document.write()
+        # Print document
+        if print:
+            document.print()
+            raise typer.Exit()
+
+        # Write document
+        document.write()
+
+    except Exception as exception:
+        typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
+        raise typer.Exit(1)

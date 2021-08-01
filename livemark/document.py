@@ -141,7 +141,8 @@ class Document:
             if self.config[plugin.name] and plugin.profile:
                 validator = jsonschema.Draft7Validator(plugin.profile)
                 for error in validator.iter_errors(self.config[plugin.name]):
-                    raise LivemarkException(f'Plugin "{plugin.name}" error: {error}')
+                    message = f'Invalid "{plugin.name}" config: {error.message}'
+                    raise LivemarkException(message)
 
         # Process document
         for plugin in self.plugins:
