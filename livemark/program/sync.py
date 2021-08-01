@@ -1,3 +1,4 @@
+import sys
 import typer
 import difflib
 from ..project import Project
@@ -27,17 +28,19 @@ def program_sync(
             l1 = document.input.splitlines(keepends=True)
             l2 = document.output.splitlines(keepends=True)
             ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
-            typer.secho("".join(ld), nl=False)
-            raise typer.Exit()
+            if ld:
+                typer.secho("".join(ld), nl=False)
+                sys.exit(1)
+            sys.exit(0)
 
         # Print document
         if print:
             document.print()
-            raise typer.Exit()
+            sys.exit()
 
         # Write document
         document.write()
 
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
-        raise typer.Exit(1)
+        sys.exit(1)

@@ -23,7 +23,7 @@ class HtmlPlugin(Plugin):
         markdown = marko.Markdown()
         markdown.use(GFM)
         markdown.use(HtmlExtension)
-        output = markdown.parse(document.input)
+        output = markdown.parse(document.content)
         markdown.renderer.document = document
         output = markdown.render(output)
         output = output.strip()

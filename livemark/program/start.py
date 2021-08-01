@@ -1,3 +1,4 @@
+import sys
 import typer
 from livereload import Server
 from ..document import Document
@@ -43,4 +44,4 @@ def program_start(
 
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
-        raise typer.Exit(1)
+        sys.exit(1)

@@ -10,9 +10,9 @@ class MarkdownPlugin(Plugin):
 
         # Update document
         markdown = marko.Markdown(renderer=MarkdownRenderer)
-        output = markdown.parse(document.input)
+        output = markdown.parse(document.content)
         markdown.renderer.document = document
         output = markdown.render(output)
         if document.preface:
-            output = document.preface.join(["---"] * 2) + "\n" + output
+            output = document.preface.join(["---"] * 2) + "\n\n" + output
         document.output = output

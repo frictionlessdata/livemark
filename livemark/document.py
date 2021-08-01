@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import yaml
 import deepmerge
 import jsonschema
@@ -56,10 +57,12 @@ class Document:
         with open(source) as file:
             input = file.read()
 
-        # Read preface
+        # Read preface/content
         preface = ""
+        content = input
         if input.startswith("---"):
-            preface, input = input.split("---", maxsplit=2)[1:]
+            preface, content = input.split("---", maxsplit=2)[1:]
+        content = content.strip()
 
         # Read config
         config = {}
@@ -74,6 +77,7 @@ class Document:
         self.__format = format
         self.__project = project
         self.__preface = preface
+        self.__content = content
         self.__config = config
         self.__input = input
         self.__output = None
@@ -100,10 +104,6 @@ class Document:
     def input(self):
         return self.__input
 
-    @input.setter
-    def input(self, value):
-        self.__input = value
-
     @property
     def output(self):
         return self.__output
@@ -115,6 +115,14 @@ class Document:
     @property
     def preface(self):
         return self.__preface
+
+    @property
+    def content(self):
+        return self.__content
+
+    @content.setter
+    def content(self, value):
+        self.__content = value
 
     @property
     def config(self):
@@ -167,7 +175,8 @@ class Document:
 
     def print(self, print=print):
         if self.output is not None:
-            print(self.output)
+            sys.stdout.write(self.output)
+            sys.stdout.flush()
 
     def write(self):
         if self.output is not None:

@@ -8,5 +8,5 @@ class LogicPlugin(Plugin):
 
     def process_document(self, document):
         templating = Environment(loader=FileSystemLoader("."), trim_blocks=True)
-        template = templating.from_string(document.input)
-        document.input = template.render(frictionless=frictionless)
+        template = templating.from_string(document.content)
+        document.content = template.render(frictionless=frictionless)
