@@ -1,4 +1,5 @@
 from pyquery import PyQuery
+from contextlib import contextmanager
 from .exception import LivemarkException
 from . import helpers
 
@@ -28,13 +29,6 @@ class Markup:
         self.__plugin = None
         self.__styles = set()
         self.__scripts = set()
-
-    def __enter__(self):
-        assert self.plugin
-        return self
-
-    def __exit__(self, type, value, traceback):
-        self.bind()
 
     @property
     def input(self):
@@ -67,11 +61,13 @@ class Markup:
 
     # Bind
 
+    @contextmanager
     def bind(self, plugin=None):
         if callable(plugin):
             plugin = plugin.__self__
         self.__plugin = plugin
-        return self
+        yield self.__plugin
+        self.__plugin = None
 
     @property
     def plugin(self):
