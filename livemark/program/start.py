@@ -1,10 +1,16 @@
 import sys
 import typer
+from pathlib import Path
 from livereload import Server
 from ..document import Document
 from ..project import Project
 from .main import program
 from . import common
+
+
+# NOTE:
+# We can make this logic more sophisticated by watching
+# config changes in livemark.yaml and the main source file
 
 
 @program.command(name="start")
@@ -17,29 +23,33 @@ def program_start(
 
     try:
 
-        # Create process
-        def process():
+        # Create document
+        document = Document(
+            source,
+            target=target,
+            format=format,
+            project=Project(),
+            create=True,
+        )
 
-            # Create document
-            document = Document(
-                source,
-                target=target,
-                format=format,
-                project=Project(),
-                create=True,
-            )
+        # Create documents
+        document.read()
+        documents = [document]
+        for page in document.config["pages"]["items"]:
+            page_target = page["path"][1:] or "index.html"
+            page_source = str(Path(page_target).with_suffix(".md"))
+            if page_source != source:
+                page_document = Document(page_source, project=document.project)
+                documents.append(page_document)
 
-            # Process document
-            document.process()
-
-            # Write document
-            document.write()
+        # Build initially
+        for document in documents:
+            document.build()
 
         # Run server
-        process()
         server = Server()
-        server.watcher.watch(".", delay=1)
-        server.watch(source, process)
+        for document in documents:
+            server.watch(document.source, document.build, delay=1)
         server.serve(host="localhost", port=7000, root=".", open_url_delay=1)
 
     except Exception as exception:

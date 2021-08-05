@@ -54,6 +54,8 @@ class Markup:
         output = "".join(lines)
         return output
 
+    # Process
+
     def process(self, document):
         for plugin in document.plugins:
             with self.bind(plugin):
@@ -69,36 +71,38 @@ class Markup:
         yield self.__plugin
         self.__plugin = None
 
-    @property
-    def plugin(self):
-        if not self.__plugin:
-            raise LivemarkException("The object is not bound to any plugin")
-        return self.__plugin
-
     # Helpers
 
     def add_style(self, source, *, action="append", target="head", **context):
+        plugin = self.get_plugin()
         style = f'<link rel="stylesheet" href="{source}"></script>\n'
         if not helpers.is_remote_path(source):
-            style = self.plugin.read_asset(source, **context)
+            style = plugin.read_asset(source, **context)
             style = f"<style>\n\n{style}\n\n</style>\n"
         if style in self.__styles:
             return
         self.__styles.add(style)
-        getattr(self.query(target), action)(style)
+        getattr(self.__query(target), action)(style)
 
     def add_script(self, source, *, action="append", target="body", **context):
+        plugin = self.get_plugin()
         script = f'<script src="{source}"></script>\n'
         if not helpers.is_remote_path(source):
-            script = self.plugin.read_asset(source, **context)
+            script = plugin.read_asset(source, **context)
             script = f"<script>\n\n{script}\n\n</script>\n"
         if script in self.__scripts:
             return
         self.__scripts.add(script)
-        getattr(self.query(target), action)(script)
+        getattr(self.__query(target), action)(script)
 
     def add_markup(self, source, *, action="append", target="body", **context):
         markup = source
+        plugin = self.get_plugin()
         if not source.strip().startswith("<"):
-            markup = self.plugin.read_asset(source, **context)
-        getattr(self.query(target), action)(f"\n{markup}\n")
+            markup = plugin.read_asset(source, **context)
+        getattr(self.__query(target), action)(f"\n{markup}\n")
+
+    def get_plugin(self):
+        if not self.__plugin:
+            raise LivemarkException("The object is not bound to any plugin")
+        return self.__plugin

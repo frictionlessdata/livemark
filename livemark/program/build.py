@@ -26,16 +26,8 @@ def program_build(
             create=True,
         )
 
-        # Process document
-        document.process()
-
-        # Print document
-        if print:
-            document.print()
-            sys.exit(0)
-
-        # Write document
-        document.write()
+        # Build document
+        document.build(print=print)
 
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
