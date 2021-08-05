@@ -17,8 +17,8 @@ def program_start(
 
     try:
 
-        # Create process
-        def process():
+        # Build document
+        def build():
 
             # Create document
             document = Document(
@@ -36,10 +36,9 @@ def program_start(
             document.write()
 
         # Run server
-        process()
+        build()
         server = Server()
-        server.watcher.watch(".", delay=1)
-        server.watch(source, process)
+        server.watch(source, build, delay=1)
         server.serve(host="localhost", port=7000, root=".", open_url_delay=1)
 
     except Exception as exception:
