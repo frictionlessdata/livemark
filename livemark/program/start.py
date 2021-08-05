@@ -29,11 +29,8 @@ def program_start(
                 create=True,
             )
 
-            # Process document
-            document.process()
-
-            # Write document
-            document.write()
+            # Build document
+            document.build()
 
         # Run server
         build()

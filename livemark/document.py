@@ -32,11 +32,6 @@ class Document:
 
     def __init__(self, source, *, target=None, format=None, project=None, create=False):
 
-        # Create plugins
-        plugins = []
-        for Plugin in system.Plugins:
-            plugins.append(Plugin(self))
-
         # Create source
         if create and source == settings.DEFAULT_SOURCE:
             if not os.path.exists(source):
@@ -53,38 +48,23 @@ class Document:
             file = File(target)
             format = file.format
 
-        # Read input
-        with open(source) as file:
-            input = file.read()
+        # Create plugins
+        plugins = []
+        for Plugin in system.Plugins:
+            plugins.append(Plugin(self))
 
-        # Read preface/content
-        preface = ""
-        content = input
-        if input.startswith("---"):
-            preface, content = input.split("---", maxsplit=2)[1:]
-        content = content.strip()
-
-        # Read config
-        config = {}
-        if project:
-            config = deepcopy(project.config)
-        if preface:
-            deepmerge.always_merger.merge(config, yaml.safe_load(preface))
-
-        # Save attributes
+        # Set attributes
         self.__source = source
         self.__target = target
         self.__format = format
         self.__project = project
-        self.__preface = preface
-        self.__content = content
-        self.__config = config
-        self.__input = input
-        self.__output = None
+        self.__create = create
         self.__plugins = plugins
-
-        # Process config
-        self.__process_config()
+        self.__preface = None
+        self.__content = None
+        self.__config = None
+        self.__input = None
+        self.__output = None
 
     @property
     def source(self):
@@ -154,31 +134,63 @@ class Document:
     def keywords(self):
         return ",".join(self.title.split())
 
-    # Process
+    # Build
 
-    def process(self):
-        for plugin in self.plugins:
-            plugin.process_document(self)
+    def build(self, *, print=False):
+        self.read()
+        self.process()
+        self.write(print=print)
 
-    def __process_config(self):
-        for plugin in self.plugins:
-            self.config.setdefault(plugin.name, {})
-            if not isinstance(self.config[plugin.name], dict):
-                self.config[plugin.name] = {"self": self.config[plugin.name]}
-            plugin.process_config(self.config)
-            if self.config[plugin.name] and plugin.profile:
+    # Read
+
+    def read(self):
+
+        # Read input
+        with open(self.__source) as file:
+            self.__input = file.read()
+
+        # Read preface/content
+        self.__preface = ""
+        self.__content = self.__input
+        if self.__input.startswith("---"):
+            parts = self.__input.split("---", maxsplit=2)[1:]
+            self.__preface = parts[0].strip()
+            self.__content = parts[1].strip()
+
+        # Read config
+        self.__config = {}
+        if self.__project:
+            self.__config = deepcopy(self.__project.config)
+        if self.__preface:
+            deepmerge.always_merger.merge(self.__config, yaml.safe_load(self.__preface))
+
+        # Process config
+        for plugin in self.__plugins:
+            self.__config.setdefault(plugin.name, {})
+            if not isinstance(self.__config[plugin.name], dict):
+                self.__config[plugin.name] = {"self": self.__config[plugin.name]}
+            plugin.process_config(self.__config)
+            if self.__config[plugin.name] and plugin.profile:
                 validator = jsonschema.Draft7Validator(plugin.profile)
-                for error in validator.iter_errors(self.config[plugin.name]):
+                for error in validator.iter_errors(self.__config[plugin.name]):
                     message = f'Invalid "{plugin.name}" config: {error.message}'
                     raise LivemarkException(message)
 
-    # Output
+    # Process
 
-    def print(self, print=print):
-        if self.output is not None:
-            sys.stdout.write(self.output)
+    def process(self):
+        if self.__input is None:
+            raise LivemarkException("Read document before processing")
+        for plugin in self.__plugins:
+            plugin.process_document(self)
+
+    # Write
+
+    def write(self, *, print=False):
+        if self.__output is None:
+            raise LivemarkException("Process document before writing")
+        if print:
+            sys.stdout.write(self.__output)
             sys.stdout.flush()
-
-    def write(self):
-        if self.output is not None:
-            helpers.write_file(self.target, self.output)
+            return
+        helpers.write_file(self.__target, self.__output)

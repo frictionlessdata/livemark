@@ -54,7 +54,7 @@ class Plugin:
         for plugin in self.document.plugins:
             if plugin.name == name:
                 return plugin
-        raise LivemarkException(f"Pluin is not registered: {name}")
+        raise LivemarkException(f"Plugin is not registered: {name}")
 
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))
