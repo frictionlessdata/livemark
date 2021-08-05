@@ -33,4 +33,5 @@ def test_document_with_project():
     assert document.source == "index.md"
     assert document.project.path == ""
     assert document.config["github"]["repo"] == "livemark"
+    assert document.config["pages"]["items"]
     assert document.input

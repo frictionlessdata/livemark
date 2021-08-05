@@ -83,6 +83,9 @@ class Document:
         self.__output = None
         self.__plugins = plugins
 
+        # Process config
+        self.__process_config()
+
     @property
     def source(self):
         return self.__source
@@ -154,8 +157,10 @@ class Document:
     # Process
 
     def process(self):
+        for plugin in self.plugins:
+            plugin.process_document(self)
 
-        # Process config
+    def __process_config(self):
         for plugin in self.plugins:
             self.config.setdefault(plugin.name, {})
             if not isinstance(self.config[plugin.name], dict):
@@ -166,10 +171,6 @@ class Document:
                 for error in validator.iter_errors(self.config[plugin.name]):
                     message = f'Invalid "{plugin.name}" config: {error.message}'
                     raise LivemarkException(message)
-
-        # Process document
-        for plugin in self.plugins:
-            plugin.process_document(self)
 
     # Output
 
