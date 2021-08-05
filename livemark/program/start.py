@@ -8,6 +8,11 @@ from .main import program
 from . import common
 
 
+# NOTE:
+# We can make this logic more sophisticated by watching
+# config changes in livemark.yaml and the main source file
+
+
 @program.command(name="start")
 def program_start(
     source: str = common.source,
