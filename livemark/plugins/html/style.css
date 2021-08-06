@@ -724,10 +724,6 @@ p {
   clear: both;
 }
 
-#livemark-main>:first-child {
-  margin-top: 0!important;
-}
-
 #livemark-main>:last-child {
   margin-bottom: 0!important;
 }
