@@ -39,6 +39,12 @@ def write_file(path, text):
     move_file(file.name, path)
 
 
+def write_stdout(text):
+    sys.stdout.write(text)
+    sys.stdout.write("\n")
+    sys.stdout.flush()
+
+
 @contextlib.contextmanager
 def capture_stdout(stdout=None):
     old = sys.stdout

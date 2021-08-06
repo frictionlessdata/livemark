@@ -1,6 +1,5 @@
 import os
 import re
-import sys
 import yaml
 import difflib
 import deepmerge
@@ -197,14 +196,13 @@ class Document:
             l2 = self.output.splitlines(keepends=True)
             ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
             if ld:
-                sys.stdout.write("".join(ld))
-                sys.stdout.flush()
+                text = "".join(ld)
+                helpers.write_stdout(text)
             return
 
         # Print
         if print:
-            sys.stdout.write(self.__output)
-            sys.stdout.flush()
+            helpers.write_stdout(self.__output)
             return
 
         # Save
