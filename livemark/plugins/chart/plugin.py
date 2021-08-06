@@ -15,8 +15,8 @@ class ChartPlugin(Plugin):
             return
 
         # Update snippet
-        if snippet.modifier == "chart":
-            if snippet.language == "yaml":
+        if snippet.type == "chart":
+            if snippet.lang == "yaml":
                 spec_yaml = str(snippet.input).strip()
                 spec_python = yaml.safe_load(spec_yaml)
                 spec = json.dumps(spec_python, ensure_ascii=False)

@@ -8,14 +8,14 @@ class ScriptPlugin(Plugin):
     def process_snippet(self, snippet):
 
         # Update snippet
-        if snippet.modifier == "script":
-            if snippet.language == "bash":
+        if snippet.type == "script":
+            if snippet.lang == "bash":
                 try:
                     output = subprocess.check_output(snippet.input, shell=True)
                     output = output.decode().strip()
                 except Exception as exception:
                     output = exception.output.decode().strip()
-            elif snippet.language == "python":
+            elif snippet.lang == "python":
                 with helpers.capture_stdout() as stdout:
                     exec(snippet.input, {})
                 output = stdout.getvalue().strip()
