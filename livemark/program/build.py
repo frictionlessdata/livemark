@@ -16,19 +16,8 @@ def program_build(
     """Build the processed article into a different file."""
 
     try:
-
-        # Create document
-        document = Document(
-            source,
-            target=target,
-            format=format,
-            config=config,
-            create=True,
-        )
-
-        # Build document
+        document = Document(source, target=target, format=format, config=config)
         document.build(print=print)
-
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)

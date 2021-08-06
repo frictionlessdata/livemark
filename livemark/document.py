@@ -25,23 +25,15 @@ class Document:
         target? (str): path to the document target
         format? (str): format of the document target
         config? (str|dict): path to a config file or a config dict
-        create? (bool): whether to create a source if index.md doesn't exist
 
     """
 
-    # TODO: remove create
-    def __init__(self, source, *, target=None, format=None, config=None, create=False):
+    def __init__(self, source, *, target=None, format=None, config=None):
 
         # Create plugins
         plugins = []
         for Plugin in system.Plugins:
             plugins.append(Plugin(self))
-
-        # Create source
-        if create and source == settings.DEFAULT_SOURCE:
-            if not os.path.exists(source):
-                with open(source, "w"):
-                    pass
 
         # Infer target
         if not target:
