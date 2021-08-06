@@ -23,10 +23,10 @@
   #livemark-left {
       position: fixed;
       top: 0;
-      left: -100%;
+      left: -100vw;
       padding-top: 35px;
       background-color: #fff;
-      width: 100%;
+      width: 100vw;
       border-radius: 10px;
       text-align: center;
       transition: 0.3s;
