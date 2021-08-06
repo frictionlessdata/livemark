@@ -25,12 +25,13 @@ class Server:
         # Create documents
         self.__document.read()
         documents = [self.__document]
-        for page in self.__document.config["pages"]["items"]:
-            page_target = page["path"][1:] or "index.html"
-            page_source = str(Path(page_target).with_suffix(".md"))
-            if page_source != self.__document.source:
-                page_document = Document(page_source, config=self.__config)
-                documents.append(page_document)
+        if self.__document.format == "html":
+            for page in self.__document.config["pages"]["items"]:
+                page_target = page["path"][1:] or "index.html"
+                page_source = str(Path(page_target).with_suffix(".md"))
+                if page_source != self.__document.source:
+                    page_document = Document(page_source, config=self.__config)
+                    documents.append(page_document)
 
         # Build initially
         for document in documents:
