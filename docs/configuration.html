@@ -1533,6 +1533,31 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
+  #livemark-mobile {
+    display: block;
+    position: absolute;
+    z-index: 10000;
+    /* We can't use right because Mobile Chrome and #34 */
+    left: calc(100vw - 56px);
+    top: 24px;
+  }
+
+  #livemark-mobile.active {
+    position: fixed;
+  }
+
+  #livemark-mobile.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #livemark-mobile.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  #livemark-mobile.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
   #livemark-left {
       position: fixed;
       top: 0;
@@ -1550,27 +1575,6 @@ p {
 
   #livemark-left.active {
     left: 0;
-  }
-
-  #livemark-mobile {
-    display: block;
-    position: fixed;
-    z-index: 10000;
-    /* We can't use right because Mobile Chrome and #34 */
-    left: calc(100vw - 56px);
-    top: 24px;
-  }
-
-  #livemark-mobile.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  #livemark-mobile.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  #livemark-mobile.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
   }
 }
 
