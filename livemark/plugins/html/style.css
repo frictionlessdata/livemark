@@ -724,10 +724,6 @@ p {
   clear: both;
 }
 
-#livemark-main>:last-child {
-  margin-bottom: 0!important;
-}
-
 #livemark-main a:not([href]) {
   color: inherit;
   text-decoration: none;
