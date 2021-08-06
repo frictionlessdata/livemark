@@ -20,8 +20,29 @@ format = Option(
     help="Format of the target file",
 )
 
+config = Option(
+    settings.DEFAULT_CONFIG,
+    help="Path to a config file",
+)
+
+host = Option(
+    settings.DEFAULT_HOST,
+    help="Server host",
+)
+
+port = Option(
+    settings.DEFAULT_PORT,
+    help="Server port",
+)
+
 
 # Command
+
+
+live = Option(
+    default=False,
+    help="Live mode",
+)
 
 
 diff = Option(

@@ -1,16 +1,13 @@
 import sys
 import typer
-from ..server import Server
 from ..document import Document
 from .main import program
 from . import common
 
 
-@program.command(name="build")
-def program_build(
+@program.command(name="merge")
+def program_merge(
     source: str = common.source,
-    target: str = common.target,
-    format: str = common.format,
     config: str = common.config,
     print: bool = common.print,
     diff: bool = common.diff,
@@ -18,15 +15,14 @@ def program_build(
     host: str = common.host,
     port: str = common.port,
 ):
-    """Build Markdown file into HTML by default."""
+    """Merge Markdown file into itself."""
 
     try:
 
         # Create document
         document = Document(
             source,
-            target=target,
-            format=format,
+            target=source,
             config=config,
         )
 
@@ -37,9 +33,8 @@ def program_build(
                 sys.exit(1)
             sys.exit(0)
 
-        # Live mode
-        server = Server(document)
-        server.start(host=host, port=port)
+        # TODO: implement
+        sys.exit(f"Live mode is not implemented: {host}:{port}")
 
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)

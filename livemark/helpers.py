@@ -12,10 +12,11 @@ from . import settings
 # General
 
 
-def ensure_dir(path):
-    dirpath = os.path.dirname(path)
-    if dirpath and not os.path.exists(dirpath):
-        os.makedirs(dirpath)
+def read_file(source, *, default=None):
+    if default and not os.path.isfile(source):
+        return default
+    with open(source, encoding="utf-8") as file:
+        return file.read()
 
 
 def move_file(source, target):
@@ -32,21 +33,23 @@ def copy_file(source, target):
     shutil.copy(source, target)
 
 
-def write_file(path, text):
+def write_file(path, text=""):
     with tempfile.NamedTemporaryFile("wt", delete=False, encoding="utf-8") as file:
         file.write(text)
         file.flush()
     move_file(file.name, path)
 
 
-@contextlib.contextmanager
-def capture_stdout(stdout=None):
-    old = sys.stdout
-    if stdout is None:
-        stdout = io.StringIO()
-    sys.stdout = stdout
-    yield stdout
-    sys.stdout = old
+def write_stdout(text):
+    sys.stdout.write(text)
+    sys.stdout.write("\n")
+    sys.stdout.flush()
+
+
+def ensure_dir(path):
+    dirpath = os.path.dirname(path)
+    if dirpath and not os.path.exists(dirpath):
+        os.makedirs(dirpath)
 
 
 def is_remote_path(path):
@@ -57,6 +60,16 @@ def is_remote_path(path):
     if path.lower().startswith(f"{scheme}:\\"):
         return False
     return True
+
+
+@contextlib.contextmanager
+def capture_stdout(stdout=None):
+    old = sys.stdout
+    if stdout is None:
+        stdout = io.StringIO()
+    sys.stdout = stdout
+    yield stdout
+    sys.stdout = old
 
 
 # Backports

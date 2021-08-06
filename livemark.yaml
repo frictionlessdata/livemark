@@ -8,6 +8,7 @@ github:
 counter:
   type: google
   code: G-ZH2QL85N6F
+# TODO: review paths format - md/html?
 pages:
   - name: Introduction
     path: /

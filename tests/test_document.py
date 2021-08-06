@@ -1,4 +1,4 @@
-from livemark import Document, Project
+from livemark import Document
 
 
 # General
@@ -9,7 +9,6 @@ def test_document():
     document.read()
     assert document.source == "index.md"
     assert document.target == "index.html"
-    assert document.project is None
     assert document.input
     assert document.output is None
 
@@ -19,7 +18,6 @@ def test_document_update_output():
     document.read()
     document.output = "output"
     assert document.source == "index.md"
-    assert document.project is None
     assert document.input
     assert document.output == "output"
 
@@ -31,11 +29,10 @@ def test_document_with_format():
     assert document.target == "index.pdf"
 
 
-def test_document_with_project():
-    document = Document("index.md", project=Project())
+def test_document_with_config():
+    document = Document("index.md", config="livemark.yaml")
     document.read()
     assert document.source == "index.md"
-    assert document.project.path == ""
     assert document.config["github"]["repo"] == "livemark"
     assert document.config["pages"]["items"]
     assert document.input

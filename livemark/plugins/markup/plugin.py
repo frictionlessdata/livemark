@@ -12,8 +12,8 @@ class MarkupPlugin(Plugin):
             return
 
         # Update snippet
-        if snippet.modifier == "markup":
-            if snippet.language == "html":
+        if snippet.type == "markup":
+            if snippet.lang == "html":
                 markdown = marko.Markdown()
                 markdown.use(GFM)
                 markdown.use(HtmlExtension)

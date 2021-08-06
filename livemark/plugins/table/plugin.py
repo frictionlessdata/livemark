@@ -16,8 +16,8 @@ class TablePlugin(Plugin):
             return
 
         # Update snippet
-        if snippet.modifier == "table":
-            if snippet.language == "yaml":
+        if snippet.type == "table":
+            if snippet.lang == "yaml":
                 spec_yaml = str(snippet.input).strip()
                 spec_python = yaml.safe_load(spec_yaml)
                 spec_python["licenseKey"] = "non-commercial-and-evaluation"

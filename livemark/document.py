@@ -1,15 +1,14 @@
 import os
 import re
-import sys
 import yaml
+import difflib
 import deepmerge
 import jsonschema
 from pathlib import Path
-from copy import deepcopy
 from frictionless import File
-from .system import system
 from .exception import LivemarkException
 from .helpers import cached_property
+from .system import system
 from . import settings
 from . import helpers
 
@@ -25,18 +24,16 @@ class Document:
         source (str): path to the document source
         target? (str): path to the document target
         format? (str): format of the document target
-        project? (Project): a project to which the document belongs
-        create? (bool): whether to create a source if index.md doesn't exist
+        config? (str|dict): path to a config file or a config dict
 
     """
 
-    def __init__(self, source, *, target=None, format=None, project=None, create=False):
+    def __init__(self, source, *, target=None, format=None, config=None):
 
-        # Create source
-        if create and source == settings.DEFAULT_SOURCE:
-            if not os.path.exists(source):
-                with open(source, "w"):
-                    pass
+        # Create plugins
+        plugins = []
+        for Plugin in system.Plugins:
+            plugins.append(Plugin(self))
 
         # Infer target
         if not target:
@@ -48,23 +45,27 @@ class Document:
             file = File(target)
             format = file.format
 
-        # Create plugins
-        plugins = []
-        for Plugin in system.Plugins:
-            plugins.append(Plugin(self))
+        # Normalize config
+        config = config or {}
+        if not isinstance(config, dict):
+            if os.path.isfile(config):
+                with open(config) as file:
+                    config = yaml.safe_load(file)
 
         # Set attributes
+        self.__plugins = plugins
         self.__source = source
         self.__target = target
         self.__format = format
-        self.__project = project
-        self.__create = create
-        self.__plugins = plugins
+        self.__config = config
         self.__preface = None
         self.__content = None
-        self.__config = None
         self.__input = None
         self.__output = None
+
+    @property
+    def plugins(self):
+        return self.__plugins
 
     @property
     def source(self):
@@ -111,10 +112,6 @@ class Document:
     def config(self):
         return self.__config
 
-    @property
-    def plugins(self):
-        return self.__plugins
-
     @cached_property
     def title(self):
         prefix = "# "
@@ -136,10 +133,11 @@ class Document:
 
     # Build
 
-    def build(self, *, print=False):
+    def build(self, *, diff=False, print=False):
         self.read()
         self.process()
-        self.write(print=print)
+        written = self.write(diff=diff, print=print)
+        return written
 
     # Read
 
@@ -157,14 +155,9 @@ class Document:
             self.__preface = parts[0].strip()
             self.__content = parts[1].strip()
 
-        # Read config
-        self.__config = {}
-        if self.__project:
-            self.__config = deepcopy(self.__project.config)
+        # Read/process config
         if self.__preface:
             deepmerge.always_merger.merge(self.__config, yaml.safe_load(self.__preface))
-
-        # Process config
         for plugin in self.__plugins:
             self.__config.setdefault(plugin.name, {})
             if not isinstance(self.__config[plugin.name], dict):
@@ -186,11 +179,28 @@ class Document:
 
     # Write
 
-    def write(self, *, print=False):
+    def write(self, *, diff=False, print=False):
         if self.__output is None:
             raise LivemarkException("Process document before writing")
+
+        # Diff
+        if diff:
+            next = self.output
+            prev = helpers.read_file(self.target, default="")
+            l1 = prev.splitlines(keepends=True)
+            l2 = next.splitlines(keepends=True)
+            ld = list(difflib.unified_diff(l1, l2, fromfile="prev", tofile="next"))
+            text = ""
+            if ld:
+                text = "".join(ld)
+                helpers.write_stdout(text)
+            return text
+
+        # Print
         if print:
-            sys.stdout.write(self.__output)
-            sys.stdout.flush()
-            return
+            helpers.write_stdout(self.__output)
+            return self.__output
+
+        # Save
         helpers.write_file(self.__target, self.__output)
+        return self.__output
