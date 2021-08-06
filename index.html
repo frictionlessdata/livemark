@@ -1556,7 +1556,8 @@ p {
     display: block;
     position: fixed;
     z-index: 10000;
-    right: 16px;
+    /* We can't use right because Mobile Chrome and #34 */
+    left: calc(100vw - 56px);
     top: 24px;
   }
 
