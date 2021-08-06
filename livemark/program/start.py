@@ -20,11 +20,24 @@ def program_start(
     """Start a Livemark server."""
 
     try:
+
+        # Create source
+        # TODO: create a markdown document draft?
         if not os.path.exists(source):
             helpers.write_file(source)
-        document = Document(source, target=target, format=format, config=config)
+
+        # Create document
+        document = Document(
+            source,
+            target=target,
+            format=format,
+            config=config,
+        )
+
+        # Run server
         server = Server(document)
         server.start(host=host, port=port)
+
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)

@@ -39,6 +39,12 @@ port = Option(
 # Command
 
 
+live = Option(
+    default=False,
+    help="Live mode",
+)
+
+
 diff = Option(
     default=False,
     help="Return the diff",

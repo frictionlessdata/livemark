@@ -4,6 +4,7 @@ from ...plugin import Plugin
 from ... import helpers
 
 
+# TODO: support snippet.mode = 'default' | 'input' | 'output'
 class ScriptPlugin(Plugin):
     def process_snippet(self, snippet):
 
