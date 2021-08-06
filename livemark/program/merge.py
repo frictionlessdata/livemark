@@ -5,14 +5,14 @@ from .main import program
 from . import common
 
 
-@program.command(name="sync")
-def program_sync(
+@program.command(name="merge")
+def program_merge(
     source: str = common.source,
     config: str = common.config,
     print: bool = common.print,
     diff: bool = common.diff,
 ):
-    """Sync the article."""
+    """Merge the processed article into the same file."""
 
     try:
         document = Document(source, target=source, config=config)

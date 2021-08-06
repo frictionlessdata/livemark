@@ -13,7 +13,7 @@ def program_build(
     config: str = common.config,
     print: bool = common.print,
 ):
-    """Build the article."""
+    """Build the processed article into a different file."""
 
     try:
 
