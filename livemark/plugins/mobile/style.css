@@ -44,6 +44,7 @@
     position: absolute;
     z-index: 10000;
     right: 16px;
+    top: 24px;
   }
 
   #livemark-mobile.active {

@@ -1304,74 +1304,6 @@ p {
 </style>
 <style>
 
-#livemark-mobile {
-  opacity: 0.4;
-  display: none;
-}
-
-#livemark-mobile .stack {
-  margin-top: 15px;
-  display: block;
-  cursor: pointer;
-}
-
-#livemark-mobile .bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  background-color: #101010;
-}
-
-@media only screen and (max-width: 768px) {
-  #livemark-left {
-      position: fixed;
-      top: 0;
-      left: -100vw;
-      padding-top: 35px;
-      background-color: #fff;
-      width: 100vw;
-      border-radius: 10px;
-      text-align: center;
-      transition: 0.3s;
-      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-      display: block;
-      z-index: 1000;
-  }
-
-  #livemark-left.active {
-    left: 0;
-  }
-
-  #livemark-mobile {
-    display: block;
-    position: absolute;
-    z-index: 10000;
-    right: 16px;
-  }
-
-  #livemark-mobile.active {
-    position: fixed;
-  }
-
-  #livemark-mobile.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  #livemark-mobile.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  #livemark-mobile.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-
-</style>
-<style>
-
 #livemark-signs {
   border-top: 1px solid #eaecef;
   margin-top: 24px;
@@ -1577,6 +1509,75 @@ p {
 }
 
 </style>
+<style>
+
+#livemark-mobile {
+  opacity: 0.4;
+  display: none;
+}
+
+#livemark-mobile .stack {
+  margin-top: 15px;
+  display: block;
+  cursor: pointer;
+}
+
+#livemark-mobile .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #101010;
+}
+
+@media only screen and (max-width: 768px) {
+  #livemark-left {
+      position: fixed;
+      top: 0;
+      left: -100vw;
+      padding-top: 35px;
+      background-color: #fff;
+      width: 100vw;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+      display: block;
+      z-index: 1000;
+  }
+
+  #livemark-left.active {
+    left: 0;
+  }
+
+  #livemark-mobile {
+    display: block;
+    position: absolute;
+    z-index: 10000;
+    right: 16px;
+    top: 24px;
+  }
+
+  #livemark-mobile.active {
+    position: fixed;
+  }
+
+  #livemark-mobile.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #livemark-mobile.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  #livemark-mobile.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+</style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH2QL85N6F"></script>
 <script>
@@ -1631,13 +1632,6 @@ p {
 </div>
 </div>
 <div id="livemark-main">
-<div id="livemark-mobile">
-  <div class="stack" title="Toggle menu">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </div>
-</div>
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
   (2021-08-06 14:03:34)
@@ -1792,26 +1786,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-  const left = document.getElementById("livemark-left");
-  const mobile = document.getElementById("livemark-mobile");
-  mobile.addEventListener("click", () => {
-    left.classList.toggle("active");
-    mobile.classList.toggle("active");
-  });
-  left.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (left.classList.contains("active")) {
-        left.classList.remove("active");
-        mobile.classList.remove("active");
-      }
-    });
-  });
-});
-
-</script>
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
 
@@ -1845,6 +1819,34 @@ document.addEventListener("DOMContentLoaded", function () {
     <div id="livemark-controls-minus" title="Decrease readability" class="inner">-</div>
   </div>
   <div class="ue-scroll btn-white arrow-black circle shadow">
+  </div>
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const left = document.getElementById("livemark-left");
+  const mobile = document.getElementById("livemark-mobile");
+  mobile.addEventListener("click", () => {
+    left.classList.toggle("active");
+    mobile.classList.toggle("active");
+  });
+  left.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (left.classList.contains("active")) {
+        left.classList.remove("active");
+        mobile.classList.remove("active");
+      }
+    });
+  });
+});
+
+</script>
+
+<div id="livemark-mobile">
+  <div class="stack" title="Toggle menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
   </div>
 </div>
 <script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
