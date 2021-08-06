@@ -16,5 +16,5 @@ def read_asset(*paths):
 VERSION = read_asset("VERSION")
 DEFAULT_SOURCE = "index.md"
 DEFAULT_FORMAT = "html"
-DEFAULT_CONFIG_PATH = "livemark.yaml"
+DEFAULT_CONFIG = "livemark.yaml"
 UNDEFINED = object()

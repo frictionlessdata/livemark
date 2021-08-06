@@ -3,7 +3,6 @@ import typer
 from pathlib import Path
 from livereload import Server
 from ..document import Document
-from ..project import Project
 from .main import program
 from . import common
 
@@ -18,6 +17,7 @@ def program_start(
     source: str = common.source,
     target: str = common.target,
     format: str = common.format,
+    config: str = common.config,
 ):
     """Start a Livemark server."""
 
@@ -28,7 +28,7 @@ def program_start(
             source,
             target=target,
             format=format,
-            project=Project(),
+            config=config,
             create=True,
         )
 

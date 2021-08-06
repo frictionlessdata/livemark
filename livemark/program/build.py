@@ -1,6 +1,5 @@
 import sys
 import typer
-from ..project import Project
 from ..document import Document
 from .main import program
 from . import common
@@ -11,6 +10,7 @@ def program_build(
     source: str = common.source,
     target: str = common.target,
     format: str = common.format,
+    config: str = common.config,
     print: bool = common.print,
 ):
     """Build the article."""
@@ -22,7 +22,7 @@ def program_build(
             source,
             target=target,
             format=format,
-            project=Project(),
+            config=config,
             create=True,
         )
 

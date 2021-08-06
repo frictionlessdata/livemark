@@ -20,6 +20,11 @@ format = Option(
     help="Format of the target file",
 )
 
+config = Option(
+    settings.DEFAULT_CONFIG,
+    help="Path to a config file",
+)
+
 
 # Command
 
