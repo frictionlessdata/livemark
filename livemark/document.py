@@ -133,10 +133,11 @@ class Document:
 
     # Build
 
-    def build(self, *, print=False):
+    def build(self, *, diff=False, print=False):
         self.read()
         self.process()
-        self.write(print=print)
+        written = self.write(diff=diff, print=print)
+        return written
 
     # Read
 
@@ -184,18 +185,22 @@ class Document:
 
         # Diff
         if diff:
-            l1 = self.input.splitlines(keepends=True)
-            l2 = self.output.splitlines(keepends=True)
-            ld = list(difflib.unified_diff(l1, l2, fromfile="source", tofile="target"))
+            next = self.output
+            prev = helpers.read_file(self.target, default="")
+            l1 = prev.splitlines(keepends=True)
+            l2 = next.splitlines(keepends=True)
+            ld = list(difflib.unified_diff(l1, l2, fromfile="prev", tofile="next"))
+            text = ""
             if ld:
                 text = "".join(ld)
                 helpers.write_stdout(text)
-            return
+            return text
 
         # Print
         if print:
             helpers.write_stdout(self.__output)
-            return
+            return self.__output
 
         # Save
         helpers.write_file(self.__target, self.__output)
+        return self.__output

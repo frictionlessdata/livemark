@@ -12,11 +12,13 @@ def program_merge(
     print: bool = common.print,
     diff: bool = common.diff,
 ):
-    """Merge the processed article into the same file."""
+    """Merge the processed article into the source file."""
 
     try:
         document = Document(source, target=source, config=config)
-        document.build(diff=diff, print=print)
+        written = document.build(diff=diff, print=print)
+        if written and diff:
+            sys.exit(1)
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)
