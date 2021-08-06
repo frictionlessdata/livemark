@@ -63,38 +63,6 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Left */
-
-#livemark-left {
-  display: none;
-  width: 200px;
-  position: fixed;
-  padding: 10px;
-  left: 25px;
-  top: 25px;
-  font-size: 125%;
-  height: 100vh;
-  overflow-y: auto;
-  scrollbar-width: none;  /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-}
-
-#livemark-left::-webkit-scrollbar {
-  display: none; /* Chrome; Safari */
-}
-
-#livemark-left > div:not(:last-child) {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-@media only screen and (min-width: 768px) {
-  #livemark-left {
-    display: block;
-  }
-}
-
 /* Main */
 
 #livemark-main {
@@ -767,14 +735,6 @@ p {
   clear: both;
 }
 
-#livemark-main>:first-child {
-  margin-top: 0!important;
-}
-
-#livemark-main>:last-child {
-  margin-bottom: 0!important;
-}
-
 #livemark-main a:not([href]) {
   color: inherit;
   text-decoration: none;
@@ -1138,6 +1098,38 @@ p {
   vertical-align: middle;
 }
 
+/* Left */
+
+#livemark-left {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+#livemark-left::-webkit-scrollbar {
+  display: none; /* Chrome; Safari */
+}
+
+#livemark-left > div:not(:last-child) {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-left {
+    display: block;
+  }
+}
+
 /* Right */
 
 #livemark-right {
@@ -1291,7 +1283,6 @@ p {
   text-align: right;
   font-size: 14px;
   float: right;
-  margin-top: 10px;
   opacity: 0.4;
   display: none;
 }

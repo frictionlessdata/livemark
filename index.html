@@ -63,38 +63,6 @@ p {
   margin-bottom: 1rem;
 }
 
-/* Left */
-
-#livemark-left {
-  display: none;
-  width: 200px;
-  position: fixed;
-  padding: 10px;
-  left: 25px;
-  top: 25px;
-  font-size: 125%;
-  height: 100vh;
-  overflow-y: auto;
-  scrollbar-width: none;  /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-}
-
-#livemark-left::-webkit-scrollbar {
-  display: none; /* Chrome; Safari */
-}
-
-#livemark-left > div:not(:last-child) {
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-@media only screen and (min-width: 768px) {
-  #livemark-left {
-    display: block;
-  }
-}
-
 /* Main */
 
 #livemark-main {
@@ -767,14 +735,6 @@ p {
   clear: both;
 }
 
-#livemark-main>:first-child {
-  margin-top: 0!important;
-}
-
-#livemark-main>:last-child {
-  margin-bottom: 0!important;
-}
-
 #livemark-main a:not([href]) {
   color: inherit;
   text-decoration: none;
@@ -1138,6 +1098,38 @@ p {
   vertical-align: middle;
 }
 
+/* Left */
+
+#livemark-left {
+  display: none;
+  width: 200px;
+  position: fixed;
+  padding: 10px;
+  left: 25px;
+  top: 25px;
+  font-size: 125%;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+#livemark-left::-webkit-scrollbar {
+  display: none; /* Chrome; Safari */
+}
+
+#livemark-left > div:not(:last-child) {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-left {
+    display: block;
+  }
+}
+
 /* Right */
 
 #livemark-right {
@@ -1291,12 +1283,11 @@ p {
   text-align: right;
   font-size: 14px;
   float: right;
-  margin-top: 10px;
   opacity: 0.4;
   display: none;
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) {
   #livemark-stats {
     display: block;
   }
@@ -1308,6 +1299,74 @@ p {
 
 #livemark-stats a {
   color: inherit;
+}
+
+</style>
+<style>
+
+#livemark-mobile {
+  opacity: 0.4;
+  display: none;
+}
+
+#livemark-mobile .stack {
+  margin-top: 15px;
+  display: block;
+  cursor: pointer;
+}
+
+#livemark-mobile .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #101010;
+}
+
+@media only screen and (max-width: 768px) {
+  #livemark-left {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      padding-top: 35px;
+      background-color: #fff;
+      width: 100%;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+      display: block;
+      z-index: 1000;
+  }
+
+  #livemark-left.active {
+    left: 0;
+  }
+
+  #livemark-mobile {
+    display: block;
+    position: absolute;
+    z-index: 10000;
+    right: 16px;
+  }
+
+  #livemark-mobile.active {
+    position: fixed;
+  }
+
+  #livemark-mobile.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #livemark-mobile.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  #livemark-mobile.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
 
 </style>
@@ -1416,7 +1475,7 @@ p {
   display: none;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   #livemark-controls {
     display: block;
     opacity: 0.5;
@@ -1572,6 +1631,13 @@ p {
 </div>
 </div>
 <div id="livemark-main">
+<div id="livemark-mobile">
+  <div class="stack" title="Toggle menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+</div>
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
   (2021-08-06 14:38:14)
@@ -1871,6 +1937,26 @@ document.addEventListener("DOMContentLoaded", function () {
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
     headingLabelCallback: (label) => label.replace(/(^#|#$)/g, "").trim(),
+  });
+});
+
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const left = document.getElementById("livemark-left");
+  const mobile = document.getElementById("livemark-mobile");
+  mobile.addEventListener("click", () => {
+    left.classList.toggle("active");
+    mobile.classList.toggle("active");
+  });
+  left.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (left.classList.contains("active")) {
+        left.classList.remove("active");
+        mobile.classList.remove("active");
+      }
+    });
   });
 });
 

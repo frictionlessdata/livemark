@@ -22,6 +22,9 @@ def program_build(
 
     try:
 
+        # TODO:
+        # Build with no source should build all the documents?
+
         # Create document
         document = Document(
             source,

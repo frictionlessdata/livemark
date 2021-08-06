@@ -2,12 +2,11 @@
   text-align: right;
   font-size: 14px;
   float: right;
-  margin-top: 10px;
   opacity: 0.4;
   display: none;
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) {
   #livemark-stats {
     display: block;
   }
