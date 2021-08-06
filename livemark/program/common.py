@@ -25,6 +25,16 @@ config = Option(
     help="Path to a config file",
 )
 
+host = Option(
+    settings.DEFAULT_HOST,
+    help="Server host",
+)
+
+port = Option(
+    settings.DEFAULT_PORT,
+    help="Server port",
+)
+
 
 # Command
 

@@ -17,4 +17,6 @@ VERSION = read_asset("VERSION")
 DEFAULT_SOURCE = "index.md"
 DEFAULT_FORMAT = "html"
 DEFAULT_CONFIG = "livemark.yaml"
+DEFAULT_HOST = "localhost"
+DEFAULT_PORT = 7000
 UNDEFINED = object()

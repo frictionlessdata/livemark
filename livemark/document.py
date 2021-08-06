@@ -30,6 +30,7 @@ class Document:
 
     """
 
+    # TODO: remove create
     def __init__(self, source, *, target=None, format=None, config=None, create=False):
 
         # Create plugins
