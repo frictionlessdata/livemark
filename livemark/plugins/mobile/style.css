@@ -24,7 +24,7 @@
     display: block;
     position: absolute;
     z-index: 10000;
-    /* We can't use right because Mobile Chrome and #34 */
+    /* We can't use "right" because Mobile Chrome and #34 */
     left: calc(100vw - 56px);
     top: 24px;
   }
