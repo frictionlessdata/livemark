@@ -1,5 +1,5 @@
 #livemark-mobile {
-  opacity: 0.4;
+  opacity: 0.3;
   display: none;
 }
 
@@ -41,14 +41,10 @@
 
   #livemark-mobile {
     display: block;
-    position: absolute;
+    position: fixed;
     z-index: 10000;
     right: 16px;
     top: 24px;
-  }
-
-  #livemark-mobile.active {
-    position: fixed;
   }
 
   #livemark-mobile.active .bar:nth-child(2) {
