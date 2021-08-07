@@ -12,6 +12,12 @@ from . import settings
 # General
 
 
+def list_setdefault(list, index, default):
+    if len(list) == index:
+        list.append(default)
+    return list[index]
+
+
 def read_file(source, *, default=None):
     if default and not os.path.isfile(source):
         return default
