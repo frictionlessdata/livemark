@@ -1,6 +1,7 @@
 from copy import copy
 from marko import html_renderer
 from marko.inline import RawText
+from marko.block import FencedCode
 from ...snippet import Snippet
 
 
@@ -14,7 +15,16 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
         snippet = Snippet(input, header=header)
         snippet.process(self.document)
         if snippet.output is not None:
-            if "script" in snippet.header:
+            if snippet.type == "script":
+
+                # Remove target
+                index = self.root_node.children.index(element)
+                if len(self.root_node.children) > index + 1:
+                    item = self.root_node.children[index + 1]
+                    if isinstance(item, FencedCode):
+                        del self.root_node.children[index + 1]
+
+                # Return output
                 output = super().render_fenced_code(element)
                 target = copy(element)
                 target.lang = "markup"
@@ -23,6 +33,7 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
                 output += "\n"
                 output += super().render_fenced_code(target)
                 return output
+
             return snippet.output
         return super().render_fenced_code(element)
 
