@@ -19,4 +19,5 @@ DEFAULT_FORMAT = "html"
 DEFAULT_CONFIG = "livemark.yaml"
 DEFAULT_HOST = "localhost"
 DEFAULT_PORT = 7000
+DEFAULT_FILE = "index.html"
 UNDEFINED = object()

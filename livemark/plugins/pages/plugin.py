@@ -20,7 +20,8 @@ class PagesPlugin(Plugin):
     }
 
     def process_config(self, config):
-        self.config.setdefault("items", self.config.pop("self", []))
+        if self.config:
+            self.config.setdefault("items", self.config.pop("self", []))
 
     def process_markup(self, markup):
         if not self.config:
