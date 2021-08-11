@@ -1632,6 +1632,8 @@ p {
   <div class="js-toc toc">
   </div>
 </div>
+
+
 </div>
 <div id="livemark-main">
 <div id="livemark-stats">
@@ -1854,6 +1856,21 @@ document.addEventListener("DOMContentLoaded", function () {
 <script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
+<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<script>
+
+// TODO: wrap in a function on domloaded
+const searchItems = {
+  {% for item in items %}
+    "{{ item.link }}": {
+        "name": "{{ item.name }}",
+        "link": "{{ item.link }}",
+        "text": "{{ item.text | striptags }}",
+    }
+  {% endfor %}
+};
+
+</script>
 <script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
 </body>
 </html>
