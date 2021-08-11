@@ -162,6 +162,7 @@ class Document:
             self.__config.setdefault(plugin.name, {})
             if not isinstance(self.__config[plugin.name], dict):
                 self.__config[plugin.name] = {"self": self.__config[plugin.name]}
+        for plugin in self.__plugins:
             plugin.process_config(self.__config)
             if self.__config[plugin.name] and plugin.profile:
                 validator = jsonschema.Draft7Validator(plugin.profile)
