@@ -1,15 +1,15 @@
-#livemark-controls {
+#livemark-display {
   display: none;
 }
 
 @media only screen and (min-width: 992px) {
-  #livemark-controls {
+  #livemark-display {
     display: block;
     opacity: 0.5;
   }
 }
 
-#livemark-controls .readability{
+#livemark-display .readability{
   display:none;
   position:fixed;
   -webkit-transform:translateZ(0);
@@ -27,54 +27,54 @@
   background-position:50%;
 }
 
-#livemark-controls .readability.btn-white {
+#livemark-display .readability.btn-white {
   background-color:#fff;
 }
 
-#livemark-controls .readability.shadow {
+#livemark-display .readability.shadow {
   -webkit-box-shadow:0 0 10px rgba(0,0,0,.2);
   box-shadow:0 0 10px rgba(0,0,0,.2);
 }
 
-#livemark-controls .readability.circle {
+#livemark-display .readability.circle {
   border-radius:50%;
 }
 
-#livemark-controls .readability {
+#livemark-display .readability {
   bottom:25px;
   display:block!important;
   opacity:1!important;
 }
 
-#livemark-controls .plus {
+#livemark-display .plus {
   left: auto;
   right: 165px;
 }
 
-#livemark-controls .minus {
+#livemark-display .minus {
   left: auto;
   right: 100px;
 }
 
-#livemark-controls .minus .inner {
+#livemark-display .minus .inner {
   font-size: 30px;
   margin-left: 20px;
 }
 
-#livemark-controls .plus .inner {
+#livemark-display .plus .inner {
   font-size: 30px;
   margin-left: 15px;
   margin-top: 2px;
 }
 
-#livemark-controls .ue-scroll {
+#livemark-display .ue-scroll {
   bottom: 25px;
   /* Make the button alway visible */
   display: block !important;
   opacity: 1 !important;
 }
 
-#livemark-controls .ue-scroll {
+#livemark-display .ue-scroll {
   left: auto;
   right: 35px;
 }

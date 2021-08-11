@@ -1,7 +1,7 @@
 from ...plugin import Plugin
 
 
-class ControlsPlugin(Plugin):
+class DisplayPlugin(Plugin):
     priority = 10
     profile = {
         "type": "object",

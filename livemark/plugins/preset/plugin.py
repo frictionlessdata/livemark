@@ -26,13 +26,13 @@ class PresetPlugin(Plugin):
             config["rating"]["self"] = True
             config["about"]["self"] = True
             config["links"]["self"] = True
-            config["controls"]["self"] = True
+            config["display"]["self"] = True
         elif preset == "compact":
             config["toc"]["self"] = True
             config["stats"]["self"] = True
             config["signs"]["self"] = True
             config["rating"]["self"] = True
             config["links"]["self"] = True
-            config["controls"]["self"] = True
+            config["display"]["self"] = True
         else:
             raise LivemarkException(f"Not supported preset: {preset}")
