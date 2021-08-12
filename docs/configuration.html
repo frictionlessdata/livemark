@@ -1707,7 +1707,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-stats">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-07-27 11:59)
+  (2021-08-12 12:24)
 </div>
 
 <h1>Configuration</h1>
@@ -1723,7 +1723,7 @@ title: My Title
 # My Document
 </code></pre>
 <h2>Project</h2>
-<p>For the whole project, you can use <code>livemark.yaml</code> file in the project root directory. It will be merge to the document configuration with lower priority:</p>
+<p>For the whole project, you can use <code>livemark.yaml</code> file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax:</p>
 <blockquote>
 <p>livemark.yaml</p>
 </blockquote>
@@ -1976,7 +1976,7 @@ document.addEventListener("DOMContentLoaded", function () {
           '/docs/configuration.html': {
           'name': 'Configuration',
           'link': '/docs/configuration.html',
-          'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority: \u003e livemark.yaml ```yaml title: Global Title ```",
+          'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
       },
       };
   const searchIndex = lunr(function () {
