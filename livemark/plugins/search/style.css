@@ -22,3 +22,33 @@
   width: 190px;
   box-shadow: 0px 7px 10px rgba(0,0,0,.2);
 }
+
+#livemark-search-input::-webkit-search-decoration,
+#livemark-search-input::-webkit-search-cancel-button,
+#livemark-search-input::-webkit-search-results-button,
+#livemark-search-input::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+#livemark-search-output {
+  display: none;
+  border: solid 1px #ccc;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 10px 10px;
+  width: 190px;
+  box-shadow: 0px 7px 10px rgba(0,0,0,.2);
+  background: white;
+  margin-bottom: 10px;
+}
+
+#livemark-search-output ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#livemark-search-output a {
+  color: green;
+  text-decoration: underline;
+}
