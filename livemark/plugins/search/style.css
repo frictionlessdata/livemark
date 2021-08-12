@@ -1,0 +1,24 @@
+#livemark-search {
+  display: none;
+  opacity: 0.5;
+  position: fixed;
+  left: 30px;
+  bottom: 25px;
+  z-index:100;
+}
+
+@media only screen and (min-width: 992px) {
+  #livemark-search {
+    display: block;
+  }
+}
+
+#livemark-search-input {
+  outline: none;
+  border: solid 1px #ccc;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 5px 10px;
+  width: 190px;
+  box-shadow: 0px 7px 10px rgba(0,0,0,.2);
+}

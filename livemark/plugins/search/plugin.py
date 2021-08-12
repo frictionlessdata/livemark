@@ -40,9 +40,10 @@ class SearchPlugin(Plugin):
                 )
 
         # Update markup
+        markup.add_style("style.css")
         markup.add_script("https://unpkg.com/lunr@2.3.9/lunr.min.js")
         markup.add_script("script.js", items=items)
         markup.add_markup(
             "markup.html",
-            target="#livemark-left",
+            target="body",
         )

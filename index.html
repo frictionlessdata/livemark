@@ -1589,6 +1589,34 @@ p {
   gtag('config', 'G-ZH2QL85N6F');
 </script>
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<style>
+
+#livemark-search {
+  display: none;
+  opacity: 0.5;
+  position: fixed;
+  left: 30px;
+  bottom: 25px;
+  z-index:100;
+}
+
+@media only screen and (min-width: 992px) {
+  #livemark-search {
+    display: block;
+  }
+}
+
+#livemark-search-input {
+  outline: none;
+  border: solid 1px #ccc;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 5px 10px;
+  width: 190px;
+  box-shadow: 0px 7px 10px rgba(0,0,0,.2);
+}
+
+</style>
 <link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 </head>
 <body>
@@ -1631,9 +1659,6 @@ p {
 <div id="livemark-toc">
   <div class="js-toc toc">
   </div>
-</div>
-
-<div id="livemark-search">
 </div>
 </div>
 <div id="livemark-main">
@@ -2037,6 +2062,10 @@ const searchIndex = lunr(function () {
 });
 
 </script>
+
+<div id="livemark-search">
+  <input id="livemark-search-input" type="search" placeholder="Search...">
+</div>
 <script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
 </body>
 </html>
