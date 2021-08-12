@@ -17,7 +17,7 @@ class StatsPlugin(Plugin):
             return
 
         # Prepare context
-        format = self.config.get("format", "%Y-%m-%d %H:%M:%S")
+        format = self.config.get("format", "%Y-%m-%d %H:%M")
         current = datetime.fromtimestamp(os.path.getmtime(self.document.source))
 
         # Update markup
