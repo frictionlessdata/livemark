@@ -1627,8 +1627,8 @@ p {
   display: none;
   border: solid 1px #ccc;
   border-radius: 15px;
-  font-size: 18px;
-  padding: 20px 10px;
+  font-size: 16px;
+  padding: 10px 10px;
   width: 190px;
   box-shadow: 0px 7px 10px rgba(0,0,0,.2);
   background: white;
@@ -1639,6 +1639,24 @@ p {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+#livemark-search-output li.active {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#livemark-search-output a {
+  color: green;
+  text-decoration: underline;
+}
+
+.livemark-search-found {
+  background-color: #5CC820;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 </style>
@@ -1899,9 +1917,51 @@ document.addEventListener("DOMContentLoaded", function () {
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
 <script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/jquery-highlight@3.5.0/jquery.highlight.js"></script>
+<script src="https://unpkg.com/jquery.scrollto@2.1.3/jquery.scrollTo.js"></script>
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
+  const prepare = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const query = searchParams.get('q') || ''
+    if (query.length >= 3) {
+      searchInput.value = query
+    }
+  }
+  const search = () => {
+    unhighlight()
+    query = searchInput.value
+    searchOutput.innerHTML = ''
+    searchOutput.style.display = 'none'
+    const searchParams = new URLSearchParams(window.location.search);
+    if (query.length < 3) return
+    const results = searchIndex.search(query)
+    if (!results.length) return
+    searchParams.set('q', query)
+    const newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+    history.pushState(null, '', newRelativePathQuery);
+    const elements = []
+    for (const result of results) {
+      const item = searchItems[result.ref]
+      const cls = window.location.pathname === item.link ? 'class="active"' : ''
+      elements.push(`<li ${cls}><a href="${item.link}?q=${query}">${item.name}</a></li>`)
+    }
+    searchOutput.innerHTML = `<ul>\n${elements.join('\n')}\n</ul>`
+    searchOutput.style.display = 'block'
+    highlight()
+  }
+  const highlight = () => {
+    const stem = lunr.stemmer(new lunr.Token(query)).str
+    $('#livemark-main').highlight(stem, {className: 'livemark-search-found'});
+    setTimeout(() => {
+      $(window).scrollTo($('.livemark-search-found').first(), 1000)
+    }, 1000)
+  }
+  const unhighlight = () => {
+    $('#livemark-main').unhighlight({className: 'livemark-search-found'});
+  }
   const searchItems = {
           '/': {
           'name': 'Introduction',
@@ -1929,20 +1989,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   const searchOutput = document.getElementById('livemark-search-output')
   const searchInput = document.getElementById('livemark-search-input')
-  searchInput.addEventListener('input', (event) => {
-    const query = event.target.value
-    searchOutput.innerHTML = ''
-    searchOutput.style.display = 'none'
-    if (query.length < 3) return
-    const results = searchIndex.search(query)
-    const elements = []
-    for (const result of results) {
-      const item = searchItems[result.ref]
-      elements.push(`<li><a href="${item.link}">${item.name}</a></li>`)
-    }
-    searchOutput.innerHTML = `<ul>\n${elements.join('\n')}\n</ul>`
-    searchOutput.style.display = 'block'
-  })
+  searchInput.addEventListener('input', search)
+  prepare()
+  search()
 });
 
 </script>
