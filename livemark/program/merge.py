@@ -31,8 +31,8 @@ def program_merge(
 
         # Normal mode
         if not live:
-            written = document.build(diff=diff, print=print)
-            if written and diff:
+            output = document.build(diff=diff, print=print)
+            if output and diff:
                 sys.exit(1)
             sys.exit(0)
 
@@ -44,6 +44,5 @@ def program_merge(
             server.start(host=host, port=port, file=file.name)
 
     except Exception as exception:
-        raise
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)

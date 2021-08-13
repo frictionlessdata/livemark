@@ -65,8 +65,6 @@ class Markup:
 
     @contextmanager
     def bind(self, plugin=None):
-        if callable(plugin):
-            plugin = plugin.__self__
         self.__plugin = plugin
         yield self.__plugin
         self.__plugin = None
@@ -104,5 +102,5 @@ class Markup:
 
     def get_plugin(self):
         if not self.__plugin:
-            raise LivemarkException("The object is not bound to any plugin")
+            raise LivemarkException("Markup is not bound to any plugin")
         return self.__plugin

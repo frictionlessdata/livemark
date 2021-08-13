@@ -81,10 +81,6 @@ class Document:
         return file.format
 
     @property
-    def project(self):
-        return self.__project
-
-    @property
     def input(self):
         return self.__input
 
@@ -129,15 +125,15 @@ class Document:
 
     @cached_property
     def keywords(self):
-        return ",".join(self.title.split())
+        return ",".join(map(str.lower, self.title.split()))
 
     # Build
 
     def build(self, *, diff=False, print=False):
         self.read()
         self.process()
-        written = self.write(diff=diff, print=print)
-        return written
+        output = self.write(diff=diff, print=print)
+        return output
 
     # Read
 
