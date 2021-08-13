@@ -1,5 +1,5 @@
 from typer.testing import CliRunner
-from frictionless import program, __version__
+from livemark import program, __version__
 
 runner = CliRunner()
 

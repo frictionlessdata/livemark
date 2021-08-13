@@ -44,6 +44,5 @@ def program_merge(
             server.start(host=host, port=port, file=file.name)
 
     except Exception as exception:
-        raise
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)
