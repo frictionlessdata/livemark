@@ -30,15 +30,6 @@ def move_file(source, target):
     shutil.move(source, target)
 
 
-def copy_file(source, target):
-    if isinstance(source, (tuple, list)):
-        source = os.path.join(*source)
-    if isinstance(target, (tuple, list)):
-        target = os.path.join(*target)
-    ensure_dir(target)
-    shutil.copy(source, target)
-
-
 def write_file(path, text=""):
     with tempfile.NamedTemporaryFile("wt", delete=False, encoding="utf-8") as file:
         file.write(text)

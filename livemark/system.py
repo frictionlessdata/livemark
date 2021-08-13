@@ -50,6 +50,7 @@ class System:
         for index, Class in list(enumerate(self.Plugins)):
             if Plugin.priority >= Class.priority:
                 self.Plugins.insert(index, Plugin)
+                break
 
     def deregister(self, Plugin):
         """Register a plugin

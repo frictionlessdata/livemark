@@ -31,8 +31,8 @@ def program_merge(
 
         # Normal mode
         if not live:
-            written = document.build(diff=diff, print=print)
-            if written and diff:
+            output = document.build(diff=diff, print=print)
+            if output and diff:
                 sys.exit(1)
             sys.exit(0)
 
