@@ -1,37 +1,37 @@
-#livemark-header .toc {
+#livemark-brand .toc {
   opacity: 0.5;
 	overflow-y: auto;
 }
 
-#livemark-header .toc>.toc-list {
+#livemark-brand .toc>.toc-list {
 	overflow: hidden;
 	position: relative;
 }
 
-#livemark-header .toc>.toc-list li {
+#livemark-brand .toc>.toc-list li {
 	list-style: none;
 }
 
-#livemark-header .toc-list {
+#livemark-brand .toc-list {
 	margin: 0;
 	padding-left: 10px;
 }
 
-#livemark-header a.toc-link {
+#livemark-brand a.toc-link {
 	color: currentColor;
 	height: 100%;
 }
 
-#livemark-header a.toc-link:hover {
+#livemark-brand a.toc-link:hover {
 	color: #0056b3;
 	text-decoration: underline;
 }
 
-#livemark-header .is-active-link {
+#livemark-brand .is-active-link {
 	font-weight: 700;
 }
 
-#livemark-header .toc-link::before {
+#livemark-brand .toc-link::before {
 	background-color: #EEE;
 	content: ' ';
 	display: inline-block;
@@ -42,7 +42,7 @@
 	width: 2px;
 }
 
-#livemark-header .is-active-link::before {
+#livemark-brand .is-active-link::before {
 	background-color: #54BC4B;
 }
 
