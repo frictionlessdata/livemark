@@ -1,0 +1,30 @@
+#livemark-topics .toc {
+  opacity: 0.5;
+}
+
+#livemark-topics .toc>.toc-list {
+  overflow: hidden;
+  position: relative;
+}
+
+#livemark-topics .toc>.toc-list li {
+  list-style: none;
+}
+
+#livemark-topics .toc-list {
+  padding-left: 0;
+  margin: 0;
+}
+
+#livemark-topics a.toc-link {
+  color: currentColor;
+}
+
+#livemark-topics a.toc-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+#livemark-topics .is-active-link {
+  font-weight: 700;
+}

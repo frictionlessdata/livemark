@@ -1,7 +1,7 @@
 from ...plugin import Plugin
 
 
-class TocPlugin(Plugin):
+class TopicsPlugin(Plugin):
     priority = 70
     profile = {
         "type": "object",

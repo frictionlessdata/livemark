@@ -20,7 +20,7 @@ class PresetPlugin(Plugin):
         # Update document
         if preset == "standard":
             config["brand"]["self"] = True
-            config["toc"]["self"] = True
+            config["topics"]["self"] = True
             config["search"]["self"] = True
             config["stats"]["self"] = True
             config["signs"]["self"] = True
@@ -29,7 +29,7 @@ class PresetPlugin(Plugin):
             config["links"]["self"] = True
             config["display"]["self"] = True
         elif preset == "compact":
-            config["toc"]["self"] = True
+            config["topics"]["self"] = True
             config["search"]["self"] = True
             config["stats"]["self"] = True
             config["signs"]["self"] = True
