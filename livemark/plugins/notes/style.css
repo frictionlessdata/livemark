@@ -12,10 +12,14 @@
   }
 }
 
-#livemark-notes a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
-}
-
 #livemark-notes a {
   color: inherit;
+}
+
+#livemark-notes a:hover {
+  color: #80b2e6;
+}
+
+#livemark-notes a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
 }

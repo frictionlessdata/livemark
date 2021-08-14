@@ -14,3 +14,7 @@
   font-size: 20px;
   color: currentColor;
 }
+
+#livemark-signs a:hover {
+  color: #80b2e6;
+}
