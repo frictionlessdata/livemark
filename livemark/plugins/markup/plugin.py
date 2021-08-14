@@ -26,6 +26,3 @@ class MarkupPlugin(Plugin):
                         output = markdown.convert(input)
                         node.html(output)
                 snippet.output = query.outer_html() + "\n"
-
-    def process_markup(self, markup):
-        markup.add_style("https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css")
