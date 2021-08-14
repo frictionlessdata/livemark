@@ -1522,7 +1522,7 @@ p {
   outline: none;
   font-size: 20px;
   padding: 7px 10px;
-  border-radius: 15px;
+  border-radius: 20px;
   border: solid 1px #ddd;
   box-shadow: 0px 7px 10px #eee;
   color: #444;
@@ -1540,11 +1540,11 @@ p {
 }
 
 #livemark-search-output {
-  display: none;
+  visibility: hidden;
+  width: 100%;
   font-size: 16px;
   padding: 10px 10px;
-  width: 190px;
-  border-radius: 15px;
+  border-radius: 20px;
   border: solid 1px #ddd;
   box-shadow: 0px 7px 10px #eee;
   background: white;
@@ -1852,7 +1852,7 @@ document.addEventListener("DOMContentLoaded", function () {
     unhighlight()
     query = searchInput.value
     searchOutput.innerHTML = ''
-    searchOutput.style.display = 'none'
+    searchOutput.style.visibility = 'hidden'
     const searchParams = new URLSearchParams(window.location.search);
     if (query.length < 3) return
     const results = searchIndex.search(query)
@@ -1867,7 +1867,7 @@ document.addEventListener("DOMContentLoaded", function () {
       elements.push(`<li ${cls}><a href="${item.link}?q=${query}">${item.name}</a></li>`)
     }
     searchOutput.innerHTML = `<ul>\n${elements.join('\n')}\n</ul>`
-    searchOutput.style.display = 'block'
+    searchOutput.style.visibility = 'visible'
     highlight()
   }
   const highlight = () => {

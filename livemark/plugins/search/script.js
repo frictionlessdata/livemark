@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     unhighlight()
     query = searchInput.value
     searchOutput.innerHTML = ''
-    searchOutput.style.display = 'none'
+    searchOutput.style.visibility = 'hidden'
     const searchParams = new URLSearchParams(window.location.search);
     if (query.length < 3) return
     const results = searchIndex.search(query)
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       elements.push(`<li ${cls}><a href="${item.link}?q=${query}">${item.name}</a></li>`)
     }
     searchOutput.innerHTML = `<ul>\n${elements.join('\n')}\n</ul>`
-    searchOutput.style.display = 'block'
+    searchOutput.style.visibility = 'visible'
     highlight()
   }
   const highlight = () => {
