@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const prepare = () => {
     const searchParams = new URLSearchParams(window.location.search);
+    // TODO: sync search parameter name (q) with cards/modal plugin
     const query = searchParams.get('q') || ''
     if (query.length >= 3) {
       searchInput.value = query

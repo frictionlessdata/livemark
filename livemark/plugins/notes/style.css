@@ -20,6 +20,7 @@
   color: #80b2e6;
 }
 
+/* TODO: fix alignment/source */
 #livemark-notes a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
