@@ -45,9 +45,13 @@ class HtmlPlugin(Plugin):
 
         # Process markup
         with markup.bind(self):
+            fa_url = "https://unpkg.com/@fortawesome/fontawesome-free@5.15.4"
             prism_url = "https://unpkg.com/prismjs@1.23.0"
+            jquery_url = "https://unpkg.com/jquery@3.6.0"
+            markup.add_style(f"{fa_url}/css/all.min.css")
             markup.add_style(f"{prism_url}/themes/prism.css")
             markup.add_style("style.css")
+            markup.add_script(f"{jquery_url}/dist/jquery.min.js")
             markup.add_script(f"{prism_url}/components/prism-core.min.js")
             markup.add_script(f"{prism_url}/plugins/autoloader/prism-autoloader.min.js")
             markup.add_script("script.js")
