@@ -13,7 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("with-readability");
     });
 
+  // Print
+  document
+    .getElementById("livemark-display-print")
+    .addEventListener("click", function () {
+      window.print();
+    });
+
   // Scroll
   const scrollSpeed = parseInt("{{ speed }}");
-  UeScroll.init({ element: "#livemark-display-caret .fa", scrollSpeed });
+  UeScroll.init({ element: "#livemark-display-scroll .fa", scrollSpeed });
 });

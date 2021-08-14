@@ -3,12 +3,12 @@
   text-align: right;
   font-size: 14px;
   float: right;
-  display: none;
+  visibility: hidden;
 }
 
 @media only screen and (min-width: 768px) {
   #livemark-notes {
-    display: block;
+    visibility: visible;
   }
 }
 

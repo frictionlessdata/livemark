@@ -55,7 +55,7 @@ p {
 /* Main */
 
 #livemark-main {
-  padding: 24px 16px;
+  padding: 24px 20px;
   min-height: 100vh;
 }
 
@@ -1090,10 +1090,10 @@ p {
 /* Left */
 
 #livemark-left {
-  display: none;
+  visibility: hidden;
   position: fixed;
   width: 300px;
-  padding: 10px 32px;
+  padding: 10px 40px;
   left: 0px;
   top: 25px;
   font-size: 125%;
@@ -1115,17 +1115,17 @@ p {
 
 @media only screen and (min-width: 768px) {
   #livemark-left {
-    display: block;
+    visibility: visible;
   }
 }
 
 /* Right */
 
 #livemark-right {
-  display: none;
+  visibility: hidden;
   position: fixed;
   width: 300px;
-  padding: 10px 32px;
+  padding: 10px 40px;
   right: 0px;
   top: 25px;
   font-size: 125%;
@@ -1147,6 +1147,6 @@ p {
 
 @media only screen and (min-width: 992px) {
   #livemark-right {
-    display: block;
+    visibility: visible;
   }
 }

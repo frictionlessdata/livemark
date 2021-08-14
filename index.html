@@ -68,7 +68,7 @@ p {
 /* Main */
 
 #livemark-main {
-  padding: 24px 16px;
+  padding: 24px 20px;
   min-height: 100vh;
 }
 
@@ -1103,10 +1103,10 @@ p {
 /* Left */
 
 #livemark-left {
-  display: none;
+  visibility: hidden;
   position: fixed;
   width: 300px;
-  padding: 10px 32px;
+  padding: 10px 40px;
   left: 0px;
   top: 25px;
   font-size: 125%;
@@ -1128,17 +1128,17 @@ p {
 
 @media only screen and (min-width: 768px) {
   #livemark-left {
-    display: block;
+    visibility: visible;
   }
 }
 
 /* Right */
 
 #livemark-right {
-  display: none;
+  visibility: hidden;
   position: fixed;
   width: 300px;
-  padding: 10px 32px;
+  padding: 10px 40px;
   right: 0px;
   top: 25px;
   font-size: 125%;
@@ -1160,7 +1160,7 @@ p {
 
 @media only screen and (min-width: 992px) {
   #livemark-right {
-    display: block;
+    visibility: visible;
   }
 }
 
@@ -1250,7 +1250,7 @@ p {
 }
 
 #livemark-topics a.toc-link:hover {
-  /* color: #80b2e6; */
+  color: #80b2e6;
 }
 
 #livemark-topics .is-active-link {
@@ -1265,12 +1265,12 @@ p {
   text-align: right;
   font-size: 14px;
   float: right;
-  display: none;
+  visibility: hidden;
 }
 
 @media only screen and (min-width: 768px) {
   #livemark-notes {
-    display: block;
+    visibility: visible;
   }
 }
 
@@ -1364,25 +1364,29 @@ p {
 <style>
 
 #livemark-display {
-  display: none;
+  display: flex;
+  position: fixed;
+  visibility: hidden;
+  justify-content: space-between;
   font-size: 16px;
   color: #888;
+  width: 240px;
+  bottom: 20px;
+  right: 30px;
 }
 
 @media only screen and (min-width: 992px) {
   #livemark-display {
-    display: block;
+    visibility: visible;
   }
 }
 
 #livemark-display .control {
   cursor: pointer;
-  position: fixed;
   background-color:#fff;
   box-shadow: 0px 7px 10px #eee;
   border-radius: 50%;
   border: solid 1px #ddd;
-  bottom: 20px;
   z-index: 100;
 }
 
@@ -1390,18 +1394,6 @@ p {
   display: inline-block !important;
   opacity: 1 !important;
   padding: 15px;
-}
-
-#livemark-display-plus {
-  right: 220px;
-}
-
-#livemark-display-minus {
-  right: 150px;
-}
-
-#livemark-display-caret {
-  right: 80px;
 }
 
 .with-readability {
@@ -1433,8 +1425,13 @@ p {
 <style>
 
 #livemark-mobile {
-  opacity: 0.3;
-  display: none;
+  position: absolute;
+  visibility: hidden;
+  z-index: 10000;
+  /* We can't use "right" because Mobile Chrome and #34 */
+  /* TODO: it doesn't align on mobile phones anyway - try to fix #34? */
+  left: calc(100vw - 56px);
+  top: 24px;
 }
 
 #livemark-mobile .stack {
@@ -1450,18 +1447,12 @@ p {
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: #101010;
+  background-color: #aaa;
 }
 
 @media only screen and (max-width: 768px) {
   #livemark-mobile {
-    display: block;
-    position: absolute;
-    z-index: 10000;
-    /* We can't use "right" because Mobile Chrome and #34 */
-    /* TODO: it doesn't align on mobile phones anyway - try to fix #34? */
-    left: calc(100vw - 56px);
-    top: 24px;
+    visibility: visible;
   }
 
   #livemark-mobile.active {
@@ -1491,7 +1482,7 @@ p {
       text-align: center;
       transition: 0.3s;
       box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-      display: block;
+      visibility: visible;
       z-index: 1000;
   }
 
@@ -1514,22 +1505,23 @@ p {
 #livemark-search {
   position: fixed;
   left: 30px;
-  bottom: 25px;
+  width: 240px;
+  bottom: 20px;
   z-index:100;
-  display: none;
+  visibility: hidden;
 }
 
 @media only screen and (min-width: 992px) {
   #livemark-search {
-    display: block;
+    visibility: visible;
   }
 }
 
 #livemark-search-input {
+  width: 100%;
   outline: none;
   font-size: 20px;
-  padding: 5px 10px;
-  width: 190px;
+  padding: 7px 10px;
   border-radius: 15px;
   border: solid 1px #ddd;
   box-shadow: 0px 7px 10px #eee;
@@ -1852,11 +1844,6 @@ pprint(brands.read_rows())
       </a>
     </li>
         <li>
-      <a href="" target="_blank" onclick="window.print();return false;">
-        Print
-      </a>
-    </li>
-        <li>
       <a href="https://github.com/frictionlessdata/livemark/fork" target="_blank">
         Fork
       </a>
@@ -1947,21 +1934,31 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("with-readability");
     });
 
+  // Print
+  document
+    .getElementById("livemark-display-print")
+    .addEventListener("click", function () {
+      window.print();
+    });
+
   // Scroll
   const scrollSpeed = parseInt("10");
-  UeScroll.init({ element: "#livemark-display-caret .fa", scrollSpeed });
+  UeScroll.init({ element: "#livemark-display-scroll .fa", scrollSpeed });
 });
 
 </script>
 
 <div id="livemark-display">
+  <div class="control" id="livemark-display-print" title="Decrease readability">
+    <span class="fa fa-print"></span>
+  </div>
   <div class="control" id="livemark-display-plus" title="Increase readability">
     <span class="fa fa-plus"></span>
   </div>
   <div class="control" id="livemark-display-minus" title="Decrease readability">
     <span class="fa fa-minus"></span>
   </div>
-  <div class="control" id="livemark-display-caret" title="Back to top">
+  <div class="control" id="livemark-display-scroll" title="Back to top">
     <span class="fa fa-chevron-up"></span>
   </div>
 </div>
