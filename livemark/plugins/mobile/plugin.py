@@ -9,6 +9,8 @@ class MobilePlugin(Plugin):
     # TODO: update all the priorities (maybe group by column/section?)
     priority = 10
 
+    # Process
+
     def process_markup(self, markup):
 
         # Update markup

@@ -4,6 +4,9 @@ from ...plugin import Plugin
 
 
 class MarkdownPlugin(Plugin):
+
+    # Process
+
     def process_document(self, document):
         if document.format != "md":
             return

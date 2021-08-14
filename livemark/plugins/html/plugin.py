@@ -15,6 +15,20 @@ class HtmlPlugin(Plugin):
         },
     }
 
+    @Plugin.property
+    def title(self):
+        return self.config.get("title", self.document.title)
+
+    @Plugin.property
+    def description(self):
+        return self.config.get("description", self.document.description)
+
+    @Plugin.property
+    def keywords(self):
+        return self.config.get("keywords", self.document.keywords)
+
+    # Process
+
     def process_document(self, document):
         if document.format != "html":
             return
@@ -28,18 +42,13 @@ class HtmlPlugin(Plugin):
         output = markdown.render(output)
         output = output.strip()
 
-        # Prepare context
-        title = self.config.get("title", document.title)
-        description = self.config.get("description", document.description)
-        keywords = self.config.get("keywords", document.keywords)
-
         # Create markup
         markup = Markup(
             self.read_asset(
                 "markup.html",
-                title=title,
-                description=description,
-                keywords=keywords,
+                title=self.title,
+                description=self.description,
+                keywords=self.keywords,
             )
         )
 

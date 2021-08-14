@@ -5,6 +5,9 @@ from ...plugin import Plugin
 
 
 class ChartPlugin(Plugin):
+
+    # Process
+
     def process_config(self, config):
         self.__count = 0
 

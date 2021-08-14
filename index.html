@@ -2065,7 +2065,7 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, '', newRelativePathQuery);
     const elements = []
     for (const result of results) {
-      const item = searchList[result.ref]
+      const item = searchItems[result.ref]
       const cls = window.location.pathname === item.link ? 'class="active"' : ''
       elements.push(`<li ${cls}><a href="${item.link}?q=${query}">${item.name}</a></li>`)
     }
@@ -2083,7 +2083,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const unhighlight = () => {
     $('#livemark-main').unhighlight({className: 'livemark-search-found'});
   }
-  const searchList = {
+  const searchItems = {
           '/': {
           'name': 'Introduction',
           'link': '/',
@@ -2094,7 +2094,7 @@ document.addEventListener("DOMContentLoaded", function () {
     this.ref("link")
     this.field("name", { boost: 10 })
     this.field("text")
-    for (const item of Object.values(searchList)) {
+    for (const item of Object.values(searchItems)) {
       this.add(item)
     }
   });

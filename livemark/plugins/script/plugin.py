@@ -6,6 +6,9 @@ from ... import helpers
 
 # TODO: support snippet.props['mode'] = 'input' | 'output'
 class ScriptPlugin(Plugin):
+
+    # Process
+
     def process_plugin(self):
         self.__store = []
 

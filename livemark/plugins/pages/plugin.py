@@ -19,6 +19,19 @@ class PagesPlugin(Plugin):
         },
     }
 
+    @Plugin.property
+    def items(self):
+        return self.config["list"]
+
+    @Plugin.property
+    def current(self):
+        current = "/"
+        if self.document.target != "index.html":
+            current = f"/{self.document.target}"
+        return current
+
+    # Process
+
     def process_config(self, config):
         if self.config:
             self.config.setdefault("list", self.config.pop("self", []))
@@ -27,18 +40,12 @@ class PagesPlugin(Plugin):
         if not self.config:
             return
 
-        # Prepare context
-        current = "/"
-        if self.document.target != "index.html":
-            current = f"/{self.document.target}"
-        list = self.config["list"]
-
         # Update markup
         markup.add_style("style.css")
         markup.add_script("script.js")
         markup.add_markup(
             "markup.html",
             target="#livemark-left",
-            current=current,
-            list=list,
+            current=self.current,
+            items=self.items,
         )

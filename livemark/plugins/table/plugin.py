@@ -6,6 +6,9 @@ from ...plugin import Plugin
 
 
 class TablePlugin(Plugin):
+
+    # Process
+
     def process_config(self, config):
         self.__count = 0
 

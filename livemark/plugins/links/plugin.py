@@ -20,25 +20,29 @@ class LinksPlugin(Plugin):
         },
     }
 
+    @Plugin.property
+    def items(self):
+        github = self.get_plugin("github")
+        items = self.config["list"].copy()
+        if github.base_url:
+            items.append({"name": "Report", "path": github.report_url})
+            items.append({"name": "Fork", "path": github.fork_url})
+            items.append({"name": "Edit", "path": github.edit_url})
+        return items
+
+    # Process
+
     def process_config(self, config):
         self.config.setdefault("list", self.config.pop("self", []))
 
     def process_markup(self, markup):
-        github = self.get_plugin("github")
         if not self.config:
             return
-
-        # Prepare context
-        list = self.config["list"].copy()
-        if github.config:
-            list.append({"name": "Report", "path": github.config["report_url"]})
-            list.append({"name": "Fork", "path": github.config["fork_url"]})
-            list.append({"name": "Edit", "path": github.config["edit_url"]})
 
         # Update markup
         markup.add_style("style.css")
         markup.add_markup(
             "markup.html",
             target="#livemark-right",
-            list=list,
+            items=self.items,
         )

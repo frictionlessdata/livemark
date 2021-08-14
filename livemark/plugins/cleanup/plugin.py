@@ -12,6 +12,8 @@ class CleanupPlugin(Plugin):
         },
     }
 
+    # Process
+
     def process_config(self, config):
         self.config.setdefault("commands", self.config.pop("self", []))
 

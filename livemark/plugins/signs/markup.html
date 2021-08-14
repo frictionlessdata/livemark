@@ -1,13 +1,13 @@
 <div id="livemark-signs">
   <div>
-    {% if next %}
+    {% if paths.next %}
     <div class="next">
-      <a href="{{ next.path }}">{{ next.name }} &raquo;</a>
+      <a href="{{ paths.next.path }}">{{ paths.next.name }} &raquo;</a>
     </div>
     {% endif %}
-    {% if prev %}
+    {% if paths.prev %}
     <div class="prev">
-      <a href="{{ prev.path }}">&laquo; {{ prev.name }}</a>
+      <a href="{{ paths.prev.path }}">&laquo; {{ paths.prev.name }}</a>
     </div>
     {% endif %}
   </div>

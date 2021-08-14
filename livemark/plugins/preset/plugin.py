@@ -14,10 +14,12 @@ class PresetPlugin(Plugin):
         },
     }
 
+    # Process
+
     def process_config(self, config):
         preset = self.config.setdefault("name", self.config.get("self", "standard"))
 
-        # Update document
+        # Standard preset
         if preset == "standard":
             config["brand"]["self"] = True
             config["topics"]["self"] = True
@@ -28,6 +30,9 @@ class PresetPlugin(Plugin):
             config["about"]["self"] = True
             config["links"]["self"] = True
             config["display"]["self"] = True
+            return
+
+        # Compact preset
         elif preset == "compact":
             config["topics"]["self"] = True
             config["search"]["self"] = True
@@ -36,5 +41,7 @@ class PresetPlugin(Plugin):
             config["rating"]["self"] = True
             config["links"]["self"] = True
             config["display"]["self"] = True
-        else:
-            raise LivemarkException(f"Not supported preset: {preset}")
+            return
+
+        # Not supported
+        raise LivemarkException(f"Not supported preset: {preset}")
