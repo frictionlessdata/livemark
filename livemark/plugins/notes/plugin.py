@@ -3,7 +3,7 @@ from datetime import datetime
 from ...plugin import Plugin
 
 
-class StatsPlugin(Plugin):
+class NotesPlugin(Plugin):
     priority = 60
     profile = {
         "type": "object",

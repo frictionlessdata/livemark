@@ -1,94 +1,55 @@
 #livemark-display {
   display: none;
+  font-size: 16px;
+  color: #888;
 }
 
 @media only screen and (min-width: 992px) {
   #livemark-display {
     display: block;
-    opacity: 0.5;
   }
 }
 
-#livemark-display .readability{
-  display:none;
-  position:fixed;
-  -webkit-transform:translateZ(0);
-  transform:translateZ(0);
-  cursor:pointer;
-  top:auto;
-  right:20px;
-  bottom:20px;
-  left:auto;
-  z-index:100;
-  width:50px;
-  height:50px;
-  background-size:40%;
-  background-repeat:no-repeat;
-  background-position:50%;
-}
-
-#livemark-display .readability.btn-white {
+#livemark-display .control {
+  cursor: pointer;
+  position: fixed;
   background-color:#fff;
+  box-shadow: 0px 7px 10px #eee;
+  border-radius: 50%;
+  border: solid 1px #ddd;
+  bottom: 20px;
+  z-index: 100;
 }
 
-#livemark-display .readability.shadow {
-  -webkit-box-shadow:0 0 10px rgba(0,0,0,.2);
-  box-shadow:0 0 10px rgba(0,0,0,.2);
+#livemark-display .control .fa {
+  display: inline-block !important;
+  opacity: 1 !important;
+  padding: 15px;
 }
 
-#livemark-display .readability.circle {
-  border-radius:50%;
+#livemark-display-plus {
+  right: 170px;
 }
 
-#livemark-display .readability {
-  bottom:25px;
-  display:block!important;
-  opacity:1!important;
-}
-
-#livemark-display .plus {
-  left: auto;
-  right: 165px;
-}
-
-#livemark-display .minus {
-  left: auto;
+#livemark-display-minus {
   right: 100px;
 }
 
-#livemark-display .minus .inner {
-  font-size: 30px;
-  margin-left: 20px;
-}
-
-#livemark-display .plus .inner {
-  font-size: 30px;
-  margin-left: 15px;
-  margin-top: 2px;
-}
-
-#livemark-display .ue-scroll {
-  bottom: 25px;
-  /* Make the button alway visible */
-  display: block !important;
-  opacity: 1 !important;
-}
-
-#livemark-display .ue-scroll {
-  left: auto;
-  right: 35px;
+#livemark-display-caret {
+  right: 30px;
 }
 
 .with-readability {
   font-size: 20px;
 }
 
-.with-readability * {
-  opacity: 1 !important;
+.with-readability #livemark-main {
+  color: #000;
 }
 
-.with-readability #livemark-main {
-  color: black;
+.with-readability #livemark-left > *,
+.with-readability #livemark-right > * {
+  color: #444;
 }
 
 .with-readability #livemark-left,

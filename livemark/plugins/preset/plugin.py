@@ -22,7 +22,7 @@ class PresetPlugin(Plugin):
             config["brand"]["self"] = True
             config["topics"]["self"] = True
             config["search"]["self"] = True
-            config["stats"]["self"] = True
+            config["notes"]["self"] = True
             config["signs"]["self"] = True
             config["rating"]["self"] = True
             config["about"]["self"] = True
@@ -31,7 +31,7 @@ class PresetPlugin(Plugin):
         elif preset == "compact":
             config["topics"]["self"] = True
             config["search"]["self"] = True
-            config["stats"]["self"] = True
+            config["notes"]["self"] = True
             config["signs"]["self"] = True
             config["rating"]["self"] = True
             config["links"]["self"] = True

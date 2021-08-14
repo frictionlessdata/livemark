@@ -1,21 +1,21 @@
-#livemark-stats {
+#livemark-notes {
+  color: #aaa;
   text-align: right;
   font-size: 14px;
   float: right;
-  opacity: 0.4;
   display: none;
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-stats {
+  #livemark-notes {
     display: block;
   }
 }
 
-#livemark-stats a[target="_blank"]:after {
+#livemark-notes a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
 
-#livemark-stats a {
+#livemark-notes a {
   color: inherit;
 }

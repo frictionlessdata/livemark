@@ -1,5 +1,8 @@
+#livemark-links {
+  color: #888;
+}
+
 #livemark-links ul {
-  opacity: 0.5;
   overflow: hidden;
   position: relative;
   padding-left: 0;
@@ -15,8 +18,7 @@
 }
 
 #livemark-links a:hover {
-  color: orange;
-  text-decoration: underline;
+  color: #80B2E6;
 }
 
 #livemark-links a[target="_blank"]:after {

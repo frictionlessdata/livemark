@@ -1,5 +1,5 @@
-#livemark-topics .toc {
-  opacity: 0.5;
+#livemark-topics {
+  color: #888;
 }
 
 #livemark-topics .toc>.toc-list {
@@ -21,7 +21,7 @@
 }
 
 #livemark-topics a.toc-link:hover {
-  color: #0056b3;
+  color: #80B2E6;
   text-decoration: underline;
 }
 

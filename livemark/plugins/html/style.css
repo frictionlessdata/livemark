@@ -13,7 +13,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #222;
   text-align: left;
   background-color: #fff;
 }
@@ -168,7 +168,7 @@ p {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
-  color: #24292e;
+  color: #222;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   line-height: 1.5;
   word-wrap: break-word;
@@ -432,7 +432,7 @@ p {
 }
 
 #livemark-main .text-gray-light {
-  color: #6a737d!important;
+  color: #666!important;
 }
 
 #livemark-main .mb-0 {
@@ -500,7 +500,7 @@ p {
 }
 
 #livemark-main .pl-c {
-  color: #6a737d;
+  color: #666;
 }
 
 #livemark-main .pl-c1,
@@ -515,7 +515,7 @@ p {
 
 #livemark-main .pl-s .pl-s1,
 #livemark-main .pl-smi {
-  color: #24292e;
+  color: #222;
 }
 
 #livemark-main .pl-ent {
@@ -577,12 +577,12 @@ p {
 
 #livemark-main .pl-mi {
   font-style: italic;
-  color: #24292e;
+  color: #222;
 }
 
 #livemark-main .pl-mb {
   font-weight: 700;
-  color: #24292e;
+  color: #222;
 }
 
 #livemark-main .pl-md {
@@ -752,7 +752,7 @@ p {
 
 #livemark-main blockquote {
   padding: 0 1em;
-  color: #6a737d;
+  color: #666;
   border-left: .25em solid #dfe2e5;
 }
 
@@ -804,7 +804,7 @@ p {
 
 #livemark-main h6 {
   font-size: .85em;
-  color: #6a737d;
+  color: #666;
 }
 
 #livemark-main ol,
@@ -1003,7 +1003,7 @@ p {
   overflow: visible;
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   font-size: 12px;
-  color: #24292e;
+  color: #222;
   word-wrap: normal;
   white-space: pre;
 }

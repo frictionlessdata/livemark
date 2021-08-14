@@ -1,10 +1,9 @@
 #livemark-search {
-  display: none;
-  opacity: 0.5;
   position: fixed;
   left: 30px;
   bottom: 25px;
   z-index:100;
+  display: none;
 }
 
 @media only screen and (min-width: 992px) {
@@ -15,12 +14,17 @@
 
 #livemark-search-input {
   outline: none;
-  border: solid 1px #ccc;
-  border-radius: 15px;
   font-size: 20px;
   padding: 5px 10px;
   width: 190px;
-  box-shadow: 0px 7px 10px rgba(0,0,0,.2);
+  border-radius: 15px;
+  border: solid 1px #ddd;
+  box-shadow: 0px 7px 10px #eee;
+  color: #444;
+}
+
+#livemark-search-input::placeholder {
+  color: #888;
 }
 
 #livemark-search-input::-webkit-search-decoration,
@@ -32,12 +36,12 @@
 
 #livemark-search-output {
   display: none;
-  border: solid 1px #ccc;
-  border-radius: 15px;
   font-size: 16px;
   padding: 10px 10px;
   width: 190px;
-  box-shadow: 0px 7px 10px rgba(0,0,0,.2);
+  border-radius: 15px;
+  border: solid 1px #ddd;
+  box-shadow: 0px 7px 10px #eee;
   background: white;
   margin-bottom: 10px;
 }
@@ -54,7 +58,7 @@
 }
 
 #livemark-search-output a {
-  color: green;
+  color: #5CC820;
   text-decoration: underline;
 }
 

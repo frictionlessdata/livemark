@@ -15,5 +15,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Scroll
   const scrollSpeed = parseInt("{{ speed }}");
-  UeScroll.init({ element: ".ue-scroll", scrollSpeed });
+  UeScroll.init({ element: "#livemark-display-caret .fa", scrollSpeed });
 });

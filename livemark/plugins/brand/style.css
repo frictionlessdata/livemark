@@ -1,5 +1,8 @@
+#livemark-brand {
+  color: #888;
+}
+
 #livemark-brand ul {
-  opacity: 0.5;
   overflow: hidden;
   position: relative;
   padding-left: 0;
@@ -19,5 +22,5 @@
 }
 
 #livemark-brand a:hover {
-  color: #0056b3;
+  color: #80B2E6;
 }
