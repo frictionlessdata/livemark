@@ -74,7 +74,7 @@ def test_document_read():
     document.read()
     assert document.source == "index.md"
     assert document.target == "index.html"
-    assert document.config["pages"]["items"]
+    assert document.config["pages"]["list"]
     assert document.input.count("# Livemark")
     assert document.preface == ""
     assert document.content.count("# Livemark")

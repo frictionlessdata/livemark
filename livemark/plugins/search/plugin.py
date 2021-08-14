@@ -16,7 +16,7 @@ class SearchPlugin(Plugin):
             return
 
         # Single page
-        items = [
+        list = [
             {
                 "name": self.document.title,
                 "link": f"/{self.document.target}",
@@ -26,15 +26,15 @@ class SearchPlugin(Plugin):
 
         # Multiple pages
         if pages.config:
-            items = []
-            for item in pages.config["items"]:
+            list = []
+            for item in pages.config["list"]:
                 # TODO: Support nested
                 if item.get("list"):
                     continue
                 path = Path(item["path"][1:] or "index.html").with_suffix(".md")
                 document = Document(path)
                 document.read()
-                items.append(
+                list.append(
                     {
                         "name": item["name"],
                         "link": item["path"],
@@ -47,7 +47,7 @@ class SearchPlugin(Plugin):
         markup.add_script("https://unpkg.com/lunr@2.3.9/lunr.min.js")
         markup.add_script("https://unpkg.com/jquery-highlight@3.5.0/jquery.highlight.js")
         markup.add_script("https://unpkg.com/jquery.scrollto@2.1.3/jquery.scrollTo.js")
-        markup.add_script("script.js", items=items)
+        markup.add_script("script.js", list=list)
         markup.add_markup(
             "markup.html",
             target="body",

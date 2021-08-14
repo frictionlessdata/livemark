@@ -17,16 +17,16 @@ class SignsPlugin(Plugin):
         current_number = None
         if self.document.target != "index.html":
             current_path = f"/{self.document.target}"
-        for number, link in enumerate(pages.config["items"], start=1):
+        for number, item in enumerate(pages.config["list"], start=1):
             # TODO: Support nested
-            if link.get("list"):
+            if item.get("list"):
                 continue
-            if link["path"] == current_path:
+            if item["path"] == current_path:
                 current_number = number
         if current_number > 1:
-            prev = pages.config["items"][current_number - 2]
-        if current_number < len(pages.config["items"]):
-            next = pages.config["items"][current_number]
+            prev = pages.config["list"][current_number - 2]
+        if current_number < len(pages.config["list"]):
+            next = pages.config["list"][current_number]
         if not next and not prev:
             raise LivemarkException("Invalid pages configuration")
 

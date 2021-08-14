@@ -1,10 +1,10 @@
 <div id="livemark-pages">
   <ul class="primary">
-    {% for item in items %}
+    {% for item in list %}
     <li class="primary">
       <a
-        class="primary {% if current == item.path %}active{% endif %} {% if item.list %}group{% endif %}"
         href="{{ item.path }}"
+        class="primary {% if current == item.path %}active{% endif %} {% if item.list %}group{% endif %}"
       >
         {{ item.name }}
         {% if item.list %}
@@ -16,8 +16,8 @@
         {% for subitem in item.list %}
         <li class="secondary">
           <a
-            class="secondary {% if current == subitem.path %}active{% endif %}"
             href="{{ subitem.path }}"
+            class="secondary {% if current == subitem.path %}active{% endif %}"
           >
             {{ subitem.name }}
           </a>

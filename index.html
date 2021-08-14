@@ -1301,6 +1301,7 @@ p {
   color: #80b2e6;
 }
 
+/* TODO: fix alignment/source */
 #livemark-notes a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
@@ -1375,6 +1376,7 @@ p {
   color: #80b2e6;
 }
 
+/* TODO: fix alignment/source */
 #livemark-links a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
@@ -1613,23 +1615,23 @@ p {
 <div id="livemark-pages">
   <ul class="primary">
         <li class="primary">
-      <a class="primary active " href="/">
+      <a href="/" class="primary active ">
         Introduction
               </a>
           </li>
         <li class="primary">
-      <a class="primary  group" href="">
+      <a href="" class="primary  group">
         Getting Started
                 <span class="fa fa-chevron-right"></span>
               </a>
             <ul class="secondary">
                 <li class="secondary">
-          <a class="secondary " href="/docs/getting-started.html">
+          <a href="/docs/getting-started.html" class="secondary ">
             Installation
           </a>
         </li>
                 <li class="secondary">
-          <a class="secondary " href="/docs/configuration.html">
+          <a href="/docs/configuration.html" class="secondary ">
             Configuration
           </a>
         </li>
@@ -2043,6 +2045,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const prepare = () => {
     const searchParams = new URLSearchParams(window.location.search);
+    // TODO: sync search parameter name (q) with cards/modal plugin
     const query = searchParams.get('q') || ''
     if (query.length >= 3) {
       searchInput.value = query
@@ -2062,7 +2065,7 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, '', newRelativePathQuery);
     const elements = []
     for (const result of results) {
-      const item = searchItems[result.ref]
+      const item = searchList[result.ref]
       const cls = window.location.pathname === item.link ? 'class="active"' : ''
       elements.push(`<li ${cls}><a href="${item.link}?q=${query}">${item.name}</a></li>`)
     }
@@ -2080,7 +2083,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const unhighlight = () => {
     $('#livemark-main').unhighlight({className: 'livemark-search-found'});
   }
-  const searchItems = {
+  const searchList = {
           '/': {
           'name': 'Introduction',
           'link': '/',
@@ -2091,7 +2094,7 @@ document.addEventListener("DOMContentLoaded", function () {
     this.ref("link")
     this.field("name", { boost: 10 })
     this.field("text")
-    for (const item of Object.values(searchItems)) {
+    for (const item of Object.values(searchList)) {
       this.add(item)
     }
   });
