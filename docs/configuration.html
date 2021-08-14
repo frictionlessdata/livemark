@@ -6,7 +6,8 @@
 <meta name="description" content="Livemark document can be configured using a frontmatter:">
 <meta name="keywords" content="configuration">
 <title>Configuration</title>
-<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
 
@@ -25,7 +26,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #222;
   text-align: left;
   background-color: #fff;
 }
@@ -107,14 +108,14 @@ p {
 
 @media only screen and (min-width: 768px) {
   #livemark-main {
-    margin-left: 250px;
+    margin-left: 300px;
     border-left: dashed 1px #ccc;
   }
 }
 
 @media only screen and (min-width: 992px) {
   #livemark-main {
-    margin-right: 250px;
+    margin-right: 300px;
     border-right: dashed 1px #ccc;
   }
 }
@@ -180,7 +181,7 @@ p {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
-  color: #24292e;
+  color: #222;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   line-height: 1.5;
   word-wrap: break-word;
@@ -444,7 +445,7 @@ p {
 }
 
 #livemark-main .text-gray-light {
-  color: #6a737d!important;
+  color: #666!important;
 }
 
 #livemark-main .mb-0 {
@@ -512,7 +513,7 @@ p {
 }
 
 #livemark-main .pl-c {
-  color: #6a737d;
+  color: #666;
 }
 
 #livemark-main .pl-c1,
@@ -527,7 +528,7 @@ p {
 
 #livemark-main .pl-s .pl-s1,
 #livemark-main .pl-smi {
-  color: #24292e;
+  color: #222;
 }
 
 #livemark-main .pl-ent {
@@ -589,12 +590,12 @@ p {
 
 #livemark-main .pl-mi {
   font-style: italic;
-  color: #24292e;
+  color: #222;
 }
 
 #livemark-main .pl-mb {
   font-weight: 700;
-  color: #24292e;
+  color: #222;
 }
 
 #livemark-main .pl-md {
@@ -764,7 +765,7 @@ p {
 
 #livemark-main blockquote {
   padding: 0 1em;
-  color: #6a737d;
+  color: #666;
   border-left: .25em solid #dfe2e5;
 }
 
@@ -816,7 +817,7 @@ p {
 
 #livemark-main h6 {
   font-size: .85em;
-  color: #6a737d;
+  color: #666;
 }
 
 #livemark-main ol,
@@ -1015,7 +1016,7 @@ p {
   overflow: visible;
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   font-size: 12px;
-  color: #24292e;
+  color: #222;
   word-wrap: normal;
   white-space: pre;
 }
@@ -1103,10 +1104,10 @@ p {
 
 #livemark-left {
   display: none;
-  width: 200px;
   position: fixed;
-  padding: 10px;
-  left: 25px;
+  width: 300px;
+  padding: 10px 32px;
+  left: 0px;
   top: 25px;
   font-size: 125%;
   height: 100vh;
@@ -1135,10 +1136,10 @@ p {
 
 #livemark-right {
   display: none;
-  width: 200px;
   position: fixed;
-  padding: 10px;
-  right: 25px;
+  width: 300px;
+  padding: 10px 32px;
+  right: 0px;
   top: 25px;
   font-size: 125%;
   height: 100vh;
@@ -1166,139 +1167,119 @@ p {
 </style>
 <style>
 
-#livemark-brand .toc {
-  opacity: 0.5;
-	overflow-y: auto;
+#livemark-brand {
+  color: #888;
 }
 
-#livemark-brand .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-brand ul {
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-brand .toc>.toc-list li {
-	list-style: none;
+#livemark-brand li {
+  list-style: none;
 }
 
-#livemark-brand .toc-list {
-	margin: 0;
-	padding-left: 10px;
+#livemark-brand a {
+  color: currentColor;
 }
 
-#livemark-brand a.toc-link {
-	color: currentColor;
-	height: 100%;
+#livemark-brand a.active {
+  font-weight: 700;
 }
 
-#livemark-brand a.toc-link:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-#livemark-brand .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-brand .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-brand .is-active-link::before {
-	background-color: #54BC4B;
+#livemark-brand a:hover {
+  color: #80B2E6;
 }
 
 </style>
 <style>
 
-#livemark-pages .toc {
-  opacity: 0.5;
-	overflow-y: auto;
+#livemark-pages {
+  color: #888;
 }
 
-#livemark-pages .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-pages ul {
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-pages .toc>.toc-list li {
-	list-style: none;
+#livemark-pages li {
+  list-style: none;
 }
 
-#livemark-pages .toc-list {
-	margin: 0;
-	padding-left: 10px;
+#livemark-pages a {
+  color: currentColor;
 }
 
-#livemark-pages a.toc-link {
-	color: currentColor;
-	height: 100%;
+#livemark-pages a.active {
+  font-weight: 700;
 }
 
-#livemark-pages a.toc-link:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-#livemark-pages .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-pages .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-pages .is-active-link::before {
-	background-color: #54BC4B;
-}
-
-#livemark-pages a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
-}
-
-</style>
-<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
-<style>
-
-#livemark-toc .toc {
-  opacity: 0.5;
+#livemark-pages a:hover {
+  color: #80B2E6;
 }
 
 </style>
 <style>
 
-#livemark-stats {
+#livemark-topics {
+  color: #888;
+}
+
+#livemark-topics .toc>.toc-list {
+  overflow: hidden;
+  position: relative;
+}
+
+#livemark-topics .toc>.toc-list li {
+  list-style: none;
+}
+
+#livemark-topics .toc-list {
+  padding-left: 0;
+  margin: 0;
+}
+
+#livemark-topics a.toc-link {
+  color: currentColor;
+}
+
+#livemark-topics a.toc-link:hover {
+  color: #80B2E6;
+  text-decoration: underline;
+}
+
+#livemark-topics .is-active-link {
+  font-weight: 700;
+}
+
+</style>
+<style>
+
+#livemark-notes {
+  color: #aaa;
   text-align: right;
   font-size: 14px;
   float: right;
-  opacity: 0.4;
   display: none;
 }
 
 @media only screen and (min-width: 768px) {
-  #livemark-stats {
+  #livemark-notes {
     display: block;
   }
 }
 
-#livemark-stats a[target="_blank"]:after {
+#livemark-notes a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
 
-#livemark-stats a {
+#livemark-notes a {
   color: inherit;
 }
 
@@ -1306,14 +1287,11 @@ p {
 <style>
 
 #livemark-signs {
+  color: #888;
   border-top: 1px solid #eaecef;
   margin-top: 24px;
   padding-top: 20px;
   height: 50px;
-}
-
-#livemark-signs > div {
-  opacity: 0.4;
 }
 
 #livemark-signs .next {
@@ -1322,7 +1300,7 @@ p {
 
 #livemark-signs a {
   font-size: 20px;
-  color: black;
+  color: currentColor;
 }
 
 </style>
@@ -1341,59 +1319,34 @@ p {
 </style>
 <style>
 
-#livemark-about > div {
-  opacity: 0.5;
+#livemark-about {
+  color: #888;
 }
 
 </style>
 <style>
 
-#livemark-links .toc {
-  opacity: 0.5;
-	overflow-y: auto;
+#livemark-links {
+  color: #888;
 }
 
-#livemark-links .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-links ul {
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-links .toc>.toc-list li {
-	list-style: none;
+#livemark-links li {
+  list-style: none;
 }
 
-#livemark-links .toc-list {
-	margin: 0;
-	padding-left: 10px;
+#livemark-links a {
+  color: currentColor;
 }
 
-#livemark-links a.toc-link {
-	color: currentColor;
-	height: 100%;
-}
-
-#livemark-links a.toc-link:hover {
-	color: orange;
-	text-decoration: underline;
-}
-
-#livemark-links .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-links .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-links .is-active-link::before {
-	background-color: #54BC4B;
+#livemark-links a:hover {
+  color: #80B2E6;
 }
 
 #livemark-links a[target="_blank"]:after {
@@ -1401,100 +1354,60 @@ p {
 }
 
 </style>
-<link rel="stylesheet" href="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.css">
 <style>
 
 #livemark-display {
   display: none;
+  font-size: 16px;
+  color: #888;
 }
 
 @media only screen and (min-width: 992px) {
   #livemark-display {
     display: block;
-    opacity: 0.5;
   }
 }
 
-#livemark-display .readability{
-  display:none;
-  position:fixed;
-  -webkit-transform:translateZ(0);
-  transform:translateZ(0);
-  cursor:pointer;
-  top:auto;
-  right:20px;
-  bottom:20px;
-  left:auto;
-  z-index:100;
-  width:50px;
-  height:50px;
-  background-size:40%;
-  background-repeat:no-repeat;
-  background-position:50%;
-}
-
-#livemark-display .readability.btn-white {
+#livemark-display .control {
+  cursor: pointer;
+  position: fixed;
   background-color:#fff;
+  box-shadow: 0px 7px 10px #eee;
+  border-radius: 50%;
+  border: solid 1px #ddd;
+  bottom: 20px;
+  z-index: 100;
 }
 
-#livemark-display .readability.shadow {
-  -webkit-box-shadow:0 0 10px rgba(0,0,0,.2);
-  box-shadow:0 0 10px rgba(0,0,0,.2);
-}
-
-#livemark-display .readability.circle {
-  border-radius:50%;
-}
-
-#livemark-display .readability {
-  bottom:25px;
-  display:block!important;
-  opacity:1!important;
-}
-
-#livemark-display .plus {
-  left: auto;
-  right: 165px;
-}
-
-#livemark-display .minus {
-  left: auto;
-  right: 100px;
-}
-
-#livemark-display .minus .inner {
-  font-size: 30px;
-  margin-left: 20px;
-}
-
-#livemark-display .plus .inner {
-  font-size: 30px;
-  margin-left: 15px;
-  margin-top: 2px;
-}
-
-#livemark-display .ue-scroll {
-  bottom: 25px;
-  /* Make the button alway visible */
-  display: block !important;
+#livemark-display .control .fa {
+  display: inline-block !important;
   opacity: 1 !important;
+  padding: 15px;
 }
 
-#livemark-display .ue-scroll {
-  left: auto;
-  right: 35px;
+#livemark-display-plus {
+  right: 220px;
+}
+
+#livemark-display-minus {
+  right: 150px;
+}
+
+#livemark-display-caret {
+  right: 80px;
 }
 
 .with-readability {
   font-size: 20px;
 }
 
-.with-readability * {
-  opacity: 1 !important;
+.with-readability #livemark-main {
+  color: #000;
 }
 
-.with-readability #livemark-main {
-  color: black;
+.with-readability #livemark-left > *,
+.with-readability #livemark-right > * {
+  color: #444;
 }
 
 .with-readability #livemark-left,
@@ -1589,16 +1502,14 @@ p {
   gtag('js', new Date());
   gtag('config', 'G-ZH2QL85N6F');
 </script>
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <style>
 
 #livemark-search {
-  display: none;
-  opacity: 0.5;
   position: fixed;
   left: 30px;
   bottom: 25px;
   z-index:100;
+  display: none;
 }
 
 @media only screen and (min-width: 992px) {
@@ -1609,12 +1520,17 @@ p {
 
 #livemark-search-input {
   outline: none;
-  border: solid 1px #ccc;
-  border-radius: 15px;
   font-size: 20px;
   padding: 5px 10px;
   width: 190px;
-  box-shadow: 0px 7px 10px rgba(0,0,0,.2);
+  border-radius: 15px;
+  border: solid 1px #ddd;
+  box-shadow: 0px 7px 10px #eee;
+  color: #444;
+}
+
+#livemark-search-input::placeholder {
+  color: #888;
 }
 
 #livemark-search-input::-webkit-search-decoration,
@@ -1626,12 +1542,12 @@ p {
 
 #livemark-search-output {
   display: none;
-  border: solid 1px #ccc;
-  border-radius: 15px;
   font-size: 16px;
   padding: 10px 10px;
   width: 190px;
-  box-shadow: 0px 7px 10px rgba(0,0,0,.2);
+  border-radius: 15px;
+  border: solid 1px #ddd;
+  box-shadow: 0px 7px 10px #eee;
   background: white;
   margin-bottom: 10px;
 }
@@ -1648,7 +1564,7 @@ p {
 }
 
 #livemark-search-output a {
-  color: green;
+  color: #5CC820;
   text-decoration: underline;
 }
 
@@ -1667,46 +1583,42 @@ p {
 <div id="livemark-left">
 
 <div id="livemark-brand">
-  <div class="toc">
-    <ol class="toc-list">
-      <li class="toc-item">
-        <a class="toc-link is-active-link" href="/">
-          Livemark
-        </a>
-      </li>
-    </ol>
-  </div>
+  <ul>
+    <li>
+      <a class="active" href="/">
+        Livemark
+      </a>
+    </li>
+  </ul>
 </div>
 
 <div id="livemark-pages">
-  <div class="toc">
-    <ol class="toc-list">
-            <li class="toc-link">
-        <a class="toc-link " href="/">
-          Introduction
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link " href="/docs/getting-started.html">
-          Getting Started
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link is-active-link" href="/docs/configuration.html">
-          Configuration
-        </a>
-      </li>
-          </ol>
-  </div>
+  <ul>
+        <li>
+      <a class="" href="/">
+        Introduction
+      </a>
+    </li>
+        <li>
+      <a class="" href="/docs/getting-started.html">
+        Getting Started
+      </a>
+    </li>
+        <li>
+      <a class="active" href="/docs/configuration.html">
+        Configuration
+      </a>
+    </li>
+      </ul>
 </div>
 
-<div id="livemark-toc">
-  <div class="js-toc toc">
+<div id="livemark-topics">
+  <div class="toc">
   </div>
 </div>
 </div>
 <div id="livemark-main">
-<div id="livemark-stats">
+<div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
   (2021-08-12 12:24)
 </div>
@@ -1753,48 +1665,48 @@ title: My Title
 </div>
 
 <div id="livemark-links">
-  <div class="toc">
-    <ol class="toc-list">
-            <li class="toc-link">
-        <a class="toc-link" href="https://frictionlessdata.io/" target="_blank">
-          Frictionless
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
-          Discord
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://twitter.com/frictionlessd8a" target="_blank">
-          Twitter
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/issues" target="_blank">
-          Report
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="" target="_blank" onclick="window.print();return false;">
-          Print
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/fork" target="_blank">
-          Fork
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/edit/main/docs/configuration.md" target="_blank">
-          Edit
-        </a>
-      </li>
-          </ol>
-  </div>
-</div>
+  <ul>
+        <li>
+      <a href="https://frictionlessdata.io/" target="_blank">
+        Frictionless
+      </a>
+    </li>
+        <li>
+      <a href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
+        Discord
+      </a>
+    </li>
+        <li>
+      <a href="https://twitter.com/frictionlessd8a" target="_blank">
+        Twitter
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/livemark/issues" target="_blank">
+        Report
+      </a>
+    </li>
+        <li>
+      <a href="" target="_blank" onclick="window.print();return false;">
+        Print
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/livemark/fork" target="_blank">
+        Fork
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/docs/configuration.md" target="_blank">
+        Edit
+      </a>
+    </li>
+      
+</ul></div>
 </div>
 <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/popper.js@1.16.1/dist/popper.min.js"></script>
+<script src="https://unpkg.com/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/prismjs@1.23.0/components/prism-core.min.js"></script>
 <script src="https://unpkg.com/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <script>
@@ -1839,7 +1751,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   tocbot.init({
     // Where to render the table of contents.
-    tocSelector: ".js-toc",
+    tocSelector: ".toc",
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-main",
     // Which headings to grab inside of the contentSelector element.
@@ -1872,19 +1784,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Scroll
   const scrollSpeed = parseInt("10");
-  UeScroll.init({ element: ".ue-scroll", scrollSpeed });
+  UeScroll.init({ element: "#livemark-display-caret .fa", scrollSpeed });
 });
 
 </script>
 
 <div id="livemark-display">
-  <div class="readability plus btn-white circle shadow">
-    <div id="livemark-display-plus" title="Increase readability" class="inner">+</div>
+  <div class="control" id="livemark-display-plus" title="Increase readability">
+    <span class="fa fa-plus"></span>
   </div>
-  <div class="readability minus btn-white circle shadow">
-    <div id="livemark-display-minus" title="Decrease readability" class="inner">-</div>
+  <div class="control" id="livemark-display-minus" title="Decrease readability">
+    <span class="fa fa-minus"></span>
   </div>
-  <div class="ue-scroll btn-white arrow-black circle shadow">
+  <div class="control" id="livemark-display-caret" title="Back to top">
+    <span class="fa fa-chevron-up"></span>
   </div>
 </div>
 <script>

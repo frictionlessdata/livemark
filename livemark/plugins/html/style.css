@@ -95,14 +95,14 @@ p {
 
 @media only screen and (min-width: 768px) {
   #livemark-main {
-    margin-left: 250px;
+    margin-left: 300px;
     border-left: dashed 1px #ccc;
   }
 }
 
 @media only screen and (min-width: 992px) {
   #livemark-main {
-    margin-right: 250px;
+    margin-right: 300px;
     border-right: dashed 1px #ccc;
   }
 }
@@ -1091,10 +1091,10 @@ p {
 
 #livemark-left {
   display: none;
-  width: 200px;
   position: fixed;
-  padding: 10px;
-  left: 25px;
+  width: 300px;
+  padding: 10px 32px;
+  left: 0px;
   top: 25px;
   font-size: 125%;
   height: 100vh;
@@ -1123,10 +1123,10 @@ p {
 
 #livemark-right {
   display: none;
-  width: 200px;
   position: fixed;
-  padding: 10px;
-  right: 25px;
+  width: 300px;
+  padding: 10px 32px;
+  right: 0px;
   top: 25px;
   font-size: 125%;
   height: 100vh;
