@@ -1,48 +1,23 @@
-#livemark-brand .toc {
+#livemark-brand ul {
   opacity: 0.5;
-	overflow-y: auto;
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-brand .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-brand li {
+  list-style: none;
 }
 
-#livemark-brand .toc>.toc-list li {
-	list-style: none;
+#livemark-brand a {
+  color: currentColor;
 }
 
-#livemark-brand .toc-list {
-	margin: 0;
-	padding-left: 10px;
+#livemark-brand a.active {
+  font-weight: 700;
 }
 
-#livemark-brand a.toc-link {
-	color: currentColor;
-	height: 100%;
+#livemark-brand a:hover {
+  color: #0056b3;
 }
-
-#livemark-brand a.toc-link:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-#livemark-brand .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-brand .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-brand .is-active-link::before {
-	background-color: #54BC4B;
-}
-
