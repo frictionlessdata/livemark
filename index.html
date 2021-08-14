@@ -1349,52 +1349,25 @@ p {
 </style>
 <style>
 
-#livemark-links .toc {
+#livemark-links ul {
   opacity: 0.5;
-	overflow-y: auto;
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-links .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-links li {
+  list-style: none;
 }
 
-#livemark-links .toc>.toc-list li {
-	list-style: none;
+#livemark-links a {
+  color: currentColor;
 }
 
-#livemark-links .toc-list {
-	margin: 0;
-	padding-left: 10px;
-}
-
-#livemark-links a.toc-link {
-	color: currentColor;
-	height: 100%;
-}
-
-#livemark-links a.toc-link:hover {
-	color: orange;
-	text-decoration: underline;
-}
-
-#livemark-links .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-links .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-links .is-active-link::before {
-	background-color: #54BC4B;
+#livemark-links a:hover {
+  color: orange;
+  text-decoration: underline;
 }
 
 #livemark-links a[target="_blank"]:after {
@@ -1911,46 +1884,44 @@ pprint(brands.read_rows())
 </div>
 
 <div id="livemark-links">
-  <div class="toc">
-    <ol class="toc-list">
-            <li class="toc-link">
-        <a class="toc-link" href="https://frictionlessdata.io/" target="_blank">
-          Frictionless
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
-          Discord
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://twitter.com/frictionlessd8a" target="_blank">
-          Twitter
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/issues" target="_blank">
-          Report
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="" target="_blank" onclick="window.print();return false;">
-          Print
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/fork" target="_blank">
-          Fork
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link" href="https://github.com/frictionlessdata/livemark/edit/main/index.md" target="_blank">
-          Edit
-        </a>
-      </li>
-          </ol>
-  </div>
-</div>
+  <ul>
+        <li>
+      <a href="https://frictionlessdata.io/" target="_blank">
+        Frictionless
+      </a>
+    </li>
+        <li>
+      <a href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
+        Discord
+      </a>
+    </li>
+        <li>
+      <a href="https://twitter.com/frictionlessd8a" target="_blank">
+        Twitter
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/livemark/issues" target="_blank">
+        Report
+      </a>
+    </li>
+        <li>
+      <a href="" target="_blank" onclick="window.print();return false;">
+        Print
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/livemark/fork" target="_blank">
+        Fork
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/index.md" target="_blank">
+        Edit
+      </a>
+    </li>
+      
+</ul></div>
 </div>
 <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/popper.js@1.16.1/dist/popper.min.js"></script>
