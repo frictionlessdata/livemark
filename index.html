@@ -1194,56 +1194,28 @@ p {
 </style>
 <style>
 
-#livemark-pages .toc {
+#livemark-pages ul {
   opacity: 0.5;
-	overflow-y: auto;
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-pages .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-pages li {
+  list-style: none;
 }
 
-#livemark-pages .toc>.toc-list li {
-	list-style: none;
+#livemark-pages a {
+  color: currentColor;
 }
 
-#livemark-pages .toc-list {
-	margin: 0;
-	padding-left: 10px;
+#livemark-pages a.active {
+  font-weight: 700;
 }
 
-#livemark-pages a.toc-link {
-	color: currentColor;
-	height: 100%;
-}
-
-#livemark-pages a.toc-link:hover {
-	color: #0056b3;
-	text-decoration: underline;
-}
-
-#livemark-pages .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-pages .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-pages .is-active-link::before {
-	background-color: #54BC4B;
-}
-
-#livemark-pages a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
+#livemark-pages a:hover {
+  color: #0056b3;
 }
 
 </style>
@@ -1626,25 +1598,23 @@ p {
 </div>
 
 <div id="livemark-pages">
-  <div class="toc">
-    <ol class="toc-list">
-            <li class="toc-link">
-        <a class="toc-link is-active-link" href="/">
-          Introduction
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link " href="/docs/getting-started.html">
-          Getting Started
-        </a>
-      </li>
-            <li class="toc-link">
-        <a class="toc-link " href="/docs/configuration.html">
-          Configuration
-        </a>
-      </li>
-          </ol>
-  </div>
+  <ul>
+        <li>
+      <a class="active" href="/">
+        Introduction
+      </a>
+    </li>
+        <li>
+      <a class="" href="/docs/getting-started.html">
+        Getting Started
+      </a>
+    </li>
+        <li>
+      <a class="" href="/docs/configuration.html">
+        Configuration
+      </a>
+    </li>
+      </ul>
 </div>
 
 <div id="livemark-toc">

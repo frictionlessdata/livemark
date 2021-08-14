@@ -42,7 +42,6 @@ class SearchPlugin(Plugin):
         # Update markup
         markup.add_style("style.css")
         markup.add_script("https://unpkg.com/lunr@2.3.9/lunr.min.js")
-        markup.add_script("https://unpkg.com/jquery@3.6.0/dist/jquery.min.js")
         markup.add_script("https://unpkg.com/jquery-highlight@3.5.0/jquery.highlight.js")
         markup.add_script("https://unpkg.com/jquery.scrollto@2.1.3/jquery.scrollTo.js")
         markup.add_script("script.js", items=items)
