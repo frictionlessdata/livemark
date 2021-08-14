@@ -50,11 +50,14 @@ class Snippet:
         return type
 
     @cached_property
-    def mode(self):
-        mode = None
-        if len(self.__header) >= 3:
-            mode = self.__header[2]
-        return mode
+    def props(self):
+        props = {}
+        for item in self.__header[2:]:
+            parts = item.split("=")
+            name = parts[0]
+            value = parts[1] if len(parts) == 2 else True
+            props[name] = value
+        return props
 
     # Process
 
