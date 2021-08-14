@@ -28,6 +28,9 @@ class SearchPlugin(Plugin):
         if pages.config:
             items = []
             for item in pages.config["items"]:
+                # TODO: Support nested
+                if item.get("list"):
+                    continue
                 path = Path(item["path"][1:] or "index.html").with_suffix(".md")
                 document = Document(path)
                 document.read()

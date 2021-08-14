@@ -55,7 +55,7 @@ class HtmlPlugin(Plugin):
             markup.add_style(f"{prism_url}/themes/prism.css")
             markup.add_style("style.css")
             markup.add_script(f"{jquery_url}/dist/jquery.min.js")
-            markup.add_script(f"{popper_url}/dist/popper.min.js")
+            markup.add_script(f"{popper_url}/dist/umd/popper.min.js")
             markup.add_script(f"{bs_url}/dist/js/bootstrap.min.js")
             markup.add_script(f"{prism_url}/components/prism-core.min.js")
             markup.add_script(f"{prism_url}/plugins/autoloader/prism-autoloader.min.js")

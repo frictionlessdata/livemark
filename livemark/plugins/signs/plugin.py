@@ -18,6 +18,9 @@ class SignsPlugin(Plugin):
         if self.document.target != "index.html":
             current_path = f"/{self.document.target}"
         for number, link in enumerate(pages.config["items"], start=1):
+            # TODO: Support nested
+            if link.get("list"):
+                continue
             if link["path"] == current_path:
                 current_number = number
         if current_number > 1:

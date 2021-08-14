@@ -9,16 +9,35 @@
   margin: 0;
 }
 
+#livemark-pages ul.secondary {
+  margin-left: 20px;
+  display: none;
+}
+
+#livemark-pages a.primary.active + ul.secondary {
+  display: block;
+}
+
 #livemark-pages li {
   list-style: none;
 }
 
 #livemark-pages a {
+  display: inline-block;
   color: currentColor;
+  position: relative;
+  width: 100%;
 }
 
 #livemark-pages a.active {
   font-weight: 700;
+}
+
+#livemark-pages a.primary .fa {
+  font-size: 16px;
+  position: absolute;
+  right: 0px;
+  top: 8px;
 }
 
 #livemark-pages a:hover {

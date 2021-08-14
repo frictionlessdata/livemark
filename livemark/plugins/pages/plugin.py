@@ -35,6 +35,7 @@ class PagesPlugin(Plugin):
 
         # Update markup
         markup.add_style("style.css")
+        markup.add_script("script.js")
         markup.add_markup(
             "markup.html",
             target="#livemark-left",

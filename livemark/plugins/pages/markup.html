@@ -1,10 +1,30 @@
 <div id="livemark-pages">
-  <ul>
+  <ul class="primary">
     {% for item in items %}
-    <li>
-      <a class="{% if current == item.path %}active{% endif %}" href="{{ item.path }}">
+    <li class="primary">
+      <a
+        class="primary {% if current == item.path %}active{% endif %} {% if item.list %}group{% endif %}"
+        href="{{ item.path }}"
+      >
         {{ item.name }}
+        {% if item.list %}
+        <span class="fa fa-chevron-right"></span>
+        {% endif %}
       </a>
+      {% if item.list %}
+      <ul class="secondary">
+        {% for subitem in item.list %}
+        <li class="secondary">
+          <a
+            class="secondary {% if current == subitem.path %}active{% endif %}"
+            href="{{ subitem.path }}"
+          >
+            {{ subitem.name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>
