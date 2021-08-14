@@ -1219,11 +1219,37 @@ p {
 }
 
 </style>
-<link rel="stylesheet" href="https://unpkg.com/tocbot@4.12.3/dist/tocbot.css">
 <style>
 
 #livemark-toc .toc {
   opacity: 0.5;
+}
+
+#livemark-toc .toc>.toc-list {
+  overflow: hidden;
+  position: relative;
+}
+
+#livemark-toc .toc>.toc-list li {
+  list-style: none;
+}
+
+#livemark-toc .toc-list {
+  padding-left: 0;
+  margin: 0;
+}
+
+#livemark-toc a.toc-link {
+  color: currentColor;
+}
+
+#livemark-toc a.toc-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+#livemark-toc .is-active-link {
+  font-weight: 700;
 }
 
 </style>
@@ -1618,7 +1644,7 @@ p {
 </div>
 
 <div id="livemark-toc">
-  <div class="js-toc toc">
+  <div class="toc">
   </div>
 </div>
 </div>
@@ -1914,7 +1940,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   tocbot.init({
     // Where to render the table of contents.
-    tocSelector: ".js-toc",
+    tocSelector: ".toc",
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-main",
     // Which headings to grab inside of the contentSelector element.
