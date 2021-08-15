@@ -2,6 +2,8 @@ from copy import deepcopy
 from ...plugin import Plugin
 
 
+# TODO: improve two-level menus!
+# TODO: rebase sidebars on using background on hover instead of color
 class PagesPlugin(Plugin):
     priority = 80
     profile = {

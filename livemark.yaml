@@ -17,6 +17,7 @@ links:
     path: https://discord.com/channels/695635777199145130/695635777199145133
   - name: Twitter
     path: https://twitter.com/frictionlessd8a
+# TODO: should we allow index pages for nested items (unlike in Docosaurus)?
 # TODO: review paths format - md/html?
 # TODO: rebase from items to list
 # TODO: make sidebars wider?
@@ -27,7 +28,7 @@ pages:
   - name: Getting Started
     list:
       - name: Installation
-        path: /docs/getting-started.html
+        path: /docs/installation.html
       - name: Configuration
         path: /docs/configuration.html
   - name: Livemark Markdown

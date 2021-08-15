@@ -1,6 +1,8 @@
 from ...plugin import Plugin
 
 
+# TODO: limit selector levels?
+# TODO: support two-level menu items?
 class TopicsPlugin(Plugin):
     priority = 70
     profile = {

@@ -29,8 +29,12 @@
   width: 100%;
 }
 
-#livemark-pages li.active a {
+#livemark-pages li.active > a {
   font-weight: 700;
+}
+
+#livemark-pages li.group.active > a {
+  font-weight: normal;
 }
 
 #livemark-pages a.primary .fa {

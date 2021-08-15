@@ -1,8 +1,8 @@
 <div id="livemark-pages">
   <ul class="primary">
     {% for item in items %}
-    <li class="primary {% if item.active %}active{% endif %}">
-      <a href="{{ item.path }}" class="primary {% if item.list %}group{% endif %}">
+    <li class="primary {% if item.list %}group{% endif %} {% if item.active %}active{% endif %}">
+      <a href="{{ item.path }}" class="primary">
         {{ item.name }}
         {% if item.list %}
         <span class="fa fa-chevron-right"></span>
