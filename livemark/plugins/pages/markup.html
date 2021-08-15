@@ -1,13 +1,25 @@
 <div id="livemark-pages">
-  <div class="toc">
-    <ol class="toc-list">
-      {% for item in items %}
-      <li class="toc-link">
-        <a class="toc-link {% if current == item.path %}is-active-link{% endif %}" href="{{ item.path }}">
-          {{ item.name }}
-        </a>
-      </li>
-      {% endfor %}
-    </ol>
-  </div>
+  <ul class="primary">
+    {% for item in items %}
+    <li class="primary {% if item.list %}group{% endif %} {% if item.active %}active{% endif %}">
+      <a href="{{ item.path }}" class="primary">
+        {{ item.name }}
+        {% if item.list %}
+        <span class="fa fa-chevron-right"></span>
+        {% endif %}
+      </a>
+      {% if item.list %}
+      <ul class="secondary">
+        {% for subitem in item.list %}
+        <li class="secondary {% if subitem.active %}active{% endif %}">
+          <a href="{{ subitem.path }}" class="secondary">
+            {{ subitem.name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
 </div>

@@ -1,3 +1,4 @@
+from copy import deepcopy
 from ...plugin import Plugin
 
 
@@ -6,7 +7,7 @@ class LinksPlugin(Plugin):
     profile = {
         "type": "object",
         "properties": {
-            "items": {
+            "list": {
                 "type": "array",
                 "items": {
                     "type": "object",
@@ -20,27 +21,28 @@ class LinksPlugin(Plugin):
         },
     }
 
+    # Context
+
+    @Plugin.property
+    def items(self):
+        github = self.get_plugin("github")
+        items = deepcopy(self.config["list"])
+        if github.base_url:
+            items.append({"name": "Report", "path": github.report_url})
+            items.append({"name": "Fork", "path": github.fork_url})
+            items.append({"name": "Edit", "path": github.edit_url})
+        return items
+
+    # Process
+
     def process_config(self, config):
-        self.config.setdefault("items", self.config.pop("self", []))
+        self.config.setdefault("list", self.config.pop("self", []))
 
     def process_markup(self, markup):
-        github = self.get_plugin("github")
-        if not self.config:
-            return
-
-        # Prepare context
-        items = self.config["items"].copy()
-        if github.config:
-            items.append({"name": "Report", "path": github.config["report_url"]})
-        items.append({"name": "Print", "hook": "window.print();return false;"})
-        if github.config:
-            items.append({"name": "Fork", "path": github.config["fork_url"]})
-            items.append({"name": "Edit", "path": github.config["edit_url"]})
-
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            target="#livemark-right",
-            items=items,
-        )
+        if self.config:
+            markup.add_style("style.css")
+            markup.add_markup(
+                "markup.html",
+                target="#livemark-right",
+                items=self.items,
+            )

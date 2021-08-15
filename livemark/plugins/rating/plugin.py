@@ -10,22 +10,31 @@ class RatingPlugin(Plugin):
         },
     }
 
-    def process_markup(self, markup):
+    # Context
+
+    @Plugin.property
+    def type(self):
+        return self.config.get("type", "star")
+
+    @Plugin.property
+    def user(self):
         github = self.get_plugin("github")
-        if not self.config or not github.config:
-            return
+        return github.user
 
-        # Prepare context
-        type = self.config.get("type", "star")
-        user = github.config["user"]
-        repo = github.config["repo"]
+    @Plugin.property
+    def repo(self):
+        github = self.get_plugin("github")
+        return github.repo
 
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            target="#livemark-right",
-            user=user,
-            repo=repo,
-            type=type,
-        )
+    # Process
+
+    def process_markup(self, markup):
+        if self.config and self.user and self.repo:
+            markup.add_style("style.css")
+            markup.add_markup(
+                "markup.html",
+                target="#livemark-right",
+                user=self.user,
+                repo=self.repo,
+                type=self.type,
+            )

@@ -1,51 +1,49 @@
-#livemark-pages .toc {
-  opacity: 0.5;
-	overflow-y: auto;
+#livemark-pages {
+  color: #888;
 }
 
-#livemark-pages .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-pages ul {
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-pages .toc>.toc-list li {
-	list-style: none;
+#livemark-pages ul.secondary {
+  margin-left: 20px;
+  display: none;
 }
 
-#livemark-pages .toc-list {
-	margin: 0;
-	padding-left: 10px;
+#livemark-pages li.active ul.secondary {
+  display: block;
 }
 
-#livemark-pages a.toc-link {
-	color: currentColor;
-	height: 100%;
+#livemark-pages li {
+  list-style: none;
 }
 
-#livemark-pages a.toc-link:hover {
-	color: #0056b3;
-	text-decoration: underline;
+#livemark-pages a {
+  display: inline-block;
+  color: currentColor;
+  position: relative;
+  width: 100%;
 }
 
-#livemark-pages .is-active-link {
-	font-weight: 700;
+#livemark-pages li.active > a {
+  font-weight: 700;
 }
 
-#livemark-pages .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
+#livemark-pages li.group.active > a {
+  font-weight: normal;
 }
 
-#livemark-pages .is-active-link::before {
-	background-color: #54BC4B;
+#livemark-pages a.primary .fa {
+  font-size: 16px;
+  position: absolute;
+  right: 0px;
+  top: 8px;
 }
 
-#livemark-pages a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
+#livemark-pages a:hover {
+  color: #80b2e6;
 }

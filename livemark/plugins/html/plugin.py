@@ -15,44 +15,63 @@ class HtmlPlugin(Plugin):
         },
     }
 
+    # Context
+
+    @Plugin.property
+    def title(self):
+        return self.config.get("title", self.document.title)
+
+    @Plugin.property
+    def description(self):
+        return self.config.get("description", self.document.description)
+
+    @Plugin.property
+    def keywords(self):
+        return self.config.get("keywords", self.document.keywords)
+
+    # Process
+
     def process_document(self, document):
-        if document.format != "html":
-            return
+        if document.format == "html":
 
-        # Process content
-        markdown = marko.Markdown()
-        markdown.use(GFM)
-        markdown.use(HtmlExtension)
-        output = markdown.parse(document.content)
-        markdown.renderer.document = document
-        output = markdown.render(output)
-        output = output.strip()
+            # Process content
+            markdown = marko.Markdown()
+            markdown.use(GFM)
+            markdown.use(HtmlExtension)
+            output = markdown.parse(document.content)
+            markdown.renderer.document = document
+            output = markdown.render(output)
+            output = output.strip()
 
-        # Prepare context
-        title = self.config.get("title", document.title)
-        description = self.config.get("description", document.description)
-        keywords = self.config.get("keywords", document.keywords)
-
-        # Create markup
-        markup = Markup(
-            self.read_asset(
-                "markup.html",
-                title=title,
-                description=description,
-                keywords=keywords,
+            # Create markup
+            markup = Markup(
+                self.read_asset(
+                    "markup.html",
+                    title=self.title,
+                    description=self.description,
+                    keywords=self.keywords,
+                )
             )
-        )
 
-        # Process markup
-        with markup.bind(self):
-            prism_url = "https://unpkg.com/prismjs@1.23.0"
-            markup.add_style(f"{prism_url}/themes/prism.css")
-            markup.add_style("style.css")
-            markup.add_script(f"{prism_url}/components/prism-core.min.js")
-            markup.add_script(f"{prism_url}/plugins/autoloader/prism-autoloader.min.js")
-            markup.add_script("script.js")
-            markup.add_markup(output, target="#livemark-main")
-        markup.process(document)
+            # Process markup
+            with markup.bind(self):
+                bs_url = "https://unpkg.com/bootstrap@4.6.0"
+                fa_url = "https://unpkg.com/@fortawesome/fontawesome-free@5.15.4"
+                pm_url = "https://unpkg.com/prismjs@1.23.0"
+                jq_url = "https://unpkg.com/jquery@3.6.0"
+                pp_url = "https://unpkg.com/popper.js@1.16.1"
+                markup.add_style(f"{fa_url}/css/all.min.css")
+                markup.add_style(f"{bs_url}/dist/css/bootstrap.min.css")
+                markup.add_style(f"{pm_url}/themes/prism.css")
+                markup.add_style("style.css")
+                markup.add_script(f"{jq_url}/dist/jquery.min.js")
+                markup.add_script(f"{pp_url}/dist/umd/popper.min.js")
+                markup.add_script(f"{bs_url}/dist/js/bootstrap.min.js")
+                markup.add_script(f"{pm_url}/components/prism-core.min.js")
+                markup.add_script(f"{pm_url}/plugins/autoloader/prism-autoloader.min.js")
+                markup.add_script("script.js")
+                markup.add_markup(output, target="#livemark-main")
+            markup.process(document)
 
-        # Update document
-        document.output = "<!doctype html>\n" + markup.output
+            # Update document
+            document.output = "<!doctype html>\n" + markup.output

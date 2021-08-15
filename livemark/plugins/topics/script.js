@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   tocbot.init({
     // Where to render the table of contents.
-    tocSelector: ".js-toc",
+    tocSelector: ".toc",
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-main",
     // Which headings to grab inside of the contentSelector element.

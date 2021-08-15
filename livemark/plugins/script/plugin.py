@@ -4,8 +4,11 @@ from ...plugin import Plugin
 from ... import helpers
 
 
-# TODO: support snippet.mode = 'default' | 'input' | 'output'
+# TODO: support snippet.props['mode'] = 'input' | 'output'
 class ScriptPlugin(Plugin):
+
+    # Process
+
     def process_plugin(self):
         self.__store = []
 

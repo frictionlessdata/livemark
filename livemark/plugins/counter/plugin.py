@@ -11,18 +11,22 @@ class CounterPlugin(Plugin):
         },
     }
 
+    # Context
+
+    @Plugin.property
+    def type(self):
+        return self.config.get("type")
+
+    @Plugin.property
+    def code(self):
+        return self.config.get("code")
+
+    # Process
+
     def process_markup(self, markup):
-        if not self.config:
-            return
-
-        # Prepare context
-        type = self.config.get("type")
-        code = self.config.get("code")
-
-        # Update markup
-        if type == "google":
+        if self.config and self.type == "google":
             markup.add_markup(
                 "markup.html",
                 target="head",
-                code=code,
+                code=self.code,
             )

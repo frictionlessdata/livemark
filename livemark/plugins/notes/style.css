@@ -1,0 +1,26 @@
+#livemark-notes {
+  color: #aaa;
+  text-align: right;
+  font-size: 14px;
+  float: right;
+  visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  #livemark-notes {
+    visibility: visible;
+  }
+}
+
+#livemark-notes a {
+  color: inherit;
+}
+
+#livemark-notes a:hover {
+  color: #80b2e6;
+}
+
+/* TODO: fix alignment/source */
+#livemark-notes a[target="_blank"]:after {
+  content: url('https://i.imgur.com/2ubF3wR.png');
+}

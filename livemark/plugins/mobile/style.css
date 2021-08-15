@@ -1,6 +1,11 @@
 #livemark-mobile {
-  opacity: 0.3;
-  display: none;
+  position: absolute;
+  visibility: hidden;
+  z-index: 10000;
+  /* We can't use "right" because Mobile Chrome and #34 */
+  /* TODO: it doesn't align on mobile phones anyway - try to fix #34? */
+  left: calc(100vw - 56px);
+  top: 24px;
 }
 
 #livemark-mobile .stack {
@@ -16,18 +21,12 @@
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: #101010;
+  background-color: #aaa;
 }
 
 @media only screen and (max-width: 768px) {
   #livemark-mobile {
-    display: block;
-    position: absolute;
-    z-index: 10000;
-    /* We can't use "right" because Mobile Chrome and #34 */
-    /* TODO: it doesn't align on mobile phones anyway - try to fix #34? */
-    left: calc(100vw - 56px);
-    top: 24px;
+    visibility: visible;
   }
 
   #livemark-mobile.active {
@@ -57,7 +56,7 @@
       text-align: center;
       transition: 0.3s;
       box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-      display: block;
+      visibility: visible;
       z-index: 1000;
   }
 

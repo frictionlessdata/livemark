@@ -2,6 +2,7 @@ import os
 import inspect
 from jinja2 import Template
 from .exception import LivemarkException
+from .helpers import cached_property
 
 
 class Plugin:
@@ -16,6 +17,7 @@ class Plugin:
 
     """
 
+    property = cached_property
     priority = 0
     profile = {}
 

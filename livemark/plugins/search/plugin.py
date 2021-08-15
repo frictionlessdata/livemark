@@ -10,10 +10,12 @@ from ...plugin import Plugin
 
 
 class SearchPlugin(Plugin):
-    def process_markup(self, markup):
+
+    # Context
+
+    @Plugin.property
+    def items(self):
         pages = self.get_plugin("pages")
-        if not self.config:
-            return
 
         # Single page
         items = [
@@ -27,7 +29,7 @@ class SearchPlugin(Plugin):
         # Multiple pages
         if pages.config:
             items = []
-            for item in pages.config["items"]:
+            for item in pages.items_flatten:
                 path = Path(item["path"][1:] or "index.html").with_suffix(".md")
                 document = Document(path)
                 document.read()
@@ -39,14 +41,19 @@ class SearchPlugin(Plugin):
                     }
                 )
 
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_script("https://unpkg.com/lunr@2.3.9/lunr.min.js")
-        markup.add_script("https://unpkg.com/jquery@3.6.0/dist/jquery.min.js")
-        markup.add_script("https://unpkg.com/jquery-highlight@3.5.0/jquery.highlight.js")
-        markup.add_script("https://unpkg.com/jquery.scrollto@2.1.3/jquery.scrollTo.js")
-        markup.add_script("script.js", items=items)
-        markup.add_markup(
-            "markup.html",
-            target="body",
-        )
+        return items
+
+    # Process
+
+    def process_markup(self, markup):
+        if self.config:
+            url = "https://unpkg.com"
+            markup.add_style("style.css")
+            markup.add_script(f"{url}/lunr@2.3.9/lunr.min.js")
+            markup.add_script(f"{url}/jquery-highlight@3.5.0/jquery.highlight.js")
+            markup.add_script(f"{url}/jquery.scrollto@2.1.3/jquery.scrollTo.js")
+            markup.add_script("script.js", items=self.items)
+            markup.add_markup(
+                "markup.html",
+                target="body",
+            )

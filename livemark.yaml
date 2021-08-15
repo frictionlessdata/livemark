@@ -1,3 +1,4 @@
+# TODO: how to disable plugins?
 brand:
   text: Livemark
 about:
@@ -8,14 +9,7 @@ github:
 counter:
   type: google
   code: G-ZH2QL85N6F
-# TODO: review paths format - md/html?
-pages:
-  - name: Introduction
-    path: /
-  - name: Getting Started
-    path: /docs/getting-started.html
-  - name: Configuration
-    path: /docs/configuration.html
+# TODO: rebase from items to list (check where also to rebase)
 links:
   - name: Frictionless
     path: https://frictionlessdata.io/
@@ -23,4 +17,27 @@ links:
     path: https://discord.com/channels/695635777199145130/695635777199145133
   - name: Twitter
     path: https://twitter.com/frictionlessd8a
-# TODO: how to disable plugins?
+# TODO: should we allow index pages for nested items (unlike in Docosaurus)?
+# TODO: review paths format - md/html?
+# TODO: rebase from items to list
+# TODO: make sidebars wider?
+# TODO: fix 2 line items
+pages:
+  - name: Introduction
+    path: /
+  - name: Getting Started
+    list:
+      - name: Installation
+        path: /docs/installation.html
+      - name: Configuration
+        path: /docs/configuration.html
+  - name: Livemark Markdown
+    path: /docs/livemark-markdown.html
+  - name: Livemark Components
+    path: /docs/livemark-components.html
+  - name: Plugin System
+    path: /docs/plugin-system.html
+  - name: Universe
+    path: /docs/universe.html
+  - name: Blog
+    path: /docs/blog.html

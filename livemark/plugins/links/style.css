@@ -1,51 +1,27 @@
-#livemark-links .toc {
-  opacity: 0.5;
-	overflow-y: auto;
+#livemark-links {
+  color: #888;
 }
 
-#livemark-links .toc>.toc-list {
-	overflow: hidden;
-	position: relative;
+#livemark-links ul {
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
 }
 
-#livemark-links .toc>.toc-list li {
-	list-style: none;
+#livemark-links li {
+  list-style: none;
 }
 
-#livemark-links .toc-list {
-	margin: 0;
-	padding-left: 10px;
+#livemark-links a {
+  color: currentColor;
 }
 
-#livemark-links a.toc-link {
-	color: currentColor;
-	height: 100%;
+#livemark-links a:hover {
+  color: #80b2e6;
 }
 
-#livemark-links a.toc-link:hover {
-	color: orange;
-	text-decoration: underline;
-}
-
-#livemark-links .is-active-link {
-	font-weight: 700;
-}
-
-#livemark-links .toc-link::before {
-	background-color: #EEE;
-	content: ' ';
-	display: inline-block;
-	height: inherit;
-	left: 0;
-	margin-top: -1px;
-	position: absolute;
-	width: 2px;
-}
-
-#livemark-links .is-active-link::before {
-	background-color: #54BC4B;
-}
-
+/* TODO: fix alignment/source */
 #livemark-links a[target="_blank"]:after {
   content: url('https://i.imgur.com/2ubF3wR.png');
 }
