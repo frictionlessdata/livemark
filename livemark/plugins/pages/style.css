@@ -14,7 +14,7 @@
   display: none;
 }
 
-#livemark-pages a.primary.active + ul.secondary {
+#livemark-pages li.active ul.secondary {
   display: block;
 }
 
@@ -29,7 +29,7 @@
   width: 100%;
 }
 
-#livemark-pages a.active {
+#livemark-pages li.active a {
   font-weight: 700;
 }
 

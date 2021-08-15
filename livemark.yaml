@@ -19,6 +19,8 @@ links:
     path: https://twitter.com/frictionlessd8a
 # TODO: review paths format - md/html?
 # TODO: rebase from items to list
+# TODO: make sidebars wider?
+# TODO: fix 2 line items
 pages:
   - name: Introduction
     path: /
@@ -28,3 +30,13 @@ pages:
         path: /docs/getting-started.html
       - name: Configuration
         path: /docs/configuration.html
+  - name: Livemark Markdown
+    path: /docs/livemark-markdown.html
+  - name: Livemark Components
+    path: /docs/livemark-components.html
+  - name: Plugin System
+    path: /docs/plugin-system.html
+  - name: Universe
+    path: /docs/universe.html
+  - name: Blog
+    path: /docs/blog.html

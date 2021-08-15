@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.">
-<meta name="keywords" content="livemark">
-<title>Livemark</title>
+<meta name="description" content="None">
+<meta name="keywords" content="livemark,markdown">
+<title>Livemark Markdown</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1614,7 +1614,7 @@ p {
 
 <div id="livemark-pages">
   <ul class="primary">
-        <li class="primary active">
+        <li class="primary ">
       <a href="/" class="primary ">
         Introduction
               </a>
@@ -1637,7 +1637,7 @@ p {
         </li>
               </ul>
           </li>
-        <li class="primary ">
+        <li class="primary active">
       <a href="/docs/livemark-markdown.html" class="primary ">
         Livemark Markdown
               </a>
@@ -1673,193 +1673,23 @@ p {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-07 19:04)
+  (2021-08-15 10:22)
 </div>
 
-<h1>Livemark</h1>
-<p><a href="https://github.com/frictionlessdata/livemark/actions"><img src="https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main" alt="Build"></a>
-<a href="https://codecov.io/gh/frictionlessdata/livemark"><img src="https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main" alt="Coverage"></a>
-<a href="https://pypi.python.org/pypi/livemark"><img src="https://img.shields.io/pypi/v/livemark.svg" alt="Registry"></a>
-<a href="https://github.com/frictionlessdata/livemark"><img src="https://img.shields.io/badge/codebase-github-brightgreen" alt="Codebase"></a>
-<a href="https://discord.com/channels/695635777199145130/695635777199145133"><img src="https://img.shields.io/badge/support-discord-brightgreen" alt="Support"></a></p>
+<h1>Livemark Markdown</h1>
 <blockquote>
-<p>This document is completely <a href="https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md">written and published</a> in Livemark notation</p>
+<p>This page will be here shortly!</p>
 </blockquote>
-<p>Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.</p>
-<h2>Logic</h2>
-<blockquote>
-<p><a href="https://jinja.palletsprojects.com/en/3.0.x/templates/">https://jinja.palletsprojects.com/en/3.0.x/templates/</a></p>
-</blockquote>
-<p>Livemark process your document using the Jinja templating language. Inside templates, you can use <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> as a <code>frictionless</code> variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:</p>
-<pre><code>{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
-- {{ car.brand }} {{ car.model }}: ${{ car.price }}
-{% endfor %}
-</code></pre>
-<ul>
-<li>Volkswagen Vento: $785</li>
-<li>Hyundai Verna: $774</li>
-<li>Skoda Rapid: $756</li>
-<li>Suzuki Ciaz: $725</li>
-<li>Renault Scala: $724</li>
-</ul>
-<h2>Table</h2>
-<blockquote>
-<p><a href="https://handsontable.com/docs/9.0.0/tutorial-introduction.html">https://handsontable.com/docs/9.0.0/tutorial-introduction.html</a></p>
-</blockquote>
-<p>Livemark supports CSV table rendering using Handsontable, which you can see in the example below (replace the single quotes with back ticks). The <code>data</code> property will be read by <a href="https://framework.frictionlessdata.io/">Frictionless Framework</a> so in addition to Handsontable options you can pass a <a href="https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv">file path</a> or a resource descriptor in a Frictionless format:</p>
-<pre><code class="language-yaml">'''yaml table
-data: data/cars.csv
-maxRows: 10
-filters: true
-dropdownMenu: true
-columnSorting:
-  initialConfig:
-    column: 2
-    sortOrder: desc
-width: 600
-'''
-</code></pre>
-<div>
-  <div id="livemark-table-1">
-  </div>
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-  const spec = JSON.parse('{"data": [["Volkswagen", "Vento", 785, "16.1", 104, "Sedan"], ["Hyundai", "Verna", 774, "17.4", 106, "Sedan"], ["Skoda", "Rapid", 756, "15.0", 104, "Sedan"], ["Suzuki", "Ciaz", 725, "20.7", 91, "Sedan"], ["Renault", "Scala", 724, "16.9", 98, "Sedan"], ["Suzuki", "SX4", 715, "16.5", 103, "Sedan"], ["Fiat", "Linea", 700, "15.7", 112, "Sedan"], ["Nissan", "Sunny", 699, "16.9", 98, "Sedan"], ["Fiat", "Linea Classic", 612, "14.9", 89, "Sedan"], ["Toyota", "Etios", 603, "16.8", 89, "Sedan"], ["San", "Storm", 595, "16.0", 59, "Sedan"], ["Chevrolet", "Sail", 551, "18.2", 82, "Sedan"], ["Volkswagen", "Polo", 535, "16.5", 74, "Hatchback"], ["Hyundai", "i20", 523, "18.6", 82, "Hatchback"], ["Honda", "Amaze", 519, "18.0", 87, "Sedan"], ["Suzuki", "Swift DZire", 508, "19.1", 86, "Sedan"], ["Ford", "Classic", 506, "14.1", 100, "Sedan"], ["Skoda", "Fabia", 503, "16.4", 75, "Hatchback"], ["Toyota", "Etios Liva", 500, "17.7", 79, "Hatchback"], ["Fiat", "Punto Evo", 499, "15.8", 67, "Hatchback"], ["Tata", "Indigo", 499, "14.0", 65, "Sedan"], ["Hyundai", "Xcent", 496, "19.1", 82, "Sedan"], ["Tata", "Zest", 481, "17.6", 89, "Sedan"], ["Chevrolet", "Sail Hatchback", 468, "18.2", 82, "Hatchback"], ["Suzuki", "Swift", 462, "20.4", 83, "Hatchback"], ["Renault", "Pulse", 446, "18.0", 74, "Hatchback"], ["Suzuki", "Ritz", 442, "18.5", 86, "Hatchback"], ["Chevrolet", "Beat", 421, "18.6", 79, "Hatchback"], ["Honda", "Brio", 421, "19.4", 87, "Hatchback"], ["Hyundai", "i10", 418, "19.8", 68, "Hatchback"], ["Ford", "Figo", 414, "15.3", 70, "Hatchback"], ["Nissan", "Micra", 413, "19.5", 67, "Hatchback"], ["Suzuki", "Celerio", 392, "23.1", 67, "Hatchback"], ["Suzuki", "Wagon-R", 363, "20.5", 67, "Hatchback"], ["Volkswagen", "Up", 360, "21.0", 74, "Hatchback"], ["Chevrolet", "Spark", 345, "16.2", 62, "Hatchback"], ["Suzuki", "Estilo", 338, "19.0", 67, "Hatchback"], ["Suzuki", "Alto", 315, "24.1", 67, "Hatchback"], ["Nissan", "Datsun GO", 312, "20.6", 67, "Hatchback"], ["Hyundai", "EON", 302, "21.1", 55, "Hatchback"], ["Suzuki", "Alto 800", 248, "22.7", 47, "Hatchback"], ["Tata", "Nano", 199, "23.9", 38, "Hatchback"]], "maxRows": 10, "filters": true, "dropdownMenu": true, "columnSorting": {"initialConfig": {"column": 2, "sortOrder": "desc"}}, "width": 600, "licenseKey": "non-commercial-and-evaluation", "colHeaders": ["brand", "model", "price", "kmpl", "bhp", "type"]}')
-  const elem = document.getElementById('livemark-table-1')
-  new Handsontable(elem, spec)
-});
-</script>
-<h2>Chart</h2>
-<blockquote>
-<p><a href="https://vega.github.io/vega-lite/">https://vega.github.io/vega-lite/</a></p>
-</blockquote>
-<p>Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks):</p>
-<pre><code class="language-yaml">'''yaml chart
-data:
-  url: data/cars.csv
-mark: circle
-selection:
-  brush:
-    type: interval
-# other options are omitted
-width: 500
-height: 300
-'''
-</code></pre>
-<div style="overflow-x: auto">
-  <div id="livemark-chart-1">
-  </div>
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-  const spec = JSON.parse('{"data": {"url": "data/cars.csv"}, "mark": "circle", "selection": {"brush": {"type": "interval"}}, "encoding": {"x": {"type": "quantitative", "field": "kmpl", "scale": {"domain": [12, 25]}}, "y": {"type": "quantitative", "field": "price", "scale": {"domain": [100, 900]}}, "color": {"condition": {"selection": "brush", "field": "type", "type": "nominal"}, "value": "grey"}, "size": {"type": "quantitative", "field": "bhp"}}, "width": 500, "height": 300}')
-  const elem = '#livemark-chart-1'
-  vegaEmbed(elem, spec)
-})
-</script>
-<h2>Script</h2>
-<blockquote>
-<p><a href="https://www.python.org/">https://www.python.org/</a></p>
-</blockquote>
-<p>Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts:</p>
-<pre><code class="language-python">from pprint import pprint
-from frictionless import Resource, transform, steps
-
-brands = transform(
-    Resource("data/cars.csv"),
-    steps=[
-        steps.table_normalize(),
-        steps.table_aggregate(group_name="brand", aggregation={"price": ("price", max)}),
-        steps.row_sort(field_names=["price"], reverse=True),
-        steps.row_slice(head=5),
-    ],
-)
-pprint(brands.read_rows())
-</code></pre>
-
-<pre><code class="language-markup">[{'brand': 'Volkswagen', 'price': 785},
- {'brand': 'Hyundai', 'price': 774},
- {'brand': 'Skoda', 'price': 756},
- {'brand': 'Suzuki', 'price': 725},
- {'brand': 'Renault', 'price': 724}]</code></pre>
-<h2>Markup</h2>
-<blockquote>
-<p><a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/">https://getbootstrap.com/docs/5.0/getting-started/introduction/</a></p>
-</blockquote>
-<p>With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a <code>markdown</code> class we can use markdown inside html):</p>
-<pre><code class="language-html">'''html markup
-&lt;div class="w-50"&gt;
-&lt;div class="container"&gt;
-&lt;div class="row"&gt;
-&lt;div class="col-sm"&gt;
-  &lt;div class="markdown"&gt;![Package](data/data-package.png)&lt;/div&gt;
-  &lt;div class="text-center"&gt;
-  &lt;p&gt;&lt;strong&gt;Data Package&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;A simple container format for describing a coherent collection of data in a single package.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- other columns are omitted --&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-'''
-</code></pre>
-<div style="max-width: 600px">
-<div class="container">
-<div class="row">
-<div class="col-sm">
-  <div class="markdown"><p><img src="data/data-package.png" alt="Package"></p>
-</div>
-  <div class="text-center">
-  <p><strong>Data Package</strong></p>
-  <p>A simple container format for describing a coherent collection of data in a single package.</p>
-  </div>
-</div>
-<div class="col-sm">
-  <div class="markdown"><p><img src="data/data-resource.png" alt="Resource"></p>
-</div>
-  <div class="text-center">
-  <p><strong>Data Resource</strong></p>
-  <p>A simple format to describe and package a single data resource such as a individual table or file.</p>
-  </div>
-</div>
-<div class="col-sm">
-  <div class="markdown"><p><img src="data/table-schema.png" alt="Schema"></p>
-</div>
-  <div class="text-center">
-  <p><strong>Table Schema</strong></p>
-  <p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
-  </div>
-</div>
-</div>
-</div>
-</div>
-<h2>Content</h2>
-<blockquote>
-<p><a href="https://guides.github.com/features/mastering-markdown/">https://guides.github.com/features/mastering-markdown/</a></p>
-</blockquote>
-<p>Livemark supports Github Flavoured Markdown so you can use familiar notation:</p>
-<p><img src="data/content.png" alt="Sidebar"></p>
-<h2>Sidebar</h2>
-<blockquote>
-<p><a href="https://tscanlin.github.io/tocbot/">https://tscanlin.github.io/tocbot/</a></p>
-</blockquote>
-<p>Livemark provides an automatically generated table of contents:</p>
-<p><img src="data/sidebar.png" alt="Sidebar"></p>
-<h2>Scroll</h2>
-<blockquote>
-<p><a href="https://azrsix.github.io/ue-scroll-js/">https://azrsix.github.io/ue-scroll-js/</a></p>
-</blockquote>
-<p>Livemark provides a scroll-to-top button when you scroll down your document:</p>
-<p><img src="data/scroll.png" alt="Scroll"></p>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="/docs/getting-started.html">Installation »</a>
+      <a href="/docs/livemark-components.html">Livemark Components »</a>
     </div>
-          </div>
+            <div class="prev">
+      <a href="/docs/configuration.html">« Configuration</a>
+    </div>
+      </div>
 </div>
 </div>
 <div id="livemark-right">
@@ -1903,7 +1733,7 @@ pprint(brands.read_rows())
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/index.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/docs/livemark-markdown.md" target="_blank">
         Edit
       </a>
     </li>
