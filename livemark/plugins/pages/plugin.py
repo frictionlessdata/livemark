@@ -1,3 +1,4 @@
+from copy import deepcopy
 from ...plugin import Plugin
 
 
@@ -10,9 +11,11 @@ class PagesPlugin(Plugin):
                 "type": "array",
                 "items": {
                     "type": "object",
+                    "required": ["name"],
                     "properties": {
                         "name": {"type": "string"},
                         "path": {"type": "string"},
+                        "list": {"type": "array"},
                     },
                 },
             },
@@ -30,18 +33,29 @@ class PagesPlugin(Plugin):
 
     @Plugin.property
     def items(self):
-        return self.config["list"]
+        items = deepcopy(self.config["list"])
+        for item in items:
+            item["active"] = False
+            subitems = item.get("list", [])
+            for subitem in subitems:
+                subitem["active"] = False
+                if subitem["path"] == self.current:
+                    item["active"] = True
+                    subitem["active"] = True
+            if not subitems:
+                if item["path"] == self.current:
+                    item["active"] = True
+        return items
 
     @Plugin.property
     def items_flatten(self):
         items = []
         for item in self.items:
             subitems = item.get("list", [])
-            if not subitems:
-                items.append(item)
-                continue
             for subitem in subitems:
                 items.append(subitem)
+            if not subitems:
+                items.append(item)
         return items
 
     # Process
@@ -57,6 +71,5 @@ class PagesPlugin(Plugin):
             markup.add_markup(
                 "markup.html",
                 target="#livemark-left",
-                current=self.current,
                 items=self.items,
             )

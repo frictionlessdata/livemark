@@ -1,3 +1,4 @@
+from copy import deepcopy
 from ...plugin import Plugin
 
 
@@ -25,7 +26,7 @@ class LinksPlugin(Plugin):
     @Plugin.property
     def items(self):
         github = self.get_plugin("github")
-        items = self.config["list"].copy()
+        items = deepcopy(self.config["list"])
         if github.base_url:
             items.append({"name": "Report", "path": github.report_url})
             items.append({"name": "Fork", "path": github.fork_url})

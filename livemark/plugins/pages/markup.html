@@ -4,7 +4,7 @@
     <li class="primary">
       <a
         href="{{ item.path }}"
-        class="primary {% if current == item.path %}active{% endif %} {% if item.list %}group{% endif %}"
+        class="primary {% if item.active %}active{% endif %} {% if item.list %}group{% endif %}"
       >
         {{ item.name }}
         {% if item.list %}
@@ -17,7 +17,7 @@
         <li class="secondary">
           <a
             href="{{ subitem.path }}"
-            class="secondary {% if current == subitem.path %}active{% endif %}"
+            class="secondary {% if subitem.active %}active{% endif %}"
           >
             {{ subitem.name }}
           </a>
