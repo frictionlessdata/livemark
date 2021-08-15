@@ -10,6 +10,8 @@ class DisplayPlugin(Plugin):
         },
     }
 
+    # Context
+
     @Plugin.property
     def speed(self):
         return self.config.get("speed", 10)
@@ -17,14 +19,12 @@ class DisplayPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if not self.config:
-            return
-
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_script("https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js")
-        markup.add_script("script.js", speed=self.speed)
-        markup.add_markup(
-            "markup.html",
-            target="body",
-        )
+        if self.config:
+            url = "https://unpkg.com"
+            markup.add_style("style.css")
+            markup.add_script(f"{url}/ue-scroll-js@2.0.2/dist/ue-scroll.min.js")
+            markup.add_script("script.js", speed=self.speed)
+            markup.add_markup(
+                "markup.html",
+                target="body",
+            )

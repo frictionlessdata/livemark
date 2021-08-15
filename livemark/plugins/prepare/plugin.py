@@ -18,9 +18,6 @@ class PreparePlugin(Plugin):
         self.config.setdefault("commands", self.config.pop("self", []))
 
     def process_document(self, document):
-        if not self.config:
-            return
-
-        # Prepare document
-        for code in self.config["commands"]:
-            subprocess.run(code, shell=True)
+        if self.config:
+            for code in self.config["commands"]:
+                subprocess.run(code, shell=True)

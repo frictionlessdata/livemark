@@ -10,6 +10,8 @@ class BrandPlugin(Plugin):
         },
     }
 
+    # Context
+
     @Plugin.property
     def text(self):
         return self.config.get("text", self.document.title)
@@ -17,13 +19,10 @@ class BrandPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if not self.config:
-            return
-
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            target="#livemark-left",
-            text=self.text,
-        )
+        if self.config:
+            markup.add_style("style.css")
+            markup.add_markup(
+                "markup.html",
+                target="#livemark-left",
+                text=self.text,
+            )

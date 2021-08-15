@@ -20,6 +20,8 @@ class LinksPlugin(Plugin):
         },
     }
 
+    # Context
+
     @Plugin.property
     def items(self):
         github = self.get_plugin("github")
@@ -36,13 +38,10 @@ class LinksPlugin(Plugin):
         self.config.setdefault("list", self.config.pop("self", []))
 
     def process_markup(self, markup):
-        if not self.config:
-            return
-
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            target="#livemark-right",
-            items=self.items,
-        )
+        if self.config:
+            markup.add_style("style.css")
+            markup.add_markup(
+                "markup.html",
+                target="#livemark-right",
+                items=self.items,
+            )

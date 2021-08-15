@@ -13,6 +13,8 @@ class GithubPlugin(Plugin):
         },
     }
 
+    # Context
+
     @Plugin.property
     def user(self):
         return self.config.get("user")
@@ -44,8 +46,6 @@ class GithubPlugin(Plugin):
     # Process
 
     def process_config(self, config):
-
-        # Infer github
         if not self.config:
             try:
                 repo = Repo()

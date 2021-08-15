@@ -12,6 +12,8 @@ class NotesPlugin(Plugin):
         },
     }
 
+    # Context
+
     @Plugin.property
     def format(self):
         return self.config.get("format", "%Y-%m-%d %H:%M")
@@ -23,15 +25,12 @@ class NotesPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if not self.config:
-            return
-
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            action="prepend",
-            target="#livemark-main",
-            format=self.format,
-            current=self.current,
-        )
+        if self.config:
+            markup.add_style("style.css")
+            markup.add_markup(
+                "markup.html",
+                action="prepend",
+                target="#livemark-main",
+                format=self.format,
+                current=self.current,
+            )

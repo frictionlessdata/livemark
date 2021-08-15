@@ -19,9 +19,7 @@ class PagesPlugin(Plugin):
         },
     }
 
-    @Plugin.property
-    def items(self):
-        return self.config["list"]
+    # Context
 
     @Plugin.property
     def current(self):
@@ -30,6 +28,22 @@ class PagesPlugin(Plugin):
             current = f"/{self.document.target}"
         return current
 
+    @Plugin.property
+    def items(self):
+        return self.config["list"]
+
+    @Plugin.property
+    def items_flatten(self):
+        items = []
+        for item in self.items:
+            subitems = item.get("list", [])
+            if not subitems:
+                items.append(item)
+                continue
+            for subitem in subitems:
+                items.append(subitem)
+        return items
+
     # Process
 
     def process_config(self, config):
@@ -37,15 +51,12 @@ class PagesPlugin(Plugin):
             self.config.setdefault("list", self.config.pop("self", []))
 
     def process_markup(self, markup):
-        if not self.config:
-            return
-
-        # Update markup
-        markup.add_style("style.css")
-        markup.add_script("script.js")
-        markup.add_markup(
-            "markup.html",
-            target="#livemark-left",
-            current=self.current,
-            items=self.items,
-        )
+        if self.config:
+            markup.add_style("style.css")
+            markup.add_script("script.js")
+            markup.add_markup(
+                "markup.html",
+                target="#livemark-left",
+                current=self.current,
+                items=self.items,
+            )
