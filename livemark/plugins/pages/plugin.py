@@ -3,6 +3,7 @@ from ...plugin import Plugin
 
 
 # TODO: improve two-level menus!
+# TODO: fix tow-level menus on mobile!
 # TODO: rebase sidebars on using background on hover instead of color
 class PagesPlugin(Plugin):
     priority = 80
