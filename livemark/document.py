@@ -201,3 +201,11 @@ class Document:
         # Save
         helpers.write_file(self.__target, self.__output)
         return self.__output
+
+    # Helpers
+
+    def get_plugin(self, name):
+        for plugin in self.plugins:
+            if plugin.name == name:
+                return plugin
+        raise LivemarkException(f"There is not plugin: {name}")

@@ -32,13 +32,14 @@ class Server:
         # TODO: move to document (pages/subdocuments)?
         self.__document.read()
         documents = [self.__document]
-        if self.__document.format == "html" and self.__document.config["pages"]:
-            for page in self.__document.config["pages"]["items"]:
-                page_target = page["path"][1:] or "index.html"
-                page_source = str(Path(page_target).with_suffix(".md"))
-                if page_source != self.__document.source:
-                    page_document = Document(page_source, config=self.__config)
-                    documents.append(page_document)
+        pages = self.__document.get_plugin("pages")
+        if self.__document.format == "html" and pages.config:
+            for item in pages.items_flatten:
+                item_target = item["path"][1:] or "index.html"
+                item_source = str(Path(item_target).with_suffix(".md"))
+                if item_source != self.__document.source:
+                    item_document = Document(item_source, config=self.__config)
+                    documents.append(item_document)
 
         # Build initially
         for document in documents:
