@@ -20,7 +20,18 @@
   color: #80b2e6;
 }
 
-/* TODO: fix alignment/source */
 #livemark-notes a[target="_blank"]:after {
-  content: url('https://i.imgur.com/2ubF3wR.png');
+  content: "\f35d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  vertical-align: text-top;
+  text-decoration: none;
+  display: inline-block;
+  color: #aaa;
+  font-size: 10px;
+  margin-left: -1px;
+}
+
+#livemark-notes a[target="_blank"]:hover:after {
+  color: #80b2e6;
 }
