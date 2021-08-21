@@ -2,7 +2,6 @@ import subprocess
 from ...plugin import Plugin
 
 
-# TODO: renamed to hooks?
 class PreparePlugin(Plugin):
     priority = 110
     profile = {

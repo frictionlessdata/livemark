@@ -22,7 +22,6 @@ def program_start(
     try:
 
         # Create source
-        # TODO: create a markdown document draft?
         if not os.path.exists(source):
             helpers.write_file(source)
 

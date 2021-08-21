@@ -31,7 +31,6 @@ class SignsPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        # TODO: add property like self.enabled (for all plugins)?
         if self.config and self.paths:
             markup.add_style("style.css")
             markup.add_markup(

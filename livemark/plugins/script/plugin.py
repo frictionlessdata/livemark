@@ -4,7 +4,6 @@ from ...plugin import Plugin
 from ... import helpers
 
 
-# TODO: support snippet.props['mode'] = 'input' | 'output'
 class ScriptPlugin(Plugin):
 
     # Process
