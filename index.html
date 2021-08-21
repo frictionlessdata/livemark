@@ -1312,7 +1312,7 @@ p {
   vertical-align: text-top;
   text-decoration: none;
   display: inline-block;
-  color: #aaa;
+  color: #ccc;
   font-size: 10px;
   margin-left: -1px;
 }
@@ -2098,8 +2098,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const prepare = () => {
     const searchParams = new URLSearchParams(window.location.search);
-    // TODO: sync search parameter name (q) with cards/modal plugin
-    const query = searchParams.get('q') || ''
+    const query = searchParams.get('query') || ''
     if (query.length >= 3) {
       searchInput.value = query
     }
@@ -2113,14 +2112,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (query.length < 3) return
     const results = searchIndex.search(query)
     if (!results.length) return
-    searchParams.set('q', query)
+    searchParams.set('query', query)
     const newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
     history.pushState(null, '', newRelativePathQuery);
     const elements = []
     for (const result of results) {
       const item = searchItems[result.ref]
       const cls = window.location.pathname === item.link ? 'class="active"' : ''
-      elements.push(`<li ${cls}><a href="${item.link}?q=${query}">${item.name}</a></li>`)
+      elements.push(`<li ${cls}><a href="${item.link}?query=${query}">${item.name}</a></li>`)
     }
     searchOutput.innerHTML = `<ul>\n${elements.join('\n')}\n</ul>`
     searchOutput.style.visibility = 'visible'
