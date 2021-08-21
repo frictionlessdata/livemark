@@ -1,6 +1,7 @@
 import sys
 import typer
 from ..server import Server
+from ..project import Project
 from ..document import Document
 from .main import program
 from . import common
@@ -24,12 +25,15 @@ def program_build(
 
         # TODO: Build with no source should build all the documents?
 
+        # Create project
+        project = Project(config=config)
+
         # Create document
         document = Document(
             source,
             target=target,
             format=format,
-            config=config,
+            project=project,
         )
 
         # Normal mode

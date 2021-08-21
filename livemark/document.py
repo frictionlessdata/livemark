@@ -1,13 +1,13 @@
-import os
 import re
 import yaml
 import difflib
 import deepmerge
-import jsonschema
 from pathlib import Path
+from copy import deepcopy
 from frictionless import File
 from .exception import LivemarkException
 from .helpers import cached_property
+from .config import Config
 from .system import system
 from . import settings
 from . import helpers
@@ -24,11 +24,11 @@ class Document:
         source (str): path to the document source
         target? (str): path to the document target
         format? (str): format of the document target
-        config? (str|dict): path to a config file or a config dict
+        project? (Project): a project object of the document
 
     """
 
-    def __init__(self, source, *, target=None, format=None, config=None):
+    def __init__(self, source, *, target=None, format=None, project=None):
 
         # Create plugins
         plugins = []
@@ -45,19 +45,13 @@ class Document:
             file = File(target)
             format = file.format
 
-        # Normalize config
-        config = config or {}
-        if not isinstance(config, dict):
-            if os.path.isfile(config):
-                with open(config) as file:
-                    config = yaml.safe_load(file)
-
         # Set attributes
         self.__plugins = plugins
         self.__source = source
         self.__target = target
         self.__format = format
-        self.__config = config
+        self.__project = project
+        self.__config = None
         self.__preface = None
         self.__content = None
         self.__input = None
@@ -77,8 +71,11 @@ class Document:
 
     @cached_property
     def format(self):
-        file = File(self.target)
-        return file.format
+        return self.__format
+
+    @cached_property
+    def project(self):
+        return self.__project
 
     @property
     def input(self):
@@ -151,25 +148,18 @@ class Document:
             self.__preface = parts[0].strip()
             self.__content = parts[1].strip()
 
-        # Read/process config
+        # Read config
+        self.__config = {}
+        if self.__project:
+            self.__config = deepcopy(self.__project.config)
         if self.__preface:
-            deepmerge.always_merger.merge(self.__config, yaml.safe_load(self.__preface))
-        for plugin in self.__plugins:
-            self.__config.setdefault(plugin.name, {})
-            if not isinstance(self.__config[plugin.name], dict):
-                self.__config[plugin.name] = {"self": self.__config[plugin.name]}
-        for plugin in self.__plugins:
-            plugin.process_config(self.__config)
-            if self.__config[plugin.name] and plugin.profile:
-                validator = jsonschema.Draft7Validator(plugin.profile)
-                for error in validator.iter_errors(self.__config[plugin.name]):
-                    message = f'Invalid "{plugin.name}" config: {error.message}'
-                    raise LivemarkException(message)
+            config = Config(yaml.safe_load(self.__preface))
+            deepmerge.always_merger.merge(self.__config, config)
 
     # Process
 
     def process(self):
-        if self.__input is None:
+        if self.__content is None:
             raise LivemarkException("Read document before processing")
         for plugin in self.__plugins:
             plugin.process_document(self)

@@ -6,6 +6,7 @@ from .exception import LivemarkException
 from .plugin import Plugin
 
 
+# TODO: ensure there are no plugins with the same name (override)
 class System:
     """System representation
 

@@ -29,8 +29,8 @@ class SearchPlugin(Plugin):
         # Multiple pages
         if pages.config:
             items = []
-            for item in pages.items_flatten:
-                path = Path(item["path"][1:] or "index.html").with_suffix(".md")
+            for item in pages.flatten_items:
+                path = str(Path(item["path"][1:] or "index.html").with_suffix(".md"))
                 document = Document(path)
                 document.read()
                 items.append(

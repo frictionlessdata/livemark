@@ -22,7 +22,6 @@ class Plugin:
 
     def __init__(self, document):
         self.__document = document
-        self.process_plugin()
 
     @property
     def name(self):
@@ -34,14 +33,12 @@ class Plugin:
 
     @property
     def config(self):
-        return self.__document.config[self.name]
+        return self.__document.config.get(self.name, {})
 
     # Actions
 
-    def process_plugin(self):
-        pass
-
-    def process_config(self, config):
+    @classmethod
+    def process_project(cls, project):
         pass
 
     def process_document(self, document):

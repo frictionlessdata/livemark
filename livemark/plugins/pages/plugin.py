@@ -1,5 +1,7 @@
+from pathlib import Path
 from copy import deepcopy
 from ...plugin import Plugin
+from ...document import Document
 
 
 # TODO: improve two-level menus!
@@ -13,7 +15,7 @@ class PagesPlugin(Plugin):
     profile = {
         "type": "object",
         "properties": {
-            "list": {
+            "items": {
                 "type": "array",
                 "items": {
                     "type": "object",
@@ -21,7 +23,7 @@ class PagesPlugin(Plugin):
                     "properties": {
                         "name": {"type": "string"},
                         "path": {"type": "string"},
-                        "list": {"type": "array"},
+                        "items": {"type": "array"},
                     },
                 },
             },
@@ -39,10 +41,10 @@ class PagesPlugin(Plugin):
 
     @Plugin.property
     def items(self):
-        items = deepcopy(self.config["list"])
+        items = deepcopy(self.config["items"])
         for item in items:
             item["active"] = False
-            subitems = item.get("list", [])
+            subitems = item.get("items", [])
             for subitem in subitems:
                 subitem["active"] = False
                 if subitem["path"] == self.current:
@@ -54,21 +56,18 @@ class PagesPlugin(Plugin):
         return items
 
     @Plugin.property
-    def items_flatten(self):
-        items = []
-        for item in self.items:
-            subitems = item.get("list", [])
-            for subitem in subitems:
-                items.append(subitem)
-            if not subitems:
-                items.append(item)
-        return items
+    def flatten_items(self):
+        return flatten(self.items)
 
     # Process
 
-    def process_config(self, config):
-        if self.config:
-            self.config.setdefault("list", self.config.pop("self", []))
+    @classmethod
+    def process_project(cls, project):
+        items = project.config.get("pages", {}).get("items", [])
+        for item in flatten(items):
+            source = str(Path(item["path"]).with_suffix(".md"))
+            document = Document(source, project=project)
+            project.documents.append(document)
 
     def process_markup(self, markup):
         if self.config:
@@ -79,3 +78,17 @@ class PagesPlugin(Plugin):
                 target="#livemark-left",
                 items=self.items,
             )
+
+
+# Internal
+
+
+def flatten(items):
+    flatten_items = []
+    for item in items:
+        subitems = item.get("items", [])
+        for subitem in subitems:
+            flatten_items.append(subitem)
+        if not subitems:
+            flatten_items.append(item)
+    return flatten_items

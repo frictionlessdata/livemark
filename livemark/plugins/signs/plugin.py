@@ -17,13 +17,13 @@ class SignsPlugin(Plugin):
             current_number = None
             if self.document.target != "index.html":
                 current_path = f"/{self.document.target}"
-            for number, item in enumerate(pages.items_flatten, start=1):
+            for number, item in enumerate(pages.flatten_items, start=1):
                 if item["path"] == current_path:
                     current_number = number
             if current_number > 1:
-                prev = pages.items_flatten[current_number - 2]
-            if current_number < len(pages.items_flatten):
-                next = pages.items_flatten[current_number]
+                prev = pages.flatten_items[current_number - 2]
+            if current_number < len(pages.flatten_items):
+                next = pages.flatten_items[current_number]
             if not next and not prev:
                 raise LivemarkException("Invalid pages configuration")
             return {"prev": prev, "next": next}

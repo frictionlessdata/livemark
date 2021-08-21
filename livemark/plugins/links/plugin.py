@@ -7,14 +7,13 @@ class LinksPlugin(Plugin):
     profile = {
         "type": "object",
         "properties": {
-            "list": {
+            "items": {
                 "type": "array",
                 "items": {
                     "type": "object",
                     "properties": {
                         "name": {"type": "string"},
                         "path": {"type": "string"},
-                        "hook": {"type": "string"},
                     },
                 },
             },
@@ -26,7 +25,7 @@ class LinksPlugin(Plugin):
     @Plugin.property
     def items(self):
         github = self.document.get_plugin("github")
-        items = deepcopy(self.config["list"])
+        items = deepcopy(self.config["items"])
         if github.base_url:
             items.append({"name": "Report", "path": github.report_url})
             items.append({"name": "Fork", "path": github.fork_url})
@@ -34,9 +33,6 @@ class LinksPlugin(Plugin):
         return items
 
     # Process
-
-    def process_config(self, config):
-        self.config.setdefault("list", self.config.pop("self", []))
 
     def process_markup(self, markup):
         if self.config:

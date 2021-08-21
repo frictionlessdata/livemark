@@ -5,10 +5,11 @@ from ...plugin import Plugin
 
 
 class ChartPlugin(Plugin):
+    priority = 100
 
     # Process
 
-    def process_config(self, config):
+    def process_document(self, document):
         self.__count = 0
 
     def process_snippet(self, snippet):
