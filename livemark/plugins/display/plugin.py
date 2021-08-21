@@ -2,7 +2,6 @@ from ...plugin import Plugin
 
 
 class DisplayPlugin(Plugin):
-    priority = 10
     profile = {
         "type": "object",
         "properties": {

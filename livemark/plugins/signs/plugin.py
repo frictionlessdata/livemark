@@ -3,7 +3,7 @@ from ...exception import LivemarkException
 
 
 class SignsPlugin(Plugin):
-    priority = 50
+    priority = 40
 
     # Context
 

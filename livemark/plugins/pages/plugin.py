@@ -9,7 +9,7 @@ from ...plugin import Plugin
 # TODO: review paths format - md/html?
 # TODO: fix 2 line items
 class PagesPlugin(Plugin):
-    priority = 80
+    priority = 70
     profile = {
         "type": "object",
         "properties": {

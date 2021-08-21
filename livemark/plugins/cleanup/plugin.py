@@ -3,7 +3,7 @@ from ...plugin import Plugin
 
 
 class CleanupPlugin(Plugin):
-    priority = -10
+    priority = -100
     profile = {
         "type": "object",
         "required": ["commands"],

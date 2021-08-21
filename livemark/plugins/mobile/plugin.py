@@ -6,8 +6,6 @@ from ...plugin import Plugin
 
 
 class MobilePlugin(Plugin):
-    # TODO: update all the priorities (maybe group by column/section?)
-    priority = 10
 
     # Process
 

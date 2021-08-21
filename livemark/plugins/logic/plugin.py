@@ -4,7 +4,7 @@ from ...plugin import Plugin
 
 
 class LogicPlugin(Plugin):
-    priority = 100
+    priority = 90
 
     # Process
 
