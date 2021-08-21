@@ -18,12 +18,12 @@ class RatingPlugin(Plugin):
 
     @Plugin.property
     def user(self):
-        github = self.get_plugin("github")
+        github = self.document.get_plugin("github")
         return github.user
 
     @Plugin.property
     def repo(self):
-        github = self.get_plugin("github")
+        github = self.document.get_plugin("github")
         return github.repo
 
     # Process

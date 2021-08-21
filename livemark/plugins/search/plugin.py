@@ -15,7 +15,7 @@ class SearchPlugin(Plugin):
 
     @Plugin.property
     def items(self):
-        pages = self.get_plugin("pages")
+        pages = self.document.get_plugin("pages")
 
         # Single page
         items = [

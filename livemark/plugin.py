@@ -1,7 +1,6 @@
 import os
 import inspect
 from jinja2 import Template
-from .exception import LivemarkException
 from .helpers import cached_property
 
 
@@ -55,12 +54,6 @@ class Plugin:
         pass
 
     # Helpers
-
-    def get_plugin(self, name):
-        for plugin in self.document.plugins:
-            if plugin.name == name:
-                return plugin
-        raise LivemarkException(f"Plugin is not registered: {name}")
 
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))

@@ -71,6 +71,11 @@ class Markup:
 
     # Helpers
 
+    def get_plugin(self):
+        if not self.__plugin:
+            raise LivemarkException("Markup is not bound to any plugin")
+        return self.__plugin
+
     def add_style(self, source, *, action="append", target="head", **context):
         plugin = self.get_plugin()
         style = f'<link rel="stylesheet" href="{source}"></script>\n'
@@ -99,8 +104,3 @@ class Markup:
         if not source.strip().startswith("<"):
             markup = plugin.read_asset(source, **context)
         getattr(self.__query(target), action)(f"\n{markup}\n")
-
-    def get_plugin(self):
-        if not self.__plugin:
-            raise LivemarkException("Markup is not bound to any plugin")
-        return self.__plugin

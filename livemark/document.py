@@ -208,4 +208,4 @@ class Document:
         for plugin in self.plugins:
             if plugin.name == name:
                 return plugin
-        raise LivemarkException(f"There is not plugin: {name}")
+        raise LivemarkException(f"Plugin is not registered: {name}")

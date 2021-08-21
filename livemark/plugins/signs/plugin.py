@@ -9,7 +9,7 @@ class SignsPlugin(Plugin):
 
     @Plugin.property
     def paths(self):
-        pages = self.get_plugin("pages")
+        pages = self.document.get_plugin("pages")
         if pages.config:
             prev = None
             next = None

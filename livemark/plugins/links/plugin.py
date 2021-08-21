@@ -25,7 +25,7 @@ class LinksPlugin(Plugin):
 
     @Plugin.property
     def items(self):
-        github = self.get_plugin("github")
+        github = self.document.get_plugin("github")
         items = deepcopy(self.config["list"])
         if github.base_url:
             items.append({"name": "Report", "path": github.report_url})
