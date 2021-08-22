@@ -10,15 +10,12 @@ class SignsPlugin(Plugin):
     @Plugin.property
     def paths(self):
         pages = self.document.get_plugin("pages")
-        if pages.config:
+        if pages:
             prev = None
             next = None
-            current_path = "/"
             current_number = None
-            if self.document.target != "index.html":
-                current_path = f"/{self.document.target}"
             for number, item in enumerate(pages.flatten_items, start=1):
-                if item["path"] == current_path:
+                if item["path"] == self.document.path:
                     current_number = number
             if current_number > 1:
                 prev = pages.flatten_items[current_number - 2]
@@ -31,7 +28,7 @@ class SignsPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if self.config and self.paths:
+        if self.paths:
             markup.add_style("style.css")
             markup.add_markup(
                 "markup.html",

@@ -4,7 +4,6 @@ from ...plugin import Plugin
 
 
 class GithubPlugin(Plugin):
-    priority = 100
     profile = {
         "type": "object",
         "required": ["user", "repo"],
@@ -14,29 +13,25 @@ class GithubPlugin(Plugin):
         },
     }
 
-    def process_document(self, document):
-        self.__user = self.config.get("user")
-        self.__repo = self.config.get("repo")
-
-        # Infer locally
-        if not self.config:
-            try:
-                repo = Repo()
-                data = parse(repo.remote().url)
-                self.__user = data.owner
-                self.__repo = data.repo
-            except Exception:
-                pass
-
     # Context
 
     @Plugin.property
+    def data(self):
+        try:
+            repo = Repo()
+            pack = parse(repo.remote().url)
+            data = {"user": pack.owner, "repo": pack.repo}
+        except Exception:
+            data = {}
+        return data
+
+    @Plugin.property
     def user(self):
-        return self.__user
+        return self.config.get("user", self.data.get("user"))
 
     @Plugin.property
     def repo(self):
-        return self.__repo
+        return self.config.get("repo", self.data.get("repo"))
 
     @Plugin.property
     def base_url(self):

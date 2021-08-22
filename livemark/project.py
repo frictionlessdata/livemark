@@ -7,13 +7,18 @@ from .helpers import cached_property
 class Project:
     def __init__(self, *, config=None):
         self.__config = Config(config)
+        self.__Plugins = []
         self.__documents = []
-        for Plugin in system.Plugins:
+        for Plugin in system.combined:
             Plugin.process_project(self)
 
     @cached_property
     def config(self):
         return self.__config
+
+    @cached_property
+    def Plugins(self):
+        return self.__Plugins
 
     @cached_property
     def documents(self):

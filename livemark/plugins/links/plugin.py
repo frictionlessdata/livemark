@@ -25,8 +25,8 @@ class LinksPlugin(Plugin):
     @Plugin.property
     def items(self):
         github = self.document.get_plugin("github")
-        items = deepcopy(self.config["items"])
-        if github.base_url:
+        items = deepcopy(self.config.get("items", []))
+        if github:
             items.append({"name": "Report", "path": github.report_url})
             items.append({"name": "Fork", "path": github.fork_url})
             items.append({"name": "Edit", "path": github.edit_url})
@@ -35,7 +35,7 @@ class LinksPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if self.config:
+        if self.items:
             markup.add_style("style.css")
             markup.add_markup(
                 "markup.html",

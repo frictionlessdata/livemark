@@ -21,22 +21,22 @@ class SearchPlugin(Plugin):
         items = [
             {
                 "name": self.document.title,
-                "link": f"/{self.document.target}",
+                "path": self.document.path,
                 "text": self.document.content,
             }
         ]
 
         # Multiple pages
-        if pages.config:
+        if pages:
             items = []
             for item in pages.flatten_items:
-                path = str(Path(item["path"][1:] or "index.html").with_suffix(".md"))
+                path = str(Path(item["path"] or "index").with_suffix(".md"))
                 document = Document(path)
                 document.read()
                 items.append(
                     {
                         "name": item["name"],
-                        "link": item["path"],
+                        "path": item["path"],
                         "text": document.content,
                     }
                 )
@@ -46,7 +46,7 @@ class SearchPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if self.config:
+        if self.items:
             url = "https://unpkg.com"
             markup.add_style("style.css")
             markup.add_script(f"{url}/lunr@2.3.9/lunr.min.js")

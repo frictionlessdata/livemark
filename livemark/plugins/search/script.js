@@ -20,9 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, '', newRelativePathQuery);
     const elements = []
     for (const result of results) {
+      const link = `/${item.path}.html`
       const item = searchItems[result.ref]
-      const cls = window.location.pathname === item.link ? 'class="active"' : ''
-      elements.push(`<li ${cls}><a href="${item.link}?query=${query}">${item.name}</a></li>`)
+      const cls = window.location.pathname === link ? 'class="active"' : ''
+      elements.push(`<li ${cls}><a href="${link}?query=${query}">${item.name}</a></li>`)
     }
     searchOutput.innerHTML = `<ul>\n${elements.join('\n')}\n</ul>`
     searchOutput.style.visibility = 'visible'
@@ -40,15 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   const searchItems = {
     {% for item in items %}
-      '{{ item.link }}': {
+      '{{ item.path }}': {
           'name': '{{ item.name }}',
-          'link': '{{ item.link }}',
+          'path': '{{ item.path }}',
           'text': {{ item.text | striptags | tojson }},
       },
     {% endfor %}
   };
   const searchIndex = lunr(function () {
-    this.ref("link")
+    this.ref("path")
     this.field("name", { boost: 10 })
     this.field("text")
     for (const item of Object.values(searchItems)) {

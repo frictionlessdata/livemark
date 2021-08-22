@@ -19,17 +19,19 @@ class RatingPlugin(Plugin):
     @Plugin.property
     def user(self):
         github = self.document.get_plugin("github")
-        return github.user
+        if github:
+            return github.user
 
     @Plugin.property
     def repo(self):
         github = self.document.get_plugin("github")
-        return github.repo
+        if github:
+            return github.repo
 
     # Process
 
     def process_markup(self, markup):
-        if self.config and self.user and self.repo:
+        if self.user and self.repo:
             markup.add_style("style.css")
             markup.add_markup(
                 "markup.html",

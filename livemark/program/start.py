@@ -9,6 +9,7 @@ from .. import helpers
 from . import common
 
 
+# TODO: add cosole logging to build/start
 @program.command(name="start")
 def program_start(
     source: str = common.source,

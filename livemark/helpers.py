@@ -69,6 +69,33 @@ def capture_stdout(stdout=None):
     sys.stdout = old
 
 
+def extract_classes(module, Base):
+    Classes = []
+    for item in vars(module or {}).values():
+        if isinstance(item, type) and issubclass(item, Base):
+            Classes.append(item)
+    return Classes
+
+
+def order_classes(Classes, name):
+    return list(sorted(Classes, key=lambda Class: -getattr(Class, name)))
+
+
+# Internal
+
+
+def extract_plugins(module):
+    Plugins = []
+    for item in vars(module or {}).values():
+        if isinstance(item, type) and issubclass(item, Plugin):
+            Plugins.append(item)
+    return Plugins
+
+
+def order_plugins(Plugins):
+    return list(sorted(Plugins, key=lambda Plugin: -Plugin.priority))
+
+
 # Backports
 
 

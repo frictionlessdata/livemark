@@ -2,7 +2,7 @@
   <ul class="primary">
     {% for item in items %}
     <li class="primary {% if item.list %}group{% endif %} {% if item.active %}active{% endif %}">
-      <a href="{{ item.path }}" class="primary">
+      <a href="/{{ item.path }}.html" class="primary">
         {{ item.name }}
         {% if item.list %}
         <span class="fa fa-chevron-right"></span>
@@ -12,7 +12,7 @@
       <ul class="secondary">
         {% for subitem in item.list %}
         <li class="secondary {% if subitem.active %}active{% endif %}">
-          <a href="{{ subitem.path }}" class="secondary">
+          <a href="/{{ subitem.path }}.html" class="secondary">
             {{ subitem.name }}
           </a>
         </li>

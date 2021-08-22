@@ -2,12 +2,12 @@
   <div>
     {% if paths.next %}
     <div class="next">
-      <a href="{{ paths.next.path }}">{{ paths.next.name }} &raquo;</a>
+      <a href="/{{ paths.next.path }}.html">{{ paths.next.name }} &raquo;</a>
     </div>
     {% endif %}
     {% if paths.prev %}
     <div class="prev">
-      <a href="{{ paths.prev.path }}">&laquo; {{ paths.prev.name }}</a>
+      <a href="/{{ paths.prev.path }}.html">&laquo; {{ paths.prev.name }}</a>
     </div>
     {% endif %}
   </div>

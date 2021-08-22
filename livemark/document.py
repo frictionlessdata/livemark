@@ -7,12 +7,13 @@ from copy import deepcopy
 from frictionless import File
 from .exception import LivemarkException
 from .helpers import cached_property
+from .project import Project
 from .config import Config
-from .system import system
 from . import settings
 from . import helpers
 
 
+# TODO: add path/code/id property
 class Document:
     """Livemark document
 
@@ -29,11 +30,8 @@ class Document:
     """
 
     def __init__(self, source, *, target=None, format=None, project=None):
-
-        # Create plugins
-        plugins = []
-        for Plugin in system.Plugins:
-            plugins.append(Plugin(self))
+        project = project or Project()
+        path = Path(source).stem
 
         # Infer target
         if not target:
@@ -45,12 +43,18 @@ class Document:
             file = File(target)
             format = file.format
 
+        # Create plugins
+        plugins = []
+        for Plugin in project.Plugins:
+            plugins.append(Plugin(self))
+
         # Set attributes
-        self.__plugins = plugins
+        self.__path = path
         self.__source = source
         self.__target = target
         self.__format = format
         self.__project = project
+        self.__plugins = plugins
         self.__config = None
         self.__preface = None
         self.__content = None
@@ -58,8 +62,8 @@ class Document:
         self.__output = None
 
     @property
-    def plugins(self):
-        return self.__plugins
+    def path(self):
+        return self.__path
 
     @property
     def source(self):
@@ -76,6 +80,10 @@ class Document:
     @cached_property
     def project(self):
         return self.__project
+
+    @property
+    def plugins(self):
+        return self.__plugins
 
     @property
     def input(self):
@@ -156,6 +164,8 @@ class Document:
             config = Config(yaml.safe_load(self.__preface))
             deepmerge.always_merger.merge(self.__config, config)
 
+        # TODO: create plugins here?
+
     # Process
 
     def process(self):
@@ -198,4 +208,3 @@ class Document:
         for plugin in self.plugins:
             if plugin.name == name:
                 return plugin
-        raise LivemarkException(f"Plugin is not registered: {name}")

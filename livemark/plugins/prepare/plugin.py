@@ -12,9 +12,14 @@ class PreparePlugin(Plugin):
         },
     }
 
+    # Context
+
+    @Plugin.property
+    def commands(self):
+        return self.config.get("commands", [])
+
     # Process
 
     def process_document(self, document):
-        if self.config:
-            for code in self.config["commands"]:
-                subprocess.run(code, shell=True)
+        for code in self.commands:
+            subprocess.run(code, shell=True)

@@ -34,14 +34,11 @@ class PagesPlugin(Plugin):
 
     @Plugin.property
     def current(self):
-        current = "/"
-        if self.document.target != "index.html":
-            current = f"/{self.document.target}"
-        return current
+        return self.document.path
 
     @Plugin.property
     def items(self):
-        items = deepcopy(self.config["items"])
+        items = deepcopy(self.config.get("items", []))
         for item in items:
             item["active"] = False
             subitems = item.get("items", [])
@@ -70,14 +67,13 @@ class PagesPlugin(Plugin):
             project.documents.append(document)
 
     def process_markup(self, markup):
-        if self.config:
-            markup.add_style("style.css")
-            markup.add_script("script.js")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-left",
-                items=self.items,
-            )
+        markup.add_style("style.css")
+        markup.add_script("script.js")
+        markup.add_markup(
+            "markup.html",
+            target="#livemark-left",
+            items=self.items,
+        )
 
 
 # Internal
