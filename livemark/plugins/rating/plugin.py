@@ -2,6 +2,7 @@ from ...plugin import Plugin
 
 
 class RatingPlugin(Plugin):
+    name = "rating"
     priority = 30
     profile = {
         "type": "object",

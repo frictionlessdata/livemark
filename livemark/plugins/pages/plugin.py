@@ -10,6 +10,7 @@ from ... import helpers
 # TODO: review paths format - md/html?
 # TODO: fix 2 line items
 class PagesPlugin(Plugin):
+    name = "pages"
     priority = 70
     profile = {
         "type": "object",

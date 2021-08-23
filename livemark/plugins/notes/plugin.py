@@ -4,6 +4,7 @@ from ...plugin import Plugin
 
 
 class NotesPlugin(Plugin):
+    name = "notes"
     priority = 50
     profile = {
         "type": "object",

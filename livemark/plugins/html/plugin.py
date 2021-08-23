@@ -6,6 +6,7 @@ from ...plugin import Plugin
 
 
 class HtmlPlugin(Plugin):
+    name = "html"
     profile = {
         "type": "object",
         "properties": {

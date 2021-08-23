@@ -8,6 +8,7 @@ from ...plugin import Plugin
 
 
 class SearchPlugin(Plugin):
+    name = "search"
 
     # Context
 

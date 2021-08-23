@@ -3,6 +3,7 @@ from ...plugin import Plugin
 
 
 class LinksPlugin(Plugin):
+    name = "links"
     priority = 10
     profile = {
         "type": "object",

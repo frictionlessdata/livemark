@@ -2,6 +2,7 @@ from ...plugin import Plugin
 
 
 class DisplayPlugin(Plugin):
+    name = "display"
     profile = {
         "type": "object",
         "properties": {

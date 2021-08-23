@@ -2,6 +2,7 @@ from ...plugin import Plugin
 
 
 class CounterPlugin(Plugin):
+    name = "counter"
     profile = {
         "type": "object",
         "required": ["type", "code"],

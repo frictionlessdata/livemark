@@ -1,6 +1,7 @@
 import os
 import inspect
 from jinja2 import Template
+from .exception import LivemarkException
 from .helpers import cached_property
 
 
@@ -19,13 +20,12 @@ class Plugin:
     property = cached_property
     priority = 0
     profile = {}
+    name = ""
 
     def __init__(self, document):
         self.__document = document
-
-    @property
-    def name(self):
-        return self.__class__.get_name()
+        if not self.name:
+            raise LivemarkException("Plugin.name is requried")
 
     @property
     def config(self):
@@ -47,11 +47,6 @@ class Plugin:
         pass
 
     # Helpers
-
-    # TODO: review naming "name"/function
-    @classmethod
-    def get_name(cls):
-        return cls.__name__.replace("Plugin", "").lower()
 
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))

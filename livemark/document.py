@@ -159,10 +159,10 @@ class Document:
         if self.__plugins is None:
             self.__plugins = []
             for Plugin in system.builtin + system.internal:
-                if Plugin.get_name() not in self.__config.disable:
+                if Plugin.name not in self.__config.disable:
                     self.__plugins.append(Plugin(self))
             for Plugin in system.external:
-                if Plugin.get_name() in self.__config.enable:
+                if Plugin.name in self.__config.enable:
                     self.__plugins.append(Plugin(self))
             self.__plugins = helpers.order_objects(self.__plugins, "priority")
 

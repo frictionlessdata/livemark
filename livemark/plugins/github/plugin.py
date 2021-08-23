@@ -4,6 +4,7 @@ from ...plugin import Plugin
 
 
 class GithubPlugin(Plugin):
+    name = "github"
     profile = {
         "type": "object",
         "required": ["user", "repo"],

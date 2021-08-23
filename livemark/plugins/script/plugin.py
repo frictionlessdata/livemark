@@ -5,6 +5,7 @@ from ... import helpers
 
 
 class ScriptPlugin(Plugin):
+    name = "script"
     priority = 100
 
     # Process

@@ -2,6 +2,7 @@ from ...plugin import Plugin
 
 
 class SignsPlugin(Plugin):
+    name = "signs"
     priority = 40
 
     # Context
