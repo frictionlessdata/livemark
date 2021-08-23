@@ -29,7 +29,7 @@ class System:
         Plugins = {}
         modules = []
         for item in pkgutil.iter_modules():
-            if item.name == "plugin" or item.name.startswith("livemark_"):
+            if item.name in ["plugin", "plugins"] or item.name.startswith("livemark_"):
                 module = importlib.import_module(item.name)
                 modules.append(module)
         module = importlib.import_module("livemark.plugins")
