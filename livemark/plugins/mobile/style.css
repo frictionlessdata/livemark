@@ -2,9 +2,8 @@
   position: absolute;
   visibility: hidden;
   z-index: 10000;
-  /* We can't use "right" because Mobile Chrome and #34 */
-  /* TODO: it doesn't align on mobile phones anyway - try to fix #34? */
-  left: calc(100vw - 56px);
+  /* NOTE: We can't use "right" because of Mobile Chrome and #34 */
+  left: calc(100vw - 60px);
   top: 24px;
 }
 
