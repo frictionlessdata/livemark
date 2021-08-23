@@ -37,10 +37,6 @@ class Plugin:
 
     # Actions
 
-    @classmethod
-    def process_project(cls, project):
-        pass
-
     def process_document(self, document):
         pass
 

@@ -35,7 +35,7 @@ class System:
         for _, name, _ in pkgutil.iter_modules([os.path.dirname(module.__file__)]):
             module = importlib.import_module(f"livemark.plugins.{name}")
             Plugins.extend(helpers.extract_classes(module, Plugin))
-        Plugins = helpers.order_classes(Plugins, "priority")
+        Plugins = helpers.order_objects(Plugins, "priority")
         return Plugins
 
     @cached_property
@@ -49,7 +49,7 @@ class System:
         if importlib.util.find_spec("plugin"):
             module = importlib.import_module("plugin")
             Plugins = helpers.extract_classes(module, Plugin)
-            Plugins = helpers.order_classes(Plugins, "priority")
+            Plugins = helpers.order_objects(Plugins, "priority")
         return Plugins
 
     @cached_property
@@ -64,7 +64,7 @@ class System:
             if item.name.startswith("livemark_"):
                 module = importlib.import_module(item.name)
                 Plugins.extend(helpers.extract_classes(module, Plugin))
-        Plugins = helpers.order_classes(Plugins, "priority")
+        Plugins = helpers.order_objects(Plugins, "priority")
         return Plugins
 
     @cached_property
@@ -75,7 +75,7 @@ class System:
             type[]: a list of registered plugin classes
         """
         Plugins = self.builtin + self.internal + self.external
-        Plugins = helpers.order_classes(Plugins, "priority")
+        Plugins = helpers.order_objects(Plugins, "priority")
         return Plugins
 
     def register(self, Plugin):
@@ -85,7 +85,7 @@ class System:
             Plugin (type): a plugin class to register
         """
         self.internal.append(Plugin)
-        self.internal = helpers.order_classes(self.internal, "priority")
+        self.internal = helpers.order_objects(self.internal, "priority")
 
     def deregister(self, Plugin):
         """Register a plugin

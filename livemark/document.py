@@ -1,19 +1,16 @@
 import re
 import yaml
 import difflib
-import deepmerge
 from pathlib import Path
-from copy import deepcopy
 from frictionless import File
 from .exception import LivemarkException
 from .helpers import cached_property
-from .project import Project
 from .config import Config
+from .system import system
 from . import settings
 from . import helpers
 
 
-# TODO: add path/code/id property
 class Document:
     """Livemark document
 
@@ -30,8 +27,6 @@ class Document:
     """
 
     def __init__(self, source, *, target=None, format=None, project=None):
-        project = project or Project()
-        path = Path(source).stem
 
         # Infer target
         if not target:
@@ -43,24 +38,20 @@ class Document:
             file = File(target)
             format = file.format
 
-        # Create plugins
-        plugins = []
-        for Plugin in project.Plugins:
-            plugins.append(Plugin(self))
-
         # Set attributes
-        self.__path = path
+        self.__path = Path(source).stem
         self.__source = source
         self.__target = target
         self.__format = format
         self.__project = project
-        self.__plugins = plugins
+        self.__plugins = None
         self.__config = None
         self.__preface = None
         self.__content = None
         self.__input = None
         self.__output = None
 
+    # TODO: rebase on source?
     @property
     def path(self):
         return self.__path
@@ -157,14 +148,22 @@ class Document:
             self.__content = parts[1].strip()
 
         # Read config
-        self.__config = {}
+        self.__config = Config({})
         if self.__project:
-            self.__config = deepcopy(self.__project.config)
+            self.__config = self.__project.config.to_copy()
         if self.__preface:
-            config = Config(yaml.safe_load(self.__preface))
-            deepmerge.always_merger.merge(self.__config, config)
+            self.__config = self.__config.merge(yaml.safe_load(self.__preface))
 
-        # TODO: create plugins here?
+        # Create plugins
+        if self.__plugins is None:
+            self.__plugins = []
+            for Plugin in system.builtin + system.internal:
+                if Plugin.name not in self.__config.disable:
+                    self.__plugins.append(Plugin(self))
+            for Plugin in system.external:
+                if Plugin.name in self.__config.enable:
+                    self.__plugins.append(Plugin(self))
+            self.__plugins = helpers.order_objects(self.__plugins, "priority")
 
     # Process
 

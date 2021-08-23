@@ -69,6 +69,17 @@ def capture_stdout(stdout=None):
     sys.stdout = old
 
 
+def flatten_items(items, prop):
+    flatten_items = []
+    for item in items:
+        subitems = item.get(prop, [])
+        for subitem in subitems:
+            flatten_items.append(subitem)
+        if not subitems:
+            flatten_items.append(item)
+    return flatten_items
+
+
 def extract_classes(module, Base):
     Classes = []
     for item in vars(module or {}).values():
@@ -77,23 +88,8 @@ def extract_classes(module, Base):
     return Classes
 
 
-def order_classes(Classes, name):
-    return list(sorted(Classes, key=lambda Class: -getattr(Class, name)))
-
-
-# Internal
-
-
-def extract_plugins(module):
-    Plugins = []
-    for item in vars(module or {}).values():
-        if isinstance(item, type) and issubclass(item, Plugin):
-            Plugins.append(item)
-    return Plugins
-
-
-def order_plugins(Plugins):
-    return list(sorted(Plugins, key=lambda Plugin: -Plugin.priority))
+def order_objects(Classes, prop):
+    return list(sorted(Classes, key=lambda obj: -getattr(obj, prop)))
 
 
 # Backports

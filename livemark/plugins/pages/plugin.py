@@ -1,7 +1,6 @@
-from pathlib import Path
 from copy import deepcopy
 from ...plugin import Plugin
-from ...document import Document
+from ... import helpers
 
 
 # TODO: improve two-level menus!
@@ -54,17 +53,9 @@ class PagesPlugin(Plugin):
 
     @Plugin.property
     def flatten_items(self):
-        return flatten(self.items)
+        return helpers.flatten_items(self.items, "items")
 
     # Process
-
-    @classmethod
-    def process_project(cls, project):
-        items = project.config.get("pages", {}).get("items", [])
-        for item in flatten(items):
-            source = str(Path(item["path"]).with_suffix(".md"))
-            document = Document(source, project=project)
-            project.documents.append(document)
 
     def process_markup(self, markup):
         markup.add_style("style.css")
@@ -74,17 +65,3 @@ class PagesPlugin(Plugin):
             target="#livemark-left",
             items=self.items,
         )
-
-
-# Internal
-
-
-def flatten(items):
-    flatten_items = []
-    for item in items:
-        subitems = item.get("items", [])
-        for subitem in subitems:
-            flatten_items.append(subitem)
-        if not subitems:
-            flatten_items.append(item)
-    return flatten_items
