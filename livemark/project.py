@@ -19,6 +19,6 @@ class Project:
         items = self.config.get("pages", {}).get("items", [])
         for item in helpers.flatten_items(items, "items"):
             source = str(Path(item["path"]).with_suffix(".md"))
-            document = Document(source, project=self)
+            document = Document(source, project=self, name=item["name"])
             documents.append(document)
         return documents

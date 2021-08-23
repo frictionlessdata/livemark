@@ -80,16 +80,27 @@ def flatten_items(items, prop):
     return flatten_items
 
 
-def extract_classes(module, Base):
+def extract_classes(module, Parent):
     Classes = []
     for item in vars(module or {}).values():
-        if isinstance(item, type) and issubclass(item, Base):
+        if isinstance(item, type) and issubclass(item, Parent) and item is not Parent:
             Classes.append(item)
     return Classes
 
 
-def order_objects(Classes, prop):
-    return list(sorted(Classes, key=lambda obj: -getattr(obj, prop)))
+def dedup_objects(objects, property):
+    unique_values = set()
+    unique_objects = []
+    for object in objects:
+        value = getattr(object, property)
+        if value not in unique_values:
+            unique_objects.append(object)
+            unique_values.add(value)
+    return unique_objects
+
+
+def order_objects(objects, property):
+    return list(sorted(objects, key=lambda obj: -getattr(obj, property)))
 
 
 # Backports

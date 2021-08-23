@@ -25,7 +25,7 @@ class Document:
 
     """
 
-    def __init__(self, source, *, target=None, format=None, project=None):
+    def __init__(self, source, *, target=None, format=None, project=None, name=None):
 
         # Infer target
         if not target:
@@ -48,6 +48,7 @@ class Document:
         self.__content = None
         self.__input = None
         self.__output = None
+        self.__name = name
 
     @property
     def source(self):
@@ -99,7 +100,7 @@ class Document:
 
     @property
     def name(self):
-        return self.title
+        return self.__name or self.path
 
     @property
     def path(self):
@@ -107,22 +108,25 @@ class Document:
 
     @property
     def title(self):
-        prefix = "# "
-        for line in self.input.splitlines():
-            if line.startswith(prefix):
-                return line.lstrip(prefix)
+        if self.content:
+            prefix = "# "
+            for line in self.content.splitlines():
+                if line.startswith(prefix):
+                    return line.lstrip(prefix)
 
     @property
     def description(self):
-        pattern = re.compile(r"^\w")
-        for line in self.input.splitlines():
-            line = line.strip()
-            if pattern.match(line):
-                return line
+        if self.content:
+            pattern = re.compile(r"^\w")
+            for line in self.content.splitlines():
+                line = line.strip()
+                if pattern.match(line):
+                    return line
 
     @property
     def keywords(self):
-        return ",".join(map(str.lower, self.title.split()))
+        if self.content:
+            return ",".join(map(str.lower, self.title.split()))
 
     # Build
 
@@ -165,6 +169,7 @@ class Document:
                 if Plugin.name in self.__config.enable:
                     self.__plugins.append(Plugin(self))
             self.__plugins = helpers.order_objects(self.__plugins, "priority")
+            self.__plugins = helpers.dedup_objects(self.__plugins, "name")
 
     # Process
 
