@@ -7,7 +7,6 @@ from ... import helpers
 # TODO: fix tow-level menus on mobile!
 # TODO: rebase sidebars on using background on hover instead of color
 # TODO: should we allow index pages for nested items (unlike in Docosaurus)?
-# TODO: review paths format - md/html?
 # TODO: fix 2 line items
 class PagesPlugin(Plugin):
     name = "pages"
