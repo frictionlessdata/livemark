@@ -8,7 +8,7 @@ class SignsPlugin(Plugin):
     # Context
 
     @Plugin.property
-    def paths(self):
+    def items(self):
         pages = self.document.get_plugin("pages")
         if pages:
             prev = None
@@ -27,10 +27,6 @@ class SignsPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if self.paths:
+        if self.items:
             markup.add_style("style.css")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-main",
-                paths=self.paths,
-            )
+            markup.add_markup("markup.html", target="#livemark-main")

@@ -21,9 +21,4 @@ class AboutPlugin(Plugin):
 
     def process_markup(self, markup):
         markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            target="#livemark-right",
-            # TODO: pass self as "plugin" automatically (in all plugins)?
-            text=self.text,
-        )
+        markup.add_markup("markup.html", target="#livemark-right")

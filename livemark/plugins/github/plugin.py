@@ -17,22 +17,12 @@ class GithubPlugin(Plugin):
     # Context
 
     @Plugin.property
-    def data(self):
-        try:
-            repo = Repo()
-            pack = parse(repo.remote().url)
-            data = {"user": pack.owner, "repo": pack.repo}
-        except Exception:
-            data = {}
-        return data
-
-    @Plugin.property
     def user(self):
-        return self.config.get("user", self.data.get("user"))
+        return self.config.get("user", self.parsed_data.get("user"))
 
     @Plugin.property
     def repo(self):
-        return self.config.get("repo", self.data.get("repo"))
+        return self.config.get("repo", self.parsed_data.get("repo"))
 
     @Plugin.property
     def base_url(self):
@@ -53,3 +43,12 @@ class GithubPlugin(Plugin):
     def edit_url(self):
         if self.base_url:
             return f"{self.base_url}/edit/main/{self.document.source}"
+
+    @Plugin.property
+    def parsed_data(self):
+        try:
+            repo = Repo()
+            pack = parse(repo.remote().url)
+            return {"user": pack.owner, "repo": pack.repo}
+        except Exception:
+            return {}

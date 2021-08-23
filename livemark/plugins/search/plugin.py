@@ -33,8 +33,5 @@ class SearchPlugin(Plugin):
             markup.add_script(f"{url}/lunr@2.3.9/lunr.min.js")
             markup.add_script(f"{url}/jquery-highlight@3.5.0/jquery.highlight.js")
             markup.add_script(f"{url}/jquery.scrollto@2.1.3/jquery.scrollTo.js")
-            markup.add_script("script.js", items=self.items)
-            markup.add_markup(
-                "markup.html",
-                target="body",
-            )
+            markup.add_script("script.js")
+            markup.add_markup("markup.html", target="body")

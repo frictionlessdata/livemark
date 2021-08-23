@@ -38,8 +38,4 @@ class LinksPlugin(Plugin):
     def process_markup(self, markup):
         if self.items:
             markup.add_style("style.css")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-right",
-                items=self.items,
-            )
+            markup.add_markup("markup.html", target="#livemark-right")

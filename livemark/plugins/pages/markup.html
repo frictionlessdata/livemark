@@ -1,6 +1,6 @@
 <div id="livemark-pages">
   <ul class="primary">
-    {% for item in items %}
+    {% for item in plugin.items %}
     <li class="primary {% if item.get('items') %}group{% endif %} {% if item.active %}active{% endif %}">
       <a href="/{{ item.path }}.html" class="primary">
         {{ item.name }}

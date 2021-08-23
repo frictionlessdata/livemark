@@ -54,9 +54,8 @@ class Plugin:
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))
         path = os.path.join(dir, *path)
+        context["plugin"] = self
         with open(path) as file:
-            text = file.read().strip()
-        if context:
-            template = Template(text, trim_blocks=True)
+            template = Template(file.read().strip(), trim_blocks=True)
             text = template.render(**context)
         return text

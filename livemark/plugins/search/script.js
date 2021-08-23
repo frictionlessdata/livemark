@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#livemark-main').unhighlight({className: 'livemark-search-found'});
   }
   const searchItems = {
-    {% for item in items %}
+    {% for item in plugin.items %}
       '{{ item.path }}': {
           'name': '{{ item.name }}',
           'path': '{{ item.path }}',

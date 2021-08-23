@@ -27,10 +27,4 @@ class NotesPlugin(Plugin):
 
     def process_markup(self, markup):
         markup.add_style("style.css")
-        markup.add_markup(
-            "markup.html",
-            action="prepend",
-            target="#livemark-main",
-            format=self.format,
-            current=self.current,
-        )
+        markup.add_markup("markup.html", target="#livemark-main", action="prepend")

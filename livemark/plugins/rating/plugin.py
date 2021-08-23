@@ -34,10 +34,4 @@ class RatingPlugin(Plugin):
     def process_markup(self, markup):
         if self.user and self.repo:
             markup.add_style("style.css")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-right",
-                user=self.user,
-                repo=self.repo,
-                type=self.type,
-            )
+            markup.add_markup("markup.html", target="#livemark-right")

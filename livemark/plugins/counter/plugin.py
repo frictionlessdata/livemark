@@ -26,8 +26,4 @@ class CounterPlugin(Plugin):
 
     def process_markup(self, markup):
         if self.type == "google":
-            markup.add_markup(
-                "markup.html",
-                target="head",
-                code=self.code,
-            )
+            markup.add_markup("markup.html", target="head")

@@ -71,7 +71,7 @@ class Markup:
 
     # Helpers
 
-    def add_style(self, source, *, action="append", target="head", **context):
+    def add_style(self, source, *, target="head", action="append", **context):
         style = f'<link rel="stylesheet" href="{source}"></script>\n'
         if not helpers.is_remote_path(source):
             if not self.__plugin:
@@ -83,7 +83,7 @@ class Markup:
         self.__styles.add(style)
         getattr(self.__query(target), action)(style)
 
-    def add_script(self, source, *, action="append", target="body", **context):
+    def add_script(self, source, *, target="body", action="append", **context):
         script = f'<script src="{source}"></script>\n'
         if not helpers.is_remote_path(source):
             if not self.__plugin:
@@ -95,7 +95,7 @@ class Markup:
         self.__scripts.add(script)
         getattr(self.__query(target), action)(script)
 
-    def add_markup(self, source, *, action="append", target="body", **context):
+    def add_markup(self, source, *, target="body", action="append", **context):
         markup = source
         if not source.strip().startswith("<"):
             if not self.__plugin:
