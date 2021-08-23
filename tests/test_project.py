@@ -1,10 +1,9 @@
 from livemark import Project
 
 
-# TODO: implement
 # General
 
 
 def test_project():
-    project = Project()
-    assert project
+    project = Project(config="livemark.yaml")
+    assert project.config["brand"]["text"] == "Livemark"

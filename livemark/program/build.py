@@ -48,6 +48,5 @@ def program_build(
         server.start(host=host, port=port)
 
     except Exception as exception:
-        raise
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)

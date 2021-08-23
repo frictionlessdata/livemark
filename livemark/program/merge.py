@@ -3,6 +3,7 @@ import typer
 import atexit
 import tempfile
 from ..server import Server
+from ..project import Project
 from ..document import Document
 from .main import program
 from . import common
@@ -22,11 +23,14 @@ def program_merge(
 
     try:
 
+        # Create project
+        project = Project(config=config)
+
         # Create document
         document = Document(
             source,
             target=source,
-            config=config,
+            project=project,
         )
 
         # Normal mode

@@ -1,5 +1,4 @@
 from ...plugin import Plugin
-from ...exception import LivemarkException
 
 
 class SignsPlugin(Plugin):
@@ -17,12 +16,11 @@ class SignsPlugin(Plugin):
             for number, item in enumerate(pages.flatten_items, start=1):
                 if item["path"] == self.document.path:
                     current_number = number
-            if not current_number:
-                raise LivemarkException("Invalid pages configuration")
-            if current_number > 1:
-                prev = pages.flatten_items[current_number - 2]
-            if current_number < len(pages.flatten_items):
-                next = pages.flatten_items[current_number]
+            if current_number:
+                if current_number > 1:
+                    prev = pages.flatten_items[current_number - 2]
+                if current_number < len(pages.flatten_items):
+                    next = pages.flatten_items[current_number]
             return {"prev": prev, "next": next}
 
     # Process

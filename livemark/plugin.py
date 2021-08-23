@@ -48,6 +48,7 @@ class Plugin:
 
     # Helpers
 
+    # TODO: review naming "name"/function
     @classmethod
     def get_name(cls):
         return cls.__name__.replace("Plugin", "").lower()

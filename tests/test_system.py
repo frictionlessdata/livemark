@@ -6,12 +6,12 @@ from livemark import system, Plugin, LivemarkException
 
 
 def test_system():
-    assert len(system.Plugins) > 20
+    assert len(system.builtin) > 20
 
 
 def test_system_register():
     system.register(Plugin)
-    assert system.Plugins.count(Plugin)
+    assert system.internal.count(Plugin)
     system.deregister(Plugin)
 
 
