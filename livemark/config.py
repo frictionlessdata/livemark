@@ -51,16 +51,18 @@ class Config(dict):
 
     # Helpers
 
-    def merge(self, config):
-        result = {}
-        deepmerge.always_merger.merge(result, self)
-        deepmerge.always_merger.merge(result, config)
-        return Config(result)
-
-    # Import/Export
-
     def to_copy(self):
         return deepcopy(self)
 
     def to_dict(self):
         return deepcopy(dict(self))
+
+    def to_merge(self, source):
+        result = {}
+        deepmerge.always_merger.merge(result, self)
+        deepmerge.always_merger.merge(result, source)
+        for name in self.enable:
+            result.setdefault(name, True)
+        for name in self.disable:
+            result.setdefault(name, False)
+        return Config(result)

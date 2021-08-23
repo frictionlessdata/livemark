@@ -4,7 +4,6 @@ import difflib
 from pathlib import Path
 from frictionless import File
 from .exception import LivemarkException
-from .helpers import cached_property
 from .config import Config
 from .system import system
 from . import settings
@@ -39,7 +38,6 @@ class Document:
             format = file.format
 
         # Set attributes
-        self.__path = Path(source).stem
         self.__source = source
         self.__target = target
         self.__format = format
@@ -51,11 +49,6 @@ class Document:
         self.__input = None
         self.__output = None
 
-    # TODO: rebase on source?
-    @property
-    def path(self):
-        return self.__path
-
     @property
     def source(self):
         return self.__source
@@ -64,11 +57,11 @@ class Document:
     def target(self):
         return self.__target
 
-    @cached_property
+    @property
     def format(self):
         return self.__format
 
-    @cached_property
+    @property
     def project(self):
         return self.__project
 
@@ -104,14 +97,22 @@ class Document:
     def config(self):
         return self.__config
 
-    @cached_property
+    @property
+    def name(self):
+        return self.title
+
+    @property
+    def path(self):
+        return str(Path(self.source).with_suffix(""))
+
+    @property
     def title(self):
         prefix = "# "
         for line in self.input.splitlines():
             if line.startswith(prefix):
                 return line.lstrip(prefix)
 
-    @cached_property
+    @property
     def description(self):
         pattern = re.compile(r"^\w")
         for line in self.input.splitlines():
@@ -119,7 +120,7 @@ class Document:
             if pattern.match(line):
                 return line
 
-    @cached_property
+    @property
     def keywords(self):
         return ",".join(map(str.lower, self.title.split()))
 
@@ -152,16 +153,16 @@ class Document:
         if self.__project:
             self.__config = self.__project.config.to_copy()
         if self.__preface:
-            self.__config = self.__config.merge(yaml.safe_load(self.__preface))
+            self.__config = self.__config.to_merge(yaml.safe_load(self.__preface))
 
         # Create plugins
         if self.__plugins is None:
             self.__plugins = []
             for Plugin in system.builtin + system.internal:
-                if Plugin.name not in self.__config.disable:
+                if Plugin.get_name() not in self.__config.disable:
                     self.__plugins.append(Plugin(self))
             for Plugin in system.external:
-                if Plugin.name in self.__config.enable:
+                if Plugin.get_name() in self.__config.enable:
                     self.__plugins.append(Plugin(self))
             self.__plugins = helpers.order_objects(self.__plugins, "priority")
 

@@ -1,5 +1,3 @@
-from pathlib import Path
-from ...document import Document
 from ...plugin import Plugin
 
 
@@ -15,32 +13,14 @@ class SearchPlugin(Plugin):
 
     @Plugin.property
     def items(self):
-        pages = self.document.get_plugin("pages")
-
-        # Single page
-        items = [
-            {
-                "name": self.document.title,
-                "path": self.document.path,
-                "text": self.document.content,
-            }
-        ]
-
-        # Multiple pages
-        if pages:
-            items = []
-            for item in pages.flatten_items:
-                path = str(Path(item["path"] or "index").with_suffix(".md"))
-                document = Document(path)
-                document.read()
-                items.append(
-                    {
-                        "name": item["name"],
-                        "path": item["path"],
-                        "text": document.content,
-                    }
-                )
-
+        items = []
+        documents = [self.document]
+        if self.document.project:
+            documents = self.document.project.documents
+        for doc in documents:
+            if not doc.content:
+                doc.read()
+            items.append({"name": doc.name, "path": doc.path, "text": doc.content})
         return items
 
     # Process

@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     history.pushState(null, '', newRelativePathQuery);
     const elements = []
     for (const result of results) {
-      const link = `/${item.path}.html`
       const item = searchItems[result.ref]
+      const link = `/${item.path}.html`
       const cls = window.location.pathname === link ? 'class="active"' : ''
       elements.push(`<li ${cls}><a href="${link}?query=${query}">${item.name}</a></li>`)
     }

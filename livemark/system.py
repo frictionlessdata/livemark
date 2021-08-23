@@ -8,7 +8,7 @@ from . import helpers
 
 
 # NOTE:
-# Investigage the situation when plugins have duplicate names
+# Review the situation when plugins have duplicate names
 
 
 class System:

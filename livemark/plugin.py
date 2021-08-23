@@ -25,15 +25,15 @@ class Plugin:
 
     @property
     def name(self):
-        return self.__class__.__name__.replace("Plugin", "").lower()
-
-    @property
-    def document(self):
-        return self.__document
+        return self.__class__.get_name()
 
     @property
     def config(self):
         return self.__document.config.get(self.name, {})
+
+    @property
+    def document(self):
+        return self.__document
 
     # Actions
 
@@ -47,6 +47,10 @@ class Plugin:
         pass
 
     # Helpers
+
+    @classmethod
+    def get_name(cls):
+        return cls.__name__.replace("Plugin", "").lower()
 
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))

@@ -1,4 +1,3 @@
-# TODO: how to disable plugins?
 brand:
   text: Livemark
 about:
@@ -17,7 +16,6 @@ links:
       path: https://discord.com/channels/695635777199145130/695635777199145133
     - name: Twitter
       path: https://twitter.com/frictionlessd8a
-# TODO: rebase on title/source?
 pages:
   items:
     - name: Introduction
