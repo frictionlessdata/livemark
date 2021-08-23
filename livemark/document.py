@@ -162,14 +162,13 @@ class Document:
         # Create plugins
         if self.__plugins is None:
             self.__plugins = []
-            for Plugin in system.builtin + system.internal:
-                if Plugin.name not in self.__config.disable:
-                    self.__plugins.append(Plugin(self))
-            for Plugin in system.external:
-                if Plugin.name in self.__config.enable:
+            for name, Plugin in system.Plugins.items():
+                type = Plugin.get_type()
+                internal = type == "internal" and name not in self.__config.disable
+                external = type == "external" and name in self.__config.enable
+                if internal or external:
                     self.__plugins.append(Plugin(self))
             self.__plugins = helpers.order_objects(self.__plugins, "priority")
-            self.__plugins = helpers.dedup_objects(self.__plugins, "name")
 
     # Process
 

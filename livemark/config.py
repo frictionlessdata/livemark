@@ -29,7 +29,7 @@ class Config(dict):
                 del config[key]
 
         # Validate config
-        for Plugin in system.combined:
+        for Plugin in system.Plugins.values():
             if config.get(Plugin.name) and Plugin.profile:
                 validator = jsonschema.Draft7Validator(Plugin.profile)
                 for error in validator.iter_errors(config[Plugin.name]):

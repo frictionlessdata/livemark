@@ -1,14 +1,10 @@
 import os
 import pkgutil
 import importlib
-from .helpers import cached_property
 from .exception import LivemarkException
+from .helpers import cached_property
 from .plugin import Plugin
 from . import helpers
-
-
-# NOTE:
-# Review the situation when plugins have duplicate names
 
 
 class System:
@@ -24,58 +20,27 @@ class System:
     """
 
     @cached_property
-    def builtin(self):
-        """Builtin plugin classes
+    def Plugins(self):
+        """Registered plugins
 
         Returns:
-            type[]: a list of plugin classes
+            dict[]: a list of plugin structures
         """
-        Plugins = []
+        Plugins = {}
+        modules = []
+        for item in pkgutil.iter_modules():
+            if item.name == "plugin" or item.name.startswith("livemark_"):
+                module = importlib.import_module(item.name)
+                modules.append(module)
         module = importlib.import_module("livemark.plugins")
         for _, name, _ in pkgutil.iter_modules([os.path.dirname(module.__file__)]):
             module = importlib.import_module(f"livemark.plugins.{name}")
-            Plugins.extend(helpers.extract_classes(module, Plugin))
-        Plugins = helpers.order_objects(Plugins, "priority")
-        return Plugins
-
-    @cached_property
-    def internal(self):
-        """Internal plugin classes
-
-        Returns:
-            type[]: a list of plugin classes
-        """
-        Plugins = []
-        if importlib.util.find_spec("plugin"):
-            module = importlib.import_module("plugin")
-            Plugins = helpers.extract_classes(module, Plugin)
-            Plugins = helpers.order_objects(Plugins, "priority")
-        return Plugins
-
-    @cached_property
-    def external(self):
-        """External plugin classes
-
-        Returns:
-            type[]: a list of registered plugin classes
-        """
-        Plugins = []
-        for item in pkgutil.iter_modules():
-            if item.name.startswith("livemark_"):
-                module = importlib.import_module(item.name)
-                Plugins.extend(helpers.extract_classes(module, Plugin))
-        Plugins = helpers.order_objects(Plugins, "priority")
-        return Plugins
-
-    @cached_property
-    def combined(self):
-        """Combined plugin classes
-
-        Returns:
-            type[]: a list of registered plugin classes
-        """
-        Plugins = self.builtin + self.internal + self.external
-        Plugins = helpers.order_objects(Plugins, "priority")
+            modules.append(module)
+        for module in modules:
+            for Class in helpers.extract_classes(module, Plugin):
+                if Class.name in Plugins:
+                    raise LivemarkException(f"Plugin name conflict: {Class.name}")
+                Plugins[Class.name] = Class
         return Plugins
 
     def register(self, Plugin):
@@ -84,19 +49,19 @@ class System:
         Parameters:
             Plugin (type): a plugin class to register
         """
-        self.internal.append(Plugin)
-        self.internal = helpers.order_objects(self.internal, "priority")
+        if Plugin.name in self.Plugins:
+            raise LivemarkException(f"Plugin name conflict: {Plugin.name}")
+        self.Plugins[Plugin.name] = Plugin
 
     def deregister(self, Plugin):
-        """Register a plugin
+        """Deregister a plugin
 
         Parameters:
             Plugin (type): a plugin class to register
         """
-        try:
-            self.internal.remove(Plugin)
-        except ValueError:
-            raise LivemarkException(f"Not registered plugin: {Plugin}")
+        if Plugin.name not in self.Plugins:
+            raise LivemarkException(f"Not registered plugin: {Plugin.name}")
+        del self.Plugins[Plugin.name]
 
 
 system = System()

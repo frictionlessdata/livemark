@@ -1,7 +1,6 @@
 import os
 import inspect
 from jinja2 import Template
-from .exception import LivemarkException
 from .helpers import cached_property
 
 
@@ -17,15 +16,13 @@ class Plugin:
 
     """
 
-    property = cached_property
+    name = ""
     priority = 0
     profile = {}
-    name = ""
+    property = cached_property
 
     def __init__(self, document):
         self.__document = document
-        if not self.name:
-            raise LivemarkException("Plugin.name is requried")
 
     @property
     def config(self):
@@ -47,6 +44,12 @@ class Plugin:
         pass
 
     # Helpers
+
+    @classmethod
+    def get_type(cls):
+        if cls.__module__.startswith("livemark_"):
+            return "external"
+        return "internal"
 
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))

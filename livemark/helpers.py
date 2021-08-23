@@ -88,17 +88,6 @@ def extract_classes(module, Parent):
     return Classes
 
 
-def dedup_objects(objects, property):
-    unique_values = set()
-    unique_objects = []
-    for object in objects:
-        value = getattr(object, property)
-        if value not in unique_values:
-            unique_objects.append(object)
-            unique_values.add(value)
-    return unique_objects
-
-
 def order_objects(objects, property):
     return list(sorted(objects, key=lambda obj: -getattr(obj, property)))
 
