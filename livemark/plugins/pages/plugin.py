@@ -2,8 +2,10 @@ from copy import deepcopy
 from ...plugin import Plugin
 from ... import helpers
 
+# NOTE:
+# Add animation for opening two-level menus
 
-# TODO: improve two-level menus!
+
 # TODO: fix tow-level menus on mobile!
 # TODO: rebase sidebars on using background on hover instead of color
 # TODO: should we allow index pages for nested items (unlike in Docosaurus)?

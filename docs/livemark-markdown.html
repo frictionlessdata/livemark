@@ -1241,11 +1241,18 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   font-weight: normal;
 }
 
-#livemark-pages a.primary .fa {
+#livemark-pages li.group a.primary::after {
+  content: "\f054";
   font-size: 16px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   position: absolute;
+  top: 2px;
   right: 0px;
-  top: 8px;
+}
+
+#livemark-pages li.group.active a.primary::after {
+  content: "\f078";
 }
 
 #livemark-pages a:hover {
@@ -1294,11 +1301,18 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   display: block;
 }
 
-#livemark-topics a.primary .fa {
+#livemark-topics li.group a.primary::after {
+  content: "\f054";
   font-size: 16px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   position: absolute;
+  top: 2px;
   right: 0px;
-  top: 8px;
+}
+
+#livemark-topics li.group.is-active-li a.primary::after {
+  content: "\f078";
 }
 
 #livemark-topics a {
@@ -1673,13 +1687,12 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         <li class="primary  ">
       <a href="/index.html" class="primary">
         Introduction
-              </a>
+      </a>
           </li>
         <li class="primary group ">
-      <a href="/.html" class="primary">
+      <a href="" class="primary">
         Getting Started
-                <span class="fa fa-chevron-right"></span>
-              </a>
+      </a>
             <ul class="secondary">
                 <li class="secondary ">
           <a href="/docs/installation.html" class="secondary">
@@ -1696,27 +1709,27 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         <li class="primary  active">
       <a href="/docs/livemark-markdown.html" class="primary">
         Livemark Markdown
-              </a>
+      </a>
           </li>
         <li class="primary  ">
       <a href="/docs/livemark-components.html" class="primary">
         Livemark Components
-              </a>
+      </a>
           </li>
         <li class="primary  ">
       <a href="/docs/plugin-system.html" class="primary">
         Plugin System
-              </a>
+      </a>
           </li>
         <li class="primary  ">
       <a href="/docs/universe.html" class="primary">
         Universe
-              </a>
+      </a>
           </li>
         <li class="primary  ">
       <a href="/docs/blog.html" class="primary">
         Blog
-              </a>
+      </a>
           </li>
       </ul>
 </div>
@@ -1895,9 +1908,6 @@ document.addEventListener("DOMContentLoaded", function () {
   for (const element of $("#livemark-topics .primary")) {
     if ($(element).find(".secondary").length) {
       $(element).addClass("group");
-      $(element)
-        .children("a")
-        .append('<span class="fa fa-chevron-right"></span>');
     }
   }
 

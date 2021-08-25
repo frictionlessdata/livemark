@@ -37,11 +37,18 @@
   font-weight: normal;
 }
 
-#livemark-pages a.primary .fa {
+#livemark-pages li.group a.primary::after {
+  content: "\f054";
   font-size: 16px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   position: absolute;
+  top: 2px;
   right: 0px;
-  top: 8px;
+}
+
+#livemark-pages li.group.active a.primary::after {
+  content: "\f078";
 }
 
 #livemark-pages a:hover {

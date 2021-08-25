@@ -28,9 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
   for (const element of $("#livemark-topics .primary")) {
     if ($(element).find(".secondary").length) {
       $(element).addClass("group");
-      $(element)
-        .children("a")
-        .append('<span class="fa fa-chevron-right"></span>');
     }
   }
 

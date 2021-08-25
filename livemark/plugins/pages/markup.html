@@ -2,11 +2,8 @@
   <ul class="primary">
     {% for item in plugin.items %}
     <li class="primary {% if item.get('items') %}group{% endif %} {% if item.active %}active{% endif %}">
-      <a href="/{{ item.path }}.html" class="primary">
+      <a href="{% if not item.get('items') %}/{{ item.path }}.html{% endif %}" class="primary">
         {{ item.name }}
-        {% if item.get('items') %}
-        <span class="fa fa-chevron-right"></span>
-        {% endif %}
       </a>
       {% if item.get('items') %}
       <ul class="secondary">
