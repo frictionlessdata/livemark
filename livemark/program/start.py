@@ -5,8 +5,14 @@ from ..project import Project
 from ..document import Document
 from ..server import Server
 from .main import program
+from .. import settings
 from .. import helpers
 from . import common
+
+
+# NOTE:
+# We can bootstrap source with some examplar content
+# showing Livemark's features and ready for editiing
 
 
 @program.command(name="start")
@@ -22,23 +28,20 @@ def program_start(
 
     try:
 
-        # Create source
-        if not os.path.exists(source):
-            helpers.write_file(source)
+        # Bootstrap project
+        if not os.path.exists(config):
+            source = source or settings.DEFAULT_SOURCE
+            if not not os.path.exists(source):
+                helpers.write_file(source)
 
         # Create project
-        project = Project(config=config)
+        document = None
+        if source:
+            document = Document(source, target=target, format=format)
+        project = Project(document, config=config, format=format)
 
-        # Create document
-        document = Document(
-            source,
-            target=target,
-            format=format,
-            project=project,
-        )
-
-        # Run server
-        server = Server(document)
+        # Live mode
+        server = Server(project)
         server.start(host=host, port=port)
 
     except Exception as exception:

@@ -9,13 +9,13 @@ from . import settings
 
 
 class Server:
-    def __init__(self, document):
-        self.__document = document
+    def __init__(self, project):
+        self.__project = project
         self.__server = livereload.Server()
 
     @property
-    def document(self):
-        return self.__document
+    def project(self):
+        return self.__project
 
     # Start
 
@@ -27,13 +27,12 @@ class Server:
         file=settings.DEFAULT_FILE,
     ):
 
-        # Build initially
-        for document in self.document.project.documents:
-            document.build()
+        # Build documents
+        self.project.build()
+        for document in self.project.documents:
+            self.__server.watch(document.source, document.build, delay=1)
 
         # Run server
-        for document in self.document.project.documents:
-            self.__server.watch(document.source, document.build, delay=1)
         self.__server.serve(
             host=host,
             port=port,

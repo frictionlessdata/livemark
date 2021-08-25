@@ -23,28 +23,21 @@ def program_build(
 
     try:
 
-        # TODO: Build with no source should build all the documents?
-
         # Create project
-        project = Project(config=config)
-
-        # Create document
-        document = Document(
-            source,
-            target=target,
-            format=format,
-            project=project,
-        )
+        document = None
+        if source:
+            document = Document(source, target=target, format=format)
+        project = Project(document, config=config, format=format)
 
         # Normal mode
         if not live:
-            output = document.build(diff=diff, print=print)
+            output = project.build(diff=diff, print=print)
             if output and diff:
                 sys.exit(1)
             sys.exit(0)
 
         # Live mode
-        server = Server(document)
+        server = Server(project)
         server.start(host=host, port=port)
 
     except Exception as exception:

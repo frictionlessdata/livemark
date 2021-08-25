@@ -4,12 +4,18 @@ import sys
 import shutil
 import tempfile
 import contextlib
+from pathlib import Path
 from urllib.parse import urlparse
 from _thread import RLock  # type: ignore
 from . import settings
 
 
 # General
+
+
+def with_format(path, format):
+    suffix = f".{format}" if format else ""
+    return str(Path(path).with_suffix(suffix))
 
 
 def list_setdefault(list, index, default):

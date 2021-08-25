@@ -20,7 +20,8 @@ def test_document_format():
 
 def test_document_project():
     project = Project(config="livemark.yaml")
-    document = Document("index.md", project=project)
+    document = Document("index.md")
+    document.project = project
     assert document.source == "index.md"
     assert document.project is project
 
@@ -71,7 +72,8 @@ def test_document_build_print():
 
 def test_document_read():
     project = Project(config="livemark.yaml")
-    document = Document("index.md", project=project)
+    document = Document("index.md")
+    document.project = project
     document.read()
     assert document.source == "index.md"
     assert document.target == "index.html"

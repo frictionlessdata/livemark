@@ -1,7 +1,6 @@
 import re
 import yaml
 import difflib
-from pathlib import Path
 from frictionless import File
 from .exception import LivemarkException
 from .config import Config
@@ -25,12 +24,12 @@ class Document:
 
     """
 
-    def __init__(self, source, *, target=None, format=None, project=None, name=None):
+    def __init__(self, source, *, target=None, format=None, name=None):
 
         # Infer target
         if not target:
-            suffix = f".{format or settings.DEFAULT_FORMAT}"
-            target = str(Path(source).with_suffix(suffix))
+            format = format or settings.DEFAULT_FORMAT
+            target = helpers.with_format(source, format)
 
         # Infer format
         if not format:
@@ -41,7 +40,7 @@ class Document:
         self.__source = source
         self.__target = target
         self.__format = format
-        self.__project = project
+        self.__project = None
         self.__plugins = None
         self.__config = None
         self.__preface = None
@@ -49,6 +48,16 @@ class Document:
         self.__input = None
         self.__output = None
         self.__name = name
+
+    def __setattr__(self, name, value):
+        if name == "project":
+            self.__project = value
+        elif name == "output":
+            self.__output = value
+        elif name == "content":
+            self.__content = value
+        else:  # default setter
+            super().__setattr__(name, value)
 
     @property
     def source(self):
@@ -78,10 +87,6 @@ class Document:
     def output(self):
         return self.__output
 
-    @output.setter
-    def output(self, value):
-        self.__output = value
-
     @property
     def preface(self):
         return self.__preface
@@ -90,21 +95,20 @@ class Document:
     def content(self):
         return self.__content
 
-    @content.setter
-    def content(self, value):
-        self.__content = value
-
     @property
     def config(self):
         return self.__config
 
     @property
     def name(self):
-        return self.__name or self.path
+        name = self.__name
+        if not name:
+            name = self.title if self.content else self.path
+        return name
 
     @property
     def path(self):
-        return str(Path(self.source).with_suffix(""))
+        return helpers.with_format(self.source, "")
 
     @property
     def title(self):
@@ -212,3 +216,11 @@ class Document:
         for plugin in self.plugins:
             if plugin.name == name:
                 return plugin
+
+    def with_format(self, format):
+        return Document(
+            self.__source,
+            target=self.__target,
+            format=format,
+            name=self.__name,
+        )
