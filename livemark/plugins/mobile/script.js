@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     left.classList.toggle("active");
     mobile.classList.toggle("active");
   });
-  left.querySelectorAll("a").forEach((link) => {
+  // NOTE: We can replace the selector by 'a:not[href=""]' after #57
+  left.querySelectorAll("li:not(.group) a").forEach((link) => {
     link.addEventListener("click", () => {
       if (left.classList.contains("active")) {
         left.classList.remove("active");

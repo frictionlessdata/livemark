@@ -8,7 +8,6 @@ from ... import helpers
 # Consider using gray background for menu items on hover (like in Docusaurus)
 
 
-# TODO: fix tow-level menus on mobile!
 # TODO: should we allow index pages for nested items (unlike in Docosaurus)?
 # TODO: fix 2 line items
 class PagesPlugin(Plugin):

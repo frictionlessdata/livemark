@@ -1742,7 +1742,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-25 16:23)
+  (2021-08-25 17:02)
 </div>
 
 <h1>Installation</h1>
@@ -1999,7 +1999,8 @@ document.addEventListener("DOMContentLoaded", function () {
     left.classList.toggle("active");
     mobile.classList.toggle("active");
   });
-  left.querySelectorAll("a").forEach((link) => {
+  // NOTE: We can replace the selector by 'a:not[href=""]' after #57
+  left.querySelectorAll("li:not(.group) a").forEach((link) => {
     link.addEventListener("click", () => {
       if (left.classList.contains("active")) {
         left.classList.remove("active");
