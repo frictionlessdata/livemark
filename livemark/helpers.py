@@ -31,6 +31,15 @@ def read_file(source, *, default=None):
         return file.read()
 
 
+def copy_file(source, target):
+    if isinstance(source, (tuple, list)):
+        source = os.path.join(*source)
+    if isinstance(target, (tuple, list)):
+        target = os.path.join(*target)
+    ensure_dir(target)
+    shutil.copy(source, target)
+
+
 def move_file(source, target):
     ensure_dir(target)
     shutil.move(source, target)

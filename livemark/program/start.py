@@ -11,8 +11,7 @@ from . import common
 
 
 # NOTE:
-# We can bootstrap source with some examplar content
-# showing Livemark's features and ready for editiing
+# We need to improve default template making it faster and more informative
 
 
 @program.command(name="start")
@@ -30,9 +29,10 @@ def program_start(
 
         # Bootstrap project
         if not os.path.exists(config):
-            source = source or settings.DEFAULT_SOURCE
-            if not not os.path.exists(source):
-                helpers.write_file(source)
+            if not source:
+                source = settings.DEFAULT_SOURCE
+                if not os.path.exists(source):
+                    helpers.copy_file(settings.TEMPLATE, source)
 
         # Create project
         document = None
@@ -45,5 +45,6 @@ def program_start(
         server.start(host=host, port=port)
 
     except Exception as exception:
+        raise
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)

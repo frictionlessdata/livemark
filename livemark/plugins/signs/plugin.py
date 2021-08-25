@@ -10,7 +10,7 @@ class SignsPlugin(Plugin):
     @Plugin.property
     def items(self):
         pages = self.document.get_plugin("pages")
-        if pages:
+        if pages and pages.items:
             prev = None
             next = None
             current_number = None
