@@ -3,11 +3,11 @@ from ...plugin import Plugin
 from ... import helpers
 
 
-# TODO: improve two-level menus!
-# TODO: fix tow-level menus on mobile!
-# TODO: rebase sidebars on using background on hover instead of color
-# TODO: should we allow index pages for nested items (unlike in Docosaurus)?
-# TODO: fix 2 line items
+# NOTE:
+# Consider using animation for opening two-level menus
+# Consider using gray background for menu items on hover (like in Docusaurus)
+
+
 class PagesPlugin(Plugin):
     name = "pages"
     priority = 70

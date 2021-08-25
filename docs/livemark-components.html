@@ -1107,6 +1107,7 @@ p {
   position: fixed;
   width: 300px;
   padding: 10px 40px;
+  padding-bottom: 100px;
   left: 0px;
   top: 25px;
   font-size: 125%;
@@ -1116,7 +1117,8 @@ p {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
-#livemark-left::-webkit-scrollbar {
+/* NOTE: we need to move it to DisplayPlugin (currently unsetting doesn't work) */
+body:not(.with-readability) #livemark-left::-webkit-scrollbar {
   display: none; /* Chrome; Safari */
 }
 
@@ -1139,6 +1141,7 @@ p {
   position: fixed;
   width: 300px;
   padding: 10px 40px;
+  padding-bottom: 100px;
   right: 0px;
   top: 25px;
   font-size: 125%;
@@ -1148,7 +1151,8 @@ p {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
-#livemark-right::-webkit-scrollbar {
+/* NOTE: we need to move it to DisplayPlugin (currently unsetting doesn't work) */
+body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   display: none; /* Chrome; Safari */
 }
 
@@ -1184,7 +1188,13 @@ p {
 }
 
 #livemark-brand a {
+  display: inline-block;
   color: currentColor;
+  position: relative;
+  width: 100%;
+  line-height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #livemark-brand a.active {
@@ -1227,6 +1237,9 @@ p {
   color: currentColor;
   position: relative;
   width: 100%;
+  line-height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #livemark-pages li.active > a {
@@ -1237,11 +1250,18 @@ p {
   font-weight: normal;
 }
 
-#livemark-pages a.primary .fa {
+#livemark-pages li.group a.primary::after {
+  content: "\f054";
   font-size: 16px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   position: absolute;
+  top: 2px;
   right: 0px;
-  top: 8px;
+}
+
+#livemark-pages li.group.active a.primary::after {
+  content: "\f078";
 }
 
 #livemark-pages a:hover {
@@ -1279,6 +1299,43 @@ p {
 
 #livemark-topics .is-active-link {
   font-weight: 700;
+}
+
+#livemark-topics ul.secondary {
+  margin-left: 20px;
+  display: none;
+}
+
+#livemark-topics li.is-active-li ul.secondary {
+  display: block;
+}
+
+#livemark-topics li.group a.primary::after {
+  content: "\f054";
+  font-size: 16px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+}
+
+#livemark-topics li.group.is-active-li a.primary::after {
+  content: "\f078";
+}
+
+#livemark-topics a {
+  display: inline-block;
+  color: currentColor;
+  position: relative;
+  width: 100%;
+  line-height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#livemark-topics a:hover {
+  color: #80b2e6;
 }
 
 </style>
@@ -1385,7 +1442,13 @@ p {
 }
 
 #livemark-links a {
+  display: inline-block;
   color: currentColor;
+  position: relative;
+  width: 100%;
+  line-height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #livemark-links a:hover {
@@ -1471,11 +1534,11 @@ p {
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
-/* NOTE: review unsetting the default value as it doesn't seem to work */
-.with-readability #livemark-left::-webkit-scrollbar,
-.with-readability #livemark-right::-webkit-scrollbar {
-  display: unset; /* Chrome; Safari */
-}
+/* NOTE: temporarily implemented in HtmlPlugin
+/* .with-readability #livemark-left::-webkit-scrollbar, */
+/* .with-readability #livemark-right::-webkit-scrollbar { */
+  /* display: unset !important; [> Chrome; Safari <] */
+/* } */
 
 </style>
 <style>
@@ -1642,13 +1705,12 @@ p {
         <li class="primary  ">
       <a href="/index.html" class="primary">
         Introduction
-              </a>
+      </a>
           </li>
         <li class="primary group ">
-      <a href="/.html" class="primary">
+      <a href="" class="primary">
         Getting Started
-                <span class="fa fa-chevron-right"></span>
-              </a>
+      </a>
             <ul class="secondary">
                 <li class="secondary ">
           <a href="/docs/installation.html" class="secondary">
@@ -1665,27 +1727,27 @@ p {
         <li class="primary  ">
       <a href="/docs/livemark-markdown.html" class="primary">
         Livemark Markdown
-              </a>
+      </a>
           </li>
         <li class="primary  active">
       <a href="/docs/livemark-components.html" class="primary">
         Livemark Components
-              </a>
+      </a>
           </li>
         <li class="primary  ">
       <a href="/docs/plugin-system.html" class="primary">
         Plugin System
-              </a>
+      </a>
           </li>
         <li class="primary  ">
       <a href="/docs/universe.html" class="primary">
         Universe
-              </a>
+      </a>
           </li>
         <li class="primary  ">
       <a href="/docs/blog.html" class="primary">
         Blog
-              </a>
+      </a>
           </li>
       </ul>
 </div>
@@ -1835,6 +1897,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Start tocbot
   tocbot.init({
     // Where to render the table of contents.
     tocSelector: ".toc",
@@ -1846,7 +1909,35 @@ document.addEventListener("DOMContentLoaded", function () {
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
     headingLabelCallback: (label) => label.replace(/(^#|#$)/g, "").trim(),
+    // Disable generating ordered lists (ol)
+    orderedList: false,
+    // Fix active link class
+    onClick: syncList,
+    scrollEndCallback: syncList,
   });
+
+  // Style list
+  $("#livemark-topics .toc > ul").addClass("primary");
+  $("#livemark-topics .toc > ul > li").addClass("primary");
+  $("#livemark-topics .toc > ul > li > a").addClass("primary");
+  $("#livemark-topics .toc ul.is-collapsible").addClass("secondary");
+  $("#livemark-topics .toc ul.is-collapsible li").addClass("secondary");
+  $("#livemark-topics .toc ul.is-collapsible li > a").addClass("secondary");
+  for (const element of $("#livemark-topics .primary")) {
+    if ($(element).find(".secondary").length) {
+      $(element).addClass("group");
+    }
+  }
+
+  // Sync list
+  function syncList() {
+    for (const element of $("#livemark-topics li.primary")) {
+      if ($(element).find(".is-active-li").length) {
+        $(element).addClass("is-active-li");
+      }
+    }
+  }
+  syncList();
 });
 
 </script>
@@ -1905,7 +1996,8 @@ document.addEventListener("DOMContentLoaded", function () {
     left.classList.toggle("active");
     mobile.classList.toggle("active");
   });
-  left.querySelectorAll("a").forEach((link) => {
+  // NOTE: We can replace the selector by 'a:not[href=""]' after #57
+  left.querySelectorAll("li:not(.group) a").forEach((link) => {
     link.addEventListener("click", () => {
       if (left.classList.contains("active")) {
         left.classList.remove("active");

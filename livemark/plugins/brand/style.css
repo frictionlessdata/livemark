@@ -14,7 +14,13 @@
 }
 
 #livemark-brand a {
+  display: inline-block;
   color: currentColor;
+  position: relative;
+  width: 100%;
+  line-height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #livemark-brand a.active {

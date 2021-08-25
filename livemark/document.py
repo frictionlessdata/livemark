@@ -101,10 +101,7 @@ class Document:
 
     @property
     def name(self):
-        name = self.__name
-        if not name:
-            name = self.title if self.content else self.path
-        return name
+        return self.__name or self.title or self.path
 
     @property
     def path(self):
@@ -216,11 +213,3 @@ class Document:
         for plugin in self.plugins:
             if plugin.name == name:
                 return plugin
-
-    def with_format(self, format):
-        return Document(
-            self.__source,
-            target=self.__target,
-            format=format,
-            name=self.__name,
-        )
