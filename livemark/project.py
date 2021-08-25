@@ -63,9 +63,3 @@ class Project:
         output = "\n".join(outputs)
 
         return output
-
-    # Helpers
-
-    def with_format(self, format):
-        document = self.__document.with_format(format)
-        return Project(document, config=self.__config, format=format)
