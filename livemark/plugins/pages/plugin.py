@@ -4,11 +4,10 @@ from ... import helpers
 
 
 # NOTE:
-# Add animation for opening two-level menus
+# Consider using animation for opening two-level menus
 # Consider using gray background for menu items on hover (like in Docusaurus)
 
 
-# TODO: fix 2 line items
 class PagesPlugin(Plugin):
     name = "pages"
     priority = 70
