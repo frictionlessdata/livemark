@@ -3,8 +3,9 @@ import yaml
 import deepmerge
 import jsonschema
 from copy import deepcopy
-from .system import system
 from .exception import LivemarkException
+from .system import system
+from . import helpers
 
 
 class Config(dict):
@@ -16,8 +17,9 @@ class Config(dict):
         config = source or {}
         if not isinstance(config, dict):
             if os.path.isfile(config):
-                with open(config) as file:
-                    config = yaml.safe_load(file)
+                config = yaml.safe_load(helpers.read_file(config))
+            else:  # there is no config
+                config = {}
 
         # Process config
         for key, value in list(config.items()):

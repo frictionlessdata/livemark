@@ -122,7 +122,7 @@ class Document:
             for line in self.content.splitlines():
                 line = line.strip()
                 if pattern.match(line):
-                    return line
+                    return line.split(". ")[0]
 
     @property
     def keywords(self):

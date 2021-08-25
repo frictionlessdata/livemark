@@ -9,6 +9,10 @@ from .main import program
 from . import common
 
 
+# NOTE:
+# Live mode always opens index file even though another source is provided
+
+
 @program.command(name="build")
 def program_build(
     source: str = common.source,

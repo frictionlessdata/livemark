@@ -20,4 +20,5 @@ DEFAULT_CONFIG = "livemark.yaml"
 DEFAULT_HOST = "localhost"
 DEFAULT_PORT = 7000
 DEFAULT_FILE = "index.html"
+TEMPLATE = os.path.join(os.path.dirname(__file__), "assets", "documents", "template.md")
 UNDEFINED = object()
