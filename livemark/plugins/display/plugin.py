@@ -1,6 +1,11 @@
 from ...plugin import Plugin
 
 
+# NOTE:
+# Consider using pure jQuery instead of ue-scroll
+# Consider adding help button to teach how to scroll sidebars, shorcuts, etc
+
+
 class DisplayPlugin(Plugin):
     name = "display"
     profile = {

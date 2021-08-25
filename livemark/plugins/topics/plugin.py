@@ -2,7 +2,6 @@ from ...plugin import Plugin
 from ...exception import LivemarkException
 
 
-# TODO: fix increase readability scroll return
 class TopicsPlugin(Plugin):
     name = "topics"
     priority = 60

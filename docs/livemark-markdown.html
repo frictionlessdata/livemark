@@ -1107,6 +1107,7 @@ p {
   position: fixed;
   width: 300px;
   padding: 10px 40px;
+  padding-bottom: 100px;
   left: 0px;
   top: 25px;
   font-size: 125%;
@@ -1116,7 +1117,8 @@ p {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
-#livemark-left::-webkit-scrollbar {
+/* NOTE: we need to move it to DisplayPlugin (currently unsetting doesn't work) */
+body:not(.with-readability) #livemark-left::-webkit-scrollbar {
   display: none; /* Chrome; Safari */
 }
 
@@ -1139,6 +1141,7 @@ p {
   position: fixed;
   width: 300px;
   padding: 10px 40px;
+  padding-bottom: 100px;
   right: 0px;
   top: 25px;
   font-size: 125%;
@@ -1148,7 +1151,8 @@ p {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
-#livemark-right::-webkit-scrollbar {
+/* NOTE: we need to move it to DisplayPlugin (currently unsetting doesn't work) */
+body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   display: none; /* Chrome; Safari */
 }
 
@@ -1498,11 +1502,11 @@ p {
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
-/* NOTE: review unsetting the default value as it doesn't seem to work */
-.with-readability #livemark-left::-webkit-scrollbar,
-.with-readability #livemark-right::-webkit-scrollbar {
-  display: unset; /* Chrome; Safari */
-}
+/* NOTE: temporarily implemented in HtmlPlugin
+/* .with-readability #livemark-left::-webkit-scrollbar, */
+/* .with-readability #livemark-right::-webkit-scrollbar { */
+  /* display: unset !important; [> Chrome; Safari <] */
+/* } */
 
 </style>
 <style>
