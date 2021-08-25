@@ -29,10 +29,6 @@ class Project:
                 document = Document(source, target=target, name=item["name"])
                 documents.append(document)
 
-        # Ensure documents
-        if not document:
-            raise LivemarkException("No documents found")
-
         # Set project
         for document in documents:
             document.project = self
@@ -53,12 +49,20 @@ class Project:
     # Build
 
     def build(self, *, diff=False, print=False):
+
+        # Ensure documents
+        if not self.documents:
+            raise LivemarkException("No documents found")
+
+        # Build documents
         outputs = []
         for document in self.documents:
             output = document.build(diff=diff, print=print)
             if output:
                 outputs.append(output)
-        return "\n".join(outputs)
+        output = "\n".join(outputs)
+
+        return output
 
     # Helpers
 

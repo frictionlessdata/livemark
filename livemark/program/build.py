@@ -1,8 +1,10 @@
+import os
 import sys
 import typer
 from ..server import Server
 from ..project import Project
 from ..document import Document
+from ..exception import LivemarkException
 from .main import program
 from . import common
 
@@ -22,6 +24,12 @@ def program_build(
     """Build Markdown file into HTML by default."""
 
     try:
+
+        # Validate project
+        if not os.path.exists(config):
+            if not source:
+                message = 'Project without config requires "source" argument'
+                raise LivemarkException(message)
 
         # Create project
         document = None

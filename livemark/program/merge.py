@@ -1,3 +1,4 @@
+import os
 import sys
 import typer
 import atexit
@@ -23,6 +24,12 @@ def program_merge(
     """Merge Markdown file into itself."""
 
     try:
+
+        # Validate project
+        if not os.path.exists(config):
+            if not source:
+                message = 'Project without config requires "source" argument'
+                raise LivemarkException(message)
 
         # Create project
         document = None
