@@ -1,8 +1,9 @@
 from ...plugin import Plugin
+from ...exception import LivemarkException
 
 
-# TODO: limit selector levels?
 # TODO: support two-level menu items?
+# TODO: fix increase readability scroll return
 class TopicsPlugin(Plugin):
     name = "topics"
     priority = 60
@@ -17,7 +18,10 @@ class TopicsPlugin(Plugin):
 
     @Plugin.property
     def selector(self):
-        return self.config.get("selector", "h2, h3")
+        selector = self.config.get("selector", "h2, h3")
+        if len(selector.split(",")) > 2:
+            raise LivemarkException("Maximum topic levels is 2")
+        return selector
 
     # Process
 
