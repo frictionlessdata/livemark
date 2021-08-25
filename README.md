@@ -25,16 +25,9 @@ Livemark is a static site generator that extends Markdown with interactive chart
 
 ## Example
 
-> Take a look at the [DEMO](https://frictionlessdata.github.io/livemark/) article
+> The [Livemark Documentation](https://livemark.frictionlessdata.io) is written in Livemark
 
-```bash
-# Start a livereload server
-$ livemark start
-
-# Build/merge a single document
-$ livemark build document.md
-$ livemark merge document.md
-```
+![Example](data/example.png)
 
 ## Documentation
 
