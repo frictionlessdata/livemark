@@ -2,7 +2,6 @@ from ...plugin import Plugin
 from ...exception import LivemarkException
 
 
-# TODO: support two-level menu items?
 # TODO: fix increase readability scroll return
 class TopicsPlugin(Plugin):
     name = "topics"

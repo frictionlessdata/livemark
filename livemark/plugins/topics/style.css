@@ -27,3 +27,30 @@
 #livemark-topics .is-active-link {
   font-weight: 700;
 }
+
+#livemark-topics ul.secondary {
+  margin-left: 20px;
+  display: none;
+}
+
+#livemark-topics li.is-active-li ul.secondary {
+  display: block;
+}
+
+#livemark-topics a.primary .fa {
+  font-size: 16px;
+  position: absolute;
+  right: 0px;
+  top: 8px;
+}
+
+#livemark-topics a {
+  display: inline-block;
+  color: currentColor;
+  position: relative;
+  width: 100%;
+}
+
+#livemark-topics a:hover {
+  color: #80b2e6;
+}

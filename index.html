@@ -1281,6 +1281,33 @@ p {
   font-weight: 700;
 }
 
+#livemark-topics ul.secondary {
+  margin-left: 20px;
+  display: none;
+}
+
+#livemark-topics li.is-active-li ul.secondary {
+  display: block;
+}
+
+#livemark-topics a.primary .fa {
+  font-size: 16px;
+  position: absolute;
+  right: 0px;
+  top: 8px;
+}
+
+#livemark-topics a {
+  display: inline-block;
+  color: currentColor;
+  position: relative;
+  width: 100%;
+}
+
+#livemark-topics a:hover {
+  color: #80b2e6;
+}
+
 </style>
 <style>
 
@@ -1698,7 +1725,7 @@ p {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-25 13:38)
+  (2021-08-25 15:06)
 </div>
 
 <h1>Livemark</h1>
@@ -2003,6 +2030,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Start tocbot
   tocbot.init({
     // Where to render the table of contents.
     tocSelector: ".toc",
@@ -2014,7 +2042,38 @@ document.addEventListener("DOMContentLoaded", function () {
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
     headingLabelCallback: (label) => label.replace(/(^#|#$)/g, "").trim(),
+    // Disable generating ordered lists (ol)
+    orderedList: false,
+    // Fix active link class
+    onClick: syncList,
+    scrollEndCallback: syncList,
   });
+
+  // Style list
+  $("#livemark-topics .toc > ul").addClass("primary");
+  $("#livemark-topics .toc > ul > li").addClass("primary");
+  $("#livemark-topics .toc > ul > li > a").addClass("primary");
+  $("#livemark-topics .toc ul.is-collapsible").addClass("secondary");
+  $("#livemark-topics .toc ul.is-collapsible li").addClass("secondary");
+  $("#livemark-topics .toc ul.is-collapsible li > a").addClass("secondary");
+  for (const element of $("#livemark-topics .primary")) {
+    if ($(element).find(".secondary").length) {
+      $(element).addClass("group");
+      $(element)
+        .children("a")
+        .append('<span class="fa fa-chevron-right"></span>');
+    }
+  }
+
+  // Sync list
+  function syncList() {
+    for (const element of $("#livemark-topics li.primary")) {
+      if ($(element).find(".is-active-li").length) {
+        $(element).addClass("is-active-li");
+      }
+    }
+  }
+  syncList();
 });
 
 </script>
