@@ -1,13 +1,9 @@
-import os
 import re
 import yaml
 import difflib
-import deepmerge
-import jsonschema
-from pathlib import Path
 from frictionless import File
 from .exception import LivemarkException
-from .helpers import cached_property
+from .config import Config
 from .system import system
 from . import settings
 from . import helpers
@@ -24,48 +20,44 @@ class Document:
         source (str): path to the document source
         target? (str): path to the document target
         format? (str): format of the document target
-        config? (str|dict): path to a config file or a config dict
+        project? (Project): a project object of the document
 
     """
 
-    def __init__(self, source, *, target=None, format=None, config=None):
-
-        # Create plugins
-        plugins = []
-        for Plugin in system.Plugins:
-            plugins.append(Plugin(self))
+    def __init__(self, source, *, target=None, format=None, name=None):
 
         # Infer target
         if not target:
-            suffix = f".{format or settings.DEFAULT_FORMAT}"
-            target = str(Path(source).with_suffix(suffix))
+            format = format or settings.DEFAULT_FORMAT
+            target = helpers.with_format(source, format)
 
         # Infer format
         if not format:
             file = File(target)
             format = file.format
 
-        # Normalize config
-        config = config or {}
-        if not isinstance(config, dict):
-            if os.path.isfile(config):
-                with open(config) as file:
-                    config = yaml.safe_load(file)
-
         # Set attributes
-        self.__plugins = plugins
         self.__source = source
         self.__target = target
         self.__format = format
-        self.__config = config
+        self.__project = None
+        self.__plugins = None
+        self.__config = None
         self.__preface = None
         self.__content = None
         self.__input = None
         self.__output = None
+        self.__name = name
 
-    @property
-    def plugins(self):
-        return self.__plugins
+    def __setattr__(self, name, value):
+        if name == "project":
+            self.__project = value
+        elif name == "output":
+            self.__output = value
+        elif name == "content":
+            self.__content = value
+        else:  # default setter
+            super().__setattr__(name, value)
 
     @property
     def source(self):
@@ -75,10 +67,17 @@ class Document:
     def target(self):
         return self.__target
 
-    @cached_property
+    @property
     def format(self):
-        file = File(self.target)
-        return file.format
+        return self.__format
+
+    @property
+    def project(self):
+        return self.__project
+
+    @property
+    def plugins(self):
+        return self.__plugins
 
     @property
     def input(self):
@@ -88,10 +87,6 @@ class Document:
     def output(self):
         return self.__output
 
-    @output.setter
-    def output(self, value):
-        self.__output = value
-
     @property
     def preface(self):
         return self.__preface
@@ -100,32 +95,42 @@ class Document:
     def content(self):
         return self.__content
 
-    @content.setter
-    def content(self, value):
-        self.__content = value
-
     @property
     def config(self):
         return self.__config
 
-    @cached_property
+    @property
+    def name(self):
+        name = self.__name
+        if not name:
+            name = self.title if self.content else self.path
+        return name
+
+    @property
+    def path(self):
+        return helpers.with_format(self.source, "")
+
+    @property
     def title(self):
-        prefix = "# "
-        for line in self.input.splitlines():
-            if line.startswith(prefix):
-                return line.lstrip(prefix)
+        if self.content:
+            prefix = "# "
+            for line in self.content.splitlines():
+                if line.startswith(prefix):
+                    return line.lstrip(prefix)
 
-    @cached_property
+    @property
     def description(self):
-        pattern = re.compile(r"^\w")
-        for line in self.input.splitlines():
-            line = line.strip()
-            if pattern.match(line):
-                return line
+        if self.content:
+            pattern = re.compile(r"^\w")
+            for line in self.content.splitlines():
+                line = line.strip()
+                if pattern.match(line):
+                    return line
 
-    @cached_property
+    @property
     def keywords(self):
-        return ",".join(map(str.lower, self.title.split()))
+        if self.content:
+            return ",".join(map(str.lower, self.title.split()))
 
     # Build
 
@@ -151,25 +156,28 @@ class Document:
             self.__preface = parts[0].strip()
             self.__content = parts[1].strip()
 
-        # Read/process config
+        # Read config
+        self.__config = Config({})
+        if self.__project:
+            self.__config = self.__project.config.to_copy()
         if self.__preface:
-            deepmerge.always_merger.merge(self.__config, yaml.safe_load(self.__preface))
-        for plugin in self.__plugins:
-            self.__config.setdefault(plugin.name, {})
-            if not isinstance(self.__config[plugin.name], dict):
-                self.__config[plugin.name] = {"self": self.__config[plugin.name]}
-        for plugin in self.__plugins:
-            plugin.process_config(self.__config)
-            if self.__config[plugin.name] and plugin.profile:
-                validator = jsonschema.Draft7Validator(plugin.profile)
-                for error in validator.iter_errors(self.__config[plugin.name]):
-                    message = f'Invalid "{plugin.name}" config: {error.message}'
-                    raise LivemarkException(message)
+            self.__config = self.__config.to_merge(yaml.safe_load(self.__preface))
+
+        # Create plugins
+        if self.__plugins is None:
+            self.__plugins = []
+            for name, Plugin in system.Plugins.items():
+                type = Plugin.get_type()
+                internal = type == "internal" and name not in self.__config.disable
+                external = type == "external" and name in self.__config.enable
+                if internal or external:
+                    self.__plugins.append(Plugin(self))
+            self.__plugins = helpers.order_objects(self.__plugins, "priority")
 
     # Process
 
     def process(self):
-        if self.__input is None:
+        if self.__content is None:
             raise LivemarkException("Read document before processing")
         for plugin in self.__plugins:
             plugin.process_document(self)
@@ -208,4 +216,11 @@ class Document:
         for plugin in self.plugins:
             if plugin.name == name:
                 return plugin
-        raise LivemarkException(f"Plugin is not registered: {name}")
+
+    def with_format(self, format):
+        return Document(
+            self.__source,
+            target=self.__target,
+            format=format,
+            name=self.__name,
+        )

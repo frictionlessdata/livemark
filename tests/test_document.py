@@ -1,5 +1,5 @@
 import pytest
-from livemark import Document, LivemarkException, helpers
+from livemark import Project, Document, LivemarkException, helpers
 
 
 # General
@@ -9,7 +9,6 @@ def test_document():
     document = Document("index.md")
     assert document.source == "index.md"
     assert document.format == "html"
-    assert len(document.plugins) > 20
 
 
 def test_document_format():
@@ -19,10 +18,12 @@ def test_document_format():
     assert document.target == "index.pdf"
 
 
-def test_document_config():
-    document = Document("index.md", config="livemark.yaml")
+def test_document_project():
+    project = Project(config="livemark.yaml")
+    document = Document("index.md")
+    document.project = project
     assert document.source == "index.md"
-    assert document.config["github"]["repo"] == "livemark"
+    assert document.project is project
 
 
 def test_document_update_content():
@@ -70,11 +71,13 @@ def test_document_build_print():
 
 
 def test_document_read():
-    document = Document("index.md", config="livemark.yaml")
+    project = Project(config="livemark.yaml")
+    document = Document("index.md")
+    document.project = project
     document.read()
     assert document.source == "index.md"
     assert document.target == "index.html"
-    assert document.config["pages"]["list"]
+    assert document.config["pages"]["items"]
     assert document.input.count("# Livemark")
     assert document.preface == ""
     assert document.content.count("# Livemark")
@@ -82,14 +85,15 @@ def test_document_read():
     assert document.title == "Livemark"
     assert document.description.startswith("Livemark is a static site generator")
     assert document.keywords == "livemark"
+    assert len(document.plugins) > 20
 
 
 def test_document_read_with_preface():
     document = Document("data/preface.md")
     document.read()
-    assert document.preface == "search: true"
+    assert document.preface == "brand:\n  text: Livemark"
     assert document.content == "# Preface"
-    assert document.config["search"] == {"self": True}
+    assert document.config["brand"] == {"text": "Livemark"}
 
 
 def test_document_read_with_preface_invalid():

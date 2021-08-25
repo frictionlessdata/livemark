@@ -1,19 +1,20 @@
 from copy import deepcopy
 from ...plugin import Plugin
+from ... import helpers
 
 
 # TODO: improve two-level menus!
 # TODO: fix tow-level menus on mobile!
 # TODO: rebase sidebars on using background on hover instead of color
 # TODO: should we allow index pages for nested items (unlike in Docosaurus)?
-# TODO: review paths format - md/html?
 # TODO: fix 2 line items
 class PagesPlugin(Plugin):
+    name = "pages"
     priority = 70
     profile = {
         "type": "object",
         "properties": {
-            "list": {
+            "items": {
                 "type": "array",
                 "items": {
                     "type": "object",
@@ -21,7 +22,7 @@ class PagesPlugin(Plugin):
                     "properties": {
                         "name": {"type": "string"},
                         "path": {"type": "string"},
-                        "list": {"type": "array"},
+                        "items": {"type": "array"},
                     },
                 },
             },
@@ -32,17 +33,14 @@ class PagesPlugin(Plugin):
 
     @Plugin.property
     def current(self):
-        current = "/"
-        if self.document.target != "index.html":
-            current = f"/{self.document.target}"
-        return current
+        return self.document.path
 
     @Plugin.property
     def items(self):
-        items = deepcopy(self.config["list"])
+        items = deepcopy(self.config.get("items", []))
         for item in items:
             item["active"] = False
-            subitems = item.get("list", [])
+            subitems = item.get("items", [])
             for subitem in subitems:
                 subitem["active"] = False
                 if subitem["path"] == self.current:
@@ -54,28 +52,13 @@ class PagesPlugin(Plugin):
         return items
 
     @Plugin.property
-    def items_flatten(self):
-        items = []
-        for item in self.items:
-            subitems = item.get("list", [])
-            for subitem in subitems:
-                items.append(subitem)
-            if not subitems:
-                items.append(item)
-        return items
+    def flatten_items(self):
+        return helpers.flatten_items(self.items, "items")
 
     # Process
 
-    def process_config(self, config):
-        if self.config:
-            self.config.setdefault("list", self.config.pop("self", []))
-
     def process_markup(self, markup):
-        if self.config:
+        if self.items:
             markup.add_style("style.css")
             markup.add_script("script.js")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-left",
-                items=self.items,
-            )
+            markup.add_markup("markup.html", target="#livemark-left")

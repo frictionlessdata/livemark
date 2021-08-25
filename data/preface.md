@@ -1,5 +1,6 @@
 ---
-search: true
+brand:
+  text: Livemark
 ---
 
 # Preface

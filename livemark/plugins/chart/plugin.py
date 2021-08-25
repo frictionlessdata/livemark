@@ -1,14 +1,15 @@
 import json
 import yaml
-from jinja2 import Template
 from ...plugin import Plugin
 
 
 class ChartPlugin(Plugin):
+    name = "chart"
+    priority = 100
 
     # Process
 
-    def process_config(self, config):
+    def process_document(self, document):
         self.__count = 0
 
     def process_snippet(self, snippet):
@@ -19,10 +20,9 @@ class ChartPlugin(Plugin):
                     spec_python = yaml.safe_load(spec_yaml)
                     spec = json.dumps(spec_python, ensure_ascii=False)
                     spec = spec.replace("'", "\\'")
-                    template = Template(self.read_asset("markup.html"))
                     self.__count += 1
                     chart = {"spec": spec, "elem": f"livemark-chart-{self.__count}"}
-                    snippet.output = template.render(chart=chart) + "\n"
+                    snippet.output = self.read_asset("markup.html", chart=chart) + "\n"
 
     def process_markup(self, markup):
         markup.add_script("https://unpkg.com/vega@5.20.2/build/vega.min.js")

@@ -4,12 +4,18 @@ import sys
 import shutil
 import tempfile
 import contextlib
+from pathlib import Path
 from urllib.parse import urlparse
 from _thread import RLock  # type: ignore
 from . import settings
 
 
 # General
+
+
+def with_format(path, format):
+    suffix = f".{format}" if format else ""
+    return str(Path(path).with_suffix(suffix))
 
 
 def list_setdefault(list, index, default):
@@ -67,6 +73,29 @@ def capture_stdout(stdout=None):
     sys.stdout = stdout
     yield stdout
     sys.stdout = old
+
+
+def flatten_items(items, prop):
+    flatten_items = []
+    for item in items:
+        subitems = item.get(prop, [])
+        for subitem in subitems:
+            flatten_items.append(subitem)
+        if not subitems:
+            flatten_items.append(item)
+    return flatten_items
+
+
+def extract_classes(module, Parent):
+    Classes = []
+    for item in vars(module or {}).values():
+        if isinstance(item, type) and issubclass(item, Parent) and item is not Parent:
+            Classes.append(item)
+    return Classes
+
+
+def order_objects(objects, property):
+    return list(sorted(objects, key=lambda obj: -getattr(obj, property)))
 
 
 # Backports

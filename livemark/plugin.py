@@ -16,33 +16,23 @@ class Plugin:
 
     """
 
-    property = cached_property
+    name = ""
     priority = 0
     profile = {}
+    property = cached_property
 
     def __init__(self, document):
         self.__document = document
-        self.process_plugin()
 
     @property
-    def name(self):
-        return self.__class__.__name__.replace("Plugin", "").lower()
+    def config(self):
+        return self.__document.config.get(self.name, {})
 
     @property
     def document(self):
         return self.__document
 
-    @property
-    def config(self):
-        return self.__document.config[self.name]
-
     # Actions
-
-    def process_plugin(self):
-        pass
-
-    def process_config(self, config):
-        pass
 
     def process_document(self, document):
         pass
@@ -55,12 +45,17 @@ class Plugin:
 
     # Helpers
 
+    @classmethod
+    def get_type(cls):
+        if cls.__module__.startswith("livemark_"):
+            return "external"
+        return "internal"
+
     def read_asset(self, *path, **context):
         dir = os.path.dirname(inspect.getfile(self.__class__))
         path = os.path.join(dir, *path)
+        context["plugin"] = self
         with open(path) as file:
-            text = file.read().strip()
-        if context:
-            template = Template(text, trim_blocks=True)
+            template = Template(file.read().strip(), trim_blocks=True)
             text = template.render(**context)
         return text

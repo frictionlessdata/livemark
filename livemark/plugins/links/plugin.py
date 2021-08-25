@@ -3,18 +3,18 @@ from ...plugin import Plugin
 
 
 class LinksPlugin(Plugin):
+    name = "links"
     priority = 10
     profile = {
         "type": "object",
         "properties": {
-            "list": {
+            "items": {
                 "type": "array",
                 "items": {
                     "type": "object",
                     "properties": {
                         "name": {"type": "string"},
                         "path": {"type": "string"},
-                        "hook": {"type": "string"},
                     },
                 },
             },
@@ -26,8 +26,8 @@ class LinksPlugin(Plugin):
     @Plugin.property
     def items(self):
         github = self.document.get_plugin("github")
-        items = deepcopy(self.config["list"])
-        if github.base_url:
+        items = deepcopy(self.config.get("items", []))
+        if github:
             items.append({"name": "Report", "path": github.report_url})
             items.append({"name": "Fork", "path": github.fork_url})
             items.append({"name": "Edit", "path": github.edit_url})
@@ -35,14 +35,7 @@ class LinksPlugin(Plugin):
 
     # Process
 
-    def process_config(self, config):
-        self.config.setdefault("list", self.config.pop("self", []))
-
     def process_markup(self, markup):
-        if self.config:
+        if self.items:
             markup.add_style("style.css")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-right",
-                items=self.items,
-            )
+            markup.add_markup("markup.html", target="#livemark-right")

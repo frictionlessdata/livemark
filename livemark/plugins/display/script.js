@@ -21,6 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Scroll
-  const scrollSpeed = parseInt("{{ speed }}");
+  const scrollSpeed = parseInt("{{ plugin.speed }}");
   UeScroll.init({ element: "#livemark-display-scroll .fa", scrollSpeed });
 });

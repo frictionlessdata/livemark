@@ -11,7 +11,7 @@ def test_system():
 
 def test_system_register():
     system.register(Plugin)
-    assert system.Plugins.count(Plugin)
+    assert system.Plugins[""]
     system.deregister(Plugin)
 
 

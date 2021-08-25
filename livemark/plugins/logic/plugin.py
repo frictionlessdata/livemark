@@ -4,6 +4,7 @@ from ...plugin import Plugin
 
 
 class LogicPlugin(Plugin):
+    name = "logic"
     priority = 90
 
     # Process

@@ -1,5 +1,3 @@
-from pathlib import Path
-from ...document import Document
 from ...plugin import Plugin
 
 
@@ -10,50 +8,30 @@ from ...plugin import Plugin
 
 
 class SearchPlugin(Plugin):
+    name = "search"
 
     # Context
 
     @Plugin.property
     def items(self):
-        pages = self.document.get_plugin("pages")
-
-        # Single page
-        items = [
-            {
-                "name": self.document.title,
-                "link": f"/{self.document.target}",
-                "text": self.document.content,
-            }
-        ]
-
-        # Multiple pages
-        if pages.config:
-            items = []
-            for item in pages.items_flatten:
-                path = Path(item["path"][1:] or "index.html").with_suffix(".md")
-                document = Document(path)
-                document.read()
-                items.append(
-                    {
-                        "name": item["name"],
-                        "link": item["path"],
-                        "text": document.content,
-                    }
-                )
-
+        items = []
+        documents = [self.document]
+        if self.document.project:
+            documents = self.document.project.documents
+        for doc in documents:
+            if not doc.content:
+                doc.read()
+            items.append({"name": doc.name, "path": doc.path, "text": doc.content})
         return items
 
     # Process
 
     def process_markup(self, markup):
-        if self.config:
+        if self.items:
             url = "https://unpkg.com"
             markup.add_style("style.css")
             markup.add_script(f"{url}/lunr@2.3.9/lunr.min.js")
             markup.add_script(f"{url}/jquery-highlight@3.5.0/jquery.highlight.js")
             markup.add_script(f"{url}/jquery.scrollto@2.1.3/jquery.scrollTo.js")
-            markup.add_script("script.js", items=self.items)
-            markup.add_markup(
-                "markup.html",
-                target="body",
-            )
+            markup.add_script("script.js")
+            markup.add_markup("markup.html", target="body")

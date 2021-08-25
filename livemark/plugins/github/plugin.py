@@ -4,6 +4,7 @@ from ...plugin import Plugin
 
 
 class GithubPlugin(Plugin):
+    name = "github"
     profile = {
         "type": "object",
         "required": ["user", "repo"],
@@ -17,11 +18,11 @@ class GithubPlugin(Plugin):
 
     @Plugin.property
     def user(self):
-        return self.config.get("user")
+        return self.config.get("user", self.parsed_data.get("user"))
 
     @Plugin.property
     def repo(self):
-        return self.config.get("repo")
+        return self.config.get("repo", self.parsed_data.get("repo"))
 
     @Plugin.property
     def base_url(self):
@@ -43,14 +44,11 @@ class GithubPlugin(Plugin):
         if self.base_url:
             return f"{self.base_url}/edit/main/{self.document.source}"
 
-    # Process
-
-    def process_config(self, config):
-        if not self.config:
-            try:
-                repo = Repo()
-                data = parse(repo.remote().url)
-                self.config["user"] = data.owner
-                self.config["repo"] = data.repo
-            except Exception:
-                pass
+    @Plugin.property
+    def parsed_data(self):
+        try:
+            repo = Repo()
+            pack = parse(repo.remote().url)
+            return {"user": pack.owner, "repo": pack.repo}
+        except Exception:
+            return {}

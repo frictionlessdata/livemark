@@ -2,6 +2,7 @@ from ...plugin import Plugin
 
 
 class CounterPlugin(Plugin):
+    name = "counter"
     profile = {
         "type": "object",
         "required": ["type", "code"],
@@ -24,9 +25,5 @@ class CounterPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if self.config and self.type == "google":
-            markup.add_markup(
-                "markup.html",
-                target="head",
-                code=self.code,
-            )
+        if self.type == "google":
+            markup.add_markup("markup.html", target="head")

@@ -6,7 +6,7 @@ from .. import settings
 
 
 source = Argument(
-    settings.DEFAULT_SOURCE,
+    None,
     help="Path to the source file",
 )
 

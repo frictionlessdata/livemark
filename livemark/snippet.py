@@ -19,6 +19,12 @@ class Snippet:
         self.__header = header
         self.__output = None
 
+    def __setattr__(self, name, value):
+        if name == "output":
+            self.__output = value
+        else:  # default setter
+            super().__setattr__(name, value)
+
     @property
     def input(self):
         return self.__input
@@ -26,10 +32,6 @@ class Snippet:
     @property
     def output(self):
         return self.__output
-
-    @output.setter
-    def output(self, value):
-        self.__output = value
 
     @property
     def header(self):

@@ -20,5 +20,5 @@ def test_markup_get_plugin_not_bound():
     input = "<html></html>"
     markup = Markup(input)
     with pytest.raises(LivemarkException) as excinfo:
-        markup.get_plugin()
+        markup.add_markup("markup.html")
     assert str(excinfo.value).count("Markup is not bound")

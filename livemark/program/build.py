@@ -1,6 +1,7 @@
 import sys
 import typer
 from ..server import Server
+from ..project import Project
 from ..document import Document
 from .main import program
 from . import common
@@ -22,25 +23,21 @@ def program_build(
 
     try:
 
-        # TODO: Build with no source should build all the documents?
-
-        # Create document
-        document = Document(
-            source,
-            target=target,
-            format=format,
-            config=config,
-        )
+        # Create project
+        document = None
+        if source:
+            document = Document(source, target=target, format=format)
+        project = Project(document, config=config, format=format)
 
         # Normal mode
         if not live:
-            output = document.build(diff=diff, print=print)
+            output = project.build(diff=diff, print=print)
             if output and diff:
                 sys.exit(1)
             sys.exit(0)
 
         # Live mode
-        server = Server(document)
+        server = Server(project)
         server.start(host=host, port=port)
 
     except Exception as exception:

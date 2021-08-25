@@ -2,6 +2,7 @@ from ...plugin import Plugin
 
 
 class BrandPlugin(Plugin):
+    name = "brand"
     priority = 80
     profile = {
         "type": "object",
@@ -19,10 +20,5 @@ class BrandPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        if self.config:
-            markup.add_style("style.css")
-            markup.add_markup(
-                "markup.html",
-                target="#livemark-left",
-                text=self.text,
-            )
+        markup.add_style("style.css")
+        markup.add_markup("markup.html", target="#livemark-left")

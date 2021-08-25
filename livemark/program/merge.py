@@ -3,7 +3,9 @@ import typer
 import atexit
 import tempfile
 from ..server import Server
+from ..project import Project
 from ..document import Document
+from ..exception import LivemarkException
 from .main import program
 from . import common
 
@@ -22,25 +24,26 @@ def program_merge(
 
     try:
 
-        # Create document
-        document = Document(
-            source,
-            target=source,
-            config=config,
-        )
+        # Create project
+        document = None
+        if source:
+            document = Document(source, format="md")
+        project = Project(document, config=config, format="md")
 
         # Normal mode
         if not live:
-            output = document.build(diff=diff, print=print)
+            output = project.build(diff=diff, print=print)
             if output and diff:
                 sys.exit(1)
             sys.exit(0)
 
         # Live mode
+        if not document:
+            message = 'Live mode requries the "source" argument'
+            raise LivemarkException(message)
         atexit.register(document.build)
         with tempfile.NamedTemporaryFile(suffix=".html") as file:
-            mirror = Document(source, target=file.name)
-            server = Server(mirror)
+            server = Server(Project(Document(source, target=file.name)))
             server.start(host=host, port=port, file=file.name)
 
     except Exception as exception:

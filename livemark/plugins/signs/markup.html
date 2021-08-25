@@ -1,13 +1,17 @@
 <div id="livemark-signs">
   <div>
-    {% if paths.next %}
+    {% if plugin.items.next %}
     <div class="next">
-      <a href="{{ paths.next.path }}">{{ paths.next.name }} &raquo;</a>
+      <a href="/{{ plugin.items.next.path }}.html">
+        {{ plugin.items.next.name }} &raquo;
+      </a>
     </div>
     {% endif %}
-    {% if paths.prev %}
+    {% if plugin.items.prev %}
     <div class="prev">
-      <a href="{{ paths.prev.path }}">&laquo; {{ paths.prev.name }}</a>
+      <a href="/{{ plugin.items.prev.path }}.html">
+        &laquo; {{ plugin.items.prev.name }}
+      </a>
     </div>
     {% endif %}
   </div>

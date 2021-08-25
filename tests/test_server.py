@@ -1,7 +1,7 @@
-from livemark import Server, Document
+from livemark import Server, Project
 
 
 def test_server():
-    document = Document("index.md")
-    server = Server(document)
-    assert server.document is document
+    project = Project(config="livemark.yaml")
+    server = Server(project)
+    assert server.project is project

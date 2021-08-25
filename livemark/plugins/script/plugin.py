@@ -5,13 +5,16 @@ from ... import helpers
 
 
 class ScriptPlugin(Plugin):
+    name = "script"
+    priority = 100
 
     # Process
 
-    def process_plugin(self):
+    def __init__(self, document):
+        super().__init__(document)
         self.__store = []
 
-    def process_config(self, config):
+    def process_document(self, config):
         self.__index = 0
 
     def process_snippet(self, snippet):
