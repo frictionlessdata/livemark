@@ -1,4 +1,5 @@
 recursive-include livemark/assets *
+recursive-include livemark/plugins *
 include LICENSE.md
 include Makefile
 include pylama.ini
