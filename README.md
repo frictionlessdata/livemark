@@ -25,9 +25,7 @@ Livemark is a static site generator that extends Markdown with interactive chart
 
 ## Example
 
-> The [Livemark Documentation](https://livemark.frictionlessdata.io) is written in Livemark
-
-![Example](data/example.png)
+[![Example](data/example.png)](https://livemark.frictionlessdata.io)
 
 ## Documentation
 
