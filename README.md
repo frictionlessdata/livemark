@@ -28,11 +28,12 @@ Livemark is a static site generator that extends Markdown with interactive chart
 > Take a look at the [DEMO](https://frictionlessdata.github.io/livemark/) article
 
 ```bash
-# Build a single document (index.md by default)
-$ livemark build
-
 # Start a livereload server
 $ livemark start
+
+# Build/merge a single document
+$ livemark build document.md
+$ livemark merge document.md
 ```
 
 ## Documentation
