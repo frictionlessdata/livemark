@@ -1,6 +1,9 @@
 ---
 brand:
   text: Livemark
+github:
+  user: frictionlessdata
+  repo: livemark
 links:
   items:
     - name: Documentation
