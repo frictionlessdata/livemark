@@ -28,9 +28,12 @@ class LinksPlugin(Plugin):
         github = self.document.get_plugin("github")
         items = deepcopy(self.config.get("items", []))
         if github:
-            items.append({"name": "Report", "path": github.report_url})
-            items.append({"name": "Fork", "path": github.fork_url})
-            items.append({"name": "Edit", "path": github.edit_url})
+            if github.report_url:
+                items.append({"name": "Report", "path": github.report_url})
+            if github.fork_url:
+                items.append({"name": "Fork", "path": github.fork_url})
+            if github.edit_url:
+                items.append({"name": "Edit", "path": github.edit_url})
         return items
 
     # Process
