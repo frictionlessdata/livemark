@@ -23,9 +23,17 @@ pages:
     - name: Getting Started
       items:
         - name: Installation
-          path: docs/installation
+          path: docs/getting-started/installation
         - name: Configuration
-          path: docs/configuration
+          path: docs/getting-started/configuration
+        - name: Data Journalism
+          path: docs/getting-started/data-journalism
+        - name: Documentation Writing
+          path: docs/getting-started/documentation-writing
+        - name: Troubleshooting
+          path: docs/getting-started/troubleshooting
+        - name: Contributing
+          path: docs/getting-started/contributing
     - name: Livemark Markdown
       path: docs/livemark-markdown
     - name: Livemark Components
