@@ -35,7 +35,19 @@ pages:
         - name: Contributing
           path: docs/getting-started/contributing
     - name: Livemark Markdown
-      path: docs/livemark-markdown
+      items:
+        - name: Basics
+          path: docs/livemark-markdown/basics
+        - name: Logic
+          path: docs/livemark-markdown/logic
+        - name: Table
+          path: docs/livemark-markdown/table
+        - name: Chart
+          path: docs/livemark-markdown/chart
+        - name: Script
+          path: docs/livemark-markdown/script
+        - name: Markup
+          path: docs/livemark-markdown/markup
     - name: Livemark Components
       path: docs/livemark-components
     - name: Plugin System
