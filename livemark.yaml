@@ -71,6 +71,10 @@ pages:
         - name: Reference
           path: docs/plugin-system/reference
     - name: Universe
-      path: docs/universe
+      items:
+        - name: Livemarks
+          path: docs/universe/livemarks
+        - name: Plugins
+          path: docs/universe/plugins
     - name: Blog
       path: docs/blog
