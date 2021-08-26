@@ -61,7 +61,15 @@ pages:
         - name: Others
           path: docs/livemark-features/others
     - name: Plugin System
-      path: docs/plugin-system
+      items:
+        - name: Adding a Plugin
+          path: docs/plugin-system/adding-plugin
+        - name: Writing a Plugin
+          path: docs/plugin-system/writing-plugin
+        - name: Architecture
+          path: docs/plugin-system/architecture
+        - name: Reference
+          path: docs/plugin-system/reference
     - name: Universe
       path: docs/universe
     - name: Blog
