@@ -48,8 +48,18 @@ pages:
           path: docs/livemark-markdown/script
         - name: Markup
           path: docs/livemark-markdown/markup
-    - name: Livemark Components
-      path: docs/livemark-components
+    - name: Livemark Features
+      items:
+        - name: Rendering
+          path: docs/livemark-features/rendering
+        - name: Appearance
+          path: docs/livemark-features/appearance
+        - name: Navigation
+          path: docs/livemark-features/navigation
+        - name: Search
+          path: docs/livemark-features/search
+        - name: Others
+          path: docs/livemark-features/others
     - name: Plugin System
       path: docs/plugin-system
     - name: Universe
