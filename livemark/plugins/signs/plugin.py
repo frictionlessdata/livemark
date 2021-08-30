@@ -1,6 +1,9 @@
 from ...plugin import Plugin
 
 
+# TODO: rebase on project.documents
+
+
 class SignsPlugin(Plugin):
     name = "signs"
     priority = 40

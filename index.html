@@ -1744,11 +1744,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Universe
       </a>
           </li>
-        <li class="primary  ">
-      <a href="/docs/blog.html" class="primary">
-        Blog
-      </a>
-          </li>
       </ul>
 </div>
 
@@ -2231,6 +2226,16 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#livemark-main').unhighlight({className: 'livemark-search-found'});
   }
   const searchItems = {
+          '/home/roll/projects/livemark/livemark/plugins/blog/index': {
+          'name': 'Blog',
+          'path': '/home/roll/projects/livemark/livemark/plugins/blog/index',
+          'text': "# Blog",
+      },
+          'blog/2021-09-01-meet-livemark': {
+          'name': 'Meet Livemark',
+          'path': 'blog/2021-09-01-meet-livemark',
+          'text': "# Meet Livemark \u003e The page is under construction",
+      },
           'index': {
           'name': 'Introduction',
           'path': 'index',
@@ -2265,11 +2270,6 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Universe',
           'path': 'docs/universe',
           'text': "# Universe \u003e This page will be here shortly!",
-      },
-          'docs/blog': {
-          'name': 'Blog',
-          'path': 'docs/blog',
-          'text': "# Blog \u003e This page will be here shortly!",
       },
       };
   const searchIndex = lunr(function () {

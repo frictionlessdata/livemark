@@ -17,20 +17,14 @@ class BlogPlugin(Plugin):
     # Process
 
     @staticmethod
-    def process_project(self, project):
-        path = project.config.get("blog", {}).get("path", "blog")
-        if os.path.isfile(path):
-
-            # Add index
-            source = os.path.join(os.path.dirname(__file__), "index.md")
-            target = os.path.join(path, "index.html")
-            index = Document(source, target=target)
-            project.documents.append(index)
-
-            # Add items
-            for source in glob.glob(f"{self.path}/**/*.md"):
-                item = Document(source)
-                project.documents.append(item)
-
-    def process_markup(self, markup):
-        pass
+    def process_project(project):
+        if not project.document:
+            path = project.config.get("blog", {}).get("path", "blog")
+            if os.path.isdir(path):
+                source = os.path.join(os.path.dirname(__file__), "index.md")
+                target = os.path.join(path, "index.html")
+                index = Document(source, target=target)
+                project.documents.append(index)
+                for source in glob.glob(f"{path}/**/*.md", recursive=True):
+                    item = Document(source)
+                    project.documents.append(item)
