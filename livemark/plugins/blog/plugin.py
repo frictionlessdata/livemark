@@ -5,6 +5,9 @@ from ...document import Document
 from ... import helpers
 
 
+# NOTE: implement something like is_index and is_post helpers (currently, we use author)
+
+
 class BlogPlugin(Plugin):
     name = "blog"
     profile = {
