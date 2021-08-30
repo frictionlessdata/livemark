@@ -31,5 +31,5 @@ pages:
     - path: blog/index
 redirect:
   items:
-    - prev: docs/getting-started
+    - prev: getting-started
       next: docs/installation
