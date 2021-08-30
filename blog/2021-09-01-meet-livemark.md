@@ -1,6 +1,7 @@
 ---
-author: Sara Petti
-image: /img/blog/livemark-page.png
+blog:
+  author: Sara Petti
+  image: /img/blog/livemark-page.png
 ---
 
 # Meet Livemark

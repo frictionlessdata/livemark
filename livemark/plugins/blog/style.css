@@ -1,3 +1,6 @@
-#livemark-about {
-  color: #888;
+#livemark-blog-info {
+  background: #f8f8f8;
+  border: solid 1px #EAECEF;
+  border-radius: 5px;
+  padding: 10px;
 }
