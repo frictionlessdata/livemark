@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.">
+<meta name="description" content="By Sara Petti">
 <meta name="keywords" content="blog">
 <title>Blog</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
@@ -1474,6 +1474,18 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+<style>
+
+.livemark-blog-item {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.livemark-blog-item h2 a {
+  color: #222 !important;
+}
+
+</style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH2QL85N6F"></script>
 <script>
@@ -1762,14 +1774,27 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-30 11:42)
+  (2021-08-30 14:41)
 </div>
 
 <h1>Blog</h1>
-<p>
+<div class="livemark-blog-item">
   <h2><a href="/blog/2021-09-01-meet-livemark.html">Meet Livemark</a></h2>
-  We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.
-</p>
+  <div class="row">
+    <div class="col-8">
+      <p>
+        <strong>
+          By Sara Petti
+          on 2021-09-01
+        </strong>
+      </p>
+      We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.
+    </div>
+    <div class="col-4">
+      <img src="../data/example.png">
+    </div>
+  </div>
+</div>
 
 <div id="livemark-signs">
   <div>
@@ -2100,7 +2125,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'blog/index': {
           'name': 'Blog',
           'path': 'blog/index',
-          'text': "# Blog Meet Livemark We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.",
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',

@@ -1,7 +1,7 @@
 ---
 blog:
   author: Sara Petti
-  image: /img/blog/livemark-page.png
+  image: ../data/example.png
 ---
 
 # Meet Livemark

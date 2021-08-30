@@ -4,6 +4,11 @@ from .system import system
 from . import settings
 
 
+# NOTE:
+# Review whether it's right to read all the documents on init (duplicate with document?)
+# We read them to get access to configs and iferred data
+
+
 class Project:
     def __init__(self, document=None, *, config=None, format=None):
         self.__documents = [document] if document else []
@@ -19,9 +24,10 @@ class Project:
             if internal or external:
                 Plugin.process_project(self)
 
-        # Connect project
+        # Read documents
         for document in self.__documents:
             document.project = self
+            document.read()
 
     @property
     def config(self):

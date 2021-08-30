@@ -38,6 +38,10 @@ class BlogPlugin(Plugin):
         return self.config.get("author")
 
     @Plugin.property
+    def image(self):
+        return self.config.get("image")
+
+    @Plugin.property
     def date(self):
         if self.path:
             date = self.document.path.replace(f"{self.path}/", "")
@@ -60,6 +64,6 @@ class BlogPlugin(Plugin):
                         project.documents.append(item)
 
     def process_markup(self, markup):
+        markup.add_style("style.css")
         if self.author:
-            markup.add_style("style.css")
             markup.add_markup("markup.html", target="h1 + p", action="prepend")

@@ -1,6 +1,8 @@
-#livemark-blog-info {
-  background: #f8f8f8;
-  border: solid 1px #EAECEF;
-  border-radius: 5px;
-  padding: 10px;
+.livemark-blog-item {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.livemark-blog-item h2 a {
+  color: #222 !important;
 }
