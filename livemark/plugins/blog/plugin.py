@@ -31,7 +31,6 @@ class BlogPlugin(Plugin):
         for document in self.document.project.documents:
             if document.path.startswith(self.path) and document.path != index_path:
                 items.append({"document": document})
-        print(items[0])
         return items
 
     # Process
