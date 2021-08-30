@@ -3,7 +3,7 @@
 ```html markup
 {% for item in document.get_plugin('blog').items %}
 <div class="livemark-blog-item">
-  <h2><a href="/{{ item.document.path }}.html">{{ item.document.name }}</a></h2>
+  <h2>{{ item.document.name }}</h2>
   <div class="row">
     <div class="col-8">
       <p>
