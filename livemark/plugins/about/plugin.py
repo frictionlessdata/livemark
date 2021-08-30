@@ -2,7 +2,7 @@ from ...plugin import Plugin
 
 
 class AboutPlugin(Plugin):
-    name = "about"
+    code = "about"
     priority = 20
     profile = {
         "type": "object",

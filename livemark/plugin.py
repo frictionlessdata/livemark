@@ -16,7 +16,7 @@ class Plugin:
 
     """
 
-    name = ""
+    code = ""
     priority = 0
     profile = {}
     property = cached_property
@@ -26,7 +26,7 @@ class Plugin:
 
     @property
     def config(self):
-        return self.__document.config.get(self.name, {})
+        return self.__document.config.get(self.code, {})
 
     @property
     def document(self):

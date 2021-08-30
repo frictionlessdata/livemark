@@ -4,7 +4,7 @@ from ...plugin import Plugin
 
 
 class GithubPlugin(Plugin):
-    name = "github"
+    code = "github"
     profile = {
         "type": "object",
         "required": ["user", "repo"],

@@ -6,7 +6,7 @@ from ...plugin import Plugin
 
 
 class MobilePlugin(Plugin):
-    name = "mobile"
+    code = "mobile"
 
     # Process
 

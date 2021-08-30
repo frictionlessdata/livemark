@@ -2,7 +2,7 @@ from ...plugin import Plugin
 
 
 class BrandPlugin(Plugin):
-    name = "brand"
+    code = "brand"
     priority = 80
     profile = {
         "type": "object",

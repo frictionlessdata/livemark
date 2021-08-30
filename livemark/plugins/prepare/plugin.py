@@ -3,7 +3,7 @@ from ...plugin import Plugin
 
 
 class PreparePlugin(Plugin):
-    name = "prepare"
+    code = "prepare"
     priority = 100
     profile = {
         "type": "object",

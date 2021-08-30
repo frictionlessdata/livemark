@@ -6,10 +6,11 @@ from ...plugin import Plugin
 
 
 class HtmlPlugin(Plugin):
-    name = "html"
+    code = "html"
     profile = {
         "type": "object",
         "properties": {
+            "name": {"type": "string"},
             "title": {"type": "string"},
             "description": {"type": "string"},
             "keywords": {"type": "string"},
@@ -17,6 +18,10 @@ class HtmlPlugin(Plugin):
     }
 
     # Context
+
+    @Plugin.property
+    def name(self):
+        return self.config.get("name", self.document.name)
 
     @Plugin.property
     def title(self):

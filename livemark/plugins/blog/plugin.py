@@ -11,7 +11,7 @@ from ... import helpers
 
 
 class BlogPlugin(Plugin):
-    name = "blog"
+    code = "blog"
     profile = {
         "type": "object",
         "properties": {

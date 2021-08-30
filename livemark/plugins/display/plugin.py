@@ -7,7 +7,7 @@ from ...plugin import Plugin
 
 
 class DisplayPlugin(Plugin):
-    name = "display"
+    code = "display"
     profile = {
         "type": "object",
         "properties": {

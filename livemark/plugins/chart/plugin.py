@@ -4,7 +4,7 @@ from ...plugin import Plugin
 
 
 class ChartPlugin(Plugin):
-    name = "chart"
+    code = "chart"
     priority = 100
 
     # Process

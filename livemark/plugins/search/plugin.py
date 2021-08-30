@@ -8,7 +8,7 @@ from ...plugin import Plugin
 
 
 class SearchPlugin(Plugin):
-    name = "search"
+    code = "search"
 
     # Context
 
@@ -18,10 +18,12 @@ class SearchPlugin(Plugin):
         documents = [self.document]
         if self.document.project:
             documents = self.document.project.documents
-        for doc in documents:
-            if not doc.content:
-                doc.read()
-            items.append({"name": doc.name, "path": doc.path, "text": doc.content})
+        for document in documents:
+            item = {}
+            item["name"] = document.get_plugin("html").name
+            item["path"] = document.path
+            item["text"] = document.content
+            items.append(item)
         return items
 
     # Process

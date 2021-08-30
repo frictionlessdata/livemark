@@ -38,9 +38,9 @@ class System:
             modules.append(module)
         for module in modules:
             for Class in helpers.extract_classes(module, Plugin):
-                if Class.name in Plugins:
-                    raise LivemarkException(f"Plugin name conflict: {Class.name}")
-                Plugins[Class.name] = Class
+                if Class.code in Plugins:
+                    raise LivemarkException(f"Plugin code conflict: {Class.code}")
+                Plugins[Class.code] = Class
         return Plugins
 
     def iterate(self):
@@ -58,9 +58,9 @@ class System:
         Parameters:
             Plugin (type): a plugin class to register
         """
-        if Plugin.name in self.Plugins:
-            raise LivemarkException(f"Plugin name conflict: {Plugin.name}")
-        self.Plugins[Plugin.name] = Plugin
+        if Plugin.code in self.Plugins:
+            raise LivemarkException(f"Plugin code conflict: {Plugin.code}")
+        self.Plugins[Plugin.code] = Plugin
 
     def deregister(self, Plugin):
         """Deregister a plugin
@@ -68,9 +68,9 @@ class System:
         Parameters:
             Plugin (type): a plugin class to register
         """
-        if Plugin.name not in self.Plugins:
-            raise LivemarkException(f"Not registered plugin: {Plugin.name}")
-        del self.Plugins[Plugin.name]
+        if Plugin.code not in self.Plugins:
+            raise LivemarkException(f"Not registered plugin: {Plugin.code}")
+        del self.Plugins[Plugin.code]
 
 
 system = System()

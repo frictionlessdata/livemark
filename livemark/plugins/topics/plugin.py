@@ -3,7 +3,7 @@ from ...exception import LivemarkException
 
 
 class TopicsPlugin(Plugin):
-    name = "topics"
+    code = "topics"
     priority = 60
     profile = {
         "type": "object",
