@@ -24,7 +24,7 @@ class Document:
 
     """
 
-    def __init__(self, source, *, target=None, format=None, name=None):
+    def __init__(self, source, *, target=None, format=None):
 
         # Infer target
         if not target:
@@ -47,7 +47,6 @@ class Document:
         self.__content = None
         self.__input = None
         self.__output = None
-        self.__name = name
 
     def __setattr__(self, name, value):
         if name == "project":
@@ -101,7 +100,7 @@ class Document:
 
     @property
     def name(self):
-        return self.__name or self.title or self.path
+        return self.title or self.path
 
     @property
     def path(self):

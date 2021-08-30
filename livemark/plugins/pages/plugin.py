@@ -18,7 +18,6 @@ class PagesPlugin(Plugin):
                 "type": "array",
                 "items": {
                     "type": "object",
-                    "required": ["name"],
                     "properties": {
                         "name": {"type": "string"},
                         "path": {"type": "string"},
@@ -41,14 +40,23 @@ class PagesPlugin(Plugin):
         for item in items:
             item["active"] = False
             subitems = item.get("items", [])
+
+            # Handle nested
             for subitem in subitems:
+                document = self.document.project.get_document(subitem["path"])
+                subitem.setdefault("name", document.name)
                 subitem["active"] = False
                 if subitem["path"] == self.current:
                     item["active"] = True
                     subitem["active"] = True
+
+            # Handle top-level
             if not subitems:
+                document = self.document.project.get_document(item["path"])
+                item.setdefault("name", document.name)
                 if item["path"] == self.current:
                     item["active"] = True
+
         return items
 
     @Plugin.property
@@ -63,7 +71,7 @@ class PagesPlugin(Plugin):
         for item in helpers.flatten_items(items, "items"):
             source = helpers.with_format(item["path"], "md")
             target = helpers.with_format(item["path"], project.format)
-            document = Document(source, target=target, name=item["name"])
+            document = Document(source, target=target)
             project.documents.append(document)
 
     def process_markup(self, markup):

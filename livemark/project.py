@@ -70,3 +70,10 @@ class Project:
         output = "\n".join(outputs)
 
         return output
+
+    # Helpers
+
+    def get_document(self, path):
+        for document in self.documents:
+            if document.path == path:
+                return document

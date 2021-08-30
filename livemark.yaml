@@ -22,17 +22,10 @@ pages:
       path: index
     - name: Getting Started
       items:
-        - name: Installation
-          path: docs/installation
-        - name: Configuration
-          path: docs/configuration
-    - name: Livemark Markdown
-      path: docs/livemark-markdown
-    - name: Livemark Components
-      path: docs/livemark-components
-    - name: Plugin System
-      path: docs/plugin-system
-    - name: Universe
-      path: docs/universe
-    - name: Blog
-      path: blog/index
+        - path: docs/installation
+        - path: docs/configuration
+    - path: docs/livemark-markdown
+    - path: docs/livemark-components
+    - path: docs/plugin-system
+    - path: docs/universe
+    - path: blog/index
