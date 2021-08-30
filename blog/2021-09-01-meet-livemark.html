@@ -2138,7 +2138,7 @@ document.addEventListener("DOMContentLoaded", function () {
           '404': {
           'name': 'Not Found',
           'path': '404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup const items = JSON.parse({{ document.get_plugin(\u0027redirect\u0027).items | tojson }}); for (const item of items) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup const items = JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027); for (const item of items) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {

@@ -1774,7 +1774,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-30 19:52)
+  (2021-08-30 19:59)
 </div>
 
 <h1>Not Found</h1>
@@ -1783,7 +1783,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </blockquote>
 <p>Return to the <a href="/">home</a> page.</p>
 <script>
-const items = JSON.parse([{"next": "docs/installation", "prev": "docs/getting-started"}]);
+const items = JSON.parse('[{"next": "docs/installation", "prev": "docs/getting-started"}]');
 for (const item of items) {
   if (`/${item.prev}.html` === location.pathname) {
     location.href = `/${item.next}.html`;
@@ -2131,7 +2131,7 @@ document.addEventListener("DOMContentLoaded", function () {
           '404': {
           'name': 'Not Found',
           'path': '404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup const items = JSON.parse([{\"next\": \"docs/installation\", \"prev\": \"docs/getting-started\"}]); for (const item of items) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup const items = JSON.parse(\u0027[{\"next\": \"docs/installation\", \"prev\": \"docs/getting-started\"}]\u0027); for (const item of items) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {
