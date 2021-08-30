@@ -5,7 +5,9 @@ from ...document import Document
 from ... import helpers
 
 
-# NOTE: implement something like is_index and is_post helpers (currently, we use author)
+# NOTE:
+# implement something like is_index and is_post helpers (currently, we use author)
+# improve how we set active page in the left menu (currently, quite hacky/hardcoded)
 
 
 class BlogPlugin(Plugin):
@@ -54,17 +56,16 @@ class BlogPlugin(Plugin):
 
     @staticmethod
     def process_project(project):
-        if not project.document:
-            path = project.config.get("blog", {}).get("path", "blog")
-            if os.path.isdir(path):
-                index_default = os.path.join(os.path.dirname(__file__), "index.md")
-                index_source = os.path.join(path, "index.md")
-                if not os.path.isfile(index_source):
-                    helpers.copy_file(index_default, index_source)
-                for source in glob.glob(f"{path}/**/*.md", recursive=True):
-                    if source != index_source:
-                        item = Document(source)
-                        project.documents.append(item)
+        path = project.config.get("blog", {}).get("path", "blog")
+        if os.path.isdir(path):
+            index_default = os.path.join(os.path.dirname(__file__), "index.md")
+            index_source = os.path.join(path, "index.md")
+            if not os.path.isfile(index_source):
+                helpers.copy_file(index_default, index_source)
+            for source in glob.glob(f"{path}/**/*.md", recursive=True):
+                if source != index_source:
+                    item = Document(source)
+                    project.documents.append(item)
 
     def process_markup(self, markup):
         markup.add_style("style.css")

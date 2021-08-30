@@ -29,7 +29,7 @@ class Server:
 
         # Build documents
         self.project.build()
-        for document in self.project.documents:
+        for document in self.project.building_documents:
             self.__server.watch(document.source, document.build, delay=1)
 
         # Run server

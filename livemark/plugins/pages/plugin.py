@@ -59,13 +59,12 @@ class PagesPlugin(Plugin):
 
     @staticmethod
     def process_project(project):
-        if not project.document:
-            items = project.config.get("pages", {}).get("items", [])
-            for item in helpers.flatten_items(items, "items"):
-                source = helpers.with_format(item["path"], "md")
-                target = helpers.with_format(item["path"], project.format)
-                document = Document(source, target=target, name=item["name"])
-                project.documents.append(document)
+        items = project.config.get("pages", {}).get("items", [])
+        for item in helpers.flatten_items(items, "items"):
+            source = helpers.with_format(item["path"], "md")
+            target = helpers.with_format(item["path"], project.format)
+            document = Document(source, target=target, name=item["name"])
+            project.documents.append(document)
 
     def process_markup(self, markup):
         if self.items:

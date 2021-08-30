@@ -30,6 +30,14 @@ class Project:
             document.read()
 
     @property
+    def format(self):
+        if self.__format:
+            return self.__format
+        if self.__document:
+            return self.__document.format
+        return settings.DEFAULT_FORMAT
+
+    @property
     def config(self):
         return self.__config
 
@@ -42,12 +50,8 @@ class Project:
         return self.__documents
 
     @property
-    def format(self):
-        if self.__format:
-            return self.__format
-        if self.__document:
-            return self.__document.format
-        return settings.DEFAULT_FORMAT
+    def building_documents(self):
+        return [self.document] if self.document else self.documents
 
     # Build
 
@@ -59,7 +63,7 @@ class Project:
 
         # Build documents
         outputs = []
-        for document in self.documents:
+        for document in self.building_documents:
             output = document.build(diff=diff, print=print)
             if output:
                 outputs.append(output)
