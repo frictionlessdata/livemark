@@ -15,7 +15,8 @@ class AboutPlugin(Plugin):
 
     @Plugin.property
     def text(self):
-        return self.config.get("text", self.document.description.split(". ")[0])
+        html = self.document.get_plugin("html")
+        return self.config.get("text", html.description.split(". ")[0])
 
     # Process
 
