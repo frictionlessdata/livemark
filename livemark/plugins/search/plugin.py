@@ -5,6 +5,7 @@ from ...plugin import Plugin
 # It's an initial implementation of the search plugin. Later can be improved:
 # - pages concept; it might be preloaded somewhere like Project
 # - caching; we don't want to read every doc for every doc
+# - use tojson to provide items to the script
 
 
 class SearchPlugin(Plugin):
