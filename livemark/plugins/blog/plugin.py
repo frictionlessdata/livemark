@@ -70,3 +70,4 @@ class BlogPlugin(Plugin):
         markup.add_style("style.css")
         if self.author:
             markup.add_markup("markup.html", target="h1 + p", action="prepend")
+            markup.query('a[href="/blog/index.html"]').parent().add_class("active")
