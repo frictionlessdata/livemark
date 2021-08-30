@@ -43,6 +43,15 @@ class System:
                 Plugins[Class.name] = Class
         return Plugins
 
+    def iterate(self):
+        """Iterate plugins by priority
+
+        Returns:
+            type[]: list of plugin classes
+        """
+        objects = self.Plugins.values()
+        return helpers.order_objects(objects, "priority")
+
     def register(self, Plugin):
         """Register a plugin
 

@@ -12,11 +12,10 @@ class Project:
         self.__format = format
 
         # Process project
-        # TODO: order by priority
-        for name, Plugin in system.Plugins.items():
+        for Plugin in system.iterate():
             type = Plugin.get_type()
-            internal = type == "internal" and name not in self.__config.disable
-            external = type == "external" and name in self.__config.enable
+            internal = type == "internal" and Plugin.name not in self.__config.disable
+            external = type == "external" and Plugin.name in self.__config.enable
             if internal or external:
                 Plugin.process_project(self)
 
