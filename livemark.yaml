@@ -34,5 +34,5 @@ pages:
       path: docs/plugin-system
     - name: Universe
       path: docs/universe
-    # - name: Blog
-      # path: blog/index
+    - name: Blog
+      path: blog/index
