@@ -3,10 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
-<meta name="keywords" content="plugin,system">
-<title>Plugin System | Livemark</title>
-<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="description" content="Return to the &lt;a href="><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
@@ -1700,8 +1697,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
-</head>
-<body>
+</head><body><p>home page."&gt;
+<meta name="keywords" content="not,found">
+</p><title>Not Found | Livemark</title>
+
+
 <div id="livemark-left">
 
 <div id="livemark-brand">
@@ -1748,7 +1748,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Livemark Components
       </a>
           </li>
-        <li class="primary  active">
+        <li class="primary  ">
       <a href="/docs/plugin-system.html" class="primary">
         Plugin System
       </a>
@@ -1774,24 +1774,28 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-30 18:07)
+  (2021-08-30 19:52)
 </div>
 
-<h1>Plugin System</h1>
+<h1>Not Found</h1>
 <blockquote>
-<p>This page will be here shortly!</p>
+<p>The page is not found</p>
 </blockquote>
+<p>Return to the <a href="/">home</a> page.</p>
+<script>
+const items = JSON.parse([{"next": "docs/installation", "prev": "docs/getting-started"}]);
+for (const item of items) {
+  if (`/${item.prev}.html` === location.pathname) {
+    location.href = `/${item.next}.html`;
+  }
+}
+</script>
 
 <div id="livemark-signs">
   <div>
-        <div class="next">
-      <a href="/docs/universe.html">
-        Universe »
-      </a>
-    </div>
             <div class="prev">
-      <a href="/docs/livemark-components.html">
-        « Livemark Components
+      <a href="/blog/2021-09-01-meet-livemark.html">
+        « Meet Livemark
       </a>
     </div>
       </div>
@@ -1806,7 +1810,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 
 <div id="livemark-about">
   <div>
-    
+    Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
   </div>
 </div>
 
@@ -1838,13 +1842,14 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/docs/plugin-system.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/404.md" target="_blank">
         Edit
       </a>
     </li>
       
 </ul></div>
 </div>
+
 <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
@@ -2116,7 +2121,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'blog/index': {
           'name': 'Blog',
           'path': 'blog/index',
-          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
@@ -2126,7 +2131,7 @@ document.addEventListener("DOMContentLoaded", function () {
           '404': {
           'name': 'Not Found',
           'path': '404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup const items = JSON.parse({{ document.get_plugin(\u0027redirect\u0027).items | tojson }}); for (const item of items) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup const items = JSON.parse([{\"next\": \"docs/installation\", \"prev\": \"docs/getting-started\"}]); for (const item of items) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {
@@ -2150,5 +2155,4 @@ document.addEventListener("DOMContentLoaded", function () {
   <div id="livemark-search-output"></div>
   <input id="livemark-search-input" type="search" placeholder="Search...">
 </div>
-</body>
-</html>
+</body></html>

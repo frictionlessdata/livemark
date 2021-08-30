@@ -29,3 +29,7 @@ pages:
     - path: docs/plugin-system
     - path: docs/universe
     - path: blog/index
+redirect:
+  items:
+    - prev: docs/getting-started
+      next: docs/installation
