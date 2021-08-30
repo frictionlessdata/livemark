@@ -122,12 +122,17 @@ class Document:
             for line in self.content.splitlines():
                 line = line.strip()
                 if pattern.match(line):
-                    return line.split(". ")[0]
+                    return line
 
     @property
     def keywords(self):
-        if self.content:
+        if self.title:
             return ",".join(map(str.lower, self.title.split()))
+
+    @property
+    def summary(self):
+        if self.description:
+            return self.description.split(". ")[0]
 
     # Build
 

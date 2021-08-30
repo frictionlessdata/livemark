@@ -77,20 +77,20 @@ p {
   padding-bottom: 12px !important;
 }
 
-#livemark-main h1 a,
-#livemark-main h2 a,
-#livemark-main h3 a,
-#livemark-main h4 a,
-#livemark-main h5 a,
-#livemark-main h6 a {
+#livemark-main h1 a.heading,
+#livemark-main h2 a.heading,
+#livemark-main h3 a.heading,
+#livemark-main h4 a.heading,
+#livemark-main h5 a.heading,
+#livemark-main h6 a.heading {
   display: none;
 }
 
-#livemark-main h2:hover a,
-#livemark-main h3:hover a,
-#livemark-main h4:hover a,
-#livemark-main h5:hover a,
-#livemark-main h6:hover a {
+#livemark-main h2:hover a.heading,
+#livemark-main h3:hover a.heading,
+#livemark-main h4:hover a.heading,
+#livemark-main h5:hover a.heading,
+#livemark-main h6:hover a.heading {
   display: inline;
   margin-left: 8px;
   color: #aaa;
@@ -98,11 +98,11 @@ p {
   text-decoration: none;
 }
 
-#livemark-main h2 a:hover,
-#livemark-main h3 a:hover,
-#livemark-main h4 a:hover,
-#livemark-main h5 a:hover,
-#livemark-main h6 a:hover {
+#livemark-main h2 a.heading:hover,
+#livemark-main h3 a.heading:hover,
+#livemark-main h4 a.heading:hover,
+#livemark-main h5 a.heading:hover,
+#livemark-main h6 a.heading:hover {
   text-decoration: underline;
 }
 
@@ -1869,6 +1869,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const link = document.createElement("a");
     link.href = "#" + heading.id;
     link.innerText = "#";
+    link.classList.add("heading");
     heading.appendChild(link);
   });
 });
@@ -2103,17 +2104,12 @@ document.addEventListener("DOMContentLoaded", function () {
           'blog/index': {
           'name': 'Blog',
           'path': 'blog/index',
-          'text': "# Blog",
+          'text': "# Blog {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} {{ item.document.description }} {% endfor %}",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
           'path': 'blog/2021-09-01-meet-livemark',
-          'text': "# Meet Livemark \u003e The page is under construction",
-      },
-          'blog/index': {
-          'name': 'Blog',
-          'path': 'blog/index',
-          'text': "# Blog",
+          'text': "# Meet Livemark We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.",
       },
       };
   const searchIndex = lunr(function () {
