@@ -128,11 +128,6 @@ class Document:
         if self.title:
             return ",".join(map(str.lower, self.title.split()))
 
-    @property
-    def summary(self):
-        if self.description:
-            return self.description.split(". ")[0]
-
     # Build
 
     def build(self, *, diff=False, print=False):
