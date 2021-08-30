@@ -122,12 +122,17 @@ class Document:
             for line in self.content.splitlines():
                 line = line.strip()
                 if pattern.match(line):
-                    return line.split(". ")[0]
+                    return line
 
     @property
     def keywords(self):
-        if self.content:
+        if self.title:
             return ",".join(map(str.lower, self.title.split()))
+
+    @property
+    def summary(self):
+        if self.description:
+            return self.description.split(". ")[0]
 
     # Build
 
@@ -163,13 +168,12 @@ class Document:
         # Create plugins
         if self.__plugins is None:
             self.__plugins = []
-            for name, Plugin in system.Plugins.items():
+            for Plugin in system.iterate():
                 type = Plugin.get_type()
-                internal = type == "internal" and name not in self.__config.disable
-                external = type == "external" and name in self.__config.enable
+                internal = type == "internal" and Plugin.name not in self.__config.disable
+                external = type == "external" and Plugin.name in self.__config.enable
                 if internal or external:
                     self.__plugins.append(Plugin(self))
-            self.__plugins = helpers.order_objects(self.__plugins, "priority")
 
     # Process
 

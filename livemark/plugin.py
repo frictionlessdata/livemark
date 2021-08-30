@@ -34,6 +34,10 @@ class Plugin:
 
     # Actions
 
+    @staticmethod
+    def process_project(project):
+        pass
+
     def process_document(self, document):
         pass
 

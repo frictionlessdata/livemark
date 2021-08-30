@@ -35,4 +35,4 @@ pages:
     - name: Universe
       path: docs/universe
     - name: Blog
-      path: docs/blog
+      path: blog/index

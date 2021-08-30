@@ -15,7 +15,7 @@ class AboutPlugin(Plugin):
 
     @Plugin.property
     def text(self):
-        return self.config.get("text", self.document.description)
+        return self.config.get("text", self.document.summary)
 
     # Process
 

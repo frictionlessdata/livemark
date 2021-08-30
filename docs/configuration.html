@@ -22,7 +22,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -77,20 +77,20 @@ p {
   padding-bottom: 12px !important;
 }
 
-#livemark-main h1 a,
-#livemark-main h2 a,
-#livemark-main h3 a,
-#livemark-main h4 a,
-#livemark-main h5 a,
-#livemark-main h6 a {
+#livemark-main h1 a.heading,
+#livemark-main h2 a.heading,
+#livemark-main h3 a.heading,
+#livemark-main h4 a.heading,
+#livemark-main h5 a.heading,
+#livemark-main h6 a.heading {
   display: none;
 }
 
-#livemark-main h2:hover a,
-#livemark-main h3:hover a,
-#livemark-main h4:hover a,
-#livemark-main h5:hover a,
-#livemark-main h6:hover a {
+#livemark-main h2:hover a.heading,
+#livemark-main h3:hover a.heading,
+#livemark-main h4:hover a.heading,
+#livemark-main h5:hover a.heading,
+#livemark-main h6:hover a.heading {
   display: inline;
   margin-left: 8px;
   color: #aaa;
@@ -98,11 +98,11 @@ p {
   text-decoration: none;
 }
 
-#livemark-main h2 a:hover,
-#livemark-main h3 a:hover,
-#livemark-main h4 a:hover,
-#livemark-main h5 a:hover,
-#livemark-main h6 a:hover {
+#livemark-main h2 a.heading:hover,
+#livemark-main h3 a.heading:hover,
+#livemark-main h4 a.heading:hover,
+#livemark-main h5 a.heading:hover,
+#livemark-main h6 a.heading:hover {
   text-decoration: underline;
 }
 
@@ -177,12 +177,14 @@ p {
   content: ' ';
   display: inline-block;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' width='16' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'%3E%3C/path%3E%3C/svg%3E");
-}#livemark-main {
+}
+
+#livemark-main {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
   color: #222;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: system-ui, -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
   line-height: 1.5;
   word-wrap: break-word;
 }
@@ -1472,6 +1474,14 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+<style>
+
+.livemark-blog-item {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+</style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH2QL85N6F"></script>
 <script>
@@ -1745,7 +1755,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
           </li>
         <li class="primary  ">
-      <a href="/docs/blog.html" class="primary">
+      <a href="/blog/index.html" class="primary">
         Blog
       </a>
           </li>
@@ -1760,7 +1770,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-25 12:01)
+  (2021-08-26 15:44)
 </div>
 
 <h1>Configuration</h1>
@@ -1882,6 +1892,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const link = document.createElement("a");
     link.href = "#" + heading.id;
     link.innerText = "#";
+    link.classList.add("heading");
     heading.appendChild(link);
   });
 });
@@ -2113,10 +2124,15 @@ document.addEventListener("DOMContentLoaded", function () {
           'path': 'docs/universe',
           'text': "# Universe \u003e This page will be here shortly!",
       },
-          'docs/blog': {
+          'blog/index': {
           'name': 'Blog',
-          'path': 'docs/blog',
-          'text': "# Blog \u003e This page will be here shortly!",
+          'path': 'blog/index',
+          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
+      },
+          'blog/2021-09-01-meet-livemark': {
+          'name': 'Meet Livemark',
+          'path': 'blog/2021-09-01-meet-livemark',
+          'text': "# Meet Livemark We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. ## How does it work? Livemark is a Python library generating a static page that extends Markdown with interactive charts, tables, scripts, and much much more. You can use the Frictionless framework as a `frictionless` variable to work with your tabular data in Livemark. Livemark offers a series of useful features, like automatically generating a table of contents and providing a scroll-to-top button when you scroll down your document. You can also customise the layout of your newly created webpage. ## How can you get started? Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev: \u00a0 You can also have a look at the [documentation on GitHub](https://frictionlessdata.github.io/livemark/). ## What do you think? If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on [Discord]( https://discord.com/invite/Sewv6av) or by opening an issue in the [GitHub repo](https://github.com/frictionlessdata/livemark).",
       },
       };
   const searchIndex = lunr(function () {

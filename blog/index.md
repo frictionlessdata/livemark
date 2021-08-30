@@ -1,0 +1,24 @@
+# Blog
+
+```html markup
+{% for item in document.get_plugin('blog').items %}
+<div class="livemark-blog-item">
+  <h2>{{ item.document.name }}</h2>
+  <div class="row">
+    <div class="col-8">
+      <p>
+        <strong>
+          By {{ item.document.get_plugin('blog').author }}
+          on {{ item.document.get_plugin('blog').date }}
+        </strong>
+      </p>
+      {{ item.document.description }}
+      <a href="/{{ item.document.path }}.html">Read more &raquo;</a>
+    </div>
+    <div class="col-4">
+      <img src="{{ item.document.get_plugin('blog').image }}" />
+    </div>
+  </div>
+</div>
+{% endfor %}
+```
