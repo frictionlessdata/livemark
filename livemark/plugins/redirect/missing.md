@@ -1,3 +1,8 @@
+---
+html:
+  description: The page is not found
+---
+
 # Not Found
 
 > The page is not found

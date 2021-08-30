@@ -5,6 +5,10 @@ from ...markup import Markup
 from ...plugin import Plugin
 
 
+# NOTE:
+# Handle possible double quotes in title/description/keywords
+
+
 class HtmlPlugin(Plugin):
     code = "html"
     profile = {
