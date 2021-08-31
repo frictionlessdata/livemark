@@ -16,7 +16,11 @@ class AboutPlugin(Plugin):
     @Plugin.property
     def text(self):
         html = self.document.get_plugin("html")
-        return self.config.get("text", html.description.split(". ")[0])
+        text = self.config.get("text")
+        if not text:
+            if html.description:
+                text = html.description.split(". ")[0]
+        return text
 
     # Process
 

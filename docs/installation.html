@@ -1486,6 +1486,13 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+<style>
+
+#livemark-cards .modal-lg {
+    max-width: 1000px;
+}
+
+</style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH2QL85N6F"></script>
 <script>
@@ -1977,6 +1984,46 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  for (const link of $("a")) {
+    const href = $(link).attr("href");
+    if (href.startsWith("#card=")) {
+      const code = href.split("=")[1];
+      $(link).click(async () => {
+        const response = await fetch(`/.livemark/cards/${code}.html`);
+        const html = await response.text();
+        console.log(html);
+        $("#livemark-cards .modal-body").html(html);
+        $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
+        $("#livemark-cards .modal").modal();
+      });
+    }
+  }
+});
+
+</script>
+
+<div id="livemark-cards">
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://unpkg.com/ue-scroll-js@2.0.2/dist/ue-scroll.min.js"></script>
 <script>
 
@@ -2132,7 +2179,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/universe': {
           'name': 'Universe',
           'path': 'docs/universe',
-          'text': "# Universe \u003e This page will be here shortly!",
+          'text': "# Universe \u003e This page will be here shortly! [Test](#card=test)",
       },
           'blog/index': {
           'name': 'Blog',
