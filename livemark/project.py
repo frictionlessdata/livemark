@@ -42,6 +42,7 @@ class Project:
     def config(self):
         return self.__config
 
+    # TODO: do we need this project-level context (reason ReferencePlugin?)?
     @property
     def context(self):
         return self.__context

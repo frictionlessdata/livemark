@@ -45,6 +45,10 @@ def move_file(source, target):
     shutil.move(source, target)
 
 
+def remove_dir(path):
+    shutil.rmtree(path)
+
+
 def write_file(path, text=""):
     with tempfile.NamedTemporaryFile("wt", delete=False, encoding="utf-8") as file:
         file.write(text)

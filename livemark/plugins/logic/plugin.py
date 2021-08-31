@@ -17,7 +17,6 @@ class LogicPlugin(Plugin):
         project.context["frictionless"] = frictionless
 
     def process_document(self, document):
-        # TODO: remove this default when document is guaranteed
         project = self.document.project
         environ = Environment(loader=FileSystemLoader("."), trim_blocks=True)
         template = environ.from_string(document.content)
