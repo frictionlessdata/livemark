@@ -3,6 +3,11 @@ from ...plugin import Plugin
 from ... import helpers
 
 
+# NOTE:
+# We'd like to support rendering cards from markdown sources
+# We need to provide a lightweigh redering mechanism for Document to achieve it
+
+
 class CardsPlugin(Plugin):
     code = "cards"
 
@@ -24,6 +29,6 @@ class CardsPlugin(Plugin):
         helpers.write_file(target, text)
 
     @staticmethod
-    def remove_cards():
+    def delete_cards():
         target = ".livemark/cards"
         helpers.remove_dir(target)
