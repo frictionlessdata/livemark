@@ -10,12 +10,15 @@ class LogicPlugin(Plugin):
 
     # Process
 
-    def process_document(self, document):
+    @staticmethod
+    def process_project(project):
         livemark = importlib.import_module("livemark")
-        templating = Environment(loader=FileSystemLoader("."), trim_blocks=True)
-        template = templating.from_string(document.content)
-        document.content = template.render(
-            document=document,
-            livemark=livemark,
-            frictionless=frictionless,
-        )
+        project.context["livemark"] = livemark
+        project.context["frictionless"] = frictionless
+
+    def process_document(self, document):
+        # TODO: remove this default when document is guaranteed
+        project = self.document.project
+        environ = Environment(loader=FileSystemLoader("."), trim_blocks=True)
+        template = environ.from_string(document.content)
+        document.content = template.render(document=document, **project.context)

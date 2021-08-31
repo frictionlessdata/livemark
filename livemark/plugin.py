@@ -56,8 +56,10 @@ class Plugin:
         return "internal"
 
     def read_asset(self, *path, **context):
+        project = self.document.project
         dir = os.path.dirname(inspect.getfile(self.__class__))
         path = os.path.join(dir, *path)
+        context.update(project.context)
         context["plugin"] = self
         with open(path) as file:
             template = Template(file.read().strip(), trim_blocks=True)

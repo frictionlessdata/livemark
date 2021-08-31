@@ -15,6 +15,7 @@ class Project:
         self.__config = Config(config)
         self.__document = document
         self.__format = format
+        self.__context = {}
 
         # Process project
         for Plugin in system.iterate():
@@ -40,6 +41,10 @@ class Project:
     @property
     def config(self):
         return self.__config
+
+    @property
+    def context(self):
+        return self.__context
 
     @property
     def document(self):

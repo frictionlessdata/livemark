@@ -8,6 +8,10 @@ from .system import system
 from . import helpers
 
 
+# NOTE:
+# Make source to be only a file path to be trully file based (to use timestamps etc)
+
+
 class Config(dict):
     def __init__(self, source):
         enable = []
