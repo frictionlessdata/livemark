@@ -9,7 +9,9 @@ class CardsPlugin(Plugin):
     # Process
 
     def process_markup(self, markup):
-        pass
+        markup.add_style("style.css")
+        markup.add_script("script.js")
+        markup.add_markup("markup.html")
 
     # Helpers
 
