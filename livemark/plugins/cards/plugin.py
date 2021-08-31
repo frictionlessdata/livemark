@@ -22,7 +22,7 @@ class CardsPlugin(Plugin):
 
     @staticmethod
     def create_card(source, *, code, **context):
-        target = f".livemark/cards/{code}.html"
+        target = f"assets/cards/{code}.html"
         with open(source) as file:
             template = Template(file.read().strip(), trim_blocks=True)
             text = template.render(**context)
@@ -30,5 +30,5 @@ class CardsPlugin(Plugin):
 
     @staticmethod
     def delete_cards():
-        target = ".livemark/cards"
+        target = "assets/cards"
         helpers.remove_dir(target)

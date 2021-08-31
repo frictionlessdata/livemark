@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
       $(link).click(async () => {
-        const response = await fetch(`/.livemark/cards/${code}.html`);
+        const response = await fetch(`/assets/cards/${code}.html`);
         const html = await response.text();
         $("#livemark-cards .modal-body").html(html);
         $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
