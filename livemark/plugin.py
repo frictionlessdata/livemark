@@ -110,7 +110,7 @@ class Plugin:
         return text
 
     @classmethod
-    def check_active(cls, config):
+    def check_status(cls, config):
         """Check whether the plugin is active in given config
 
         Parameters:

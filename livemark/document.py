@@ -166,7 +166,7 @@ class Document:
         if self.__plugins is None:
             self.__plugins = []
             for Plugin in system.iterate():
-                if Plugin.check_active(self.__config):
+                if Plugin.check_status(self.__config):
                     self.__plugins.append(Plugin(self))
 
     # Process
