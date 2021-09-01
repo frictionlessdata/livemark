@@ -4,7 +4,7 @@ from jinja2 import Template
 
 
 # NOTE:
-# Consider Plugin.create_property(cache='None|project|document') if optimization is needed
+# Consider cached Plugin.document/project_property if optimization is needed
 
 
 class Plugin:
@@ -52,7 +52,7 @@ class Plugin:
         """
         return self.__document
 
-    # Actions
+    # Process
 
     @staticmethod
     def process_project(project):

@@ -43,6 +43,8 @@ class System:
                 Plugins[Class.identity] = Class
         return Plugins
 
+    # Manage
+
     def iterate(self):
         """Iterate plugins by priority
 

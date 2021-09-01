@@ -7,7 +7,9 @@ from . import helpers
 VERSION = helpers.read_asset("VERSION")
 TEMPLATE = helpers.path_asset("documents", "template.md")
 
+
 # Defaults
+
 
 DEFAULT_SOURCE = "index.md"
 DEFAULT_FORMAT = "html"
