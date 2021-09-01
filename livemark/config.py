@@ -66,7 +66,7 @@ class Config(dict):
         """List of enabled plugin names
 
         Returns:
-          str[]: plugin names
+            str[]: plugin names
         """
         return self.__enabled
 
@@ -75,7 +75,7 @@ class Config(dict):
         """List of disabled plugin names
 
         Returns:
-          str[]: plugin names
+            str[]: plugin names
         """
         return self.__disabled
 
@@ -85,7 +85,7 @@ class Config(dict):
         """Create a copy
 
         Returns:
-          Config: config copy
+            Config: config copy
         """
         return deepcopy(self)
 
@@ -93,7 +93,7 @@ class Config(dict):
         """Create a dict
 
         Returns:
-          dict: config dict
+            dict: config dict
         """
         return deepcopy(dict(self))
 
@@ -101,10 +101,10 @@ class Config(dict):
         """Create a merge
 
         Parameters:
-          source (dict): dictionary to merge
+            source (dict): dictionary to merge
 
         Returns:
-          Config: config merge
+            Config: config merge
         """
         result = {}
         deepmerge.always_merger.merge(result, self)
