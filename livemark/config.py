@@ -10,10 +10,21 @@ from . import helpers
 
 # NOTE:
 # Make source to be only a file path to be trully file based (to use timestamps etc)
-# Allow allpying config on top
+# Allow applying config dict on top of the file-based source?
 
 
 class Config(dict):
+    """Livemark config
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Config`
+
+    Parameters:
+        source (str): path to the config source
+
+    """
+
     def __init__(self, source):
         enabled = []
         disabled = []
