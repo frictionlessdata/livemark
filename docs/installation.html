@@ -1992,6 +1992,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
       $(link).click(async () => {
+        // TODO: handle errors
         const response = await fetch(`/assets/cards/${code}.html`);
         const html = await response.text();
         $("#livemark-cards .modal-body").html(html);

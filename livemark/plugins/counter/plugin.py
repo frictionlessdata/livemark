@@ -5,25 +5,25 @@ class CounterPlugin(Plugin):
     code = "counter"
     profile = {
         "type": "object",
-        "required": ["type", "mark"],
+        "required": ["type", "code"],
         "properties": {
             "type": {"type": "string"},
-            "mark": {"type": "string"},
+            "code": {"type": "string"},
         },
     }
 
     # Context
 
     @Plugin.property
-    def type(self):
+    def counter_type(self):
         return self.config.get("type")
 
     @Plugin.property
-    def mark(self):
-        return self.config.get("mark")
+    def counter_code(self):
+        return self.config.get("code")
 
     # Process
 
     def process_markup(self, markup):
-        if self.type == "google":
+        if self.counter_type == "google":
             markup.add_markup("markup.html", target="head")
