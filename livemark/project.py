@@ -62,16 +62,6 @@ class Project:
         """
         return self.__config
 
-    # TODO: do we need this project-level context (reason ReferencePlugin?)?
-    @property
-    def context(self):
-        """Project's context
-
-        Return:
-            dict: context
-        """
-        return self.__context
-
     @property
     def document(self):
         """Project's document
