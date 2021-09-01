@@ -1707,6 +1707,13 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+<style>
+
+.livemark-video-item {
+  padding-bottom: 10px;
+}
+
+</style>
 </head>
 <body>
 <div id="livemark-left">
@@ -1781,7 +1788,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-30 15:56)
+  (2021-09-01 10:07)
 </div>
 
 <h1>Meet Livemark</h1>
@@ -1795,9 +1802,9 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <p>Livemark offers a series of useful features, like automatically generating a table of contents and providing a scroll-to-top button when you scroll down your document. You can also customise the layout of your newly created webpage.</p>
 <h2>How can you get started?</h2>
 <p>Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NMg-eCbO6L0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p> </p>
-<p>You can also have a look at the <a href="https://frictionlessdata.github.io/livemark/">documentation on GitHub</a>.</p>
+<div class="livemark-video-item">
+  <iframe width="600" height="400" src="https://www.youtube.com/embed/NMg-eCbO6L0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+</div><p>You can also have a look at the <a href="https://frictionlessdata.github.io/livemark/">documentation on GitHub</a>.</p>
 <h2>What do you think?</h2>
 <p>If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on <a href="https://discord.com/invite/Sewv6av">Discord</a> or by opening an issue in the <a href="https://github.com/frictionlessdata/livemark">GitHub repo</a>.</p>
 
@@ -2180,7 +2187,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
           'path': 'blog/2021-09-01-meet-livemark',
-          'text': "# Meet Livemark We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. ## How does it work? Livemark is a Python library generating a static page that extends Markdown with interactive charts, tables, scripts, and much much more. You can use the Frictionless framework as a `frictionless` variable to work with your tabular data in Livemark. Livemark offers a series of useful features, like automatically generating a table of contents and providing a scroll-to-top button when you scroll down your document. You can also customise the layout of your newly created webpage. ## How can you get started? Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev: \u00a0 You can also have a look at the [documentation on GitHub](https://frictionlessdata.github.io/livemark/). ## What do you think? If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on [Discord]( https://discord.com/invite/Sewv6av) or by opening an issue in the [GitHub repo](https://github.com/frictionlessdata/livemark).",
+          'text': "# Meet Livemark We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. ## How does it work? Livemark is a Python library generating a static page that extends Markdown with interactive charts, tables, scripts, and much much more. You can use the Frictionless framework as a `frictionless` variable to work with your tabular data in Livemark. Livemark offers a series of useful features, like automatically generating a table of contents and providing a scroll-to-top button when you scroll down your document. You can also customise the layout of your newly created webpage. ## How can you get started? Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev: ```yaml video type: youtube code: NMg-eCbO6L0 ``` You can also have a look at the [documentation on GitHub](https://frictionlessdata.github.io/livemark/). ## What do you think? If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on [Discord]( https://discord.com/invite/Sewv6av) or by opening an issue in the [GitHub repo](https://github.com/frictionlessdata/livemark).",
       },
           '404': {
           'name': 'Not Found',

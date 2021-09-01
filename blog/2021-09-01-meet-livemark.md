@@ -17,8 +17,10 @@ Livemark offers a series of useful features, like automatically generating a tab
 ## How can you get started?
 Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NMg-eCbO6L0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>&nbsp;</p>
+```yaml video
+type: youtube
+code: NMg-eCbO6L0
+```
 
 You can also have a look at the [documentation on GitHub](https://frictionlessdata.github.io/livemark/).
 
