@@ -14,11 +14,11 @@ class AudioPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def width(self):
         return self.config.get("width", 600)
 
-    @Plugin.property
+    @property
     def height(self):
         return self.config.get("height", 400)
 

@@ -13,7 +13,7 @@ class AboutPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def text(self):
         html = self.document.get_plugin("html")
         text = self.config.get("text")

@@ -30,7 +30,7 @@ class RedirectPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def items(self):
         return self.config.get("items", [])
 

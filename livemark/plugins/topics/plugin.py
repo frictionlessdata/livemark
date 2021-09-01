@@ -14,7 +14,7 @@ class TopicsPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def selector(self):
         selector = self.config.get("selector", "h2, h3")
         if len(selector.split(",")) > 2:

@@ -15,7 +15,7 @@ class CleanupPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def commands(self):
         return self.config.get("commands", [])
 

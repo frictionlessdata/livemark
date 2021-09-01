@@ -1,7 +1,10 @@
 import os
 import inspect
 from jinja2 import Template
-from .helpers import cached_property
+
+
+# NOTE:
+# Consider Plugin.create_property(cache='None|project|document') if optimization is needed
 
 
 class Plugin:
@@ -120,6 +123,3 @@ class Plugin:
         internal = type == "internal" and cls.identity not in config.disabled
         external = type == "external" and cls.identity in config.enabled
         return internal or external
-
-    # TODO: review whether we need it (add cache arg or use property/cached_property?)
-    property = cached_property

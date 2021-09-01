@@ -23,19 +23,19 @@ class HtmlPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def name(self):
         return self.config.get("name", self.document.name)
 
-    @Plugin.property
+    @property
     def title(self):
         return self.config.get("title", self.document.title)
 
-    @Plugin.property
+    @property
     def description(self):
         return self.config.get("description", self.document.description)
 
-    @Plugin.property
+    @property
     def keywords(self):
         return self.config.get("keywords", self.document.keywords)
 

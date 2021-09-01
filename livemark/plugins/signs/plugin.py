@@ -10,7 +10,7 @@ class SignsPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def items(self):
         if self.document.project:
             documents = self.document.project.documents

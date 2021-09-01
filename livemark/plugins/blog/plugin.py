@@ -21,13 +21,13 @@ class BlogPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def path(self):
         path = self.document.project.config.get("blog", {}).get("path", "blog")
         if os.path.isdir(path):
             return path
 
-    @Plugin.property
+    @property
     def items(self):
         items = []
         if not self.path:
@@ -38,15 +38,15 @@ class BlogPlugin(Plugin):
                 items.append({"document": document})
         return items
 
-    @Plugin.property
+    @property
     def author(self):
         return self.config.get("author")
 
-    @Plugin.property
+    @property
     def image(self):
         return self.config.get("image")
 
-    @Plugin.property
+    @property
     def date(self):
         if self.path:
             date = self.document.path.replace(f"{self.path}/", "")
