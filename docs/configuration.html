@@ -1638,6 +1638,14 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+<link rel="stylesheet" href="https://unpkg.com/paginationjs@2.1.5/dist/pagination.css">
+<style>
+
+#livemark-pagination {
+  display: none;
+}
+
+</style>
 <style>
 
 #livemark-search {
@@ -2107,6 +2115,29 @@ document.addEventListener("DOMContentLoaded", function () {
     <span class="bar"></span>
   </div>
 </div>
+<script src="https://unpkg.com/paginationjs@2.1.5/dist/pagination.min.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const conainer = $(".livemark-pagination");
+  const elements = conainer
+    .children()
+    .map((index, element) => element.outerHTML)
+    .get();
+  conainer.html(`
+    <div class="livemark-pagination-data"></div>
+    <div class="livemark-pagination-navs"></div>
+  `);
+  conainer.find(".livemark-pagination-navs").pagination({
+    dataSource: elements,
+    callback: (html) => {
+      conainer.find(".livemark-pagination-data").html(html);
+    },
+  });
+  conainer.show();
+});
+
+</script>
 <script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
 <script src="https://unpkg.com/jquery-highlight@3.5.0/jquery.highlight.js"></script>
 <script src="https://unpkg.com/jquery.scrollto@2.1.3/jquery.scrollTo.js"></script>
@@ -2182,7 +2213,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/plugin-system': {
           'name': 'Plugin System',
           'path': 'docs/plugin-system',
-          'text': "# Plugin System \u003e This page will be here shortly!",
+          'text': "# Plugin System \u003e This page will be here shortly! Test ```html markup {% for number in range(1, 101) %} {{ number }} {% endfor %} ```",
       },
           'docs/universe': {
           'name': 'Universe',

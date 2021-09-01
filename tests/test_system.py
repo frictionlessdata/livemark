@@ -1,5 +1,5 @@
 import pytest
-from livemark import system, Plugin, LivemarkException
+from livemark import Plugin, system, errors
 
 
 # General
@@ -16,6 +16,6 @@ def test_system_register():
 
 
 def test_system_deregister_not_registered():
-    with pytest.raises(LivemarkException) as excinfo:
+    with pytest.raises(errors.Error) as excinfo:
         system.deregister(Plugin)
     assert str(excinfo.value).count("Not registered plugin")

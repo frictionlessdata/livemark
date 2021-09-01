@@ -23,7 +23,7 @@ class LinksPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def items(self):
         github = self.document.get_plugin("github")
         items = deepcopy(self.config.get("items", []))

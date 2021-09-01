@@ -30,11 +30,11 @@ class PagesPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def current(self):
         return self.document.path
 
-    @Plugin.property
+    @property
     def items(self):
         items = deepcopy(self.config.get("items", []))
         for item in items:
@@ -59,7 +59,7 @@ class PagesPlugin(Plugin):
 
         return items
 
-    @Plugin.property
+    @property
     def flatten_items(self):
         return helpers.flatten_items(self.items, "items")
 

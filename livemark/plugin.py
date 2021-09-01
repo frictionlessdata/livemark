@@ -1,7 +1,10 @@
 import os
 import inspect
 from jinja2 import Template
-from .helpers import cached_property
+
+
+# NOTE:
+# Consider cached Plugin.document/project_property if optimization is needed
 
 
 class Plugin:
@@ -49,7 +52,7 @@ class Plugin:
         """
         return self.__document
 
-    # Actions
+    # Process
 
     @staticmethod
     def process_project(project):
@@ -96,10 +99,8 @@ class Plugin:
         Returns:
             str: a read asset
         """
-        project = self.document.project
         dir = os.path.dirname(inspect.getfile(self.__class__))
         path = os.path.join(dir, *path)
-        context.update(project.context)
         context["plugin"] = self
         with open(path) as file:
             template = Template(file.read().strip(), trim_blocks=True)
@@ -107,7 +108,7 @@ class Plugin:
         return text
 
     @classmethod
-    def check_active(cls, config):
+    def check_status(cls, config):
         """Check whether the plugin is active in given config
 
         Parameters:
@@ -120,6 +121,3 @@ class Plugin:
         internal = type == "internal" and cls.identity not in config.disabled
         external = type == "external" and cls.identity in config.enabled
         return internal or external
-
-    # TODO: review whether we need it (add cache arg or use property/cached_property?)
-    property = cached_property

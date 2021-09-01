@@ -17,7 +17,7 @@ class DisplayPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def speed(self):
         return self.config.get("speed", 10)
 

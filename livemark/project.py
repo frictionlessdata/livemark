@@ -1,7 +1,7 @@
 from .config import Config
-from .exception import LivemarkException
 from .system import system
 from . import settings
+from . import errors
 
 
 # NOTE:
@@ -10,6 +10,19 @@ from . import settings
 
 
 class Project:
+    """Livemark project
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Project`
+
+    Parameters:
+        document (Document): a document to build
+        config? (str): a path to config file
+        format? (str): an output format
+
+    """
+
     def __init__(self, document=None, *, config=None, format=None):
         self.__documents = [document] if document else []
         self.__config = Config(config)
@@ -19,7 +32,7 @@ class Project:
 
         # Process project
         for Plugin in system.iterate():
-            if Plugin.check_active(self.__config):
+            if Plugin.check_status(self.__config):
                 Plugin.process_project(self)
 
         # Read documents
@@ -29,6 +42,11 @@ class Project:
 
     @property
     def format(self):
+        """Project's format
+
+        Return:
+            str: format
+        """
         if self.__format:
             return self.__format
         if self.__document:
@@ -37,32 +55,56 @@ class Project:
 
     @property
     def config(self):
-        return self.__config
+        """Project's config
 
-    # TODO: do we need this project-level context (reason ReferencePlugin?)?
-    @property
-    def context(self):
-        return self.__context
+        Return:
+            Config: config
+        """
+        return self.__config
 
     @property
     def document(self):
+        """Project's document
+
+        Return:
+            Document?: document
+        """
         return self.__document
 
     @property
     def documents(self):
+        """Project's documents
+
+        Return:
+            Document[]: documents
+        """
         return self.__documents
 
     @property
     def building_documents(self):
+        """Project's building documents
+
+        Return:
+            Document[]: documents
+        """
         return [self.document] if self.document else self.documents
 
     # Build
 
     def build(self, *, diff=False, print=False):
+        """Build the project
+
+        Parameters:
+            diff (bool): print the diff
+            print (bool): print the result
+
+        Returns:
+            str: concatenated documents output
+        """
 
         # Ensure documents
         if not self.documents:
-            raise LivemarkException("No documents to build in the project")
+            raise errors.Error("No documents to build in the project")
 
         # Build documents
         outputs = []
@@ -77,6 +119,14 @@ class Project:
     # Helpers
 
     def get_document(self, path):
+        """Return document
+
+        Parameters:
+            path (str): document's path
+
+        Return:
+            Document?: document if found
+        """
         for document in self.documents:
             if document.path == path:
                 return document

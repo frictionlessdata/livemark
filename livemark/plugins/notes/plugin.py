@@ -15,11 +15,11 @@ class NotesPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def format(self):
         return self.config.get("format", "%Y-%m-%d %H:%M")
 
-    @Plugin.property
+    @property
     def current(self):
         return datetime.fromtimestamp(os.path.getmtime(self.document.source))
 

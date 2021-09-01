@@ -9,12 +9,28 @@ from . import settings
 
 
 class Server:
+    """Livemark server
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Server`
+
+    Parameters:
+        proejct (Project): a project to server
+
+    """
+
     def __init__(self, project):
         self.__project = project
         self.__server = livereload.Server()
 
     @property
     def project(self):
+        """Server's project
+
+        Return:
+            Project: project
+        """
         return self.__project
 
     # Start
@@ -26,6 +42,13 @@ class Server:
         port=settings.DEFAULT_PORT,
         file=settings.DEFAULT_FILE,
     ):
+        """Start the server
+
+        Parameters:
+            host (str): HTTP host
+            port (int): HTTP port
+            file (str): index file path
+        """
 
         # Build documents
         self.project.build()

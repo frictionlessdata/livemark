@@ -2,11 +2,11 @@ import re
 import yaml
 import difflib
 from frictionless import File
-from .exception import LivemarkException
 from .config import Config
 from .system import system
 from . import settings
 from . import helpers
+from . import errors
 
 
 # TODO: make document required or initialize it
@@ -63,54 +63,119 @@ class Document:
 
     @property
     def source(self):
+        """Document's source
+
+        Returns:
+            str: source
+        """
         return self.__source
 
     @property
     def target(self):
+        """Document's target
+
+        Returns:
+            str: target
+        """
         return self.__target
 
     @property
     def format(self):
+        """Document's format
+
+        Returns:
+            str: format
+        """
         return self.__format
 
     @property
     def project(self):
+        """Document's project
+
+        Returns:
+            Project: project
+        """
         return self.__project
 
     @property
     def plugins(self):
+        """Document's plugins
+
+        Returns:
+            Plugin[]?: plugins
+        """
         return self.__plugins
 
     @property
     def input(self):
+        """Document's input
+
+        Returns:
+            str?: input
+        """
         return self.__input
 
     @property
     def output(self):
+        """Document's output
+
+        Returns:
+            str?: output
+        """
         return self.__output
 
     @property
     def preface(self):
+        """Document's preface
+
+        Returns:
+            str?: preface
+        """
         return self.__preface
 
     @property
     def content(self):
+        """Document's content
+
+        Returns:
+            str?: content
+        """
         return self.__content
 
     @property
     def config(self):
+        """Document's config
+
+        Returns:
+            Config?: config
+        """
         return self.__config
 
     @property
     def name(self):
+        """Document's name
+
+        Returns:
+            str: name
+        """
         return self.title or self.path
 
     @property
     def path(self):
+        """Document's path
+
+        Returns:
+            str: path
+        """
         return helpers.with_format(self.source, "")
 
     @property
     def title(self):
+        """Document's title
+
+        Returns:
+            str?: title
+        """
         if self.content:
             prefix = "# "
             for line in self.content.splitlines():
@@ -119,6 +184,11 @@ class Document:
 
     @property
     def description(self):
+        """Document's description
+
+        Returns:
+            str?: description
+        """
         if self.content:
             pattern = re.compile(r"^\w")
             for line in self.content.splitlines():
@@ -128,12 +198,26 @@ class Document:
 
     @property
     def keywords(self):
-        if self.title:
+        """Document's keywords
+
+        Returns:
+            str?: keywords
+        """
+        if self.content:
             return ",".join(map(str.lower, self.title.split()))
 
     # Build
 
     def build(self, *, diff=False, print=False):
+        """Build the document
+
+        Parameters:
+            diff (bool): print the diff
+            print (bool): print the result
+
+        Returns:
+            str: output
+        """
         self.read()
         self.process()
         output = self.write(diff=diff, print=print)
@@ -142,6 +226,7 @@ class Document:
     # Read
 
     def read(self):
+        """Read the document"""
 
         # Read input
         with open(self.__source) as file:
@@ -166,22 +251,38 @@ class Document:
         if self.__plugins is None:
             self.__plugins = []
             for Plugin in system.iterate():
-                if Plugin.check_active(self.__config):
+                if Plugin.check_status(self.__config):
                     self.__plugins.append(Plugin(self))
 
     # Process
 
     def process(self):
+        """Process the document"""
+
+        # Ensure read
         if self.__content is None:
-            raise LivemarkException("Read document before processing")
+            raise errors.Error("Read document before processing")
+
+        # Iterate plugins
         for plugin in self.__plugins:
             plugin.process_document(self)
 
     # Write
 
     def write(self, *, diff=False, print=False):
+        """Write the document
+
+        Parameters:
+            diff (bool): print the diff
+            print (bool): print the result
+
+        Returns:
+            str: output
+        """
+
+        # Ensure processed
         if self.__output is None:
-            raise LivemarkException("Process document before writing")
+            raise errors.Error("Process document before writing")
 
         # Diff
         if diff:
@@ -208,6 +309,11 @@ class Document:
     # Helpers
 
     def get_plugin(self, name):
+        """Get document's plugin by name
+
+        Parameters:
+            name (str): plugin name
+        """
         for plugin in self.plugins:
             if plugin.identity == name:
                 return plugin

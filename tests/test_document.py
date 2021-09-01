@@ -1,5 +1,5 @@
 import pytest
-from livemark import Project, Document, LivemarkException, helpers
+from livemark import Project, Document, helpers, errors
 
 
 # General
@@ -103,7 +103,7 @@ def test_document_read_with_preface():
 
 def test_document_read_with_preface_invalid():
     document = Document("data/invalid.md")
-    with pytest.raises(LivemarkException) as excinfo:
+    with pytest.raises(errors.Error) as excinfo:
         document.read()
     assert str(excinfo.value).count('Invalid "brand" config')
 
@@ -113,7 +113,7 @@ def test_document_read_with_preface_invalid():
 
 def test_document_process_not_read():
     document = Document("index.md")
-    with pytest.raises(LivemarkException) as excinfo:
+    with pytest.raises(errors.Error) as excinfo:
         document.process()
     assert str(excinfo.value).count("Read document before processing")
 
@@ -124,6 +124,6 @@ def test_document_process_not_read():
 def test_document_write_not_processed():
     document = Document("index.md")
     document.read()
-    with pytest.raises(LivemarkException) as excinfo:
+    with pytest.raises(errors.Error) as excinfo:
         document.write(print=True)
     assert str(excinfo.value).count("Process document before writing")

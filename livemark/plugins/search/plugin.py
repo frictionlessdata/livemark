@@ -13,7 +13,7 @@ class SearchPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def items(self):
         items = []
         documents = [self.document]

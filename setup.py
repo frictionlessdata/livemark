@@ -43,6 +43,7 @@ INSTALL_REQUIRES = [
     "typer[all]>=0.3",
     "livereload>=2.6",
     "giturlparse>=0.10",
+    "cached_property>=1.5",
     "frictionless[excel,json]==4.*",
 ]
 README = read("README.md")

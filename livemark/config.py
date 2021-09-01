@@ -3,17 +3,28 @@ import yaml
 import deepmerge
 import jsonschema
 from copy import deepcopy
-from .exception import LivemarkException
 from .system import system
 from . import helpers
+from . import errors
 
 
 # NOTE:
 # Make source to be only a file path to be trully file based (to use timestamps etc)
-# Allow allpying config on top
+# Allow applying config dict on top of the file-based source?
 
 
 class Config(dict):
+    """Livemark config
+
+    API      | Usage
+    -------- | --------
+    Public   | `from livemark import Config`
+
+    Parameters:
+        source (str): path to the config source
+
+    """
+
     def __init__(self, source):
         enabled = []
         disabled = []
@@ -41,7 +52,7 @@ class Config(dict):
                 validator = jsonschema.Draft7Validator(Plugin.validity)
                 for error in validator.iter_errors(config[Plugin.identity]):
                     message = f'Invalid "{Plugin.identity}" config: {error.message}'
-                    raise LivemarkException(message)
+                    raise errors.Error(message)
 
         # Set attributes
         self.update(config)
@@ -55,7 +66,7 @@ class Config(dict):
         """List of enabled plugin names
 
         Returns:
-          str[]: plugin names
+            str[]: plugin names
         """
         return self.__enabled
 
@@ -64,7 +75,7 @@ class Config(dict):
         """List of disabled plugin names
 
         Returns:
-          str[]: plugin names
+            str[]: plugin names
         """
         return self.__disabled
 
@@ -74,7 +85,7 @@ class Config(dict):
         """Create a copy
 
         Returns:
-          Config: config copy
+            Config: config copy
         """
         return deepcopy(self)
 
@@ -82,7 +93,7 @@ class Config(dict):
         """Create a dict
 
         Returns:
-          dict: config dict
+            dict: config dict
         """
         return deepcopy(dict(self))
 
@@ -90,10 +101,10 @@ class Config(dict):
         """Create a merge
 
         Parameters:
-          source (dict): dictionary to merge
+            source (dict): dictionary to merge
 
         Returns:
-          Config: config merge
+            Config: config merge
         """
         result = {}
         deepmerge.always_merger.merge(result, self)
