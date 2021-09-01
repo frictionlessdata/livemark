@@ -24,7 +24,7 @@ class System:
         """Registered plugins
 
         Returns:
-            dict[]: a list of plugin structures
+            dict: plugins mapping
         """
         Plugins = {}
         modules = []

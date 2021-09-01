@@ -11,6 +11,16 @@ from urllib.parse import urlparse
 # General
 
 
+def path_asset(*paths):
+    return os.path.join(os.path.dirname(__file__), "assets", *paths)
+
+
+def read_asset(*paths):
+    dirname = os.path.dirname(__file__)
+    with open(os.path.join(dirname, "assets", *paths)) as file:
+        return file.read().strip()
+
+
 def with_format(path, format):
     suffix = f".{format}" if format else ""
     return str(Path(path).with_suffix(suffix))

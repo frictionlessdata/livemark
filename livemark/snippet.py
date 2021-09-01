@@ -24,32 +24,58 @@ class Snippet:
 
     @property
     def input(self):
+        """Snippet's input
+
+        Returns:
+            str: input
+        """
         return self.__input
 
     @property
     def output(self):
+        """Snippet's output
+
+        Returns:
+            str?: input
+        """
         return self.__output
 
     @property
     def header(self):
+        """Snippet's header
+
+        Returns:
+            str[]: header
+        """
         return self.__header
 
     @property
     def lang(self):
-        lang = None
+        """Snippet's lang
+
+        Returns:
+            str?: lang
+        """
         if len(self.__header) >= 1:
-            lang = self.__header[0]
-        return lang
+            return self.__header[0]
 
     @property
     def type(self):
-        type = None
+        """Snippet's type
+
+        Returns:
+            str?: type
+        """
         if len(self.__header) >= 2:
-            type = self.__header[1]
-        return type
+            return self.__header[1]
 
     @property
     def props(self):
+        """Snippet's props
+
+        Returns:
+            dict: props
+        """
         props = {}
         for item in self.__header[2:]:
             parts = item.split("=")
@@ -61,5 +87,10 @@ class Snippet:
     # Process
 
     def process(self, document):
+        """Process snippet
+
+        Parameters:
+            document (Document): document having this snippet
+        """
         for plugin in document.plugins:
             plugin.process_snippet(self)
