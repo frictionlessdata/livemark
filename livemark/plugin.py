@@ -68,7 +68,7 @@ class Plugin:
         return text
 
     @classmethod
-    def check_enabled(cls, config):
+    def check_active(cls, config):
         type = "external" if cls.__module__.startswith("livemark_") else "internal"
         internal = type == "internal" and cls.identity not in config.disabled
         external = type == "external" and cls.identity in config.enabled

@@ -19,7 +19,7 @@ class Project:
 
         # Process project
         for Plugin in system.iterate():
-            if Plugin.check_enabled(self.__config):
+            if Plugin.check_active(self.__config):
                 Plugin.process_project(self)
 
         # Read documents
