@@ -10,12 +10,13 @@ from . import helpers
 
 # NOTE:
 # Make source to be only a file path to be trully file based (to use timestamps etc)
+# Allow allpying config on top
 
 
 class Config(dict):
     def __init__(self, source):
-        enable = []
-        disable = []
+        enabled = []
+        disabled = []
 
         # Read config
         config = source or {}
@@ -28,10 +29,10 @@ class Config(dict):
         # Process config
         for key, value in list(config.items()):
             if value is True:
-                enable.append(key)
+                enabled.append(key)
                 del config[key]
             elif value is False:
-                disable.append(key)
+                disabled.append(key)
                 del config[key]
 
         # Validate config
@@ -44,31 +45,61 @@ class Config(dict):
 
         # Set attributes
         self.update(config)
-        self.__enable = enable
-        self.__disable = disable
+        self.__enabled = enabled
+        self.__disabled = disabled
+
+    # Plugins
 
     @property
-    def enable(self):
-        return self.__enable
+    def enabled(self):
+        """List of enabled plugin names
+
+        Returns:
+          str[]: plugin names
+        """
+        return self.__enabled
 
     @property
-    def disable(self):
-        return self.__disable
+    def disabled(self):
+        """List of disabled plugin names
+
+        Returns:
+          str[]: plugin names
+        """
+        return self.__disabled
 
     # Helpers
 
     def to_copy(self):
+        """Create a copy
+
+        Returns:
+          Config: config copy
+        """
         return deepcopy(self)
 
     def to_dict(self):
+        """Create a dict
+
+        Returns:
+          dict: config dict
+        """
         return deepcopy(dict(self))
 
     def to_merge(self, source):
+        """Create a merge
+
+        Parameters:
+          source (dict): dictionary to merge
+
+        Returns:
+          Config: config merge
+        """
         result = {}
         deepmerge.always_merger.merge(result, self)
         deepmerge.always_merger.merge(result, source)
-        for name in self.enable:
+        for name in self.enabled:
             result.setdefault(name, True)
-        for name in self.disable:
+        for name in self.disabled:
             result.setdefault(name, False)
         return Config(result)

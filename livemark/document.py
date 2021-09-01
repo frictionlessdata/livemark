@@ -166,7 +166,7 @@ class Document:
         if self.__plugins is None:
             self.__plugins = []
             for Plugin in system.iterate():
-                if Plugin.check_enabled(self.__config):
+                if Plugin.check_active(self.__config):
                     self.__plugins.append(Plugin(self))
 
     # Process
@@ -207,7 +207,7 @@ class Document:
 
     # Helpers
 
-    def get_plugin(self, identity):
+    def get_plugin(self, name):
         for plugin in self.plugins:
-            if plugin.identity == identity:
+            if plugin.identity == name:
                 return plugin

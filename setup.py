@@ -36,7 +36,7 @@ INSTALL_REQUIRES = [
     "marko>=1.0",
     "pyyaml>=5.3",
     "jinja2>=3.0",
-    "pyquery>=1.4",
+    "pyquery==1.*",
     "deepmerge>=0.3",
     "gitpython>=3.1",
     "jsonschema>=2.5",
