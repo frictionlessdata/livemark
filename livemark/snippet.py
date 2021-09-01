@@ -1,6 +1,3 @@
-from .helpers import cached_property
-
-
 class Snippet:
     """Livemark snippet
 
@@ -37,21 +34,21 @@ class Snippet:
     def header(self):
         return self.__header
 
-    @cached_property
+    @property
     def lang(self):
         lang = None
         if len(self.__header) >= 1:
             lang = self.__header[0]
         return lang
 
-    @cached_property
+    @property
     def type(self):
         type = None
         if len(self.__header) >= 2:
             type = self.__header[1]
         return type
 
-    @cached_property
+    @property
     def props(self):
         props = {}
         for item in self.__header[2:]:

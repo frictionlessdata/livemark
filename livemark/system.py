@@ -1,8 +1,8 @@
 import os
 import pkgutil
 import importlib
+from cached_property import cached_property
 from .exception import LivemarkException
-from .helpers import cached_property
 from .plugin import Plugin
 from . import helpers
 
