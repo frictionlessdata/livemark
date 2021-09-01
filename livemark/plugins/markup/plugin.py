@@ -6,6 +6,9 @@ from ..html.renderer import HtmlExtension
 from ...plugin import Plugin
 
 
+# TODO: rename markdown class to livemark-markdown (as in pagination)
+
+
 class MarkupPlugin(Plugin):
     identity = "markup"
 

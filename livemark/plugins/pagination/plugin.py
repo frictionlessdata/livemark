@@ -4,7 +4,6 @@ from ...plugin import Plugin
 # NOTE:
 # Add an ability to customize selector in the config
 # Fix how pagination navs are styles (conflict with the main styles)
-# Sync class names: livemark-pagination and markdown (from markup plugin)
 
 
 class PaginationPlugin(Plugin):
