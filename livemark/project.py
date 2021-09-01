@@ -1,7 +1,7 @@
 from .config import Config
-from .exception import LivemarkException
 from .system import system
 from . import settings
+from . import errors
 
 
 # NOTE:
@@ -104,7 +104,7 @@ class Project:
 
         # Ensure documents
         if not self.documents:
-            raise LivemarkException("No documents to build in the project")
+            raise errors.Error("No documents to build in the project")
 
         # Build documents
         outputs = []

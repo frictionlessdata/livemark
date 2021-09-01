@@ -3,9 +3,9 @@ import yaml
 import deepmerge
 import jsonschema
 from copy import deepcopy
-from .exception import LivemarkException
 from .system import system
 from . import helpers
+from . import errors
 
 
 # NOTE:
@@ -52,7 +52,7 @@ class Config(dict):
                 validator = jsonschema.Draft7Validator(Plugin.validity)
                 for error in validator.iter_errors(config[Plugin.identity]):
                     message = f'Invalid "{Plugin.identity}" config: {error.message}'
-                    raise LivemarkException(message)
+                    raise errors.Error(message)
 
         # Set attributes
         self.update(config)

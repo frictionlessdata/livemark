@@ -2,9 +2,9 @@ import os
 import pkgutil
 import importlib
 from cached_property import cached_property
-from .exception import LivemarkException
 from .plugin import Plugin
 from . import helpers
+from . import errors
 
 
 class System:
@@ -39,7 +39,7 @@ class System:
         for module in modules:
             for Class in helpers.extract_classes(module, Plugin):
                 if Class.identity in Plugins:
-                    raise LivemarkException(f"Plugin identity conflict: {Class.identity}")
+                    raise errors.Error(f"Plugin identity conflict: {Class.identity}")
                 Plugins[Class.identity] = Class
         return Plugins
 
@@ -61,7 +61,7 @@ class System:
             Plugin (type): a plugin class to register
         """
         if Plugin.identity in self.Plugins:
-            raise LivemarkException(f"Plugin identity conflict: {Plugin.identity}")
+            raise errors.Error(f"Plugin identity conflict: {Plugin.identity}")
         self.Plugins[Plugin.identity] = Plugin
 
     def deregister(self, Plugin):
@@ -71,7 +71,7 @@ class System:
             Plugin (type): a plugin class to register
         """
         if Plugin.identity not in self.Plugins:
-            raise LivemarkException(f"Not registered plugin: {Plugin.identity}")
+            raise errors.Error(f"Not registered plugin: {Plugin.identity}")
         del self.Plugins[Plugin.identity]
 
 

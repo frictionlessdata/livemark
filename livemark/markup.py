@@ -1,7 +1,7 @@
 from pyquery import PyQuery
 from contextlib import contextmanager
-from .exception import LivemarkException
 from . import helpers
+from . import errors
 
 
 # NOTE:
@@ -72,7 +72,7 @@ class Markup:
     @property
     def plugin(self):
         if not self.__plugin:
-            raise LivemarkException("Markup is not bound")
+            raise errors.Error("Markup is not bound")
         return self.__plugin
 
     # Bind

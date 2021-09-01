@@ -1,7 +1,7 @@
 import subprocess
-from ...exception import LivemarkException
 from ...plugin import Plugin
 from ... import helpers
+from ... import errors
 
 
 class ScriptPlugin(Plugin):
@@ -57,7 +57,7 @@ class ScriptPlugin(Plugin):
                 # Missing
                 else:
                     message = "Provide a supported script language: bash/python"
-                    raise LivemarkException(message)
+                    raise errors.Error(message)
 
                 # General
                 output = "\n".join(line.rstrip() for line in output.splitlines())

@@ -4,8 +4,8 @@ import typer
 from ..server import Server
 from ..project import Project
 from ..document import Document
-from ..exception import LivemarkException
 from .main import program
+from .. import errors
 from . import common
 
 
@@ -33,7 +33,7 @@ def program_build(
         if not os.path.exists(config):
             if not source:
                 message = 'Project without config requires "source" argument'
-                raise LivemarkException(message)
+                raise errors.Error(message)
 
         # Create project
         document = None

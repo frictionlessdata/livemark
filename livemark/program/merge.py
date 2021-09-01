@@ -6,8 +6,8 @@ import tempfile
 from ..server import Server
 from ..project import Project
 from ..document import Document
-from ..exception import LivemarkException
 from .main import program
+from .. import errors
 from . import common
 
 
@@ -29,7 +29,7 @@ def program_merge(
         if not os.path.exists(config):
             if not source:
                 message = 'Project without config requires "source" argument'
-                raise LivemarkException(message)
+                raise errors.Error(message)
 
         # Create project
         document = None
@@ -47,7 +47,7 @@ def program_merge(
         # Live mode
         if not document:
             message = 'Live mode requries the "source" argument'
-            raise LivemarkException(message)
+            raise errors.Error(message)
         atexit.register(document.build)
         with tempfile.NamedTemporaryFile(suffix=".html") as file:
             server = Server(Project(Document(source, target=file.name)))

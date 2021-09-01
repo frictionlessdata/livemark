@@ -3,12 +3,12 @@
 # So every CLI error will link the correspoinding error in the docs
 
 
-class LivemarkException(Exception):
-    """Livemark exception
+class Error(Exception):
+    """Livemark error
 
     API      | Usage
     -------- | --------
-    Public   | `from livemark import LivemarkException`
+    Public   | `from livemark import errors`
 
     """
 

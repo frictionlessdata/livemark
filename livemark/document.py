@@ -2,11 +2,11 @@ import re
 import yaml
 import difflib
 from frictionless import File
-from .exception import LivemarkException
 from .config import Config
 from .system import system
 from . import settings
 from . import helpers
+from . import errors
 
 
 # TODO: make document required or initialize it
@@ -261,7 +261,7 @@ class Document:
 
         # Ensure read
         if self.__content is None:
-            raise LivemarkException("Read document before processing")
+            raise errors.Error("Read document before processing")
 
         # Iterate plugins
         for plugin in self.__plugins:
@@ -282,7 +282,7 @@ class Document:
 
         # Ensure processed
         if self.__output is None:
-            raise LivemarkException("Process document before writing")
+            raise errors.Error("Process document before writing")
 
         # Diff
         if diff:
