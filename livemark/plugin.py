@@ -17,10 +17,16 @@ class Plugin:
     """
 
     identity = ""
+    """Plugin's name
+    """
+
     priority = 0
+    """Plugin's processing priority
+    """
+
     validity = {}
-    # TODO: review whether we need it
-    property = cached_property
+    """Plugin's JSON Schema for config validation
+    """
 
     def __init__(self, document):
         self.__document = document
@@ -67,3 +73,6 @@ class Plugin:
         internal = type == "internal" and cls.identity not in config.disable
         external = type == "external" and cls.identity in config.enable
         return internal or external
+
+    # TODO: review whether we need it
+    property = cached_property

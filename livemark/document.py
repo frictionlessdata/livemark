@@ -207,7 +207,7 @@ class Document:
 
     # Helpers
 
-    def get_plugin(self, identity):
+    def get_plugin(self, name):
         for plugin in self.plugins:
-            if plugin.identity == identity:
+            if plugin.identity == name:
                 return plugin
