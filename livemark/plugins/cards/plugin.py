@@ -9,7 +9,7 @@ from ... import helpers
 
 
 class CardsPlugin(Plugin):
-    code = "cards"
+    identity = "cards"
 
     # Process
 

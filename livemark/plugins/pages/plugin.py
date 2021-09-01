@@ -9,9 +9,9 @@ from ... import helpers
 
 
 class PagesPlugin(Plugin):
-    code = "pages"
+    identity = "pages"
     priority = 70
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "items": {

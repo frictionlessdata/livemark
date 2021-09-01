@@ -11,8 +11,8 @@ from ... import helpers
 
 
 class BlogPlugin(Plugin):
-    code = "blog"
-    profile = {
+    identity = "blog"
+    validity = {
         "type": "object",
         "properties": {
             "path": {"type": "string"},

@@ -2,13 +2,13 @@ from ...plugin import Plugin
 
 
 class CounterPlugin(Plugin):
-    code = "counter"
-    profile = {
+    identity = "counter"
+    validity = {
         "type": "object",
-        "required": ["type", "mark"],
+        "required": ["type", "code"],
         "properties": {
             "type": {"type": "string"},
-            "mark": {"type": "string"},
+            "code": {"type": "string"},
         },
     }
 
@@ -19,8 +19,8 @@ class CounterPlugin(Plugin):
         return self.config.get("type")
 
     @Plugin.property
-    def mark(self):
-        return self.config.get("mark")
+    def code(self):
+        return self.config.get("code")
 
     # Process
 

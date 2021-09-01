@@ -10,8 +10,8 @@ from ...plugin import Plugin
 
 
 class HtmlPlugin(Plugin):
-    code = "html"
-    profile = {
+    identity = "html"
+    validity = {
         "type": "object",
         "properties": {
             "name": {"type": "string"},

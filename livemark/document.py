@@ -166,10 +166,7 @@ class Document:
         if self.__plugins is None:
             self.__plugins = []
             for Plugin in system.iterate():
-                type = Plugin.get_type()
-                internal = type == "internal" and Plugin.code not in self.__config.disable
-                external = type == "external" and Plugin.code in self.__config.enable
-                if internal or external:
+                if Plugin.check_enabled(self.__config):
                     self.__plugins.append(Plugin(self))
 
     # Process
@@ -210,7 +207,7 @@ class Document:
 
     # Helpers
 
-    def get_plugin(self, code):
+    def get_plugin(self, identity):
         for plugin in self.plugins:
-            if plugin.code == code:
+            if plugin.identity == identity:
                 return plugin

@@ -36,10 +36,10 @@ class Config(dict):
 
         # Validate config
         for Plugin in system.Plugins.values():
-            if config.get(Plugin.code) and Plugin.profile:
-                validator = jsonschema.Draft7Validator(Plugin.profile)
-                for error in validator.iter_errors(config[Plugin.code]):
-                    message = f'Invalid "{Plugin.code}" config: {error.message}'
+            if config.get(Plugin.identity) and Plugin.validity:
+                validator = jsonschema.Draft7Validator(Plugin.validity)
+                for error in validator.iter_errors(config[Plugin.identity]):
+                    message = f'Invalid "{Plugin.identity}" config: {error.message}'
                     raise LivemarkException(message)
 
         # Set attributes

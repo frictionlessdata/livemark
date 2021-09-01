@@ -3,9 +3,9 @@ from ...plugin import Plugin
 
 
 class LinksPlugin(Plugin):
-    code = "links"
+    identity = "links"
     priority = 10
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "items": {

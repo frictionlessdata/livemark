@@ -10,8 +10,8 @@ from ... import helpers
 
 
 class RedirectPlugin(Plugin):
-    code = "redirect"
-    profile = {
+    identity = "redirect"
+    validity = {
         "type": "object",
         "properties": {
             "items": {

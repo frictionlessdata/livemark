@@ -4,8 +4,8 @@ from ...plugin import Plugin
 
 
 class GithubPlugin(Plugin):
-    code = "github"
-    profile = {
+    identity = "github"
+    validity = {
         "type": "object",
         "required": ["user", "repo"],
         "properties": {

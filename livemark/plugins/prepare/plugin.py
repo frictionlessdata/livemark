@@ -3,9 +3,9 @@ from ...plugin import Plugin
 
 
 class PreparePlugin(Plugin):
-    code = "prepare"
+    identity = "prepare"
     priority = 100
-    profile = {
+    validity = {
         "type": "object",
         "required": ["commands"],
         "properties": {
