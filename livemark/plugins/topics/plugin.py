@@ -3,9 +3,9 @@ from ...exception import LivemarkException
 
 
 class TopicsPlugin(Plugin):
-    code = "topics"
+    identity = "topics"
     priority = 60
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "selector": {"type": "string"},

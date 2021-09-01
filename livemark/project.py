@@ -19,10 +19,7 @@ class Project:
 
         # Process project
         for Plugin in system.iterate():
-            type = Plugin.get_type()
-            internal = type == "internal" and Plugin.code not in self.__config.disable
-            external = type == "external" and Plugin.code in self.__config.enable
-            if internal or external:
+            if Plugin.check_enabled(self.__config):
                 Plugin.process_project(self)
 
         # Read documents

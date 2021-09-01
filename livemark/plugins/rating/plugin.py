@@ -2,9 +2,9 @@ from ...plugin import Plugin
 
 
 class RatingPlugin(Plugin):
-    code = "rating"
+    identity = "rating"
     priority = 30
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "type": {"type": "string"},

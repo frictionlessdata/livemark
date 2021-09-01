@@ -7,8 +7,8 @@ from ...plugin import Plugin
 
 
 class DisplayPlugin(Plugin):
-    code = "display"
-    profile = {
+    identity = "display"
+    validity = {
         "type": "object",
         "properties": {
             "speed": {"type": "integer"},

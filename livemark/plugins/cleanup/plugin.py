@@ -3,9 +3,9 @@ from ...plugin import Plugin
 
 
 class CleanupPlugin(Plugin):
-    code = "cleanup"
+    identity = "cleanup"
     priority = -100
-    profile = {
+    validity = {
         "type": "object",
         "required": ["commands"],
         "properties": {

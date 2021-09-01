@@ -16,9 +16,10 @@ class Plugin:
 
     """
 
-    code = ""
+    identity = ""
     priority = 0
-    profile = {}
+    validity = {}
+    # TODO: review whether we need it
     property = cached_property
 
     def __init__(self, document):
@@ -26,7 +27,7 @@ class Plugin:
 
     @property
     def config(self):
-        return self.__document.config.get(self.code, {})
+        return self.__document.config.get(self.identity, {})
 
     @property
     def document(self):
@@ -49,12 +50,6 @@ class Plugin:
 
     # Helpers
 
-    @classmethod
-    def get_type(cls):
-        if cls.__module__.startswith("livemark_"):
-            return "external"
-        return "internal"
-
     def read_asset(self, *path, **context):
         project = self.document.project
         dir = os.path.dirname(inspect.getfile(self.__class__))
@@ -65,3 +60,10 @@ class Plugin:
             template = Template(file.read().strip(), trim_blocks=True)
             text = template.render(**context)
         return text
+
+    @classmethod
+    def check_enabled(cls, config):
+        type = "external" if cls.__module__.startswith("livemark_") else "internal"
+        internal = type == "internal" and cls.identity not in config.disable
+        external = type == "external" and cls.identity in config.enable
+        return internal or external

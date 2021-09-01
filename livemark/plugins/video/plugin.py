@@ -3,7 +3,14 @@ from ...plugin import Plugin
 
 
 class VideoPlugin(Plugin):
-    code = "video"
+    identity = "video"
+    validity = {
+        "type": "object",
+        "properties": {
+            "width": {"type": "number"},
+            "height": {"type": "number"},
+        },
+    }
 
     # Context
 

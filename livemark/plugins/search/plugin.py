@@ -9,7 +9,7 @@ from ...plugin import Plugin
 
 
 class SearchPlugin(Plugin):
-    code = "search"
+    identity = "search"
 
     # Context
 

@@ -2,9 +2,9 @@ from ...plugin import Plugin
 
 
 class AboutPlugin(Plugin):
-    code = "about"
+    identity = "about"
     priority = 20
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "text": {"type": "string"},

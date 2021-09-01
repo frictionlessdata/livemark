@@ -71,6 +71,8 @@ class Markup:
 
     # Helpers
 
+    # TODO: Clean helper methods
+
     def add_style(self, source, *, target="head", action="append", **context):
         style = f'<link rel="stylesheet" href="{source}"></script>\n'
         if not helpers.is_remote_path(source):

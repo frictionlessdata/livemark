@@ -2,9 +2,9 @@ from ...plugin import Plugin
 
 
 class BrandPlugin(Plugin):
-    code = "brand"
+    identity = "brand"
     priority = 80
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "text": {"type": "string"},

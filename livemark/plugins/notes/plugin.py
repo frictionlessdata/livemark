@@ -4,9 +4,9 @@ from ...plugin import Plugin
 
 
 class NotesPlugin(Plugin):
-    code = "notes"
+    identity = "notes"
     priority = 50
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "format": {"type": "string"},

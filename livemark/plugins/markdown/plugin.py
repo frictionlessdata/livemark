@@ -4,7 +4,7 @@ from ...plugin import Plugin
 
 
 class MarkdownPlugin(Plugin):
-    code = "markdown"
+    identity = "markdown"
 
     # Process
 

@@ -7,7 +7,7 @@ from ...plugin import Plugin
 
 
 class MarkupPlugin(Plugin):
-    code = "markup"
+    identity = "markup"
 
     # Process
 
