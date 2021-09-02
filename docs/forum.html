@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)):">
-<meta name="keywords" content="installation">
-<title>Installation | Livemark</title>
+<meta name="description" content="It's testing page for a commenting system:">
+<meta name="keywords" content="forum">
+<title>Forum | Livemark</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1384,6 +1384,15 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+#livemark-comments {
+  border-top: solid 1px #eaecef;
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+</style>
+<style>
+
 #livemark-signs {
   color: #888;
   border-top: 1px solid #eaecef;
@@ -1750,12 +1759,12 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Introduction
       </a>
           </li>
-        <li class="primary group active">
+        <li class="primary group ">
       <a href="" class="primary">
         Getting Started
       </a>
             <ul class="secondary">
-                <li class="secondary active">
+                <li class="secondary ">
           <a href="/docs/installation.html" class="secondary">
             Installation
           </a>
@@ -1787,7 +1796,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Universe
       </a>
           </li>
-        <li class="primary  ">
+        <li class="primary  active">
       <a href="/docs/forum.html" class="primary">
         Forum
       </a>
@@ -1808,45 +1817,26 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-08-26 15:44)
+  (2021-09-02 10:52)
 </div>
 
-<h1>Installation</h1>
-<h2>Installation</h2>
-<p>Livemark is a Python library and it can be installed with pip (or <a href="https://pypa.github.io/pipx/">pipx</a>):</p>
-<pre><code class="language-bash">$ pip install livemark
-</code></pre>
-<p>After installation, you can start writing your document (eg an <code>index.md</code> file) using the extended Markdown syntax described in the next sections.</p>
-<h2>Usage</h2>
-<p>You can then use the command-line interface to build the output HTML file:</p>
-<pre><code class="language-bash"># Build a single document (index.md by default)
-$ livemark build
-</code></pre>
-<p>Or start a livereload server to automatically reload the output page as you modify the input Markdown document:</p>
-<pre><code class="language-bash"># Start a livereload server
-$ livemark start
-</code></pre>
-<p>Both commands will create an <code>index.md</code> file if it's not present in the same folder the command is being run on. If that's not the case you can pass the path to the input Markdown file as the first parameter:</p>
-<pre><code class="language-bash">$ livemark build path/to/your/file.md
-$ livemark start path/to/your/file.md
-</code></pre>
-<h2>Publish</h2>
-<blockquote>
-<p><a href="https://pages.github.com/">https://pages.github.com/</a></p>
-</blockquote>
-<p>Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to "Settings-&gt;Pages" in your repository and choose your main branch in the source menu:</p>
-<p><img src="../data/github.png" alt="Github"></p>
+<h1>Forum</h1>
+<p>It's testing page for a commenting system:</p>
+
+<div id="livemark-comments">
+  <div id="disqus_thread"></div>
+</div>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="/docs/configuration.html">
-        Configuration »
+      <a href="/blog/index.html">
+        Blog »
       </a>
     </div>
             <div class="prev">
-      <a href="/index.html">
-        « Livemark
+      <a href="/docs/universe.html">
+        « Universe
       </a>
     </div>
       </div>
@@ -1893,7 +1883,7 @@ $ livemark start path/to/your/file.md
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/docs/installation.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/docs/forum.md" target="_blank">
         Edit
       </a>
     </li>
@@ -2009,6 +1999,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   syncList();
 });
+
+</script>
+<script src="https://livemark.disqus.com/count.js"></script>
+<script>
+
+var disqus_config = function () {
+  this.page.url = "https://livemark.frictionlessdata.io/docs/forum.html";
+  this.page.identifier = "docs/forum";
+};
+(function () {
+  // DON'T EDIT BELOW THIS LINE
+  var d = document,
+    s = d.createElement("script");
+  s.src = "https://livemark.disqus.com/embed.js";
+  s.setAttribute("data-timestamp", +new Date());
+  (d.head || d.body).appendChild(s);
+})();
 
 </script>
 <script>
@@ -2236,7 +2243,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/plugin-system': {
           'name': 'Plugin System',
           'path': 'docs/plugin-system',
-          'text': "# Plugin System \u003e This page will be here shortly! Test ```html markup {% for number in range(1, 101) %} {{ number }} {% endfor %} ```",
+          'text': "# Plugin System \u003e This page will be here shortly! Test ```html markup 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 ```",
       },
           'docs/universe': {
           'name': 'Universe',
