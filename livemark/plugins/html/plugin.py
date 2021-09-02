@@ -18,6 +18,7 @@ class HtmlPlugin(Plugin):
             "title": {"type": "string"},
             "description": {"type": "string"},
             "keywords": {"type": "string"},
+            "favicon": {"type": "string"},
         },
     }
 
@@ -39,6 +40,10 @@ class HtmlPlugin(Plugin):
     def keywords(self):
         return self.config.get("keywords", self.document.keywords)
 
+    @property
+    def favicon(self):
+        return self.config.get("favicon")
+
     # Process
 
     def process_document(self, document):
@@ -53,17 +58,8 @@ class HtmlPlugin(Plugin):
             output = markdown.render(output)
             output = output.strip()
 
-            # Create markup
-            markup = Markup(
-                self.read_asset(
-                    "markup.html",
-                    title=self.title,
-                    description=self.description,
-                    keywords=self.keywords,
-                )
-            )
-
             # Process markup
+            markup = Markup(self.read_asset("markup.html", plugin=self))
             with markup.bind(self):
                 bs_url = "https://unpkg.com/bootstrap@4.6.0"
                 fa_url = "https://unpkg.com/@fortawesome/fontawesome-free@5.15.4"
