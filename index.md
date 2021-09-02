@@ -145,7 +145,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 <div class="container">
 <div class="row">
 <div class="col-sm">
-  <div class="markdown">![Package](data/data-package.png)</div>
+  <div class="markdown">![Package](assets/data-package.png)</div>
   <div class="text-center">
   <p><strong>Data Package</strong></p>
   <p>A simple container format for describing a coherent collection of data in a single package.</p>
@@ -163,21 +163,21 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 <div class="container">
 <div class="row">
 <div class="col-sm">
-  <div class="markdown">![Package](data/data-package.png)</div>
+  <div class="markdown">![Package](assets/data-package.png)</div>
   <div class="text-center">
   <p><strong>Data Package</strong></p>
   <p>A simple container format for describing a coherent collection of data in a single package.</p>
   </div>
 </div>
 <div class="col-sm">
-  <div class="markdown">![Resource](data/data-resource.png)</div>
+  <div class="markdown">![Resource](assets/data-resource.png)</div>
   <div class="text-center">
   <p><strong>Data Resource</strong></p>
   <p>A simple format to describe and package a single data resource such as a individual table or file.</p>
   </div>
 </div>
 <div class="col-sm">
-  <div class="markdown">![Schema](data/table-schema.png)</div>
+  <div class="markdown">![Schema](assets/table-schema.png)</div>
   <div class="text-center">
   <p><strong>Table Schema</strong></p>
   <p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
@@ -194,7 +194,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 
 Livemark supports Github Flavoured Markdown so you can use familiar notation:
 
-![Sidebar](data/content.png)
+![Sidebar](assets/content.png)
 
 ## Sidebar
 
@@ -202,7 +202,7 @@ Livemark supports Github Flavoured Markdown so you can use familiar notation:
 
 Livemark provides an automatically generated table of contents:
 
-![Sidebar](data/sidebar.png)
+![Sidebar](assets/sidebar.png)
 
 ## Scroll
 
@@ -210,4 +210,4 @@ Livemark provides an automatically generated table of contents:
 
 Livemark provides a scroll-to-top button when you scroll down your document:
 
-![Scroll](data/scroll.png)
+![Scroll](assets/scroll.png)
