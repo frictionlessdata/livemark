@@ -1,9 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Init
+  const readability = localStorage.getItem("livemark-display-readability");
+  if (readability === "plus") {
+    document.body.classList.add("with-readability");
+  } else {
+    document.body.classList.remove("with-readability");
+  }
+
   // Plus
   document
     .getElementById("livemark-display-plus")
     .addEventListener("click", function () {
       document.body.classList.add("with-readability");
+      localStorage.setItem("livemark-display-readability", "plus");
     });
 
   // Minus
@@ -11,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("livemark-display-minus")
     .addEventListener("click", function () {
       document.body.classList.remove("with-readability");
+      localStorage.setItem("livemark-display-readability", "minus");
     });
 
   // Print
