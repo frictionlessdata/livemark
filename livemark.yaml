@@ -1,3 +1,5 @@
+html:
+  favicon: assets/favicon.ico
 brand:
   text: Livemark
 about:
