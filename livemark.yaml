@@ -28,6 +28,7 @@ pages:
     - path: docs/livemark-components
     - path: docs/plugin-system
     - path: docs/universe
+    - path: docs/forum
     - path: blog/index
 redirect:
   items:
