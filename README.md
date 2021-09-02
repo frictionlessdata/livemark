@@ -8,7 +8,7 @@
 
 > This software is in the early stages and is not well-tested
 
-Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
 
 ## Purpose
 

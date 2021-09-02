@@ -8,7 +8,7 @@
 
 > This document is completely [written and published](https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md) in Livemark notation
 
-Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
 
 ## Logic
 

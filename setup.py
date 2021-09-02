@@ -67,7 +67,7 @@ setup(
     zip_safe=False,
     long_description=README,
     long_description_content_type="text/markdown",
-    description="Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.",
+    description="Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.",
     author="Evgeny Karev",
     author_email="eskarev@gmail.com",
     url="https://github.com/frictionlessdata/livemark",

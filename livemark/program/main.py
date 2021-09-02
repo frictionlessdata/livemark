@@ -24,7 +24,7 @@ def version(value: bool):
 def program_main(
     version: Optional[bool] = typer.Option(None, "--version", callback=version)
 ):
-    """Livemark is a static site generator
-    that extends Markdown with interactive charts, tables, scripts, and more.
+    """Livemark is a Python static site generator
+    that extends Markdown with interactive charts, tables, scripts, and other features.
     """
     pass

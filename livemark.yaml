@@ -3,7 +3,7 @@ html:
 brand:
   text: Livemark
 about:
-  text: Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+  text: Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
 github:
   user: frictionlessdata
   repo: livemark
