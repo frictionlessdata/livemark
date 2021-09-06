@@ -11,6 +11,7 @@ TEMPLATE = helpers.path_asset("documents", "template.md")
 # Defaults
 
 
+DEFAULT_PLUGINS = "plugins"
 DEFAULT_SOURCE = "index.md"
 DEFAULT_FORMAT = "html"
 DEFAULT_CONFIG = "livemark.yaml"
