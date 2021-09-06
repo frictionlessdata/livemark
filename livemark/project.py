@@ -40,10 +40,10 @@ class Project:
 
         # Set attributes
         self.__documents = []
+        self.__config_source = config
         self.__document = document
         self.__format = format
         self.__config = None
-        self.__config_source = config
 
     @property
     def document(self):

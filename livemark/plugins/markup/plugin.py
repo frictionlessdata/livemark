@@ -6,6 +6,11 @@ from ..html.renderer import HtmlExtension
 from ...plugin import Plugin
 
 
+# NOTE:
+# We might consider rebase markdown blocks rendering on using Document
+# This change will remove the direct HtmlException and GFM dependencies
+
+
 class MarkupPlugin(Plugin):
     identity = "markup"
 
