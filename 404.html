@@ -3,11 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The page is not found">
-<meta name="keywords" content="not,found">
-<link rel="icon" href="assets/favicon.ico">
-<title>Not Found | Livemark</title>
-<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+<meta name="description" content="Return to the &lt;a href="><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
 <style>
@@ -1730,8 +1726,12 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
-</head>
-<body>
+</head><body><p>home page."&gt;
+<meta name="keywords" content="not,found">
+<link rel="icon" href="assets/favicon.ico">
+</p><title>Not Found | Livemark</title>
+
+
 <div id="livemark-left">
 
 <div id="livemark-brand">
@@ -1883,6 +1883,7 @@ for (const item of JSON.parse('[{"next": "docs/installation", "prev": "getting-s
       
 </ul></div>
 </div>
+
 <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
@@ -2199,7 +2200,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/installation': {
           'name': 'Installation',
           'path': 'docs/installation',
-          'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../data/github.png)",
+          'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../assets/github.png)",
       },
           'docs/configuration': {
           'name': 'Configuration',
@@ -2268,5 +2269,4 @@ document.addEventListener("DOMContentLoaded", function () {
   <div id="livemark-search-output"></div>
   <input id="livemark-search-input" type="search" placeholder="Search...">
 </div>
-</body>
-</html>
+</body></html>

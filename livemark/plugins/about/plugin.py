@@ -15,11 +15,11 @@ class AboutPlugin(Plugin):
 
     @property
     def text(self):
-        html = self.document.get_plugin("html")
+        site = self.document.get_plugin("site")
         text = self.config.get("text")
         if not text:
-            if html.description:
-                text = html.description.split(". ")[0]
+            if site.description:
+                text = site.description.split(". ")[0]
         return text
 
     # Process

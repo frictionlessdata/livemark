@@ -21,7 +21,7 @@ class SearchPlugin(Plugin):
             documents = self.document.project.documents
         for document in documents:
             item = {}
-            item["name"] = document.get_plugin("html").name
+            item["name"] = document.get_plugin("site").name
             item["path"] = document.path
             item["text"] = document.content
             items.append(item)

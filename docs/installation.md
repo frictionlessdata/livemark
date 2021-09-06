@@ -39,4 +39,4 @@ $ livemark start path/to/your/file.md
 
 Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to "Settings->Pages" in your repository and choose your main branch in the source menu:
 
-![Github](../data/github.png)
+![Github](../assets/github.png)

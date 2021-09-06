@@ -44,7 +44,7 @@ class PagesPlugin(Plugin):
             # Handle nested
             for subitem in subitems:
                 document = self.document.project.get_document(subitem["path"])
-                subitem.setdefault("name", document.get_plugin("html").name)
+                subitem.setdefault("name", document.get_plugin("site").name)
                 subitem["active"] = False
                 if subitem["path"] == self.current:
                     item["active"] = True
@@ -53,7 +53,7 @@ class PagesPlugin(Plugin):
             # Handle top-level
             if not subitems:
                 document = self.document.project.get_document(item["path"])
-                item.setdefault("name", document.get_plugin("html").name)
+                item.setdefault("name", document.get_plugin("site").name)
                 if item["path"] == self.current:
                     item["active"] = True
 
