@@ -119,12 +119,12 @@ class Project:
         # Read/process
         self.read()
         self.process()
+
+        # Ensure documents
         if not self.building_documents:
             raise errors.Error("No documents to build in the project")
 
         # Read documents
-        if self.document:
-            self.document.read()
         for document in self.documents:
             document.read()
 
