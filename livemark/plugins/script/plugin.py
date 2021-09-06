@@ -6,7 +6,7 @@ from ... import errors
 
 class ScriptPlugin(Plugin):
     identity = "script"
-    priority = 100
+    priority = 60
 
     # Process
 

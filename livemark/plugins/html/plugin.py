@@ -11,6 +11,7 @@ from ...plugin import Plugin
 
 class HtmlPlugin(Plugin):
     identity = "html"
+    priority = 20
     validity = {
         "type": "object",
         "properties": {

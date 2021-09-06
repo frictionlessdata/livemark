@@ -6,7 +6,7 @@ from ...plugin import Plugin
 
 class LogicPlugin(Plugin):
     identity = "logic"
-    priority = 90
+    priority = 80
 
     # Context
 
