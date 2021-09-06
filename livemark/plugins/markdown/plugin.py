@@ -5,6 +5,7 @@ from ...plugin import Plugin
 
 class MarkdownPlugin(Plugin):
     identity = "markdown"
+    priority = 20
 
     # Process
 

@@ -118,6 +118,6 @@ class Plugin:
           bool: whether active
         """
         type = "external" if cls.__module__.startswith("livemark_") else "internal"
-        internal = type == "internal" and cls.identity not in config.disabled
-        external = type == "external" and cls.identity in config.enabled
+        internal = type == "internal" and config.status.get(cls.identity) is not False
+        external = type == "external" and config.status.get(cls.identity) is True
         return internal or external

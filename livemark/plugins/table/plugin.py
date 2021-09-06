@@ -6,7 +6,7 @@ from ...plugin import Plugin
 
 class TablePlugin(Plugin):
     identity = "table"
-    priority = 100
+    priority = 60
 
     # Process
 

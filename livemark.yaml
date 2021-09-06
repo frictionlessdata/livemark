@@ -1,4 +1,4 @@
-html:
+site:
   favicon: assets/favicon.ico
 brand:
   text: Livemark

@@ -1,4 +1,3 @@
-import os
 import yaml
 import deepmerge
 import jsonschema
@@ -6,11 +5,6 @@ from copy import deepcopy
 from .system import system
 from . import helpers
 from . import errors
-
-
-# NOTE:
-# Make source to be only a file path to be trully file based (to use timestamps etc)
-# Allow applying config dict on top of the file-based source?
 
 
 class Config(dict):
@@ -25,59 +19,51 @@ class Config(dict):
 
     """
 
-    def __init__(self, source):
-        enabled = []
-        disabled = []
+    def __init__(self, source=None):
+        status = {}
 
-        # Read config
-        config = source or {}
-        if not isinstance(config, dict):
-            if os.path.isfile(config):
-                config = yaml.safe_load(helpers.read_file(config))
-            else:  # there is no config
-                config = {}
+        # Load config
+        if isinstance(source, str):
+            self.update(yaml.safe_load(helpers.read_file(source)))
+        elif source:
+            self.update(source)
+            source = None
 
         # Process config
-        for key, value in list(config.items()):
-            if value is True:
-                enabled.append(key)
-                del config[key]
-            elif value is False:
-                disabled.append(key)
-                del config[key]
+        for key, value in list(self.items()):
+            if isinstance(value, bool):
+                status[key] = value
+                del self[key]
 
         # Validate config
         for Plugin in system.Plugins.values():
-            if config.get(Plugin.identity) and Plugin.validity:
+            if self.get(Plugin.identity) and Plugin.validity:
                 validator = jsonschema.Draft7Validator(Plugin.validity)
-                for error in validator.iter_errors(config[Plugin.identity]):
+                for error in validator.iter_errors(self[Plugin.identity]):
                     message = f'Invalid "{Plugin.identity}" config: {error.message}'
                     raise errors.Error(message)
 
         # Set attributes
-        self.update(config)
-        self.__enabled = enabled
-        self.__disabled = disabled
-
-    # Plugins
+        self.__source = source
+        self.__status = status
 
     @property
-    def enabled(self):
-        """List of enabled plugin names
+    def source(self):
+        """Path of the config source
 
         Returns:
-            str[]: plugin names
+            str?: source
         """
-        return self.__enabled
+        return self.__source
 
     @property
-    def disabled(self):
-        """List of disabled plugin names
+    def status(self):
+        """Mapping of plugin status
 
         Returns:
-            str[]: plugin names
+            dict<bool>: status
         """
-        return self.__disabled
+        return self.__status
 
     # Helpers
 
@@ -97,20 +83,18 @@ class Config(dict):
         """
         return deepcopy(dict(self))
 
-    def to_merge(self, source):
+    def to_merge(self, mapping):
         """Create a merge
 
         Parameters:
-            source (dict): dictionary to merge
+            mapping (dict): dictionary to merge
 
         Returns:
             Config: config merge
         """
-        result = {}
-        deepmerge.always_merger.merge(result, self)
-        deepmerge.always_merger.merge(result, source)
-        for name in self.enabled:
-            result.setdefault(name, True)
-        for name in self.disabled:
-            result.setdefault(name, False)
-        return Config(result)
+        source = {}
+        deepmerge.always_merger.merge(source, self)
+        deepmerge.always_merger.merge(source, mapping)
+        for key, value in self.status.items():
+            source[key] = value
+        return Config(source)

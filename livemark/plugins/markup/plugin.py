@@ -6,7 +6,9 @@ from ..html.renderer import HtmlExtension
 from ...plugin import Plugin
 
 
-# TODO: rename markdown class to livemark-markdown (as in pagination)
+# NOTE:
+# We might consider rebase markdown blocks rendering on using Document
+# This change will remove the direct HtmlException and GFM dependencies
 
 
 class MarkupPlugin(Plugin):
@@ -22,7 +24,7 @@ class MarkupPlugin(Plugin):
                     markdown.use(GFM)
                     markdown.use(HtmlExtension)
                     query = PyQuery(snippet.input)
-                    for node in query.find(".markdown"):
+                    for node in query.find(".livemark-markdown"):
                         node = PyQuery(node)
                         if not node.children():
                             input = node.text(squash_space=False)

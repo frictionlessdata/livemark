@@ -1,8 +1,8 @@
 import re
 import yaml
 import difflib
+import importlib
 from frictionless import File
-from .config import Config
 from .system import system
 from . import settings
 from . import helpers
@@ -27,7 +27,7 @@ class Document:
 
     """
 
-    def __init__(self, source, *, target=None, format=None):
+    def __init__(self, source, *, target=None, format=None, project=None):
 
         # Infer target
         if not target:
@@ -39,11 +39,16 @@ class Document:
             file = File(target)
             format = file.format
 
+        # Ensure project
+        if not project:
+            Project = importlib.import_module("livemark.project").Project
+            project = Project()
+
         # Set attributes
         self.__source = source
         self.__target = target
         self.__format = format
-        self.__project = None
+        self.__project = project
         self.__plugins = None
         self.__config = None
         self.__preface = None
@@ -52,9 +57,7 @@ class Document:
         self.__output = None
 
     def __setattr__(self, name, value):
-        if name == "project":
-            self.__project = value
-        elif name == "output":
+        if name == "output":
             self.__output = value
         elif name == "content":
             self.__content = value
@@ -228,6 +231,9 @@ class Document:
     def read(self):
         """Read the document"""
 
+        # Read project
+        self.__project.read()
+
         # Read input
         with open(self.__source) as file:
             self.__input = file.read()
@@ -241,9 +247,7 @@ class Document:
             self.__content = parts[1].strip()
 
         # Read config
-        self.__config = Config({})
-        if self.__project:
-            self.__config = self.__project.config.to_copy()
+        self.__config = self.__project.config.to_copy()
         if self.__preface:
             self.__config = self.__config.to_merge(yaml.safe_load(self.__preface))
 

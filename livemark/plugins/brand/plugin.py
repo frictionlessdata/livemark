@@ -15,13 +15,13 @@ class BrandPlugin(Plugin):
 
     @property
     def text(self):
-        html = self.document.get_plugin("html")
-        return self.config.get("text", html.title)
+        site = self.document.get_plugin("site")
+        return self.config.get("text", site.title)
 
     @property
     def title_extra(self):
-        html = self.document.get_plugin("html")
-        if self.text != html.title:
+        site = self.document.get_plugin("site")
+        if self.text != site.title:
             return f" | {self.text}"
 
     # Process

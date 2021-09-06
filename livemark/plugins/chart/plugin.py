@@ -5,7 +5,7 @@ from ...plugin import Plugin
 
 class ChartPlugin(Plugin):
     identity = "chart"
-    priority = 100
+    priority = 60
 
     # Process
 

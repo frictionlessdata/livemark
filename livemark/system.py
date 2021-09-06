@@ -39,7 +39,7 @@ class System:
         for module in modules:
             for Class in helpers.extract_classes(module, Plugin):
                 if Class.identity in Plugins:
-                    raise errors.Error(f"Plugin identity conflict: {Class.identity}")
+                    raise errors.Error(f"Plugin name conflict: {Class.identity}")
                 Plugins[Class.identity] = Class
         return Plugins
 
@@ -61,7 +61,7 @@ class System:
             Plugin (type): a plugin class to register
         """
         if Plugin.identity in self.Plugins:
-            raise errors.Error(f"Plugin identity conflict: {Plugin.identity}")
+            raise errors.Error(f"Plugin name conflict: {Plugin.identity}")
         self.Plugins[Plugin.identity] = Plugin
 
     def deregister(self, Plugin):

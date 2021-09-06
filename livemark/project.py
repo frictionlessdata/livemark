@@ -1,12 +1,8 @@
+from .document import Document
 from .config import Config
 from .system import system
 from . import settings
 from . import errors
-
-
-# NOTE:
-# Review whether it's right to read all the documents on init (duplicate with document?)
-# We read them to get access to configs and iferred data
 
 
 class Project:
@@ -17,41 +13,46 @@ class Project:
     Public   | `from livemark import Project`
 
     Parameters:
-        document (Document): a document to build
-        config? (str): a path to config file
+        source (str): path to the document source
+        target? (str): path to the document target
         format? (str): an output format
+        config? (str): a path to config file
 
     """
 
-    def __init__(self, document=None, *, config=None, format=None):
-        self.__documents = [document] if document else []
-        self.__config = Config(config)
+    def __init__(
+        self,
+        source=None,
+        *,
+        target=None,
+        format=None,
+        config=None,
+    ):
+
+        # Create document
+        document = None
+        if source:
+            document = Document(source, target=target, format=format, project=self)
+
+        # Infer format
+        if not format:
+            format = document.format if document else settings.DEFAULT_FORMAT
+
+        # Set attributes
+        self.__documents = []
+        self.__config_source = config
         self.__document = document
         self.__format = format
-        self.__context = {}
-
-        # Process project
-        for Plugin in system.iterate():
-            if Plugin.check_status(self.__config):
-                Plugin.process_project(self)
-
-        # Read documents
-        for document in self.__documents:
-            document.project = self
-            document.read()
+        self.__config = None
 
     @property
-    def format(self):
-        """Project's format
+    def document(self):
+        """Project's document
 
         Return:
-            str: format
+            Document?: document
         """
-        if self.__format:
-            return self.__format
-        if self.__document:
-            return self.__document.format
-        return settings.DEFAULT_FORMAT
+        return self.__document
 
     @property
     def config(self):
@@ -63,13 +64,13 @@ class Project:
         return self.__config
 
     @property
-    def document(self):
-        """Project's document
+    def format(self):
+        """Project's format
 
         Return:
-            Document?: document
+            str: format
         """
-        return self.__document
+        return self.__format
 
     @property
     def documents(self):
@@ -89,6 +90,19 @@ class Project:
         """
         return [self.document] if self.document else self.documents
 
+    @property
+    def building_sources(self):
+        """Project's building sources
+
+        Return:
+            str[]: sources
+        """
+        # TODO: handle plugin.py?
+        sources = []
+        if self.config and self.config.source:
+            sources.append(self.config.source)
+        return sources
+
     # Build
 
     def build(self, *, diff=False, print=False):
@@ -102,9 +116,17 @@ class Project:
             str: concatenated documents output
         """
 
-        # Ensure documents
-        if not self.documents:
+        # Read/process
+        self.read()
+        self.process()
+        if not self.building_documents:
             raise errors.Error("No documents to build in the project")
+
+        # Read documents
+        if self.document:
+            self.document.read()
+        for document in self.documents:
+            document.read()
 
         # Build documents
         outputs = []
@@ -114,7 +136,26 @@ class Project:
                 outputs.append(output)
         output = "\n".join(outputs)
 
+        # Return output
         return output
+
+    # Read
+
+    def read(self):
+        """Read the project"""
+        self.__config = Config(self.__config_source)
+
+    def process(self):
+        """Process the project"""
+
+        # Ensure read
+        if self.config is None:
+            raise errors.Error("Read project before processing")
+
+        # Process project
+        for Plugin in system.iterate():
+            if Plugin.check_status(self.config):
+                Plugin.process_project(self)
 
     # Helpers
 

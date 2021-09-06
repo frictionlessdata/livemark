@@ -115,5 +115,16 @@ def extract_classes(module, Parent):
     return Classes
 
 
+def unique_objects(objects, property):
+    result = []
+    values = []
+    for object in objects:
+        value = getattr(object, property)
+        if value not in values:
+            result.append(object)
+            values.append(value)
+    return result
+
+
 def order_objects(objects, property):
     return list(sorted(objects, key=lambda obj: -getattr(obj, property)))

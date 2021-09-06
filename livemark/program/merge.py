@@ -32,10 +32,11 @@ def program_merge(
                 raise errors.Error(message)
 
         # Create project
-        document = None
-        if source:
-            document = Document(source, format="md")
-        project = Project(document, config=config, format="md")
+        project = Project(
+            source,
+            format="md",
+            config=config,
+        )
 
         # Normal mode
         if not live:
@@ -45,12 +46,12 @@ def program_merge(
             sys.exit(0)
 
         # Live mode
-        if not document:
+        if not project.document:
             message = 'Live mode requries the "source" argument'
             raise errors.Error(message)
-        atexit.register(document.build)
+        atexit.register(project.document.build)
         with tempfile.NamedTemporaryFile(suffix=".html") as file:
-            server = Server(Project(Document(source, target=file.name)))
+            server = Server(Document(source, target=file.name).project)
             server.start(host=host, port=port, file=file.name)
 
     except Exception as exception:

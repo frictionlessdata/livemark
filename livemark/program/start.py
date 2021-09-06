@@ -2,7 +2,6 @@ import os
 import sys
 import typer
 from ..project import Project
-from ..document import Document
 from ..server import Server
 from .main import program
 from .. import settings
@@ -11,7 +10,7 @@ from . import common
 
 
 # NOTE:
-# We need to improve default template making it faster and more informative
+# We need to improve the default template by making it faster and more informative
 
 
 @program.command(name="start")
@@ -35,16 +34,17 @@ def program_start(
                     helpers.copy_file(settings.TEMPLATE, source)
 
         # Create project
-        document = None
-        if source:
-            document = Document(source, target=target, format=format)
-        project = Project(document, config=config, format=format)
+        project = Project(
+            source,
+            target=target,
+            format=format,
+            config=config,
+        )
 
         # Live mode
         server = Server(project)
         server.start(host=host, port=port)
 
     except Exception as exception:
-        raise
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
         sys.exit(1)
