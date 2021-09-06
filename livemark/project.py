@@ -39,10 +39,11 @@ class Project:
             format = document.format if document else settings.DEFAULT_FORMAT
 
         # Set attributes
+        self.__documents = []
         self.__document = document
         self.__format = format
-        self.__config = Config(config)
-        self.__documents = []
+        self.__config = None
+        self.__config_source = config
 
     @property
     def document(self):
@@ -98,7 +99,7 @@ class Project:
         """
         # TODO: handle plugin.py?
         sources = []
-        if self.config.source:
+        if self.config and self.config.source:
             sources.append(self.config.source)
         return sources
 
@@ -145,13 +146,13 @@ class Project:
 
     def read(self):
         """Read the project"""
-        self.config.read()
+        self.__config = Config(self.__config_source)
 
     def process(self):
         """Process the project"""
 
         # Ensure read
-        if self.config.status is None:
+        if self.config is None:
             raise errors.Error("Read project before processing")
 
         # Process project

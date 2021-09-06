@@ -20,15 +20,32 @@ class Config(dict):
     """
 
     def __init__(self, source=None):
+        status = {}
 
-        # Normalize source
-        if isinstance(source, dict):
+        # Load config
+        if isinstance(source, str):
+            self.update(yaml.safe_load(helpers.read_file(source)))
+        elif source:
             self.update(source)
             source = None
 
+        # Process config
+        for key, value in list(self.items()):
+            if isinstance(value, bool):
+                status[key] = value
+                del self[key]
+
+        # Validate config
+        for Plugin in system.Plugins.values():
+            if self.get(Plugin.identity) and Plugin.validity:
+                validator = jsonschema.Draft7Validator(Plugin.validity)
+                for error in validator.iter_errors(self[Plugin.identity]):
+                    message = f'Invalid "{Plugin.identity}" config: {error.message}'
+                    raise errors.Error(message)
+
         # Set attributes
         self.__source = source
-        self.__status = None
+        self.__status = status
 
     @property
     def source(self):
@@ -47,31 +64,6 @@ class Config(dict):
             dict<bool>: status
         """
         return self.__status
-
-    # Read
-
-    def read(self):
-        """Read config"""
-
-        # Load config
-        if self.__source:
-            self.clear()
-            self.update(yaml.safe_load(helpers.read_file(self.__source)))
-
-        # Process config
-        self.__status = {}
-        for key, value in list(self.items()):
-            if isinstance(value, bool):
-                self.__status[key] = value
-                del self[key]
-
-        # Validate config
-        for Plugin in system.Plugins.values():
-            if self.get(Plugin.identity) and Plugin.validity:
-                validator = jsonschema.Draft7Validator(Plugin.validity)
-                for error in validator.iter_errors(self[Plugin.identity]):
-                    message = f'Invalid "{Plugin.identity}" config: {error.message}'
-                    raise errors.Error(message)
 
     # Helpers
 

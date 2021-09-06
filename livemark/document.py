@@ -250,7 +250,6 @@ class Document:
         self.__config = self.__project.config.to_copy()
         if self.__preface:
             self.__config = self.__config.to_merge(yaml.safe_load(self.__preface))
-        self.__config.read()
 
         # Create plugins
         if self.__plugins is None:
