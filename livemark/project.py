@@ -1,4 +1,3 @@
-import os
 from .document import Document
 from .config import Config
 from .system import system
@@ -101,8 +100,6 @@ class Project:
         sources = []
         if self.config and self.config.source:
             sources.append(self.config.source)
-        if os.path.isdir(settings.DEFAULT_PLUGINS):
-            sources.append(settings.DEFAULT_PLUGINS)
         return sources
 
     # Build
