@@ -1,10 +1,7 @@
-import os
-import yaml
 import deepmerge
 import jsonschema
 from copy import deepcopy
 from .system import system
-from . import helpers
 from . import errors
 
 
@@ -25,37 +22,29 @@ class Config(dict):
 
     """
 
-    def __init__(self, source):
+    def __init__(self, mapping):
         enabled = []
         disabled = []
 
-        # Read config
-        config = source or {}
-        if not isinstance(config, dict):
-            if os.path.isfile(config):
-                config = yaml.safe_load(helpers.read_file(config))
-            else:  # there is no config
-                config = {}
-
         # Process config
-        for key, value in list(config.items()):
+        for key, value in list(mapping.items()):
             if value is True:
                 enabled.append(key)
-                del config[key]
+                del mapping[key]
             elif value is False:
                 disabled.append(key)
-                del config[key]
+                del mapping[key]
 
         # Validate config
         for Plugin in system.Plugins.values():
-            if config.get(Plugin.identity) and Plugin.validity:
+            if mapping.get(Plugin.identity) and Plugin.validity:
                 validator = jsonschema.Draft7Validator(Plugin.validity)
-                for error in validator.iter_errors(config[Plugin.identity]):
+                for error in validator.iter_errors(mapping[Plugin.identity]):
                     message = f'Invalid "{Plugin.identity}" config: {error.message}'
                     raise errors.Error(message)
 
         # Set attributes
-        self.update(config)
+        self.update(mapping)
         self.__enabled = enabled
         self.__disabled = disabled
 
@@ -97,20 +86,20 @@ class Config(dict):
         """
         return deepcopy(dict(self))
 
-    def to_merge(self, source):
+    def to_merge(self, mapping):
         """Create a merge
 
         Parameters:
-            source (dict): dictionary to merge
+            mapping (dict): dictionary to merge
 
         Returns:
             Config: config merge
         """
-        result = {}
-        deepmerge.always_merger.merge(result, self)
-        deepmerge.always_merger.merge(result, source)
+        this = {}
+        deepmerge.always_merger.merge(this, self)
+        deepmerge.always_merger.merge(this, mapping)
         for name in self.enabled:
-            result.setdefault(name, True)
+            this.setdefault(name, True)
         for name in self.disabled:
-            result.setdefault(name, False)
-        return Config(result)
+            this.setdefault(name, False)
+        return Config(this)

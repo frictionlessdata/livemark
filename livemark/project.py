@@ -1,6 +1,8 @@
+import yaml
 from .config import Config
 from .system import system
 from . import settings
+from . import helpers
 from . import errors
 
 
@@ -22,9 +24,17 @@ class Project:
 
     """
 
-    def __init__(self, config=None, format=None):
-        self.__format = format or settings.DEFAULT_FORMAT
-        self.__config = Config(config)
+    def __init__(self, source, *, update=None, format=None):
+
+        # Infer format
+        if not format:
+            format = settings.DEFAULT_FORMAT
+
+        # Set attributes
+        self.__source = source
+        self.__update = update
+        self.__format = format
+        self.__config = None
         self.__document = None
         self.__documents = []
 
@@ -35,13 +45,22 @@ class Project:
             super().__setattr__(name, value)
 
     @property
-    def config(self):
-        """Project's config
+    def source(self):
+        """Project's source
 
         Return:
-            Config: config
+            str: source
         """
-        return self.__config
+        return self.__source
+
+    @property
+    def update(self):
+        """Project's update
+
+        Return:
+            str: update
+        """
+        return self.__update
 
     @property
     def format(self):
@@ -51,6 +70,15 @@ class Project:
             str: format
         """
         return self.__format
+
+    @property
+    def config(self):
+        """Project's config
+
+        Return:
+            Config: config
+        """
+        return self.__config
 
     @property
     def document(self):
@@ -92,8 +120,11 @@ class Project:
             str: concatenated documents output
         """
 
-        # Read documents
+        # Read/process
         self.read()
+        self.process()
+
+        # Ensure documents
         if not self.building_documents:
             raise errors.Error("No documents to build in the project")
 
@@ -111,6 +142,15 @@ class Project:
 
     def read(self):
         """Read the project"""
+
+        # Read config
+        mapping = yaml.safe_load(helpers.read_file(self.source))
+        if self.update:
+            mapping.update(self.update)
+        self.__config = Config(mapping)
+
+    def process(self):
+        """Process the project"""
 
         # Process project
         for Plugin in system.iterate():
