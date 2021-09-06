@@ -1,14 +1,8 @@
-import yaml
+from .document import Document
 from .config import Config
 from .system import system
 from . import settings
-from . import helpers
 from . import errors
-
-
-# NOTE:
-# Review whether it's right to read all the documents on init (duplicate with document?)
-# We read them to get access to configs and iferred data
 
 
 class Project:
@@ -19,57 +13,45 @@ class Project:
     Public   | `from livemark import Project`
 
     Parameters:
-        config? (str): a path to config file
+        source (str): path to the document source
+        target? (str): path to the document target
         format? (str): an output format
+        config? (str): a path to config file
 
     """
 
-    def __init__(self, source, *, update=None, format=None):
+    def __init__(
+        self,
+        source=None,
+        *,
+        target=None,
+        format=None,
+        config=None,
+    ):
+
+        # Create document
+        document = None
+        if source:
+            document = Document(source, target=target, format=format, project=self)
 
         # Infer format
         if not format:
-            format = settings.DEFAULT_FORMAT
+            format = document.format if document else settings.DEFAULT_FORMAT
 
         # Set attributes
-        self.__source = source
-        self.__update = update
+        self.__document = document
         self.__format = format
-        self.__config = None
-        self.__document = None
+        self.__config = Config(config)
         self.__documents = []
 
-    def __setattr__(self, name, value):
-        if name == "document":
-            self.__document = value
-        else:  # default setter
-            super().__setattr__(name, value)
-
     @property
-    def source(self):
-        """Project's source
+    def document(self):
+        """Project's document
 
         Return:
-            str: source
+            Document?: document
         """
-        return self.__source
-
-    @property
-    def update(self):
-        """Project's update
-
-        Return:
-            str: update
-        """
-        return self.__update
-
-    @property
-    def format(self):
-        """Project's format
-
-        Return:
-            str: format
-        """
-        return self.__format
+        return self.__document
 
     @property
     def config(self):
@@ -81,13 +63,13 @@ class Project:
         return self.__config
 
     @property
-    def document(self):
-        """Project's document
+    def format(self):
+        """Project's format
 
         Return:
-            Document?: document
+            str: format
         """
-        return self.__document
+        return self.__format
 
     @property
     def documents(self):
@@ -107,6 +89,19 @@ class Project:
         """
         return [self.document] if self.document else self.documents
 
+    @property
+    def building_sources(self):
+        """Project's building sources
+
+        Return:
+            str[]: sources
+        """
+        # TODO: handle plugin.py?
+        sources = []
+        if self.config.source:
+            sources.append(self.config.source)
+        return sources
+
     # Build
 
     def build(self, *, diff=False, print=False):
@@ -123,39 +118,8 @@ class Project:
         # Read/process
         self.read()
         self.process()
-
-        # Ensure documents
         if not self.building_documents:
             raise errors.Error("No documents to build in the project")
-
-        # Build documents
-        outputs = []
-        for document in self.building_documents:
-            output = document.build(diff=diff, print=print)
-            if output:
-                outputs.append(output)
-        output = "\n".join(outputs)
-
-        return output
-
-    # Read
-
-    def read(self):
-        """Read the project"""
-
-        # Read config
-        mapping = yaml.safe_load(helpers.read_file(self.source))
-        if self.update:
-            mapping.update(self.update)
-        self.__config = Config(mapping)
-
-    def process(self):
-        """Process the project"""
-
-        # Process project
-        for Plugin in system.iterate():
-            if Plugin.check_status(self.config):
-                Plugin.process_project(self)
 
         # Read documents
         path = None
@@ -165,6 +129,35 @@ class Project:
         for document in self.documents:
             if document.path != path:
                 document.read()
+
+        # Build documents
+        outputs = []
+        for document in self.building_documents:
+            output = document.build(diff=diff, print=print)
+            if output:
+                outputs.append(output)
+        output = "\n".join(outputs)
+
+        # Return output
+        return output
+
+    # Read
+
+    def read(self):
+        """Read the project"""
+        self.config.read()
+
+    def process(self):
+        """Process the project"""
+
+        # Ensure read
+        if self.config.status is None:
+            raise errors.Error("Read project before processing")
+
+        # Process project
+        for Plugin in system.iterate():
+            if Plugin.check_status(self.config):
+                Plugin.process_project(self)
 
     # Helpers
 

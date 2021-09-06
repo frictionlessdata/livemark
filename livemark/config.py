@@ -1,13 +1,10 @@
+import yaml
 import deepmerge
 import jsonschema
 from copy import deepcopy
 from .system import system
+from . import helpers
 from . import errors
-
-
-# NOTE:
-# Make source to be only a file path to be trully file based (to use timestamps etc)
-# Allow applying config dict on top of the file-based source?
 
 
 class Config(dict):
@@ -22,51 +19,59 @@ class Config(dict):
 
     """
 
-    def __init__(self, mapping):
-        enabled = []
-        disabled = []
+    def __init__(self, source=None):
+
+        # Normalize source
+        if isinstance(source, dict):
+            self.update(source)
+            source = None
+
+        # Set attributes
+        self.__source = source
+        self.__status = None
+
+    @property
+    def source(self):
+        """Path of the config source
+
+        Returns:
+            str?: source
+        """
+        return self.__source
+
+    @property
+    def status(self):
+        """Mapping of plugin status
+
+        Returns:
+            dict<bool>: status
+        """
+        return self.__status
+
+    # Read
+
+    def read(self):
+        """Read config"""
+
+        # Load config
+        if self.__source:
+            self.clear()
+            self.update(yaml.safe_load(helpers.read_file(self.__source)))
 
         # Process config
-        for key, value in list(mapping.items()):
-            if value is True:
-                enabled.append(key)
-                del mapping[key]
-            elif value is False:
-                disabled.append(key)
-                del mapping[key]
+        self.__status = {}
+        for key, value in list(self.items()):
+            if isinstance(value, bool):
+                self.__status[key] = value
+                del self[key]
 
         # Validate config
         for Plugin in system.Plugins.values():
-            if mapping.get(Plugin.identity) and Plugin.validity:
+            if self.get(Plugin.identity) and Plugin.validity:
                 validator = jsonschema.Draft7Validator(Plugin.validity)
-                for error in validator.iter_errors(mapping[Plugin.identity]):
+                for error in validator.iter_errors(self[Plugin.identity]):
                     message = f'Invalid "{Plugin.identity}" config: {error.message}'
                     raise errors.Error(message)
-
-        # Set attributes
-        self.update(mapping)
-        self.__enabled = enabled
-        self.__disabled = disabled
-
-    # Plugins
-
-    @property
-    def enabled(self):
-        """List of enabled plugin names
-
-        Returns:
-            str[]: plugin names
-        """
-        return self.__enabled
-
-    @property
-    def disabled(self):
-        """List of disabled plugin names
-
-        Returns:
-            str[]: plugin names
-        """
-        return self.__disabled
 
     # Helpers
 
@@ -95,11 +100,9 @@ class Config(dict):
         Returns:
             Config: config merge
         """
-        this = {}
-        deepmerge.always_merger.merge(this, self)
-        deepmerge.always_merger.merge(this, mapping)
-        for name in self.enabled:
-            this.setdefault(name, True)
-        for name in self.disabled:
-            this.setdefault(name, False)
-        return Config(this)
+        source = {}
+        deepmerge.always_merger.merge(source, self)
+        deepmerge.always_merger.merge(source, mapping)
+        for key, value in self.status.items():
+            source[key] = value
+        return Config(source)

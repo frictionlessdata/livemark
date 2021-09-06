@@ -2,7 +2,6 @@ import os
 import sys
 import typer
 from ..project import Project
-from ..document import Document
 from ..server import Server
 from .main import program
 from .. import settings
@@ -35,14 +34,12 @@ def program_start(
                     helpers.copy_file(settings.TEMPLATE, source)
 
         # Create project
-        project = Project(config=config, format=format)
-        if source:
-            project.document = Document(
-                source,
-                target=target,
-                format=format,
-                project=project,
-            )
+        project = Project(
+            source,
+            target=target,
+            format=format,
+            config=config,
+        )
 
         # Live mode
         server = Server(project)

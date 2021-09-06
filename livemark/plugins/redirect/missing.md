@@ -1,5 +1,5 @@
 ---
-html:
+site:
   description: The page is not found
 ---
 

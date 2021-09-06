@@ -3,7 +3,6 @@ import sys
 import typer
 from ..server import Server
 from ..project import Project
-from ..document import Document
 from .main import program
 from .. import errors
 from . import common
@@ -36,14 +35,12 @@ def program_build(
                 raise errors.Error(message)
 
         # Create project
-        project = Project(config=config, format=format)
-        if source:
-            project.document = Document(
-                source,
-                target=target,
-                format=format,
-                project=project,
-            )
+        project = Project(
+            source,
+            target=target,
+            format=format,
+            config=config,
+        )
 
         # Normal mode
         if not live:

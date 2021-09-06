@@ -4,9 +4,10 @@ from ...document import Document
 from ... import helpers
 
 
-# NOTE:
+# TODO:
 # Move internal script to the plugin from 404.md (sync with blog)?
 # Can we make server show 404.html also locally (livereload)?
+# Remove 404 from the pages list
 
 
 class RedirectPlugin(Plugin):
@@ -44,4 +45,4 @@ class RedirectPlugin(Plugin):
             missing_source = "404.md"
             if not os.path.isfile(missing_source):
                 helpers.copy_file(missing_default, missing_source)
-            project.documents.append(Document(missing_source))
+            project.documents.append(Document(missing_source, project=project))

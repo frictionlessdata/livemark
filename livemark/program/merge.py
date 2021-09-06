@@ -32,14 +32,11 @@ def program_merge(
                 raise errors.Error(message)
 
         # Create project
-        format = "md"
-        project = Project(config=config, format=format)
-        if source:
-            project.document = Document(
-                source,
-                format=format,
-                project=project,
-            )
+        project = Project(
+            source,
+            format="md",
+            config=config,
+        )
 
         # Normal mode
         if not live:

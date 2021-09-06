@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.">
 <meta name="keywords" content="meet,livemark">
-<link rel="icon" href="None">
-<title>Meet Livemark</title>
+<link rel="icon" href="assets/favicon.ico">
+<title>Meet Livemark | Livemark</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1208,6 +1208,69 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+<style>
+
+#livemark-pages {
+  color: #888;
+}
+
+#livemark-pages ul {
+  overflow: hidden;
+  position: relative;
+  padding-left: 0;
+  margin: 0;
+}
+
+#livemark-pages ul.secondary {
+  margin-left: 20px;
+  display: none;
+}
+
+#livemark-pages li.active ul.secondary {
+  display: block;
+}
+
+#livemark-pages li {
+  list-style: none;
+}
+
+#livemark-pages a {
+  display: inline-block;
+  color: currentColor;
+  position: relative;
+  width: 100%;
+  line-height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#livemark-pages li.active > a {
+  font-weight: 700;
+}
+
+#livemark-pages li.group.active > a {
+  font-weight: normal;
+}
+
+#livemark-pages li.group a.primary::after {
+  content: "\f054";
+  font-size: 16px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+}
+
+#livemark-pages li.group.active a.primary::after {
+  content: "\f078";
+}
+
+#livemark-pages a:hover {
+  color: #80b2e6;
+}
+
+</style>
 <link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 <style>
 
@@ -1322,6 +1385,30 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+#livemark-signs {
+  color: #888;
+  border-top: 1px solid #eaecef;
+  margin-top: 24px;
+  padding-top: 20px;
+  height: 50px;
+}
+
+#livemark-signs .next {
+  float: right;
+}
+
+#livemark-signs a {
+  font-size: 20px;
+  color: currentColor;
+}
+
+#livemark-signs a:hover {
+  color: #80b2e6;
+}
+
+</style>
+<style>
+
 #livemark-rating {
   height: 46px;
 }
@@ -1414,6 +1501,14 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH2QL85N6F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZH2QL85N6F');
+</script>
 <style>
 
 #livemark-display {
@@ -1554,6 +1649,82 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+#livemark-search {
+  position: fixed;
+  left: 30px;
+  width: 240px;
+  bottom: 20px;
+  z-index:100;
+  visibility: hidden;
+}
+
+@media only screen and (min-width: 992px) {
+  #livemark-search {
+    visibility: visible;
+  }
+}
+
+#livemark-search-input {
+  width: 100%;
+  outline: none;
+  font-size: 20px;
+  padding: 7px 10px;
+  border-radius: 20px;
+  border: solid 1px #ddd;
+  box-shadow: 0px 7px 10px #eee;
+  color: #888;
+}
+
+#livemark-search-input::placeholder {
+  color: #888;
+}
+
+#livemark-search-input::-webkit-search-decoration,
+#livemark-search-input::-webkit-search-cancel-button,
+#livemark-search-input::-webkit-search-results-button,
+#livemark-search-input::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+#livemark-search-output {
+  visibility: hidden;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  border: solid 1px #ddd;
+  box-shadow: 0px 7px 10px #eee;
+  background: white;
+  margin-bottom: 10px;
+}
+
+#livemark-search-output ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#livemark-search-output li.active {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#livemark-search-output a {
+  color: #5CC820;
+  text-decoration: underline;
+}
+
+.livemark-search-found {
+  background-color: #5CC820;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+</style>
+<style>
+
 .livemark-video-item {
   padding-bottom: 10px;
 }
@@ -1567,10 +1738,67 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   <ul>
     <li>
       <a class="active" href="/">
-        Meet Livemark
+        Livemark
       </a>
     </li>
   </ul>
+</div>
+
+<div id="livemark-pages">
+  <ul class="primary">
+        <li class="primary  ">
+      <a href="/index.html" class="primary">
+        Introduction
+      </a>
+          </li>
+        <li class="primary group ">
+      <a href="" class="primary">
+        Getting Started
+      </a>
+            <ul class="secondary">
+                <li class="secondary ">
+          <a href="/docs/installation.html" class="secondary">
+            Installation
+          </a>
+        </li>
+                <li class="secondary ">
+          <a href="/docs/configuration.html" class="secondary">
+            Configuration
+          </a>
+        </li>
+              </ul>
+          </li>
+        <li class="primary  ">
+      <a href="/docs/livemark-markdown.html" class="primary">
+        Livemark Markdown
+      </a>
+          </li>
+        <li class="primary  ">
+      <a href="/docs/livemark-components.html" class="primary">
+        Livemark Components
+      </a>
+          </li>
+        <li class="primary  ">
+      <a href="/docs/plugin-system.html" class="primary">
+        Plugin System
+      </a>
+          </li>
+        <li class="primary  ">
+      <a href="/docs/universe.html" class="primary">
+        Universe
+      </a>
+          </li>
+        <li class="primary  ">
+      <a href="/docs/forum.html" class="primary">
+        Forum
+      </a>
+          </li>
+        <li class="primary active">
+      <a href="/blog/index.html" class="primary">
+        Blog
+      </a>
+          </li>
+      </ul>
 </div>
 
 <div id="livemark-topics">
@@ -1600,6 +1828,21 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div><p>You can also have a look at the <a href="https://frictionlessdata.github.io/livemark/">documentation on GitHub</a>.</p>
 <h2>What do you think?</h2>
 <p>If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on <a href="https://discord.com/invite/Sewv6av">Discord</a> or by opening an issue in the <a href="https://github.com/frictionlessdata/livemark">GitHub repo</a>.</p>
+
+<div id="livemark-signs">
+  <div>
+        <div class="next">
+      <a href="/404.html">
+        Not Found »
+      </a>
+    </div>
+            <div class="prev active">
+      <a href="/blog/index.html">
+        « Blog
+      </a>
+    </div>
+      </div>
+</div>
 </div>
 <div id="livemark-right">
 
@@ -1610,12 +1853,27 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 
 <div id="livemark-about">
   <div>
-    We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark
+    Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
   </div>
 </div>
 
 <div id="livemark-links">
   <ul>
+        <li>
+      <a href="https://frictionlessdata.io" target="_blank">
+        Frictionless
+      </a>
+    </li>
+        <li>
+      <a href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
+        Discord
+      </a>
+    </li>
+        <li>
+      <a href="https://twitter.com/frictionlessd8a" target="_blank">
+        Twitter
+      </a>
+    </li>
         <li>
       <a href="https://github.com/frictionlessdata/livemark/issues" target="_blank">
         Report
@@ -1673,6 +1931,23 @@ document.addEventListener("DOMContentLoaded", function () {
     link.classList.add("heading");
     heading.appendChild(link);
   });
+});
+
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const groups = $("#livemark-pages li.group");
+  for (const group of groups) {
+    $(group)
+      .children("a")
+      .click((ev) => {
+        ev.preventDefault();
+        $(group).toggleClass("active");
+        // $(group).find(".fa").toggleClass("fa-chevron-right");
+        // $(group).find(".fa").toggleClass("fa-chevron-down");
+      });
+  }
 });
 
 </script>
@@ -1878,5 +2153,129 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
+<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<script src="https://unpkg.com/jquery-highlight@3.5.0/jquery.highlight.js"></script>
+<script src="https://unpkg.com/jquery.scrollto@2.1.3/jquery.scrollTo.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const prepare = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const query = searchParams.get('query') || ''
+    if (query.length >= 3) {
+      searchInput.value = query
+    }
+  }
+  const search = () => {
+    unhighlight()
+    query = searchInput.value
+    searchOutput.innerHTML = ''
+    searchOutput.style.visibility = 'hidden'
+    const searchParams = new URLSearchParams(window.location.search);
+    if (query.length < 3) return
+    const results = searchIndex.search(query)
+    if (!results.length) return
+    searchParams.set('query', query)
+    const newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+    history.pushState(null, '', newRelativePathQuery);
+    const elements = []
+    for (const result of results) {
+      const item = searchItems[result.ref]
+      const link = `/${item.path}.html`
+      const cls = window.location.pathname === link ? 'class="active"' : ''
+      elements.push(`<li ${cls}><a href="${link}?query=${query}">${item.name}</a></li>`)
+    }
+    searchOutput.innerHTML = `<ul>\n${elements.join('\n')}\n</ul>`
+    searchOutput.style.visibility = 'visible'
+    highlight()
+  }
+  const highlight = () => {
+    const stem = lunr.stemmer(new lunr.Token(query)).str
+    $('#livemark-main').highlight(stem, {className: 'livemark-search-found'});
+    setTimeout(() => {
+      $(window).scrollTo($('.livemark-search-found').first(), 1000)
+    }, 1000)
+  }
+  const unhighlight = () => {
+    $('#livemark-main').unhighlight({className: 'livemark-search-found'});
+  }
+  const searchItems = {
+          'index': {
+          'name': 'Livemark',
+          'path': 'index',
+          'text': "# Livemark [![Build](https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main)](https://github.com/frictionlessdata/livemark/actions) [![Coverage](https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main)](https://codecov.io/gh/frictionlessdata/livemark) [![Registry](https://img.shields.io/pypi/v/livemark.svg)](https://pypi.python.org/pypi/livemark) [![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark) [![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133) \u003e This document is completely [written and published](https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md) in Livemark notation Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features. ## Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` - Volkswagen Vento: $785 - Hyundai Verna: $774 - Skoda Rapid: $756 - Suzuki Ciaz: $725 - Renault Scala: $724 ## Table \u003e https://handsontable.com/docs/9.0.0/tutorial-introduction.html Livemark supports CSV table rendering using Handsontable, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read by [Frictionless Framework](https://framework.frictionlessdata.io/) so in addition to Handsontable options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) or a resource descriptor in a Frictionless format: ```yaml \u0027\u0027\u0027yaml table data: data/cars.csv maxRows: 10 filters: true dropdownMenu: true columnSorting: initialConfig: column: 2 sortOrder: desc width: 600 \u0027\u0027\u0027 ``` ```yaml table data: data/cars.csv maxRows: 10 filters: true dropdownMenu: true columnSorting: initialConfig: column: 2 sortOrder: desc width: 600 ``` ## Chart \u003e https://vega.github.io/vega-lite/ Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml chart data: url: data/cars.csv mark: circle selection: brush: type: interval # other options are omitted width: 500 height: 300 \u0027\u0027\u0027 ``` ```yaml chart data: url: data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ## Script \u003e https://www.python.org/ Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts: ```python script from pprint import pprint from frictionless import Resource, transform, steps brands = transform( Resource(\"data/cars.csv\"), steps=[ steps.table_normalize(), steps.table_aggregate(group_name=\"brand\", aggregation={\"price\": (\"price\", max)}), steps.row_sort(field_names=[\"price\"], reverse=True), steps.row_slice(head=5), ], ) pprint(brands.read_rows()) ``` ## Markup \u003e https://getbootstrap.com/docs/5.0/getting-started/introduction/ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `markdown` class we can use markdown inside html): ```html \u0027\u0027\u0027html markup ![Package](assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. \u0027\u0027\u0027 ``` ```html markup ![Package](assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. ![Resource](assets/data-resource.png) Data Resource A simple format to describe and package a single data resource such as a individual table or file. ![Schema](assets/table-schema.png) Table Schema A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON. ``` ## Content \u003e https://guides.github.com/features/mastering-markdown/ Livemark supports Github Flavoured Markdown so you can use familiar notation: ![Sidebar](assets/content.png) ## Sidebar \u003e https://tscanlin.github.io/tocbot/ Livemark provides an automatically generated table of contents: ![Sidebar](assets/sidebar.png) ## Scroll \u003e https://azrsix.github.io/ue-scroll-js/ Livemark provides a scroll-to-top button when you scroll down your document: ![Scroll](assets/scroll.png)",
+      },
+          'docs/installation': {
+          'name': 'Installation',
+          'path': 'docs/installation',
+          'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../assets/github.png)",
+      },
+          'docs/configuration': {
+          'name': 'Configuration',
+          'path': 'docs/configuration',
+          'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
+      },
+          'docs/livemark-markdown': {
+          'name': 'Livemark Markdown',
+          'path': 'docs/livemark-markdown',
+          'text': "# Livemark Markdown \u003e This page will be here shortly!",
+      },
+          'docs/livemark-components': {
+          'name': 'Livemark Components',
+          'path': 'docs/livemark-components',
+          'text': "# Livemark Components \u003e This page will be here shortly!",
+      },
+          'docs/plugin-system': {
+          'name': 'Plugin System',
+          'path': 'docs/plugin-system',
+          'text': "# Plugin System \u003e This page will be here shortly! Test ```html markup 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 ```",
+      },
+          'docs/universe': {
+          'name': 'Universe',
+          'path': 'docs/universe',
+          'text': "# Universe \u003e This page will be here shortly! [Test](#card=test) ```yaml audio type: soundcloud code: 34445479 ```",
+      },
+          'docs/forum': {
+          'name': 'Forum',
+          'path': 'docs/forum',
+          'text': "# Forum It\u0027s testing page for a commenting system:",
+      },
+          'blog/index': {
+          'name': 'Blog',
+          'path': 'blog/index',
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
+      },
+          'blog/2021-09-01-meet-livemark': {
+          'name': 'Meet Livemark',
+          'path': 'blog/2021-09-01-meet-livemark',
+          'text': "# Meet Livemark We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. ## How does it work? Livemark is a Python library generating a static page that extends Markdown with interactive charts, tables, scripts, and much much more. You can use the Frictionless framework as a `frictionless` variable to work with your tabular data in Livemark. Livemark offers a series of useful features, like automatically generating a table of contents and providing a scroll-to-top button when you scroll down your document. You can also customise the layout of your newly created webpage. ## How can you get started? Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev: ```yaml video type: youtube code: NMg-eCbO6L0 ``` You can also have a look at the [documentation on GitHub](https://frictionlessdata.github.io/livemark/). ## What do you think? If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on [Discord]( https://discord.com/invite/Sewv6av) or by opening an issue in the [GitHub repo](https://github.com/frictionlessdata/livemark).",
+      },
+          '404': {
+          'name': 'Not Found',
+          'path': '404',
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+      },
+      };
+  const searchIndex = lunr(function () {
+    this.ref("path")
+    this.field("name", { boost: 10 })
+    this.field("text")
+    for (const item of Object.values(searchItems)) {
+      this.add(item)
+    }
+  });
+  const searchOutput = document.getElementById('livemark-search-output')
+  const searchInput = document.getElementById('livemark-search-input')
+  searchInput.addEventListener('input', search)
+  prepare()
+  search()
+});
+
+</script>
+
+<div id="livemark-search">
+  <div id="livemark-search-output"></div>
+  <input id="livemark-search-input" type="search" placeholder="Search...">
+</div>
 </body>
 </html>

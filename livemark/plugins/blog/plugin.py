@@ -64,7 +64,7 @@ class BlogPlugin(Plugin):
                 helpers.copy_file(index_default, index_source)
             for source in glob.glob(f"{path}/**/*.md", recursive=True):
                 if source != index_source:
-                    item = Document(source)
+                    item = Document(source, project=project)
                     project.documents.append(item)
 
     def process_markup(self, markup):
