@@ -28,14 +28,17 @@ class System:
         """
         Plugins = {}
         modules = []
+        for item in ["livemark.plugins", "plugins"]:
+            if importlib.util.find_spec(item):
+                module = importlib.import_module(item)
+                dirname = os.path.dirname(module.__file__)
+                for _, name, _ in pkgutil.iter_modules([dirname]):
+                    module = importlib.import_module(f"{item}.{name}")
+                    modules.append(module)
         for item in pkgutil.iter_modules():
-            if item.name in ["plugin", "plugins"] or item.name.startswith("livemark_"):
+            if item.name.startswith("livemark_") or item.name == "plugin":
                 module = importlib.import_module(item.name)
                 modules.append(module)
-        module = importlib.import_module("livemark.plugins")
-        for _, name, _ in pkgutil.iter_modules([os.path.dirname(module.__file__)]):
-            module = importlib.import_module(f"livemark.plugins.{name}")
-            modules.append(module)
         for module in modules:
             for Class in helpers.extract_classes(module, Plugin):
                 if Class.identity in Plugins:

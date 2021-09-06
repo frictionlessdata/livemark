@@ -52,6 +52,8 @@ class Server:
 
         # Build documents
         self.project.build()
+        for source in self.project.building_sources:
+            self.__server.watch(source, self.project.build, delay=1)
         for document in self.project.building_documents:
             self.__server.watch(document.source, document.build, delay=1)
 

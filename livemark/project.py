@@ -97,7 +97,6 @@ class Project:
         Return:
             str[]: sources
         """
-        # TODO: handle plugin.py?
         sources = []
         if self.config and self.config.source:
             sources.append(self.config.source)
@@ -119,12 +118,12 @@ class Project:
         # Read/process
         self.read()
         self.process()
+
+        # Ensure documents
         if not self.building_documents:
             raise errors.Error("No documents to build in the project")
 
         # Read documents
-        if self.document:
-            self.document.read()
         for document in self.documents:
             document.read()
 
