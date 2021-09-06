@@ -123,13 +123,10 @@ class Project:
             raise errors.Error("No documents to build in the project")
 
         # Read documents
-        path = None
         if self.document:
             self.document.read()
-            path = self.document.path
         for document in self.documents:
-            if document.path != path:
-                document.read()
+            document.read()
 
         # Build documents
         outputs = []
