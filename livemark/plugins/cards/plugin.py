@@ -1,11 +1,6 @@
-from jinja2 import Template
+from ...project import Project
 from ...plugin import Plugin
 from ... import helpers
-
-
-# NOTE:
-# We'd like to support rendering cards from markdown sources
-# We need to provide a lightweigh redering mechanism for Document to achieve it
 
 
 class CardsPlugin(Plugin):
@@ -23,10 +18,10 @@ class CardsPlugin(Plugin):
     @staticmethod
     def create_card(source, *, code, **context):
         target = f"assets/cards/{code}.html"
-        with open(source) as file:
-            template = Template(file.read().strip(), trim_blocks=True)
-            text = template.render(**context)
-        helpers.write_file(target, text)
+        project = Project(source, target=target, config={"site": False})
+        project.document.read()
+        project.document.get_plugin("logic").context.update(context)
+        project.document.build()
 
     @staticmethod
     def delete_cards():

@@ -8,15 +8,20 @@ class LogicPlugin(Plugin):
     identity = "logic"
     priority = 80
 
+    def __init__(self, document):
+        super().__init__(document)
+
+        # Prepare context
+        self.__context = {}
+        self.__context["document"] = self.document
+        self.__context["livemark"] = importlib.import_module("livemark")
+        self.__context["frictionless"] = frictionless
+
     # Context
 
     @property
     def context(self):
-        context = {}
-        context["document"] = self.document
-        context["livemark"] = importlib.import_module("livemark")
-        context["frictionless"] = frictionless
-        return context
+        return self.__context
 
     # Process
 
