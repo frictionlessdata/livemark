@@ -2,6 +2,7 @@ import re
 import yaml
 import difflib
 from frictionless import File
+from .project import Project
 from .config import Config
 from .system import system
 from . import settings
@@ -27,7 +28,7 @@ class Document:
 
     """
 
-    def __init__(self, source, *, target=None, format=None):
+    def __init__(self, source, *, target=None, format=None, project=None):
 
         # Infer target
         if not target:
@@ -39,11 +40,15 @@ class Document:
             file = File(target)
             format = file.format
 
+        # Ensure project
+        if not project:
+            project = Project()
+
         # Set attributes
         self.__source = source
         self.__target = target
         self.__format = format
-        self.__project = None
+        self.__project = project
         self.__plugins = None
         self.__config = None
         self.__preface = None
@@ -52,9 +57,7 @@ class Document:
         self.__output = None
 
     def __setattr__(self, name, value):
-        if name == "project":
-            self.__project = value
-        elif name == "output":
+        if name == "output":
             self.__output = value
         elif name == "content":
             self.__content = value

@@ -17,41 +17,22 @@ class Project:
     Public   | `from livemark import Project`
 
     Parameters:
-        document (Document): a document to build
         config? (str): a path to config file
         format? (str): an output format
 
     """
 
-    def __init__(self, document=None, *, config=None, format=None):
-        self.__documents = [document] if document else []
+    def __init__(self, config=None, format=None):
+        self.__format = format or settings.DEFAULT_FORMAT
         self.__config = Config(config)
-        self.__document = document
-        self.__format = format
-        self.__context = {}
+        self.__document = None
+        self.__documents = []
 
-        # Process project
-        for Plugin in system.iterate():
-            if Plugin.check_status(self.__config):
-                Plugin.process_project(self)
-
-        # Read documents
-        for document in self.__documents:
-            document.project = self
-            document.read()
-
-    @property
-    def format(self):
-        """Project's format
-
-        Return:
-            str: format
-        """
-        if self.__format:
-            return self.__format
-        if self.__document:
-            return self.__document.format
-        return settings.DEFAULT_FORMAT
+    def __setattr__(self, name, value):
+        if name == "document":
+            self.__document = value
+        else:  # default setter
+            super().__setattr__(name, value)
 
     @property
     def config(self):
@@ -61,6 +42,15 @@ class Project:
             Config: config
         """
         return self.__config
+
+    @property
+    def format(self):
+        """Project's format
+
+        Return:
+            str: format
+        """
+        return self.__format
 
     @property
     def document(self):
@@ -102,8 +92,9 @@ class Project:
             str: concatenated documents output
         """
 
-        # Ensure documents
-        if not self.documents:
+        # Read documents
+        self.read()
+        if not self.building_documents:
             raise errors.Error("No documents to build in the project")
 
         # Build documents
@@ -115,6 +106,25 @@ class Project:
         output = "\n".join(outputs)
 
         return output
+
+    # Read
+
+    def read(self):
+        """Read the project"""
+
+        # Process project
+        for Plugin in system.iterate():
+            if Plugin.check_status(self.config):
+                Plugin.process_project(self)
+
+        # Read documents
+        path = None
+        if self.document:
+            self.document.read()
+            path = self.document.path
+        for document in self.documents:
+            if document.path != path:
+                document.read()
 
     # Helpers
 

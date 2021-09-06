@@ -36,10 +36,14 @@ def program_build(
                 raise errors.Error(message)
 
         # Create project
-        document = None
+        project = Project(config=config, format=format)
         if source:
-            document = Document(source, target=target, format=format)
-        project = Project(document, config=config, format=format)
+            project.document = Document(
+                source,
+                target=target,
+                format=format,
+                project=project,
+            )
 
         # Normal mode
         if not live:

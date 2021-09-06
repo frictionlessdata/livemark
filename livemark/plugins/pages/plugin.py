@@ -71,7 +71,7 @@ class PagesPlugin(Plugin):
         for item in helpers.flatten_items(items, "items"):
             source = helpers.with_format(item["path"], "md")
             target = helpers.with_format(item["path"], project.format)
-            document = Document(source, target=target)
+            document = Document(source, target=target, project=project)
             project.documents.append(document)
 
     def process_markup(self, markup):
