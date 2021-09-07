@@ -31,3 +31,7 @@ code: CTNEsK-LNnZ
 ```yaml schema
 descriptor: data/cars.schema.json
 ```
+
+```yaml report
+descriptor: data/invalid.report.json
+```

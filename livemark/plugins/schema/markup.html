@@ -4,7 +4,7 @@
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  const schema = JSON.parse('{{ schema.spec }}')
+  const schema = {{ schema.spec | tojson }}
   const element = document.getElementById('{{ schema.elem }}')
   frictionlessComponents.render(frictionlessComponents.Schema, {schema}, element)
 });

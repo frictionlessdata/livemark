@@ -1,14 +1,14 @@
 import yaml
 from ...plugin import Plugin
-from frictionless import Schema
+from frictionless import Report
 
 
 # NOTE:
 # Implement how we serialize/deseritalize the spec
 
 
-class SchemaPlugin(Plugin):
-    identity = "widget"
+class ReportPlugin(Plugin):
+    identity = "report"
     priority = 60
 
     # Process
@@ -18,12 +18,12 @@ class SchemaPlugin(Plugin):
 
     def process_snippet(self, snippet):
         if self.document.format == "html":
-            if snippet.type == "schema" and snippet.lang == "yaml":
+            if snippet.type == "report" and snippet.lang == "yaml":
                 spec = yaml.safe_load(str(snippet.input).strip())
-                spec = Schema(**spec).to_dict()
+                spec = Report(**spec).to_dict()
                 self.__count += 1
-                schema = {"spec": spec, "elem": f"livemark-schema-{self.__count}"}
-                snippet.output = self.read_asset("markup.html", schema=schema) + "\n"
+                report = {"spec": spec, "elem": f"livemark-report-{self.__count}"}
+                snippet.output = self.read_asset("markup.html", report=report) + "\n"
 
     def process_markup(self, markup):
         if self.__count:

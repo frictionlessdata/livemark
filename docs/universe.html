@@ -1816,7 +1816,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-09-07 14:45)
+  (2021-09-07 15:06)
 </div>
 
 <h1>Universe</h1>
@@ -1845,9 +1845,20 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  const schema = JSON.parse('{"fields": [{"name": "brand", "type": "string"}, {"name": "model", "type": "string"}, {"name": "price", "type": "integer"}, {"name": "kmpl", "type": "number"}, {"name": "bhp", "type": "integer"}, {"name": "type", "type": "string"}]}')
+  const schema = {"fields": [{"name": "brand", "type": "string"}, {"name": "model", "type": "string"}, {"name": "price", "type": "integer"}, {"name": "kmpl", "type": "number"}, {"name": "bhp", "type": "integer"}, {"name": "type", "type": "string"}]}
   const element = document.getElementById('livemark-schema-1')
   frictionlessComponents.render(frictionlessComponents.Schema, {schema}, element)
+});
+</script>
+<div class="livemark-report">
+  <div id="livemark-report-1">
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const report = {"errors": [], "stats": {"errors": 8, "tasks": 1}, "tasks": [{"errors": [{"code": "blank-label", "description": "A label in the header row is missing a value. Label should be provided and not be blank.", "fieldName": "field3", "fieldNumber": 3, "fieldPosition": 3, "label": "", "labels": ["id", "name", "", "name"], "message": "Label in the header in field at position \"3\" is blank", "name": "Blank Label", "note": "", "rowPositions": [1], "tags": ["#table", "#header", "#label"]}, {"code": "duplicate-label", "description": "Two columns in the header row have the same value. Column names should be unique.", "fieldName": "name2", "fieldNumber": 4, "fieldPosition": 4, "label": "name", "labels": ["id", "name", "", "name"], "message": "Label \"name\" in the header at position \"4\" is duplicated to a label: at position \"2\"", "name": "Duplicate Label", "note": "at position \"2\"", "rowPositions": [1], "tags": ["#table", "#header", "#label"]}, {"cell": "", "cells": ["1", "english"], "code": "missing-cell", "description": "This row has less values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns.", "fieldName": "field3", "fieldNumber": 3, "fieldPosition": 3, "message": "Row at position \"2\" has a missing cell in field \"field3\" at position \"3\"", "name": "Missing Cell", "note": "", "rowNumber": 1, "rowPosition": 2, "tags": ["#table", "#row", "#cell"]}, {"cell": "", "cells": ["1", "english"], "code": "missing-cell", "description": "This row has less values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns.", "fieldName": "name2", "fieldNumber": 4, "fieldPosition": 4, "message": "Row at position \"2\" has a missing cell in field \"name2\" at position \"4\"", "name": "Missing Cell", "note": "", "rowNumber": 1, "rowPosition": 2, "tags": ["#table", "#row", "#cell"]}, {"cell": "", "cells": ["1", "english"], "code": "missing-cell", "description": "This row has less values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns.", "fieldName": "field3", "fieldNumber": 3, "fieldPosition": 3, "message": "Row at position \"3\" has a missing cell in field \"field3\" at position \"3\"", "name": "Missing Cell", "note": "", "rowNumber": 2, "rowPosition": 3, "tags": ["#table", "#row", "#cell"]}, {"cell": "", "cells": ["1", "english"], "code": "missing-cell", "description": "This row has less values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns.", "fieldName": "name2", "fieldNumber": 4, "fieldPosition": 4, "message": "Row at position \"3\" has a missing cell in field \"name2\" at position \"4\"", "name": "Missing Cell", "note": "", "rowNumber": 2, "rowPosition": 3, "tags": ["#table", "#row", "#cell"]}, {"cells": [], "code": "blank-row", "description": "This row is empty. A row should contain at least one value.", "message": "Row at position \"4\" is completely blank", "name": "Blank Row", "note": "", "rowNumber": 3, "rowPosition": 4, "tags": ["#table", "#row"]}, {"cell": "3", "cells": ["2", "german", "1", "2", "3"], "code": "extra-cell", "description": "This row has more values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns.", "fieldName": "", "fieldNumber": 4, "fieldPosition": 5, "message": "Row at position \"5\" has an extra value in field at position \"5\"", "name": "Extra Cell", "note": "", "rowNumber": 4, "rowPosition": 5, "tags": ["#table", "#row", "#cell"]}], "partial": false, "resource": {"encoding": "utf-8", "format": "csv", "hashing": "md5", "name": "invalid", "path": "data/invalid.csv", "profile": "tabular-data-resource", "schema": {"fields": [{"name": "id", "type": "integer"}, {"name": "name", "type": "string"}, {"name": "field3", "type": "integer"}, {"name": "name2", "type": "integer"}]}, "scheme": "file", "stats": {"bytes": 50, "fields": 4, "hash": "8c73c3d9d59088dcb2508e0b348bf8a8", "rows": 4}}, "scope": ["hash-count-error", "byte-count-error", "field-count-error", "row-count-error", "blank-header", "extra-label", "missing-label", "blank-label", "duplicate-label", "incorrect-label", "blank-row", "primary-key-error", "foreign-key-error", "extra-cell", "missing-cell", "type-error", "constraint-error", "unique-error"], "stats": {"errors": 8}, "time": 0.022, "valid": false}], "time": 0.022, "valid": false, "version": "4.11.0"}
+  const element = document.getElementById('livemark-report-1')
+  frictionlessComponents.render(frictionlessComponents.Report, {report}, element)
 });
 </script>
 
@@ -2252,7 +2263,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/universe': {
           'name': 'Universe',
           'path': 'docs/universe',
-          'text': "# Universe \u003e This page will be here shortly! [Test](#card=test) ```yaml video path: https://www.w3schools.com/html/mov_bbb.mp4 ``` ```yaml video/youtube code: NMg-eCbO6L0 ``` ```yaml audio path: https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3 ``` ```yaml audio/soundcloud code: 34445479 ``` ```yaml image path: ../assets/example.png ``` ```yaml image/instagram code: CTNEsK-LNnZ ``` ```yaml schema descriptor: data/cars.schema.json ```",
+          'text': "# Universe \u003e This page will be here shortly! [Test](#card=test) ```yaml video path: https://www.w3schools.com/html/mov_bbb.mp4 ``` ```yaml video/youtube code: NMg-eCbO6L0 ``` ```yaml audio path: https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3 ``` ```yaml audio/soundcloud code: 34445479 ``` ```yaml image path: ../assets/example.png ``` ```yaml image/instagram code: CTNEsK-LNnZ ``` ```yaml schema descriptor: data/cars.schema.json ``` ```yaml report descriptor: data/invalid.report.json ```",
       },
           'docs/forum': {
           'name': 'Forum',
