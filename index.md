@@ -133,7 +133,7 @@ data: data/france.json
 
 Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts:
 
-```Python script
+```python script
 from pprint import pprint
 from frictionless import Resource, transform, steps
 

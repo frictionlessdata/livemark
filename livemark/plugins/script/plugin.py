@@ -13,6 +13,7 @@ class ScriptPlugin(Plugin):
     def __init__(self, document):
         super().__init__(document)
         self.__store = []
+        self.__scope = {}
 
     def process_document(self, config):
         self.__index = 0
@@ -51,7 +52,7 @@ class ScriptPlugin(Plugin):
                 # Python
                 elif snippet.lang == "python":
                     with helpers.capture_stdout() as stdout:
-                        exec(snippet.input, {})
+                        exec(snippet.input, self.__scope)
                     output = stdout.getvalue().strip()
 
                 # Missing
