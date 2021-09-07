@@ -28,19 +28,13 @@ class AudioPlugin(Plugin):
         if self.document.format == "html":
             if snippet.type == "audio":
                 if snippet.lang == "yaml":
-                    spec_yaml = str(snippet.input).strip()
-                    spec_python = yaml.safe_load(spec_yaml)
-                    type = spec_python.get("type")
-                    code = spec_python.get("code")
-                    if type == "soundcloud" and code:
-                        width = spec_python.get("width", self.width)
-                        height = spec_python.get("height", self.height)
-                        snippet.output = self.read_asset(
-                            "markup.html",
-                            code=code,
-                            width=width,
-                            height=height,
-                        )
+                    context = yaml.safe_load(str(snippet.input).strip())
+                    context.setdefault("width", self.width)
+                    context.setdefault("height", self.height)
+                    if context["type"] == "native":
+                        snippet.output = self.read_asset("native.html", **context)
+                    elif context["type"] == "soundcloud":
+                        snippet.output = self.read_asset("soundcloud.html", **context)
 
     def process_markup(self, markup):
         markup.add_style("style.css")
