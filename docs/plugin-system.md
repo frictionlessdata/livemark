@@ -1,8 +1,9 @@
 # Plugin System
 
-> This page will be here shortly!
-
-Test
+```yaml remark
+type: warning
+text: It's a draft page for testing different features
+```
 
 ```html markup
 <div class="livemark-pagination">

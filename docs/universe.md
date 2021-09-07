@@ -1,8 +1,11 @@
 # Universe
 
-> This page will be here shortly!
+```yaml remark
+type: warning
+text: It's a draft page for testing different features
+```
 
-[Test](#card=test)
+[Let's open a card](#card=test)
 
 ```yaml video
 path: https://www.w3schools.com/html/mov_bbb.mp4

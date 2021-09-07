@@ -6,4 +6,7 @@ comments:
 
 # Forum
 
-It's testing page for a commenting system:
+```yaml remark
+type: warning
+text: It's testing page for a commenting system
+```
