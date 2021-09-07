@@ -18,3 +18,13 @@ code: 34445479
 type: native
 path: https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3
 ```
+
+```yaml image
+type: native
+path: ../assets/example.png
+```
+
+```yaml image
+type: instagram
+code: CTNEsK-LNnZ
+```
