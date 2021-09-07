@@ -4,6 +4,11 @@ from ... import helpers
 from ... import errors
 
 
+# NOTE:
+# Consider making the scope publicly available so other plugins
+# would be able to use it. For example, creating a table/chart/etc from a var
+
+
 class ScriptPlugin(Plugin):
     identity = "script"
     priority = 60
