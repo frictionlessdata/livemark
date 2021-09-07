@@ -31,5 +31,7 @@ class TablePlugin(Plugin):
                 snippet.output = self.read_asset("markup.html", table=table) + "\n"
 
     def process_markup(self, markup):
-        markup.add_style("https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css")
-        markup.add_script("https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js")
+        if self.__count:
+            url = "https://unpkg.com"
+            markup.add_style(f"{url}/handsontable@9.0.0/dist/handsontable.min.css")
+            markup.add_script(f"{url}/handsontable@9.0.0/dist/handsontable.min.js")

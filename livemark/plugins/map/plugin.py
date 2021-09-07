@@ -14,7 +14,7 @@ class MapPlugin(Plugin):
 
     def process_snippet(self, snippet):
         if self.document.format == "html":
-            if snippet.type == "chart" and snippet.lang == "yaml":
+            if snippet.type == "map" and snippet.lang == "yaml":
                 spec_yaml = str(snippet.input).strip()
                 spec_python = yaml.safe_load(spec_yaml)
                 spec = json.dumps(spec_python, ensure_ascii=False)
@@ -24,6 +24,8 @@ class MapPlugin(Plugin):
                 snippet.output = self.read_asset("markup.html", chart=chart) + "\n"
 
     def process_markup(self, markup):
-        markup.add_script("https://unpkg.com/vega@5.20.2/build/vega.min.js")
-        markup.add_script("https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js")
-        markup.add_script("https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js")
+        if self.__count:
+            url = "https://unpkg.com"
+            markup.add_script(f"{url}/vega@5.20.2/build/vega.min.js")
+            markup.add_script(f"{url}/vega-lite@5.1.0/build/vega-lite.min.js")
+            markup.add_script(f"{url}/vega-embed@6.18.2/build/vega-embed.min.js")
