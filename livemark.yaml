@@ -1,9 +1,13 @@
-site:
-  favicon: assets/favicon.ico
 brand:
   text: Livemark
 about:
   text: Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
+news:
+  text: |
+    Livemark is in the early stages and it is not well-tested.
+    Track progress on this <a href="https://github.com/frictionlessdata/livemark/issues" target="_blank">issue tracker</a>.
+site:
+  favicon: assets/favicon.ico
 github:
   user: frictionlessdata
   repo: livemark

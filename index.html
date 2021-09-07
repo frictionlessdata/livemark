@@ -1647,6 +1647,24 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
+<style>
+
+#livemark-news {
+  display: none;
+  position: fixed;
+  background: yellow;
+  border-bottom: solid 1px #dfe2e5;
+  text-align: center;
+  z-index: 1000000;
+  width: 100%;
+  top: 0;
+}
+
+#livemark-news-close {
+  margin-right: 10px;
+}
+
+</style>
 <link rel="stylesheet" href="https://unpkg.com/paginationjs@2.1.5/dist/pagination.css">
 <style>
 
@@ -2319,6 +2337,26 @@ document.addEventListener("DOMContentLoaded", function () {
     <span class="bar"></span>
   </div>
 </div>
+
+<div id="livemark-news">
+  Livemark is in the early stages and it is not well-tested.
+Track progress on this <a href="https://github.com/frictionlessdata/livemark/issues" target="_blank">issue tracker</a>.
+
+  <button id="livemark-news-close" type="button" class="close" title="Close" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<script>
+  const key = 'livemark-news-code'
+  const code = 'bb10bd410120af685604990baa231640'
+  const news = document.getElementById('livemark-news')
+  const button = document.getElementById('livemark-news-close')
+  if (localStorage.getItem(key) !== code) news.style.display = 'block'
+  button.addEventListener('click', () => {
+    localStorage.setItem(key, code)
+    news.style.display = 'none'
+  })
+</script>
 <script src="https://unpkg.com/paginationjs@2.1.5/dist/pagination.min.js"></script>
 <script>
 
@@ -2419,7 +2457,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/plugin-system': {
           'name': 'Plugin System',
           'path': 'docs/plugin-system',
-          'text': "# Plugin System \u003e This page will be here shortly! Test ```html markup 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 ```",
+          'text': "# Plugin System \u003e This page will be here shortly! Test ```html markup {% for number in range(1, 101) %} {{ number }} {% endfor %} ```",
       },
           'docs/universe': {
           'name': 'Universe',
@@ -2434,7 +2472,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'blog/index': {
           'name': 'Blog',
           'path': 'blog/index',
-          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
+          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
@@ -2444,7 +2482,7 @@ document.addEventListener("DOMContentLoaded", function () {
           '404': {
           'name': 'Not Found',
           'path': '404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027[{\"next\": \"docs/installation\", \"prev\": \"getting-started\"}]\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {
