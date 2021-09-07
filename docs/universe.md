@@ -27,3 +27,7 @@ path: ../assets/example.png
 ```yaml image/instagram
 code: CTNEsK-LNnZ
 ```
+
+```yaml schema
+descriptor: data/cars.schema.json
+```
