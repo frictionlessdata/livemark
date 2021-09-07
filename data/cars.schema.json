@@ -1,0 +1,28 @@
+{
+  "fields": [
+    {
+      "name": "brand",
+      "type": "string"
+    },
+    {
+      "name": "model",
+      "type": "string"
+    },
+    {
+      "name": "price",
+      "type": "integer"
+    },
+    {
+      "name": "kmpl",
+      "type": "number"
+    },
+    {
+      "name": "bhp",
+      "type": "integer"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+<div class="livemark-report">
+  <div id="{{ report.elem }}">
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const report = {{ report.spec | tojson }}
+  const element = document.getElementById('{{ report.elem }}')
+  frictionlessComponents.render(frictionlessComponents.Report, {report}, element)
+});
+</script>

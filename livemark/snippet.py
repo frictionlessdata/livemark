@@ -54,20 +54,24 @@ class Snippet:
         """Snippet's lang
 
         Returns:
-            str?: lang
+            str: lang
         """
+        lang = ""
         if len(self.__header) >= 1:
-            return self.__header[0]
+            lang = self.__header[0]
+        return lang
 
     @property
     def type(self):
         """Snippet's type
 
         Returns:
-            str?: type
+            str: type
         """
+        type = ""
         if len(self.__header) >= 2:
-            return self.__header[1]
+            type = self.__header[1]
+        return type
 
     @property
     def props(self):

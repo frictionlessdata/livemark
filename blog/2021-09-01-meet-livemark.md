@@ -17,8 +17,7 @@ Livemark offers a series of useful features, like automatically generating a tab
 ## How can you get started?
 Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev:
 
-```yaml video
-type: youtube
+```yaml video/youtube
 code: NMg-eCbO6L0
 ```
 

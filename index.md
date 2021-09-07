@@ -111,6 +111,22 @@ width: 500
 height: 300
 ```
 
+## Map
+
+> https://geojson.org/
+
+Livemark supports GeoJson visualisations rendering (to try this example, replace the single quotes with back ticks):
+
+```yaml
+'''yaml map
+data: data/france.json
+'''
+```
+
+```yaml map
+data: data/france.json
+```
+
 ## Script
 
 > https://www.python.org/
