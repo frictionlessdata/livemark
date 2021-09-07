@@ -1,3 +1,6 @@
 # Livemark Components
 
-> This page will be here shortly!
+```yaml remark
+type: warning
+text: This page will be here shortly!
+```
