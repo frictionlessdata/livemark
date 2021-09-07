@@ -8,7 +8,7 @@
 
 ```yaml remark
 type: primary
-text: This document is completely <a href="https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md">written and published</a> in Livemark notation
+text: This documentation portal is completely <a href="https://github.com/frictionlessdata/livemark" target="_blank">written and published</a> in Livemark notation
 ```
 
 Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
