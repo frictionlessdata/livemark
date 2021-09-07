@@ -15,21 +15,20 @@ class TablePlugin(Plugin):
 
     def process_snippet(self, snippet):
         if self.document.format == "html":
-            if snippet.type == "table":
-                if snippet.lang == "yaml":
-                    spec_yaml = str(snippet.input).strip()
-                    spec_python = yaml.safe_load(spec_yaml)
-                    spec_python["licenseKey"] = "non-commercial-and-evaluation"
-                    detector = Detector(field_float_numbers=True)
-                    resource = Resource(spec_python.get("data", []), detector=detector)
-                    header, *lists = resource.to_snap(json=True)
-                    spec_python["colHeaders"] = header
-                    spec_python["data"] = lists
-                    spec = json.dumps(spec_python, ensure_ascii=False)
-                    spec = spec.replace("'", "\\'")
-                    self.__count += 1
-                    table = {"spec": spec, "elem": f"livemark-table-{self.__count}"}
-                    snippet.output = self.read_asset("markup.html", table=table) + "\n"
+            if snippet.type == "table" and snippet.lang == "yaml":
+                spec_yaml = str(snippet.input).strip()
+                spec_python = yaml.safe_load(spec_yaml)
+                spec_python["licenseKey"] = "non-commercial-and-evaluation"
+                detector = Detector(field_float_numbers=True)
+                resource = Resource(spec_python.get("data", []), detector=detector)
+                header, *lists = resource.to_snap(json=True)
+                spec_python["colHeaders"] = header
+                spec_python["data"] = lists
+                spec = json.dumps(spec_python, ensure_ascii=False)
+                spec = spec.replace("'", "\\'")
+                self.__count += 1
+                table = {"spec": spec, "elem": f"livemark-table-{self.__count}"}
+                snippet.output = self.read_asset("markup.html", table=table) + "\n"
 
     def process_markup(self, markup):
         markup.add_style("https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css")
