@@ -58,7 +58,7 @@ class Snippet:
         """
         lang = ""
         if len(self.__header) >= 1:
-            lang = self.__header[0]
+            lang = self.__header[0].lower()
         return lang
 
     @property
@@ -70,7 +70,7 @@ class Snippet:
         """
         type = ""
         if len(self.__header) >= 2:
-            type = self.__header[1]
+            type = self.__header[1].lower()
         return type
 
     @property
@@ -83,8 +83,8 @@ class Snippet:
         props = {}
         for item in self.__header[2:]:
             parts = item.split("=")
-            name = parts[0]
-            value = parts[1] if len(parts) == 2 else True
+            name = parts[0].lower()
+            value = parts[1].lower() if len(parts) == 2 else True
             props[name] = value
         return props
 
