@@ -44,6 +44,7 @@ INSTALL_REQUIRES = [
     "livereload>=2.6",
     "giturlparse>=0.10",
     "cached_property>=1.5",
+    "docstring-parser>=0.10",
     "frictionless[excel,json]==4.*",
 ]
 README = read("README.md")

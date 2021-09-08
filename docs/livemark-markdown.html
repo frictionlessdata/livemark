@@ -1273,6 +1273,13 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+.livemark-reference {
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;;
+}
+
+</style>
+<style>
+
 #livemark-topics {
   color: #888;
 }
@@ -1829,14 +1836,27 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-09-07 18:23)
+  (2021-09-08 16:25)
 </div>
 
 <h1>Livemark Markdown</h1>
 <div class="livemark-remark">
   <div class="alert alert-warning" role="alert">
-    This page will be here shortly!
+    It's a draft page for testing different features
   </div>
+</div><div class="livemark-reference">
+  <h3>Document</h3>
+
+  <p>Livemark document</p>
+  <p>API      | Usage<br>-------- | --------<br>Public   | `from livemark import Document`</p>
+
+  <strong>Parameters</strong>
+  <ul>
+        <li><strong>source</strong> (str): path to the document source</li>
+        <li><strong>target?</strong> (str): path to the document target</li>
+        <li><strong>format?</strong> (str): format of the document target</li>
+        <li><strong>project?</strong> (Project): a project object of the document</li>
+      </ul>
 </div>
 
 <div id="livemark-signs">
@@ -2247,7 +2267,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/livemark-markdown': {
           'name': 'Livemark Markdown',
           'path': 'docs/livemark-markdown',
-          'text': "# Livemark Markdown ```yaml remark type: warning text: This page will be here shortly! ```",
+          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ```",
       },
           'docs/livemark-components': {
           'name': 'Livemark Components',
