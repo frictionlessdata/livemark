@@ -8,6 +8,8 @@ from ... import helpers
 # NOTE:
 # implement something like is_index and is_post helpers (currently, we use author)
 # improve how we set active page in the left menu (currently, quite hacky/hardcoded)
+# Use topics area to show/support tags?
+# Add an article name between pages and topics (article page)?
 
 
 class BlogPlugin(Plugin):
