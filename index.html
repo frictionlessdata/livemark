@@ -1272,6 +1272,13 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+<style>
+
+.livemark-reference {
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;;
+}
+
+</style>
 <link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 <style>
 
@@ -2447,7 +2454,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/livemark-markdown': {
           'name': 'Livemark Markdown',
           'path': 'docs/livemark-markdown',
-          'text': "# Livemark Markdown ```yaml remark type: warning text: This page will be here shortly! ```",
+          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ```",
       },
           'docs/livemark-components': {
           'name': 'Livemark Components',
