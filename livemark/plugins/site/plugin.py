@@ -2,8 +2,8 @@ from ...plugin import Plugin
 from ...markup import Markup
 
 
-# TODO:
-# Handle possible double quotes in title/description/keywords
+# NOTE:
+# It will be great to have a "Show the source" button for every heading
 
 
 class SitePlugin(Plugin):
