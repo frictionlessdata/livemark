@@ -1,3 +1,7 @@
+# NOTE:
+# We can parse json/yaml in advance for snippet-processing plugins
+
+
 class Snippet:
     """Livemark snippet
 

@@ -3,6 +3,7 @@ import os
 import sys
 import shutil
 import tempfile
+import importlib
 import contextlib
 from pathlib import Path
 from urllib.parse import urlparse
@@ -124,6 +125,15 @@ def unique_objects(objects, property):
             result.append(object)
             values.append(value)
     return result
+
+
+def load_object(path):
+    try:
+        path, name = path.rsplit(".", 1)
+        module = importlib.import_module(path)
+        return getattr(module, name)
+    except Exception:
+        return None
 
 
 def order_objects(objects, property):

@@ -2,5 +2,9 @@
 
 ```yaml remark
 type: warning
-text: This page will be here shortly!
+text: It's a draft page for testing different features
+```
+
+```yaml reference
+path: livemark.Document
 ```
