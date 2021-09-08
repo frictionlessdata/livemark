@@ -1652,24 +1652,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
-<style>
-
-#livemark-news {
-  display: none;
-  position: fixed;
-  background: yellow;
-  border-bottom: solid 1px #dfe2e5;
-  text-align: center;
-  z-index: 1000000;
-  width: 100%;
-  top: 0;
-}
-
-#livemark-news-close {
-  margin-right: 10px;
-}
-
-</style>
 <link rel="stylesheet" href="https://unpkg.com/paginationjs@2.1.5/dist/pagination.css">
 <style>
 
@@ -2175,26 +2157,6 @@ document.addEventListener("DOMContentLoaded", function () {
     <span class="bar"></span>
   </div>
 </div>
-
-<div id="livemark-news">
-  Livemark is in the early stages and it is not well-tested.
-Track progress on this <a href="https://github.com/frictionlessdata/livemark/issues" target="_blank">issue tracker</a>.
-
-  <button id="livemark-news-close" type="button" class="close" title="Close" aria-label="Close">
-    <span aria-hidden="true">×</span>
-  </button>
-</div>
-<script>
-  const key = 'livemark-news-code'
-  const code = 'bb10bd410120af685604990baa231640'
-  const news = document.getElementById('livemark-news')
-  const button = document.getElementById('livemark-news-close')
-  if (localStorage.getItem(key) !== code) news.style.display = 'block'
-  button.addEventListener('click', () => {
-    localStorage.setItem(key, code)
-    news.style.display = 'none'
-  })
-</script>
 <script src="https://unpkg.com/paginationjs@2.1.5/dist/pagination.min.js"></script>
 <script>
 
@@ -2290,7 +2252,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/livemark-components': {
           'name': 'Livemark Components',
           'path': 'docs/livemark-components',
-          'text': "# Livemark Components ```yaml remark type: warning text: This page will be here shortly! ```",
+          'text': "# Livemark Components ```yaml remark type: warning text: This page will be here shortly! ``` ```html markup Hello World from HTML! ``` ```jsx markup return Hello World from JSX! ```",
       },
           'docs/plugin-system': {
           'name': 'Plugin System',

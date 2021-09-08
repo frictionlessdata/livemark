@@ -1,7 +1,6 @@
 import subprocess
 from ...plugin import Plugin
 from ... import helpers
-from ... import errors
 
 
 # NOTE:
@@ -24,9 +23,7 @@ class ScriptPlugin(Plugin):
         self.__index = 0
 
     def process_snippet(self, snippet):
-
-        # Update snippet
-        if snippet.type == "script":
+        if snippet.type == "script" and snippet.lang in ["python", "bash"]:
 
             # Acquire cache
             cache = helpers.list_setdefault(
@@ -59,11 +56,6 @@ class ScriptPlugin(Plugin):
                     with helpers.capture_stdout() as stdout:
                         exec(snippet.input, self.__scope)
                     output = stdout.getvalue().strip()
-
-                # Missing
-                else:
-                    message = "Provide a supported script language: bash/python"
-                    raise errors.Error(message)
 
                 # General
                 output = "\n".join(line.rstrip() for line in output.splitlines())
