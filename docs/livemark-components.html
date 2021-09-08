@@ -1578,6 +1578,13 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+.livemark-infinity {
+  display: none;
+}
+
+</style>
+<style>
+
 #livemark-mobile {
   position: absolute;
   visibility: hidden;
@@ -1666,7 +1673,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <link rel="stylesheet" href="https://unpkg.com/paginationjs@2.1.5/dist/pagination.css">
 <style>
 
-#livemark-pagination {
+.livemark-pagination {
   display: none;
 }
 
@@ -2119,6 +2126,29 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
+  const container = $(".livemark-infinity");
+  if (container.length) {
+    const elements = container
+      .children()
+      .map((index, element) => element.outerHTML)
+      .get();
+    container.html(elements.splice(0, 100));
+    container.show();
+    window.addEventListener("scroll", () => {
+      const element = container.get(0);
+      const position = window.scrollY + window.innerHeight + 100;
+      const threshold = element.offsetTop + element.scrollHeight;
+      if (position > threshold) {
+        container.append(elements.splice(0, 100));
+      }
+    });
+  }
+});
+
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
   const left = document.getElementById("livemark-left");
   const mobile = document.getElementById("livemark-mobile");
   mobile.addEventListener("click", () => {
@@ -2265,7 +2295,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/plugin-system': {
           'name': 'Plugin System',
           'path': 'docs/plugin-system',
-          'text': "# Plugin System ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```html markup {% for number in range(1, 101) %} {{ number }} {% endfor %} ```",
+          'text': "# Plugin System ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} ``` ```html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} ```",
       },
           'docs/universe': {
           'name': 'Universe',
