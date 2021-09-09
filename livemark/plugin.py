@@ -10,10 +10,6 @@ from jinja2 import Template
 class Plugin:
     """Livemark plugin
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Plugin`
-
     Parameters:
         document (Document): a document to which the plulgin belongs
 

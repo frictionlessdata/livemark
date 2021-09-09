@@ -10,10 +10,6 @@ from . import errors
 class Config(dict):
     """Livemark config
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Config`
-
     Parameters:
         source (str): path to the config source
 

@@ -1274,7 +1274,8 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <style>
 
 .livemark-reference {
-  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;;
+  display: block;
+  /* font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;; */
 }
 
 </style>
@@ -1836,7 +1837,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-09-08 11:33)
+  (2021-09-09 10:05)
 </div>
 
 <h1>Livemark Components</h1>
@@ -1855,6 +1856,19 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   }
   ReactDOM.render(getComponent(), document.getElementById('1'));
 </script>
+<div class="livemark-package">
+  <h3>Data packages for Reproducible Examples</h3>
+  <p>Esse repositório armazena exemplos de [data packages](https://specs.frictionlessdata.io/) para construção de [minimal, reproducible examples (reprex)](https://stackoverflow.com/help/minimal-reproducible-example)</p>
+  <h4>Resources</h4>
+      <h5>Estados brasileiros</h5>
+    <p>Contém as seguintes informações para os estados brasileiros
+
+- Código
+- Nome
+- Sigla</p>
+      <h5>pib-per-capita</h5>
+    <p>No description provided</p>
+  </div>
 
 <div id="livemark-signs">
   <div>
@@ -2272,7 +2286,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/livemark-components': {
           'name': 'Livemark Components',
           'path': 'docs/livemark-components',
-          'text': "# Livemark Components ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```html markup Hello World from HTML! ``` ```jsx markup return Hello World from JSX! ```",
+          'text': "# Livemark Components ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```html markup Hello World from HTML! ``` ```jsx markup return Hello World from JSX! ``` ```yaml package descriptor: https://raw.githubusercontent.com/fjuniorr/cicd-gh-pages-rmarkdown/main/datapackage.json ```",
       },
           'docs/plugin-system': {
           'name': 'Plugin System',

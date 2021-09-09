@@ -2,7 +2,10 @@
   <h3>{{ name }}</h3>
 
   <p>{{ info.short_description }}</p>
+
+  {% if info.long_description %}
   <p>{{ info.long_description.replace('\n', '<br>') }}</p>
+  {% endif %}
 
   <strong>Parameters</strong>
   <ul>

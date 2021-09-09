@@ -4,12 +4,6 @@
 
 
 class Error(Exception):
-    """Livemark error
-
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import errors`
-
-    """
+    """Livemark error"""
 
     pass

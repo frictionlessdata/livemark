@@ -9,15 +9,8 @@ from . import helpers
 from . import errors
 
 
-# TODO: make document required or initialize it
-
-
 class Document:
     """Livemark document
-
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Document`
 
     Parameters:
         source (str): path to the document source

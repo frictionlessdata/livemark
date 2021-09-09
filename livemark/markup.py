@@ -13,10 +13,6 @@ from . import errors
 class Markup:
     """Livemark markup
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Markup`
-
     Parameters:
         input (str): html input for the markup
 

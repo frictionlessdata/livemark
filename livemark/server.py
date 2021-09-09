@@ -11,10 +11,6 @@ from . import settings
 class Server:
     """Livemark server
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Server`
-
     Parameters:
         proejct (Project): a project to server
 
