@@ -1,14 +1,14 @@
 import yaml
 from ...plugin import Plugin
-from frictionless import Package
+from frictionless import Resource
 
 
 # NOTE:
 # We need to render description's markdown
 
 
-class PackagePlugin(Plugin):
-    identity = "package"
+class ResourcePlugin(Plugin):
+    identity = "resource"
     priority = 60
 
     # Process
@@ -18,8 +18,8 @@ class PackagePlugin(Plugin):
 
     def process_snippet(self, snippet):
         if self.document.format == "html":
-            if snippet.type == "package" and snippet.lang == "yaml":
+            if snippet.type == "resource" and snippet.lang == "yaml":
                 spec = yaml.safe_load(str(snippet.input).strip())
                 self.__count += 1
-                package = Package(**spec)
-                snippet.output = self.read_asset("markup.html", package=package) + "\n"
+                resource = Resource(**spec)
+                snippet.output = self.read_asset("markup.html", resource=resource) + "\n"
