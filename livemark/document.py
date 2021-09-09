@@ -9,9 +9,6 @@ from . import helpers
 from . import errors
 
 
-# TODO: make document required or initialize it
-
-
 class Document:
     """Livemark document
 
