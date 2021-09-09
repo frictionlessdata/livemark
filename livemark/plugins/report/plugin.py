@@ -4,7 +4,7 @@ from frictionless import Report
 
 
 # NOTE:
-# Implement how we serialize/deseritalize the spec
+# Improve how we serialize/deseritalize the spec
 
 
 class ReportPlugin(Plugin):

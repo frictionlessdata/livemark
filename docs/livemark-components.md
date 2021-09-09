@@ -12,3 +12,7 @@ text: It's a draft page for testing different features
 ```jsx markup
 return <p>Hello World from JSX!</p>
 ```
+
+```yaml package
+descriptor: https://raw.githubusercontent.com/fjuniorr/cicd-gh-pages-rmarkdown/main/datapackage.json
+```

@@ -5,10 +5,6 @@
 class Snippet:
     """Livemark snippet
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Snippet`
-
     Parameters:
         input (str): textual snippet for the snippet
         header (str[]): an array of the snippet's header

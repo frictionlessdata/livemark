@@ -12,10 +12,6 @@ from . import errors
 class Document:
     """Livemark document
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Document`
-
     Parameters:
         source (str): path to the document source
         target? (str): path to the document target

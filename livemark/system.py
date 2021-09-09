@@ -10,10 +10,6 @@ from . import errors
 class System:
     """System for plugin management
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import system`
-
     This class provides access to Livemark plugins.
     It's available as `livemark.system` singletone.
 

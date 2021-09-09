@@ -8,10 +8,6 @@ from . import errors
 class Project:
     """Livemark project
 
-    API      | Usage
-    -------- | --------
-    Public   | `from livemark import Project`
-
     Parameters:
         source (str): path to the document source
         target? (str): path to the document target

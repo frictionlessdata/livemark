@@ -4,11 +4,11 @@ from frictionless import Schema
 
 
 # NOTE:
-# Implement how we serialize/deseritalize the spec
+# Improve how we serialize/deseritalize the spec
 
 
 class SchemaPlugin(Plugin):
-    identity = "widget"
+    identity = "schema"
     priority = 60
 
     # Process
