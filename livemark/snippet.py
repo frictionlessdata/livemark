@@ -19,6 +19,9 @@ class Snippet:
     def __setattr__(self, name, value):
         if name == "output":
             self.__output = value
+        # TODO: sync with document content/input
+        elif name == "input":
+            self.__input = value
         else:  # default setter
             super().__setattr__(name, value)
 
