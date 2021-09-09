@@ -7,7 +7,8 @@ from ... import errors
 
 # NOTE:
 # We need to render long_description markdown
-# We'd like to be able to process it even for a markdown target (update snippet.input)
+# We'd like to be able to process it even for a markdown target (as scripts)
+# To achieve it we need to update the protocol that HtmlRenderer uses for snippets
 
 
 class ReferencePlugin(Plugin):
