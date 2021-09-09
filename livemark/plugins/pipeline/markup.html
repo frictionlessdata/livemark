@@ -1,0 +1,7 @@
+<div class="livemark-pipeline">
+  {% for task in pipeline.tasks %}
+    <p>Source: {{ task.source }}</p>
+    <p>Type: {{ task.type }}</p>
+    <p>Steps: {{ task.steps }}</p>
+  {% endfor %}
+</div>
