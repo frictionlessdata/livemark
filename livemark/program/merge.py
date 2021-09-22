@@ -7,6 +7,7 @@ from ..server import Server
 from ..project import Project
 from ..document import Document
 from .main import program
+from .. import settings
 from .. import errors
 from . import common
 
@@ -25,11 +26,20 @@ def program_merge(
 
     try:
 
+        # Handle source
+        if not source:
+            if os.path.exists(settings.DEFAULT_SOURCE):
+                source = settings.DEFAULT_SOURCE
+
+        # Handle config
+        if not config:
+            if os.path.exists(settings.DEFAULT_CONFIG):
+                config = settings.DEFAULT_CONFIG
+
         # Validate project
-        if not os.path.exists(config):
-            if not source:
-                message = 'Project without config requires "source" argument'
-                raise errors.Error(message)
+        if not source and not config:
+            message = 'Project without "source" requires "config"'
+            raise errors.Error(message)
 
         # Create project
         project = Project(

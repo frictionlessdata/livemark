@@ -21,7 +21,7 @@ format = Option(
 )
 
 config = Option(
-    settings.DEFAULT_CONFIG,
+    None,
     help="Path to a config file",
 )
 

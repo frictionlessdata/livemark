@@ -26,13 +26,20 @@ def program_start(
 
     try:
 
-        # Bootstrap project
-        if not os.path.exists(config):
-            if not source:
-                config = None
+        # Handle source
+        if not source:
+            if os.path.exists(settings.DEFAULT_SOURCE):
                 source = settings.DEFAULT_SOURCE
-                if not os.path.exists(source):
-                    helpers.copy_file(settings.TEMPLATE, source)
+
+        # Handle config
+        if not config:
+            if os.path.exists(settings.DEFAULT_CONFIG):
+                config = settings.DEFAULT_CONFIG
+
+        # Bootstrap project
+        if not source and not config:
+            source = settings.DEFAULT_SOURCE
+            helpers.copy_file(settings.TEMPLATE, source)
 
         # Create project
         project = Project(
