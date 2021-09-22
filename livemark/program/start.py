@@ -29,6 +29,7 @@ def program_start(
         # Bootstrap project
         if not os.path.exists(config):
             if not source:
+                config = None
                 source = settings.DEFAULT_SOURCE
                 if not os.path.exists(source):
                     helpers.copy_file(settings.TEMPLATE, source)
