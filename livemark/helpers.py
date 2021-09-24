@@ -55,7 +55,7 @@ def move_file(source, target):
 
 
 def remove_dir(path):
-    shutil.rmtree(path)
+    shutil.rmtree(path, ignore_errors=True)
 
 
 def write_file(path, text=""):

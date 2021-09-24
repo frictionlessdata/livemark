@@ -17,9 +17,7 @@ class CardsPlugin(Plugin):
 
     @staticmethod
     def create_card(source, *, code, **context):
-        directory = "assets/cards"
-        helpers.ensure_dir(directory)
-        target = f"{directory}/{code}.html"
+        target = f"assets/cards/{code}.html"
         project = Project(source, target=target, config={"site": False})
         project.document.read()
         project.document.get_plugin("logic").context.update(context)
