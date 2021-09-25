@@ -26,15 +26,15 @@ def program_start(
 
     try:
 
-        # Handle source
-        if not source:
-            if os.path.exists(settings.DEFAULT_SOURCE):
-                source = settings.DEFAULT_SOURCE
-
         # Handle config
         if not config:
             if os.path.exists(settings.DEFAULT_CONFIG):
                 config = settings.DEFAULT_CONFIG
+
+        # Handle source
+        if not source and not config:
+            if os.path.exists(settings.DEFAULT_SOURCE):
+                source = settings.DEFAULT_SOURCE
 
         # Bootstrap project
         if not source and not config:
