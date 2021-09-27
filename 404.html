@@ -2029,6 +2029,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // TODO: handle errors
         const response = await fetch(`/assets/cards/${code}.html`);
         const html = await response.text();
+        $("#livemark-cards .modal-title").html("");
         $("#livemark-cards .modal-body").html(html);
         $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
         $("#livemark-cards .modal").modal();
@@ -2256,7 +2257,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/livemark-markdown': {
           'name': 'Livemark Markdown',
           'path': 'docs/livemark-markdown',
-          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ```",
+          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ``` ```python file livemark/errors.py ```",
       },
           'docs/livemark-components': {
           'name': 'Livemark Components',

@@ -1,5 +1,7 @@
+import os
 from ...plugin import Plugin
 from ...markup import Markup
+from ... import helpers
 
 
 # NOTE:
@@ -17,6 +19,8 @@ class SitePlugin(Plugin):
             "keywords": {"type": "string"},
             "basepath": {"type": "string"},
             "favicon": {"type": "string"},
+            "styles": {"type": "array"},
+            "scripts": {"type": "array"},
         },
     }
 
@@ -46,6 +50,22 @@ class SitePlugin(Plugin):
     def favicon(self):
         return self.config.get("favicon")
 
+    @property
+    def styles(self):
+        styles = []
+        for path in self.config.get("styles", []):
+            path = path if helpers.is_remote_path(path) else os.path.abspath(path)
+            styles.append(path)
+        return styles
+
+    @property
+    def scripts(self):
+        scripts = []
+        for path in self.config.get("scripts", []):
+            path = path if helpers.is_remote_path(path) else os.path.abspath(path)
+            scripts.append(path)
+        return scripts
+
     # Process
 
     def process_document(self, document):
@@ -61,12 +81,16 @@ class SitePlugin(Plugin):
                 markup.add_style(f"{bs_url}/dist/css/bootstrap.min.css")
                 markup.add_style(f"{pm_url}/themes/prism.css")
                 markup.add_style("style.css")
+                for path in self.styles:
+                    markup.add_style(path)
                 markup.add_script(f"{jq_url}/dist/jquery.min.js")
                 markup.add_script(f"{pp_url}/dist/umd/popper.min.js")
                 markup.add_script(f"{bs_url}/dist/js/bootstrap.min.js")
                 markup.add_script(f"{pm_url}/components/prism-core.min.js")
                 markup.add_script(f"{pm_url}/plugins/autoloader/prism-autoloader.min.js")
                 markup.add_script("script.js")
+                for path in self.scripts:
+                    markup.add_script(path)
                 markup.add_markup(document.output, target="#livemark-main")
             markup.process(document)
             document.output = "<!doctype html>\n" + markup.output

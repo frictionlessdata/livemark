@@ -1858,14 +1858,10 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </script>
 <div class="livemark-package">
   <h3>Data packages for Reproducible Examples</h3>
-  <p>Esse repositório armazena exemplos de [data packages](https://specs.frictionlessdata.io/) para construção de [minimal, reproducible examples (reprex)](https://stackoverflow.com/help/minimal-reproducible-example)</p>
+  <p>No description provided</p>
   <h4>Resources</h4>
       <h5>Estados brasileiros</h5>
-    <p>Contém as seguintes informações para os estados brasileiros
-
-- Código
-- Nome
-- Sigla</p>
+    <p>No description provided</p>
       <h5>pib-per-capita</h5>
     <p>No description provided</p>
   </div>
@@ -2054,6 +2050,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // TODO: handle errors
         const response = await fetch(`/assets/cards/${code}.html`);
         const html = await response.text();
+        $("#livemark-cards .modal-title").html("");
         $("#livemark-cards .modal-body").html(html);
         $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
         $("#livemark-cards .modal").modal();
@@ -2281,7 +2278,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'docs/livemark-markdown': {
           'name': 'Livemark Markdown',
           'path': 'docs/livemark-markdown',
-          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ```",
+          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ``` ```python file livemark/errors.py ```",
       },
           'docs/livemark-components': {
           'name': 'Livemark Components',
