@@ -14,10 +14,12 @@ class ChartPlugin(Plugin):
 
     def process_snippet(self, snippet):
         if self.document.format == "html":
-            if snippet.type == "chart" and snippet.lang == "yaml":
-                spec_yaml = str(snippet.input).strip()
-                spec_python = yaml.safe_load(spec_yaml)
-                spec = json.dumps(spec_python, ensure_ascii=False)
+            if snippet.type == "chart" and snippet.lang in ["yaml", "json"]:
+                if snippet.lang == "yaml":
+                    spec = yaml.safe_load(str(snippet.input).strip())
+                if snippet.lang == "json":
+                    spec = json.loads(str(snippet.input).strip())
+                spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1
                 chart = {"spec": spec, "elem": f"livemark-chart-{self.__count}"}

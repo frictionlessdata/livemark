@@ -15,16 +15,18 @@ class TablePlugin(Plugin):
 
     def process_snippet(self, snippet):
         if self.document.format == "html":
-            if snippet.type == "table" and snippet.lang == "yaml":
-                spec_yaml = str(snippet.input).strip()
-                spec_python = yaml.safe_load(spec_yaml)
-                spec_python["licenseKey"] = "non-commercial-and-evaluation"
+            if snippet.type == "table" and snippet.lang in ["yaml", "json"]:
+                if snippet.lang == "yaml":
+                    spec = yaml.safe_load(str(snippet.input).strip())
+                if snippet.lang == "json":
+                    spec = json.loads(str(snippet.input).strip())
+                spec["licenseKey"] = "non-commercial-and-evaluation"
                 detector = Detector(field_float_numbers=True)
-                resource = Resource(spec_python.get("data", []), detector=detector)
+                resource = Resource(spec.get("data", []), detector=detector)
                 header, *lists = resource.to_snap(json=True)
-                spec_python["colHeaders"] = header
-                spec_python["data"] = lists
-                spec = json.dumps(spec_python, ensure_ascii=False)
+                spec["colHeaders"] = header
+                spec["data"] = lists
+                spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1
                 table = {"spec": spec, "elem": f"livemark-table-{self.__count}"}
