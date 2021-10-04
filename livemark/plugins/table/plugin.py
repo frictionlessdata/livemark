@@ -23,6 +23,7 @@ class TablePlugin(Plugin):
                 spec["licenseKey"] = "non-commercial-and-evaluation"
                 detector = Detector(field_float_numbers=True)
                 with Resource(spec.get("data", []), detector=detector) as resource:
+                    # TODO: export as a dict not list?
                     header, *lists = resource.to_snap(json=True)
                 spec.setdefault("colHeaders", header)
                 spec["data"] = lists
@@ -35,5 +36,5 @@ class TablePlugin(Plugin):
     def process_markup(self, markup):
         if self.__count:
             url = "https://unpkg.com"
-            markup.add_style(f"{url}/handsontable@9.0.0/dist/handsontable.min.css")
-            markup.add_script(f"{url}/handsontable@9.0.0/dist/handsontable.min.js")
+            markup.add_style(f"{url}/handsontable@10.0.0/dist/handsontable.min.css")
+            markup.add_script(f"{url}/handsontable@10.0.0/dist/handsontable.min.js")
