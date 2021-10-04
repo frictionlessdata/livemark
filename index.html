@@ -1280,7 +1280,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
-<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
+<link rel="stylesheet" href="https://unpkg.com/handsontable@10.0.0/dist/handsontable.min.css">
 <style>
 
 #livemark-topics {
@@ -2168,7 +2168,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
 <script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
+<script src="https://unpkg.com/handsontable@10.0.0/dist/handsontable.min.js"></script>
 <script src="https://unpkg.com/tocbot@4.12.3/dist/tocbot.min.js"></script>
 <script>
 
@@ -2220,21 +2220,24 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  for (const link of $("a")) {
-    const href = $(link).attr("href");
+  const handlePopstate = async () => {
+    const href = location.hash;
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
-      $(link).click(async () => {
-        // TODO: handle errors
-        const response = await fetch(`/assets/cards/${code}.html`);
-        const html = await response.text();
-        $("#livemark-cards .modal-title").html("");
-        $("#livemark-cards .modal-body").html(html);
-        $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
-        $("#livemark-cards .modal").modal();
+      // TODO: handle errors
+      const response = await fetch(`/assets/cards/${code}.html`);
+      const html = await response.text();
+      $("#livemark-cards .modal-title").html("");
+      $("#livemark-cards .modal-body").html(html);
+      $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
+      $("#livemark-cards .modal").modal();
+      $("#livemark-cards .modal").on("hidden.bs.modal", () => {
+        history.pushState("", document.title, window.location.pathname);
       });
     }
-  }
+  };
+  window.addEventListener("popstate", handlePopstate);
+  handlePopstate();
 });
 
 </script>

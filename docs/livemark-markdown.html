@@ -2037,21 +2037,24 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  for (const link of $("a")) {
-    const href = $(link).attr("href");
+  const handlePopstate = async () => {
+    const href = location.hash;
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
-      $(link).click(async () => {
-        // TODO: handle errors
-        const response = await fetch(`/assets/cards/${code}.html`);
-        const html = await response.text();
-        $("#livemark-cards .modal-title").html("");
-        $("#livemark-cards .modal-body").html(html);
-        $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
-        $("#livemark-cards .modal").modal();
+      // TODO: handle errors
+      const response = await fetch(`/assets/cards/${code}.html`);
+      const html = await response.text();
+      $("#livemark-cards .modal-title").html("");
+      $("#livemark-cards .modal-body").html(html);
+      $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
+      $("#livemark-cards .modal").modal();
+      $("#livemark-cards .modal").on("hidden.bs.modal", () => {
+        history.pushState("", document.title, window.location.pathname);
       });
     }
-  }
+  };
+  window.addEventListener("popstate", handlePopstate);
+  handlePopstate();
 });
 
 </script>
