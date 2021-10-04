@@ -20,6 +20,7 @@ class CardsPlugin(Plugin):
         target = f"assets/cards/{code}.html"
         project = Project(source, target=target, config={"site": False})
         project.document.read()
+        project.document.get_plugin("logic").context.update(code=code)
         project.document.get_plugin("logic").context.update(context)
         project.document.build()
 
