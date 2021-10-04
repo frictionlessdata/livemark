@@ -22,8 +22,15 @@ class ChartPlugin(Plugin):
                 spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1
-                chart = {"spec": spec, "elem": f"livemark-chart-{self.__count}"}
-                snippet.output = self.read_asset("markup.html", chart=chart) + "\n"
+                # TODO: move to document? find a better way?
+                card = snippet.props.get("card")
+                elem = f"livemark-chart-{self.__count}"
+                if card:
+                    elem += "-card"
+                chart = {"spec": spec, "elem": elem}
+                snippet.output = (
+                    self.read_asset("markup.html", card=card, chart=chart) + "\n"
+                )
 
     def process_markup(self, markup):
         if self.__count:
