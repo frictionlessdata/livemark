@@ -24,7 +24,7 @@ class TablePlugin(Plugin):
                 detector = Detector(field_float_numbers=True)
                 resource = Resource(spec.get("data", []), detector=detector)
                 header, *lists = resource.to_snap(json=True)
-                spec["colHeaders"] = header
+                spec.setdefault("colHeaders", header)
                 spec["data"] = lists
                 spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
