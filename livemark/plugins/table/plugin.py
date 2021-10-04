@@ -22,8 +22,8 @@ class TablePlugin(Plugin):
                     spec = json.loads(str(snippet.input).strip())
                 spec["licenseKey"] = "non-commercial-and-evaluation"
                 detector = Detector(field_float_numbers=True)
-                resource = Resource(spec.get("data", []), detector=detector)
-                header, *lists = resource.to_snap(json=True)
+                with Resource(spec.get("data", []), detector=detector) as resource:
+                    header, *lists = resource.to_snap(json=True)
                 spec.setdefault("colHeaders", header)
                 spec["data"] = lists
                 spec = json.dumps(spec, ensure_ascii=False)
