@@ -30,8 +30,15 @@ class TablePlugin(Plugin):
                 spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1
-                table = {"spec": spec, "elem": f"livemark-table-{self.__count}"}
-                snippet.output = self.read_asset("markup.html", table=table) + "\n"
+                # TODO: move to document? find a better way?
+                card = snippet.props.get("card")
+                elem = f"livemark-table-{self.__count}"
+                if card:
+                    elem += "-card"
+                table = {"spec": spec, "elem": elem}
+                snippet.output = (
+                    self.read_asset("markup.html", card=card, table=table) + "\n"
+                )
 
     def process_markup(self, markup):
         if self.__count:

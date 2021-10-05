@@ -2,10 +2,14 @@
   <div id="{{ table.elem }}">
   </div>
 </div>
+{% if card %}
+<script>
+new Handsontable(document.getElementById('{{ table.elem }}'), JSON.parse('{{ table.spec }}'))
+</script>
+{% else %}
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  const spec = JSON.parse('{{ table.spec }}')
-  const elem = document.getElementById('{{ table.elem }}')
-  new Handsontable(elem, spec)
-});
+  new Handsontable(document.getElementById('{{ table.elem }}'), JSON.parse('{{ table.spec }}'))
+})
 </script>
+{% endif %}
