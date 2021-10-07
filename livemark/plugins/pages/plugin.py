@@ -4,10 +4,6 @@ from ...document import Document
 from ... import helpers
 
 
-# NOTE:
-# Consider using animation for opening two-level menus
-
-
 class PagesPlugin(Plugin):
     identity = "pages"
     priority = 70

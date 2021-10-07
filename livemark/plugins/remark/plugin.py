@@ -2,10 +2,6 @@ import yaml
 from ...plugin import Plugin
 
 
-# NOTE:
-# We might need to rebase on Docusarus-like styling/features for remarks?
-
-
 class RemarkPlugin(Plugin):
     identity = "remark"
 

@@ -3,7 +3,8 @@ from ... import helpers
 
 
 # NOTE:
-# Support injecting into markdown (not only for html using markup) (see ReferencePlugin)
+# We'd like to be able to process it even for a markdown target (as scripts)
+# To achieve it we need to update the protocol that HtmlRenderer uses for snippets
 
 
 class FilePlugin(Plugin):

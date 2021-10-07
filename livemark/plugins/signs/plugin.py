@@ -1,7 +1,8 @@
 from ...plugin import Plugin
 
 
-# NOTE: review why we check that self.document.project exists in items
+# NOTE:
+# review why we check that self.document.project exists in items
 
 
 class SignsPlugin(Plugin):

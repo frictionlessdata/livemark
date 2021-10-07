@@ -3,9 +3,7 @@ from . import settings
 
 
 # NOTE:
-# We can make this logic more sophisticated by watching
-# config changes in livemark.yaml and the main source file
-# We also might implement `server.stop` although it's not supported in livereload
+# Consider implementing `server.stop` although it's not supported in livereload
 
 
 class Server:

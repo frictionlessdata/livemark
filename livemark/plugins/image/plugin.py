@@ -2,12 +2,6 @@ import yaml
 from ...plugin import Plugin
 
 
-# NOTE:
-# Consider that we can have a system when different components can be moved to
-# some target destinations. For example, create an image/audio/video/etc as usual
-# and move it to carousel or markup columns/etc. It will fix the nested markup limitation
-
-
 class ImagePlugin(Plugin):
     identity = "image"
     validity = {

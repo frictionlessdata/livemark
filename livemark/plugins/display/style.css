@@ -50,7 +50,8 @@
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
-/* NOTE: temporarily implemented in HtmlPlugin
+/* NOTE: */
+/* temporarily implemented in HtmlPlugin */
 /* .with-readability #livemark-left::-webkit-scrollbar, */
 /* .with-readability #livemark-right::-webkit-scrollbar { */
   /* display: unset !important; [> Chrome; Safari <] */

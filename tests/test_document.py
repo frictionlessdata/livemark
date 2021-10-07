@@ -41,10 +41,7 @@ def test_document_update_output():
 
 # Build
 
-# TODO: recover when project is guaranteed in document
 
-
-@pytest.mark.skip
 def test_document_build(tmpdir):
     target = str(tmpdir / "index.html")
     document = Document("index.md", target=target)
@@ -53,7 +50,6 @@ def test_document_build(tmpdir):
     assert helpers.read_file(target).count("<h1>Livemark</h1>")
 
 
-@pytest.mark.skip
 def test_document_build_diff():
     document = Document("data/diff.md", target="data/diff.md")
     with helpers.capture_stdout() as stdout:
@@ -62,7 +58,6 @@ def test_document_build_diff():
     assert output.count("+Hello World")
 
 
-@pytest.mark.skip
 def test_document_build_print():
     document = Document("data/diff.md", target="data/diff.md")
     with helpers.capture_stdout() as stdout:
