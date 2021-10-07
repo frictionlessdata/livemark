@@ -4,12 +4,6 @@ from ...document import Document
 from ... import helpers
 
 
-# TODO:
-# Move internal script to the plugin from 404.md (sync with blog)?
-# Can we make server show 404.html also locally (livereload)?
-# Remove 404 from the pages list
-
-
 class RedirectPlugin(Plugin):
     identity = "redirect"
     validity = {

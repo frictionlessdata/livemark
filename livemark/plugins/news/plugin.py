@@ -2,9 +2,6 @@ import hashlib
 from ...plugin import Plugin
 
 
-# TODO: fix the styling esp. on mobiles
-
-
 class NewsPlugin(Plugin):
     identity = "news"
     validity = {

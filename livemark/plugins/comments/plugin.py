@@ -1,9 +1,6 @@
 from ...plugin import Plugin
 
 
-# TODO: use base url from the SitePlugin
-
-
 class CommentsPlugin(Plugin):
     identity = "comments"
     priority = 45

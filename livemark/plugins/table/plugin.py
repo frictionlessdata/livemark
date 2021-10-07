@@ -23,14 +23,12 @@ class TablePlugin(Plugin):
                 spec["licenseKey"] = "non-commercial-and-evaluation"
                 detector = Detector(field_float_numbers=True)
                 with Resource(spec.get("data", []), detector=detector) as resource:
-                    # TODO: export as a dict not list?
                     header, *lists = resource.to_snap(json=True)
                 spec.setdefault("colHeaders", header)
                 spec["data"] = lists
                 spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1
-                # TODO: move to document? find a better way?
                 card = snippet.props.get("card")
                 elem = f"livemark-table-{self.__count}"
                 if card:

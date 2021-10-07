@@ -2025,7 +2025,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const href = location.hash;
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
-      // TODO: handle errors
       const response = await fetch(`/assets/cards/${code}.html`);
       const html = await response.text();
       $("#livemark-cards .modal-title").html("");

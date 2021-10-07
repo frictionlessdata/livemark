@@ -39,7 +39,6 @@ class Snippet:
         self.__type = type
         self.__props = props
 
-    # TODO: sync with document content/input
     def __setattr__(self, name, value):
         if name == "output":
             self.__output = value

@@ -3,11 +3,6 @@ from ...plugin import Plugin
 from ... import helpers
 
 
-# TODO:
-# Think of a better way interacting with interactive plugin
-# that need to use "on document load" event and html ids
-
-
 class CardsPlugin(Plugin):
     identity = "cards"
 

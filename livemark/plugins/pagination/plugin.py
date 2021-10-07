@@ -1,12 +1,6 @@
 from ...plugin import Plugin
 
 
-# NOTE:
-# Add an ability to customize selector in the config
-# Fix how pagination navs are styles (conflict with the main styles)
-# Support multiple containers
-
-
 class PaginationPlugin(Plugin):
     identity = "pagination"
 

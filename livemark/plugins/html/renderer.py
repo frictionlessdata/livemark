@@ -15,7 +15,6 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
         snippet = Snippet(input, header=header)
         snippet.process(self.document)
         if snippet.output is not None:
-            # TODO: can we remove this hardcoding?
             if snippet.type == "script":
 
                 # Remove target

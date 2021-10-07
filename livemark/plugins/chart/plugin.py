@@ -22,7 +22,6 @@ class ChartPlugin(Plugin):
                 spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1
-                # TODO: move to document? find a better way?
                 card = snippet.props.get("card")
                 elem = f"livemark-chart-{self.__count}"
                 if card:
