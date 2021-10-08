@@ -186,9 +186,14 @@ class Document:
             str?: description
         """
         if self.content:
+            is_snippet = False
             pattern = re.compile(r"^\w")
             for line in self.content.splitlines():
                 line = line.strip()
+                if line.startswith("```"):
+                    is_snippet = not is_snippet
+                if is_snippet:
+                    continue
                 if pattern.match(line):
                     return line
 
