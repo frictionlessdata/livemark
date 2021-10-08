@@ -1,4 +1,5 @@
 import os
+import sys
 import pkgutil
 import importlib
 from cached_property import cached_property
@@ -24,6 +25,8 @@ class System:
         """
         Plugins = {}
         modules = []
+        if "" not in sys.path:
+            sys.path.insert(0, "")
         for item in ["livemark.plugins", "plugins"]:
             if importlib.util.find_spec(item):
                 module = importlib.import_module(item)
