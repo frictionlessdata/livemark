@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.">
-<meta name="keywords" content="meet,livemark">
+<meta name="description" content="None">
+<meta name="keywords" content="markup">
 <link rel="icon" href="assets/favicon.ico">
-<title>Meet Livemark | Livemark</title>
+<title>Markup | Livemark</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1817,7 +1817,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
               </ul>
           </li>
-        <li class="primary group ">
+        <li class="primary group active">
       <a href="" class="primary">
         Livemark Markdown
       </a>
@@ -1847,7 +1847,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Script
           </a>
         </li>
-                <li class="secondary ">
+                <li class="secondary active">
           <a href="/docs/livemark-markdown/markup.html" class="secondary">
             Markup
           </a>
@@ -1935,7 +1935,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Forum
       </a>
           </li>
-        <li class="primary active">
+        <li class="primary  ">
       <a href="/blog/index.html" class="primary">
         Blog
       </a>
@@ -1951,36 +1951,21 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-13 18:13)
+  (2021-10-13 18:12)
 </div>
 
-<h1>Meet Livemark</h1>
-<p>
-<p id="livemark-blog-info" class="active">
-  <strong>By Sara Petti on 2021-09-01</strong> »
-  <a href="/blog/index.html">Blog Index</a>
-</p>We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye.</p>
-<h2>How does it work?</h2>
-<p>Livemark is a Python library generating a static page that extends Markdown with interactive charts, tables, scripts, and much much more. You can use the Frictionless framework as a <code>frictionless</code> variable to work with your tabular data in Livemark.</p>
-<p>Livemark offers a series of useful features, like automatically generating a table of contents and providing a scroll-to-top button when you scroll down your document. You can also customise the layout of your newly created webpage.</p>
-<h2>How can you get started?</h2>
-<p>Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev:</p>
-<div class="livemark-video">
-  <iframe class="" width="600" height="400" src="https://www.youtube.com/embed/NMg-eCbO6L0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-</div><p>You can also have a look at the <a href="https://frictionlessdata.github.io/livemark/">documentation on GitHub</a>.</p>
-<h2>What do you think?</h2>
-<p>If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on <a href="https://discord.com/invite/Sewv6av">Discord</a> or by opening an issue in the <a href="https://github.com/frictionlessdata/livemark">GitHub repo</a>.</p>
+<h1>Markup</h1>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="/404.html">
-        Not Found »
+      <a href="/docs/livemark-features/rendering.html">
+        Rendering »
       </a>
     </div>
-            <div class="prev active">
-      <a href="/blog/index.html">
-        « Blog
+            <div class="prev">
+      <a href="/docs/livemark-markdown/script.html">
+        « Script
       </a>
     </div>
       </div>
@@ -2027,7 +2012,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/blog/2021-09-01-meet-livemark.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/docs/livemark-markdown/markup.md" target="_blank">
         Edit
       </a>
     </li>
@@ -2492,7 +2477,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'blog/index': {
           'name': 'Blog',
           'path': 'blog/index',
-          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
+          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',

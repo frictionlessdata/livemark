@@ -24,12 +24,37 @@ pages:
       path: index
     - name: Getting Started
       items:
-        - path: docs/installation
-        - path: docs/configuration
-    - path: docs/livemark-markdown
-    - path: docs/livemark-components
-    - path: docs/plugin-system
-    - path: docs/universe
+        - path: docs/getting-started/installation
+        - path: docs/getting-started/configuration
+        - path: docs/getting-started/data-journalism
+        - path: docs/getting-started/documentation-writing
+        - path: docs/getting-started/troubleshooting
+        - path: docs/getting-started/contributing
+    - name: Livemark Markdown
+      items:
+        - path: docs/livemark-markdown/basics
+        - path: docs/livemark-markdown/logic
+        - path: docs/livemark-markdown/table
+        - path: docs/livemark-markdown/chart
+        - path: docs/livemark-markdown/script
+        - path: docs/livemark-markdown/markup
+    - name: Livemark Features
+      items:
+        - path: docs/livemark-features/rendering
+        - path: docs/livemark-features/appearance
+        - path: docs/livemark-features/navigation
+        - path: docs/livemark-features/search
+        - path: docs/livemark-features/others
+    - name: Plugin System
+      items:
+        - path: docs/plugin-system/adding-plugin
+        - path: docs/plugin-system/writing-plugin
+        - path: docs/plugin-system/architecture
+        - path: docs/plugin-system/reference
+    - name: Universe
+      items:
+        - path: docs/universe/livemarks
+        - path: docs/universe/plugins
     - path: docs/forum
     - path: blog/index
 redirect:
