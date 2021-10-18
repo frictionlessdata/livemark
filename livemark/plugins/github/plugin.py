@@ -1,4 +1,4 @@
-from git import Repo
+import importlib
 from giturlparse import parse
 from ...plugin import Plugin
 
@@ -19,7 +19,8 @@ class GithubPlugin(Plugin):
 
         # Infer data
         try:
-            repo = Repo()
+            git = importlib.import_module("git")
+            repo = git.Repo()
             pack = parse(repo.remote().url)
             self.__data = {"user": pack.owner, "repo": pack.repo}
         except Exception:
