@@ -27,7 +27,7 @@ class BlogPlugin(Plugin):
         items = []
         if not self.path:
             return items
-        index_path = os.path.join(self.path, "index")
+        index_path = "/".join([self.path, "index"])
         for document in self.document.project.documents:
             if document.path.startswith(self.path) and document.path != index_path:
                 items.append({"document": document})
