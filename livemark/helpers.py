@@ -24,7 +24,7 @@ def read_asset(*paths):
 
 def with_format(path, format):
     suffix = f".{format}" if format else ""
-    return str(Path(path).with_suffix(suffix))
+    return Path(path).with_suffix(suffix).as_posix()
 
 
 def list_setdefault(list, index, default):
