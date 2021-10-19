@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const elements = []
     for (const result of results) {
       const item = searchItems[result.ref]
-      const link = `/${item.path}.html`
+      const link = `${item.relpath}.html`
       const cls = window.location.pathname === link ? 'class="active"' : ''
       elements.push(`<li ${cls}><a href="${link}?query=${query}">${item.name}</a></li>`)
     }
@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       '{{ item.path }}': {
           'name': '{{ item.name }}',
           'path': '{{ item.path }}',
+          'relpath': '{{ item.relpath }}',
           'text': {{ item.text | striptags | tojson }},
       },
     {% endfor %}
