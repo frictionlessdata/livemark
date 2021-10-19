@@ -22,6 +22,10 @@ def read_asset(*paths):
         return file.read().strip()
 
 
+def get_relpath(path, current):
+    return os.path.relpath(path, os.path.dirname(current))
+
+
 def with_format(path, format):
     suffix = f".{format}" if format else ""
     return Path(path).with_suffix(suffix).as_posix()

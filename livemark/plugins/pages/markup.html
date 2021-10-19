@@ -2,14 +2,14 @@
   <ul class="primary">
     {% for item in plugin.items %}
     <li class="primary {% if item.get('items') %}group{% endif %} {% if item.active %}active{% endif %}">
-      <a href="{% if not item.get('items') %}/{{ item.path }}.html{% endif %}" class="primary">
+      <a href="{% if not item.get('items') %}{{ item.relpath }}.html{% endif %}" class="primary">
         {{ item.name }}
       </a>
       {% if item.get('items') %}
       <ul class="secondary">
         {% for subitem in item.get('items') %}
         <li class="secondary {% if subitem.active %}active{% endif %}">
-          <a href="/{{ subitem.path }}.html" class="secondary">
+          <a href="{{ subitem.relpath }}.html" class="secondary">
             {{ subitem.name }}
           </a>
         </li>

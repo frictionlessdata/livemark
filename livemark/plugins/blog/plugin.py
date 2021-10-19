@@ -23,6 +23,11 @@ class BlogPlugin(Plugin):
             return path
 
     @property
+    def relpath(self):
+        path = f"{self.path}/index.html"
+        return helpers.get_relpath(path, self.document.path)
+
+    @property
     def items(self):
         items = []
         if not self.path:
@@ -30,7 +35,8 @@ class BlogPlugin(Plugin):
         index_path = "/".join([self.path, "index"])
         for document in self.document.project.documents:
             if document.path.startswith(self.path) and document.path != index_path:
-                items.append({"document": document})
+                relpath = helpers.get_relpath(document.path, self.document.path)
+                items.append({"document": document, "relpath": relpath})
         return items
 
     @property
