@@ -1,4 +1,5 @@
 from ...plugin import Plugin
+from ... import helpers
 
 
 class BrandPlugin(Plugin):
@@ -12,6 +13,10 @@ class BrandPlugin(Plugin):
     }
 
     # Context
+
+    @property
+    def path(self):
+        return helpers.get_relpath("index.html", self.document.path)
 
     @property
     def text(self):
