@@ -1,4 +1,5 @@
 from ...plugin import Plugin
+from ... import helpers
 
 
 class SearchPlugin(Plugin):
@@ -16,6 +17,7 @@ class SearchPlugin(Plugin):
             item = {}
             item["name"] = document.get_plugin("site").name
             item["path"] = document.path
+            item["relpath"] = helpers.get_relpath(document.path, self.document.path)
             item["text"] = document.content
             items.append(item)
         return items
