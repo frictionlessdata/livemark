@@ -3,7 +3,7 @@
 ```html markup
 {% for item in document.get_plugin('blog').items %}
 <div class="livemark-blog-item">
-  <h2><a href="/{{ item.document.path }}.html">{{ item.document.name }}</a></h2>
+  <h2><a href="{{ item.relpath }}.html">{{ item.document.name }}</a></h2>
   <div class="row">
     <div class="col-8">
       <p>
@@ -13,7 +13,7 @@
         </strong>
       </p>
       {{ item.document.description }}
-      <a href="/{{ item.document.path }}.html">Read more &raquo;</a>
+      <a href="{{ item.relpath }}.html">Read more &raquo;</a>
     </div>
     <div class="col-4">
       <img src="{{ item.document.get_plugin('blog').image }}" />
