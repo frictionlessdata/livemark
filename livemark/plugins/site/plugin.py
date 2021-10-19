@@ -17,7 +17,6 @@ class SitePlugin(Plugin):
             "title": {"type": "string"},
             "description": {"type": "string"},
             "keywords": {"type": "string"},
-            "basepath": {"type": "string"},
             "favicon": {"type": "string"},
             "styles": {"type": "array"},
             "scripts": {"type": "array"},
@@ -43,12 +42,9 @@ class SitePlugin(Plugin):
         return self.config.get("keywords", self.document.keywords)
 
     @property
-    def basepath(self):
-        return self.config.get("basepath")
-
-    @property
     def favicon(self):
-        return self.config.get("favicon")
+        if self.config.get("favicon"):
+            return helpers.get_relpath(self.config.get("favicon"), self.document.path)
 
     @property
     def styles(self):
