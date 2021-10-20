@@ -31,6 +31,10 @@ class TablePlugin(Plugin):
                 width = spec.pop("width", "100%")
                 if isinstance(width, int):
                     width = f"{width}px"
+                spec.setdefault("columnDefs", [])
+                spec["columnDefs"].append(
+                    {"targets": "_all", "orderSequence": ["desc", "asc"]}
+                )
                 spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1

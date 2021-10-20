@@ -1838,7 +1838,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-20 15:44)
+  (2021-10-20 15:57)
 </div>
 
 <h1>Livemark</h1>
@@ -2251,7 +2251,7 @@ columns:
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  $('#livemark-table-1').DataTable(JSON.parse('{"columns": [{"data": "type"}, {"data": "brand"}, {"data": "model"}, {"data": "price"}, {"data": "kmpl"}, {"data": "bhp"}]}'))
+  $('#livemark-table-1').DataTable(JSON.parse('{"columns": [{"data": "type"}, {"data": "brand"}, {"data": "model"}, {"data": "price"}, {"data": "kmpl"}, {"data": "bhp"}], "columnDefs": [{"targets": "_all", "orderSequence": ["desc", "asc"]}]}'))
 })
 </script>
 
