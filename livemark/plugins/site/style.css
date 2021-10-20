@@ -276,11 +276,11 @@ p {
   clear: both;
 }
 
-/* NOTE: doesn't work with handsontable */
-/* #livemark-main table { */
-  /* border-spacing: 0; */
-  /* border-collapse: collapse; */
-/* } */
+/* NOTE: is it possible to find a better fix for not breaking TablePlugin's styles? */
+#livemark-main table:not(.dataTable) {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
 
 #livemark-main td,
 #livemark-main th {
@@ -737,8 +737,7 @@ p {
 #livemark-main ol,
 #livemark-main p,
 #livemark-main pre,
-/* NOTE: doesn't work with handsontable */
-/* #livemark-main table, */
+#livemark-main table:not(.dataTable),
 #livemark-main ul {
   margin-top: 0;
   margin-bottom: 16px;
@@ -851,31 +850,30 @@ p {
   margin-bottom: 16px;
 }
 
-/* NOTE: doesn't work with handsontable */
-/* #livemark-main table { */
-  /* display: block; */
-  /* width: 100%; */
-  /* overflow: auto; */
-/* } */
+#livemark-main table:not(.dataTable) {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
 
-/* #livemark-main table th { */
-  /* font-weight: 600; */
-/* } */
+#livemark-main table:not(.dataTable) th {
+  font-weight: 600;
+}
 
-/* #livemark-main table td, */
-/* #livemark-main table th { */
-  /* padding: 6px 13px; */
-  /* border: 1px solid #dfe2e5; */
-/* } */
+#livemark-main table:not(.dataTable) td,
+#livemark-main table:not(.dataTable) th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
 
-/* #livemark-main table tr { */
-  /* background-color: #fff; */
-  /* border-top: 1px solid #c6cbd1; */
-/* } */
+#livemark-main table:not(.dataTable) tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
 
-/* #livemark-main table tr:nth-child(2n) { */
-  /* background-color: #f6f8fa; */
-/* } */
+#livemark-main table:not(.dataTable) tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
 
 #livemark-main img {
   max-width: 100%;
