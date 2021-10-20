@@ -1,15 +1,38 @@
-<div class="livemark-table">
-  <div id="{{ table.elem }}">
-  </div>
+<div class="livemark-table" style="width: {{ width  }}">
+  <table id="{{ elem }}">
+    <thead>
+      <tr>
+        {% for column in columns %}
+        <th>{{ column.data }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        {% for column in columns %}
+        <td>{{ row[column.data] }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        {% for column in columns %}
+        <th>{{ column.data }}</th>
+        {% endfor %}
+      </tr>
+    </tfoot>
+  </table>
 </div>
 {% if card %}
 <script>
-new Handsontable(document.getElementById('{{ table.elem }}'), JSON.parse('{{ table.spec }}'))
+$('#{{ elem}}').DataTable(JSON.parse('{{ spec }}'))
 </script>
 {% else %}
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  new Handsontable(document.getElementById('{{ table.elem }}'), JSON.parse('{{ table.spec }}'))
+  $('#{{ elem}}').DataTable(JSON.parse('{{ spec }}'))
 })
 </script>
 {% endif %}

@@ -20,12 +20,17 @@ class TablePlugin(Plugin):
                     spec = yaml.safe_load(str(snippet.input).strip())
                 if snippet.lang == "json":
                     spec = json.loads(str(snippet.input).strip())
-                spec["licenseKey"] = "non-commercial-and-evaluation"
                 detector = Detector(field_float_numbers=True)
-                with Resource(spec.get("data", []), detector=detector) as resource:
-                    header, *lists = resource.to_snap(json=True)
-                spec.setdefault("colHeaders", header)
-                spec["data"] = lists
+                with Resource(spec.pop("data", []), detector=detector) as resource:
+                    header = resource.header
+                    rows = resource.read_rows()
+                columns = spec.get("columns", [])
+                if not columns:
+                    for label in header:
+                        columns.append({"data": label})
+                width = spec.pop("width", "100%")
+                if isinstance(width, int):
+                    width = f"{width}px"
                 spec = json.dumps(spec, ensure_ascii=False)
                 spec = spec.replace("'", "\\'")
                 self.__count += 1
@@ -33,13 +38,21 @@ class TablePlugin(Plugin):
                 elem = f"livemark-table-{self.__count}"
                 if card:
                     elem += "-card"
-                table = {"spec": spec, "elem": elem}
                 snippet.output = (
-                    self.read_asset("markup.html", card=card, table=table) + "\n"
+                    self.read_asset(
+                        "markup.html",
+                        card=card,
+                        elem=elem,
+                        spec=spec,
+                        rows=rows,
+                        columns=columns,
+                        width=width,
+                    )
+                    + "\n"
                 )
 
     def process_markup(self, markup):
         if self.__count:
-            url = "https://unpkg.com"
-            markup.add_style(f"{url}/handsontable@10.0.0/dist/handsontable.min.css")
-            markup.add_script(f"{url}/handsontable@10.0.0/dist/handsontable.min.js")
+            url = "https://cdn.datatables.net/1.11.3"
+            markup.add_style(f"{url}/css/jquery.dataTables.css")
+            markup.add_script(f"{url}/js/jquery.dataTables.js")
