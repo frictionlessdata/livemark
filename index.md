@@ -41,6 +41,8 @@ Livemark supports CSV table rendering using DataTables, which you can see in the
 '''yaml table
 data: data/cars.csv
 width: 600
+order:
+  - [3, 'desc']
 columns:
   - data: type
   - data: brand
@@ -54,6 +56,8 @@ columns:
 ```yaml table
 data: data/cars.csv
 width: 600
+order:
+  - [3, 'desc']
 columns:
   - data: type
   - data: brand

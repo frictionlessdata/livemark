@@ -4,7 +4,7 @@
       <thead>
         <tr>
           {% for column in columns %}
-          <th>{{ column.data }}</th>
+          <th>{{ column.title or column.name or column.data }}</th>
           {% endfor %}
         </tr>
       </thead>
@@ -20,7 +20,7 @@
       <tfoot>
         <tr>
           {% for column in columns %}
-          <th>{{ column.data }}</th>
+          <th>{{ column.title or column.name or column.data }}</th>
           {% endfor %}
         </tr>
       </tfoot>
