@@ -32,6 +32,8 @@ We can visualize our data as a table using [HandsOnTable](https://handsontable.c
 ```yaml table
 data: https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv
 width: 600
+order:
+  - [3, 'desc']
 columns:
   - data: type
   - data: brand
