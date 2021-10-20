@@ -12,7 +12,7 @@
         {% for row in rows %}
         <tr>
           {% for column in columns %}
-          <td>{{ row[column.data] }}</td>
+          <td>{{ row[column.data] if row[column.data] is not none else '' }}</td>
           {% endfor %}
         </tr>
         {% endfor %}
