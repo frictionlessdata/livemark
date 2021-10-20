@@ -33,34 +33,34 @@ Livemark process your document using the Jinja templating language. Inside templ
 
 ## Table
 
-> https://handsontable.com/docs/9.0.0/tutorial-introduction.html
+> https://datatables.net/manual/index
 
-Livemark supports CSV table rendering using Handsontable, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read by [Frictionless Framework](https://framework.frictionlessdata.io/) so in addition to Handsontable options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) or a resource descriptor in a Frictionless format:
+Livemark supports CSV table rendering using DataTables, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read at the build stage so in addition to DataTables options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) as `data` property (CSV/Excel/JSON are supported). Use `columns` property to customize fields or their order:
 
 ```yaml
 '''yaml table
 data: data/cars.csv
-maxRows: 10
-filters: true
-dropdownMenu: true
-columnSorting:
-  initialConfig:
-    column: 2
-    sortOrder: desc
 width: 600
+columns:
+  - data: type
+  - data: brand
+  - data: model
+  - data: price
+  - data: kmpl
+  - data: bhp
 '''
 ```
 
 ```yaml table
 data: data/cars.csv
-maxRows: 10
-filters: true
-dropdownMenu: true
-columnSorting:
-  initialConfig:
-    column: 2
-    sortOrder: desc
 width: 600
+columns:
+  - data: type
+  - data: brand
+  - data: model
+  - data: price
+  - data: kmpl
+  - data: bhp
 ```
 
 ## Chart
