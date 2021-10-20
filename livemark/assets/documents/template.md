@@ -31,14 +31,14 @@ We can visualize our data as a table using [HandsOnTable](https://handsontable.c
 
 ```yaml table
 data: https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv
-maxRows: 10
-filters: true
-dropdownMenu: true
-columnSorting:
-  initialConfig:
-    column: 2
-    sortOrder: desc
 width: 600
+columns:
+  - data: type
+  - data: brand
+  - data: model
+  - data: price
+  - data: kmpl
+  - data: bhp
 ```
 
 ## Chart
