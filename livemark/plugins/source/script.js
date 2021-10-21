@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Add buttons
-  $("h2").append(
-    '<a href="" class="livemark-source-button">Show the Source</a>'
-  );
+  $("h2").append('<a href="" class="livemark-source-button">Source</a>');
 
   // Enable buttons
   $(".livemark-source-button").click(async (ev) => {
