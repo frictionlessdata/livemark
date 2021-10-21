@@ -1752,7 +1752,22 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+#livemark-main h2 .livemark-source-button {
+  float: right;
+  display: none;
+}
 
+#livemark-main h2:hover .livemark-source-button {
+  display: inline;
+  margin-left: 8px;
+  color: #bbb;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+#livemark-main h2 .livemark-source-button:hover {
+  text-decoration: underline;
+}
 
 </style>
 <style>
@@ -2353,7 +2368,13 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {});
+document.addEventListener("DOMContentLoaded", function () {
+  for (const h2 of $("h2")) {
+    $(h2).append(
+      '<a href="" class="livemark-source-button">Show the Source</a>'
+    );
+  }
+});
 
 </script>
 </body>
