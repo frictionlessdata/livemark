@@ -73,12 +73,14 @@ class SitePlugin(Plugin):
                 pm_url = "https://unpkg.com/prismjs@1.23.0"
                 jq_url = "https://unpkg.com/jquery@3.6.0"
                 pp_url = "https://unpkg.com/popper.js@1.16.1"
+                ld_url = "https://unpkg.com/lodash@4.17.21"
                 markup.add_style(f"{fa_url}/css/all.min.css")
                 markup.add_style(f"{bs_url}/dist/css/bootstrap.min.css")
                 markup.add_style(f"{pm_url}/themes/prism.css")
                 markup.add_style("style.css")
                 for path in self.styles:
                     markup.add_style(path)
+                markup.add_script(f"{ld_url}/lodash.min.js")
                 markup.add_script(f"{jq_url}/dist/jquery.min.js")
                 markup.add_script(f"{pp_url}/dist/umd/popper.min.js")
                 markup.add_script(f"{bs_url}/dist/js/bootstrap.min.js")
