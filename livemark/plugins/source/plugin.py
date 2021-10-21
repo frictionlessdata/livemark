@@ -1,6 +1,11 @@
 from ...plugin import Plugin
 
 
+# NOTE:
+# Consider using proper markdown parser client-side
+# Or embed source generation in the server-side chain
+
+
 class SourcePlugin(Plugin):
     identity = "source"
 

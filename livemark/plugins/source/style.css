@@ -14,3 +14,7 @@
 #livemark-main h2 .livemark-source-button:hover {
   text-decoration: underline;
 }
+
+.livemark-source-section {
+  border: dashed 1px #ccc;
+}
