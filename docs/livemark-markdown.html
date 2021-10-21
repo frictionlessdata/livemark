@@ -2388,7 +2388,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Load content
-    const source = location.href.replace(".html", ".md");
+    let source = location.href.replace(".html", ".md");
+    if (!source.endsWith(".md")) source = `${source}index.md`;
     const heading = $(ev.target).parent().contents().get(0).nodeValue;
     response = await fetch(source);
     content = await response.text();
