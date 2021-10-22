@@ -44,7 +44,12 @@ def program_run(
             markdown.renderer.snippets = []
             markdown.render(output)
             snippets.extend(markdown.renderer.snippets)
-        print(snippets)
+
+        # List runs
+        if list:
+            for snippet in snippets:
+                typer.secho(snippet.props["run"])
+            sys.exit(0)
 
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
