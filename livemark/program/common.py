@@ -35,7 +35,7 @@ port = Option(
     help="Server port",
 )
 
-run_id = Argument(
+run = Argument(
     None,
     help="A run id",
 )
