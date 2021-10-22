@@ -12,3 +12,15 @@ path: livemark.Document
 ```python file
 livemark/errors.py
 ```
+
+```python script run=data-extract
+print('Data extract!')
+```
+
+```python script run=data-transform
+print('Data transform!')
+```
+
+```python script run=data-load
+print('Data load!')
+```
