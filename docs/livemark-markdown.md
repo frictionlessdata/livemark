@@ -24,3 +24,7 @@ print('Data transform!')
 ```python script run=data-load
 print('Data load!')
 ```
+
+```bash script run=data-bash
+echo 'Data bash!'
+```

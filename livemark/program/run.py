@@ -2,6 +2,7 @@ import os
 import sys
 import typer
 import marko
+import subprocess
 from marko import md_renderer
 from ..project import Project
 from ..snippet import Snippet
@@ -50,6 +51,15 @@ def program_run(
             for snippet in snippets:
                 typer.secho(snippet.props["run"])
             sys.exit(0)
+
+        # Execute runs
+        scope = {}
+        for snippet in snippets:
+            if snippet.props["run"].startswith(run):
+                if snippet.lang == "bash":
+                    subprocess.run(snippet.input, shell=True)
+                elif snippet.lang == "python":
+                    exec(snippet.input, scope)
 
     except Exception as exception:
         typer.secho(str(exception), err=True, fg=typer.colors.RED, bold=True)
