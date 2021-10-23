@@ -19,7 +19,6 @@ from . import common
 @program.command(name="run")
 def program_run(
     run: str = common.run,
-    list: bool = common.list,
     config: str = common.config,
 ):
     """Run a Livemark script(s)."""
@@ -47,7 +46,7 @@ def program_run(
             snippets.extend(markdown.renderer.snippets)
 
         # List runs
-        if list:
+        if not run:
             for snippet in snippets:
                 typer.secho(snippet.props["run"])
             sys.exit(0)
