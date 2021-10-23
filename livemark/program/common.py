@@ -35,9 +35,9 @@ port = Option(
     help="Server port",
 )
 
-run = Argument(
+task = Argument(
     None,
-    help="A run id",
+    help="A task id",
 )
 
 

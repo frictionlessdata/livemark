@@ -13,15 +13,15 @@ from . import common
 
 # NOTE:
 # It's an initial implementation that works directly with markdown renderer
-# We need to implement it properly using a normal system flow
+# We need to implement it properly using a normal system flow and TaskPlugin
 
 
 @program.command(name="run")
 def program_run(
-    run: str = common.run,
+    task: str = common.task,
     config: str = common.config,
 ):
-    """Run a Livemark script(s)."""
+    """Run a Livemark task"""
 
     try:
 
@@ -39,22 +39,22 @@ def program_run(
         snippets = []
         for document in project.documents:
             document.read()
-            markdown = marko.Markdown(renderer=RunRenderer)
+            markdown = marko.Markdown(renderer=TaskRenderer)
             output = markdown.parse(document.content)
             markdown.renderer.snippets = []
             markdown.render(output)
             snippets.extend(markdown.renderer.snippets)
 
-        # List runs
-        if not run:
+        # List tasks
+        if not task:
             for snippet in snippets:
-                typer.secho(snippet.props["run"])
+                typer.secho(snippet.props["id"])
             sys.exit(0)
 
-        # Execute runs
+        # Execute tasks
         scope = {}
         for snippet in snippets:
-            if snippet.props["run"].startswith(run):
+            if snippet.props["id"].startswith(task):
                 if snippet.lang == "bash":
                     subprocess.run(snippet.input, shell=True)
                 elif snippet.lang == "python":
@@ -68,7 +68,7 @@ def program_run(
 # Internal
 
 
-class RunRenderer(md_renderer.MarkdownRenderer):
+class TaskRenderer(md_renderer.MarkdownRenderer):
 
     # Render
 
@@ -76,7 +76,7 @@ class RunRenderer(md_renderer.MarkdownRenderer):
         input = self.render_children(element).strip()
         header = [element.lang] + element.extra.split()
         snippet = Snippet(input, header=header)
-        run = snippet.props.get("run")
-        if run:
+        task_id = snippet.props.get("id")
+        if snippet.type == "task" and task_id:
             self.snippets.append(snippet)
         return super().render_fenced_code(element)

@@ -13,18 +13,18 @@ path: livemark.Document
 livemark/errors.py
 ```
 
-```python script run=data-extract
+```python task id=data-extract
 print('Data extract!')
 ```
 
-```python script run=data-transform
+```python task id=data-transform
 print('Data transform!')
 ```
 
-```python script run=data-load
+```python task id=data-load
 print('Data load!')
 ```
 
-```bash script run=data-bash
+```bash task id=data-bash
 echo 'Data bash!'
 ```
