@@ -35,6 +35,16 @@ port = Option(
     help="Server port",
 )
 
+run = Argument(
+    None,
+    help="A run id",
+)
+
+list = Option(
+    default=False,
+    help="List available run ids",
+)
+
 
 # Command
 

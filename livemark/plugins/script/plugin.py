@@ -23,7 +23,11 @@ class ScriptPlugin(Plugin):
         self.__index = 0
 
     def process_snippet(self, snippet):
-        if snippet.type == "script" and snippet.lang in ["python", "bash"]:
+        if (
+            snippet.type == "script"
+            and not snippet.props.get("run")
+            and snippet.lang in ["python", "bash"]
+        ):
 
             # Acquire cache
             cache = helpers.list_setdefault(

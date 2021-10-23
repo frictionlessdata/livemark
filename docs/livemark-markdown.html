@@ -1860,7 +1860,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-18 11:24)
+  (2021-10-23 17:56)
 </div>
 
 <h1>Livemark Markdown</h1>
@@ -1885,6 +1885,13 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
     """Livemark error"""
 
     pass
+</code></pre><pre><code class="language-python">print('Data extract!')
+</code></pre>
+<pre><code class="language-python">print('Data transform!')
+</code></pre>
+<pre><code class="language-python">print('Data load!')
+</code></pre>
+<pre><code class="language-bash">echo 'Data bash!'
 </code></pre>
 
 <div id="livemark-signs">
@@ -2303,7 +2310,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemark Markdown',
           'path': 'docs/livemark-markdown',
           'relpath': 'livemark-markdown',
-          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ``` ```python file livemark/errors.py ```",
+          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ``` ```python file livemark/errors.py ``` ```python script run=data-extract print(\u0027Data extract!\u0027) ``` ```python script run=data-transform print(\u0027Data transform!\u0027) ``` ```python script run=data-load print(\u0027Data load!\u0027) ``` ```bash script run=data-bash echo \u0027Data bash!\u0027 ```",
       },
           'docs/livemark-components': {
           'name': 'Livemark Components',
