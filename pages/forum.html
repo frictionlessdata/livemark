@@ -1172,6 +1172,42 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+.item {
+  position: relative;
+  border: solid 1px #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  background-color: #EEE8D5;
+  display: flex;
+  align-items: center;
+}
+
+.item:nth-child(odd) {
+  background-color: #EEE8C8;
+}
+
+.item-content {
+  width: 100%;
+  border-right: dashed 1px #ccc;
+}
+
+.item-content-link {
+  color: grey !important;
+}
+
+.item-stars {
+  font-size: 24px;
+  padding-left: 20px;
+}
+
+.item-stars-count {
+  font-size: 30px;
+}
+
+</style>
+<style>
+
 #livemark-brand {
   color: #888;
 }
@@ -2020,15 +2056,10 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 14:00)
+  (2021-10-24 19:14)
 </div>
 
 <h1>Forum</h1>
-<div class="livemark-remark">
-  <div class="alert alert-warning" role="alert">
-    It's testing page for a commenting system
-  </div>
-</div>
 
 <div id="livemark-comments">
   <div id="disqus_thread"></div>
@@ -2168,7 +2199,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-main",
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: "h2, h3",
+    headingSelector: "h2",
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
@@ -2617,19 +2648,19 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemarks',
           'path': 'pages/universe/livemarks',
           'relpath': 'universe/livemarks',
-          'text': "# Livemarks",
+          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
           'path': 'pages/universe/plugins',
           'relpath': 'universe/plugins',
-          'text': "# Plugins",
+          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup livemark-ckan It\u0027s a CKAN plugin for Livemark Github 1 ```",
       },
           'pages/forum': {
           'name': 'Forum',
           'path': 'pages/forum',
           'relpath': 'forum',
-          'text': "# Forum ```yaml remark type: warning text: It\u0027s testing page for a commenting system ```",
+          'text': "# Forum",
       },
           'blog/index': {
           'name': 'Blog',

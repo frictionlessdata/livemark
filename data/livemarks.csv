@@ -1,0 +1,5 @@
+user,repo,branch,stars,description
+frictionlessdata,covid-tracker,main,3,A livemark tracking COVID-19 disease pandemic
+frictionlessdata,data-packages,main,1,A livemark listing data packages hosted on Github
+frictionlessdata,ckan-extensions,main,1,A livemark listing CKAN extensions hosted on Github
+frictionlessdata,community-insights,main,1,To tell a story about the Frictionless community using Livemark

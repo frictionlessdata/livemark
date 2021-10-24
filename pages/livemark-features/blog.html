@@ -1172,6 +1172,42 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+.item {
+  position: relative;
+  border: solid 1px #eee;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  background-color: #EEE8D5;
+  display: flex;
+  align-items: center;
+}
+
+.item:nth-child(odd) {
+  background-color: #EEE8C8;
+}
+
+.item-content {
+  width: 100%;
+  border-right: dashed 1px #ccc;
+}
+
+.item-content-link {
+  color: grey !important;
+}
+
+.item-stars {
+  font-size: 24px;
+  padding-left: 20px;
+}
+
+.item-stars-count {
+  font-size: 30px;
+}
+
+</style>
+<style>
+
 #livemark-brand {
   color: #888;
 }
@@ -2150,7 +2186,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Where to grab the headings to build the table of contents.
     contentSelector: "#livemark-main",
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: "h2, h3",
+    headingSelector: "h2",
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
@@ -2582,19 +2618,19 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemarks',
           'path': 'pages/universe/livemarks',
           'relpath': '../universe/livemarks',
-          'text': "# Livemarks",
+          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup {% for row in frictionless.extract(\u0027data/livemarks.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
           'path': 'pages/universe/plugins',
           'relpath': '../universe/plugins',
-          'text': "# Plugins",
+          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup {% for row in frictionless.extract(\u0027data/plugins.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
       },
           'pages/forum': {
           'name': 'Forum',
           'path': 'pages/forum',
           'relpath': '../forum',
-          'text': "# Forum ```yaml remark type: warning text: It\u0027s testing page for a commenting system ```",
+          'text': "# Forum",
       },
           'blog/index': {
           'name': 'Blog',
