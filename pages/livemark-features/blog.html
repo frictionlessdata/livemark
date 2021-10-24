@@ -1888,6 +1888,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </a>
         </li>
                 <li class="secondary ">
+          <a href="../livemark-markdown/task.html" class="secondary">
+            Task
+          </a>
+        </li>
+                <li class="secondary ">
           <a href="../livemark-markdown/markup.html" class="secondary">
             Markup
           </a>
@@ -2489,6 +2494,12 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../livemark-markdown/script',
           'text': "# Script",
       },
+          'pages/livemark-markdown/task': {
+          'name': 'Task',
+          'path': 'pages/livemark-markdown/task',
+          'relpath': '../livemark-markdown/task',
+          'text': "# Task",
+      },
           'pages/livemark-markdown/markup': {
           'name': 'Markup',
           'path': 'pages/livemark-markdown/markup',
@@ -2499,25 +2510,25 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Others',
           'path': 'pages/livemark-markdown/others',
           'relpath': '../livemark-markdown/others',
-          'text': "# Others ## Audio",
+          'text': "# Others ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
       },
           'pages/livemark-features/rendering': {
           'name': 'Rendering',
           'path': 'pages/livemark-features/rendering',
           'relpath': 'rendering',
-          'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. --- You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
+          'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## Site ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. --- You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
       },
           'pages/livemark-features/appearance': {
           'name': 'Appearance',
           'path': 'pages/livemark-features/appearance',
           'relpath': 'appearance',
-          'text': "# Appearance ## About ## Brand",
+          'text': "# Appearance ## About ## Brand ## Cards ## Display ## Mobile ## News ## Notes ## Rating ## Source",
       },
           'pages/livemark-features/navigation': {
           'name': 'Navigation',
           'path': 'pages/livemark-features/navigation',
           'relpath': 'navigation',
-          'text': "# Navigation",
+          'text': "# Navigation ## Links ## Infinity ## Pages ## Pagination ## Signs ## Topics",
       },
           'pages/livemark-features/comments': {
           'name': 'Comments',
@@ -2541,7 +2552,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Others',
           'path': 'pages/livemark-features/others',
           'relpath': 'others',
-          'text': "# Others ## Cleanup ## Prepare",
+          'text': "# Others ## Cleanup ## Counter ## Github ## Prepare ## Redirect",
       },
           'pages/plugin-system/adding-plugin': {
           'name': 'Adding a Plugin',

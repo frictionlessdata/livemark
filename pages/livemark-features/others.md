@@ -2,4 +2,10 @@
 
 ## Cleanup
 
+## Counter
+
+## Github
+
 ## Prepare
+
+## Redirect

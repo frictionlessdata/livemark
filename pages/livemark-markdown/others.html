@@ -1888,6 +1888,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </a>
         </li>
                 <li class="secondary ">
+          <a href="task.html" class="secondary">
+            Task
+          </a>
+        </li>
+                <li class="secondary ">
           <a href="markup.html" class="secondary">
             Markup
           </a>
@@ -2006,11 +2011,22 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 18:19)
+  (2021-10-24 18:42)
 </div>
 
 <h1>Others</h1>
 <h2>Audio</h2>
+<h2>File</h2>
+<h2>Image</h2>
+<h2>Map</h2>
+<h2>Notebook</h2>
+<h2>Package</h2>
+<h2>Pipeline</h2>
+<h2>Reference</h2>
+<h2>Report</h2>
+<h2>Resource</h2>
+<h2>Schema</h2>
+<h2>Video</h2>
 
 <div id="livemark-signs">
   <div>
@@ -2490,6 +2506,12 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': 'script',
           'text': "# Script",
       },
+          'pages/livemark-markdown/task': {
+          'name': 'Task',
+          'path': 'pages/livemark-markdown/task',
+          'relpath': 'task',
+          'text': "# Task",
+      },
           'pages/livemark-markdown/markup': {
           'name': 'Markup',
           'path': 'pages/livemark-markdown/markup',
@@ -2500,25 +2522,25 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Others',
           'path': 'pages/livemark-markdown/others',
           'relpath': 'others',
-          'text': "# Others ## Audio",
+          'text': "# Others ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
       },
           'pages/livemark-features/rendering': {
           'name': 'Rendering',
           'path': 'pages/livemark-features/rendering',
           'relpath': '../livemark-features/rendering',
-          'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. --- You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
+          'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## Site ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. --- You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
       },
           'pages/livemark-features/appearance': {
           'name': 'Appearance',
           'path': 'pages/livemark-features/appearance',
           'relpath': '../livemark-features/appearance',
-          'text': "# Appearance ## About ## Brand",
+          'text': "# Appearance ## About ## Brand ## Cards ## Display ## Mobile ## News ## Notes ## Rating ## Source",
       },
           'pages/livemark-features/navigation': {
           'name': 'Navigation',
           'path': 'pages/livemark-features/navigation',
           'relpath': '../livemark-features/navigation',
-          'text': "# Navigation",
+          'text': "# Navigation ## Links ## Infinity ## Pages ## Pagination ## Signs ## Topics",
       },
           'pages/livemark-features/comments': {
           'name': 'Comments',
@@ -2542,7 +2564,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Others',
           'path': 'pages/livemark-features/others',
           'relpath': '../livemark-features/others',
-          'text': "# Others ## Cleanup ## Prepare",
+          'text': "# Others ## Cleanup ## Counter ## Github ## Prepare ## Redirect",
       },
           'pages/plugin-system/adding-plugin': {
           'name': 'Adding a Plugin',

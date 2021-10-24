@@ -39,6 +39,7 @@ pages:
         - path: pages/livemark-markdown/table
         - path: pages/livemark-markdown/chart
         - path: pages/livemark-markdown/script
+        - path: pages/livemark-markdown/task
         - path: pages/livemark-markdown/markup
         - path: pages/livemark-markdown/others
     - name: Livemark Features

@@ -2,6 +2,8 @@
 
 Currently, Livemark supports two rendering target: HTML and Markdown.
 
+## Site
+
 ## HTML
 
 To build a document as an HTML (all the commands belows are equal):
