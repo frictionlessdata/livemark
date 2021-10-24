@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="None">
-<meta name="keywords" content="troubleshooting">
+<meta name="keywords" content="others">
 <link rel="icon" href="../../assets/favicon.ico">
-<title>Troubleshooting | Livemark</title>
+<title>Others | Livemark</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1810,90 +1810,90 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Introduction
       </a>
           </li>
-        <li class="primary group active">
+        <li class="primary group ">
       <a href="" class="primary">
         Getting Started
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="installation.html" class="secondary">
+          <a href="../getting-started/installation.html" class="secondary">
             Installation
           </a>
         </li>
                 <li class="secondary ">
-          <a href="configuration.html" class="secondary">
+          <a href="../getting-started/configuration.html" class="secondary">
             Configuration
           </a>
         </li>
                 <li class="secondary ">
-          <a href="first-project.html" class="secondary">
+          <a href="../getting-started/first-project.html" class="secondary">
             First Project
           </a>
         </li>
                 <li class="secondary ">
-          <a href="data-journalism.html" class="secondary">
+          <a href="../getting-started/data-journalism.html" class="secondary">
             Data Journalism
           </a>
         </li>
                 <li class="secondary ">
-          <a href="education-materials.html" class="secondary">
+          <a href="../getting-started/education-materials.html" class="secondary">
             Education Materials
           </a>
         </li>
                 <li class="secondary ">
-          <a href="documentation-writing.html" class="secondary">
+          <a href="../getting-started/documentation-writing.html" class="secondary">
             Documentation Writing
           </a>
         </li>
-                <li class="secondary active">
-          <a href="troubleshooting.html" class="secondary">
+                <li class="secondary ">
+          <a href="../getting-started/troubleshooting.html" class="secondary">
             Troubleshooting
           </a>
         </li>
                 <li class="secondary ">
-          <a href="contributing.html" class="secondary">
+          <a href="../getting-started/contributing.html" class="secondary">
             Contributing
           </a>
         </li>
               </ul>
           </li>
-        <li class="primary group ">
+        <li class="primary group active">
       <a href="" class="primary">
         Livemark Markdown
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="../livemark-markdown/basics.html" class="secondary">
+          <a href="basics.html" class="secondary">
             Basics
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../livemark-markdown/logic.html" class="secondary">
+          <a href="logic.html" class="secondary">
             Logic
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../livemark-markdown/table.html" class="secondary">
+          <a href="table.html" class="secondary">
             Table
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../livemark-markdown/chart.html" class="secondary">
+          <a href="chart.html" class="secondary">
             Chart
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../livemark-markdown/script.html" class="secondary">
+          <a href="script.html" class="secondary">
             Script
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../livemark-markdown/markup.html" class="secondary">
+          <a href="markup.html" class="secondary">
             Markup
           </a>
         </li>
-                <li class="secondary ">
-          <a href="../livemark-markdown/others.html" class="secondary">
+                <li class="secondary active">
+          <a href="others.html" class="secondary">
             Others
           </a>
         </li>
@@ -2006,21 +2006,22 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 13:59)
+  (2021-10-24 18:19)
 </div>
 
-<h1>Troubleshooting</h1>
+<h1>Others</h1>
+<h2>Audio</h2>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="/pages/getting-started/contributing.html">
-        Contributing »
+      <a href="/pages/livemark-features/rendering.html">
+        Rendering »
       </a>
     </div>
             <div class="prev">
-      <a href="/pages/getting-started/documentation-writing.html">
-        « Documentation Writing
+      <a href="/pages/livemark-markdown/markup.html">
+        « Markup
       </a>
     </div>
       </div>
@@ -2067,7 +2068,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/getting-started/troubleshooting.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/livemark-markdown/others.md" target="_blank">
         Edit
       </a>
     </li>
@@ -2414,91 +2415,91 @@ document.addEventListener("DOMContentLoaded", function () {
           'pages/getting-started/installation': {
           'name': 'Installation',
           'path': 'pages/getting-started/installation',
-          'relpath': 'installation',
+          'relpath': '../getting-started/installation',
           'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../assets/github.png)",
       },
           'pages/getting-started/configuration': {
           'name': 'Configuration',
           'path': 'pages/getting-started/configuration',
-          'relpath': 'configuration',
+          'relpath': '../getting-started/configuration',
           'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
       },
           'pages/getting-started/first-project': {
           'name': 'First Project',
           'path': 'pages/getting-started/first-project',
-          'relpath': 'first-project',
+          'relpath': '../getting-started/first-project',
           'text': "# First Project",
       },
           'pages/getting-started/data-journalism': {
           'name': 'Data Journalism',
           'path': 'pages/getting-started/data-journalism',
-          'relpath': 'data-journalism',
+          'relpath': '../getting-started/data-journalism',
           'text': "# Data Journalism",
       },
           'pages/getting-started/education-materials': {
           'name': 'Education Materials',
           'path': 'pages/getting-started/education-materials',
-          'relpath': 'education-materials',
+          'relpath': '../getting-started/education-materials',
           'text': "# Education Materials",
       },
           'pages/getting-started/documentation-writing': {
           'name': 'Documentation Writing',
           'path': 'pages/getting-started/documentation-writing',
-          'relpath': 'documentation-writing',
+          'relpath': '../getting-started/documentation-writing',
           'text': "# Documentation Writing",
       },
           'pages/getting-started/troubleshooting': {
           'name': 'Troubleshooting',
           'path': 'pages/getting-started/troubleshooting',
-          'relpath': 'troubleshooting',
+          'relpath': '../getting-started/troubleshooting',
           'text': "# Troubleshooting",
       },
           'pages/getting-started/contributing': {
           'name': 'Contributing',
           'path': 'pages/getting-started/contributing',
-          'relpath': 'contributing',
+          'relpath': '../getting-started/contributing',
           'text': "# Contributing",
       },
           'pages/livemark-markdown/basics': {
           'name': 'Basics',
           'path': 'pages/livemark-markdown/basics',
-          'relpath': '../livemark-markdown/basics',
+          'relpath': 'basics',
           'text': "# Basics",
       },
           'pages/livemark-markdown/logic': {
           'name': 'Logic',
           'path': 'pages/livemark-markdown/logic',
-          'relpath': '../livemark-markdown/logic',
+          'relpath': 'logic',
           'text': "# Logic",
       },
           'pages/livemark-markdown/table': {
           'name': 'Table',
           'path': 'pages/livemark-markdown/table',
-          'relpath': '../livemark-markdown/table',
+          'relpath': 'table',
           'text': "# Table",
       },
           'pages/livemark-markdown/chart': {
           'name': 'Chart',
           'path': 'pages/livemark-markdown/chart',
-          'relpath': '../livemark-markdown/chart',
+          'relpath': 'chart',
           'text': "# Chart",
       },
           'pages/livemark-markdown/script': {
           'name': 'Script',
           'path': 'pages/livemark-markdown/script',
-          'relpath': '../livemark-markdown/script',
+          'relpath': 'script',
           'text': "# Script",
       },
           'pages/livemark-markdown/markup': {
           'name': 'Markup',
           'path': 'pages/livemark-markdown/markup',
-          'relpath': '../livemark-markdown/markup',
+          'relpath': 'markup',
           'text': "# Markup",
       },
           'pages/livemark-markdown/others': {
           'name': 'Others',
           'path': 'pages/livemark-markdown/others',
-          'relpath': '../livemark-markdown/others',
+          'relpath': 'others',
           'text': "# Others ## Audio",
       },
           'pages/livemark-features/rendering': {

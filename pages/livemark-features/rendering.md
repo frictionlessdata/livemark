@@ -25,6 +25,6 @@ $ livemark build source.md --target target.md
 Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it's better to reder documents as HTML.
 
 
-## Custom
+---
 
 You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).

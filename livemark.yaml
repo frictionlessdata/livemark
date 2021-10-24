@@ -40,12 +40,15 @@ pages:
         - path: pages/livemark-markdown/chart
         - path: pages/livemark-markdown/script
         - path: pages/livemark-markdown/markup
+        - path: pages/livemark-markdown/others
     - name: Livemark Features
       items:
         - path: pages/livemark-features/rendering
         - path: pages/livemark-features/appearance
         - path: pages/livemark-features/navigation
+        - path: pages/livemark-features/comments
         - path: pages/livemark-features/search
+        - path: pages/livemark-features/blog
         - path: pages/livemark-features/others
     - name: Plugin System
       items:

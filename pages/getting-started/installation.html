@@ -1892,6 +1892,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
             Markup
           </a>
         </li>
+                <li class="secondary ">
+          <a href="../livemark-markdown/others.html" class="secondary">
+            Others
+          </a>
+        </li>
               </ul>
           </li>
         <li class="primary group ">
@@ -1911,12 +1916,22 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
                 <li class="secondary ">
           <a href="../livemark-features/navigation.html" class="secondary">
-            Rendering
+            Navigation
+          </a>
+        </li>
+                <li class="secondary ">
+          <a href="../livemark-features/comments.html" class="secondary">
+            Comments
           </a>
         </li>
                 <li class="secondary ">
           <a href="../livemark-features/search.html" class="secondary">
             Search
+          </a>
+        </li>
+                <li class="secondary ">
+          <a href="../livemark-features/blog.html" class="secondary">
+            Blog
           </a>
         </li>
                 <li class="secondary ">
@@ -2504,23 +2519,35 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../livemark-markdown/markup',
           'text': "# Markup",
       },
+          'pages/livemark-markdown/others': {
+          'name': 'Others',
+          'path': 'pages/livemark-markdown/others',
+          'relpath': '../livemark-markdown/others',
+          'text': "# Others ## Audio",
+      },
           'pages/livemark-features/rendering': {
           'name': 'Rendering',
           'path': 'pages/livemark-features/rendering',
           'relpath': '../livemark-features/rendering',
-          'text': "# Rendering",
+          'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. --- You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
       },
           'pages/livemark-features/appearance': {
           'name': 'Appearance',
           'path': 'pages/livemark-features/appearance',
           'relpath': '../livemark-features/appearance',
-          'text': "# Appearance",
+          'text': "# Appearance ## About ## Brand",
       },
           'pages/livemark-features/navigation': {
-          'name': 'Rendering',
+          'name': 'Navigation',
           'path': 'pages/livemark-features/navigation',
           'relpath': '../livemark-features/navigation',
-          'text': "# Rendering",
+          'text': "# Navigation",
+      },
+          'pages/livemark-features/comments': {
+          'name': 'Comments',
+          'path': 'pages/livemark-features/comments',
+          'relpath': '../livemark-features/comments',
+          'text': "# Comments",
       },
           'pages/livemark-features/search': {
           'name': 'Search',
@@ -2528,11 +2555,17 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../livemark-features/search',
           'text': "# Search",
       },
+          'pages/livemark-features/blog': {
+          'name': 'Blog',
+          'path': 'pages/livemark-features/blog',
+          'relpath': '../livemark-features/blog',
+          'text': "# Blog",
+      },
           'pages/livemark-features/others': {
           'name': 'Others',
           'path': 'pages/livemark-features/others',
           'relpath': '../livemark-features/others',
-          'text': "# Others",
+          'text': "# Others ## Cleanup ## Prepare",
       },
           'pages/plugin-system/adding-plugin': {
           'name': 'Adding a Plugin',
