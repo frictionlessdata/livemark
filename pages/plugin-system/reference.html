@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
+<meta name="description" content="Currently, you can explore main Livemark's classes on Github:">
 <meta name="keywords" content="reference">
 <link rel="icon" href="../../assets/favicon.ico">
 <title>Reference | Livemark</title>
@@ -1174,17 +1174,17 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 
 .item {
   position: relative;
-  border: solid 1px #eee;
+  border: dashed 1px #4495ef;
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 0 20px;
-  background-color: #EEE8D5;
   display: flex;
   align-items: center;
+  background-color: #d1e7ff;
 }
 
 .item:nth-child(odd) {
-  background-color: #EEE8C8;
+  background-color: #e8f3ff;
 }
 
 .item-content {
@@ -1863,7 +1863,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
                 <li class="secondary ">
           <a href="../getting-started/first-project.html" class="secondary">
-            First Project
+            My First Project
           </a>
         </li>
                 <li class="secondary ">
@@ -2047,10 +2047,24 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 13:59)
+  (2021-10-24 23:32)
 </div>
 
 <h1>Reference</h1>
+<div class="livemark-remark">
+  <div class="alert alert-warning" role="alert">
+    API Reference is work-in-progress
+  </div>
+</div><p>Currently, you can explore main Livemark's classes on Github:</p>
+<ul>
+<li><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py">Document</a></li>
+<li><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py">Markup</a></li>
+<li><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/plugin.py">Plugin</a></li>
+<li><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/project.py">Project</a></li>
+<li><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/server.py">Server</a></li>
+<li><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/snippet.py">Snippet</a></li>
+<li><a href="https://github.com/frictionlessdata/livemark/blob/main/livemark/system.py">System</a></li>
+</ul>
 
 <div id="livemark-signs">
   <div>
@@ -2465,10 +2479,10 @@ document.addEventListener("DOMContentLoaded", function () {
           'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
       },
           'pages/getting-started/first-project': {
-          'name': 'First Project',
+          'name': 'My First Project',
           'path': 'pages/getting-started/first-project',
           'relpath': '../getting-started/first-project',
-          'text': "# First Project",
+          'text': "# My First Project",
       },
           'pages/getting-started/data-journalism': {
           'name': 'Data Journalism',
@@ -2612,7 +2626,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Reference',
           'path': 'pages/plugin-system/reference',
           'relpath': 'reference',
-          'text': "# Reference",
+          'text': "# Reference ```yaml remark type: warning text: API Reference is work-in-progress ``` Currently, you can explore main Livemark\u0027s classes on Github: - [Document](https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py) - [Markup](https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py) - [Plugin](https://github.com/frictionlessdata/livemark/blob/main/livemark/plugin.py) - [Project](https://github.com/frictionlessdata/livemark/blob/main/livemark/project.py) - [Server](https://github.com/frictionlessdata/livemark/blob/main/livemark/server.py) - [Snippet](https://github.com/frictionlessdata/livemark/blob/main/livemark/snippet.py) - [System](https://github.com/frictionlessdata/livemark/blob/main/livemark/system.py)",
       },
           'pages/universe/livemarks': {
           'name': 'Livemarks',
