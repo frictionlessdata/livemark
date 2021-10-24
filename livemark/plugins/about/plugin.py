@@ -2,9 +2,9 @@ from ...plugin import Plugin
 
 
 class AboutPlugin(Plugin):
-    name = "about"
+    identity = "about"
     priority = 20
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "text": {"type": "string"},
@@ -13,9 +13,14 @@ class AboutPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def text(self):
-        return self.config.get("text", self.document.description)
+        site = self.document.get_plugin("site")
+        text = self.config.get("text")
+        if not text:
+            if site.description:
+                text = site.description.split(". ")[0]
+        return text
 
     # Process
 

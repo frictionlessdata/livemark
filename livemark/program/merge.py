@@ -6,8 +6,9 @@ import tempfile
 from ..server import Server
 from ..project import Project
 from ..document import Document
-from ..exception import LivemarkException
 from .main import program
+from .. import settings
+from .. import errors
 from . import common
 
 
@@ -25,17 +26,27 @@ def program_merge(
 
     try:
 
+        # Handle config
+        if not config:
+            if os.path.exists(settings.DEFAULT_CONFIG):
+                config = settings.DEFAULT_CONFIG
+
+        # Handle source
+        if not source and not config:
+            if os.path.exists(settings.DEFAULT_SOURCE):
+                source = settings.DEFAULT_SOURCE
+
         # Validate project
-        if not os.path.exists(config):
-            if not source:
-                message = 'Project without config requires "source" argument'
-                raise LivemarkException(message)
+        if not source and not config:
+            message = 'Project without "source" requires "config"'
+            raise errors.Error(message)
 
         # Create project
-        document = None
-        if source:
-            document = Document(source, format="md")
-        project = Project(document, config=config, format="md")
+        project = Project(
+            source,
+            format="md",
+            config=config,
+        )
 
         # Normal mode
         if not live:
@@ -45,12 +56,12 @@ def program_merge(
             sys.exit(0)
 
         # Live mode
-        if not document:
+        if not project.document:
             message = 'Live mode requries the "source" argument'
-            raise LivemarkException(message)
-        atexit.register(document.build)
+            raise errors.Error(message)
+        atexit.register(project.document.build)
         with tempfile.NamedTemporaryFile(suffix=".html") as file:
-            server = Server(Project(Document(source, target=file.name)))
+            server = Server(Document(source, target=file.name).project)
             server.start(host=host, port=port, file=file.name)
 
     except Exception as exception:

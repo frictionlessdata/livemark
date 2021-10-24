@@ -2,9 +2,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{{ description }}">
-<meta name="keywords" content="{{ keywords }}">
-<title>{{ title }}</title>
+<meta name="description" content="{{ plugin.description | escape }}">
+<meta name="keywords" content="{{ plugin.keywords | escape }}">
+<link rel="icon" href="{{ plugin.favicon | escape }}"/>
+<title>{{ plugin.title }}</title>
 </head>
 <body>
 <div id="livemark-left">

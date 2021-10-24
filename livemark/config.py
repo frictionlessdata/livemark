@@ -1,70 +1,96 @@
-import os
 import yaml
 import deepmerge
 import jsonschema
 from copy import deepcopy
-from .exception import LivemarkException
 from .system import system
 from . import helpers
+from . import errors
 
 
 class Config(dict):
-    def __init__(self, source):
-        enable = []
-        disable = []
+    """Livemark config
 
-        # Read config
-        config = source or {}
-        if not isinstance(config, dict):
-            if os.path.isfile(config):
-                config = yaml.safe_load(helpers.read_file(config))
-            else:  # there is no config
-                config = {}
+    Parameters:
+        source (str): path to the config source
+
+    """
+
+    def __init__(self, source=None):
+        status = {}
+
+        # Load config
+        if isinstance(source, str):
+            self.update(yaml.safe_load(helpers.read_file(source)))
+        elif source:
+            self.update(source)
+            source = None
 
         # Process config
-        for key, value in list(config.items()):
-            if value is True:
-                enable.append(key)
-                del config[key]
-            elif value is False:
-                disable.append(key)
-                del config[key]
+        for key, value in list(self.items()):
+            if isinstance(value, bool):
+                status[key] = value
+                del self[key]
 
         # Validate config
         for Plugin in system.Plugins.values():
-            if config.get(Plugin.name) and Plugin.profile:
-                validator = jsonschema.Draft7Validator(Plugin.profile)
-                for error in validator.iter_errors(config[Plugin.name]):
-                    message = f'Invalid "{Plugin.name}" config: {error.message}'
-                    raise LivemarkException(message)
+            if self.get(Plugin.identity) and Plugin.validity:
+                validator = jsonschema.Draft7Validator(Plugin.validity)
+                for error in validator.iter_errors(self[Plugin.identity]):
+                    message = f'Invalid "{Plugin.identity}" config: {error.message}'
+                    raise errors.Error(message)
 
         # Set attributes
-        self.update(config)
-        self.__enable = enable
-        self.__disable = disable
+        self.__source = source
+        self.__status = status
 
     @property
-    def enable(self):
-        return self.__enable
+    def source(self):
+        """Path of the config source
+
+        Returns:
+            str?: source
+        """
+        return self.__source
 
     @property
-    def disable(self):
-        return self.__disable
+    def status(self):
+        """Mapping of plugin status
+
+        Returns:
+            dict<bool>: status
+        """
+        return self.__status
 
     # Helpers
 
     def to_copy(self):
+        """Create a copy
+
+        Returns:
+            Config: config copy
+        """
         return deepcopy(self)
 
     def to_dict(self):
+        """Create a dict
+
+        Returns:
+            dict: config dict
+        """
         return deepcopy(dict(self))
 
-    def to_merge(self, source):
-        result = {}
-        deepmerge.always_merger.merge(result, self)
-        deepmerge.always_merger.merge(result, source)
-        for name in self.enable:
-            result.setdefault(name, True)
-        for name in self.disable:
-            result.setdefault(name, False)
-        return Config(result)
+    def to_merge(self, mapping):
+        """Create a merge
+
+        Parameters:
+            mapping (dict): dictionary to merge
+
+        Returns:
+            Config: config merge
+        """
+        source = {}
+        deepmerge.always_merger.merge(source, self)
+        deepmerge.always_merger.merge(source, mapping)
+        for key, value in self.status.items():
+            source[key] = value
+        return Config(source)

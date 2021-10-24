@@ -2,9 +2,9 @@ from ...plugin import Plugin
 
 
 class RatingPlugin(Plugin):
-    name = "rating"
+    identity = "rating"
     priority = 30
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "type": {"type": "string"},
@@ -13,17 +13,17 @@ class RatingPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def type(self):
         return self.config.get("type", "star")
 
-    @Plugin.property
+    @property
     def user(self):
         github = self.document.get_plugin("github")
         if github:
             return github.user
 
-    @Plugin.property
+    @property
     def repo(self):
         github = self.document.get_plugin("github")
         if github:

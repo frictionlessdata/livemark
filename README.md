@@ -1,4 +1,4 @@
-# Livermark
+# Livemark
 
 [![Build](https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main)](https://github.com/frictionlessdata/livemark/actions)
 [![Coverage](https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main)](https://codecov.io/gh/frictionlessdata/livemark)
@@ -8,7 +8,7 @@
 
 > This software is in the early stages and is not well-tested
 
-Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
 
 ## Purpose
 
@@ -25,7 +25,7 @@ Livemark is a static site generator that extends Markdown with interactive chart
 
 ## Example
 
-[![Example](data/example.png)](https://livemark.frictionlessdata.io)
+[![Example](assets/example.png)](https://livemark.frictionlessdata.io)
 
 ## Documentation
 

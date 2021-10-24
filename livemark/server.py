@@ -3,18 +3,28 @@ from . import settings
 
 
 # NOTE:
-# We can make this logic more sophisticated by watching
-# config changes in livemark.yaml and the main source file
-# We also might implement `server.stop` although it's not supported in livereload
+# Consider implementing `server.stop` although it's not supported in livereload
 
 
 class Server:
+    """Livemark server
+
+    Parameters:
+        proejct (Project): a project to server
+
+    """
+
     def __init__(self, project):
         self.__project = project
         self.__server = livereload.Server()
 
     @property
     def project(self):
+        """Server's project
+
+        Return:
+            Project: project
+        """
         return self.__project
 
     # Start
@@ -26,10 +36,19 @@ class Server:
         port=settings.DEFAULT_PORT,
         file=settings.DEFAULT_FILE,
     ):
+        """Start the server
+
+        Parameters:
+            host (str): HTTP host
+            port (int): HTTP port
+            file (str): index file path
+        """
 
         # Build documents
         self.project.build()
-        for document in self.project.documents:
+        for source in self.project.building_sources:
+            self.__server.watch(source, self.project.build, delay=1)
+        for document in self.project.building_documents:
             self.__server.watch(document.source, document.build, delay=1)
 
         # Run server

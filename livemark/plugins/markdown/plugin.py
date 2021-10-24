@@ -4,7 +4,8 @@ from ...plugin import Plugin
 
 
 class MarkdownPlugin(Plugin):
-    name = "markdown"
+    identity = "markdown"
+    priority = 20
 
     # Process
 

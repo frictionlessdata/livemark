@@ -3,9 +3,9 @@ import sys
 import typer
 from ..server import Server
 from ..project import Project
-from ..document import Document
-from ..exception import LivemarkException
 from .main import program
+from .. import settings
+from .. import errors
 from . import common
 
 
@@ -29,17 +29,28 @@ def program_build(
 
     try:
 
+        # Handle config
+        if not config:
+            if os.path.exists(settings.DEFAULT_CONFIG):
+                config = settings.DEFAULT_CONFIG
+
+        # Handle source
+        if not source and not config:
+            if os.path.exists(settings.DEFAULT_SOURCE):
+                source = settings.DEFAULT_SOURCE
+
         # Validate project
-        if not os.path.exists(config):
-            if not source:
-                message = 'Project without config requires "source" argument'
-                raise LivemarkException(message)
+        if not source and not config:
+            message = 'Project without "source" requires "config"'
+            raise errors.Error(message)
 
         # Create project
-        document = None
-        if source:
-            document = Document(source, target=target, format=format)
-        project = Project(document, config=config, format=format)
+        project = Project(
+            source,
+            target=target,
+            format=format,
+            config=config,
+        )
 
         # Normal mode
         if not live:

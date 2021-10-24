@@ -1,0 +1,17 @@
+<div class="livemark-map" style="overflow-x: auto">
+  <div id="{{ map.elem }}" style="width: 600px; height: 400px">
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const spec = JSON.parse('{{ map.spec }}')
+  const elem = '{{ map.elem }}'
+  const map = L.map(elem).setView([51.505, -0.09], 4);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+  L.geoJson(spec).addTo(map);
+  map.fitBounds(map.getBounds());
+})
+</script>

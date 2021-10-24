@@ -1,26 +1,29 @@
 import subprocess
-from ...exception import LivemarkException
 from ...plugin import Plugin
 from ... import helpers
 
 
+# NOTE:
+# Consider making the scope publicly available so other plugins
+# would be able to use it. For example, creating a table/chart/etc from a var
+
+
 class ScriptPlugin(Plugin):
-    name = "script"
-    priority = 100
+    identity = "script"
+    priority = 60
 
     # Process
 
     def __init__(self, document):
         super().__init__(document)
         self.__store = []
+        self.__scope = {}
 
     def process_document(self, config):
         self.__index = 0
 
     def process_snippet(self, snippet):
-
-        # Update snippet
-        if snippet.type == "script":
+        if snippet.type == "script" and snippet.lang in ["python", "bash"]:
 
             # Acquire cache
             cache = helpers.list_setdefault(
@@ -51,13 +54,8 @@ class ScriptPlugin(Plugin):
                 # Python
                 elif snippet.lang == "python":
                     with helpers.capture_stdout() as stdout:
-                        exec(snippet.input, {})
+                        exec(snippet.input, self.__scope)
                     output = stdout.getvalue().strip()
-
-                # Missing
-                else:
-                    message = "Provide a supported script language: bash/python"
-                    raise LivemarkException(message)
 
                 # General
                 output = "\n".join(line.rstrip() for line in output.splitlines())

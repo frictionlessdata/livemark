@@ -1,11 +1,40 @@
-<div>
-  <div id="{{ table.elem }}">
+<div class="livemark-table" style="overflow-x: auto">
+  <div style="width: {{ width }}">
+    <table id="{{ elem }}">
+      <thead>
+        <tr>
+          {% for column in columns %}
+          <th>{{ column.title or column.name or column.data }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          {% for column in columns %}
+          <td>{{ row[column.data] if row[column.data] is not none else '' }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          {% for column in columns %}
+          <th>{{ column.title or column.name or column.data }}</th>
+          {% endfor %}
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </div>
+{% if card %}
+<script>
+$('#{{ elem}}').DataTable(JSON.parse('{{ spec }}'))
+</script>
+{% else %}
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  const spec = JSON.parse('{{ table.spec }}')
-  const elem = document.getElementById('{{ table.elem }}')
-  new Handsontable(elem, spec)
-});
+  $('#{{ elem}}').DataTable(JSON.parse('{{ spec }}'))
+})
 </script>
+{% endif %}

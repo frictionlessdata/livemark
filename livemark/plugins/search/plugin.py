@@ -1,27 +1,25 @@
 from ...plugin import Plugin
-
-
-# NOTE:
-# It's an initial implementation of the search plugin. Later can be improved:
-# - pages concept; it might be preloaded somewhere like Project
-# - caching; we don't want to read every doc for every doc
+from ... import helpers
 
 
 class SearchPlugin(Plugin):
-    name = "search"
+    identity = "search"
 
     # Context
 
-    @Plugin.property
+    @property
     def items(self):
         items = []
         documents = [self.document]
         if self.document.project:
             documents = self.document.project.documents
-        for doc in documents:
-            if not doc.content:
-                doc.read()
-            items.append({"name": doc.name, "path": doc.path, "text": doc.content})
+        for document in documents:
+            item = {}
+            item["name"] = document.get_plugin("site").name
+            item["path"] = document.path
+            item["relpath"] = helpers.get_relpath(document.path, self.document.path)
+            item["text"] = document.content
+            items.append(item)
         return items
 
     # Process

@@ -1,0 +1,16 @@
+<div class="livemark-reference">
+  <h3>{{ name }}</h3>
+
+  <p>{{ info.short_description }}</p>
+
+  {% if info.long_description %}
+  <p>{{ info.long_description.replace('\n', '<br>') }}</p>
+  {% endif %}
+
+  <strong>Parameters</strong>
+  <ul>
+    {% for item in info.params %}
+    <li><strong>{{ item.arg_name }}</strong> ({{ item.type_name }}): {{ item.description }}</li>
+    {% endfor %}
+  </ul>
+</div>

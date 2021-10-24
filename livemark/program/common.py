@@ -21,7 +21,7 @@ format = Option(
 )
 
 config = Option(
-    settings.DEFAULT_CONFIG,
+    None,
     help="Path to a config file",
 )
 
@@ -33,6 +33,11 @@ host = Option(
 port = Option(
     settings.DEFAULT_PORT,
     help="Server port",
+)
+
+task = Argument(
+    None,
+    help="A task id",
 )
 
 

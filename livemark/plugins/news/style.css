@@ -1,0 +1,14 @@
+#livemark-news {
+  display: none;
+  position: fixed;
+  background: yellow;
+  border-bottom: solid 1px #dfe2e5;
+  text-align: center;
+  z-index: 1000000;
+  width: 100%;
+  top: 0;
+}
+
+#livemark-news-close {
+  margin-right: 10px;
+}

@@ -3,9 +3,9 @@ from ...plugin import Plugin
 
 
 class PreparePlugin(Plugin):
-    name = "prepare"
+    identity = "prepare"
     priority = 100
-    profile = {
+    validity = {
         "type": "object",
         "required": ["commands"],
         "properties": {
@@ -15,7 +15,7 @@ class PreparePlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def commands(self):
         return self.config.get("commands", [])
 

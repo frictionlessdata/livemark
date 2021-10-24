@@ -7,8 +7,8 @@ from ...plugin import Plugin
 
 
 class DisplayPlugin(Plugin):
-    name = "display"
-    profile = {
+    identity = "display"
+    validity = {
         "type": "object",
         "properties": {
             "speed": {"type": "integer"},
@@ -17,7 +17,7 @@ class DisplayPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def speed(self):
         return self.config.get("speed", 10)
 

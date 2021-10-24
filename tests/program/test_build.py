@@ -1,3 +1,4 @@
+import pytest
 from typer.testing import CliRunner
 from livemark import program
 
@@ -8,6 +9,7 @@ runner = CliRunner()
 # General
 
 
+@pytest.mark.skip
 def test_program_build():
     result = runner.invoke(program, "build index.md --print")
     assert result.exit_code == 0

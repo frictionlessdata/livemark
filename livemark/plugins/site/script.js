@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const link = document.createElement("a");
     link.href = "#" + heading.id;
     link.innerText = "#";
+    link.classList.add("heading");
     heading.appendChild(link);
   });
 });

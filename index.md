@@ -6,9 +6,12 @@
 [![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark)
 [![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133)
 
-> This document is completely [written and published](https://raw.githubusercontent.com/frictionlessdata/livemark/main/index.md) in Livemark notation
+```yaml remark
+type: primary
+text: This documentation portal is completely <a href="https://github.com/frictionlessdata/livemark" target="_blank">written and published</a> in Livemark notation
+```
 
-Livemark is a static site generator that extends Markdown with interactive charts, tables, scripts, and more.
+Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
 
 ## Logic
 
@@ -30,34 +33,38 @@ Livemark process your document using the Jinja templating language. Inside templ
 
 ## Table
 
-> https://handsontable.com/docs/9.0.0/tutorial-introduction.html
+> https://datatables.net/manual/index
 
-Livemark supports CSV table rendering using Handsontable, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read by [Frictionless Framework](https://framework.frictionlessdata.io/) so in addition to Handsontable options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) or a resource descriptor in a Frictionless format:
+Livemark supports CSV table rendering using DataTables, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read at the build stage so in addition to DataTables options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) as `data` property (CSV/Excel/JSON are supported). Use `columns` property to customize fields or their order:
 
 ```yaml
 '''yaml table
 data: data/cars.csv
-maxRows: 10
-filters: true
-dropdownMenu: true
-columnSorting:
-  initialConfig:
-    column: 2
-    sortOrder: desc
 width: 600
+order:
+  - [3, 'desc']
+columns:
+  - data: type
+  - data: brand
+  - data: model
+  - data: price
+  - data: kmpl
+  - data: bhp
 '''
 ```
 
 ```yaml table
 data: data/cars.csv
-maxRows: 10
-filters: true
-dropdownMenu: true
-columnSorting:
-  initialConfig:
-    column: 2
-    sortOrder: desc
 width: 600
+order:
+  - [3, 'desc']
+columns:
+  - data: type
+  - data: brand
+  - data: model
+  - data: price
+  - data: kmpl
+  - data: bhp
 ```
 
 ## Chart
@@ -111,6 +118,22 @@ width: 500
 height: 300
 ```
 
+## Map
+
+> https://geojson.org/
+
+Livemark supports GeoJson visualisations rendering (to try this example, replace the single quotes with back ticks):
+
+```yaml
+'''yaml map
+data: data/france.json
+'''
+```
+
+```yaml map
+data: data/france.json
+```
+
 ## Script
 
 > https://www.python.org/
@@ -137,7 +160,7 @@ pprint(brands.read_rows())
 
 > https://getbootstrap.com/docs/5.0/getting-started/introduction/
 
-With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `markdown` class we can use markdown inside html):
+With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `livemark-markdown` class we can use markdown inside html):
 
 ```html
 '''html markup
@@ -145,7 +168,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 <div class="container">
 <div class="row">
 <div class="col-sm">
-  <div class="markdown">![Package](data/data-package.png)</div>
+  <div class="markdown">![Package](assets/data-package.png)</div>
   <div class="text-center">
   <p><strong>Data Package</strong></p>
   <p>A simple container format for describing a coherent collection of data in a single package.</p>
@@ -163,21 +186,21 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 <div class="container">
 <div class="row">
 <div class="col-sm">
-  <div class="markdown">![Package](data/data-package.png)</div>
+  <div class="livemark-markdown">![Package](assets/data-package.png)</div>
   <div class="text-center">
   <p><strong>Data Package</strong></p>
   <p>A simple container format for describing a coherent collection of data in a single package.</p>
   </div>
 </div>
 <div class="col-sm">
-  <div class="markdown">![Resource](data/data-resource.png)</div>
+  <div class="livemark-markdown">![Resource](assets/data-resource.png)</div>
   <div class="text-center">
   <p><strong>Data Resource</strong></p>
   <p>A simple format to describe and package a single data resource such as a individual table or file.</p>
   </div>
 </div>
 <div class="col-sm">
-  <div class="markdown">![Schema](data/table-schema.png)</div>
+  <div class="livemark-markdown">![Schema](assets/table-schema.png)</div>
   <div class="text-center">
   <p><strong>Table Schema</strong></p>
   <p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
@@ -194,7 +217,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 
 Livemark supports Github Flavoured Markdown so you can use familiar notation:
 
-![Sidebar](data/content.png)
+![Sidebar](assets/content.png)
 
 ## Sidebar
 
@@ -202,7 +225,7 @@ Livemark supports Github Flavoured Markdown so you can use familiar notation:
 
 Livemark provides an automatically generated table of contents:
 
-![Sidebar](data/sidebar.png)
+![Sidebar](assets/sidebar.png)
 
 ## Scroll
 
@@ -210,4 +233,4 @@ Livemark provides an automatically generated table of contents:
 
 Livemark provides a scroll-to-top button when you scroll down your document:
 
-![Scroll](data/scroll.png)
+![Scroll](assets/scroll.png)

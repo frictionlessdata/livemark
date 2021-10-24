@@ -1,0 +1,17 @@
+<div id="livemark-news">
+  {{ plugin.text }}
+  <button id="livemark-news-close" type="button" class="close" title="Close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<script>
+  const key = 'livemark-news-code'
+  const code = '{{ plugin.code }}'
+  const news = document.getElementById('livemark-news')
+  const button = document.getElementById('livemark-news-close')
+  if (localStorage.getItem(key) !== code) news.style.display = 'block'
+  button.addEventListener('click', () => {
+    localStorage.setItem(key, code)
+    news.style.display = 'none'
+  })
+</script>

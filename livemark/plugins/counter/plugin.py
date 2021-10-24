@@ -2,8 +2,8 @@ from ...plugin import Plugin
 
 
 class CounterPlugin(Plugin):
-    name = "counter"
-    profile = {
+    identity = "counter"
+    validity = {
         "type": "object",
         "required": ["type", "code"],
         "properties": {
@@ -14,11 +14,11 @@ class CounterPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def type(self):
         return self.config.get("type")
 
-    @Plugin.property
+    @property
     def code(self):
         return self.config.get("code")
 

@@ -3,9 +3,9 @@ from ...plugin import Plugin
 
 
 class LinksPlugin(Plugin):
-    name = "links"
+    identity = "links"
     priority = 10
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "items": {
@@ -23,7 +23,7 @@ class LinksPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def items(self):
         github = self.document.get_plugin("github")
         items = deepcopy(self.config.get("items", []))

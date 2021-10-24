@@ -1,0 +1,9 @@
+<div class="livemark-markup">
+  <div id="{{ element }}"></div>
+</div>
+<script type="text/babel">
+  const getComponent = () => {
+    {{ content }}
+  }
+  ReactDOM.render(getComponent(), document.getElementById('{{ element }}'));
+</script>

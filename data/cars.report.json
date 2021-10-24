@@ -1,0 +1,84 @@
+{
+  "version": "4.11.0",
+  "time": 0.04,
+  "errors": [],
+  "tasks": [
+    {
+      "resource": {
+        "path": "data/cars.csv",
+        "name": "cars",
+        "profile": "tabular-data-resource",
+        "scheme": "file",
+        "format": "csv",
+        "hashing": "md5",
+        "encoding": "utf-8",
+        "schema": {
+          "fields": [
+            {
+              "name": "brand",
+              "type": "string"
+            },
+            {
+              "name": "model",
+              "type": "string"
+            },
+            {
+              "name": "price",
+              "type": "integer"
+            },
+            {
+              "name": "kmpl",
+              "type": "number"
+            },
+            {
+              "name": "bhp",
+              "type": "integer"
+            },
+            {
+              "name": "type",
+              "type": "string"
+            }
+          ]
+        },
+        "stats": {
+          "hash": "6a601532555ece341408e562511d3561",
+          "bytes": 1497,
+          "fields": 6,
+          "rows": 42
+        }
+      },
+      "time": 0.04,
+      "scope": [
+        "hash-count-error",
+        "byte-count-error",
+        "field-count-error",
+        "row-count-error",
+        "blank-header",
+        "extra-label",
+        "missing-label",
+        "blank-label",
+        "duplicate-label",
+        "incorrect-label",
+        "blank-row",
+        "primary-key-error",
+        "foreign-key-error",
+        "extra-cell",
+        "missing-cell",
+        "type-error",
+        "constraint-error",
+        "unique-error"
+      ],
+      "partial": false,
+      "errors": [],
+      "stats": {
+        "errors": 0
+      },
+      "valid": true
+    }
+  ],
+  "stats": {
+    "errors": 0,
+    "tasks": 1
+  },
+  "valid": true
+}

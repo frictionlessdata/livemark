@@ -1,28 +1,33 @@
 from ...plugin import Plugin
 
 
+# NOTE:
+# review why we check that self.document.project exists in items
+
+
 class SignsPlugin(Plugin):
-    name = "signs"
+    identity = "signs"
     priority = 40
 
     # Context
 
-    @Plugin.property
+    @property
     def items(self):
-        pages = self.document.get_plugin("pages")
-        if pages and pages.items:
-            prev = None
-            next = None
-            current_number = None
-            for number, item in enumerate(pages.flatten_items, start=1):
-                if item["path"] == self.document.path:
-                    current_number = number
-            if current_number:
-                if current_number > 1:
-                    prev = pages.flatten_items[current_number - 2]
-                if current_number < len(pages.flatten_items):
-                    next = pages.flatten_items[current_number]
-            return {"prev": prev, "next": next}
+        if self.document.project:
+            documents = self.document.project.documents
+            if documents:
+                prev = None
+                next = None
+                current_number = None
+                for number, document in enumerate(documents, start=1):
+                    if document.path == self.document.path:
+                        current_number = number
+                if current_number:
+                    if current_number > 1:
+                        prev = documents[current_number - 2]
+                    if current_number < len(documents):
+                        next = documents[current_number]
+                return {"prev": prev, "next": next}
 
     # Process
 

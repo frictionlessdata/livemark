@@ -1,0 +1,9 @@
+<div class="livemark-package">
+  <h3>{{ package.title }}</h3>
+  <p>{{ package.description_text or 'No description provided' }}</p>
+  <h4>Resources</h4>
+  {% for resource in package.resources %}
+    <h5>{{ resource.title or resource.name }}</h5>
+    <p>{{ resource.description_text or 'No description provided' }}</p>
+  {% endfor %}
+</div>

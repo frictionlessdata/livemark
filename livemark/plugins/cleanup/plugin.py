@@ -3,9 +3,9 @@ from ...plugin import Plugin
 
 
 class CleanupPlugin(Plugin):
-    name = "cleanup"
+    identity = "cleanup"
     priority = -100
-    profile = {
+    validity = {
         "type": "object",
         "required": ["commands"],
         "properties": {
@@ -15,7 +15,7 @@ class CleanupPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def commands(self):
         return self.config.get("commands", [])
 

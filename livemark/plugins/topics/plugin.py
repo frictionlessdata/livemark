@@ -1,11 +1,11 @@
 from ...plugin import Plugin
-from ...exception import LivemarkException
+from ... import errors
 
 
 class TopicsPlugin(Plugin):
-    name = "topics"
+    identity = "topics"
     priority = 60
-    profile = {
+    validity = {
         "type": "object",
         "properties": {
             "selector": {"type": "string"},
@@ -14,11 +14,11 @@ class TopicsPlugin(Plugin):
 
     # Context
 
-    @Plugin.property
+    @property
     def selector(self):
         selector = self.config.get("selector", "h2, h3")
         if len(selector.split(",")) > 2:
-            raise LivemarkException("Maximum topic levels is 2")
+            raise errors.Error("Maximum topic levels is 2")
         return selector
 
     # Process
