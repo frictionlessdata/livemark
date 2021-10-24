@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
+<meta name="description" content="Currently, Livemark supports two rendering target: HTML and Markdown.">
 <meta name="keywords" content="rendering">
 <link rel="icon" href="../../assets/favicon.ico">
 <title>Rendering | Livemark</title>
@@ -1991,10 +1991,25 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 13:59)
+  (2021-10-24 18:11)
 </div>
 
 <h1>Rendering</h1>
+<p>Currently, Livemark supports two rendering target: HTML and Markdown.</p>
+<h2>HTML</h2>
+<p>To build a document as an HTML (all the commands belows are equal):</p>
+<pre><code class="language-bash">$ livemark build
+$ livemark build index.md
+$ livemark build index.md --target index.html
+</code></pre>
+<p>In-general, most of Livemark features are only applicable to the HTML rendering target.</p>
+<h2>Markdown</h2>
+<p>To build a document as a Markdown:</p>
+<pre><code class="language-bash">$ livemark build source.md --target target.md
+</code></pre>
+<p>Note that for the markdown rendering only a limited set of plugins are supported such as <code>script</code>. To get all from Livemark it's better to reder documents as HTML.</p>
+<h2>Custom</h2>
+<p>You can <a href="../plugin-system/writing-plugin.html">write your own</a> renderer using Plugin System or use an <a href="../plugin-system/adding-plugin.html">external one</a>.</p>
 
 <div id="livemark-signs">
   <div>
@@ -2484,7 +2499,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Rendering',
           'path': 'pages/livemark-features/rendering',
           'relpath': 'rendering',
-          'text': "# Rendering",
+          'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. ## Custom You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
       },
           'pages/livemark-features/appearance': {
           'name': 'Appearance',
@@ -2556,7 +2571,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'blog/index',
           'relpath': '../../blog/index',
-          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
@@ -2568,7 +2583,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Not Found',
           'path': '404',
           'relpath': '../../404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027[{\"next\": \"pages/installation\", \"prev\": \"getting-started\"}]\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {
