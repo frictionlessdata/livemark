@@ -1785,6 +1785,14 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+.livemark-task pre:first-child {
+  margin-bottom: 0 !important;
+  border-bottom: dashed 1px #ccc;
+}
+
+</style>
+<style>
+
 .livemark-video {
   padding-bottom: 10px;
 }
@@ -2316,7 +2324,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemark Markdown',
           'path': 'docs/livemark-markdown',
           'relpath': 'livemark-markdown',
-          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ``` ```python file livemark/errors.py ``` ```python script run=data-extract print(\u0027Data extract!\u0027) ``` ```python script run=data-transform print(\u0027Data transform!\u0027) ``` ```python script run=data-load print(\u0027Data load!\u0027) ``` ```bash script run=data-bash echo \u0027Data bash!\u0027 ```",
+          'text': "# Livemark Markdown ```yaml remark type: warning text: It\u0027s a draft page for testing different features ``` ```yaml reference path: livemark.Document ``` ```python file livemark/errors.py ``` ```python task id=data-extract print(\u0027Data extract!\u0027) ``` ```python task id=data-transform print(\u0027Data transform!\u0027) ``` ```python task id=data-load print(\u0027Data load!\u0027) ``` ```bash task id=data-bash echo \u0027Data bash!\u0027 ```",
       },
           'docs/livemark-components': {
           'name': 'Livemark Components',

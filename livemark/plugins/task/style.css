@@ -1,0 +1,4 @@
+.livemark-task pre:first-child {
+  margin-bottom: 0 !important;
+  border-bottom: dashed 1px #ccc;
+}
