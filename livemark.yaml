@@ -26,7 +26,9 @@ pages:
       items:
         - path: pages/getting-started/installation
         - path: pages/getting-started/configuration
+        - path: pages/getting-started/first-project
         - path: pages/getting-started/data-journalism
+        - path: pages/getting-started/education-materials
         - path: pages/getting-started/documentation-writing
         - path: pages/getting-started/troubleshooting
         - path: pages/getting-started/contributing
