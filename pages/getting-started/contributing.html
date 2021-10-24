@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="None">
-<meta name="keywords" content="writing,a,plugin">
+<meta name="keywords" content="contributing">
 <link rel="icon" href="../../assets/favicon.ico">
-<title>Writing a Plugin | Livemark</title>
+<title>Contributing | Livemark</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1810,38 +1810,38 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Introduction
       </a>
           </li>
-        <li class="primary group ">
+        <li class="primary group active">
       <a href="" class="primary">
         Getting Started
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="../getting-started/installation.html" class="secondary">
+          <a href="installation.html" class="secondary">
             Installation
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../getting-started/configuration.html" class="secondary">
+          <a href="configuration.html" class="secondary">
             Configuration
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../getting-started/data-journalism.html" class="secondary">
+          <a href="data-journalism.html" class="secondary">
             Data Journalism
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../getting-started/documentation-writing.html" class="secondary">
+          <a href="documentation-writing.html" class="secondary">
             Documentation Writing
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../getting-started/troubleshooting.html" class="secondary">
+          <a href="troubleshooting.html" class="secondary">
             Troubleshooting
           </a>
         </li>
-                <li class="secondary ">
-          <a href="../getting-started/contributing.html" class="secondary">
+                <li class="secondary active">
+          <a href="contributing.html" class="secondary">
             Contributing
           </a>
         </li>
@@ -1916,28 +1916,28 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
               </ul>
           </li>
-        <li class="primary group active">
+        <li class="primary group ">
       <a href="" class="primary">
         Plugin System
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="adding-plugin.html" class="secondary">
+          <a href="../plugin-system/adding-plugin.html" class="secondary">
             Adding a Plugin
           </a>
         </li>
-                <li class="secondary active">
-          <a href="writing-plugin.html" class="secondary">
+                <li class="secondary ">
+          <a href="../plugin-system/writing-plugin.html" class="secondary">
             Writing a Plugin
           </a>
         </li>
                 <li class="secondary ">
-          <a href="architecture.html" class="secondary">
+          <a href="../plugin-system/architecture.html" class="secondary">
             Architecture
           </a>
         </li>
                 <li class="secondary ">
-          <a href="reference.html" class="secondary">
+          <a href="../plugin-system/reference.html" class="secondary">
             Reference
           </a>
         </li>
@@ -1984,18 +1984,18 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   (2021-10-24 13:59)
 </div>
 
-<h1>Writing a Plugin</h1>
+<h1>Contributing</h1>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="/docs/plugin-system/architecture.html">
-        Architecture »
+      <a href="/pages/livemark-markdown/basics.html">
+        Basics »
       </a>
     </div>
             <div class="prev">
-      <a href="/docs/plugin-system/adding-plugin.html">
-        « Adding a Plugin
+      <a href="/pages/getting-started/troubleshooting.html">
+        « Troubleshooting
       </a>
     </div>
       </div>
@@ -2042,7 +2042,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/docs/plugin-system/writing-plugin.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/getting-started/contributing.md" target="_blank">
         Edit
       </a>
     </li>
@@ -2386,147 +2386,147 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../../index',
           'text': "# Livemark [![Build](https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main)](https://github.com/frictionlessdata/livemark/actions) [![Coverage](https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main)](https://codecov.io/gh/frictionlessdata/livemark) [![Registry](https://img.shields.io/pypi/v/livemark.svg)](https://pypi.python.org/pypi/livemark) [![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark) [![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133) ```yaml remark type: primary text: This documentation portal is completely written and published in Livemark notation ``` Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features. ## Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` - Volkswagen Vento: $785 - Hyundai Verna: $774 - Skoda Rapid: $756 - Suzuki Ciaz: $725 - Renault Scala: $724 ## Table \u003e https://datatables.net/manual/index Livemark supports CSV table rendering using DataTables, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read at the build stage so in addition to DataTables options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) as `data` property (CSV/Excel/JSON are supported). Use `columns` property to customize fields or their order: ```yaml \u0027\u0027\u0027yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp \u0027\u0027\u0027 ``` ```yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp ``` ## Chart \u003e https://vega.github.io/vega-lite/ Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml chart data: url: data/cars.csv mark: circle selection: brush: type: interval # other options are omitted width: 500 height: 300 \u0027\u0027\u0027 ``` ```yaml chart data: url: data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ## Map \u003e https://geojson.org/ Livemark supports GeoJson visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml map data: data/france.json \u0027\u0027\u0027 ``` ```yaml map data: data/france.json ``` ## Script \u003e https://www.python.org/ Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts: ```python script from pprint import pprint from frictionless import Resource, transform, steps brands = transform( Resource(\"data/cars.csv\"), steps=[ steps.table_normalize(), steps.table_aggregate(group_name=\"brand\", aggregation={\"price\": (\"price\", max)}), steps.row_sort(field_names=[\"price\"], reverse=True), steps.row_slice(head=5), ], ) pprint(brands.read_rows()) ``` ## Markup \u003e https://getbootstrap.com/docs/5.0/getting-started/introduction/ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `livemark-markdown` class we can use markdown inside html): ```html \u0027\u0027\u0027html markup ![Package](assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. \u0027\u0027\u0027 ``` ```html markup ![Package](assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. ![Resource](assets/data-resource.png) Data Resource A simple format to describe and package a single data resource such as a individual table or file. ![Schema](assets/table-schema.png) Table Schema A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON. ``` ## Content \u003e https://guides.github.com/features/mastering-markdown/ Livemark supports Github Flavoured Markdown so you can use familiar notation: ![Sidebar](assets/content.png) ## Sidebar \u003e https://tscanlin.github.io/tocbot/ Livemark provides an automatically generated table of contents: ![Sidebar](assets/sidebar.png) ## Scroll \u003e https://azrsix.github.io/ue-scroll-js/ Livemark provides a scroll-to-top button when you scroll down your document: ![Scroll](assets/scroll.png)",
       },
-          'docs/getting-started/installation': {
+          'pages/getting-started/installation': {
           'name': 'Installation',
-          'path': 'docs/getting-started/installation',
-          'relpath': '../getting-started/installation',
+          'path': 'pages/getting-started/installation',
+          'relpath': 'installation',
           'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../assets/github.png)",
       },
-          'docs/getting-started/configuration': {
+          'pages/getting-started/configuration': {
           'name': 'Configuration',
-          'path': 'docs/getting-started/configuration',
-          'relpath': '../getting-started/configuration',
+          'path': 'pages/getting-started/configuration',
+          'relpath': 'configuration',
           'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
       },
-          'docs/getting-started/data-journalism': {
+          'pages/getting-started/data-journalism': {
           'name': 'Data Journalism',
-          'path': 'docs/getting-started/data-journalism',
-          'relpath': '../getting-started/data-journalism',
+          'path': 'pages/getting-started/data-journalism',
+          'relpath': 'data-journalism',
           'text': "# Data Journalism",
       },
-          'docs/getting-started/documentation-writing': {
+          'pages/getting-started/documentation-writing': {
           'name': 'Documentation Writing',
-          'path': 'docs/getting-started/documentation-writing',
-          'relpath': '../getting-started/documentation-writing',
+          'path': 'pages/getting-started/documentation-writing',
+          'relpath': 'documentation-writing',
           'text': "# Documentation Writing",
       },
-          'docs/getting-started/troubleshooting': {
+          'pages/getting-started/troubleshooting': {
           'name': 'Troubleshooting',
-          'path': 'docs/getting-started/troubleshooting',
-          'relpath': '../getting-started/troubleshooting',
+          'path': 'pages/getting-started/troubleshooting',
+          'relpath': 'troubleshooting',
           'text': "# Troubleshooting",
       },
-          'docs/getting-started/contributing': {
+          'pages/getting-started/contributing': {
           'name': 'Contributing',
-          'path': 'docs/getting-started/contributing',
-          'relpath': '../getting-started/contributing',
+          'path': 'pages/getting-started/contributing',
+          'relpath': 'contributing',
           'text': "# Contributing",
       },
-          'docs/livemark-markdown/basics': {
+          'pages/livemark-markdown/basics': {
           'name': 'Basics',
-          'path': 'docs/livemark-markdown/basics',
+          'path': 'pages/livemark-markdown/basics',
           'relpath': '../livemark-markdown/basics',
           'text': "# Basics",
       },
-          'docs/livemark-markdown/logic': {
+          'pages/livemark-markdown/logic': {
           'name': 'Logic',
-          'path': 'docs/livemark-markdown/logic',
+          'path': 'pages/livemark-markdown/logic',
           'relpath': '../livemark-markdown/logic',
           'text': "# Logic",
       },
-          'docs/livemark-markdown/table': {
+          'pages/livemark-markdown/table': {
           'name': 'Table',
-          'path': 'docs/livemark-markdown/table',
+          'path': 'pages/livemark-markdown/table',
           'relpath': '../livemark-markdown/table',
           'text': "# Table",
       },
-          'docs/livemark-markdown/chart': {
+          'pages/livemark-markdown/chart': {
           'name': 'Chart',
-          'path': 'docs/livemark-markdown/chart',
+          'path': 'pages/livemark-markdown/chart',
           'relpath': '../livemark-markdown/chart',
           'text': "# Chart",
       },
-          'docs/livemark-markdown/script': {
+          'pages/livemark-markdown/script': {
           'name': 'Script',
-          'path': 'docs/livemark-markdown/script',
+          'path': 'pages/livemark-markdown/script',
           'relpath': '../livemark-markdown/script',
           'text': "# Script",
       },
-          'docs/livemark-markdown/markup': {
+          'pages/livemark-markdown/markup': {
           'name': 'Markup',
-          'path': 'docs/livemark-markdown/markup',
+          'path': 'pages/livemark-markdown/markup',
           'relpath': '../livemark-markdown/markup',
           'text': "# Markup",
       },
-          'docs/livemark-features/rendering': {
+          'pages/livemark-features/rendering': {
           'name': 'Rendering',
-          'path': 'docs/livemark-features/rendering',
+          'path': 'pages/livemark-features/rendering',
           'relpath': '../livemark-features/rendering',
           'text': "# Rendering",
       },
-          'docs/livemark-features/appearance': {
+          'pages/livemark-features/appearance': {
           'name': 'Appearance',
-          'path': 'docs/livemark-features/appearance',
+          'path': 'pages/livemark-features/appearance',
           'relpath': '../livemark-features/appearance',
           'text': "# Appearance",
       },
-          'docs/livemark-features/navigation': {
+          'pages/livemark-features/navigation': {
           'name': 'Rendering',
-          'path': 'docs/livemark-features/navigation',
+          'path': 'pages/livemark-features/navigation',
           'relpath': '../livemark-features/navigation',
           'text': "# Rendering",
       },
-          'docs/livemark-features/search': {
+          'pages/livemark-features/search': {
           'name': 'Search',
-          'path': 'docs/livemark-features/search',
+          'path': 'pages/livemark-features/search',
           'relpath': '../livemark-features/search',
           'text': "# Search",
       },
-          'docs/livemark-features/others': {
+          'pages/livemark-features/others': {
           'name': 'Others',
-          'path': 'docs/livemark-features/others',
+          'path': 'pages/livemark-features/others',
           'relpath': '../livemark-features/others',
           'text': "# Others",
       },
-          'docs/plugin-system/adding-plugin': {
+          'pages/plugin-system/adding-plugin': {
           'name': 'Adding a Plugin',
-          'path': 'docs/plugin-system/adding-plugin',
-          'relpath': 'adding-plugin',
+          'path': 'pages/plugin-system/adding-plugin',
+          'relpath': '../plugin-system/adding-plugin',
           'text': "# Adding a Plugin",
       },
-          'docs/plugin-system/writing-plugin': {
+          'pages/plugin-system/writing-plugin': {
           'name': 'Writing a Plugin',
-          'path': 'docs/plugin-system/writing-plugin',
-          'relpath': 'writing-plugin',
+          'path': 'pages/plugin-system/writing-plugin',
+          'relpath': '../plugin-system/writing-plugin',
           'text': "# Writing a Plugin",
       },
-          'docs/plugin-system/architecture': {
+          'pages/plugin-system/architecture': {
           'name': 'Architecture',
-          'path': 'docs/plugin-system/architecture',
-          'relpath': 'architecture',
+          'path': 'pages/plugin-system/architecture',
+          'relpath': '../plugin-system/architecture',
           'text': "# Architecture",
       },
-          'docs/plugin-system/reference': {
+          'pages/plugin-system/reference': {
           'name': 'Reference',
-          'path': 'docs/plugin-system/reference',
-          'relpath': 'reference',
+          'path': 'pages/plugin-system/reference',
+          'relpath': '../plugin-system/reference',
           'text': "# Reference",
       },
-          'docs/universe/livemarks': {
+          'pages/universe/livemarks': {
           'name': 'Livemarks',
-          'path': 'docs/universe/livemarks',
+          'path': 'pages/universe/livemarks',
           'relpath': '../universe/livemarks',
           'text': "# Livemarks",
       },
-          'docs/universe/plugins': {
+          'pages/universe/plugins': {
           'name': 'Plugins',
-          'path': 'docs/universe/plugins',
+          'path': 'pages/universe/plugins',
           'relpath': '../universe/plugins',
           'text': "# Plugins",
       },
-          'docs/forum': {
+          'pages/forum': {
           'name': 'Forum',
-          'path': 'docs/forum',
+          'path': 'pages/forum',
           'relpath': '../forum',
           'text': "# Forum ```yaml remark type: warning text: It\u0027s testing page for a commenting system ```",
       },

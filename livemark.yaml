@@ -24,40 +24,40 @@ pages:
       path: index
     - name: Getting Started
       items:
-        - path: docs/getting-started/installation
-        - path: docs/getting-started/configuration
-        - path: docs/getting-started/data-journalism
-        - path: docs/getting-started/documentation-writing
-        - path: docs/getting-started/troubleshooting
-        - path: docs/getting-started/contributing
+        - path: pages/getting-started/installation
+        - path: pages/getting-started/configuration
+        - path: pages/getting-started/data-journalism
+        - path: pages/getting-started/documentation-writing
+        - path: pages/getting-started/troubleshooting
+        - path: pages/getting-started/contributing
     - name: Livemark Markdown
       items:
-        - path: docs/livemark-markdown/basics
-        - path: docs/livemark-markdown/logic
-        - path: docs/livemark-markdown/table
-        - path: docs/livemark-markdown/chart
-        - path: docs/livemark-markdown/script
-        - path: docs/livemark-markdown/markup
+        - path: pages/livemark-markdown/basics
+        - path: pages/livemark-markdown/logic
+        - path: pages/livemark-markdown/table
+        - path: pages/livemark-markdown/chart
+        - path: pages/livemark-markdown/script
+        - path: pages/livemark-markdown/markup
     - name: Livemark Features
       items:
-        - path: docs/livemark-features/rendering
-        - path: docs/livemark-features/appearance
-        - path: docs/livemark-features/navigation
-        - path: docs/livemark-features/search
-        - path: docs/livemark-features/others
+        - path: pages/livemark-features/rendering
+        - path: pages/livemark-features/appearance
+        - path: pages/livemark-features/navigation
+        - path: pages/livemark-features/search
+        - path: pages/livemark-features/others
     - name: Plugin System
       items:
-        - path: docs/plugin-system/adding-plugin
-        - path: docs/plugin-system/writing-plugin
-        - path: docs/plugin-system/architecture
-        - path: docs/plugin-system/reference
+        - path: pages/plugin-system/adding-plugin
+        - path: pages/plugin-system/writing-plugin
+        - path: pages/plugin-system/architecture
+        - path: pages/plugin-system/reference
     - name: Universe
       items:
-        - path: docs/universe/livemarks
-        - path: docs/universe/plugins
-    - path: docs/forum
+        - path: pages/universe/livemarks
+        - path: pages/universe/plugins
+    - path: pages/forum
     - path: blog/index
 redirect:
   items:
     - prev: getting-started
-      next: docs/installation
+      next: pages/installation
