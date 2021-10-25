@@ -106,3 +106,19 @@ class: border
 ```
 
 ## News
+
+It adds news to the top of the site:
+
+```yaml image
+path: ../../assets/news.png
+width: 100%
+height: unset
+class: border
+```
+
+> livemark.yaml
+
+```yaml
+news:
+  text: It's test news
+```
