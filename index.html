@@ -1897,7 +1897,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </li>
         <li class="primary group ">
       <a href="" class="primary">
-        Livemark Markdown
+        Guides and Tutorials
       </a>
             <ul class="secondary">
                 <li class="secondary ">
@@ -1944,7 +1944,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </li>
         <li class="primary group ">
       <a href="" class="primary">
-        Livemark Features
+        Plugins Reference
       </a>
             <ul class="secondary">
                 <li class="secondary ">
@@ -1986,7 +1986,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </li>
         <li class="primary group ">
       <a href="" class="primary">
-        Plugin System
+        Architecture
       </a>
             <ul class="secondary">
                 <li class="secondary ">
@@ -3147,37 +3147,37 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'pages/livemark-features/blog',
           'relpath': 'pages/livemark-features/blog',
-          'text': "# Blog",
+          'text': "# Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder - put there an article e.g.",
       },
           'pages/livemark-features/others': {
           'name': 'Others',
           'path': 'pages/livemark-features/others',
           'relpath': 'pages/livemark-features/others',
-          'text': "# Others ## Cleanup ## Counter ## Github ## Prepare ## Redirect",
+          'text': "# Others ## Cleanup This feature provides an ability to spicify a list of Bash command to be run after the document building: \u003e livemark.yaml ```yaml cleanup: - rm table.csv ``` ## Counter This feature currently support a Google Analytics counter that can be added to all the project pages: \u003e livemark.yaml ```yaml counter: type: google code: G- ``` ## Github Some plugins rely on Github repository information that is provided by this feature. Be default, it will be inferred automatically from you local `.git` directory. It\u0027s also possible to configure it manually: \u003e livemark.yaml ```yaml github: user: frictionlessdata repo: livemark ``` ## Prepare This feature provides an ability to spicify a list of Bash command to be run before the document building: \u003e livemark.yaml ```yaml prepare: - cp data/table.csv table.csv ``` ## Redirect Using Github Pages as a hosting it\u0027s possible to setup a redirect table: \u003e livemark.yaml ```yaml redirect: items: - prev: getting-started next: pages/installation ``` Under the hood, Livemark will create a `404.html` file and use a client-side redirect.",
       },
           'pages/plugin-system/adding-plugin': {
           'name': 'Adding a Plugin',
           'path': 'pages/plugin-system/adding-plugin',
           'relpath': 'pages/plugin-system/adding-plugin',
-          'text': "# Adding a Plugin",
+          'text': "# Adding a Plugin ```yaml remark type: warning text: This documentation page is work-in-progress ``` ## Overview When you work on your Livemark project there are different options of adding a plugin to the building process: - installing an external plugin - adding a custom plugin ## External Plugin You can install an external plugin, for example: ```bash $ pip install livemark-ckan ``` And activate it in `livemark.yaml` file: ```yaml ckan: true # or a plugin config ``` ## Custom Plugin You can [Write a Plugin](write-plugin.html) and put it into `plugin.py` module or export from `plugins` package in your project root. You don\u0027t need to activate it in `livemark.yaml`. For example, you can take a look how it works in the [Livemark Project Template](https://github.com/frictionlessdata/livemark-project). It\u0027s also possible to add a plugin programmatically: ```python from livemark import system system.register(CustomPlugin) ```",
       },
           'pages/plugin-system/writing-plugin': {
           'name': 'Writing a Plugin',
           'path': 'pages/plugin-system/writing-plugin',
           'relpath': 'pages/plugin-system/writing-plugin',
-          'text': "# Writing a Plugin",
+          'text': "# Writing a Plugin ```yaml remark type: warning text: This documentation page is work-in-progress ``` ## Overview Livemark provides quite simple plugin interface. There are 4 main hooks a plugin author can use to alter the rendering process. All of them take an corresponding object that can be updated: - `Pluing.process_project(project)` - `pluing.process_document(document)` - `pluing.process_snippet(snippet)` - `pluing.process_markup(markup)` ## Example This plugin simply adds a string to H1 tag on every page in the project: ```python from livemark import Plugin class CustomPlugin(Plugin): identity = \"custom\" # Process def process_markup(self, markup): markup.add_markup(\"(template)\", target=\"h1\") ``` ## References To write a good plugin explore core plugins, architecture, and API References: - [Core Plugins](https://github.com/frictionlessdata/livemark/tree/main/livemark/plugins) - [Architecture](architecture.html) - [API Reference](reference.html)",
       },
           'pages/plugin-system/architecture': {
           'name': 'Architecture',
           'path': 'pages/plugin-system/architecture',
           'relpath': 'pages/plugin-system/architecture',
-          'text': "# Architecture",
+          'text': "# Architecture ```yaml remark type: warning text: This documentation page is work-in-progress ``` ## Overview In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to ouput different formats but the main Livemark\u0027s specialization is Markdown-to-HTML conversion. ## Plugins Livemark\u0027s core only provides an abstract classes like Project, Document, or Snippet. The actual work is done by various plugins like HtmlPlugin, SitePlugin, or TablePlugin. You can find their description in the Livemark Markdown and Livemark Features sections. ## Build On the figure below we present the Livemark\u0027s building flow schematically: a Markdown document containing various snippets being converted to an HTML document containing various markup blocks by Livemark and its plugins: ```yaml image path: ../../assets/flow.png width: 100% height: unset ```",
       },
           'pages/plugin-system/reference': {
           'name': 'Reference',
           'path': 'pages/plugin-system/reference',
           'relpath': 'pages/plugin-system/reference',
-          'text': "# Reference ```yaml remark type: warning text: API Reference is work-in-progress ``` Currently, you can explore main Livemark\u0027s classes on Github: - [Document](https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py) - [Markup](https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py) - [Plugin](https://github.com/frictionlessdata/livemark/blob/main/livemark/plugin.py) - [Project](https://github.com/frictionlessdata/livemark/blob/main/livemark/project.py) - [Server](https://github.com/frictionlessdata/livemark/blob/main/livemark/server.py) - [Snippet](https://github.com/frictionlessdata/livemark/blob/main/livemark/snippet.py) - [System](https://github.com/frictionlessdata/livemark/blob/main/livemark/system.py)",
+          'text': "# Reference ```yaml remark type: warning text: This documentation page is work-in-progress ``` Currently, you can explore main Livemark\u0027s classes on Github: - [Document](https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py) - [Markup](https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py) - [Plugin](https://github.com/frictionlessdata/livemark/blob/main/livemark/plugin.py) - [Project](https://github.com/frictionlessdata/livemark/blob/main/livemark/project.py) - [Server](https://github.com/frictionlessdata/livemark/blob/main/livemark/server.py) - [Snippet](https://github.com/frictionlessdata/livemark/blob/main/livemark/snippet.py) - [System](https://github.com/frictionlessdata/livemark/blob/main/livemark/system.py)",
       },
           'pages/universe/livemarks': {
           'name': 'Livemarks',

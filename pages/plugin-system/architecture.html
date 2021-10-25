@@ -1895,7 +1895,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </li>
         <li class="primary group ">
       <a href="" class="primary">
-        Livemark Markdown
+        Guides and Tutorials
       </a>
             <ul class="secondary">
                 <li class="secondary ">
@@ -1942,7 +1942,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </li>
         <li class="primary group ">
       <a href="" class="primary">
-        Livemark Features
+        Plugins Reference
       </a>
             <ul class="secondary">
                 <li class="secondary ">
@@ -1984,7 +1984,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </li>
         <li class="primary group active">
       <a href="" class="primary">
-        Plugin System
+        Architecture
       </a>
             <ul class="secondary">
                 <li class="secondary ">
@@ -2595,13 +2595,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'pages/livemark-features/blog',
           'relpath': '../livemark-features/blog',
-          'text': "# Blog",
+          'text': "# Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder - put there an article e.g.",
       },
           'pages/livemark-features/others': {
           'name': 'Others',
           'path': 'pages/livemark-features/others',
           'relpath': '../livemark-features/others',
-          'text': "# Others ## Cleanup ## Counter ## Github ## Prepare ## Redirect",
+          'text': "# Others ## Cleanup This feature provides an ability to spicify a list of Bash command to be run after the document building: \u003e livemark.yaml ```yaml cleanup: - rm table.csv ``` ## Counter This feature currently support a Google Analytics counter that can be added to all the project pages: \u003e livemark.yaml ```yaml counter: type: google code: G- ``` ## Github Some plugins rely on Github repository information that is provided by this feature. Be default, it will be inferred automatically from you local `.git` directory. It\u0027s also possible to configure it manually: \u003e livemark.yaml ```yaml github: user: frictionlessdata repo: livemark ``` ## Prepare This feature provides an ability to spicify a list of Bash command to be run before the document building: \u003e livemark.yaml ```yaml prepare: - cp data/table.csv table.csv ``` ## Redirect Using Github Pages as a hosting it\u0027s possible to setup a redirect table: \u003e livemark.yaml ```yaml redirect: items: - prev: getting-started next: pages/installation ``` Under the hood, Livemark will create a `404.html` file and use a client-side redirect.",
       },
           'pages/plugin-system/adding-plugin': {
           'name': 'Adding a Plugin',
@@ -2631,13 +2631,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemarks',
           'path': 'pages/universe/livemarks',
           'relpath': '../universe/livemarks',
-          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
+          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup {% for row in frictionless.extract(\u0027data/livemarks.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
           'path': 'pages/universe/plugins',
           'relpath': '../universe/plugins',
-          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup livemark-ckan It\u0027s a CKAN plugin for Livemark Github 1 ```",
+          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup {% for row in frictionless.extract(\u0027data/plugins.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
       },
           'pages/forum': {
           'name': 'Forum',
@@ -2649,7 +2649,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'blog/index',
           'relpath': '../../blog/index',
-          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
+          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
@@ -2661,7 +2661,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Not Found',
           'path': '404',
           'relpath': '../../404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027[{\"next\": \"pages/installation\", \"prev\": \"getting-started\"}]\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {

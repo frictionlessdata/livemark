@@ -36,7 +36,7 @@ pages:
         - path: pages/getting-started/documentation-writing
         - path: pages/getting-started/troubleshooting
         - path: pages/getting-started/contributing
-    - name: Livemark Markdown
+    - name: Guides and Tutorials
       items:
         - path: pages/livemark-markdown/basics
         - path: pages/livemark-markdown/logic
@@ -46,7 +46,7 @@ pages:
         - path: pages/livemark-markdown/task
         - path: pages/livemark-markdown/markup
         - path: pages/livemark-markdown/others
-    - name: Livemark Features
+    - name: Plugins Reference
       items:
         - path: pages/livemark-features/rendering
         - path: pages/livemark-features/appearance
@@ -55,7 +55,7 @@ pages:
         - path: pages/livemark-features/search
         - path: pages/livemark-features/blog
         - path: pages/livemark-features/others
-    - name: Plugin System
+    - name: Architecture
       items:
         - path: pages/plugin-system/adding-plugin
         - path: pages/plugin-system/writing-plugin
