@@ -30,35 +30,33 @@ pages:
       items:
         - path: pages/getting-started/installation
         - path: pages/getting-started/configuration
-        - path: pages/getting-started/first-project
-        - path: pages/getting-started/data-journalism
-        - path: pages/getting-started/education-materials
-        - path: pages/getting-started/documentation-writing
+        - path: pages/getting-started/using-markdown
+        - path: pages/getting-started/building-websites
         - path: pages/getting-started/troubleshooting
         - path: pages/getting-started/contributing
     - name: Guides and Tutorials
       items:
-        - path: pages/livemark-markdown/basics
-        - path: pages/livemark-markdown/logic
-        - path: pages/livemark-markdown/table
-        - path: pages/livemark-markdown/chart
-        - path: pages/livemark-markdown/script
-        - path: pages/livemark-markdown/task
-        - path: pages/livemark-markdown/markup
-        - path: pages/livemark-markdown/others
-    - name: Plugins Reference
+        - path: pages/guides-and-tutorials/data-journalism
+        - path: pages/guides-and-tutorials/software-education
+        - path: pages/guides-and-tutorials/python-development
+    - name: Feature Reference
       items:
-        - path: pages/livemark-features/rendering
-        - path: pages/livemark-features/appearance
-        - path: pages/livemark-features/navigation
-        - path: pages/livemark-features/comments
-        - path: pages/livemark-features/search
-        - path: pages/livemark-features/blog
-        - path: pages/livemark-features/others
-    - name: Architecture
+        - path: pages/feature-reference/task
+        - path: pages/feature-reference/logic
+        - path: pages/feature-reference/table
+        - path: pages/feature-reference/chart
+        - path: pages/feature-reference/script
+        - path: pages/feature-reference/markup
+        - path: pages/feature-reference/widgets
+        - path: pages/feature-reference/rendering
+        - path: pages/feature-reference/appearance
+        - path: pages/feature-reference/navigation
+        - path: pages/feature-reference/blogging
+        - path: pages/feature-reference/others
+    - name: Plugin System
       items:
-        - path: pages/plugin-system/adding-plugin
-        - path: pages/plugin-system/writing-plugin
+        - path: pages/plugin-system/adding-plugins
+        - path: pages/plugin-system/writing-plugins
         - path: pages/plugin-system/architecture
         - path: pages/plugin-system/reference
     - name: Universe

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
-<meta name="keywords" content="contributing">
+<meta name="description" content="When you work on your Livemark project there are different options of adding a plugin to the building process:">
+<meta name="keywords" content="adding,plugins">
 <link rel="icon" href="../../assets/favicon.ico">
-<title>Contributing | Livemark</title>
+<title>Adding Plugins | Livemark</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1846,38 +1846,38 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Introduction
       </a>
           </li>
-        <li class="primary group active">
+        <li class="primary group ">
       <a href="" class="primary">
         Getting Started
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="installation.html" class="secondary">
+          <a href="../getting-started/installation.html" class="secondary">
             Installation
           </a>
         </li>
                 <li class="secondary ">
-          <a href="configuration.html" class="secondary">
+          <a href="../getting-started/configuration.html" class="secondary">
             Configuration
           </a>
         </li>
                 <li class="secondary ">
-          <a href="using-markdown.html" class="secondary">
+          <a href="../getting-started/using-markdown.html" class="secondary">
             Using Markdown
           </a>
         </li>
                 <li class="secondary ">
-          <a href="building-websites.html" class="secondary">
+          <a href="../getting-started/building-websites.html" class="secondary">
             Building Websites
           </a>
         </li>
                 <li class="secondary ">
-          <a href="troubleshooting.html" class="secondary">
+          <a href="../getting-started/troubleshooting.html" class="secondary">
             Troubleshooting
           </a>
         </li>
-                <li class="secondary active">
-          <a href="contributing.html" class="secondary">
+                <li class="secondary ">
+          <a href="../getting-started/contributing.html" class="secondary">
             Contributing
           </a>
         </li>
@@ -1972,28 +1972,28 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
               </ul>
           </li>
-        <li class="primary group ">
+        <li class="primary group active">
       <a href="" class="primary">
         Plugin System
       </a>
             <ul class="secondary">
-                <li class="secondary ">
-          <a href="../plugin-system/adding-plugins.html" class="secondary">
+                <li class="secondary active">
+          <a href="adding-plugins.html" class="secondary">
             Adding Plugins
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../plugin-system/writing-plugins.html" class="secondary">
+          <a href="writing-plugins.html" class="secondary">
             Writing Plugins
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../plugin-system/architecture.html" class="secondary">
+          <a href="architecture.html" class="secondary">
             Architecture
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../plugin-system/reference.html" class="secondary">
+          <a href="reference.html" class="secondary">
             Reference
           </a>
         </li>
@@ -2037,21 +2037,45 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 17:53)
+  (2021-10-25 17:34)
 </div>
 
-<h1>Contributing</h1>
+<h1>Adding Plugins</h1>
+<div class="livemark-remark">
+  <div class="alert alert-warning" role="alert">
+    This documentation page is work-in-progress
+  </div>
+</div><h2>Overview</h2>
+<p>When you work on your Livemark project there are different options of adding a plugin to the building process:</p>
+<ul>
+<li>installing an external plugin</li>
+<li>adding a custom plugin</li>
+</ul>
+<h2>External Plugin</h2>
+<p>You can install an external plugin, for example:</p>
+<pre><code class="language-bash">$ pip install livemark-ckan
+</code></pre>
+<p>And activate it in <code>livemark.yaml</code> file:</p>
+<pre><code class="language-yaml">ckan: true # or a plugin config
+</code></pre>
+<h2>Custom Plugin</h2>
+<p>You can <a href="write-plugin.html">Write a Plugin</a> and put it into <code>plugin.py</code> module or export from <code>plugins</code> package in your project root. You don't need to activate it in <code>livemark.yaml</code>. For example, you can take a look how it works in the <a href="https://github.com/frictionlessdata/livemark-project">Livemark Project Template</a>.</p>
+<p>It's also possible to add a plugin programmatically:</p>
+<pre><code class="language-python">from livemark import system
+
+system.register(CustomPlugin)
+</code></pre>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="/pages/guides-and-tutorials/data-journalism.html">
-        Data Journalism »
+      <a href="/pages/plugin-system/writing-plugins.html">
+        Writing Plugins »
       </a>
     </div>
             <div class="prev">
-      <a href="/pages/getting-started/troubleshooting.html">
-        « Troubleshooting
+      <a href="/pages/feature-reference/others.html">
+        « Others
       </a>
     </div>
       </div>
@@ -2098,7 +2122,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/getting-started/contributing.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/plugin-system/adding-plugins.md" target="_blank">
         Edit
       </a>
     </li>
@@ -2445,37 +2469,37 @@ document.addEventListener("DOMContentLoaded", function () {
           'pages/getting-started/installation': {
           'name': 'Installation',
           'path': 'pages/getting-started/installation',
-          'relpath': 'installation',
+          'relpath': '../getting-started/installation',
           'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../assets/github.png)",
       },
           'pages/getting-started/configuration': {
           'name': 'Configuration',
           'path': 'pages/getting-started/configuration',
-          'relpath': 'configuration',
+          'relpath': '../getting-started/configuration',
           'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
       },
           'pages/getting-started/using-markdown': {
           'name': 'Using Markdown',
           'path': 'pages/getting-started/using-markdown',
-          'relpath': 'using-markdown',
+          'relpath': '../getting-started/using-markdown',
           'text': "# Using Markdown",
       },
           'pages/getting-started/building-websites': {
           'name': 'Building Websites',
           'path': 'pages/getting-started/building-websites',
-          'relpath': 'building-websites',
+          'relpath': '../getting-started/building-websites',
           'text': "# Building Websites",
       },
           'pages/getting-started/troubleshooting': {
           'name': 'Troubleshooting',
           'path': 'pages/getting-started/troubleshooting',
-          'relpath': 'troubleshooting',
+          'relpath': '../getting-started/troubleshooting',
           'text': "# Troubleshooting",
       },
           'pages/getting-started/contributing': {
           'name': 'Contributing',
           'path': 'pages/getting-started/contributing',
-          'relpath': 'contributing',
+          'relpath': '../getting-started/contributing',
           'text': "# Contributing",
       },
           'pages/guides-and-tutorials/data-journalism': {
@@ -2571,25 +2595,25 @@ document.addEventListener("DOMContentLoaded", function () {
           'pages/plugin-system/adding-plugins': {
           'name': 'Adding Plugins',
           'path': 'pages/plugin-system/adding-plugins',
-          'relpath': '../plugin-system/adding-plugins',
+          'relpath': 'adding-plugins',
           'text': "# Adding Plugins ```yaml remark type: warning text: This documentation page is work-in-progress ``` ## Overview When you work on your Livemark project there are different options of adding a plugin to the building process: - installing an external plugin - adding a custom plugin ## External Plugin You can install an external plugin, for example: ```bash $ pip install livemark-ckan ``` And activate it in `livemark.yaml` file: ```yaml ckan: true # or a plugin config ``` ## Custom Plugin You can [Write a Plugin](write-plugin.html) and put it into `plugin.py` module or export from `plugins` package in your project root. You don\u0027t need to activate it in `livemark.yaml`. For example, you can take a look how it works in the [Livemark Project Template](https://github.com/frictionlessdata/livemark-project). It\u0027s also possible to add a plugin programmatically: ```python from livemark import system system.register(CustomPlugin) ```",
       },
           'pages/plugin-system/writing-plugins': {
           'name': 'Writing Plugins',
           'path': 'pages/plugin-system/writing-plugins',
-          'relpath': '../plugin-system/writing-plugins',
+          'relpath': 'writing-plugins',
           'text': "# Writing Plugins ```yaml remark type: warning text: This documentation page is work-in-progress ``` ## Overview Livemark provides quite simple plugin interface. There are 4 main hooks a plugin author can use to alter the rendering process. All of them take an corresponding object that can be updated: - `Pluing.process_project(project)` - `pluing.process_document(document)` - `pluing.process_snippet(snippet)` - `pluing.process_markup(markup)` ## Example This plugin simply adds a string to H1 tag on every page in the project: ```python from livemark import Plugin class CustomPlugin(Plugin): identity = \"custom\" # Process def process_markup(self, markup): markup.add_markup(\"(template)\", target=\"h1\") ``` ## References To write a good plugin explore core plugins, architecture, and API References: - [Core Plugins](https://github.com/frictionlessdata/livemark/tree/main/livemark/plugins) - [Architecture](architecture.html) - [API Reference](reference.html)",
       },
           'pages/plugin-system/architecture': {
           'name': 'Architecture',
           'path': 'pages/plugin-system/architecture',
-          'relpath': '../plugin-system/architecture',
+          'relpath': 'architecture',
           'text': "# Architecture ```yaml remark type: warning text: This documentation page is work-in-progress ``` ## Overview In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to ouput different formats but the main Livemark\u0027s specialization is Markdown-to-HTML conversion. ## Plugins Livemark\u0027s core only provides an abstract classes like Project, Document, or Snippet. The actual work is done by various plugins like HtmlPlugin, SitePlugin, or TablePlugin. You can find their description in the Livemark Markdown and Livemark Features sections. ## Build On the figure below we present the Livemark\u0027s building flow schematically: a Markdown document containing various snippets being converted to an HTML document containing various markup blocks by Livemark and its plugins: ```yaml image path: ../../assets/flow.png width: 100% height: unset ```",
       },
           'pages/plugin-system/reference': {
           'name': 'Reference',
           'path': 'pages/plugin-system/reference',
-          'relpath': '../plugin-system/reference',
+          'relpath': 'reference',
           'text': "# Reference ```yaml remark type: warning text: This documentation page is work-in-progress ``` Currently, you can explore main Livemark\u0027s classes on Github: - [Document](https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py) - [Markup](https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py) - [Plugin](https://github.com/frictionlessdata/livemark/blob/main/livemark/plugin.py) - [Project](https://github.com/frictionlessdata/livemark/blob/main/livemark/project.py) - [Server](https://github.com/frictionlessdata/livemark/blob/main/livemark/server.py) - [Snippet](https://github.com/frictionlessdata/livemark/blob/main/livemark/snippet.py) - [System](https://github.com/frictionlessdata/livemark/blob/main/livemark/system.py)",
       },
           'pages/universe/livemarks': {

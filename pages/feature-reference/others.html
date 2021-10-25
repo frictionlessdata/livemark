@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
-<meta name="keywords" content="contributing">
+<meta name="description" content="This feature provides an ability to spicify a list of Bash command to be run after the document building:">
+<meta name="keywords" content="others">
 <link rel="icon" href="../../assets/favicon.ico">
-<title>Contributing | Livemark</title>
+<title>Others | Livemark</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1846,38 +1846,38 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         Introduction
       </a>
           </li>
-        <li class="primary group active">
+        <li class="primary group ">
       <a href="" class="primary">
         Getting Started
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="installation.html" class="secondary">
+          <a href="../getting-started/installation.html" class="secondary">
             Installation
           </a>
         </li>
                 <li class="secondary ">
-          <a href="configuration.html" class="secondary">
+          <a href="../getting-started/configuration.html" class="secondary">
             Configuration
           </a>
         </li>
                 <li class="secondary ">
-          <a href="using-markdown.html" class="secondary">
+          <a href="../getting-started/using-markdown.html" class="secondary">
             Using Markdown
           </a>
         </li>
                 <li class="secondary ">
-          <a href="building-websites.html" class="secondary">
+          <a href="../getting-started/building-websites.html" class="secondary">
             Building Websites
           </a>
         </li>
                 <li class="secondary ">
-          <a href="troubleshooting.html" class="secondary">
+          <a href="../getting-started/troubleshooting.html" class="secondary">
             Troubleshooting
           </a>
         </li>
-                <li class="secondary active">
-          <a href="contributing.html" class="secondary">
+                <li class="secondary ">
+          <a href="../getting-started/contributing.html" class="secondary">
             Contributing
           </a>
         </li>
@@ -1905,68 +1905,68 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         </li>
               </ul>
           </li>
-        <li class="primary group ">
+        <li class="primary group active">
       <a href="" class="primary">
         Feature Reference
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="../feature-reference/task.html" class="secondary">
+          <a href="task.html" class="secondary">
             Task
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/logic.html" class="secondary">
+          <a href="logic.html" class="secondary">
             Logic
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/table.html" class="secondary">
+          <a href="table.html" class="secondary">
             Table
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/chart.html" class="secondary">
+          <a href="chart.html" class="secondary">
             Chart
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/script.html" class="secondary">
+          <a href="script.html" class="secondary">
             Script
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/markup.html" class="secondary">
+          <a href="markup.html" class="secondary">
             Markup
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/widgets.html" class="secondary">
+          <a href="widgets.html" class="secondary">
             Widgets
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/rendering.html" class="secondary">
+          <a href="rendering.html" class="secondary">
             Rendering
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/appearance.html" class="secondary">
+          <a href="appearance.html" class="secondary">
             Appearance
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/navigation.html" class="secondary">
+          <a href="navigation.html" class="secondary">
             Navigation
           </a>
         </li>
                 <li class="secondary ">
-          <a href="../feature-reference/blogging.html" class="secondary">
+          <a href="blogging.html" class="secondary">
             Blogging
           </a>
         </li>
-                <li class="secondary ">
-          <a href="../feature-reference/others.html" class="secondary">
+                <li class="secondary active">
+          <a href="others.html" class="secondary">
             Others
           </a>
         </li>
@@ -2037,21 +2037,66 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 17:53)
+  (2021-10-25 18:31)
 </div>
 
-<h1>Contributing</h1>
+<h1>Others</h1>
+<h2>Cleanup</h2>
+<p>This feature provides an ability to spicify a list of Bash command to be run after the document building:</p>
+<blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">cleanup:
+  - rm table.csv
+</code></pre>
+<h2>Counter</h2>
+<p>This feature currently support a Google Analytics counter that can be added to all the project pages:</p>
+<blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">counter:
+  type: google
+  code: G-&lt;code&gt;
+</code></pre>
+<h2>Github</h2>
+<p>Some plugins rely on Github repository information that is provided by this feature. Be default, it will be inferred automatically from you local <code>.git</code> directory. It's also possible to configure it manually:</p>
+<blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">github:
+  user: frictionlessdata
+  repo: livemark
+</code></pre>
+<h2>Prepare</h2>
+<p>This feature provides an ability to spicify a list of Bash command to be run before the document building:</p>
+<blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">prepare:
+  - cp data/table.csv table.csv
+</code></pre>
+<h2>Redirect</h2>
+<p>Using Github Pages as a hosting it's possible to setup a redirect table:</p>
+<blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">redirect:
+  items:
+    - prev: getting-started
+      next: pages/installation
+</code></pre>
+<p>Under the hood, Livemark will create a <code>404.html</code> file and use a client-side redirect.</p>
 
 <div id="livemark-signs">
   <div>
         <div class="next">
-      <a href="/pages/guides-and-tutorials/data-journalism.html">
-        Data Journalism »
+      <a href="/pages/plugin-system/adding-plugins.html">
+        Adding Plugins »
       </a>
     </div>
             <div class="prev">
-      <a href="/pages/getting-started/troubleshooting.html">
-        « Troubleshooting
+      <a href="/pages/feature-reference/blogging.html">
+        « Blogging
       </a>
     </div>
       </div>
@@ -2098,7 +2143,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
     </li>
         <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/getting-started/contributing.md" target="_blank">
+      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/feature-reference/others.md" target="_blank">
         Edit
       </a>
     </li>
@@ -2445,37 +2490,37 @@ document.addEventListener("DOMContentLoaded", function () {
           'pages/getting-started/installation': {
           'name': 'Installation',
           'path': 'pages/getting-started/installation',
-          'relpath': 'installation',
+          'relpath': '../getting-started/installation',
           'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../assets/github.png)",
       },
           'pages/getting-started/configuration': {
           'name': 'Configuration',
           'path': 'pages/getting-started/configuration',
-          'relpath': 'configuration',
+          'relpath': '../getting-started/configuration',
           'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
       },
           'pages/getting-started/using-markdown': {
           'name': 'Using Markdown',
           'path': 'pages/getting-started/using-markdown',
-          'relpath': 'using-markdown',
+          'relpath': '../getting-started/using-markdown',
           'text': "# Using Markdown",
       },
           'pages/getting-started/building-websites': {
           'name': 'Building Websites',
           'path': 'pages/getting-started/building-websites',
-          'relpath': 'building-websites',
+          'relpath': '../getting-started/building-websites',
           'text': "# Building Websites",
       },
           'pages/getting-started/troubleshooting': {
           'name': 'Troubleshooting',
           'path': 'pages/getting-started/troubleshooting',
-          'relpath': 'troubleshooting',
+          'relpath': '../getting-started/troubleshooting',
           'text': "# Troubleshooting",
       },
           'pages/getting-started/contributing': {
           'name': 'Contributing',
           'path': 'pages/getting-started/contributing',
-          'relpath': 'contributing',
+          'relpath': '../getting-started/contributing',
           'text': "# Contributing",
       },
           'pages/guides-and-tutorials/data-journalism': {
@@ -2499,73 +2544,73 @@ document.addEventListener("DOMContentLoaded", function () {
           'pages/feature-reference/task': {
           'name': 'Task',
           'path': 'pages/feature-reference/task',
-          'relpath': '../feature-reference/task',
+          'relpath': 'task',
           'text': "# Task",
       },
           'pages/feature-reference/logic': {
           'name': 'Logic',
           'path': 'pages/feature-reference/logic',
-          'relpath': '../feature-reference/logic',
+          'relpath': 'logic',
           'text': "# Logic",
       },
           'pages/feature-reference/table': {
           'name': 'Table',
           'path': 'pages/feature-reference/table',
-          'relpath': '../feature-reference/table',
+          'relpath': 'table',
           'text': "# Table",
       },
           'pages/feature-reference/chart': {
           'name': 'Chart',
           'path': 'pages/feature-reference/chart',
-          'relpath': '../feature-reference/chart',
+          'relpath': 'chart',
           'text': "# Chart",
       },
           'pages/feature-reference/script': {
           'name': 'Script',
           'path': 'pages/feature-reference/script',
-          'relpath': '../feature-reference/script',
+          'relpath': 'script',
           'text': "# Script",
       },
           'pages/feature-reference/markup': {
           'name': 'Markup',
           'path': 'pages/feature-reference/markup',
-          'relpath': '../feature-reference/markup',
+          'relpath': 'markup',
           'text': "# Markup",
       },
           'pages/feature-reference/widgets': {
           'name': 'Widgets',
           'path': 'pages/feature-reference/widgets',
-          'relpath': '../feature-reference/widgets',
+          'relpath': 'widgets',
           'text': "# Widgets ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
       },
           'pages/feature-reference/rendering': {
           'name': 'Rendering',
           'path': 'pages/feature-reference/rendering',
-          'relpath': '../feature-reference/rendering',
+          'relpath': 'rendering',
           'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## Site ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. --- You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
       },
           'pages/feature-reference/appearance': {
           'name': 'Appearance',
           'path': 'pages/feature-reference/appearance',
-          'relpath': '../feature-reference/appearance',
+          'relpath': 'appearance',
           'text': "# Appearance ## About ## Brand ## Cards ## Display ## Mobile ## News ## Notes ## Rating ## Source",
       },
           'pages/feature-reference/navigation': {
           'name': 'Navigation',
           'path': 'pages/feature-reference/navigation',
-          'relpath': '../feature-reference/navigation',
+          'relpath': 'navigation',
           'text': "# Navigation ## Links ## Infinity ## Pages ## Pagination ## Search ## Signs ## Topics",
       },
           'pages/feature-reference/blogging': {
           'name': 'Blogging',
           'path': 'pages/feature-reference/blogging',
-          'relpath': '../feature-reference/blogging',
+          'relpath': 'blogging',
           'text': "# Blogging ## Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder - put there an article e.g. ## Comments",
       },
           'pages/feature-reference/others': {
           'name': 'Others',
           'path': 'pages/feature-reference/others',
-          'relpath': '../feature-reference/others',
+          'relpath': 'others',
           'text': "# Others ## Cleanup This feature provides an ability to spicify a list of Bash command to be run after the document building: \u003e livemark.yaml ```yaml cleanup: - rm table.csv ``` ## Counter This feature currently support a Google Analytics counter that can be added to all the project pages: \u003e livemark.yaml ```yaml counter: type: google code: G- ``` ## Github Some plugins rely on Github repository information that is provided by this feature. Be default, it will be inferred automatically from you local `.git` directory. It\u0027s also possible to configure it manually: \u003e livemark.yaml ```yaml github: user: frictionlessdata repo: livemark ``` ## Prepare This feature provides an ability to spicify a list of Bash command to be run before the document building: \u003e livemark.yaml ```yaml prepare: - cp data/table.csv table.csv ``` ## Redirect Using Github Pages as a hosting it\u0027s possible to setup a redirect table: \u003e livemark.yaml ```yaml redirect: items: - prev: getting-started next: pages/installation ``` Under the hood, Livemark will create a `404.html` file and use a client-side redirect.",
       },
           'pages/plugin-system/adding-plugins': {
