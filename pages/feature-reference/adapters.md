@@ -1,5 +1,7 @@
 # Adapters
 
+## Cards
+
 ## Infinity
 
 It's an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`:

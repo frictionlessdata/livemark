@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
+<meta name="description" content="This feature adds a project name at the top left corner:">
 <meta name="keywords" content="appearance">
 <link rel="icon" href="../../assets/favicon.ico">
 <title>Appearance | Livemark</title>
@@ -2042,19 +2042,63 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 18:43)
+  (2021-10-25 22:30)
 </div>
 
 <h1>Appearance</h1>
-<h2>About</h2>
 <h2>Brand</h2>
-<h2>Cards</h2>
-<h2>Display</h2>
-<h2>Mobile</h2>
-<h2>News</h2>
+<p>This feature adds a project name at the top left corner:</p>
+<div class="livemark-image">
+  <img class="border" width="unset" height="unset" src="../../assets/brand.png">
+</div><blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">brand:
+  text: Livemark
+</code></pre>
 <h2>Notes</h2>
+<p>By default, this feature shows a last updated datetime and a link to Livemark:</p>
+<div class="livemark-image">
+  <img class="border" width="unset" height="unset" src="../../assets/notes.png">
+</div><blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">notes:
+  format: %Y-%m-%d
+</code></pre>
 <h2>Rating</h2>
-<h2>Source</h2>
+<p>Based on the "Github" feature setting it will show a reporitory's rating:</p>
+<div class="livemark-image">
+  <img class="border" width="unset" height="unset" src="../../assets/rating.png">
+</div><blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">rating:
+  type: start
+</code></pre>
+<h2>About</h2>
+<p>This feature adds an information about the project or the page to the top right corner:</p>
+<div class="livemark-image">
+  <img class="border" width="unset" height="unset" src="../../assets/about.png">
+</div><blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">about:
+  text: Livemark is a Python static site generator...
+</code></pre>
+<h2>Display</h2>
+<p>This feature gives an ability to print a page, increase/descrease readability, and use "Back to top" button:</p>
+<div class="livemark-image">
+  <img class="border" width="unset" height="unset" src="../../assets/display.png">
+</div><h2>Mobile</h2>
+<p>This feature provides a mobile version of the site:</p>
+<div class="livemark-image">
+  <img class="border" width="unset" height="unset" src="../../assets/mobile.png">
+</div><h2>Source</h2>
+<p>This features shoes a Markdown source of a section on the "Source" heading button click which is available on hover:</p>
+<div class="livemark-image">
+  <img class="border" width="100%" height="unset" src="../../assets/source.png">
+</div><h2>News</h2>
 
 <div id="livemark-signs">
   <div>
@@ -2556,7 +2600,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Adapters',
           'path': 'pages/feature-reference/adapters',
           'relpath': 'adapters',
-          'text': "# Adapters ## Infinity It\u0027s an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` ## Pagination It\u0027s an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ```",
+          'text': "# Adapters ## Cards ## Infinity It\u0027s an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` ## Pagination It\u0027s an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ```",
       },
           'pages/feature-reference/rendering': {
           'name': 'Rendering',
@@ -2568,7 +2612,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Appearance',
           'path': 'pages/feature-reference/appearance',
           'relpath': 'appearance',
-          'text': "# Appearance ## About ## Brand ## Cards ## Display ## Mobile ## News ## Notes ## Rating ## Source",
+          'text': "# Appearance ## Brand This feature adds a project name at the top left corner: ```yaml image path: ../../assets/brand.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml brand: text: Livemark ``` ## Notes By default, this feature shows a last updated datetime and a link to Livemark: ```yaml image path: ../../assets/notes.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml notes: format: %Y-%m-%d ``` ## Rating Based on the \"Github\" feature setting it will show a reporitory\u0027s rating: ```yaml image path: ../../assets/rating.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml rating: type: start ``` ## About This feature adds an information about the project or the page to the top right corner: ```yaml image path: ../../assets/about.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml about: text: Livemark is a Python static site generator... ``` ## Display This feature gives an ability to print a page, increase/descrease readability, and use \"Back to top\" button: ```yaml image path: ../../assets/display.png width: unset height: unset class: border ``` ## Mobile This feature provides a mobile version of the site: ```yaml image path: ../../assets/mobile.png width: unset height: unset class: border ``` ## Source This features shoes a Markdown source of a section on the \"Source\" heading button click which is available on hover: ```yaml image path: ../../assets/source.png width: 100% height: unset class: border ``` ## News",
       },
           'pages/feature-reference/navigation': {
           'name': 'Navigation',
@@ -2616,13 +2660,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemarks',
           'path': 'pages/universe/livemarks',
           'relpath': '../universe/livemarks',
-          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup {% for row in frictionless.extract(\u0027data/livemarks.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
           'path': 'pages/universe/plugins',
           'relpath': '../universe/plugins',
-          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup {% for row in frictionless.extract(\u0027data/plugins.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup livemark-ckan It\u0027s a CKAN plugin for Livemark Github 1 ```",
       },
           'pages/forum': {
           'name': 'Forum',
@@ -2634,7 +2678,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'blog/index',
           'relpath': '../../blog/index',
-          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
@@ -2646,7 +2690,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Not Found',
           'path': '404',
           'relpath': '../../404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027[{\"next\": \"pages/installation\", \"prev\": \"getting-started\"}]\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {
