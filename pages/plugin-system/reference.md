@@ -2,7 +2,7 @@
 
 ```yaml remark
 type: warning
-text: API Reference is work-in-progress
+text: This documentation page is work-in-progress
 ```
 
 Currently, you can explore main Livemark's classes on Github:
