@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
+<meta name="description" content="In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to ouput different formats but the main Livemark's specialization is Markdown-to-HTML conversion.">
 <meta name="keywords" content="architecture">
 <link rel="icon" href="../../assets/favicon.ico">
 <title>Architecture | Livemark</title>
@@ -2047,10 +2047,23 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-24 13:59)
+  (2021-10-25 10:05)
 </div>
 
 <h1>Architecture</h1>
+<div class="livemark-remark">
+  <div class="alert alert-warning" role="alert">
+    Architecture overview is work-in-progress
+  </div>
+</div><h2>Overview</h2>
+<p>In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to ouput different formats but the main Livemark's specialization is Markdown-to-HTML conversion.</p>
+<h2>Plugins</h2>
+<p>Livemark's core only provides an abstract classes like Project, Document, or Snippet. The actual work is done by various plugins like HtmlPlugin, SitePlugin, or TablePlugin. You can find their description in the Livemark Markdown and Livemark Features sections.</p>
+<h2>Flow</h2>
+<p>On the figure below we present the Livemark's flow schematically: a Markdown document containing various snippets being converted to an HTML document containing various markup blocks by Livemark and its plugins:</p>
+<div class="livemark-image">
+  <img class="" width="100%" height="unset" src="../../assets/flow.png">
+</div>
 
 <div id="livemark-signs">
   <div>
@@ -2606,7 +2619,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Architecture',
           'path': 'pages/plugin-system/architecture',
           'relpath': 'architecture',
-          'text': "# Architecture",
+          'text': "# Architecture ```yaml remark type: warning text: Architecture overview is work-in-progress ``` ## Overview In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to ouput different formats but the main Livemark\u0027s specialization is Markdown-to-HTML conversion. ## Plugins Livemark\u0027s core only provides an abstract classes like Project, Document, or Snippet. The actual work is done by various plugins like HtmlPlugin, SitePlugin, or TablePlugin. You can find their description in the Livemark Markdown and Livemark Features sections. ## Flow On the figure below we present the Livemark\u0027s flow schematically: a Markdown document containing various snippets being converted to an HTML document containing various markup blocks by Livemark and its plugins: ```yaml image path: ../../assets/flow.png width: 100% height: unset ```",
       },
           'pages/plugin-system/reference': {
           'name': 'Reference',
@@ -2618,13 +2631,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemarks',
           'path': 'pages/universe/livemarks',
           'relpath': '../universe/livemarks',
-          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup {% for row in frictionless.extract(\u0027data/livemarks.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
           'path': 'pages/universe/plugins',
           'relpath': '../universe/plugins',
-          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup {% for row in frictionless.extract(\u0027data/plugins.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup livemark-ckan It\u0027s a CKAN plugin for Livemark Github 1 ```",
       },
           'pages/forum': {
           'name': 'Forum',
@@ -2636,7 +2649,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'blog/index',
           'relpath': '../../blog/index',
-          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
@@ -2648,7 +2661,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Not Found',
           'path': '404',
           'relpath': '../../404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027[{\"next\": \"pages/installation\", \"prev\": \"getting-started\"}]\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {
