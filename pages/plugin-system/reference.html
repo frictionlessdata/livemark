@@ -1946,6 +1946,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </a>
         </li>
                 <li class="secondary ">
+          <a href="../feature-reference/combiners.html" class="secondary">
+            Combiners
+          </a>
+        </li>
+                <li class="secondary ">
           <a href="../feature-reference/rendering.html" class="secondary">
             Rendering
           </a>
@@ -2552,6 +2557,12 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../feature-reference/widgets',
           'text': "# Widgets ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
       },
+          'pages/feature-reference/combiners': {
+          'name': 'Combiners',
+          'path': 'pages/feature-reference/combiners',
+          'relpath': '../feature-reference/combiners',
+          'text': "# Combiners ## Infinity It\u0027s an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` ## Pagination It\u0027s an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ```",
+      },
           'pages/feature-reference/rendering': {
           'name': 'Rendering',
           'path': 'pages/feature-reference/rendering',
@@ -2568,13 +2579,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Navigation',
           'path': 'pages/feature-reference/navigation',
           'relpath': '../feature-reference/navigation',
-          'text': "# Navigation ## Links ## Infinity ## Pages ## Pagination ## Search ## Signs ## Topics",
+          'text': "# Navigation ## Pages This features provides an ability to create multi-page websites. The navigation menu will be available in the left column on the website and can be setup in the project config: ```yaml image path: ../../assets/pages.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml pages: items: - name: Introduction path: index - name: Getting Started items: - path: pages/getting-started/installation - path: pages/getting-started/configuration ``` ## Topics Livemark will automatically create a table of contents for every page on the website using this feature. It can be customized in the project config and the resulting section will be rendered in the left column on the website: ```yaml image path: ../../assets/topics.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml topics: selector: h2 ``` ## Links Use this feature to add external links to the right column on the website: ```yaml image path: ../../assets/links.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml links: items: - name: Frictionless path: https://frictionlessdata.io - name: Discord path: https://discord.com/channels/695635777199145130/695635777199145133 - name: Twitter path: https://twitter.com/frictionlessd8a ``` ## Search Ability to search is critical for a website. Livemark provides this feature out-of-box: ```yaml image path: ../../assets/search.png width: 100% height: unset class: border ``` ## Signs Livemark encourages book-reading experience in data journalism or documentation writing. This feature provides two buttons (previous/next page) at the bottom of every page. ```yaml image path: ../../assets/signs.png width: 100% height: unset class: border ```",
       },
           'pages/feature-reference/blogging': {
           'name': 'Blogging',
           'path': 'pages/feature-reference/blogging',
           'relpath': '../feature-reference/blogging',
-          'text': "# Blogging ## Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder - put there an article e.g. ## Comments",
+          'text': "# Blogging ## Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder in the project\u0027s root directory - put there an article e.g. `blog/2021-09-01-article.md` - add a blog index to the pages e.g. `- path: blog/index` It\u0027s possible to customize an article using a frontmatter: \u003e blog/2021-09-01-article.md ```yaml blog: author: John Doe image: ../assets/example.png ``` See [Blog](../../blog/index.html) as an example. ## Comments To enable comments for an arbitraty article you need to provide frontmatter with Disqus id and a canonical website link: \u003e article.md ```yaml comments: code: livemark link: https://livemark.frictionlessdata.io ``` It\u0027s possible to enable comments for all the pages using project config: \u003e livemark.yaml ```yaml comments: code: livemark link: https://livemark.frictionlessdata.io ``` See [Forum](../forum.html) as an example.",
       },
           'pages/feature-reference/others': {
           'name': 'Others',

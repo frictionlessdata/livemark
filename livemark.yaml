@@ -48,6 +48,7 @@ pages:
         - path: pages/feature-reference/script
         - path: pages/feature-reference/markup
         - path: pages/feature-reference/widgets
+        - path: pages/feature-reference/combiners
         - path: pages/feature-reference/rendering
         - path: pages/feature-reference/appearance
         - path: pages/feature-reference/navigation

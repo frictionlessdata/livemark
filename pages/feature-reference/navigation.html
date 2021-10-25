@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
+<meta name="description" content="This features provides an ability to create multi-page websites. The navigation menu will be available in the left column on the website and can be setup in the project config:">
 <meta name="keywords" content="navigation">
 <link rel="icon" href="../../assets/favicon.ico">
 <title>Navigation | Livemark</title>
@@ -1946,6 +1946,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </a>
         </li>
                 <li class="secondary ">
+          <a href="combiners.html" class="secondary">
+            Combiners
+          </a>
+        </li>
+                <li class="secondary ">
           <a href="rendering.html" class="secondary">
             Rendering
           </a>
@@ -2037,17 +2042,61 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-25 17:39)
+  (2021-10-25 19:52)
 </div>
 
 <h1>Navigation</h1>
-<h2>Links</h2>
-<h2>Infinity</h2>
 <h2>Pages</h2>
-<h2>Pagination</h2>
-<h2>Search</h2>
-<h2>Signs</h2>
+<p>This features provides an ability to create multi-page websites. The navigation menu will be available in the left column on the website and can be setup in the project config:</p>
+<div class="livemark-image">
+  <img class="border" width="100%" height="unset" src="../../assets/pages.png">
+</div><blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">pages:
+  items:
+    - name: Introduction
+      path: index
+    - name: Getting Started
+      items:
+        - path: pages/getting-started/installation
+        - path: pages/getting-started/configuration
+</code></pre>
 <h2>Topics</h2>
+<p>Livemark will automatically create a table of contents for every page on the website using this feature. It can be customized in the project config and the resulting section will be rendered in the left column on the website:</p>
+<div class="livemark-image">
+  <img class="border" width="100%" height="unset" src="../../assets/topics.png">
+</div><blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">topics:
+  selector: h2
+</code></pre>
+<h2>Links</h2>
+<p>Use this feature to add external links to the right column on the website:</p>
+<div class="livemark-image">
+  <img class="border" width="100%" height="unset" src="../../assets/links.png">
+</div><blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">links:
+  items:
+    - name: Frictionless
+      path: https://frictionlessdata.io
+    - name: Discord
+      path: https://discord.com/channels/695635777199145130/695635777199145133
+    - name: Twitter
+      path: https://twitter.com/frictionlessd8a
+</code></pre>
+<h2>Search</h2>
+<p>Ability to search is critical for a website. Livemark provides this feature out-of-box:</p>
+<div class="livemark-image">
+  <img class="border" width="100%" height="unset" src="../../assets/search.png">
+</div><h2>Signs</h2>
+<p>Livemark encourages book-reading experience in data journalism or documentation writing. This feature provides two buttons (previous/next page) at the bottom of every page.</p>
+<div class="livemark-image">
+  <img class="border" width="100%" height="unset" src="../../assets/signs.png">
+</div>
 
 <div id="livemark-signs">
   <div>
@@ -2545,6 +2594,12 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': 'widgets',
           'text': "# Widgets ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
       },
+          'pages/feature-reference/combiners': {
+          'name': 'Combiners',
+          'path': 'pages/feature-reference/combiners',
+          'relpath': 'combiners',
+          'text': "# Combiners ## Infinity It\u0027s an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` ## Pagination It\u0027s an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ```",
+      },
           'pages/feature-reference/rendering': {
           'name': 'Rendering',
           'path': 'pages/feature-reference/rendering',
@@ -2561,13 +2616,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Navigation',
           'path': 'pages/feature-reference/navigation',
           'relpath': 'navigation',
-          'text': "# Navigation ## Links ## Infinity ## Pages ## Pagination ## Search ## Signs ## Topics",
+          'text': "# Navigation ## Pages This features provides an ability to create multi-page websites. The navigation menu will be available in the left column on the website and can be setup in the project config: ```yaml image path: ../../assets/pages.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml pages: items: - name: Introduction path: index - name: Getting Started items: - path: pages/getting-started/installation - path: pages/getting-started/configuration ``` ## Topics Livemark will automatically create a table of contents for every page on the website using this feature. It can be customized in the project config and the resulting section will be rendered in the left column on the website: ```yaml image path: ../../assets/topics.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml topics: selector: h2 ``` ## Links Use this feature to add external links to the right column on the website: ```yaml image path: ../../assets/links.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml links: items: - name: Frictionless path: https://frictionlessdata.io - name: Discord path: https://discord.com/channels/695635777199145130/695635777199145133 - name: Twitter path: https://twitter.com/frictionlessd8a ``` ## Search Ability to search is critical for a website. Livemark provides this feature out-of-box: ```yaml image path: ../../assets/search.png width: 100% height: unset class: border ``` ## Signs Livemark encourages book-reading experience in data journalism or documentation writing. This feature provides two buttons (previous/next page) at the bottom of every page. ```yaml image path: ../../assets/signs.png width: 100% height: unset class: border ```",
       },
           'pages/feature-reference/blogging': {
           'name': 'Blogging',
           'path': 'pages/feature-reference/blogging',
           'relpath': 'blogging',
-          'text': "# Blogging ## Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder - put there an article e.g. ## Comments",
+          'text': "# Blogging ## Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder in the project\u0027s root directory - put there an article e.g. `blog/2021-09-01-article.md` - add a blog index to the pages e.g. `- path: blog/index` It\u0027s possible to customize an article using a frontmatter: \u003e blog/2021-09-01-article.md ```yaml blog: author: John Doe image: ../assets/example.png ``` See [Blog](../../blog/index.html) as an example. ## Comments To enable comments for an arbitraty article you need to provide frontmatter with Disqus id and a canonical website link: \u003e article.md ```yaml comments: code: livemark link: https://livemark.frictionlessdata.io ``` It\u0027s possible to enable comments for all the pages using project config: \u003e livemark.yaml ```yaml comments: code: livemark link: https://livemark.frictionlessdata.io ``` See [Forum](../forum.html) as an example.",
       },
           'pages/feature-reference/others': {
           'name': 'Others',
