@@ -2,6 +2,29 @@
 
 Livemark extends Markdown with variety of features. Usually, a codeblock syntax is used for new functionality. For example, adding a `script` word to a Python snippet's header will make it a Livemark script.
 
+## Task
+
+Livemark allows to include Python and Bash task in your markdown documents and run them using `livemark run` command. This functionality is really useful for data-driven project where you can share the whole process of getting and transforming your data in a markdown document preserving an ability to run those scripts. It's also used for Contribution Guides and similar documents. It will be rendered as a code block with the command to run it added:
+
+```
+'''python task id=example
+print('It is a task')
+'''
+```
+
+```python task id=example
+print('It is a task')
+```
+
+You can run it using:
+
+```bash
+$ livemark run example
+```
+```
+It is a task
+```
+
 ## Logic
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
@@ -184,36 +207,6 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 </div>
 ```
 
-## Task
-
-Livemark allows to include Python and Bash task in your markdown documents and run them using `livemark run` command. This functionality is really useful for data-driven project where you can share the whole process of getting and transforming your data in a markdown document preserving an ability to run those scripts. It's also used for Contribution Guides and similar documents. It will be rendered as a code block with the command to run it added:
-
-```
-'''python task id=example
-print('It is a task')
-'''
-```
-
-```python task id=example
-print('It is a task')
-```
-
-You can run it using:
-
-```bash
-$ livemark run example
-```
-```
-It is a task
-```
-
-
-## Audio
-
-## File
-
-## Image
-
 ## Map
 
 > https://geojson.org/
@@ -230,18 +223,143 @@ data: data/france.json
 data: data/france.json
 ```
 
-## Notebook
+## Audio
+
+This feature renders an audio file or a SoundCloud track:
+
+```
+'''yaml audio
+path: https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3
+width: 50%
+'''
+```
+
+```yaml image
+path: ../../assets/soundcloud.png
+width: 50%
+height: unset
+class: border
+```
+
+## File
+
+It adds a file from the disc with a given code syntax:
+
+```
+'''python file
+livemark/__init__.py
+'''
+```
+
+```python file
+livemark/__init__.py
+```
+
+## Image
+
+It adds an image with an ability to customize dimensions and CSS class:
+
+```yaml image
+path: ../../assets/example.png
+width: 50%
+height: unset
+class: border
+```
+
+## Remark
+
+This feature for adding a remark is being developed at the moment.
 
 ## Package
 
-## Pipeline
+It renders a Frictionless Data Package:
+
+```
+'''yaml package
+descriptor: https://raw.githubusercontent.com/fjuniorr/cicd-gh-pages-rmarkdown/main/datapackage.json
+'''
+```
+
+```yaml image
+path: ../../assets/package.png
+width: 50%
+height: unset
+class: border
+```
 
 ## Reference
 
+It include a Python function or class reference (in active development):
+
+```
+'''yaml reference
+path: livemark.Document
+'''
+```
+
+```yaml reference
+path: livemark.Document
+```
+
+## Notebook
+
+This feature for including Jypiter Notebooks is being developed at the moment.
+
 ## Report
+
+It renders an interactive Validation Report:
+
+```
+'''yaml report
+descriptor: data/invalid.report.json
+'''
+```
+
+```yaml image
+path: ../../assets/report.png
+width: 100%
+height: unset
+class: border
+```
 
 ## Resource
 
+This feature for including Data Resource is being developed at the moment.
+
 ## Schema
 
+It renders an interactive Table Schema:
+
+```
+'''yaml schema
+descriptor: data/cars.schema.json
+'''
+```
+
+```yaml image
+path: ../../assets/schema.png
+width: 100%
+height: unset
+class: border
+```
+
 ## Video
+
+This feature renders a video file or a YouTube video:
+
+```
+'''yaml video/youtube
+code: NMg-eCbO6L0
+'''
+```
+
+```yaml image
+path: ../../assets/youtube.png
+width: 50%
+height: unset
+class: border
+```
+
+## Pipeline
+
+This feature for including Transformation Pipelines is being developed at the moment.

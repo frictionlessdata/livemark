@@ -121,3 +121,5 @@ It's an exerimental feature that adds an ability to create paginations using an 
 {% endraw %}
 
 ## Cards
+
+This feature for adding Cards is being developed at the moment. You can try a current prototype on [COVID-19 Tracker](https://covid-tracker.frictionlessdata.io/pages/countries.html) (click on a country).

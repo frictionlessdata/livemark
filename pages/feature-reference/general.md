@@ -21,6 +21,13 @@ site:
     - style.css
 ```
 
+The site will include following client-side software:
+
+- Bootstrap 5
+- Font Awesome 5
+- Lodash 4
+- jQuery 3
+
 ## HTML
 
 To build just a document without the site:
