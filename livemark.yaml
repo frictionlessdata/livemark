@@ -16,14 +16,12 @@ topics:
   selector: h2
 links:
   items:
-    - name: Templates
-      path: https://github.com/search?q=topic%3Alivemark+topic%3Atemplate
     - name: Frictionless
       path: https://frictionlessdata.io
-    - name: Discord
+    - name: Templates
+      path: https://github.com/search?q=topic%3Alivemark+topic%3Atemplate
+    - name: Support
       path: https://discord.com/channels/695635777199145130/695635777199145133
-    - name: Twitter
-      path: https://twitter.com/frictionlessd8a
 pages:
   items:
     - name: Introduction
