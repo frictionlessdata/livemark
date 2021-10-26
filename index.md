@@ -118,22 +118,6 @@ width: 500
 height: 300
 ```
 
-## Map
-
-> https://geojson.org/
-
-Livemark supports GeoJson visualisations rendering (to try this example, replace the single quotes with back ticks):
-
-```yaml
-'''yaml map
-data: data/france.json
-'''
-```
-
-```yaml map
-data: data/france.json
-```
-
 ## Script
 
 > https://www.python.org/
@@ -210,27 +194,3 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 </div>
 </div>
 ```
-
-## Content
-
-> https://guides.github.com/features/mastering-markdown/
-
-Livemark supports Github Flavoured Markdown so you can use familiar notation:
-
-![Sidebar](assets/content.png)
-
-## Sidebar
-
-> https://tscanlin.github.io/tocbot/
-
-Livemark provides an automatically generated table of contents:
-
-![Sidebar](assets/sidebar.png)
-
-## Scroll
-
-> https://azrsix.github.io/ue-scroll-js/
-
-Livemark provides a scroll-to-top button when you scroll down your document:
-
-![Scroll](assets/scroll.png)

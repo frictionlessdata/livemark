@@ -192,6 +192,20 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 
 ## Map
 
+> https://geojson.org/
+
+Livemark supports GeoJson visualisations rendering (to try this example, replace the single quotes with back ticks):
+
+```yaml
+'''yaml map
+data: data/france.json
+'''
+```
+
+```yaml map
+data: data/france.json
+```
+
 ## Notebook
 
 ## Package
