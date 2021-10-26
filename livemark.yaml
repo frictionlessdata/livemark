@@ -60,6 +60,7 @@ pages:
       items:
         - path: pages/universe/projects
         - path: pages/universe/plugins
+    - path: pages/release
     - path: pages/forum
     - path: blog/index
 redirect:
