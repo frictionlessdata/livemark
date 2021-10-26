@@ -16,6 +16,8 @@ topics:
   selector: h2
 links:
   items:
+    - name: Templates
+      path: https://github.com/search?q=topic%3Alivemark+topic%3Atemplate
     - name: Frictionless
       path: https://frictionlessdata.io
     - name: Discord
