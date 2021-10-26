@@ -21,7 +21,7 @@ See [Blog](../../blog/index.html) as an example.
 
 ## Comments
 
-To enable comments for an arbitraty article you need to provide frontmatter with Disqus id and a canonical website link:
+To enable comments for an arbitrary article you need to provide frontmatter with Disqus id and a canonical website link:
 
 > article.md
 

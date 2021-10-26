@@ -1,6 +1,6 @@
 # Using Markdown
 
-Markdown is a lightweight markup language for creating formatted text using a plain-text editor. You use Markdown to write documents in your Livemark projects. With Livemark you can use all the base Markdown features along side with ones added by Github and Livemark iteself.
+Markdown is a lightweight markup language for creating formatted text using a plain-text editor. You use Markdown to write documents in your Livemark projects. With Livemark you can use all the base Markdown features along side with ones added by Github and Livemark itself.
 
 ## Base Markdown
 
@@ -34,7 +34,7 @@ Livemark supports Markdown extensions brought by Github. It includes:
 
 Learn more about Github Flavoured Markdown (GFM) here:
 
-- [Maseting Markdown](https://guides.github.com/features/mastering-markdown/)
+- [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
 
 ## Livemark Extensions
 

@@ -303,7 +303,7 @@ path: livemark.Document
 
 ## Notebook
 
-This feature for including Jypiter Notebooks is being developed at the moment.
+This feature for including Jupyter Notebooks is being developed at the moment.
 
 ## Report
 

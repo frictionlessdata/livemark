@@ -90,7 +90,7 @@ class: border
 
 ## Infinity
 
-It's an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`:
+It's an experimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`:
 
 {% raw %}
 ```html
@@ -106,7 +106,7 @@ It's an exerimental feature that adds an ability to create infinity scroll listi
 
 ## Pagination
 
-It's an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`:
+It's an experimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`:
 
 {% raw %}
 ```html

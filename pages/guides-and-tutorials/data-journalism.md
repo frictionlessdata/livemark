@@ -1,6 +1,6 @@
 # Data Journalism
 
-Livemark has been created with a focus on data journalism. It provides a complete toolset for working with data, starting from data extraction and ending with a publushed website containing interactive charts, tables, and other features.
+Livemark has been created with a focus on data journalism. It provides a complete toolset for working with data, starting from data extraction and ending with a published website containing interactive charts, tables, and other features.
 
 ## Example
 
@@ -103,7 +103,7 @@ print('Data Load')
 '''
 ```
 
-Use this command to get a list of avalable tasks:
+Use this command to get a list of available tasks:
 
 ```bash
 $ livemark run
@@ -136,7 +136,7 @@ Data Load
 
 ## Data Visualizations
 
-Livemark provides many ways of visualizing differnt kinds of data. For example, you can add a chart using a corresponding feature:
+Livemark provides many ways of visualizing different kinds of data. For example, you can add a chart using a corresponding feature:
 
 ```yaml
 '''yaml chart
@@ -183,7 +183,7 @@ width: 500
 height: 300
 ```
 
-There are much more usefull Markdown extensions, for example:
+There are much more useful Markdown extensions, for example:
 - [Logic](../feature-reference/snippets.html#logic)
 - [Table](../feature-reference/snippets.html#table)
 - [Script](../feature-reference/snippets.html#script)

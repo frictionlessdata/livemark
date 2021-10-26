@@ -1,6 +1,6 @@
 # Python Development
 
-Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works a a task runner.
+Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works as a task runner.
 
 ## Example
 
@@ -121,7 +121,7 @@ print('Test Code')
 '''
 ```
 
-Use this command to get a list of avalable tasks:
+Use this command to get a list of available tasks:
 
 ```bash
 $ livemark run

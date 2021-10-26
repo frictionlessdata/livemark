@@ -2,7 +2,7 @@
 
 ## Overview
 
-In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to ouput different formats but the main Livemark's specialization is Markdown-to-HTML conversion.
+In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to output different formats but the main Livemark's specialization is Markdown-to-HTML conversion.
 
 ## Plugins
 

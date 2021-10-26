@@ -38,7 +38,7 @@ notes:
 
 ## Rating
 
-Based on the "Github" feature setting it will show a reporitory's rating:
+Based on the "Github" feature setting it will show a repository's rating:
 
 ```yaml image
 path: ../../assets/rating.png
@@ -74,7 +74,7 @@ about:
 
 ## Display
 
-This feature gives an ability to print a page, increase/descrease readability, and use "Back to top" button:
+This feature gives an ability to print a page, increase/decrease readability, and use "Back to top" button:
 
 ```yaml image
 path: ../../assets/display.png

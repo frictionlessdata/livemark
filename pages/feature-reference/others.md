@@ -2,7 +2,7 @@
 
 ## Cleanup
 
-This feature provides an ability to spicify a list of Bash command to be run after the document building:
+This feature provides an ability to specify a list of Bash command to be run after the document building:
 
 > livemark.yaml
 
@@ -37,7 +37,7 @@ github:
 
 ## Prepare
 
-This feature provides an ability to spicify a list of Bash command to be run before the document building:
+This feature provides an ability to specify a list of Bash command to be run before the document building:
 
 > livemark.yaml
 

@@ -2,7 +2,7 @@
 
 > Start quickly with [Livemark Project](https://github.com/frictionlessdata/livemark-project) Github Template
 
-Project is the most important concept in Livemark along side with Document. You create a project that containts one or more documents and optional [configration](../configuration.html) file.
+Project is the most important concept in Livemark along side with Document. You create a project that contains one or more documents and optional [configuration](../configuration.html) file.
 
 ## Prepare
 
