@@ -1,4 +1,4 @@
-# Writing Plugins
+# Writing a Plugin
 
 ```yaml remark
 type: warning

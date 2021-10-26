@@ -31,7 +31,7 @@ pages:
         - path: pages/getting-started/installation
         - path: pages/getting-started/configuration
         - path: pages/getting-started/using-markdown
-        - path: pages/getting-started/building-websites
+        - path: pages/getting-started/building-website
         - path: pages/getting-started/troubleshooting
         - path: pages/getting-started/contributing
     - name: Guides and Tutorials
@@ -56,8 +56,8 @@ pages:
         - path: pages/feature-reference/others
     - name: Plugin System
       items:
-        - path: pages/plugin-system/adding-plugins
-        - path: pages/plugin-system/writing-plugins
+        - path: pages/plugin-system/adding-plugin
+        - path: pages/plugin-system/writing-plugin
         - path: pages/plugin-system/architecture
         - path: pages/plugin-system/reference
     - name: Universe

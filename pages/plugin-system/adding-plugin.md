@@ -1,4 +1,4 @@
-# Adding Plugins
+# Adding a Plugin
 
 ```yaml remark
 type: warning
