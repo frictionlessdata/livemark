@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="None">
+<meta name="description" content="Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works a a task runner.">
 <meta name="keywords" content="python,development">
 <link rel="icon" href="../../assets/favicon.ico">
 <title>Python Development | Livemark</title>
@@ -2042,10 +2042,115 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-25 15:43)
+  (2021-10-26 10:48)
 </div>
 
 <h1>Python Development</h1>
+<p>Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works a a task runner.</p>
+<h2>Example</h2>
+<p>Livemark's documentation site is written in Livemark:</p>
+<blockquote>
+<p><a href="https://livemark.frictionlessdata.io/">https://livemark.frictionlessdata.io/</a></p>
+</blockquote>
+<div class="livemark-image">
+  <img class="border" width="100%" height="unset" src="../../assets/example.png">
+</div><h2>Prerequisites</h2>
+<p>Create a virtual environment (optional):</p>
+<pre><code class="language-bash">$ python3 -m venv .python
+$ source .python/bin/activate
+</code></pre>
+<p>And install livemark:</p>
+<pre><code>$ pip install livemark
+</code></pre>
+<h2>Writing Docs</h2>
+<p>Working on a documentation site is not really different to working on a regular Livemark project. The main difference will be having your documentation along side with the codebase itself.</p>
+<p>First of all, create:</p>
+<ul>
+<li><code>livemark.yaml</code></li>
+<li><code>index.md</code></li>
+<li><code>pages/contrib.md</code> (for example)</li>
+</ul>
+<p>Fill in your configuration file:</p>
+<blockquote>
+<p>livemark.yaml</p>
+</blockquote>
+<pre><code class="language-yaml">brand:
+  text: My Project
+about:
+  text: My project is a software
+site:
+  favicon: assets/favicon.ico
+github:
+  user: &lt;user&gt;
+  repo: &lt;repo&gt;
+topics:
+  selector: h2
+links:
+  items:
+    - name: About Me
+      path: https://personal.site
+pages:
+  items:
+    - name: Introduction
+      path: index
+    - path: pages/contrib
+</code></pre>
+<p>Run a livereload server locally:</p>
+<pre><code class="language-bash">$ livemark start
+</code></pre>
+<p>If you do like it, commit the changes and push it to Github. The only missing part now is enabling Github Pages:</p>
+<blockquote>
+<p><a href="https://guides.github.com/features/pages/">https://guides.github.com/features/pages/</a></p>
+</blockquote>
+<div class="livemark-image">
+  <img class="border" width="75%" height="unset" src="../../assets/deploy.png">
+</div><p>After this step your documentation portal will be up and running.</p>
+<h2>Getting Tests</h2>
+<blockquote>
+<p>A special Livemark command for testing docs is under construction</p>
+</blockquote>
+<p>An important thing about Livemark is that it runs scripts in documents during processing. It means that it basically tests all you code snippets on every build.</p>
+<p>For example, consider our guide include this code (with a built output):</p>
+<blockquote>
+<p>guide.md</p>
+</blockquote>
+<pre><code>'''python script
+mylib.command('Hello World')
+'''
+'''
+Hello World
+'''
+</code></pre>
+<p>Every time during the build the software will be tested.</p>
+<h2>Running Tasks</h2>
+<p>Livemark supports having tasks written in Markdown documents. For example, consider we have a <code>contrib.md</code> section like this. To make it work we need to add this page to <code>livemark.yaml:pages.items</code>:</p>
+<blockquote>
+<p>contrib.md</p>
+</blockquote>
+<pre><code>'''bash task id=test-lint
+echo 'Test Lint'
+'''
+'''python task id=test-code
+print('Test Code')
+'''
+</code></pre>
+<p>Use this command to get a list of avalable tasks:</p>
+<pre><code class="language-bash">$ livemark run
+</code></pre>
+<pre><code>test-lint
+test-code
+</code></pre>
+<p>Execute all of the tests:</p>
+<pre><code class="language-bash">$ livemark run test
+</code></pre>
+<pre><code>Test Link
+Test Code
+</code></pre>
+<p>Or run an arbitrary task:</p>
+<pre><code class="language-bash">$ livemark run test-code
+</code></pre>
+<pre><code>Test Code
+</code></pre>
 
 <div id="livemark-signs">
   <div>
@@ -2499,7 +2604,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Python Development',
           'path': 'pages/guides-and-tutorials/python-development',
           'relpath': 'python-development',
-          'text': "# Python Development",
+          'text': "# Python Development Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works a a task runner. ## Example Livemark\u0027s documentation site is written in Livemark: \u003e https://livemark.frictionlessdata.io/ ```yaml image path: ../../assets/example.png width: 100% height: unset class: border ``` ## Prerequisites Create a virtual environment (optional): ```bash $ python3 -m venv .python $ source .python/bin/activate ``` And install livemark: ``` $ pip install livemark ``` ## Writing Docs Working on a documentation site is not really different to working on a regular Livemark project. The main difference will be having your documentation along side with the codebase itself. First of all, create: - `livemark.yaml` - `index.md` - `pages/contrib.md` (for example) Fill in your configuration file: \u003e livemark.yaml ```yaml brand: text: My Project about: text: My project is a software site: favicon: assets/favicon.ico github: user: repo: topics: selector: h2 links: items: - name: About Me path: https://personal.site pages: items: - name: Introduction path: index - path: pages/contrib ``` Run a livereload server locally: ```bash $ livemark start ``` If you do like it, commit the changes and push it to Github. The only missing part now is enabling Github Pages: \u003e https://guides.github.com/features/pages/ ```yaml image path: ../../assets/deploy.png width: 75% height: unset class: border ``` After this step your documentation portal will be up and running. ## Getting Tests \u003e A special Livemark command for testing docs is under construction An important thing about Livemark is that it runs scripts in documents during processing. It means that it basically tests all you code snippets on every build. For example, consider our guide include this code (with a built output): \u003e guide.md ``` \u0027\u0027\u0027python script mylib.command(\u0027Hello World\u0027) \u0027\u0027\u0027 \u0027\u0027\u0027 Hello World \u0027\u0027\u0027 ``` Every time during the build the software will be tested. ## Running Tasks Livemark supports having tasks written in Markdown documents. For example, consider we have a `contrib.md` section like this. To make it work we need to add this page to `livemark.yaml:pages.items`: \u003e contrib.md ``` \u0027\u0027\u0027bash task id=test-lint echo \u0027Test Lint\u0027 \u0027\u0027\u0027 \u0027\u0027\u0027python task id=test-code print(\u0027Test Code\u0027) \u0027\u0027\u0027 ``` Use this command to get a list of avalable tasks: ```bash $ livemark run ``` ``` test-lint test-code ``` Execute all of the tests: ```bash $ livemark run test ``` ``` Test Link Test Code ``` Or run an arbitrary task: ```bash $ livemark run test-code ``` ``` Test Code ```",
       },
           'pages/feature-reference/task': {
           'name': 'Task',
@@ -2511,7 +2616,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Logic',
           'path': 'pages/feature-reference/logic',
           'relpath': '../feature-reference/logic',
-          'text': "# Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: {% raw %} ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` {% endraw %} {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %}",
+          'text': "# Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` - Volkswagen Vento: $785 - Hyundai Verna: $774 - Skoda Rapid: $756 - Suzuki Ciaz: $725 - Renault Scala: $724",
       },
           'pages/feature-reference/table': {
           'name': 'Table',
@@ -2547,7 +2652,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Adapters',
           'path': 'pages/feature-reference/adapters',
           'relpath': '../feature-reference/adapters',
-          'text': "# Adapters ## Cards ## Infinity It\u0027s an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`: {% raw %} ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` {% endraw %} ## Pagination It\u0027s an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`: {% raw %} ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` {% endraw %}",
+          'text': "# Adapters ## Cards ## Infinity It\u0027s an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` ## Pagination It\u0027s an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ```",
       },
           'pages/feature-reference/rendering': {
           'name': 'Rendering',
@@ -2607,13 +2712,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Livemarks',
           'path': 'pages/universe/livemarks',
           'relpath': '../universe/livemarks',
-          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup {% for row in frictionless.extract(\u0027data/livemarks.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
           'path': 'pages/universe/plugins',
           'relpath': '../universe/plugins',
-          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup {% for row in frictionless.extract(\u0027data/plugins.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup livemark-ckan It\u0027s a CKAN plugin for Livemark Github 1 ```",
       },
           'pages/forum': {
           'name': 'Forum',
@@ -2625,7 +2730,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'blog/index',
           'relpath': '../../blog/index',
-          'text': "# Blog ```html markup {% for item in document.get_plugin(\u0027blog\u0027).items %} {{ item.document.name }} By {{ item.document.get_plugin(\u0027blog\u0027).author }} on {{ item.document.get_plugin(\u0027blog\u0027).date }} {{ item.document.description }} Read more \u00bb {% endfor %} ```",
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',
@@ -2637,7 +2742,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Not Found',
           'path': '404',
           'relpath': '../../404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027{{ document.get_plugin(\u0027redirect\u0027).items | tojson }}\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
+          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027[{\"next\": \"pages/installation\", \"prev\": \"getting-started\"}]\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
       },
       };
   const searchIndex = lunr(function () {
