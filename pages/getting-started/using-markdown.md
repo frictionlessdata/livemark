@@ -21,11 +21,11 @@ There are plenty of great Markdown guides, to name a few:
 - [Markdown Guide](https://guides.github.com/features/mastering-markdown/)
 - [Markdown Cheat Sheet](https://towardsdatascience.com/the-ultimate-markdown-cheat-sheet-3d3976b31a0)
 
-Learn Markdown if you didn't yet to use it in Livemark.
+We encourage you to learn Markdown first to use it in Livemark.
 
 ## Github Extensions
 
-Livemark supports Markdown extensions brought by Github. It includes:
+Livemark supports Markdown extensions used by Github. It includes:
 
 - URL autolinking
 - Strikethrough text
@@ -38,13 +38,14 @@ Learn more about Github Flavoured Markdown (GFM) here:
 
 ## Livemark Extensions
 
-On top of all the mentioned features Livemark makes markdown even better. It supports (mostly interactive):
+On top of all the mentioned features, Livemark makes markdown even better! It supports (mostly interactive):
 
 - Logic
 - Tables
 - Charts
 - Scripts
 - Markup
+- Frictionless Data processing
 - more
 
 Read Livemark's documentation to learn more:

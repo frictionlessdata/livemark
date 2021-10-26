@@ -4,7 +4,7 @@ Livemark extends Markdown with variety of features. Usually, a codeblock syntax 
 
 ## Task
 
-Livemark allows to include Python and Bash task in your markdown documents and run them using `livemark run` command. This functionality is really useful for data-driven project where you can share the whole process of getting and transforming your data in a markdown document preserving an ability to run those scripts. It's also used for Contribution Guides and similar documents. It will be rendered as a code block with the command to run it added:
+Livemark allows you to include Python and Bash tasks in your markdown documents and run them using `livemark run` command. This functionality is really useful for a data-driven project where you can share the whole process of getting and transforming your data in a markdown document preserving an ability to run those scripts. It's also used for Contribution Guides and similar documents. It will be rendered as a code block with the command to run it added:
 
 ```
 '''python task id=example
@@ -29,7 +29,7 @@ It is a task
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
 
-Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
+Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level data preprocessing so you can combine Logic with other syntax, such as Table or Chart:
 
 {% raw %}
 ```
@@ -134,7 +134,7 @@ height: 300
 
 > https://www.python.org/
 
-Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts:
+Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupyter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include the scripts:
 
 ```python script
 from pprint import pprint
@@ -243,7 +243,7 @@ class: border
 
 ## File
 
-It adds a file from the disc with a given code syntax:
+This feature adds a file from the disc with a given code syntax:
 
 ```
 '''python file
@@ -257,7 +257,7 @@ livemark/__init__.py
 
 ## Image
 
-It adds an image with an ability to customize dimensions and CSS class:
+This feature adds an image with an ability to customize dimensions and CSS class:
 
 ```yaml image
 path: ../../assets/example.png
@@ -272,7 +272,7 @@ This feature for adding a remark is being developed at the moment.
 
 ## Package
 
-It renders a Frictionless Data Package:
+This feature renders a Frictionless Data Package:
 
 ```
 '''yaml package
@@ -289,7 +289,7 @@ class: border
 
 ## Reference
 
-It include a Python function or class reference (in active development):
+This includes a Python function or class reference (in active development):
 
 ```
 '''yaml reference
@@ -307,7 +307,7 @@ This feature for including Jupyter Notebooks is being developed at the moment.
 
 ## Report
 
-It renders an interactive Validation Report:
+This renders an interactive Validation Report, using the Frictionless Framework:
 
 ```
 '''yaml report
@@ -328,7 +328,7 @@ This feature for including Data Resource is being developed at the moment.
 
 ## Schema
 
-It renders an interactive Table Schema:
+It renders an interactive Table Schema, using the Frictionless Framework:
 
 ```
 '''yaml schema

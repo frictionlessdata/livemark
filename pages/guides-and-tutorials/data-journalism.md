@@ -72,7 +72,7 @@ Run a livereload server locally:
 $ livemark start
 ```
 
-If you do like it, commit the changes and push it to Github. The only missing part now is enabling Github Pages:
+When you are ready to publish your work, commit the changes and push it to Github. The only missing part now is enabling Github Pages:
 
 > https://guides.github.com/features/pages/
 
@@ -87,7 +87,7 @@ After this step your documentation portal will be up and running.
 
 ## Data Collection
 
-Livemark ships with a builtin task runner. You can have your tasks written down in your article for a better reproducibility as well as be able of running them.
+Livemark ships with a builtin task runner. You can have your tasks written down in your article for better reproducibility as well as making it easier to run them.
 
 > data.md
 
@@ -183,9 +183,9 @@ width: 500
 height: 300
 ```
 
-There are much more useful Markdown extensions, for example:
+There are many more useful Markdown extensions, for example:
 - [Logic](../feature-reference/snippets.html#logic)
 - [Table](../feature-reference/snippets.html#table)
 - [Script](../feature-reference/snippets.html#script)
 
-Read [Feature Reference](../feature-reference/snippets.html) to learn more.
+Read the [Feature Reference](../feature-reference/snippets.html) to learn more.

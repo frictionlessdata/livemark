@@ -4,7 +4,7 @@ Livemark doesn't require any configuration by default. If you haven't started yo
 
 ## Project
 
-To configure the whole project, you can use `livemark.yaml` file in the project root directory. This file need to be written in YAML syntax:
+To configure the whole project, you can use `livemark.yaml` file in the project root directory. This file needs to be written in YAML syntax:
 
 > livemark.yaml
 
@@ -15,7 +15,7 @@ site:
 
 ## Document
 
-Every document can be configured using a frontmatter. Document's config has a high priority over the project config.
+Every document can be configured using frontmatter. The Document config has a higher priority over the Project configuration.
 
 > index.md
 

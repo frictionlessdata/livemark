@@ -1,10 +1,10 @@
 # General
 
-General Livemark's features are listed on this page. They are related to document processing and rendering. See other references' sections for more specific features like [Table](markdown.html#table) or [Search](navigation.html#search).
+General Livemark features are listed on this page. They are related to document processing and rendering. See other reference sections for more specific features like [Table](markdown.html#table) or [Search](navigation.html#search).
 
 ## Site
 
-To build a website (all the commands belows are equal):
+To build a website (all the commands below are equal):
 
 ```bash
 $ livemark build
@@ -47,4 +47,4 @@ To build a document as a Markdown:
 $ livemark build source.md --target target.md
 ```
 
-Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it's better to render documents as HTML.
+Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To use all of Livemark's features, it's better to render documents as HTML.
