@@ -2,7 +2,7 @@
 
 ```yaml remark
 type: warning
-text: This documentation page is work-in-progress
+text: This article is work-in-progress
 ```
 
 ## Overview
