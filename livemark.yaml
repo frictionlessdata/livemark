@@ -44,9 +44,8 @@ pages:
         - path: pages/guides-and-tutorials/python-development
     - name: Feature Reference
       items:
-        - path: pages/feature-reference/snippets
-        - path: pages/feature-reference/adapters
-        - path: pages/feature-reference/rendering
+        - path: pages/feature-reference/general
+        - path: pages/feature-reference/markdown
         - path: pages/feature-reference/appearance
         - path: pages/feature-reference/navigation
         - path: pages/feature-reference/blogging
