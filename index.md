@@ -13,6 +13,61 @@ text: This documentation portal is completely <a href="https://github.com/fricti
 
 Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
 
+## Purpose
+
+- **Data Journalism**: Livemark provides a complete toolset for working with data, starting from data extraction and ending with a publushed website containing interactive charts, tables, and other features.
+- **Software Education**: Livemark is perfectly suited for writing education materials as it uses code execution model in markdown documents. It solves a range of problems with testing and having your code example up-to-date.
+- **Python Development**: Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works as a task runner.
+
+## Examples
+
+```html markup
+<div class="container">
+<div class="row">
+<div class="col-sm">
+  <div class="text-center border">
+  <p><strong><a href="https://covid-tracker.frictionlessdata.io/">COVID-19 Tracker</a></strong></p>
+  <img src="assets/covid-tracker.png" />
+  </div>
+</div>
+<div class="col-sm">
+  <div class="text-center border">
+  <p><strong><a href="https://livemark.frictionlessdata.io/">Livemark Docs</a></strong></p>
+  <img src="assets/example.png" />
+  </div>
+</div>
+</div>
+</div>
+```
+
+## Features
+
+```html markup
+<div class="container mb-2">
+<div class="row">
+<div class="col-sm">
+  <ul>
+    <li>Open Source (MIT)</li>
+    <li>Full Markdown compatibility</li>
+    <li>Markdown extensions such as tables and charts</li>
+  </ul>
+</div>
+<div class="col-sm">
+  <ul>
+    <li>Straight-forward command-line interface</li>
+    <li>Much faster than many competitors</li>
+    <li>Live development server</li>
+  </ul>
+</div>
+</div>
+</div>
+```
+
+```yaml remark
+type: success
+text: Most important Markdown features added by Livemark are listed below
+```
+
 ## Logic
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
@@ -194,3 +249,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 </div>
 </div>
 ```
+
+---
+
+Please read full [Feature Reference](pages/feature-reference/markdown.html) to learn about all the Livemark's features.
