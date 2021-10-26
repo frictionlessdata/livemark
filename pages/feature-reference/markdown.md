@@ -1,6 +1,6 @@
 # Markdown
 
-## Task
+Livemark extends Markdown with variety of features. Usually, a codeblock syntax is used for new functionality. For example, adding a `script` word to a Python snippet's header will make it a Livemark script.
 
 ## Logic
 
@@ -183,6 +183,30 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 </div>
 </div>
 ```
+
+## Task
+
+Livemark allows to include Python and Bash task in your markdown documents and run them using `livemark run` command. This functionality is really useful for data-driven project where you can share the whole process of getting and transforming your data in a markdown document preserving an ability to run those scripts. It's also used for Contribution Guides and similar documents. It will be rendered as a code block with the command to run it added:
+
+```
+'''python task id=example
+print('It is a task')
+'''
+```
+
+```python task id=example
+print('It is a task')
+```
+
+You can run it using:
+
+```bash
+$ livemark run example
+```
+```
+It is a task
+```
+
 
 ## Audio
 

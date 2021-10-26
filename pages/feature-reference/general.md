@@ -1,5 +1,7 @@
 # General
 
+General Livemark's features are listed on this page. They are related to document processing and rendering. See other references's sections for more specific features like [Table](markdown.html#table) or [Search](navigation.html#search).
+
 ## Site
 
 To build a website (all the commands belows are equal):
