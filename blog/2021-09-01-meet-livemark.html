@@ -2010,8 +2010,8 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="../pages/universe/livemarks.html" class="secondary">
-            Livemarks
+          <a href="../pages/universe/projects.html" class="secondary">
+            Projects
           </a>
         </li>
                 <li class="secondary ">
@@ -2623,11 +2623,11 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../pages/plugin-system/reference',
           'text': "# Reference ```yaml remark type: warning text: This article is work-in-progress ``` Currently, you can explore main Livemark\u0027s classes on Github: - [Document](https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py) - [Markup](https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py) - [Plugin](https://github.com/frictionlessdata/livemark/blob/main/livemark/plugin.py) - [Project](https://github.com/frictionlessdata/livemark/blob/main/livemark/project.py) - [Server](https://github.com/frictionlessdata/livemark/blob/main/livemark/server.py) - [Snippet](https://github.com/frictionlessdata/livemark/blob/main/livemark/snippet.py) - [System](https://github.com/frictionlessdata/livemark/blob/main/livemark/system.py)",
       },
-          'pages/universe/livemarks': {
-          'name': 'Livemarks',
-          'path': 'pages/universe/livemarks',
-          'relpath': '../pages/universe/livemarks',
-          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
+          'pages/universe/projects': {
+          'name': 'Projects',
+          'path': 'pages/universe/projects',
+          'relpath': '../pages/universe/projects',
+          'text': "# Projects \u003e Start your own project with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
@@ -2645,205 +2645,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Blog',
           'path': 'blog/index',
           'relpath': 'index',
-          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
-      },
-          'blog/2021-09-01-meet-livemark': {
-          'name': 'Meet Livemark',
-          'path': 'blog/2021-09-01-meet-livemark',
-          'relpath': '2021-09-01-meet-livemark',
-          'text': "# Meet Livemark We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. ## How does it work? Livemark is a Python library generating a static page that extends Markdown with interactive charts, tables, scripts, and much much more. You can use the Frictionless framework as a `frictionless` variable to work with your tabular data in Livemark. Livemark offers a series of useful features, like automatically generating a table of contents and providing a scroll-to-top button when you scroll down your document. You can also customise the layout of your newly created webpage. ## How can you get started? Livemark is very easy to use. We invite you watch this great demo by developer Evgeny Karev: ```yaml video/youtube code: NMg-eCbO6L0 ``` You can also have a look at the [documentation on GitHub](https://frictionlessdata.github.io/livemark/). ## What do you think? If you create a site using Livemark, please let us know! Frictionless Data is an open source project, therefore we encourage you to give us feedback. Let us know your thoughts, suggestions, or issues by joining us in our community chat on [Discord]( https://discord.com/invite/Sewv6av) or by opening an issue in the [GitHub repo](https://github.com/frictionlessdata/livemark).",
-      },
-          '404': {
-          'name': 'Not Found',
-          'path': '404',
-          'relpath': '../404',
-          'text': "# Not Found \u003e The page is not found Return to the home page. ```html markup for (const item of JSON.parse(\u0027[{\"next\": \"pages/installation\", \"prev\": \"getting-started\"}]\u0027)) { if (`/${item.prev}.html` === location.pathname) { location.href = `/${item.next}.html`; } } ```",
-      },
-          'index': {
-          'name': 'Livemark',
-          'path': 'index',
-          'relpath': '../index',
-          'text': "# Livemark [![Build](https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main)](https://github.com/frictionlessdata/livemark/actions) [![Coverage](https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main)](https://codecov.io/gh/frictionlessdata/livemark) [![Registry](https://img.shields.io/pypi/v/livemark.svg)](https://pypi.python.org/pypi/livemark) [![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark) [![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133) ```yaml remark type: primary text: This documentation portal is completely written and published in Livemark notation ``` Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features. ## Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` - Volkswagen Vento: $785 - Hyundai Verna: $774 - Skoda Rapid: $756 - Suzuki Ciaz: $725 - Renault Scala: $724 ## Table \u003e https://datatables.net/manual/index Livemark supports CSV table rendering using DataTables, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read at the build stage so in addition to DataTables options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) as `data` property (CSV/Excel/JSON are supported). Use `columns` property to customize fields or their order: ```yaml \u0027\u0027\u0027yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp \u0027\u0027\u0027 ``` ```yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp ``` ## Chart \u003e https://vega.github.io/vega-lite/ Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml chart data: url: data/cars.csv mark: circle selection: brush: type: interval # other options are omitted width: 500 height: 300 \u0027\u0027\u0027 ``` ```yaml chart data: url: data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ## Map \u003e https://geojson.org/ Livemark supports GeoJson visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml map data: data/france.json \u0027\u0027\u0027 ``` ```yaml map data: data/france.json ``` ## Script \u003e https://www.python.org/ Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts: ```python script from pprint import pprint from frictionless import Resource, transform, steps brands = transform( Resource(\"data/cars.csv\"), steps=[ steps.table_normalize(), steps.table_aggregate(group_name=\"brand\", aggregation={\"price\": (\"price\", max)}), steps.row_sort(field_names=[\"price\"], reverse=True), steps.row_slice(head=5), ], ) pprint(brands.read_rows()) ``` ## Markup \u003e https://getbootstrap.com/docs/5.0/getting-started/introduction/ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `livemark-markdown` class we can use markdown inside html): ```html \u0027\u0027\u0027html markup ![Package](assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. \u0027\u0027\u0027 ``` ```html markup ![Package](assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. ![Resource](assets/data-resource.png) Data Resource A simple format to describe and package a single data resource such as a individual table or file. ![Schema](assets/table-schema.png) Table Schema A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON. ``` ## Content \u003e https://guides.github.com/features/mastering-markdown/ Livemark supports Github Flavoured Markdown so you can use familiar notation: ![Sidebar](assets/content.png) ## Sidebar \u003e https://tscanlin.github.io/tocbot/ Livemark provides an automatically generated table of contents: ![Sidebar](assets/sidebar.png) ## Scroll \u003e https://azrsix.github.io/ue-scroll-js/ Livemark provides a scroll-to-top button when you scroll down your document: ![Scroll](assets/scroll.png)",
-      },
-          'pages/getting-started/installation': {
-          'name': 'Installation',
-          'path': 'pages/getting-started/installation',
-          'relpath': '../pages/getting-started/installation',
-          'text': "# Installation ## Installation Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)): ```bash $ pip install livemark ``` After installation, you can start writing your document (eg an `index.md` file) using the extended Markdown syntax described in the next sections. ## Usage You can then use the command-line interface to build the output HTML file: ```bash # Build a single document (index.md by default) $ livemark build ``` Or start a livereload server to automatically reload the output page as you modify the input Markdown document: ```bash # Start a livereload server $ livemark start ``` Both commands will create an `index.md` file if it\u0027s not present in the same folder the command is being run on. If that\u0027s not the case you can pass the path to the input Markdown file as the first parameter: ```bash $ livemark build path/to/your/file.md $ livemark start path/to/your/file.md ``` ## Publish \u003e https://pages.github.com/ Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to \"Settings-\u003ePages\" in your repository and choose your main branch in the source menu: ![Github](../assets/github.png)",
-      },
-          'pages/getting-started/configuration': {
-          'name': 'Configuration',
-          'path': 'pages/getting-started/configuration',
-          'relpath': '../pages/getting-started/configuration',
-          'text': "# Configuration ## Document Livemark document can be configured using a frontmatter: \u003e index.md ```md --- title: My Title --- # My Document ``` ## Project For the whole project, you can use `livemark.yaml` file in the project root directory. It will be merge to the document configuration with lower priority. This file need to be written in YAML syntax: \u003e livemark.yaml ```yaml title: Global Title ```",
-      },
-          'pages/getting-started/using-markdown': {
-          'name': 'Using Markdown',
-          'path': 'pages/getting-started/using-markdown',
-          'relpath': '../pages/getting-started/using-markdown',
-          'text': "# Using Markdown",
-      },
-          'pages/getting-started/building-website': {
-          'name': 'Building a Website',
-          'path': 'pages/getting-started/building-website',
-          'relpath': '../pages/getting-started/building-website',
-          'text': "# Building a Website",
-      },
-          'pages/getting-started/troubleshooting': {
-          'name': 'Troubleshooting',
-          'path': 'pages/getting-started/troubleshooting',
-          'relpath': '../pages/getting-started/troubleshooting',
-          'text': "# Troubleshooting",
-      },
-          'pages/getting-started/contributing': {
-          'name': 'Contributing',
-          'path': 'pages/getting-started/contributing',
-          'relpath': '../pages/getting-started/contributing',
-          'text': "# Contributing",
-      },
-          'pages/guides-and-tutorials/data-journalism': {
-          'name': 'Data Journalism',
-          'path': 'pages/guides-and-tutorials/data-journalism',
-          'relpath': '../pages/guides-and-tutorials/data-journalism',
-          'text': "# Data Journalism",
-      },
-          'pages/guides-and-tutorials/software-education': {
-          'name': 'Software Education',
-          'path': 'pages/guides-and-tutorials/software-education',
-          'relpath': '../pages/guides-and-tutorials/software-education',
-          'text': "# Software Education ```yaml remark type: warning text: This article is work-in-progress ``` Livemark is perfectly suited for writing education materials as it uses code execution model in markdown documents. It means that as an author you only need to write code snippet inputs while outputs will be automatically inserted into your articles. It solves a range of problems with testing and having your code example up-to-date. Currently, we\u0027re working on providing a guide and a real-word example for Software Education with Livemark.",
-      },
-          'pages/guides-and-tutorials/python-development': {
-          'name': 'Python Development',
-          'path': 'pages/guides-and-tutorials/python-development',
-          'relpath': '../pages/guides-and-tutorials/python-development',
-          'text': "# Python Development Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works a a task runner. ## Example Livemark\u0027s documentation site is written in Livemark: \u003e https://livemark.frictionlessdata.io/ ```yaml image path: ../../assets/example.png width: 100% height: unset class: border ``` ## Prerequisites Create a virtual environment (optional): ```bash $ python3 -m venv .python $ source .python/bin/activate ``` And install livemark: ``` $ pip install livemark ``` ## Writing Docs Working on a documentation site is not really different to working on a regular Livemark project. The main difference will be having your documentation along side with the codebase itself. First of all, create: - `livemark.yaml` - `index.md` - `pages/contrib.md` (for example) Fill in your configuration file: \u003e livemark.yaml ```yaml brand: text: My Project about: text: My project is a software site: favicon: assets/favicon.ico github: user: repo: topics: selector: h2 links: items: - name: About Me path: https://personal.site pages: items: - name: Introduction path: index - path: pages/contrib ``` Run a livereload server locally: ```bash $ livemark start ``` If you do like it, commit the changes and push it to Github. The only missing part now is enabling Github Pages: \u003e https://guides.github.com/features/pages/ ```yaml image path: ../../assets/deploy.png width: 75% height: unset class: border ``` After this step your documentation portal will be up and running. ## Getting Tests \u003e A special Livemark command for testing docs is under construction An important thing about Livemark is that it runs scripts in documents during processing. It means that it basically tests all you code snippets on every build. For example, consider our guide include this code (with a built output): \u003e guide.md ``` \u0027\u0027\u0027python script mylib.command(\u0027Hello World\u0027) \u0027\u0027\u0027 \u0027\u0027\u0027 Hello World \u0027\u0027\u0027 ``` Every time during the build the software will be tested. ## Running Tasks Livemark supports having tasks written in Markdown documents. For example, consider we have a `contrib.md` section like this. To make it work we need to add this page to `livemark.yaml:pages.items`: \u003e contrib.md ``` \u0027\u0027\u0027bash task id=test-lint echo \u0027Test Lint\u0027 \u0027\u0027\u0027 \u0027\u0027\u0027python task id=test-code print(\u0027Test Code\u0027) \u0027\u0027\u0027 ``` Use this command to get a list of avalable tasks: ```bash $ livemark run ``` ``` test-lint test-code ``` Execute all of the tests: ```bash $ livemark run test ``` ``` Test Link Test Code ``` Or run an arbitrary task: ```bash $ livemark run test-code ``` ``` Test Code ```",
-      },
-          'pages/feature-reference/task': {
-          'name': 'Task',
-          'path': 'pages/feature-reference/task',
-          'relpath': '../pages/feature-reference/task',
-          'text': "# Task",
-      },
-          'pages/feature-reference/logic': {
-          'name': 'Logic',
-          'path': 'pages/feature-reference/logic',
-          'relpath': '../pages/feature-reference/logic',
-          'text': "# Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` - Volkswagen Vento: $785 - Hyundai Verna: $774 - Skoda Rapid: $756 - Suzuki Ciaz: $725 - Renault Scala: $724",
-      },
-          'pages/feature-reference/table': {
-          'name': 'Table',
-          'path': 'pages/feature-reference/table',
-          'relpath': '../pages/feature-reference/table',
-          'text': "# Table \u003e https://datatables.net/manual/index Livemark supports CSV table rendering using DataTables, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read at the build stage so in addition to DataTables options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) as `data` property (CSV/Excel/JSON are supported). Use `columns` property to customize fields or their order: ```yaml \u0027\u0027\u0027yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp \u0027\u0027\u0027 ``` ```yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp ```",
-      },
-          'pages/feature-reference/chart': {
-          'name': 'Chart',
-          'path': 'pages/feature-reference/chart',
-          'relpath': '../pages/feature-reference/chart',
-          'text': "# Chart \u003e https://vega.github.io/vega-lite/ Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml chart data: url: ../../data/cars.csv mark: circle selection: brush: type: interval # other options are omitted width: 500 height: 300 \u0027\u0027\u0027 ``` ```yaml chart data: url: ../../data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ```",
-      },
-          'pages/feature-reference/script': {
-          'name': 'Script',
-          'path': 'pages/feature-reference/script',
-          'relpath': '../pages/feature-reference/script',
-          'text': "# Script \u003e https://www.python.org/ Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts: ```python script from pprint import pprint from frictionless import Resource, transform, steps brands = transform( Resource(\"data/cars.csv\"), steps=[ steps.table_normalize(), steps.table_aggregate(group_name=\"brand\", aggregation={\"price\": (\"price\", max)}), steps.row_sort(field_names=[\"price\"], reverse=True), steps.row_slice(head=5), ], ) pprint(brands.read_rows()) ```",
-      },
-          'pages/feature-reference/markup': {
-          'name': 'Markup',
-          'path': 'pages/feature-reference/markup',
-          'relpath': '../pages/feature-reference/markup',
-          'text': "# Markup \u003e https://getbootstrap.com/docs/5.0/getting-started/introduction/ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `livemark-markdown` class we can use markdown inside html): ```html \u0027\u0027\u0027html markup ![Package](../../assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. \u0027\u0027\u0027 ``` ```html markup ![Package](../../assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. ![Resource](../../assets/data-resource.png) Data Resource A simple format to describe and package a single data resource such as a individual table or file. ![Schema](../../assets/table-schema.png) Table Schema A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON. ```",
-      },
-          'pages/feature-reference/widgets': {
-          'name': 'Widgets',
-          'path': 'pages/feature-reference/widgets',
-          'relpath': '../pages/feature-reference/widgets',
-          'text': "# Widgets ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
-      },
-          'pages/feature-reference/adapters': {
-          'name': 'Adapters',
-          'path': 'pages/feature-reference/adapters',
-          'relpath': '../pages/feature-reference/adapters',
-          'text': "# Adapters ## Cards ## Infinity It\u0027s an exerimental feature that adds an ability to create infinity scroll listings using an HTML class `livemark-infinity`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ``` ## Pagination It\u0027s an exerimental feature that adds an ability to create paginations using an HTML class `livemark-pagination`: ```html \u0027\u0027\u0027html markup {% for number in range(1, 1001) %} {{ number }} {% endfor %} \u0027\u0027\u0027 ```",
-      },
-          'pages/feature-reference/rendering': {
-          'name': 'Rendering',
-          'path': 'pages/feature-reference/rendering',
-          'relpath': '../pages/feature-reference/rendering',
-          'text': "# Rendering Currently, Livemark supports two rendering target: HTML and Markdown. ## Site ## HTML To build a document as an HTML (all the commands belows are equal): ```bash $ livemark build $ livemark build index.md $ livemark build index.md --target index.html ``` In-general, most of Livemark features are only applicable to the HTML rendering target. ## Markdown To build a document as a Markdown: ```bash $ livemark build source.md --target target.md ``` Note that for the markdown rendering only a limited set of plugins are supported such as `script`. To get all from Livemark it\u0027s better to reder documents as HTML. --- You can [write your own](../plugin-system/writing-plugin.html) renderer using Plugin System or use an [external one](../plugin-system/adding-plugin.html).",
-      },
-          'pages/feature-reference/appearance': {
-          'name': 'Appearance',
-          'path': 'pages/feature-reference/appearance',
-          'relpath': '../pages/feature-reference/appearance',
-          'text': "# Appearance ## Brand This feature adds a project name at the top left corner: ```yaml image path: ../../assets/brand.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml brand: text: Livemark ``` ## Notes By default, this feature shows a last updated datetime and a link to Livemark: ```yaml image path: ../../assets/notes.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml notes: format: %Y-%m-%d ``` ## Rating Based on the \"Github\" feature setting it will show a reporitory\u0027s rating: ```yaml image path: ../../assets/rating.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml rating: type: start ``` ## About This feature adds an information about the project or the page to the top right corner: ```yaml image path: ../../assets/about.png width: unset height: unset class: border ``` \u003e livemark.yaml ```yaml about: text: Livemark is a Python static site generator... ``` ## Display This feature gives an ability to print a page, increase/descrease readability, and use \"Back to top\" button: ```yaml image path: ../../assets/display.png width: unset height: unset class: border ``` ## Mobile This feature provides a mobile version of the site: ```yaml image path: ../../assets/mobile.png width: unset height: unset class: border ``` ## Source This features shoes a Markdown source of a section on the \"Source\" heading button click which is available on hover: ```yaml image path: ../../assets/source.png width: 100% height: unset class: border ``` ## News It adds news to the top of the site: ```yaml image path: ../../assets/news.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml news: text: It\u0027s test news ```",
-      },
-          'pages/feature-reference/navigation': {
-          'name': 'Navigation',
-          'path': 'pages/feature-reference/navigation',
-          'relpath': '../pages/feature-reference/navigation',
-          'text': "# Navigation ## Pages This features provides an ability to create multi-page websites. The navigation menu will be available in the left column on the website and can be setup in the project config: ```yaml image path: ../../assets/pages.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml pages: items: - name: Introduction path: index - name: Getting Started items: - path: pages/getting-started/installation - path: pages/getting-started/configuration ``` ## Topics Livemark will automatically create a table of contents for every page on the website using this feature. It can be customized in the project config and the resulting section will be rendered in the left column on the website: ```yaml image path: ../../assets/topics.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml topics: selector: h2 ``` ## Links Use this feature to add external links to the right column on the website: ```yaml image path: ../../assets/links.png width: 100% height: unset class: border ``` \u003e livemark.yaml ```yaml links: items: - name: Frictionless path: https://frictionlessdata.io - name: Discord path: https://discord.com/channels/695635777199145130/695635777199145133 - name: Twitter path: https://twitter.com/frictionlessd8a ``` ## Search Ability to search is critical for a website. Livemark provides this feature out-of-box: ```yaml image path: ../../assets/search.png width: 100% height: unset class: border ``` ## Signs Livemark encourages book-reading experience in data journalism or documentation writing. This feature provides two buttons (previous/next page) at the bottom of every page. ```yaml image path: ../../assets/signs.png width: 100% height: unset class: border ```",
-      },
-          'pages/feature-reference/blogging': {
-          'name': 'Blogging',
-          'path': 'pages/feature-reference/blogging',
-          'relpath': '../pages/feature-reference/blogging',
-          'text': "# Blogging ## Blog Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature: - create a `blog` folder in the project\u0027s root directory - put there an article e.g. `blog/2021-09-01-article.md` - add a blog index to the pages e.g. `- path: blog/index` It\u0027s possible to customize an article using a frontmatter: \u003e blog/2021-09-01-article.md ```yaml blog: author: John Doe image: ../assets/example.png ``` See [Blog](../../blog/index.html) as an example. ## Comments To enable comments for an arbitraty article you need to provide frontmatter with Disqus id and a canonical website link: \u003e article.md ```yaml comments: code: livemark link: https://livemark.frictionlessdata.io ``` It\u0027s possible to enable comments for all the pages using project config: \u003e livemark.yaml ```yaml comments: code: livemark link: https://livemark.frictionlessdata.io ``` See [Forum](../forum.html) as an example.",
-      },
-          'pages/feature-reference/others': {
-          'name': 'Others',
-          'path': 'pages/feature-reference/others',
-          'relpath': '../pages/feature-reference/others',
-          'text': "# Others ## Cleanup This feature provides an ability to spicify a list of Bash command to be run after the document building: \u003e livemark.yaml ```yaml cleanup: - rm table.csv ``` ## Counter This feature currently support a Google Analytics counter that can be added to all the project pages: \u003e livemark.yaml ```yaml counter: type: google code: G- ``` ## Github Some plugins rely on Github repository information that is provided by this feature. Be default, it will be inferred automatically from you local `.git` directory. It\u0027s also possible to configure it manually: \u003e livemark.yaml ```yaml github: user: frictionlessdata repo: livemark ``` ## Prepare This feature provides an ability to spicify a list of Bash command to be run before the document building: \u003e livemark.yaml ```yaml prepare: - cp data/table.csv table.csv ``` ## Redirect Using Github Pages as a hosting it\u0027s possible to setup a redirect table: \u003e livemark.yaml ```yaml redirect: items: - prev: getting-started next: pages/installation ``` Under the hood, Livemark will create a `404.html` file and use a client-side redirect.",
-      },
-          'pages/plugin-system/adding-plugin': {
-          'name': 'Adding a Plugin',
-          'path': 'pages/plugin-system/adding-plugin',
-          'relpath': '../pages/plugin-system/adding-plugin',
-          'text': "# Adding a Plugin ```yaml remark type: warning text: This article is work-in-progress ``` ## Overview When you work on your Livemark project there are different options of adding a plugin to the building process: - installing an external plugin - adding a custom plugin ## External Plugin You can install an external plugin, for example: ```bash $ pip install livemark-ckan ``` And activate it in `livemark.yaml` file: ```yaml ckan: true # or a plugin config ``` ## Custom Plugin You can [Write a Plugin](write-plugin.html) and put it into `plugin.py` module or export from `plugins` package in your project root. You don\u0027t need to activate it in `livemark.yaml`. For example, you can take a look how it works in the [Livemark Project Template](https://github.com/frictionlessdata/livemark-project). It\u0027s also possible to add a plugin programmatically: ```python from livemark import system system.register(CustomPlugin) ```",
-      },
-          'pages/plugin-system/writing-plugin': {
-          'name': 'Writing a Plugin',
-          'path': 'pages/plugin-system/writing-plugin',
-          'relpath': '../pages/plugin-system/writing-plugin',
-          'text': "# Writing a Plugin ```yaml remark type: warning text: This article is work-in-progress ``` ## Overview Livemark provides quite simple plugin interface. There are 4 main hooks a plugin author can use to alter the rendering process. All of them take an corresponding object that can be updated: - `Pluing.process_project(project)` - `pluing.process_document(document)` - `pluing.process_snippet(snippet)` - `pluing.process_markup(markup)` ## Example This plugin simply adds a string to H1 tag on every page in the project: ```python from livemark import Plugin class CustomPlugin(Plugin): identity = \"custom\" # Process def process_markup(self, markup): markup.add_markup(\"(template)\", target=\"h1\") ``` ## References To write a good plugin explore core plugins, architecture, and API References: - [Core Plugins](https://github.com/frictionlessdata/livemark/tree/main/livemark/plugins) - [Architecture](architecture.html) - [API Reference](reference.html)",
-      },
-          'pages/plugin-system/architecture': {
-          'name': 'Architecture',
-          'path': 'pages/plugin-system/architecture',
-          'relpath': '../pages/plugin-system/architecture',
-          'text': "# Architecture ```yaml remark type: warning text: This article is work-in-progress ``` ## Overview In a nutshell, Livemark is just a text processor. It takes a Markdown document and outputs an HTML document. It also possible to ouput different formats but the main Livemark\u0027s specialization is Markdown-to-HTML conversion. ## Plugins Livemark\u0027s core only provides an abstract classes like Project, Document, or Snippet. The actual work is done by various plugins like HtmlPlugin, SitePlugin, or TablePlugin. You can find their description in the Livemark Markdown and Livemark Features sections. ## Build On the figure below we present the Livemark\u0027s building flow schematically: a Markdown document containing various snippets being converted to an HTML document containing various markup blocks by Livemark and its plugins: ```yaml image path: ../../assets/flow.png width: 100% height: unset ```",
-      },
-          'pages/plugin-system/reference': {
-          'name': 'Reference',
-          'path': 'pages/plugin-system/reference',
-          'relpath': '../pages/plugin-system/reference',
-          'text': "# Reference ```yaml remark type: warning text: This article is work-in-progress ``` Currently, you can explore main Livemark\u0027s classes on Github: - [Document](https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py) - [Markup](https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py) - [Plugin](https://github.com/frictionlessdata/livemark/blob/main/livemark/plugin.py) - [Project](https://github.com/frictionlessdata/livemark/blob/main/livemark/project.py) - [Server](https://github.com/frictionlessdata/livemark/blob/main/livemark/server.py) - [Snippet](https://github.com/frictionlessdata/livemark/blob/main/livemark/snippet.py) - [System](https://github.com/frictionlessdata/livemark/blob/main/livemark/system.py)",
-      },
-          'pages/universe/livemarks': {
-          'name': 'Livemarks',
-          'path': 'pages/universe/livemarks',
-          'relpath': '../pages/universe/livemarks',
-          'text': "# Livemarks \u003e Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup covid-tracker A livemark tracking COVID-19 disease pandemic Github 3 data-packages A livemark listing data packages hosted on Github Github 1 ckan-extensions A livemark listing CKAN extensions hosted on Github Github 1 community-insights To tell a story about the Frictionless community using Livemark Github 1 ```",
-      },
-          'pages/universe/plugins': {
-          'name': 'Plugins',
-          'path': 'pages/universe/plugins',
-          'relpath': '../pages/universe/plugins',
-          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup livemark-ckan It\u0027s a CKAN plugin for Livemark Github 1 ```",
-      },
-          'pages/forum': {
-          'name': 'Forum',
-          'path': 'pages/forum',
-          'relpath': '../pages/forum',
-          'text': "# Forum",
-      },
-          'blog/index': {
-          'name': 'Blog',
-          'path': 'blog/index',
-          'relpath': 'index',
-          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
+          'text': "# Blog ```html markup Meet Livemark By Sara Petti on 2021-09-01 We are very excited to announce that a new tool has been added to the Frictionless Data toolkit: Livemark. What is that? Livemark is a great tool that allows you to publish data articles very easily, giving you the possibility to see your data live on a working website in a blink of an eye. Read more \u00bb ```",
       },
           'blog/2021-09-01-meet-livemark': {
           'name': 'Meet Livemark',

@@ -1,6 +1,6 @@
-# Livemarks
+# Projects
 
-> Start your own livemark with the [Project Template](https://github.com/frictionlessdata/livemark-project)
+> Start your own project with the [Project Template](https://github.com/frictionlessdata/livemark-project)
 
 ```html markup
 <div class="livemarks">

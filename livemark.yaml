@@ -64,7 +64,7 @@ pages:
         - path: pages/plugin-system/reference
     - name: Universe
       items:
-        - path: pages/universe/livemarks
+        - path: pages/universe/projects
         - path: pages/universe/plugins
     - path: pages/forum
     - path: blog/index
