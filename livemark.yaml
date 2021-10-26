@@ -44,13 +44,7 @@ pages:
         - path: pages/guides-and-tutorials/python-development
     - name: Feature Reference
       items:
-        - path: pages/feature-reference/task
-        - path: pages/feature-reference/logic
-        - path: pages/feature-reference/table
-        - path: pages/feature-reference/chart
-        - path: pages/feature-reference/script
-        - path: pages/feature-reference/markup
-        - path: pages/feature-reference/widgets
+        - path: pages/feature-reference/snippets
         - path: pages/feature-reference/adapters
         - path: pages/feature-reference/rendering
         - path: pages/feature-reference/appearance

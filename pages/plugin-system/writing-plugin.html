@@ -1916,38 +1916,8 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
             <ul class="secondary">
                 <li class="secondary ">
-          <a href="../feature-reference/task.html" class="secondary">
-            Task
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="../feature-reference/logic.html" class="secondary">
-            Logic
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="../feature-reference/table.html" class="secondary">
-            Table
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="../feature-reference/chart.html" class="secondary">
-            Chart
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="../feature-reference/script.html" class="secondary">
-            Script
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="../feature-reference/markup.html" class="secondary">
-            Markup
-          </a>
-        </li>
-                <li class="secondary ">
-          <a href="../feature-reference/widgets.html" class="secondary">
-            Widgets
+          <a href="../feature-reference/snippets.html" class="secondary">
+            Snippets
           </a>
         </li>
                 <li class="secondary ">
@@ -2549,47 +2519,11 @@ document.addEventListener("DOMContentLoaded", function () {
           'relpath': '../guides-and-tutorials/python-development',
           'text': "# Python Development Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works a a task runner. ## Example Livemark\u0027s documentation site is written in Livemark: \u003e https://livemark.frictionlessdata.io/ ```yaml image path: ../../assets/example.png width: 100% height: unset class: border ``` ## Prerequisites Create a virtual environment (optional): ```bash $ python3 -m venv .python $ source .python/bin/activate ``` And install livemark: ``` $ pip install livemark ``` ## Writing Docs Working on a documentation site is not really different to working on a regular Livemark project. The main difference will be having your documentation along side with the codebase itself. First of all, create: - `livemark.yaml` - `index.md` - `pages/contrib.md` (for example) Fill in your configuration file: \u003e livemark.yaml ```yaml brand: text: My Project about: text: My project is a software site: favicon: assets/favicon.ico github: user: repo: topics: selector: h2 links: items: - name: About Me path: https://personal.site pages: items: - name: Introduction path: index - path: pages/contrib ``` Run a livereload server locally: ```bash $ livemark start ``` If you do like it, commit the changes and push it to Github. The only missing part now is enabling Github Pages: \u003e https://guides.github.com/features/pages/ ```yaml image path: ../../assets/deploy.png width: 75% height: unset class: border ``` After this step your documentation portal will be up and running. ## Getting Tests \u003e A special Livemark command for testing docs is under construction An important thing about Livemark is that it runs scripts in documents during processing. It means that it basically tests all you code snippets on every build. For example, consider our guide include this code (with a built output): \u003e guide.md ``` \u0027\u0027\u0027python script mylib.command(\u0027Hello World\u0027) \u0027\u0027\u0027 \u0027\u0027\u0027 Hello World \u0027\u0027\u0027 ``` Every time during the build the software will be tested. ## Running Tasks Livemark supports having tasks written in Markdown documents. For example, consider we have a `contrib.md` section like this. To make it work we need to add this page to `livemark.yaml:pages.items`: \u003e contrib.md ``` \u0027\u0027\u0027bash task id=test-lint echo \u0027Test Lint\u0027 \u0027\u0027\u0027 \u0027\u0027\u0027python task id=test-code print(\u0027Test Code\u0027) \u0027\u0027\u0027 ``` Use this command to get a list of avalable tasks: ```bash $ livemark run ``` ``` test-lint test-code ``` Execute all of the tests: ```bash $ livemark run test ``` ``` Test Link Test Code ``` Or run an arbitrary task: ```bash $ livemark run test-code ``` ``` Test Code ```",
       },
-          'pages/feature-reference/task': {
-          'name': 'Task',
-          'path': 'pages/feature-reference/task',
-          'relpath': '../feature-reference/task',
-          'text': "# Task",
-      },
-          'pages/feature-reference/logic': {
-          'name': 'Logic',
-          'path': 'pages/feature-reference/logic',
-          'relpath': '../feature-reference/logic',
-          'text': "# Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` - Volkswagen Vento: $785 - Hyundai Verna: $774 - Skoda Rapid: $756 - Suzuki Ciaz: $725 - Renault Scala: $724",
-      },
-          'pages/feature-reference/table': {
-          'name': 'Table',
-          'path': 'pages/feature-reference/table',
-          'relpath': '../feature-reference/table',
-          'text': "# Table \u003e https://datatables.net/manual/index Livemark supports CSV table rendering using DataTables, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read at the build stage so in addition to DataTables options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) as `data` property (CSV/Excel/JSON are supported). Use `columns` property to customize fields or their order: ```yaml \u0027\u0027\u0027yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp \u0027\u0027\u0027 ``` ```yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp ```",
-      },
-          'pages/feature-reference/chart': {
-          'name': 'Chart',
-          'path': 'pages/feature-reference/chart',
-          'relpath': '../feature-reference/chart',
-          'text': "# Chart \u003e https://vega.github.io/vega-lite/ Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml chart data: url: ../../data/cars.csv mark: circle selection: brush: type: interval # other options are omitted width: 500 height: 300 \u0027\u0027\u0027 ``` ```yaml chart data: url: ../../data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ```",
-      },
-          'pages/feature-reference/script': {
-          'name': 'Script',
-          'path': 'pages/feature-reference/script',
-          'relpath': '../feature-reference/script',
-          'text': "# Script \u003e https://www.python.org/ Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts: ```python script from pprint import pprint from frictionless import Resource, transform, steps brands = transform( Resource(\"data/cars.csv\"), steps=[ steps.table_normalize(), steps.table_aggregate(group_name=\"brand\", aggregation={\"price\": (\"price\", max)}), steps.row_sort(field_names=[\"price\"], reverse=True), steps.row_slice(head=5), ], ) pprint(brands.read_rows()) ```",
-      },
-          'pages/feature-reference/markup': {
-          'name': 'Markup',
-          'path': 'pages/feature-reference/markup',
-          'relpath': '../feature-reference/markup',
-          'text': "# Markup \u003e https://getbootstrap.com/docs/5.0/getting-started/introduction/ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `livemark-markdown` class we can use markdown inside html): ```html \u0027\u0027\u0027html markup ![Package](../../assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. \u0027\u0027\u0027 ``` ```html markup ![Package](../../assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. ![Resource](../../assets/data-resource.png) Data Resource A simple format to describe and package a single data resource such as a individual table or file. ![Schema](../../assets/table-schema.png) Table Schema A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON. ```",
-      },
-          'pages/feature-reference/widgets': {
-          'name': 'Widgets',
-          'path': 'pages/feature-reference/widgets',
-          'relpath': '../feature-reference/widgets',
-          'text': "# Widgets ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
+          'pages/feature-reference/snippets': {
+          'name': 'Snippets',
+          'path': 'pages/feature-reference/snippets',
+          'relpath': '../feature-reference/snippets',
+          'text': "# Snippets ## Task ## Logic \u003e https://jinja.palletsprojects.com/en/3.0.x/templates/ Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It\u0027s a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart: ``` {% for car in frictionless.extract(\u0027data/cars.csv\u0027, layout={\"limitRows\": 5}) %} - {{ car.brand }} {{ car.model }}: ${{ car.price }} {% endfor %} ``` - Volkswagen Vento: $785 - Hyundai Verna: $774 - Skoda Rapid: $756 - Suzuki Ciaz: $725 - Renault Scala: $724 ## Table \u003e https://datatables.net/manual/index Livemark supports CSV table rendering using DataTables, which you can see in the example below (replace the single quotes with back ticks). The `data` property will be read at the build stage so in addition to DataTables options you can pass a [file path](https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv) as `data` property (CSV/Excel/JSON are supported). Use `columns` property to customize fields or their order: ```yaml \u0027\u0027\u0027yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp \u0027\u0027\u0027 ``` ```yaml table data: data/cars.csv width: 600 order: - [3, \u0027desc\u0027] columns: - data: type - data: brand - data: model - data: price - data: kmpl - data: bhp ``` ## Chart \u003e https://vega.github.io/vega-lite/ Livemark supports Vega Lite visualisations rendering (to try this example, replace the single quotes with back ticks): ```yaml \u0027\u0027\u0027yaml chart data: url: ../../data/cars.csv mark: circle selection: brush: type: interval # other options are omitted width: 500 height: 300 \u0027\u0027\u0027 ``` ```yaml chart data: url: ../../data/cars.csv mark: circle selection: brush: type: interval encoding: x: type: quantitative field: kmpl scale: domain: [12,25] y: type: quantitative field: price scale: domain: [100,900] color: condition: selection: brush field: type type: nominal value: grey size: type: quantitative field: bhp width: 500 height: 300 ``` ## Script \u003e https://www.python.org/ Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts: ```python script from pprint import pprint from frictionless import Resource, transform, steps brands = transform( Resource(\"data/cars.csv\"), steps=[ steps.table_normalize(), steps.table_aggregate(group_name=\"brand\", aggregation={\"price\": (\"price\", max)}), steps.row_sort(field_names=[\"price\"], reverse=True), steps.row_slice(head=5), ], ) pprint(brands.read_rows()) ``` ## Markup \u003e https://getbootstrap.com/docs/5.0/getting-started/introduction/ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is an example of creating a responsive grid of cards (note that if we set a `livemark-markdown` class we can use markdown inside html): ```html \u0027\u0027\u0027html markup ![Package](../../assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. \u0027\u0027\u0027 ``` ```html markup ![Package](../../assets/data-package.png) Data Package A simple container format for describing a coherent collection of data in a single package. ![Resource](../../assets/data-resource.png) Data Resource A simple format to describe and package a single data resource such as a individual table or file. ![Schema](../../assets/table-schema.png) Table Schema A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON. ``` ## Audio ## File ## Image ## Map ## Notebook ## Package ## Pipeline ## Reference ## Report ## Resource ## Schema ## Video",
       },
           'pages/feature-reference/adapters': {
           'name': 'Adapters',
@@ -2655,13 +2589,13 @@ document.addEventListener("DOMContentLoaded", function () {
           'name': 'Projects',
           'path': 'pages/universe/projects',
           'relpath': '../universe/projects',
-          'text': "# Projects \u003e Start your own project with the [Project Template](https://github.com/frictionlessdata/livemark-project) ```html markup {% for row in frictionless.extract(\u0027data/livemarks.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Projects ```html markup {% for row in frictionless.extract(\u0027data/livemarks.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
       },
           'pages/universe/plugins': {
           'name': 'Plugins',
           'path': 'pages/universe/plugins',
           'relpath': '../universe/plugins',
-          'text': "# Plugins \u003e Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin) ```html markup {% for row in frictionless.extract(\u0027data/plugins.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
+          'text': "# Plugins ```html markup {% for row in frictionless.extract(\u0027data/plugins.csv\u0027) %} {{ row.repo }} {{ row.description or \u0027Description is not provided\u0027}} Github {{ row.stars }} {% endfor %} ```",
       },
           'pages/forum': {
           'name': 'Forum',
