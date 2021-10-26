@@ -1,71 +1,28 @@
-# Livemark
+# Markdown
 
-[![Build](https://img.shields.io/github/workflow/status/frictionlessdata/livemark/general/main)](https://github.com/frictionlessdata/livemark/actions)
-[![Coverage](https://img.shields.io/codecov/c/github/frictionlessdata/livemark/main)](https://codecov.io/gh/frictionlessdata/livemark)
-[![Registry](https://img.shields.io/pypi/v/livemark.svg)](https://pypi.python.org/pypi/livemark)
-[![Codebase](https://img.shields.io/badge/codebase-github-brightgreen)](https://github.com/frictionlessdata/livemark)
-[![Support](https://img.shields.io/badge/support-discord-brightgreen)](https://discord.com/channels/695635777199145130/695635777199145133)
+Livemark extends Markdown with variety of features. Usually, a codeblock syntax is used for new functionality. For example, adding a `script` word to a Python snippet's header will make it a Livemark script.
 
-```yaml remark
-type: primary
-text: This documentation portal is completely <a href="https://github.com/frictionlessdata/livemark" target="_blank">written and published</a> in Livemark notation
+## Task
+
+Livemark allows to include Python and Bash task in your markdown documents and run them using `livemark run` command. This functionality is really useful for data-driven project where you can share the whole process of getting and transforming your data in a markdown document preserving an ability to run those scripts. It's also used for Contribution Guides and similar documents. It will be rendered as a code block with the command to run it added:
+
+```
+'''python task id=example
+print('It is a task')
+'''
 ```
 
-Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
-
-## Purpose
-
-- **Data Journalism**: Livemark provides a complete toolset for working with data, starting from data extraction and ending with a published website containing interactive charts, tables, and other features.
-- **Software Education**: Livemark is perfectly suited for writing education materials as it uses code execution model in markdown documents. It solves a range of problems with testing and having your code example up-to-date.
-- **Python Development**: Livemark can be used in software development as a helper tool for working on Python projects. It provides an ability to create documentation sites and works as a task runner.
-
-## Examples
-
-```html markup
-<div class="container">
-<div class="row">
-<div class="col-sm">
-  <div class="text-center border">
-  <p><strong><a href="https://covid-tracker.frictionlessdata.io/">COVID-19 Tracker</a></strong></p>
-  <img src="assets/covid-tracker.png" />
-  </div>
-</div>
-<div class="col-sm">
-  <div class="text-center border">
-  <p><strong><a href="https://livemark.frictionlessdata.io/">Livemark Docs</a></strong></p>
-  <img src="assets/example.png" />
-  </div>
-</div>
-</div>
-</div>
+```python task id=example
+print('It is a task')
 ```
 
-## Features
+You can run it using:
 
-```html markup
-<div class="container mb-2">
-<div class="row">
-<div class="col-sm">
-  <ul>
-    <li>Open Source (MIT)</li>
-    <li>Full Markdown compatibility</li>
-    <li>Markdown extensions such as tables and charts</li>
-  </ul>
-</div>
-<div class="col-sm">
-  <ul>
-    <li>Straight-forward command-line interface</li>
-    <li>Much faster than many competitors</li>
-    <li>Live development server</li>
-  </ul>
-</div>
-</div>
-</div>
+```bash
+$ livemark run example
 ```
-
-```yaml remark
-type: success
-text: Most important Markdown features added by Livemark are listed below
+```
+It is a task
 ```
 
 ## Logic
@@ -131,7 +88,7 @@ Livemark supports Vega Lite visualisations rendering (to try this example, repla
 ```yaml
 '''yaml chart
 data:
-  url: data/cars.csv
+  url: ../../data/cars.csv
 mark: circle
 selection:
   brush:
@@ -144,7 +101,7 @@ height: 300
 
 ```yaml chart
 data:
-  url: data/cars.csv
+  url: ../../data/cars.csv
 mark: circle
 selection:
   brush:
@@ -207,7 +164,7 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 <div class="container">
 <div class="row">
 <div class="col-sm">
-  <div class="markdown">![Package](assets/data-package.png)</div>
+  <div class="markdown">![Package](../../assets/data-package.png)</div>
   <div class="text-center">
   <p><strong>Data Package</strong></p>
   <p>A simple container format for describing a coherent collection of data in a single package.</p>
@@ -225,21 +182,21 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 <div class="container">
 <div class="row">
 <div class="col-sm">
-  <div class="livemark-markdown">![Package](assets/data-package.png)</div>
+  <div class="livemark-markdown">![Package](../../assets/data-package.png)</div>
   <div class="text-center">
   <p><strong>Data Package</strong></p>
   <p>A simple container format for describing a coherent collection of data in a single package.</p>
   </div>
 </div>
 <div class="col-sm">
-  <div class="livemark-markdown">![Resource](assets/data-resource.png)</div>
+  <div class="livemark-markdown">![Resource](../../assets/data-resource.png)</div>
   <div class="text-center">
   <p><strong>Data Resource</strong></p>
   <p>A simple format to describe and package a single data resource such as a individual table or file.</p>
   </div>
 </div>
 <div class="col-sm">
-  <div class="livemark-markdown">![Schema](assets/table-schema.png)</div>
+  <div class="livemark-markdown">![Schema](../../assets/table-schema.png)</div>
   <div class="text-center">
   <p><strong>Table Schema</strong></p>
   <p>A simple format to declare a schema for tabular data. The schema is designed to be expressible in JSON.</p>
@@ -250,6 +207,159 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 </div>
 ```
 
----
+## Map
 
-Please read full [Feature Reference](pages/feature-reference/markdown.html) to learn about all the Livemark's features.
+> https://geojson.org/
+
+Livemark supports GeoJson visualisations rendering (to try this example, replace the single quotes with back ticks):
+
+```yaml
+'''yaml map
+data: data/france.json
+'''
+```
+
+```yaml map
+data: data/france.json
+```
+
+## Audio
+
+This feature renders an audio file or a SoundCloud track:
+
+```
+'''yaml audio
+path: https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3
+width: 50%
+'''
+```
+
+```yaml image
+path: ../../assets/soundcloud.png
+width: 50%
+height: unset
+class: border
+```
+
+## File
+
+It adds a file from the disc with a given code syntax:
+
+```
+'''python file
+livemark/__init__.py
+'''
+```
+
+```python file
+livemark/__init__.py
+```
+
+## Image
+
+It adds an image with an ability to customize dimensions and CSS class:
+
+```yaml image
+path: ../../assets/example.png
+width: 50%
+height: unset
+class: border
+```
+
+## Remark
+
+This feature for adding a remark is being developed at the moment.
+
+## Package
+
+It renders a Frictionless Data Package:
+
+```
+'''yaml package
+descriptor: https://raw.githubusercontent.com/fjuniorr/cicd-gh-pages-rmarkdown/main/datapackage.json
+'''
+```
+
+```yaml image
+path: ../../assets/package.png
+width: 50%
+height: unset
+class: border
+```
+
+## Reference
+
+It include a Python function or class reference (in active development):
+
+```
+'''yaml reference
+path: livemark.Document
+'''
+```
+
+```yaml reference
+path: livemark.Document
+```
+
+## Notebook
+
+This feature for including Jupyter Notebooks is being developed at the moment.
+
+## Report
+
+It renders an interactive Validation Report:
+
+```
+'''yaml report
+descriptor: data/invalid.report.json
+'''
+```
+
+```yaml image
+path: ../../assets/report.png
+width: 100%
+height: unset
+class: border
+```
+
+## Resource
+
+This feature for including Data Resource is being developed at the moment.
+
+## Schema
+
+It renders an interactive Table Schema:
+
+```
+'''yaml schema
+descriptor: data/cars.schema.json
+'''
+```
+
+```yaml image
+path: ../../assets/schema.png
+width: 100%
+height: unset
+class: border
+```
+
+## Video
+
+This feature renders a video file or a YouTube video:
+
+```
+'''yaml video/youtube
+code: NMg-eCbO6L0
+'''
+```
+
+```yaml image
+path: ../../assets/youtube.png
+width: 50%
+height: unset
+class: border
+```
+
+## Pipeline
+
+This feature for including Transformation Pipelines is being developed at the moment.
