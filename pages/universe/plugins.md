@@ -1,7 +1,5 @@
 # Plugins
 
-> Start your own plugin with the [Plugin Template](https://github.com/frictionlessdata/livemark-plugin)
-
 ```html markup
 <div class="plugins">
   {% for row in frictionless.extract('data/plugins.csv') %}

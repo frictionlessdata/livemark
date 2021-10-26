@@ -1,7 +1,5 @@
 # Projects
 
-> Start your own project with the [Project Template](https://github.com/frictionlessdata/livemark-project)
-
 ```html markup
 <div class="livemarks">
   {% for row in frictionless.extract('data/livemarks.csv') %}

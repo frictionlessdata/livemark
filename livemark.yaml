@@ -33,6 +33,7 @@ pages:
         - path: pages/getting-started/installation
         - path: pages/getting-started/configuration
         - path: pages/getting-started/using-markdown
+        - path: pages/getting-started/starting-project
         - path: pages/getting-started/building-website
         - path: pages/getting-started/troubleshooting
         - path: pages/getting-started/contributing
