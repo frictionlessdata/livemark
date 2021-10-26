@@ -1,10 +1,5 @@
 # Adding a Plugin
 
-```yaml remark
-type: warning
-text: This article is work-in-progress
-```
-
 ## Overview
 
 When you work on your Livemark project there are different options of adding a plugin to the building process:

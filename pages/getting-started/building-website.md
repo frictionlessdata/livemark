@@ -1,6 +1,8 @@
 # Building a Website
 
-## Usage
+Livemark is a very simple static site generator design-wise. It takes your Markdown documents as input and outputs HTML documents. The result can be deployed as it is to any static site hosting.
+
+## Build
 
 You can then use the command-line interface to build the output HTML file:
 
@@ -29,4 +31,9 @@ $ livemark start path/to/your/file.md
 
 Livemark generates a static HTML document so you can publish it using any static page hosting. A common option for hosting is to use Github Pages - go to "Settings->Pages" in your repository and choose your main branch in the source menu:
 
-![Github](../assets/github.png)
+```yaml image
+path: ../../assets/deploy.png
+width: 75%
+height: unset
+class: border
+```

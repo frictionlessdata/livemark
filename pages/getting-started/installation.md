@@ -1,8 +1,10 @@
 # Installation
 
+Livemark is a Python library that works on Windown, MacOs, and Linux. It uses SemVer for semantic versioning. Please file an [issue](https://github.com/frictionlessdata/livemark/issues) if you ran into any problems during installation.
+
 ## Install
 
-Livemark is a Python library and it can be installed with pip (or [pipx](https://pypa.github.io/pipx/)):
+Livemark can be installed with pip (or [pipx](https://pypa.github.io/pipx/)):
 
 ```bash
 $ pip install livemark

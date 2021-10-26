@@ -1,9 +1,6 @@
 # Writing a Plugin
 
-```yaml remark
-type: warning
-text: This article is work-in-progress
-```
+> Start quickly with [Livemark Plugin](https://github.com/frictionlessdata/livemark-plugin) Github Template
 
 ## Overview
 
