@@ -11,7 +11,7 @@ type: primary
 text: This documentation portal is completely <a href="https://github.com/frictionlessdata/livemark" target="_blank">written and published</a> in Livemark notation
 ```
 
-Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
+Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, Frictionless data processing, and other features.
 
 ## Purpose
 
@@ -72,7 +72,7 @@ text: Most important Markdown features added by Livemark are listed below
 
 > https://jinja.palletsprojects.com/en/3.0.x/templates/
 
-Livemark process your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. It's a high-level preprocessing so you can combine Logic with other syntax, such as Table or Chart:
+Livemark processes your document using the Jinja templating language. Inside templates, you can use [Frictionless Framework](https://framework.frictionlessdata.io/) as a `frictionless` variable to work with tabular data. This is a high-level data preprocessing framework so you can combine Logic with other syntax, such as Table or Chart:
 
 {% raw %}
 ```
@@ -177,7 +177,7 @@ height: 300
 
 > https://www.python.org/
 
-Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupiter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include scripts:
+Livemark supports Python/Bash script execution inside Markdown. We think of this as a lightweight version of Jupyter Notebooks. Sometimes, a declarative Logic/Table/Chart is not enough for presenting data so you might also want to include the scripts. This example uses [Frictionless Framework](https://framework.frictionlessdata.io/) code to transform the dataset:
 
 ```python script
 from pprint import pprint
@@ -252,4 +252,4 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 
 ---
 
-Please read full [Feature Reference](pages/feature-reference/markdown.html) to learn about all the Livemark's features.
+Please read the full [Feature Reference](pages/feature-reference/markdown.html) to learn about all of Livemark's features.

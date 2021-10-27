@@ -72,7 +72,7 @@ Run a livereload server locally:
 $ livemark start
 ```
 
-If you do like it, commit the changes and push it to Github. The only missing part now is enabling Github Pages:
+When you are ready to publish your work, commit the changes and push it to Github. The only missing part now is enabling Github Pages:
 
 > https://guides.github.com/features/pages/
 
@@ -89,9 +89,9 @@ After this step your documentation portal will be up and running.
 
 > A special Livemark command for testing docs is under construction
 
-An important thing about Livemark is that it runs scripts in documents during processing. It means that it basically tests all you code snippets on every build.
+An important thing about Livemark is that it runs scripts in documents during processing. It means that it basically tests all your code snippets on every build.
 
-For example, consider our guide include this code (with a built output):
+For example, our guide includes this code (with a built output):
 
 > guide.md
 
@@ -108,7 +108,7 @@ Every time during the build the software will be tested.
 
 ## Running Tasks
 
-Livemark supports having tasks written in Markdown documents. For example, consider we have a `contrib.md` section like this. To make it work we need to add this page to `livemark.yaml:pages.items`:
+Livemark supports having tasks written in Markdown documents. For example, if we have a `contrib.md` section like this, we need to add this page to `livemark.yaml:pages.items` to make it work:
 
 > contrib.md
 

@@ -1,6 +1,6 @@
 # Reference
 
-Currently, while we're actively working on a proper API Reference, you can explore main Livemark's classes on Github by reading the docstrings attached to code blocks:
+Currently, while we're actively working on a proper API Reference, you can explore main Livemark classes on Github by reading the docstrings attached to code blocks:
 
 - [Document](https://github.com/frictionlessdata/livemark/blob/main/livemark/document.py)
 - [Markup](https://github.com/frictionlessdata/livemark/blob/main/livemark/markup.py)

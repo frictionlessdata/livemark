@@ -38,7 +38,7 @@ notes:
 
 ## Rating
 
-Based on the "Github" feature setting it will show a repository's rating:
+Based on the "Github" feature setting it will show a repository's star rating:
 
 ```yaml image
 path: ../../assets/rating.png
@@ -56,7 +56,7 @@ rating:
 
 ## About
 
-This feature adds an information about the project or the page to the top right corner:
+This feature adds information about the project or the page to the top right corner:
 
 ```yaml image
 path: ../../assets/about.png
@@ -74,7 +74,7 @@ about:
 
 ## Display
 
-This feature gives an ability to print a page, increase/decrease readability, and use "Back to top" button:
+This feature gives an ability to print a page, increase/decrease font size readability, and use a "Back to top" button:
 
 ```yaml image
 path: ../../assets/display.png
@@ -96,7 +96,7 @@ class: border
 
 ## Source
 
-This features shoes a Markdown source of a section on the "Source" heading button click which is available on hover:
+This features shows a Markdown source of a section on the "Source" heading button, which is available on hover. It is really useful to show the underlying source code for data visualisations:
 
 ```yaml image
 path: ../../assets/source.png
@@ -107,7 +107,7 @@ class: border
 
 ## News
 
-It adds news to the top of the site:
+This adds news to the top of the site:
 
 ```yaml image
 path: ../../assets/news.png

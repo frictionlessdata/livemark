@@ -13,7 +13,7 @@ Current Livemark Version:
 
 ## History
 
-Here described only the breaking and most significant changes. The full changelog and documentation for all released versions could be found in nicely formatted [commit history](https://github.com/frictionlessdata/livemark/commits/main).
+This section only describes the most significant changes, including breaking changes. The full changelog and documentation for all released versions can be found in the nicely formatted [commit history](https://github.com/frictionlessdata/livemark/commits/main).
 
 ### v0.80
 

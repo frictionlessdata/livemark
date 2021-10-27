@@ -13,7 +13,7 @@ cleanup:
 
 ## Counter
 
-This feature currently support a Google Analytics counter that can be added to all the project pages:
+This feature currently supports a Google Analytics counter that can be added to all the project pages:
 
 > livemark.yaml
 
@@ -25,7 +25,7 @@ counter:
 
 ## Github
 
-Some plugins rely on Github repository information that is provided by this feature. Be default, it will be inferred automatically from you local `.git` directory. It's also possible to configure it manually:
+Some plugins rely on Github repository information that is provided by this feature. By default, it will be inferred automatically from you local `.git` directory. It's also possible to configure it manually:
 
 > livemark.yaml
 
@@ -48,7 +48,7 @@ prepare:
 
 ## Redirect
 
-Using Github Pages as a hosting it's possible to setup a redirect table:
+Using Github Pages for hosting, it's possible to setup a redirect table:
 
 > livemark.yaml
 

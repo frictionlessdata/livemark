@@ -2,12 +2,12 @@
 
 ## Blog
 
-Blog is an essential part of many website and Livemark provides it as well. To activate the blog feature:
+Blog is an essential part of many websites and Livemark provides it as well. To activate the blog feature:
 - create a `blog` folder in the project's root directory
-- put there an article e.g. `blog/2021-09-01-article.md`
-- add a blog index to the pages e.g. `- path: blog/index`
+- add an article there, e.g. `blog/2021-09-01-article.md`
+- add a blog index to the pages, e.g. `- path: blog/index`
 
-It's possible to customize an article using a frontmatter:
+It's possible to customize an article using frontmatter:
 
 > blog/2021-09-01-article.md
 
@@ -21,7 +21,7 @@ See [Blog](../../blog/index.html) as an example.
 
 ## Comments
 
-To enable comments for an arbitrary article you need to provide frontmatter with Disqus id and a canonical website link:
+To enable comments for a specific article you need to provide frontmatter with Disqus id and a canonical website link:
 
 > article.md
 
