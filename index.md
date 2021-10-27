@@ -11,7 +11,7 @@ type: primary
 text: This documentation portal is completely <a href="https://github.com/frictionlessdata/livemark" target="_blank">written and published</a> in Livemark notation
 ```
 
-Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, Frictionless data processing, and other features.
+Livemark is a Python static site generator that extends Markdown with interactive charts, tables, scripts, and other features.
 
 ## Purpose
 
@@ -56,7 +56,7 @@ Livemark is a Python static site generator that extends Markdown with interactiv
   <ul>
     <li>Straight-forward command-line interface</li>
     <li>Much faster than many competitors</li>
-    <li>Live development server</li>
+    <li>Livereload development server</li>
   </ul>
 </div>
 </div>

@@ -228,9 +228,8 @@ data: data/france.json
 This feature renders an audio file or a SoundCloud track:
 
 ```
-'''yaml audio
-path: https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3
-width: 50%
+'''yaml audio/soundcloud
+code: 34445479
 '''
 ```
 
