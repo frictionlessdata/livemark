@@ -6,7 +6,7 @@ Livemark has been created with a focus on data journalism. It provides a complet
 
 COVID-19 Tracker by Frictionless Data is written in Livemark:
 
-> https://convid-tracker.frictionlessdata.io/
+> https://covid-tracker.frictionlessdata.io/
 
 ```yaml image
 path: ../../assets/covid-tracker.png
