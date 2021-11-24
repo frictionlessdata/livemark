@@ -81,7 +81,7 @@ def test_document_read():
     assert document.content.count("# Livemark")
     assert document.output is None
     assert document.title == "Livemark"
-    assert document.description.startswith("Livemark is a Python static site generator")
+    assert document.description.startswith("Data presentation framework")
     assert document.keywords == "livemark"
     assert len(document.plugins) > 20
 
