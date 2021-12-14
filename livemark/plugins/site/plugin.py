@@ -49,8 +49,8 @@ class SitePlugin(Plugin):
 
     @property
     def layout(self):
-        layout = self.config.get('layout')
-        return os.path.abspath(layout) if layout else 'markup.html'
+        layout = self.config.get("layout")
+        return os.path.abspath(layout) if layout else "markup.html"
 
     @property
     def styles(self):
