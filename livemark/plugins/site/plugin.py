@@ -18,6 +18,7 @@ class SitePlugin(Plugin):
             "description": {"type": "string"},
             "keywords": {"type": "string"},
             "favicon": {"type": "string"},
+            "layout": {"type": "string"},
             "styles": {"type": "array"},
             "scripts": {"type": "array"},
         },
@@ -47,6 +48,11 @@ class SitePlugin(Plugin):
             return helpers.get_relpath(self.config.get("favicon"), self.document.path)
 
     @property
+    def layout(self):
+        layout = self.config.get('layout')
+        return os.path.abspath(layout) if layout else 'markup.html'
+
+    @property
     def styles(self):
         styles = []
         for path in self.config.get("styles", []):
@@ -66,7 +72,7 @@ class SitePlugin(Plugin):
 
     def process_document(self, document):
         if document.format == "html":
-            markup = Markup(self.read_asset("markup.html", plugin=self))
+            markup = Markup(self.read_asset(self.layout))
             with markup.bind(self):
                 bs_url = "https://unpkg.com/bootstrap@4.6.0"
                 fa_url = "https://unpkg.com/@fortawesome/fontawesome-free@5.15.4"
