@@ -252,4 +252,4 @@ With Livemark you can use HTML inside Markdown with Bootstrap support. Here is a
 
 ---
 
-Please read the full [Feature Reference](pages/feature-reference/markdown.html) to learn about all of Livemark's features.
+Please read the full [Feature Reference](pages/feature-reference/general.html) to learn about all of Livemark's features.
