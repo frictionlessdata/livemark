@@ -2,14 +2,14 @@
   <div>
     {% if plugin.items.next %}
     <div class="next">
-      <a href="/{{ plugin.items.next.path }}.html">
+      <a href="{{ plugin.items.next.path }}.html">
         {{ plugin.items.next.name }} &raquo;
       </a>
     </div>
     {% endif %}
     {% if plugin.items.prev %}
     <div class="prev">
-      <a href="/{{ plugin.items.prev.path }}.html">
+      <a href="{{ plugin.items.prev.path }}.html">
         &laquo; {{ plugin.items.prev.name }}
       </a>
     </div>

@@ -1,4 +1,5 @@
 from ...plugin import Plugin
+from ... import helpers
 
 
 # NOTE:
@@ -10,6 +11,10 @@ class SignsPlugin(Plugin):
     priority = 40
 
     # Context
+
+    @property
+    def current(self):
+        return self.document.path
 
     @property
     def items(self):
@@ -24,9 +29,13 @@ class SignsPlugin(Plugin):
                         current_number = number
                 if current_number:
                     if current_number > 1:
-                        prev = documents[current_number - 2]
+                        document = documents[current_number - 2]
+                        path = helpers.get_relpath(document.path, self.current)
+                        prev = {"name": document.name, "path": path}
                     if current_number < len(documents):
-                        next = documents[current_number]
+                        document = documents[current_number]
+                        path = helpers.get_relpath(document.path, self.current)
+                        next = {"name": document.name, "path": path}
                 return {"prev": prev, "next": next}
 
     # Process
