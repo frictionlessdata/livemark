@@ -9,6 +9,9 @@ site:
 github:
   user: frictionlessdata
   repo: livemark
+counter:
+  type: plausible
+  code: livemark.frictionlessdata.io
 topics:
   selector: h2
 links:
