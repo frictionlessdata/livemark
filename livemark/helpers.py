@@ -1,5 +1,6 @@
 import io
 import os
+import posixpath
 import sys
 import shutil
 import tempfile
@@ -23,7 +24,7 @@ def read_asset(*paths):
 
 
 def get_relpath(path, current):
-    return os.path.relpath(path, os.path.dirname(current))
+    return posixpath.relpath(path, os.path.dirname(current))
 
 
 def with_format(path, format):
