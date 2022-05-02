@@ -30,11 +30,11 @@ class SignsPlugin(Plugin):
                 if current_number:
                     if current_number > 1:
                         document = documents[current_number - 2]
-                        path = helpers.get_relpath(document.path, self.current)
+                        path = helpers.get_url_relpath(document.path, self.current)
                         prev = {"name": document.name, "path": path}
                     if current_number < len(documents):
                         document = documents[current_number]
-                        path = helpers.get_relpath(document.path, self.current)
+                        path = helpers.get_url_relpath(document.path, self.current)
                         next = {"name": document.name, "path": path}
                 return {"prev": prev, "next": next}
 

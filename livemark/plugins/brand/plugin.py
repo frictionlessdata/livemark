@@ -16,7 +16,7 @@ class BrandPlugin(Plugin):
 
     @property
     def path(self):
-        return helpers.get_relpath(".", self.document.path)
+        return helpers.get_url_relpath(".", self.document.path)
 
     @property
     def text(self):

@@ -23,8 +23,12 @@ def read_asset(*paths):
         return file.read().strip()
 
 
-def get_relpath(path, current):
+def get_url_relpath(path, current):
     return posixpath.relpath(path, os.path.dirname(current))
+
+
+def get_relpath(path, current):
+    return os.path.relpath(path, os.path.dirname(current))
 
 
 def with_format(path, format):
