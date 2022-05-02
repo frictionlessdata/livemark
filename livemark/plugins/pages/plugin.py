@@ -42,7 +42,9 @@ class PagesPlugin(Plugin):
                 document = self.document.project.get_document(subitem["path"])
                 subitem.setdefault("name", document.get_plugin("site").name)
                 subitem["active"] = False
-                subitem["relpath"] = helpers.get_url_relpath(subitem["path"], self.current)
+                subitem["relpath"] = helpers.get_url_relpath(
+                    subitem["path"], self.current
+                )
                 if subitem["path"] == self.current:
                     item["active"] = True
                     subitem["active"] = True
