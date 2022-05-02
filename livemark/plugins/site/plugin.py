@@ -45,7 +45,7 @@ class SitePlugin(Plugin):
     @property
     def favicon(self):
         if self.config.get("favicon"):
-            return helpers.get_relpath(self.config.get("favicon"), self.document.path)
+            return helpers.get_url_relpath(self.config.get("favicon"), self.document.path)
 
     @property
     def layout(self):
