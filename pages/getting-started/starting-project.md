@@ -25,8 +25,18 @@ $ source .python/bin/activate
 Livemark requires only a few steps from zero to a published project:
 
 First of all, create:
-- `livemark.yaml`
 - `index.md`
+- `livemark.yaml`
+
+Draft the main page (**this step is required**):
+
+> index.md
+
+```md
+# My Project
+
+It will be great here
+```
 
 Fill in your configuration file:
 
@@ -37,16 +47,6 @@ brand:
   text: My Project
 site:
   favicon: assets/favicon.ico
-```
-
-Draft the main page:
-
-> index.md
-
-```md
-# My Project
-
-It will be great here
 ```
 
 ## Preview
