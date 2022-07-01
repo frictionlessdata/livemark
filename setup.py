@@ -45,7 +45,7 @@ INSTALL_REQUIRES = [
     "giturlparse>=0.10",
     "cached_property>=1.5",
     "docstring-parser>=0.10",
-    "frictionless[excel,json]==4.*",
+    "frictionless[excel,json]>=4.0",
 ]
 README = read("README.md")
 VERSION = read(PACKAGE, "assets", "VERSION")
