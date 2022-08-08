@@ -22,6 +22,9 @@ NAME = PACKAGE.replace("_", "-")
 TESTS_REQUIRE = [
     "mypy",
     "black",
+    # TODO: remove after the fix
+    # https://github.com/klen/pylama/issues/224
+    "pyflakes==2.4.0",
     "pylama",
     "pytest",
     "ipython",
