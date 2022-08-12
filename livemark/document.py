@@ -1,8 +1,8 @@
 import re
+import os
 import yaml
 import difflib
 import importlib
-from frictionless import File
 from .system import system
 from . import settings
 from . import helpers
@@ -29,8 +29,7 @@ class Document:
 
         # Infer format
         if not format:
-            file = File(target)
-            format = file.format
+            format = os.path.splitext(target)[1][1:].lower()
 
         # Ensure project
         if not project:
