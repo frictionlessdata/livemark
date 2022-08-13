@@ -33,7 +33,7 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
                 # Return output
                 output = super().render_fenced_code(element)
                 target = copy(element)
-                target.lang = "markup"
+                target.lang = snippet.props.get("output", "markup")
                 target.extra = ""
                 target.children = [RawText(snippet.output)]
                 output += "\n"
