@@ -11,6 +11,18 @@ from ... import helpers
 class ScriptPlugin(Plugin):
     identity = "script"
     priority = 60
+    validity = {
+        "type": "object",
+        "properties": {
+            "basepath": {"type": "string"},
+        },
+    }
+
+    # Context
+
+    @property
+    def basepath(self):
+        return self.config.get("basepath")
 
     # Process
 
@@ -46,14 +58,18 @@ class ScriptPlugin(Plugin):
                 # Bash
                 if snippet.lang == "bash":
                     try:
-                        output = subprocess.check_output(snippet.input, shell=True)
+                        output = subprocess.check_output(
+                            snippet.input,
+                            shell=True,
+                            cwd=self.basepath,
+                        )
                         output = output.decode().strip()
                     except Exception as exception:
                         output = exception.output.decode().strip()
 
                 # Python
                 elif snippet.lang == "python":
-                    with helpers.capture_stdout() as stdout:
+                    with helpers.capture_stdout(cwd=self.basepath) as stdout:
                         exec(snippet.input, self.__scope)
                     output = stdout.getvalue().strip()
 

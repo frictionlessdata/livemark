@@ -97,13 +97,18 @@ def is_remote_path(path):
 
 
 @contextlib.contextmanager
-def capture_stdout(stdout=None):
-    old = sys.stdout
+def capture_stdout(stdout=None, *, cwd=None):
+    prev_stdout = sys.stdout
+    prev_cwd = os.getcwd()
     if stdout is None:
         stdout = io.StringIO()
-    sys.stdout = stdout
-    yield stdout
-    sys.stdout = old
+    try:
+        sys.stdout = stdout
+        os.chdir(cwd or prev_cwd)
+        yield stdout
+    finally:
+        sys.stdout = prev_stdout
+        os.chdir(prev_cwd)
 
 
 def flatten_items(items, prop):
