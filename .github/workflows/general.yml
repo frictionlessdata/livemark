@@ -89,6 +89,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: site
+          CLEAN: false
           FOLDER: .
 
   # Release
