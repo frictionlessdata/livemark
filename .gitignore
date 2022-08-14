@@ -78,9 +78,10 @@ target/
 .spyderproject
 
 # Livemark
-index.html
 blog/**/*.html
 pages/**/*.html
+index.html
+404.html
 
 # Extras
 .projectile
