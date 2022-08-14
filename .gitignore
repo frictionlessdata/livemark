@@ -77,6 +77,11 @@ target/
 # Spyder project settings
 .spyderproject
 
+# Livemark
+index.html
+blog/**/*.html
+pages/**/*.html
+
 # Extras
 .projectile
 tabulator
