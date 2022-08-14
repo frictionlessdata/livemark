@@ -1317,76 +1317,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
-#livemark-topics {
-  color: #888;
-}
-
-#livemark-topics .toc>.toc-list {
-  overflow: hidden;
-  position: relative;
-}
-
-#livemark-topics .toc>.toc-list li {
-  list-style: none;
-}
-
-#livemark-topics .toc-list {
-  padding-left: 0;
-  margin: 0;
-}
-
-#livemark-topics a.toc-link {
-  color: currentColor;
-}
-
-#livemark-topics a.toc-link:hover {
-  color: #80b2e6;
-}
-
-#livemark-topics .is-active-link {
-  font-weight: 700;
-}
-
-#livemark-topics ul.secondary {
-  margin-left: 20px;
-  display: none;
-}
-
-#livemark-topics li.is-active-li ul.secondary {
-  display: block;
-}
-
-#livemark-topics li.group a.primary::after {
-  content: "\f054";
-  font-size: 16px;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  position: absolute;
-  top: 2px;
-  right: 0px;
-}
-
-#livemark-topics li.group.is-active-li a.primary::after {
-  content: "\f078";
-}
-
-#livemark-topics a {
-  display: inline-block;
-  color: currentColor;
-  position: relative;
-  width: 100%;
-  line-height: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-#livemark-topics a:hover {
-  color: #80b2e6;
-}
-
-</style>
-<style>
-
 #livemark-notes {
   color: #aaa;
   text-align: right;
@@ -1465,29 +1395,60 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
-#livemark-about {
+#livemark-topics {
   color: #888;
 }
 
-</style>
-<style>
-
-#livemark-links {
-  color: #888;
-}
-
-#livemark-links ul {
+#livemark-topics .toc>.toc-list {
   overflow: hidden;
   position: relative;
+}
+
+#livemark-topics .toc>.toc-list li {
+  list-style: none;
+}
+
+#livemark-topics .toc-list {
   padding-left: 0;
   margin: 0;
 }
 
-#livemark-links li {
-  list-style: none;
+#livemark-topics a.toc-link {
+  color: currentColor;
 }
 
-#livemark-links a {
+#livemark-topics a.toc-link:hover {
+  color: #80b2e6;
+}
+
+#livemark-topics .is-active-link {
+  font-weight: 700;
+}
+
+#livemark-topics ul.secondary {
+  margin-left: 20px;
+  display: none;
+}
+
+#livemark-topics li.is-active-li ul.secondary {
+  display: block;
+}
+
+#livemark-topics li.group a.primary::after {
+  content: "\f054";
+  font-size: 16px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+}
+
+#livemark-topics li.group.is-active-li a.primary::after {
+  content: "\f078";
+}
+
+#livemark-topics a {
   display: inline-block;
   color: currentColor;
   position: relative;
@@ -1497,23 +1458,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   padding-bottom: 5px;
 }
 
-#livemark-links a:hover {
-  color: #80b2e6;
-}
-
-#livemark-links a[target="_blank"]:after {
-  content: "\f35d";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  vertical-align: text-top;
-  text-decoration: none;
-  display: inline-block;
-  color: #aaa;
-  font-size: 12px;
-  margin-left: -2px;
-}
-
-#livemark-links a[target="_blank"]:hover:after {
+#livemark-topics a:hover {
   color: #80b2e6;
 }
 
@@ -2004,11 +1949,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
           </li>
       </ul>
 </div>
-
-<div id="livemark-topics">
-  <div class="toc">
-  </div>
-</div>
 </div>
 <div id="livemark-main">
 <div id="livemark-notes">
@@ -2122,46 +2062,10 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   </iframe>
 </div>
 
-<div id="livemark-about">
-  <div>
-    Data presentation framework for Python that generates static sites from extended Markdown with interactive charts, tables, scripts, and other features
+<div id="livemark-topics">
+  <div class="toc">
   </div>
 </div>
-
-<div id="livemark-links">
-  <ul>
-        <li>
-      <a href="https://frictionlessdata.io" target="_blank">
-        Frictionless
-      </a>
-    </li>
-        <li>
-      <a href="https://github.com/search?q=topic%3Alivemark+topic%3Atemplate" target="_blank">
-        Templates
-      </a>
-    </li>
-        <li>
-      <a href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
-        Support
-      </a>
-    </li>
-        <li>
-      <a href="https://github.com/frictionlessdata/livemark/issues" target="_blank">
-        Report
-      </a>
-    </li>
-        <li>
-      <a href="https://github.com/frictionlessdata/livemark/fork" target="_blank">
-        Fork
-      </a>
-    </li>
-        <li>
-      <a href="https://github.com/frictionlessdata/livemark/edit/main/pages/universe/projects.md" target="_blank">
-        Edit
-      </a>
-    </li>
-      
-</ul></div>
 </div>
 <script src="https://unpkg.com/lodash@4.17.21/lodash.min.js"></script>
 <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
