@@ -82,7 +82,7 @@ jobs:
       - name: Install and build site
         run: |
           echo '!**/*.html' >> .gitignore
-          commit -m 'Include html files'
+          git commit -am 'Include html'
           pip install -e .
           livemark build
       - name: Publush to Github Pages
