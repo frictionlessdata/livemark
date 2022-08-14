@@ -23,6 +23,12 @@ class NotesPlugin(Plugin):
     def current(self):
         return datetime.fromtimestamp(os.path.getmtime(self.document.source))
 
+    @property
+    def edit_url(self):
+        github = self.document.get_plugin("github")
+        if github:
+            return github.edit_url
+
     # Process
 
     def process_markup(self, markup):

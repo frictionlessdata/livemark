@@ -1,4 +1,8 @@
 <div id="livemark-notes">
-  Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  {% if plugin.edit_url %}
+    <a href="{{ plugin.edit_url }}" target="_blank">Edit page </a> in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  {% else %}
+    Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
+  {% endif %}
   ({{ plugin.current.strftime(plugin.format) }})
 </div>

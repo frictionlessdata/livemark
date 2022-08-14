@@ -32,8 +32,6 @@ class LinksPlugin(Plugin):
                 items.append({"name": "Report", "path": github.report_url})
             if github.fork_url:
                 items.append({"name": "Fork", "path": github.fork_url})
-            if github.edit_url:
-                items.append({"name": "Edit", "path": github.edit_url})
         return items
 
     # Process
