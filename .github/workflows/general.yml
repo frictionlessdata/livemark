@@ -82,7 +82,6 @@ jobs:
       - name: Install and build site
         run: |
           echo '!**/*.html' >> .gitignore
-          git commit -am 'Include html'
           pip install -e .
           livemark build
       - name: Publush to Github Pages
@@ -90,6 +89,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: site
+          CLEAN: false
           FOLDER: .
 
   # Release
