@@ -79,17 +79,17 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - name: Install livemark
-        run: pip install -e .
-      - name: Build site
-        run: livemark build
+      - name: Install and build site
+        run: |
+          echo '!**/*.html' >> .gitignore
+          pip install -e .
+          livemark build
       - name: Publush to Github Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: site
           FOLDER: .
-          CLEAN: true
 
   # Release
 
