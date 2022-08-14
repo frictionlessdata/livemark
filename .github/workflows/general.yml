@@ -89,6 +89,7 @@ jobs:
         with:
           branch: site
           create_branch: true
+          push_options: '--force'
 
   # Release
 
