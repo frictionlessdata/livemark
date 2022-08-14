@@ -82,7 +82,7 @@ jobs:
       - name: Install and build site
         run: |
           pip install -e .
-          livemark build
+          python -m livemark build
       - name: Publush to Github Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
