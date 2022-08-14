@@ -67,6 +67,29 @@ jobs:
       - name: Test software
         run: make test
 
+  # Deploy
+
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install and build site
+        run: |
+          pip install -e .
+          livemark build
+      - name: Publush to Github Pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: site
+          CLEAN: true
+
   # Release
 
   release:
