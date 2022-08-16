@@ -20,15 +20,14 @@ class Snippet:
         if len(header) >= 1:
             lang = header[0].lower()
 
-        # Infer type
-        if len(header) >= 2:
-            type = header[1].lower()
-
-        # Infer props
-        for item in header[2:]:
+        # Infer type/props
+        for index, item in enumerate(header[1:]):
+            if index == 0 and "=" not in item:
+                type = item
+                continue
             parts = item.split("=")
             name = parts[0].lower()
-            value = parts[1].lower() if len(parts) == 2 else True
+            value = parts[1] if len(parts) == 2 else True
             props[name] = value
 
         # Set attributes

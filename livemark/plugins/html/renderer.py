@@ -20,30 +20,26 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
         snippet.process(self.document)
 
         # Script
-        if snippet.output is not None:
-            if snippet.type == "script":
+        if snippet.type == "script" and snippet.output is not None:
 
-                # Remove target
-                index = self.root_node.children.index(element)
-                if len(self.root_node.children) > index + 1:
-                    item = self.root_node.children[index + 1]
-                    if isinstance(item, FencedCode):
-                        del self.root_node.children[index + 1]
+            # Remove target
+            index = self.root_node.children.index(element)
+            if len(self.root_node.children) > index + 1:
+                item = self.root_node.children[index + 1]
+                if isinstance(item, FencedCode):
+                    del self.root_node.children[index + 1]
 
-                # Return output
-                output = super().render_fenced_code(element)
-                target = copy(element)
-                target.lang = snippet.props.get("output", "markup")
-                target.extra = ""
-                target.children = [RawText(snippet.output)]
-                output += "\n"
-                output += super().render_fenced_code(target)
-                return output
-
-            return snippet.output
+            # Return output
+            output = super().render_fenced_code(element)
+            target = copy(element)
+            target.lang = snippet.props.get("output", "markup")
+            target.extra = ""
+            target.children = [RawText(snippet.output)]
+            output += "\n"
+            output += super().render_fenced_code(target)
 
         # Task
-        if snippet.type == "task" and snippet.props.get("id"):
+        elif snippet.type == "task" and snippet.props.get("id"):
 
             # Return output
             task = snippet.props["id"]
@@ -56,9 +52,22 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
             output += "\n"
             output += super().render_fenced_code(element)
             output += "</div>"
-            return output
 
-        return super().render_fenced_code(element)
+        # Others
+        elif snippet.output is not None:
+            output = snippet.output
+
+        # Default
+        else:
+            output = super().render_fenced_code(element)
+
+        # Container
+        items = []
+        for name, value in snippet.props.items():
+            items.append(f'data-{name}="{value}"')
+        output = f"<div {' '.join(items)}>{output}</div>"
+
+        return output
 
 
 class HtmlExtension:
