@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs">
+  {% for tab in tabs %}
+  <li class="nav-item">
+    <a
+      href="#{{ tab.id }}"
+      class="nav-link {% if loop.first %}active{% endif %}"
+      data-toggle="tab"
+    >
+      {{ tab.name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+<div class="tab-content">
+  {% for tab in tabs %}
+  <div
+    id="{{ tab.id }}"
+    class="tab-pane fade {% if loop.first %}active show{% endif %}"
+  >
+    {{ tab.content | safe }}
+  </div>
+  {% endfor %}
+</div>
