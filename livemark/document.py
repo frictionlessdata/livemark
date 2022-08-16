@@ -20,7 +20,7 @@ class Document:
 
     """
 
-    def __init__(self, source, *, target=None, format=None, project=None):
+    def __init__(self, source, *, target=None, format=None, project=None, path=None):
 
         # Infer target
         if not target:
@@ -41,6 +41,7 @@ class Document:
         self.__target = target
         self.__format = format
         self.__project = project
+        self.__path = path
         self.__plugins = None
         self.__config = None
         self.__preface = None
@@ -162,7 +163,7 @@ class Document:
         Returns:
             str: path
         """
-        return helpers.with_format(self.source, "")
+        return self.__path or helpers.with_format(self.source, "")
 
     @property
     def title(self):

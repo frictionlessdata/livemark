@@ -69,9 +69,9 @@ class PagesPlugin(Plugin):
     def process_project(project):
         items = project.config.get("pages", {}).get("items", [])
         for item in helpers.flatten_items(items, "items"):
-            source = helpers.with_format(item["path"], "md")
+            source = item.get("from", helpers.with_format(item["path"], "md"))
             target = helpers.with_format(item["path"], project.format)
-            document = Document(source, target=target, project=project)
+            document = Document(source, target=target, project=project, path=item["path"])
             project.documents.append(document)
 
     def process_markup(self, markup):

@@ -24,8 +24,8 @@ links:
       path: https://discord.com/channels/695635777199145130/695635777199145133
 pages:
   items:
-    - name: Introduction
-      path: index
+    - path: index
+      name: Introduction
     - name: Getting Started
       items:
         - path: pages/getting-started/installation
@@ -35,6 +35,7 @@ pages:
         - path: pages/getting-started/building-website
         - path: pages/getting-started/troubleshooting
         - path: pages/getting-started/contributing
+          from: CONTRIBUTING.md
     - name: Guides and Tutorials
       items:
         - path: pages/guides-and-tutorials/data-journalism
