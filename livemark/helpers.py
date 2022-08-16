@@ -1,13 +1,15 @@
 import io
 import os
-import posixpath
 import sys
+import marko
 import shutil
 import tempfile
+import posixpath
 import importlib
 import contextlib
 from pathlib import Path
 from urllib.parse import urlparse
+from html.parser import HTMLParser
 
 
 # General
@@ -152,3 +154,22 @@ def load_object(path):
 
 def order_objects(objects, property):
     return list(sorted(objects, key=lambda obj: -getattr(obj, property)))
+
+
+def strip_markdown(text):
+    try:
+        html = marko.convert(text)
+        html = html.replace("\n", "")
+    except Exception:
+        return ""
+    parser = HTMLFilter()
+    parser.feed(html)
+    return parser.text.strip()
+
+
+class HTMLFilter(HTMLParser):
+    text = ""
+
+    def handle_data(self, data):
+        self.text += data
+        self.text += " "

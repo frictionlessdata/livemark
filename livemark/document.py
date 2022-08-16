@@ -194,7 +194,7 @@ class Document:
                 if is_snippet:
                     continue
                 if pattern.match(line):
-                    return line
+                    return helpers.strip_markdown(line)
 
     @property
     def keywords(self):

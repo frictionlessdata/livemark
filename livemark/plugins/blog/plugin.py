@@ -10,7 +10,9 @@ class BlogPlugin(Plugin):
     validity = {
         "type": "object",
         "properties": {
-            "path": {"type": "string"},
+            "author": {"type": "string"},
+            "image": {"type": "string"},
+            "description": {"type": "string"},
         },
     }
 
@@ -46,6 +48,10 @@ class BlogPlugin(Plugin):
     @property
     def image(self):
         return self.config.get("image")
+
+    @property
+    def description(self):
+        return self.config.get("description", self.document.description)
 
     @property
     def date(self):
