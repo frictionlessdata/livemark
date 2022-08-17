@@ -137,3 +137,30 @@ echo 'Hello World'
 ```python script tabs=Python
 print('Hello World')
 ```
+
+## Columns
+
+> Hover on the heading and click "Source" to see the source
+
+Snippets can be placed under the columns using the Columns plugin:
+
+```markdown markup columns
+![Package](../../assets/data-package.png)
+**Data Package**
+
+A simple container format for describing a coherent collection of data in a single package.
+```
+
+```markdown markup columns
+![Resource](../../assets/data-resource.png)
+**Data Resource**
+
+A simple format to describe and package a single data resource such as a individual table or file.
+```
+
+```markdown markup columns
+![Schema](../../assets/table-schema.png)
+**Data Resource**
+
+A simple format to describe and package a single data resource such as a individual table or file.
+```

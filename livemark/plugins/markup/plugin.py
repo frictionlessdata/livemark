@@ -1,8 +1,5 @@
 import marko
-import textwrap
-from pyquery import PyQuery
 from marko.ext.gfm import GFM
-from ..html.renderer import HtmlExtension
 from ...plugin import Plugin
 
 
@@ -22,22 +19,17 @@ class MarkupPlugin(Plugin):
 
     def process_snippet(self, snippet):
         if self.document.format == "html":
-            if snippet.type == "markup" and snippet.lang in ["html", "jsx"]:
+            if snippet.type == "markup" and snippet.lang in ["markdown", "html", "jsx"]:
 
-                # Html
-                if snippet.lang == "html":
+                # Markdown
+                if snippet.lang == "markdown":
                     markdown = marko.Markdown()
                     markdown.use(GFM)
-                    markdown.use(HtmlExtension)
-                    query = PyQuery(snippet.input)
-                    for node in query.find(".livemark-markdown"):
-                        node = PyQuery(node)
-                        if not node.children():
-                            input = node.text(squash_space=False)
-                            input = textwrap.dedent(input).strip("\n")
-                            output = markdown.convert(input)
-                            node.html(output)
-                    snippet.output = query.outer_html() + "\n"
+                    snippet.output = markdown.convert(snippet.input)
+
+                # Html
+                elif snippet.lang == "html":
+                    snippet.output = snippet.input
 
                 # Jsx
                 elif snippet.lang == "jsx":
