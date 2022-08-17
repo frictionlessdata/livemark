@@ -15,6 +15,11 @@ Current Livemark Version:
 
 This section only describes the most significant changes, including breaking changes. The full changelog and documentation for all released versions can be found in the nicely formatted [commit history](https://github.com/frictionlessdata/livemark/commits/main).
 
+### v0.95
+
+- Implemented Columns plugin
+- Removed support of `livemark-markdown` class
+
 ### v0.94
 
 - Implemented Tabs plugin
