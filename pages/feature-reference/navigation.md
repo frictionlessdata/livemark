@@ -123,3 +123,17 @@ It's an experimental feature that adds an ability to create paginations using an
 ## Cards
 
 This feature for adding Cards is being developed at the moment. You can try a current prototype on [COVID-19 Tracker](https://covid-tracker.frictionlessdata.io/pages/countries.html) (click on a country).
+
+## Tabs
+
+> Hover on the heading and click "Source" to see the source
+
+Snippets can be placed under named tabs using the Tabs plugin:
+
+```bash script tabs=CLI
+echo 'Hello World'
+```
+
+```python script tabs=Python
+print('Hello World')
+```
