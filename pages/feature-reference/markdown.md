@@ -267,7 +267,11 @@ class: border
 
 ## Remark
 
-This feature for adding a remark is being developed at the moment.
+> Hover on the heading and click "Source" to see the source
+
+```markdown remark type=info
+This is a remark!
+```
 
 ## Package
 
