@@ -35,6 +35,10 @@ class ClassReference(Reference):
         return self.object.__name__
 
     @property
+    def description(self):
+        return inspect.getdoc(self.object)
+
+    @property
     def varialbes(self):
         variables = []
         if hasattr(self.object, "__annotations__"):
@@ -71,7 +75,8 @@ class ClassReference(Reference):
         predicate = inspect.isfunction
         for name, object in inspect.getmembers(self.object, predicate=predicate):
             if name.startswith("_"):
-                continue
+                if name != "__init__":
+                    continue
             if name.startswith("slots_"):
                 continue
             if name not in vars(self.object):
