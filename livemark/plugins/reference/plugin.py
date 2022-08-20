@@ -1,7 +1,6 @@
 import yaml
-from docstring_parser import parse
+from .reference import Reference
 from ...plugin import Plugin
-from ... import helpers
 from ... import errors
 
 
@@ -20,12 +19,11 @@ class ReferencePlugin(Plugin):
     def process_snippet(self, snippet):
         if snippet.type == "reference" and snippet.lang == "yaml":
             spec = yaml.safe_load(str(snippet.input).strip())
-            object = helpers.load_object(spec.get("path"))
-            if not object:
+            reference = Reference.from_name(spec["name"])
+            if not reference:
                 raise errors.Error(f"No object found: {spec}")
             context = {}
-            context["name"] = object.__name__
-            context["info"] = parse(object.__doc__)
+            context["class"] = reference
             snippet.output = self.read_asset("markup.html", **context)
 
     def process_markup(self, markup):

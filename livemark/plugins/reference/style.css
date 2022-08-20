@@ -2,3 +2,9 @@
   display: block;
   /* font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;; */
 }
+
+.livemark-reference-heading {
+    background-color: #f6f8fa;
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    padding: 1em 0;
+}

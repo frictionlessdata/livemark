@@ -1,16 +1,69 @@
 <div class="livemark-reference">
-  <h3>{{ name }}</h3>
 
-  <p>{{ info.short_description }}</p>
+  <div>
+    <h3 class="livemark-reference-heading">{{ class.title }}</h3>
+    <p>{{ class.description }}</p>
+    {% if class.constructor %}
+    <h4>Signature</h4>
+    <p>{{ class.constructor.signature | replace("'", "") }}</p>
+    {% if class.constructor.parameters %}
+    <h4>Parameters</h4>
+    <ul>
+      {% for parameter in class.constructor.parameters %}
+      <li>
+        {{ parameter.name }}
+        {%- if parameter.type %}({{ parameter.type }}){% endif %}
+        {%- if parameter.description %}: {{ parameter.description }}{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+  </div>
 
-  {% if info.long_description %}
-  <p>{{ info.long_description.replace('\n', '<br>') }}</p>
-  {% endif %}
 
-  <strong>Parameters</strong>
-  <ul>
-    {% for item in info.params %}
-    <li><strong>{{ item.arg_name }}</strong> ({{ item.type_name }}): {{ item.description }}</li>
-    {% endfor %}
-  </ul>
+  {% for variable in class.variables %}
+  <div>
+    <h3 class="livemark-reference-heading">{{ variable.title }}</h3>
+    <p>{{ variable.description }}</p>
+    {% if variable.type %}
+    <h4>Signature</h4>
+    <p>-> {{ variable.type }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  {% for property in class.properties %}
+  <div>
+    <h3 class="livemark-reference-heading">{{ property.title }}</h3>
+    <p>{{ property.description }}</p>
+    {% if property.signature %}
+    <h4>Signature</h4>
+    <p>{{ property.signature }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  {% for method in class.methods %}
+  <div>
+    <h3 class="livemark-reference-heading">{{ method.title }}</h3>
+    <p>{{ method.description }}</p>
+    {% if method.signature %}
+    <h4>Signature</h4>
+    <p>{{ method.signature }}</p>
+    {% endif %}
+    {% if method.parameters %}
+    <h4>Parameters</h4>
+    <ul>
+      {% for parameter in method.parameters %}
+      <li>
+        {{ parameter.name }}
+        {%- if parameter.type %}({{ parameter.type }}){% endif %}
+        {%- if parameter.description %}: {{ parameter.description }}{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endfor %}
 </div>

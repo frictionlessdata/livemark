@@ -33,13 +33,13 @@ Livemark process your document using the Jinja templating language. Inside templ
 
 {% raw %}
 ```
-{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+{% for car in frictionless.extract('data/cars.csv')[:5] %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 ```
 {% endraw %}
 
-{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+{% for car in frictionless.extract('data/cars.csv')[:5] %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 
@@ -296,12 +296,16 @@ This includes a Python function or class reference (in active development):
 
 ```
 '''yaml reference
-path: livemark.Document
+name: frictionless.Pipeline
 '''
 ```
 
 ```yaml reference
-path: livemark.Document
+name: frictionless.Pipeline
+```
+
+```yaml reference
+name: livemark.Document
 ```
 
 ## Notebook

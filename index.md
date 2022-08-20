@@ -76,13 +76,13 @@ Livemark processes your document using the Jinja templating language. Inside tem
 
 {% raw %}
 ```
-{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+{% for car in frictionless.extract('data/cars.csv')[:5] %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 ```
 {% endraw %}
 
-{% for car in frictionless.extract('data/cars.csv', layout={"limitRows": 5}) %}
+{% for car in frictionless.extract('data/cars.csv')[:5] %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 
