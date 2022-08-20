@@ -12,7 +12,7 @@
       {% for parameter in class.constructor.parameters %}
       <li>
         {{ parameter.name }}
-        {%- if parameter.type %}({{ parameter.type }}){% endif %}
+        {% if parameter.type %}({{ parameter.type }}){% endif %}
         {%- if parameter.description %}: {{ parameter.description }}{% endif %}
       </li>
       {% endfor %}
@@ -58,7 +58,7 @@
       {% for parameter in method.parameters %}
       <li>
         {{ parameter.name }}
-        {%- if parameter.type %}({{ parameter.type }}){% endif %}
+        {% if parameter.type %}({{ parameter.type }}){% endif %}
         {%- if parameter.description %}: {{ parameter.description }}{% endif %}
       </li>
       {% endfor %}

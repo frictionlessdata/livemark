@@ -1,4 +1,11 @@
-# NOTE:
+from __future__ import annotations
+from typing import TYPE_CHECKING, Optional, List, Dict, Any
+
+if TYPE_CHECKING:
+    from .document import Document
+
+
+# TODO:
 # We can parse json/yaml in advance for snippet-processing plugins
 
 
@@ -6,12 +13,12 @@ class Snippet:
     """Livemark snippet
 
     Parameters:
-        input (str): textual snippet for the snippet
-        header (str[]): an array of the snippet's header
+        input: textual snippet for the snippet
+        header: an array of the snippet's header
 
     """
 
-    def __init__(self, input, *, header):
+    def __init__(self, input: str, *, header: List[str]):
         lang = ""
         type = ""
         props = {}
@@ -51,43 +58,27 @@ class Snippet:
             super().__setattr__(name, value)
 
     @property
-    def input(self):
-        """Snippet's input
-
-        Returns:
-            str: input
-        """
+    def input(self) -> str:
+        """Snippet's input"""
         return self.__input
 
     @property
-    def output(self):
-        """Snippet's output
-
-        Returns:
-            str?: input
-        """
+    def output(self) -> Optional[str]:
+        """Snippet's output"""
         return self.__output
 
     @property
-    def header(self):
-        """Snippet's header
-
-        Returns:
-            str[]: header
-        """
+    def header(self) -> List[str]:
+        """Snippet's header"""
         return self.__header
 
     @property
-    def lang(self):
-        """Snippet's lang
-
-        Returns:
-            str: lang
-        """
+    def lang(self) -> str:
+        """Snippet's lang"""
         return self.__lang
 
     @property
-    def type(self):
+    def type(self) -> str:
         """Snippet's type
 
         Returns:
@@ -96,21 +87,17 @@ class Snippet:
         return self.__type
 
     @property
-    def props(self):
-        """Snippet's props
-
-        Returns:
-            dict: props
-        """
+    def props(self) -> Dict[str, Any]:
+        """Snippet's props"""
         return self.__props
 
     # Process
 
-    def process(self, document):
+    def process(self, document: Document) -> None:
         """Process snippet
 
         Parameters:
-            document (Document): document having this snippet
+            document: document having this snippet
         """
         for plugin in document.plugins:
             plugin.process_snippet(self)

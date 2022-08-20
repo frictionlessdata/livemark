@@ -20,16 +20,6 @@ class Document:
 
     """
 
-    @staticmethod
-    def hello_world():
-        """Testing static method"""
-        print("Hello World")
-
-    @classmethod
-    def class_method(cls):
-        """Testing class method"""
-        print("Hello World")
-
     def __init__(self, source, *, target=None, format=None, project=None, path=None):
 
         # Infer target

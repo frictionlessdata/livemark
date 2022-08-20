@@ -296,16 +296,12 @@ This includes a Python function or class reference (in active development):
 
 ```
 '''yaml reference
-name: frictionless.Pipeline
+name: livemark.Snippet
 '''
 ```
 
 ```yaml reference
-name: frictionless.Pipeline
-```
-
-```yaml reference
-name: livemark.Document
+name: livemark.Snippet
 ```
 
 ## Notebook
