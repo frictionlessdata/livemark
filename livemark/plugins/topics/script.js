@@ -10,7 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Called each time a heading is parsed. Expects a string in return.
-    headingLabelCallback: (label) => label.replace(/(^#|#$)/g, "").trim(),
+    headingLabelCallback: (label) => {
+      label = label.replace(/(^#|#$)/g, "").trim();
+      label = label.replace(/\(.*?\)$/g, "");
+      return label;
+    },
     // Disable generating ordered lists (ol)
     orderedList: false,
     // Fix active link class

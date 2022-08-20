@@ -292,16 +292,21 @@ class: border
 
 ## Reference
 
+> Hover on the heading and click "Source" to see the source
+
 This includes a Python function or class reference (in active development):
 
-```
-'''yaml reference
-name: livemark.Snippet
-'''
+
+```markdown tabs=Select
+Select reference to show
 ```
 
-```yaml reference
+```yaml reference tabs=Snippet
 name: livemark.Snippet
+```
+
+```yaml reference tabs=Document
+name: livemark.Document
 ```
 
 ## Notebook

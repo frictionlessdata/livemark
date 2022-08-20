@@ -42,6 +42,11 @@ class FunctionReference(Reference):
         return title
 
     @property
+    def modifier(self):
+        modifier = "(function)"
+        return modifier
+
+    @property
     def description(self):
         description = self.docstring.short_description or ""
         if self.docstring.long_description:
@@ -105,8 +110,13 @@ class ClassReference(Reference):
 
     @property
     def title(self):
-        title = f"{self.name} <small>(class)</small>"
+        title = f"{self.name}"
         return title
+
+    @property
+    def modifier(self):
+        modifier = "(class)"
+        return modifier
 
     @property
     def description(self):
@@ -148,7 +158,9 @@ class ClassReference(Reference):
         for name, object in inspect.getmembers(self.object, predicat):
             if name not in vars(self.object):
                 continue
-            if name.startswith(("_", "slots_", "metadata_")):
+            if name.startswith(("_")):
+                continue
+            if not object.__doc__:
                 continue
             properties.append(PropertyReference(object, class_name=self.name))
         return properties
@@ -160,7 +172,9 @@ class ClassReference(Reference):
         for name, object in inspect.getmembers(self.object, predicate=predicate):
             if name not in vars(self.object):
                 continue
-            if name.startswith(("_", "slots_", "metadata_")):
+            if name.startswith(("_",)):
+                continue
+            if not object.__doc__:
                 continue
             methods.append(MethodReference(object, class_name=self.name))
         return methods
@@ -179,8 +193,13 @@ class VariableReference(Reference):
     @property
     def title(self):
         scope = self.class_name.lower()
-        title = f"{scope}.{self.name} <small>(variable)</small>"
+        title = f"{scope}.{self.name}"
         return title
+
+    @property
+    def modifier(self):
+        modifier = "(variable)"
+        return modifier
 
     @property
     def signature(self):
@@ -207,8 +226,13 @@ class PropertyReference(Reference):
     @property
     def title(self):
         scope = self.class_name.lower()
-        title = f"{scope}.{self.name} <small>(property)</small>"
+        title = f"{scope}.{self.name}"
         return title
+
+    @property
+    def modifier(self):
+        modifier = "(property)"
+        return modifier
 
     @property
     def description(self):
@@ -276,9 +300,14 @@ class MethodReference(FunctionReference):
     def title(self):
         static = "self" not in super().signature
         scope = self.class_name if static else self.class_name.lower()
-        comment = "(method) (static)" if static else "(method)"
-        title = f"{scope}.{self.name} <small>{comment}</small>"
+        title = f"{scope}.{self.name}"
         return title
+
+    @property
+    def modifier(self):
+        static = "self" not in super().signature
+        modifier = "(method) (static)" if static else "(method)"
+        return modifier
 
     @property
     def signature(self):
