@@ -21,14 +21,13 @@
     {% endif %}
   </div>
 
-
   {% for variable in class.variables %}
   <div>
     <h3 class="livemark-reference-heading">{{ variable.title }}</h3>
     <p>{{ variable.description }}</p>
-    {% if variable.type %}
+    {% if variable.signature %}
     <h4>Signature</h4>
-    <p>-> {{ variable.type }}</p>
+    <p>{{ variable.signature }}</p>
     {% endif %}
   </div>
   {% endfor %}

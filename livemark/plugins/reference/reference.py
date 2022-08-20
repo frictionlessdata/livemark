@@ -182,6 +182,13 @@ class VariableReference(Reference):
         title = f"{scope}.{self.name} <small>(variable)</small>"
         return title
 
+    @property
+    def signature(self):
+        signature = ""
+        if self.type:
+            signature = self.type
+        return signature
+
 
 class PropertyReference(Reference):
     reference_type = "property"
@@ -214,9 +221,12 @@ class PropertyReference(Reference):
     def signature(self):
         signature = ""
         if self.result.type:
-            signature = f"-> {self.result.type}"
+            signature = f"{self.result.type}"
+            #  if not self.parameter:
+            #  signature = f"ReadOnly[{signature}]"
         if self.parameter and self.parameter.type:
-            signature = f"(self.parameter.type) {signature}"
+            if self.parameter.type != self.result.type:
+                signature = f"({self.parameter.type}) -> {self.result.type}"
         return signature
 
     @property
@@ -227,7 +237,7 @@ class PropertyReference(Reference):
             default = str(item.default) if item.default != item.empty else ""
             description = ""
             parameter = ParameterReference(
-                name=self.name, type=type, default=default, description=description
+                name=item.name, type=type, default=default, description=description
             )
             return parameter
 
