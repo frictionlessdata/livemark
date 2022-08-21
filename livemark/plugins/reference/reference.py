@@ -38,7 +38,7 @@ class FunctionReference(Reference):
 
     @property
     def title(self):
-        title = f"{self.name} <small>(function)</small>"
+        title = f"{self.name}"
         return title
 
     @property

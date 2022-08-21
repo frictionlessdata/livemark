@@ -23,7 +23,8 @@ class ReferencePlugin(Plugin):
             if not reference:
                 raise errors.Error(f"No object found: {spec}")
             context = {}
-            context["class"] = reference
+            context["reference"] = reference
+            context["level"] = spec.get("level", 3)
             snippet.output = self.read_asset("markup.html", **context)
 
     def process_markup(self, markup):
