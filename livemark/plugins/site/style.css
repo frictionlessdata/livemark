@@ -746,7 +746,8 @@ p {
 }
 
 #livemark-main hr {
-  height: .25em;
+  /* height: .25em; */
+  height: 1px;
   padding: 0;
   margin: 24px 0;
   background-color: #e1e4e8;

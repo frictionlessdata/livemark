@@ -36,6 +36,7 @@ EXTRAS_REQUIRE = {
     "dev": TESTS_REQUIRE,
 }
 INSTALL_REQUIRES = [
+    "attrs>=22.0",
     "marko>=1.0",
     "pyyaml>=5.3",
     "jinja2>=3.0",
