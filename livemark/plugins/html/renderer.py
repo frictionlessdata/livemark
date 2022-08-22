@@ -23,20 +23,22 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
         if snippet.type == "script" and snippet.output is not None:
 
             # Remove target
-            index = self.root_node.children.index(element)
-            if len(self.root_node.children) > index + 1:
-                item = self.root_node.children[index + 1]
-                if isinstance(item, FencedCode):
-                    del self.root_node.children[index + 1]
+            if self.document.format == "md":
+                index = self.root_node.children.index(element)
+                if len(self.root_node.children) > index + 1:
+                    item = self.root_node.children[index + 1]
+                    if isinstance(item, FencedCode):
+                        del self.root_node.children[index + 1]
 
             # Return output
             output = super().render_fenced_code(element)
-            target = copy(element)
-            target.lang = snippet.props.get("output", "markup")
-            target.extra = ""
-            target.children = [RawText(snippet.output)]
-            output += "\n"
-            output += super().render_fenced_code(target)
+            if snippet.output:
+                target = copy(element)
+                target.lang = snippet.props.get("output", "markup")
+                target.extra = ""
+                target.children = [RawText(snippet.output)]
+                output += "\n"
+                output += super().render_fenced_code(target)
 
         # Task
         elif snippet.type == "task" and snippet.props.get("id"):
