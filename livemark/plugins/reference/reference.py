@@ -3,7 +3,7 @@ import attrs
 import inspect
 import docstring_parser
 from importlib import import_module
-from typing import Type, ClassVar
+from typing import Type, ClassVar, Optional
 
 
 class Reference:
@@ -11,24 +11,28 @@ class Reference:
 
     @staticmethod
     def from_name(name):
+        prefix = None
         module_name, object_name = name.rsplit(".", maxsplit=1)
+        if "." in module_name:
+            prefix = module_name.rsplit(".", maxsplit=1)[1]
         module = import_module(module_name)
         object = getattr(module, object_name)
-        return Reference.from_object(object)
+        return Reference.from_object(object, prefix=prefix)
 
     @staticmethod
-    def from_object(object):
+    def from_object(object, *, prefix=None):
         if isinstance(object, type):
-            return ClassReference(object)
+            return ClassReference(object, prefix=prefix)
         elif callable(object):
-            return FunctionReference(object)
+            return FunctionReference(object, prefix=prefix)
 
 
 class FunctionReference(Reference):
     reference_type = "function"
 
-    def __init__(self, object):
+    def __init__(self, object, *, prefix=None):
         self.object = object
+        self.prefix = prefix
         self.inspected = inspect.signature(self.object)
         self.docstring = docstring_parser.parse(inspect.getdoc(self.object) or "")
 
@@ -43,6 +47,8 @@ class FunctionReference(Reference):
     @property
     def title(self):
         title = f"{self.name}"
+        if self.prefix:
+            title = f"{self.prefix}.{self.name}"
         return title
 
     @property
@@ -104,8 +110,9 @@ class FunctionReference(Reference):
 class ClassReference(Reference):
     reference_type = "class"
 
-    def __init__(self, object: Type):
+    def __init__(self, object: Type, *, prefix=None):
         self.object = object
+        self.prefix = prefix
         self.docstring = docstring_parser.parse(inspect.getdoc(self.object) or "")
 
     @property
@@ -119,6 +126,8 @@ class ClassReference(Reference):
     @property
     def title(self):
         title = f"{self.name}"
+        if self.prefix:
+            title = f"{self.prefix}.{self.name}"
         return title
 
     @property
@@ -138,9 +147,13 @@ class ClassReference(Reference):
         predicate = inspect.isfunction
         for name, object in inspect.getmembers(self.object, predicate=predicate):
             if name == "__init__":
-                return MethodReference(
-                    object, class_name=self.name, docstring=inspect.getdoc(self.object)
+                method = MethodReference(
+                    object,
+                    class_name=self.name,
+                    docstring=inspect.getdoc(self.object),
+                    prefix=self.prefix,
                 )
+                return method
 
     @property
     def variables(self):
@@ -154,7 +167,11 @@ class ClassReference(Reference):
                 if match:
                     description = match.group(1)
                 variable = VariableReference(
-                    name=name, type=type, description=description, class_name=self.name
+                    name=name,
+                    type=type,
+                    description=description,
+                    class_name=self.name,
+                    prefix=self.prefix,
                 )
                 variables.append(variable)
         return variables
@@ -170,7 +187,12 @@ class ClassReference(Reference):
                 continue
             if not object.__doc__:
                 continue
-            properties.append(PropertyReference(object, class_name=self.name))
+            prop = PropertyReference(
+                object,
+                class_name=self.name,
+                prefix=self.prefix,
+            )
+            properties.append(prop)
         return properties
 
     @property
@@ -184,7 +206,12 @@ class ClassReference(Reference):
                 continue
             if not object.__doc__:
                 continue
-            methods.append(MethodReference(object, class_name=self.name))
+            method = MethodReference(
+                object,
+                class_name=self.name,
+                prefix=self.prefix,
+            )
+            methods.append(method)
         return methods
 
 
@@ -197,6 +224,7 @@ class VariableReference(Reference):
     default: str = ""
     description: str = ""
     class_name: str
+    prefix: Optional[str]
 
     @property
     def id(self):
@@ -208,6 +236,8 @@ class VariableReference(Reference):
         if self.class_name:
             scope = self.class_name[0].lower() + self.class_name[1:]
             title = f"{scope}.{self.name}"
+        if self.prefix:
+            title = f"{self.prefix}.{title}"
         return title
 
     @property
@@ -228,9 +258,10 @@ class VariableReference(Reference):
 class PropertyReference(Reference):
     reference_type = "property"
 
-    def __init__(self, object, *, class_name):
+    def __init__(self, object, *, class_name, prefix=None):
         self.object = object
         self.class_name = class_name
+        self.prefix = prefix
         self.reader = inspect.signature(self.object.fget)
         self.writer = inspect.signature(self.object.fset) if self.object.fset else None
         self.docstring = docstring_parser.parse(inspect.getdoc(self.object) or "")
@@ -247,6 +278,8 @@ class PropertyReference(Reference):
     def title(self):
         scope = self.class_name[0].lower() + self.class_name[1:]
         title = f"{scope}.{self.name}"
+        if self.prefix:
+            title = f"{self.prefix}.{title}"
         return title
 
     @property
@@ -308,9 +341,10 @@ class PropertyReference(Reference):
 class MethodReference(FunctionReference):
     reference_type = "method"
 
-    def __init__(self, object, *, class_name, docstring=None):
+    def __init__(self, object, *, class_name, prefix=None, docstring=None):
         self.object = object
         self.class_name = class_name
+        self.prefix = prefix
         self.inspected = inspect.signature(self.object)
         self.docstring = docstring_parser.parse(
             docstring or inspect.getdoc(self.object) or ""
@@ -322,8 +356,13 @@ class MethodReference(FunctionReference):
 
     @property
     def title(self):
-        scope = self.class_name[0].lower() + self.class_name[1:]
+        static = "self" not in super().signature
+        scope = self.class_name
+        if not static:
+            scope = self.class_name[0].lower() + self.class_name[1:]
         title = f"{scope}.{self.name}"
+        if self.prefix:
+            title = f"{self.prefix}.{title}"
         return title
 
     @property
