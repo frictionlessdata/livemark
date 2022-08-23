@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Called each time a heading is parsed. Expects a string in return.
     headingLabelCallback: (label) => {
       label = label.replace(/(^#|#$)/g, "").trim();
-      label = label.replace(/\(.*?\)$/g, "");
+      // label = label.replace(/\(.*?\)$/g, "");
       return label;
     },
     // Disable generating ordered lists (ol)
