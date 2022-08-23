@@ -296,17 +296,10 @@ class: border
 
 This includes a Python function or class reference (in active development):
 
-
-```markdown tabs=Select
-Select reference to show
-```
-
-```yaml reference tabs=Snippet
-name: livemark.Snippet
-```
-
-```yaml reference tabs=Document
-name: livemark.Document
+```yaml reference
+references:
+- livemark.Snippet
+- livemark.Document
 ```
 
 ## Notebook

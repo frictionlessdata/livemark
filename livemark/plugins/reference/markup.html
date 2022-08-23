@@ -1,97 +1,106 @@
 <div class="livemark-reference">
-  {% if reference.reference_type == 'class' %}
-  {% set class = reference %}
-
-  <div>
-    <h{{ level }} id="{{ class.id }}" class="livemark-reference-heading">{{ class.title }} <small>{{ class.modifier }}</small></h{{ level }}>
-    <p>{{ class.description }}</p>
-    {% if class.constructor %}
-    <h{{ level+1 }}>Signature</h{{ level+1 }}>
-    <p>{{ class.constructor.signature | replace("'", "") }}</p>
-    {% if class.constructor.parameters %}
-    <h{{ level+1 }}>Parameters</h{{ level+1 }}>
-    <ul>
-      {% for parameter in class.constructor.parameters %}
-      <li>
-        {{ parameter.name }}
-        {% if parameter.type %}({{ parameter.type }}){% endif %}
-        {%- if parameter.description %}: {{ parameter.description }}{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    {% endif %}
+  <div data-tabs="Hide">
+    {% for reference in references %}
+      <h{{ level }} id="hidden-{{ reference.id }}" class="livemark-reference-heading">{{ reference.title }} <small>{{ reference.modifier }}</small></h{{ level }}>
+    {% endfor %}
   </div>
+  <div data-tabs="Show">
+    {% for reference in references %}
+    {% if reference.reference_type == 'class' %}
+    {% set class = reference %}
 
-  {% for variable in class.variables %}
-  <div>
-    <h{{ level }} id="{{ variable.id }}" class="livemark-reference-heading">{{ variable.title }} <small>{{ variable.modifier }}</small></h{{ level }}>
-    <p>{{ variable.description }}</p>
-    {% if variable.signature %}
-    <h{{ level+1 }}>Signature</h{{ level+1 }}>
-    <p>{{ variable.signature }}</p>
+    <div>
+      <h{{ level }} id="{{ class.id }}" class="livemark-reference-heading">{{ class.title }} <small>{{ class.modifier }}</small></h{{ level }}>
+      <p>{{ class.description }}</p>
+      {% if class.constructor %}
+      <h{{ level+1 }}>Signature</h{{ level+1 }}>
+      <p>{{ class.constructor.signature | replace("'", "") }}</p>
+      {% if class.constructor.parameters %}
+      <h{{ level+1 }}>Parameters</h{{ level+1 }}>
+      <ul>
+        {% for parameter in class.constructor.parameters %}
+        <li>
+          {{ parameter.name }}
+          {% if parameter.type %}({{ parameter.type }}){% endif %}
+          {%- if parameter.description %}: {{ parameter.description }}{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endif %}
+    </div>
+
+    {% for variable in class.variables %}
+    <div>
+      <h{{ level }} id="{{ variable.id }}" class="livemark-reference-heading">{{ variable.title }} <small>{{ variable.modifier }}</small></h{{ level }}>
+      <p>{{ variable.description }}</p>
+      {% if variable.signature %}
+      <h{{ level+1 }}>Signature</h{{ level+1 }}>
+      <p>{{ variable.signature }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    {% for property in class.properties %}
+    <div>
+      <h{{ level }} id="{{ property.id }}" class="livemark-reference-heading">{{ property.title }} <small>{{ property.modifier }}</small></h{{ level }}>
+      <p>{{ property.description }}</p>
+      {% if property.signature %}
+      <h{{ level+1 }}>Signature</h{{ level+1 }}>
+      <p>{{ property.signature }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    {% for method in class.methods %}
+    <div>
+      <h{{ level }} id="reference-{{ method.name }}" class="livemark-reference-heading">{{ method.title }} <small>{{ method.modifier }}</small></h{{ level }}>
+      <p>{{ method.description }}</p>
+      {% if method.signature %}
+      <h{{ level+1 }}>Signature</h{{ level+1 }}>
+      <p>{{ method.signature }}</p>
+      {% endif %}
+      {% if method.parameters %}
+      <h{{ level+1 }}>Parameters</h{{ level+1 }}>
+      <ul>
+        {% for parameter in method.parameters %}
+        <li>
+          {{ parameter.name }}
+          {% if parameter.type %}({{ parameter.type }}){% endif %}
+          {%- if parameter.description %}: {{ parameter.description }}{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+
     {% endif %}
+    {% if reference.reference_type == 'function' %}
+    {% set function = reference %}
+
+    <div>
+      <h{{ level }} id="{{ function.id }}" class="livemark-reference-heading">{{ function.title }} <small>{{ function.modifier }}</small></h{{ level }}>
+      <p>{{ function.description }}</p>
+      {% if function.signature %}
+      <h{{ level+1 }}>Signature</h{{ level+1 }}>
+      <p>{{ function.signature }}</p>
+      {% endif %}
+      {% if function.parameters %}
+      <h{{ level+1 }}>Parameters</h{{ level+1 }}>
+      <ul>
+        {% for parameter in function.parameters %}
+        <li>
+          {{ parameter.name }}
+          {% if parameter.type %}({{ parameter.type }}){% endif %}
+          {%- if parameter.description %}: {{ parameter.description }}{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+    {% endif %}
+    {% endfor %}
   </div>
-  {% endfor %}
-
-  {% for property in class.properties %}
-  <div>
-    <h{{ level }} id="{{ property.id }}" class="livemark-reference-heading">{{ property.title }} <small>{{ property.modifier }}</small></h{{ level }}>
-    <p>{{ property.description }}</p>
-    {% if property.signature %}
-    <h{{ level+1 }}>Signature</h{{ level+1 }}>
-    <p>{{ property.signature }}</p>
-    {% endif %}
-  </div>
-  {% endfor %}
-
-  {% for method in class.methods %}
-  <div>
-    <h{{ level }} id="reference-{{ method.name }}" class="livemark-reference-heading">{{ method.title }} <small>{{ method.modifier }}</small></h{{ level }}>
-    <p>{{ method.description }}</p>
-    {% if method.signature %}
-    <h{{ level+1 }}>Signature</h{{ level+1 }}>
-    <p>{{ method.signature }}</p>
-    {% endif %}
-    {% if method.parameters %}
-    <h{{ level+1 }}>Parameters</h{{ level+1 }}>
-    <ul>
-      {% for parameter in method.parameters %}
-      <li>
-        {{ parameter.name }}
-        {% if parameter.type %}({{ parameter.type }}){% endif %}
-        {%- if parameter.description %}: {{ parameter.description }}{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </div>
-  {% endfor %}
-
-  {% endif %}
-  {% if reference.reference_type == 'function' %}
-  {% set function = reference %}
-
-  <div>
-    <h{{ level }} id="{{ function.id }}" class="livemark-reference-heading">{{ function.title }} <small>{{ function.modifier }}</small></h{{ level }}>
-    <p>{{ function.description }}</p>
-    {% if function.signature %}
-    <h{{ level+1 }}>Signature</h{{ level+1 }}>
-    <p>{{ function.signature }}</p>
-    {% endif %}
-    {% if function.parameters %}
-    <h{{ level+1 }}>Parameters</h{{ level+1 }}>
-    <ul>
-      {% for parameter in function.parameters %}
-      <li>
-        {{ parameter.name }}
-        {% if parameter.type %}({{ parameter.type }}){% endif %}
-        {%- if parameter.description %}: {{ parameter.description }}{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </div>
-
-  {% endif %}
 </div>
