@@ -206,7 +206,7 @@ class VariableReference(Reference):
     def title(self):
         title = self.name
         if self.class_name:
-            scope = self.class_name.lower()
+            scope = self.class_name[0].lower() + self.class_name[1:]
             title = f"{scope}.{self.name}"
         return title
 
@@ -245,7 +245,7 @@ class PropertyReference(Reference):
 
     @property
     def title(self):
-        scope = self.class_name.lower()
+        scope = self.class_name[0].lower() + self.class_name[1:]
         title = f"{scope}.{self.name}"
         return title
 
@@ -322,8 +322,7 @@ class MethodReference(FunctionReference):
 
     @property
     def title(self):
-        static = "self" not in super().signature
-        scope = self.class_name if static else self.class_name.lower()
+        scope = self.class_name[0].lower() + self.class_name[1:]
         title = f"{scope}.{self.name}"
         return title
 
