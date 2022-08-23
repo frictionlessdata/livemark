@@ -33,6 +33,10 @@ class FunctionReference(Reference):
         self.docstring = docstring_parser.parse(inspect.getdoc(self.object) or "")
 
     @property
+    def id(self):
+        return f"reference-{self.title.lower()}"
+
+    @property
     def name(self):
         return self.object.__name__
 
@@ -103,6 +107,10 @@ class ClassReference(Reference):
     def __init__(self, object: Type):
         self.object = object
         self.docstring = docstring_parser.parse(inspect.getdoc(self.object) or "")
+
+    @property
+    def id(self):
+        return f"reference-{self.title.lower()}"
 
     @property
     def name(self):
@@ -191,14 +199,22 @@ class VariableReference(Reference):
     class_name: str
 
     @property
+    def id(self):
+        return f"reference-{self.title.lower()}"
+
+    @property
     def title(self):
-        scope = self.class_name.lower()
-        title = f"{scope}.{self.name}"
+        title = self.name
+        if self.class_name:
+            scope = self.class_name.lower()
+            title = f"{scope}.{self.name}"
         return title
 
     @property
     def modifier(self):
         modifier = "(variable)"
+        if self.class_name:
+            modifier = "(property)"
         return modifier
 
     @property
@@ -218,6 +234,10 @@ class PropertyReference(Reference):
         self.reader = inspect.signature(self.object.fget)
         self.writer = inspect.signature(self.object.fset) if self.object.fset else None
         self.docstring = docstring_parser.parse(inspect.getdoc(self.object) or "")
+
+    @property
+    def id(self):
+        return f"reference-{self.title.lower()}"
 
     @property
     def name(self):
@@ -295,6 +315,10 @@ class MethodReference(FunctionReference):
         self.docstring = docstring_parser.parse(
             docstring or inspect.getdoc(self.object) or ""
         )
+
+    @property
+    def id(self):
+        return f"reference-{self.title.lower()}"
 
     @property
     def title(self):
