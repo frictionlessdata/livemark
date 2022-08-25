@@ -1,3 +1,4 @@
+import re
 import os
 import glob
 from ...plugin import Plugin
@@ -57,7 +58,7 @@ class BlogPlugin(Plugin):
     def date(self):
         if self.path:
             date = self.document.path.replace(f"{self.path}/", "")
-            return "-".join(date.split("-")[:3])
+            return "-".join(re.split(r"[/-]", date)[:3])
 
     # Process
 
