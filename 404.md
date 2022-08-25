@@ -1,6 +1,7 @@
 ---
 site:
-  description: The page is not found
+  description: This page is not found
+signs: false
 ---
 
 # Not Found
