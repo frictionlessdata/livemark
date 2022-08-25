@@ -34,8 +34,10 @@ class SignsPlugin(Plugin):
                         prev = {"name": document.name, "path": path}
                     if current_number < len(documents):
                         document = documents[current_number]
-                        path = helpers.get_url_relpath(document.path, self.current)
-                        next = {"name": document.name, "path": path}
+                        # TODO: have a concept of public/hidden page?
+                        if document.path != "404":
+                            path = helpers.get_url_relpath(document.path, self.current)
+                            next = {"name": document.name, "path": path}
                 return {"prev": prev, "next": next}
 
     # Process
