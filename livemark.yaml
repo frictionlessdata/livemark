@@ -64,5 +64,5 @@ pages:
     - path: blog/index
 redirect:
   items:
-    - prev: getting-started
-      next: pages/installation
+    - prev: pages/getting-started
+      next: pages/getting-started/installation
