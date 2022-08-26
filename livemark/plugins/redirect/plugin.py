@@ -5,6 +5,7 @@ from ... import helpers
 
 
 class RedirectPlugin(Plugin):
+    priority = 1000
     identity = "redirect"
     validity = {
         "type": "object",
@@ -40,3 +41,7 @@ class RedirectPlugin(Plugin):
             if not os.path.isfile(missing_source):
                 helpers.copy_file(missing_default, missing_source)
             project.documents.append(Document(missing_source, project=project))
+
+    def process_markup(self, markup):
+        if self.document.path == "404":
+            markup.add_markup("redirect.html", target="head")
