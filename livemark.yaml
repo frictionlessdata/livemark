@@ -3,7 +3,7 @@ brand:
 about:
   text: Data presentation framework for Python that generates static sites from extended Markdown with interactive charts, tables, scripts, and other features
 site:
-  favicon: assets/favicon.ico
+  favicon: assets/logo.png
   styles:
     - style.css
 github:
