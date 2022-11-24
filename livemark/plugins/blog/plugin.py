@@ -70,7 +70,8 @@ class BlogPlugin(Plugin):
             index_source = os.path.join(path, "index.md")
             if not os.path.isfile(index_source):
                 helpers.copy_file(index_default, index_source)
-            for source in glob.glob(f"{path}/**/*.md", recursive=True):
+            sources = glob.glob(f"{path}/**/*.md", recursive=True)
+            for source in sorted(sources, reverse=True):
                 if source != index_source:
                     item = Document(source, project=project)
                     project.documents.append(item)
