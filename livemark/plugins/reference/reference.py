@@ -161,8 +161,8 @@ class ClassReference(Reference):
         if hasattr(self.object, "__annotations__"):
             code = inspect.getsource(self.object)
             for name, type in self.object.__annotations__.items():
-                pattern = rf"    {name}:.*?\"\"\"(.*?)\"\"\""
-                match = re.search(pattern, code, re.DOTALL)
+                pattern = rf'^    {name}:.*?\"""(.*?)"""'
+                match = re.search(pattern, code, re.DOTALL | re.MULTILINE)
                 description = ""
                 if match:
                     description = match.group(1)
