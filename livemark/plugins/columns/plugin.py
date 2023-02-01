@@ -8,7 +8,6 @@ class ColumnsPlugin(Plugin):
 
     def process_markup(self, markup):
         if self.document.format == "html":
-
             # Collect sources
             number = 1
             groups = {}

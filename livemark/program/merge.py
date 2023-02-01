@@ -25,7 +25,6 @@ def program_merge(
     """Merge Markdown file into itself."""
 
     try:
-
         # Handle config
         if not config:
             if os.path.exists(settings.DEFAULT_CONFIG):

@@ -10,7 +10,6 @@ from ...snippet import Snippet
 
 
 class HtmlRenderer(html_renderer.HTMLRenderer):
-
     # Render
 
     def render_fenced_code(self, element):
@@ -21,7 +20,6 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
 
         # Script
         if snippet.type == "script" and snippet.output is not None:
-
             # Remove target
             if self.document.format == "md":
                 index = self.root_node.children.index(element)
@@ -42,7 +40,6 @@ class HtmlRenderer(html_renderer.HTMLRenderer):
 
         # Task
         elif snippet.type == "task" and snippet.props.get("id"):
-
             # Return output
             task = snippet.props["id"]
             target = copy(element)

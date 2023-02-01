@@ -21,7 +21,6 @@ class Document:
     """
 
     def __init__(self, source, *, target=None, format=None, project=None, path=None):
-
         # Infer target
         if not target:
             format = format or settings.DEFAULT_FORMAT

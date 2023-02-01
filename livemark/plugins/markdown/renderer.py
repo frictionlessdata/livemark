@@ -6,7 +6,6 @@ from ...snippet import Snippet
 
 
 class MarkdownRenderer(md_renderer.MarkdownRenderer):
-
     # Render
 
     def render_quote(self, element):
@@ -18,7 +17,6 @@ class MarkdownRenderer(md_renderer.MarkdownRenderer):
         snippet = Snippet(input, header=header)
         snippet.process(self.document)
         if snippet.output is not None:
-
             # Locate target
             target = None
             index = self.root_node.children.index(element)

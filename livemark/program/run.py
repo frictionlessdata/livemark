@@ -24,7 +24,6 @@ def program_run(
     """Run a Livemark task"""
 
     try:
-
         # Handle config
         if not config:
             if os.path.exists(settings.DEFAULT_CONFIG):
@@ -69,7 +68,6 @@ def program_run(
 
 
 class TaskRenderer(md_renderer.MarkdownRenderer):
-
     # Render
 
     def render_fenced_code(self, element):

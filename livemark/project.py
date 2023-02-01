@@ -24,7 +24,6 @@ class Project:
         format=None,
         config=None,
     ):
-
         # Create document
         document = None
         if source:

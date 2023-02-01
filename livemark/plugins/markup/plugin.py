@@ -20,7 +20,6 @@ class MarkupPlugin(Plugin):
     def process_snippet(self, snippet):
         if self.document.format == "html":
             if snippet.type == "markup" and snippet.lang in ["markdown", "html", "jsx"]:
-
                 # Markdown
                 if snippet.lang == "markdown":
                     markdown = marko.Markdown()

@@ -28,7 +28,6 @@ def program_build(
     """Build Markdown file into HTML by default."""
 
     try:
-
         # Handle config
         if not config:
             if os.path.exists(settings.DEFAULT_CONFIG):

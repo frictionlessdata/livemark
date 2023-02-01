@@ -36,7 +36,6 @@ class ScriptPlugin(Plugin):
 
     def process_snippet(self, snippet):
         if snippet.type == "script" and snippet.lang in ["python", "bash"]:
-
             # Acquire cache
             cache = helpers.list_setdefault(
                 self.__store,
@@ -54,7 +53,6 @@ class ScriptPlugin(Plugin):
 
             # Populate cache
             if not cache:
-
                 # Bash
                 if snippet.lang == "bash":
                     try:

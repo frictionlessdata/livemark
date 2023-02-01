@@ -25,7 +25,6 @@ def program_start(
     """Start a Livemark server."""
 
     try:
-
         # Handle config
         if not config:
             if os.path.exists(settings.DEFAULT_CONFIG):
