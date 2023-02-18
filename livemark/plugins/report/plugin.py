@@ -1,7 +1,6 @@
 import json
 import yaml
 from ...plugin import Plugin
-from frictionless import Report
 
 
 # NOTE:
@@ -20,14 +19,18 @@ class ReportPlugin(Plugin):
     def process_snippet(self, snippet):
         if self.document.format == "html":
             if snippet.type == "report" and snippet.lang in ["yaml", "json"]:
+                spec = None
                 if snippet.lang == "yaml":
                     spec = yaml.safe_load(str(snippet.input).strip())
                 if snippet.lang == "json":
                     spec = json.loads(str(snippet.input).strip())
-                spec = Report(**spec).to_dict()
-                self.__count += 1
-                report = {"spec": spec, "elem": f"livemark-report-{self.__count}"}
-                snippet.output = self.read_asset("markup.html", report=report) + "\n"
+                if spec and spec.get("descriptor"):
+                    self.__count += 1
+                    report = {
+                        "spec": spec["descriptor"],
+                        "elem": f"livemark-report-{self.__count}",
+                    }
+                    snippet.output = self.read_asset("markup.html", report=report) + "\n"
 
     def process_markup(self, markup):
         if self.__count:
