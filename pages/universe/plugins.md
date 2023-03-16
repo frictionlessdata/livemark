@@ -2,7 +2,7 @@
 
 ```html markup
 <div class="plugins">
-  {% for row in frictionless.extract('data/plugins.csv') %}
+  {% for row in frictionless.Resource('data/plugins.csv').read_rows() %}
   <div class="item">
     <div class="item-content">
       <h3>

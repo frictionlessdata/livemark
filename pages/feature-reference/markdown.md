@@ -33,13 +33,13 @@ Livemark process your document using the Jinja templating language. Inside templ
 
 {% raw %}
 ```
-{% for car in frictionless.extract('data/cars.csv')[:5] %}
+{% for car in frictionless.Resource('data/cars.csv').read_rows(size=5) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 ```
 {% endraw %}
 
-{% for car in frictionless.extract('data/cars.csv')[:5] %}
+{% for car in frictionless.Resource('data/cars.csv').read_rows(size=5) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 

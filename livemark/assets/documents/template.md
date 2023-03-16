@@ -21,7 +21,7 @@ It's a template document created automatically to introduce Livemark. We will li
 
 We can pre-process our markdown file using [Jinja](https://jinja.palletsprojects.com/):
 
-{% for car in frictionless.extract('https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv')[:5] %}
+{% for car in frictionless.Resource('https://raw.githubusercontent.com/frictionlessdata/livemark/main/data/cars.csv').read_rows(size=5) %}
 - {{ car.brand }} {{ car.model }}: ${{ car.price }}
 {% endfor %}
 

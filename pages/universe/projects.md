@@ -2,7 +2,7 @@
 
 ```html markup
 <div class="livemarks">
-  {% for row in frictionless.extract('data/livemarks.csv') %}
+  {% for row in frictionless.Resource('data/livemarks.csv').read_rows() %}
   <div class="item">
     <div class="item-content">
       <h3>
