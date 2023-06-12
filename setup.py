@@ -37,7 +37,7 @@ EXTRAS_REQUIRE = {
 }
 INSTALL_REQUIRES = [
     "attrs>=22.0",
-    "marko>=1.0",
+    "marko==1.*",
     "pyyaml>=5.3",
     "jinja2>=3.0",
     "pyquery==1.*",
