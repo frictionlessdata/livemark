@@ -92,3 +92,4 @@ datapackage
 !docs/build
 .google.json
 tmp
+!**/*.html
